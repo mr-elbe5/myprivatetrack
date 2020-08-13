@@ -1,2 +1,2 @@
 # myprivatetrack
-IOS app for privately tracking yourself - private diary
+IOS app for your private track - private diary using text, camera, audio, video and map
