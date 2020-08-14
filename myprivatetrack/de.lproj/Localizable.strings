@@ -1,0 +1,64 @@
+/* 
+  Localizable.strings
+  myprivatetrack
+
+  Created by Michael Rönnau on 13.06.20.
+  Copyright © 2020 Michael Rönnau. All rights reserved.
+*/
+"timeline"="Tage";
+"map"="Karte";
+"media"="Medien";
+"settings"="Einstellungen";
+"info"="Info";
+"newEntry"="Neuer Eintrag";
+"addItem"="Hinzufügen:";
+"save" = "Speichern";
+"cancel" = "Abbrechen";
+"reset" = "Zurücksetzen";
+"yourText"="Dein Text...";
+"title"="Titel";
+"comment"="Kommentar";
+"speed"="Geschwindigkeit";
+"balanced"="Ausbalanciert";
+"quality"="Qualität";
+"error"="Fehler";
+"noItems"="Es ist minestens ein Eintrag nötig.";
+"notComplete"="Einige Eingaben sind nicht vollständig.";
+"yourPosition"="Deine Position";
+"back"="Zurück";
+"cameraNotAuthorized"="Die Nutzung der Kamera ist nicht erlaubt. Bitte ändere die entsprechenden Einstellungen.";
+"audioNotAuthorized"="Die Nutzung des Mikrofons ist nicht erlaubt. Bitte ändere die entsprechenden Einstellungen.";
+"videoNotAuthorized"="Die Nutzung der Kamera oder des Mikrofons ist nicht erlaubt. Bitte ändere die entsprechenden Einstellungen.";
+"locationNotAuthorized"="Die App darf deinen Standort nicht feststellen. Bitte ändere die entsprechenden Einstellungen.";
+"photoLibraryNotAuthorized"="Die Nutzung der Fotobibliothek ist nicht erlaubt. Bitte ändere die entsprechenden Einstellungen.";
+"privacyInfoHeader"="Deine Privatshäre";
+"privacyInfoText"="Diese App ist für private Daten erstellt. Keine eingegebene Daten verlassen das iPhone oder iPad, solange sie nicht explizit exportiert werden. Es gibt keine Werbung. Das Netzwerk wird lediglich genutzt, um Kartenkacheln zu laden oder den Ort deiner Einträge auf Karten darzustellen. Es werden ausschliesslich Apple-APIs und -Services benutzt, keine Drittanbieter-Software. Der gesamte Code ist zur Überprüfung bei Github unter https://github.com/mr-elbe5/myprivatetrack.git offengelegt.";
+"timelineInfoHeader"="Tagesansicht";
+"timelineTopInfo"="Die Tagesansicht zeigt alle Einträge nach Tag und Zeit sortiert. Durch Antippen der linken Icons kannst du einen neuen Eintrag erzeugen, der mit dem jeweiligen Typ startet : Text, Bild, Audio, Video oder Karte. Mit dem rechten Bleistift-Icon kannst du zwischen Anzeige- und Editiermodus wechseln (siehe unten).";
+"timelineTextIconInfo"="Mit diesem Icon startest du einen neuen Eintrag, der mit dem Eingeben eines Textes beginnt.";
+"timelineImageIconInfo"="Mit diesem Icon startest du einen neuen Eintrag, der mit dem Aufnehmen eines Fotos beginnt.";
+"timelineAudioIconInfo"="Mit diesem Icon startest du einen neuen Eintrag, der mit dem Aufnehmen eines Audios beginnt.";
+"timelineVideoIconInfo"="Mit diesem Icon startest du einen neuen Eintrag, der mit dem Aufnehmen eines Videos beginnt.";
+"timelineMapIconInfo"="Mit diesem Icon startest du einen neuen Eintrag, der mit dem Aufnehmen eines Kartenausschnitts beginnt.";
+"timelineInfoEditHeader"="Editiermodus";
+"timelineEditInfo"="Mit dem rechten Bleistiftsymbol kannst du zwischen Anzeige- und Editiermodus wechseln. Im Editiermodus erscheinen zwei Icons bei jedem Eintrag:";
+"timelineEditIconInfo"="Mit diesem Icon editierst du den Eintrag wie bei der Erstellung.";
+"timelineDeleteIconInfo"="Mit diesem Icon löschst du den Eintrag. Vorsicht! Diese Aktion kann nicht rückgängig gemacht werden!";
+"editEntryInfoHeader"="Eintrag editieren";
+"editEntryTopInfo"="In dieser Ansicht kannst du Elemente in deinem Eintrag hinzufügen, ändern oder löschen. Durch Antippen der linken Icons kannst du ein neues Element erzeugen: Text, Bild, Audio, Video oder Karte. Die Anzahl der Elemente ist nicht begrenzt";
+"editEntryTextIconInfo"="Mit diesem Icon erstellst du ein neues Text-Element.";
+"editEntryImageIconInfo"="Mit diesem Icon erstellst du ein neues Bild-Element mit der Kamera";
+"editEntryAudioIconInfo"="Mit diesem Icon erstellst du ein neues Audio-Element durch eine Tonaufnahme.";
+"editEntryVideoIconInfo"="Mit diesem Icon erstellst du ein neues Video-Element duch eine Videoaufnahme.";
+"editEntryMapIconInfo"="Mit diesem Icon erstellst du ein neues Karten-Element duch einen Karten-Schappschuss Deiner Position";
+"editEntryItemInfoHeader"="Element löschen";
+"editEntryDeleteIconInfo"="Mit diesem Icon löschst du das Element. Vorsicht! Diese Aktion kann nicht rückgängig gemacht werden!";
+"editEntryOthersHeader"="Weitere Icons";
+"editEntryToggleMapIconInfo"="Mit diesem Icon veränderst du beim Aufnehmen eines Kartenausschnitts die Kartenansicht (Satellit oder Strasse).";
+"editEntryToggleCameraIconInfo"="Mit diesem Icon wechselst du beim Aufnehmen eines Fotos oder eines Videos die Kamera.";
+"editEntryFastCameraIconInfo"="Mit diesem Icon stellst du beim Aufnehmen eines Fotos auf Bildqualität für bewegliche Ziele.";
+"editEntryMediumCameraIconInfo"="Mit diesem Icon stellst du beim Aufnehmen eines Fotos auf ausgewogene Bildqualität.";
+"editEntrySlowCameraIconInfo"="Mit diesem Icon stellst du beim Aufnehmen eines Fotos auf höchste Bildqualität.";
+"mapInfoHeader"="Kartenansicht";
+"mapTopInfo"="Die Kartenansicht zeigt alle Einträge, die ein Kartenelement enthalten. Die Einträge werden duch eine Nadel dargestellt. Durch Antippen der Nadel wird der gesamte Eintrag angezeigt.";
+

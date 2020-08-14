@@ -1,0 +1,63 @@
+/* 
+  Localizable.strings
+  myprivatetrack
+
+  Created by Michael Rönnau on 13.06.20.
+  Copyright © 2020 Michael Rönnau. All rights reserved.
+*/
+"timeline"="Days";
+"map"="Map";
+"media"="Media";
+"settings"="Settings";
+"info"="Info";
+"newEntry"="New Entry";
+"addItem"="Add:";
+"save" = "Save";
+"cancel" = "Cancel";
+"reset" = "Reset";
+"yourText"="Your text...";
+"title"="Title";
+"comment"="Comment";
+"speed"="Speed";
+"balanced"="Balanced";
+"quality"="Quality";
+"error"="Error";
+"noItems"="You need at least one item.";
+"notComplete"="Some entries are not complete.";
+"yourPosition"="Your position";
+"back"="Back";
+"cameraNotAuthorized"="Camera use is not authorized. Please change your settings.";
+"audioNotAuthorized"="Microphone use is not authorized. Please change your settings.";
+"videoNotAuthorized"="Camera or Microphone use is not authorized. Please change your settings.";
+"locationNotAuthorized"="Finding your location is not authorized. Please change your settings.";
+"photoLibraryNotAuthorized"="The use of the photo library is not authorized. Please change your settings.";
+"privacyInfoHeader"="Your privacy";
+"privacyInfoText"="This app is designed for private data. None of your entered data leaves your iPhone or iPad, if you do not explicitly export it. There are no ads. The only use of the network is for getting map tiles and the location service for showing the location of your entries on the map. Only Apple APIs and services are used, no third party software. All code is published on GitHub under https://github.com/mr-elbe5/myprivatetrack.git for your survey if you like.";
+"timelineInfoHeader"="Timeline view";
+"timelineTopInfo"="The time line view shows all entries sorted by the day and of their creation. By tapping one of the left icons you can create a new entry starting with the respective item type: text, image, audio, video or map. With the right pencil icon you can toggle between view and edit mode (see below).";
+"timelineTextIconInfo"="With this icon you start creating a new entry by writing a text.";
+"timelineImageIconInfo"="With this icon you start creating a new entry by taking a photo.";
+"timelineAudioIconInfo"="With this icon you start creating a new entry starting by recording an audio.";
+"timelineVideoIconInfo"="With this icon you start creating a new entry by recording a video.";
+"timelineMapIconInfo"="With this icon you start creating a new entry by taking a map snapshot.";
+"timelineInfoEditHeader"="Edit mode";
+"timelineEditInfo"="With the right pencil icon you can toggle between view and edit mode. In edit mode two icons appear at each entry:";
+"timelineEditIconInfo"="With this icon you start editing the entry as during creation.";
+"timelineDeleteIconInfo"="With this icon you delete this entry including all of its items. Take care! There is no way to undo this action!";
+"editEntryInfoHeader"="Edit entry";
+"editEntryTopInfo"="The entry view lets you add, edit and remove items within your entry. By tapping one of the left icons you can add a new item: text, image, audio, video or map. The number of items is not limited.";
+"editEntryTextIconInfo"="With this icon you add a new text item by writing a text.";
+"editEntryImageIconInfo"="With this icon you add a new image item by taking a photo.";
+"editEntryAudioIconInfo"="With this icon you add a new audio item starting by recording an audio.";
+"editEntryVideoIconInfo"="With this icon you add a new video item by recording a video.";
+"editEntryMapIconInfo"="With this icon you add a new map item by taking a map snapshot.";
+"editEntryItemInfoHeader"="Deleting an item";
+"editEntryDeleteIconInfo"="With this icon you delete the item. Take care! There is no way to undo this action!";
+"editEntryOthersHeader"="Other icons";
+"editEntryToggleMapIconInfo"="With this icon you change the map type (satellite or street) when you capture a map snapshot.";
+"editEntryToggleCameraIconInfo"="With this icon you toggle the camera when you take a photo or video.";
+"editEntryFastCameraIconInfo"="With this icon you set the photo quality for moving targets.";
+"editEntryMediumCameraIconInfo"="With this icon you set a balanced photo quality.";
+"editEntrySlowCameraIconInfo"="With this icon you set the photo quality for highest quality.";
+"mapInfoHeader"="Map view";
+"mapTopInfo"="The map view shows all entries containing a map item represented by a needle. By tapping one of these needles the complete entry is shown.";
