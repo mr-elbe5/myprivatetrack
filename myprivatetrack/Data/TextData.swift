@@ -44,14 +44,6 @@ class TextData: EntryItemData{
         try container.encode(isMultiline, forKey: .multiline)
     }
     
-    override func addToEntry(entry: EntryData){
-        entry.addText(entry: self)
-    }
-    
-    override func removeFromEntry(entry: EntryData){
-        entry.removeText(entry: self)
-    }
-    
     override func isComplete() -> Bool{
         return text.count > 0
     }

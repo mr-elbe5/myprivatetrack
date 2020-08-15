@@ -84,6 +84,7 @@ class TimelineViewController: TableViewController, SaveEntryDelegate, EntryActio
             createEventViewController.entry.coordinate = Location.shared.coordinate
         }
         createEventViewController.delegate = self
+        createEventViewController.modalPresentationStyle = .fullScreen
         self.present(createEventViewController, animated: true)
         return createEventViewController
     }
@@ -149,7 +150,6 @@ class TimelineViewController: TableViewController, SaveEntryDelegate, EntryActio
     }
     
     func deleteEntry(entry: EntryData) {
-        entry.cleanup()
         dataContainer.deleteEntry(entry: entry)
         tableView.reloadData()
     }

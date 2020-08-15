@@ -16,6 +16,7 @@ class IconButton : UIButton{
         setImage(UIImage(systemName: icon), for: .normal)
         self.tintColor = tintColor
         self.setTitleColor(tintColor, for: .normal)
+        self.transform = CGAffineTransform(scaleX: 1.1, y: 1.1)
     }
     
     required init?(coder: NSCoder) {

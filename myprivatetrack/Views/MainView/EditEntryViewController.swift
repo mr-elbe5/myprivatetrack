@@ -13,7 +13,7 @@ protocol SaveEntryDelegate{
     func saveEntry(entry: EntryData)
 }
 
-class EditEntryViewController: EditViewController, ImageCaptureDelegate, VideoCaptureDelegate, LocationCaptureDelegate, DeleteEntryActionDelegate{
+class EditEntryViewController: EditViewController, ImageCaptureDelegate, VideoCaptureDelegate, LocationCaptureDelegate, DeleteEntryActionDelegate, SwitchDelegate{
     
     var delegate : SaveEntryDelegate? = nil
     
@@ -21,7 +21,10 @@ class EditEntryViewController: EditViewController, ImageCaptureDelegate, VideoCa
     
     override func loadView() {
         super.loadView()
-        self.modalPresentationStyle = .fullScreen
+        let saveLocationSwitch = SwitchView()
+        saveLocationSwitch.setupView(text: "saveLocation".localize(), isOn: entry.saveLocation)
+        saveLocationSwitch.delegate = self
+        stackView.addArrangedSubview(saveLocationSwitch)
         for item in entry.items{
             var editItem : EntryItemEditView? = nil
             switch item.type{
@@ -95,6 +98,11 @@ class EditEntryViewController: EditViewController, ImageCaptureDelegate, VideoCa
         rightStackView.addArrangedSubview(infoButton)
         
         self.headerView = headerView
+    }
+    
+    func valueDidChange(sender: SwitchView, isOn: Bool) {
+        entry.saveLocation = isOn
+        print("state= \(entry.saveLocation)")
     }
     
     @objc func addText(){
@@ -204,7 +212,7 @@ class EditEntryViewController: EditViewController, ImageCaptureDelegate, VideoCa
     func deleteItem(itemView: EntryItemEditView) {
         for v in stackView.arrangedSubviews{
             if v == itemView {
-                itemView.data.removeFromEntry(entry: entry)
+                entry.removeItem(item: itemView.data)
                 stackView.removeArrangedSubview(itemView)
                 stackView.removeSubview(itemView)
                 break
@@ -232,7 +240,7 @@ class EditEntryViewController: EditViewController, ImageCaptureDelegate, VideoCa
     
     @objc func cancel(){
         if entry.isNew{
-            entry.reset()
+            entry.removeAllItems()
         }
         self.dismiss(animated: true)
     }

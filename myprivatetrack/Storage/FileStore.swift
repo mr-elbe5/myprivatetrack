@@ -70,6 +70,7 @@ struct FileStore {
     func deleteFile(libUrl: URL, fileName: String) -> Bool{
         do{
             try FileManager.default.removeItem(at: FileStore.getURL(libUrl: libUrl, name: fileName))
+            //print("file deleted: \(fileName)")
             return true
         }
         catch {

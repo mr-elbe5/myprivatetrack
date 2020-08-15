@@ -22,15 +22,6 @@ class AudioData : MediaData{
         }
     }
     
-    override func addToEntry(entry: EntryData){
-        entry.addAudio(entry: self)
-    }
-    
-    override func removeFromEntry(entry: EntryData){
-        _ = deleteFiles()
-        entry.removeAudio(entry: self)
-    }
-    
     override func isComplete() -> Bool{
         return fileExists()
     }

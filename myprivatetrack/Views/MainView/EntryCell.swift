@@ -50,16 +50,14 @@ class EntryCell: UITableViewCell{
             timeLabel.placeBelow(anchor: cellBody.topAnchor, padding: defaultInsets)
             
             if isEditing{
-                let editButton = UIButton()
-                editButton.setImage(UIImage(systemName: "pencil.circle"), for: .normal)
+                let editButton = IconButton(icon: "pencil.circle")
                 editButton.tintColor = UIColor.systemBlue
                 editButton.addTarget(self, action: #selector(editEntry), for: .touchDown)
                 cellBody.addSubview(editButton)
                 editButton.enableAnchors()
                 editButton.setTopAnchor(cellBody.topAnchor, padding: 2)
                 
-                let deleteButton = UIButton()
-                deleteButton.setImage(UIImage(systemName: "xmark.circle"), for: .normal)
+                let deleteButton = IconButton(icon: "xmark.circle")
                 deleteButton.tintColor = UIColor.systemRed
                 deleteButton.addTarget(self, action: #selector(deleteEntry), for: .touchDown)
                 cellBody.addSubview(deleteButton)

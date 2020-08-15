@@ -50,12 +50,7 @@ class EntryItemData: Identifiable, Codable{
         try container.encode(creationDate, forKey: .creationDate)
     }
     
-    func addToEntry(entry: EntryData){
-        fatalError("not implemented")
-    }
-    
-    func removeFromEntry(entry: EntryData){
-        fatalError("not implemented")
+    func prepareDelete(){
     }
     
     func isComplete() -> Bool{

@@ -15,7 +15,6 @@ enum TabTags{
 class MainTabController: UITabBarController {
     
     override func loadView() {
-        Location.shared.assertRunning()
         super.loadView()
         let timelineViewController = TimelineViewController()
         timelineViewController.tabBarItem = UITabBarItem(title: NSLocalizedString("timeline", comment: ""), image: UIImage(systemName: "rectangle.stack"), tag: TabTags.events.hashValue)

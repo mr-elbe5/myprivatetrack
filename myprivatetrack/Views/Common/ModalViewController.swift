@@ -14,12 +14,11 @@ class ModalViewController: StackViewController {
     override func loadView() {
         self.mainViewTopPadding = 0
         super.loadView()
-        self.modalPresentationStyle = .fullScreen
     }
     
     override func setupHeaderView(){
         let buttonView = UIView()
-        buttonView.backgroundColor = UIColor.white
+        buttonView.backgroundColor = UIColor.systemBackground
         let closeButton = IconButton(icon: "xmark.circle")
         buttonView.addSubview(closeButton)
         closeButton.addTarget(self, action: #selector(close), for: .touchDown)

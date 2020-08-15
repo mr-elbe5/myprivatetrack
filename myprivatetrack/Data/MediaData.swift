@@ -76,16 +76,16 @@ class MediaData: EntryItemData{
         }
     }
     
-    func deleteFiles() -> Bool{
-        var success = true
-        if FileStore.shared.fileExists(libPath: FileStore.privatePath, fileName: fileName){
-            success = success && FileStore.shared.deleteFile(libUrl: FileStore.privateUrl, fileName: fileName)
-        }
-        return success
-    }
-    
     func fileExists() -> Bool{
         return FileStore.shared.fileExists(libPath: FileStore.privatePath, fileName: fileName)
+    }
+    
+    override func prepareDelete(){
+        if FileStore.shared.fileExists(libPath: FileStore.privatePath, fileName: fileName){
+            if !FileStore.shared.deleteFile(libUrl: FileStore.privateUrl, fileName: fileName){
+                print("error: could not delete file: \(fileName)")
+            }
+        }
     }
     
 }

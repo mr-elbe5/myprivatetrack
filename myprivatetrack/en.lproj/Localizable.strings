@@ -11,6 +11,7 @@
 "settings"="Settings";
 "info"="Info";
 "newEntry"="New Entry";
+"saveLocation"="Save current location";
 "addItem"="Add:";
 "save" = "Save";
 "cancel" = "Cancel";

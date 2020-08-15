@@ -16,6 +16,7 @@ class EntryData: Identifiable, Codable{
         case creationDate
         case latitude
         case longitude
+        case saveLocation
         case texts
         case audios
         case images
@@ -26,6 +27,7 @@ class EntryData: Identifiable, Codable{
     public var id: UUID
     public var creationDate: Date
     public var coordinate: CLLocationCoordinate2D
+    public var saveLocation: Bool
     public var texts: Array<TextData>
     public var audios: Array<AudioData>
     public var images: Array<ImageData>
@@ -41,6 +43,7 @@ class EntryData: Identifiable, Codable{
         id = UUID()
         creationDate = Date()
         coordinate = CLLocationCoordinate2D()
+        saveLocation = true
         texts = []
         audios = []
         images = []
@@ -52,9 +55,14 @@ class EntryData: Identifiable, Codable{
         let values = try decoder.container(keyedBy: CodingKeys.self)
         id = try values.decode(UUID.self, forKey: .id)
         creationDate = try values.decode(Date.self, forKey: .creationDate)
-        let latitude = try values.decode(Double.self, forKey: .latitude)
-        let longitude = try values.decode(Double.self, forKey: .longitude)
-        coordinate = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
+        saveLocation = try values.decode(Bool.self, forKey: .saveLocation)
+        if saveLocation{
+            let latitude = try values.decode(Double.self, forKey: .latitude)
+            let longitude = try values.decode(Double.self, forKey: .longitude)
+            coordinate = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
+        }else{
+            coordinate = CLLocationCoordinate2D()
+        }
         texts = try values.decode(Array<TextData>.self, forKey: .texts)
         audios = try values.decode(Array<AudioData>.self, forKey: .audios)
         images = try values.decode(Array<ImageData>.self, forKey: .images)
@@ -67,8 +75,11 @@ class EntryData: Identifiable, Codable{
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encode(id, forKey: .id)
         try container.encode(creationDate, forKey: .creationDate)
-        try container.encode(coordinate.latitude, forKey: .latitude)
-        try container.encode(coordinate.longitude, forKey: .longitude)
+        try container.encode(saveLocation, forKey: .saveLocation)
+        if saveLocation{
+            try container.encode(coordinate.latitude, forKey: .latitude)
+            try container.encode(coordinate.longitude, forKey: .longitude)
+        }
         try container.encode(texts, forKey: .texts)
         try container.encode(audios, forKey: .audios)
         try container.encode(images, forKey: .images)
@@ -132,58 +143,61 @@ class EntryData: Identifiable, Codable{
         sortItems()
     }
     
-    func removeText(entry : TextData){
-        for i in 0..<texts.count{
-            if texts[i].id == entry.id{
-                texts.remove(at: i)
+    func removeItem(item: EntryItemData){
+        item.prepareDelete()
+        for i in 0..<items.count{
+            if items[i].id == item.id{
+                items.remove(at: i)
                 break
             }
         }
-        setItems()
-    }
-    
-    func removeAudio(entry : AudioData){
-        for i in 0..<audios.count{
-            if audios[i].id == entry.id{
-                audios.remove(at: i)
-                break
+        switch item.type{
+        case .text:
+            for i in 0..<texts.count{
+                if texts[i].id == item.id{
+                    texts.remove(at: i)
+                    break
+                }
             }
-        }
-        setItems()
-    }
-    
-    func removeImage(entry : ImageData){
-        for i in 0..<images.count{
-            if images[i].id == entry.id{
-                images.remove(at: i)
-                break
+            break
+        case .audio:
+            for i in 0..<audios.count{
+                if audios[i].id == item.id{
+                    audios.remove(at: i)
+                    break
+                }
             }
-        }
-        setItems()
-    }
-    
-    func removeVideo(entry : VideoData){
-        for i in 0..<videos.count{
-            if videos[i].id == entry.id{
-                videos.remove(at: i)
-                break
+            break
+        case .image:
+            for i in 0..<images.count{
+                if images[i].id == item.id{
+                    images.remove(at: i)
+                    break
+                }
             }
-        }
-        setItems()
-    }
-    
-    func removeLocation(entry : LocationData){
-        for i in 0..<locations.count{
-            if locations[i].id == entry.id{
-                locations.remove(at: i)
-                break
+            break
+        case .video:
+            for i in 0..<videos.count{
+                if videos[i].id == item.id{
+                    videos.remove(at: i)
+                    break
+                }
             }
+            break
+        case .location:
+            for i in 0..<locations.count{
+                if locations[i].id == item.id{
+                    locations.remove(at: i)
+                    break
+                }
+            }
+            break
+        default: break
         }
-        setItems()
     }
     
-    func reset(){
-        cleanup()
+    func removeAllItems(){
+        prepareDeleteItems()
         texts.removeAll()
         audios.removeAll()
         images.removeAll()
@@ -192,18 +206,9 @@ class EntryData: Identifiable, Codable{
         items.removeAll()
     }
     
-    func cleanup(){
-        for audio in audios{
-            _ = audio.deleteFiles()
-        }
-        for image in images{
-            _ = image.deleteFiles()
-        }
-        for video in videos{
-            _ = video.deleteFiles()
-        }
-        for location in locations{
-            _ = location.deleteFiles()
+    func prepareDeleteItems(){
+        for item in items{
+            item.prepareDelete()
         }
     }
     

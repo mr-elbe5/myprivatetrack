@@ -54,24 +54,13 @@ class ImageData : MediaData{
             }
         }
     
-    override func deleteFiles() -> Bool{
-        var success = true
-        if FileStore.shared.fileExists(libPath: FileStore.privatePath, fileName: fileName){
-            success = success && FileStore.shared.deleteFile(libUrl: FileStore.privateUrl, fileName: fileName)
-        }
+    override func prepareDelete(){
+        super.prepareDelete()
         if FileStore.shared.fileExists(libPath: FileStore.privatePath, fileName: previewName){
-            success = success && FileStore.shared.deleteFile(libUrl: FileStore.privateUrl, fileName: previewName)
+            if !FileStore.shared.deleteFile(libUrl: FileStore.privateUrl, fileName: previewName){
+                print("error: could not delete file: \(previewName)")
+            }
         }
-        return success
-    }
-    
-    override func addToEntry(entry: EntryData){
-        entry.addImage(entry: self)
-    }
-    
-    override func removeFromEntry(entry: EntryData){
-        _ = deleteFiles()
-        entry.removeImage(entry: self)
     }
     
     override func isComplete() -> Bool{

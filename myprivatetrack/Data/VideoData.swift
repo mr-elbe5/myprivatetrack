@@ -22,15 +22,6 @@ class VideoData : MediaData{
         }
     }
     
-    override func addToEntry(entry: EntryData){
-        entry.addVideo(entry: self)
-    }
-    
-    override func removeFromEntry(entry: EntryData){
-        _ = deleteFiles()
-        entry.removeVideo(entry: self)
-    }
-    
     override func isComplete() -> Bool{
         return fileExists()
     }

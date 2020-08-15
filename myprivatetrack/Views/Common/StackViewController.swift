@@ -18,6 +18,7 @@ class StackViewController: UIViewController {
     
     override func loadView() {
         super.loadView()
+        view.backgroundColor = .systemGroupedBackground
         let guide = view.safeAreaLayoutGuide
         setupHeaderView()
         if let headerView = headerView{
@@ -28,7 +29,7 @@ class StackViewController: UIViewController {
             headerView.setTrailingAnchor(guide.trailingAnchor,padding: .zero)
         }
         self.view.addSubview(mainView)
-        mainView.backgroundColor = .white
+        mainView.backgroundColor = .systemBackground
         mainView.enableAnchors()
         mainView.setLeadingAnchor(guide.leadingAnchor, padding: .zero)
         mainView.setTopAnchor(headerView?.bottomAnchor ?? guide.topAnchor, padding: mainViewTopPadding)

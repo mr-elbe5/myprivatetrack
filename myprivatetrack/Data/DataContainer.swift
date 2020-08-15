@@ -53,19 +53,20 @@ class DataContainer: Identifiable, Codable{
     
     func deleteEntry(entry: EntryData){
         var found = false
-        for i in 0..<days.count{
-            let day = days[i]
-            for j in 0..<day.entries.count{
-                let ev = day.entries[j]
-                if ev.id == entry.id{
-                    day.entries.remove(at: j)
+        for dayIdx in 0..<days.count{
+            let day = days[dayIdx]
+            for entryIdx in 0..<day.entries.count{
+                let e = day.entries[entryIdx]
+                if e.id == entry.id{
+                    entry.prepareDeleteItems()
+                    day.entries.remove(at: entryIdx)
                     found = true
                     break
                 }
             }
             if found{
                 if day.entries.count == 0{
-                    days.remove(at: i)
+                    days.remove(at: dayIdx)
                 }
                 break
             }

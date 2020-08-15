@@ -11,6 +11,7 @@
 "settings"="Einstellungen";
 "info"="Info";
 "newEntry"="Neuer Eintrag";
+"saveLocation"="Aktuellen Ort speichern";
 "addItem"="Hinzufügen:";
 "save" = "Speichern";
 "cancel" = "Abbrechen";

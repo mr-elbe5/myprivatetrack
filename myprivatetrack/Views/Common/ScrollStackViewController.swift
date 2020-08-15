@@ -18,6 +18,7 @@ class ScrollStackViewController: UIViewController {
     
     override func loadView() {
         super.loadView()
+        view.backgroundColor = .systemGroupedBackground
         let guide = view.safeAreaLayoutGuide
         setupHeaderView()
         if let headerView = headerView{
@@ -28,7 +29,7 @@ class ScrollStackViewController: UIViewController {
             headerView.setTrailingAnchor(guide.trailingAnchor,padding: .zero)
         }
         self.view.addSubview(scrollView)
-        scrollView.backgroundColor = .white
+        scrollView.backgroundColor = .systemBackground
         scrollView.enableAnchors()
         scrollView.setLeadingAnchor(guide.leadingAnchor, padding: .zero)
         scrollView.setTopAnchor(headerView?.bottomAnchor ?? guide.topAnchor, padding: scrollViewTopPadding)
@@ -36,7 +37,7 @@ class ScrollStackViewController: UIViewController {
         scrollView.setBottomAnchor(guide.bottomAnchor, padding: .zero)
         scrollView.setupVertical()
         scrollView.addSubview(stackView)
-        stackView.fillSuperview(padding: UIEdgeInsets(top: .zero, left: .zero, bottom: Statics.defaultInset, right: .zero))
+        stackView.fillSuperview(padding: UIEdgeInsets(top: defaultInset, left: .zero, bottom: defaultInset, right: .zero))
         stackView.setupVertical()
     }
     

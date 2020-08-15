@@ -25,15 +25,6 @@ class LocationData: MediaData{
         }
     }
     
-    override func addToEntry(entry: EntryData){
-        entry.addLocation(entry: self)
-    }
-    
-    override func removeFromEntry(entry: EntryData){
-        _ = deleteFiles()
-        entry.removeLocation(entry: self)
-    }
-    
     override func isComplete() -> Bool{
         return fileExists()
     }

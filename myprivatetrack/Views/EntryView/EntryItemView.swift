@@ -23,7 +23,7 @@ class EntryItemDetailView : UIView{
 
 class EntryItemEditView : UIView{
     
-    var deleteButton = UIButton()
+    var deleteButton = IconButton(icon: "xmark.circle")
     var delegate : DeleteEntryActionDelegate? = nil
     
     var data: EntryItemData{
@@ -33,7 +33,6 @@ class EntryItemEditView : UIView{
     }
     
     func addTopControl(){
-        deleteButton.setImage(UIImage(systemName: "xmark.circle"), for: .normal)
         deleteButton.backgroundColor = .white
         deleteButton.tintColor = UIColor.systemRed
         deleteButton.addTarget(self, action: #selector(deleteItem), for: .touchDown)
