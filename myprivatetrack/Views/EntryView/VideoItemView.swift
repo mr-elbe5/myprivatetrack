@@ -64,7 +64,7 @@ class VideoItemEditView : EntryItemEditView, UITextViewDelegate{
     override func setupSubviews(){
         addTopControl()
         addSubview(videoView)
-        titleView.setDefaults(placeholder: "title".localize())
+        titleView.setDefaults(placeholder: "comment".localize())
         titleView.delegate = self
         addSubview(titleView)
     }
@@ -84,7 +84,7 @@ class VideoItemEditView : EntryItemEditView, UITextViewDelegate{
     
     func textViewDidChange(_ textView: UITextView) {
         if videoData != nil{
-            videoData!.title = textView.text!
+            videoData!.title = textView.text!.trim()
         }
         titleView.textDidChange()
     }

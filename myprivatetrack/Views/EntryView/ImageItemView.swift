@@ -94,7 +94,7 @@ class ImageItemEditView : EntryItemEditView, UITextViewDelegate{
         imageView.setDefaults()
         imageView.setRoundedBorders()
         addSubview(imageView)
-        titleView.setDefaults(placeholder: "title".localize())
+        titleView.setDefaults(placeholder: "comment".localize())
         titleView.delegate = self
         addSubview(titleView)
         
@@ -115,7 +115,7 @@ class ImageItemEditView : EntryItemEditView, UITextViewDelegate{
     
     func textViewDidChange(_ textView: UITextView) {
         if imageData != nil{
-            imageData!.title = textView.text!
+            imageData!.title = textView.text!.trim()
         }
         titleView.textDidChange()
     }

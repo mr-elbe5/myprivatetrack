@@ -68,7 +68,7 @@ class AudioItemEditView : EntryItemEditView, UITextViewDelegate, AVAudioRecorder
         addTopControl()
         audioView.setRoundedBorders()
         addSubview(audioView)
-        titleView.setDefaults(placeholder: "title".localize())
+        titleView.setDefaults(placeholder: "comment".localize())
         titleView.delegate = self
         addSubview(titleView)
     }
@@ -91,7 +91,7 @@ class AudioItemEditView : EntryItemEditView, UITextViewDelegate, AVAudioRecorder
     
     func textViewDidChange(_ textView: UITextView) {
         if audioData != nil{
-            audioData!.title = textView.text!
+            audioData!.title = textView.text!.trim()
         }
         titleView.textDidChange()
     }

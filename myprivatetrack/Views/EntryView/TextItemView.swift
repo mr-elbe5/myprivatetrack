@@ -73,7 +73,7 @@ class TextItemEditView : EntryItemEditView, UITextViewDelegate{
     
     @objc func textViewDidChange(_ textView: UITextView) {
         if textData != nil{
-            textData!.text = textView.text!
+            textData!.text = textView.text!.trim()
         }
         (textView as! ResizingTextView).textDidChange()
     }

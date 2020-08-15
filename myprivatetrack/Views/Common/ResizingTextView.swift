@@ -21,6 +21,7 @@ class ResizingTextView : UITextView{
         tv.isUserInteractionEnabled = false
         return tv
     }()
+    
     var placeholder: String? {
         get {
             return placeholderTextView.text
@@ -32,23 +33,18 @@ class ResizingTextView : UITextView{
     
     override init(frame: CGRect, textContainer: NSTextContainer?) {
         super.init(frame: frame, textContainer: textContainer)
-        placeholderTextView.font = font
+        placeholderTextView.font = UIFont.preferredFont(forTextStyle: .body)
         addSubview(placeholderTextView)
-        NSLayoutConstraint.activate([
-            placeholderTextView.leadingAnchor.constraint(equalTo: leadingAnchor),
-            placeholderTextView.trailingAnchor.constraint(equalTo: trailingAnchor),
-            placeholderTextView.topAnchor.constraint(equalTo: topAnchor),
-            placeholderTextView.bottomAnchor.constraint(equalTo: bottomAnchor),
-        ])
+        placeholderTextView.fillSuperview()
     }
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    override func setDefaults(placeholder : String = ""){
-        super.setDefaults(placeholder: placeholder)
-        placeholderTextView.font = font
+    func setDefaults(placeholder : String = ""){
+        super.setDefaults()
+        self.placeholder = placeholder
     }
     
     override var contentInset: UIEdgeInsets {

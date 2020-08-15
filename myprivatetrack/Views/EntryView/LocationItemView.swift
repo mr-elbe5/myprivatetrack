@@ -90,7 +90,7 @@ class LocationItemEditView : EntryItemEditView, UITextViewDelegate{
         imageView.setDefaults()
         imageView.setRoundedBorders()
         addSubview(imageView)
-        titleView.setDefaults(placeholder: "title".localize())
+        titleView.setDefaults(placeholder: "comment".localize())
         titleView.delegate = self
         addSubview(titleView)
     }
@@ -110,7 +110,7 @@ class LocationItemEditView : EntryItemEditView, UITextViewDelegate{
     
     func textViewDidChange(_ textView: UITextView) {
         if locationData != nil{
-            locationData!.title = textView.text!
+            locationData!.title = textView.text!.trim()
         }
         titleView.textDidChange()
     }

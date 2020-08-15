@@ -204,20 +204,20 @@
 				4EFC685324D9686800159CDC /* ControlView.swift */,
 				4E66B33A24DE95AD00202932 /* EditViewController.swift */,
 				4E2ECFDF24DDF53A003FFFF1 /* IconButton.swift */,
-				4E66B33824DE954200202932 /* ModalScrollViewController.swift */,
+				4ED3056024E3EA0F00CAA277 /* IconInfoText.swift */,
+				4ED3056224E3EEE600CAA277 /* InfoHeader.swift */,
+				4ED3055E24E3E8F500CAA277 /* InfoText.swift */,
 				4EFC685F24DACD9700159CDC /* MapView.swift */,
 				4E1457A324E2AF7E008EC422 /* MediaTitleLabel.swift */,
+				4E66B33824DE954200202932 /* ModalScrollViewController.swift */,
+				4ED3055A24E3E42100CAA277 /* ModalViewController.swift */,
 				4E1457A524E2B3DF008EC422 /* ResizingTextView.swift */,
 				4E4581C924A290A9009ED3AA /* ScrollStackViewController.swift */,
 				4E2ECFD224DC317C003FFFF1 /* SquareOverlayView.swift */,
+				4ED3055C24E3E47100CAA277 /* StackViewController.swift */,
 				4E2ECFD424DD8F66003FFFF1 /* TableViewController.swift */,
 				4E66B33C24DE968A00202932 /* TextButton.swift */,
 				4E6290E424D83B9700AA4628 /* VideoPlayerView.swift */,
-				4ED3055A24E3E42100CAA277 /* ModalViewController.swift */,
-				4ED3055C24E3E47100CAA277 /* StackViewController.swift */,
-				4ED3055E24E3E8F500CAA277 /* InfoText.swift */,
-				4ED3056024E3EA0F00CAA277 /* IconInfoText.swift */,
-				4ED3056224E3EEE600CAA277 /* InfoHeader.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -700,7 +700,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = 5UG99476V8;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -725,7 +725,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = 5UG99476V8;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",

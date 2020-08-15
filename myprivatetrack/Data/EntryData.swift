@@ -183,6 +183,7 @@ class EntryData: Identifiable, Codable{
     }
     
     func reset(){
+        cleanup()
         texts.removeAll()
         audios.removeAll()
         images.removeAll()

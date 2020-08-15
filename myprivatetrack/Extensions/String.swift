@@ -23,5 +23,9 @@ extension String {
         return String(format: NSLocalizedString(self,comment: ""), s)
     }
     
+    func trim() -> String{
+        return trimmingCharacters(in: .whitespacesAndNewlines)
+    }
+    
 
 }
