@@ -13,12 +13,12 @@ protocol LocationDelegate{
     func loctionDidChange(coordinate: CLLocationCoordinate2D)
 }
 
-class Location : NSObject, CLLocationManagerDelegate{
+class LocationService : NSObject, CLLocationManagerDelegate{
     
-    static var shared = Location()
+    static var shared = LocationService()
     static var deviation : Double = 0.0001
     
-    var coordinate = CLLocationCoordinate2D()
+    var location = CLLocation()
     var active = false
     var delegate : LocationDelegate? = nil
     
@@ -50,10 +50,10 @@ class Location : NSObject, CLLocationManagerDelegate{
     func assertRunning(){
         if !active{
             startUpdatingLocation()
-            if !Location.shared.active{
+            if !LocationService.shared.active{
                 DispatchQueue.main.asyncAfter(deadline: .now() + 4.0) {
                     self.startUpdatingLocation()
-                    if !Location.shared.active{
+                    if !LocationService.shared.active{
                         DispatchQueue.main.asyncAfter(deadline: .now() + 4.0) {
                             self.startUpdatingLocation()
                         }
@@ -82,11 +82,11 @@ class Location : NSObject, CLLocationManagerDelegate{
     }
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        guard let location = locations.last else { return }
-        if abs(coordinate.latitude - location.coordinate.latitude) > Location.deviation{
-            coordinate = location.coordinate
+        guard let newLocation = locations.last else { return }
+        if location.differs(from: newLocation, byMoreThan: LocationService.deviation){
+            location = newLocation
             if let delegate = delegate{
-                delegate.loctionDidChange(coordinate: coordinate)
+                delegate.loctionDidChange(coordinate: location.coordinate)
             }
         }
     }

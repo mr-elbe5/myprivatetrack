@@ -81,7 +81,7 @@ class TimelineViewController: TableViewController, SaveEntryDelegate, EntryActio
         let createEventViewController = EditEntryViewController()
         createEventViewController.entry = EntryData(isNew: true)
         if Authorizations.isLocationAuthorized(){
-            createEventViewController.entry.coordinate = Location.shared.coordinate
+            createEventViewController.entry.location = Location(LocationService.shared.location)
         }
         createEventViewController.delegate = self
         createEventViewController.modalPresentationStyle = .fullScreen

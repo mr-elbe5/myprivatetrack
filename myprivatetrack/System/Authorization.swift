@@ -105,7 +105,7 @@ class Authorizations{
     
     static func askLocationAuthorization(callback: @escaping (_ result: Bool) -> Void){
         if CLLocationManager.authorizationStatus() == .notDetermined{
-            Location.shared.requestWhenInUseAuthorization()
+            LocationService.shared.requestWhenInUseAuthorization()
         }
         callback(true)
     }

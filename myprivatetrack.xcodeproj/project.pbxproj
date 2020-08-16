@@ -75,6 +75,8 @@
 		4ED6F28B2496A24200C2C3DF /* MainTabController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED6F28A2496A24200C2C3DF /* MainTabController.swift */; };
 		4EE20B4C24BA226400905F5C /* UIStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EE20B4B24BA226400905F5C /* UIStackView.swift */; };
 		4EEA562F24E812340010C876 /* SwitchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EEA562E24E812340010C876 /* SwitchView.swift */; };
+		4EEA563124E918E10010C876 /* CLLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EEA563024E918E10010C876 /* CLLocation.swift */; };
+		4EEA563324E91C2A0010C876 /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EEA563224E91C2A0010C876 /* Location.swift */; };
 		4EF0A7ED249F638800A236EB /* MediaData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EF0A7EC249F638800A236EB /* MediaData.swift */; };
 		4EF0A7EF249F657A00A236EB /* DataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EF0A7EE249F657A00A236EB /* DataStore.swift */; };
 		4EF0A7F1249F67C100A236EB /* DataContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EF0A7F0249F67C100A236EB /* DataContainer.swift */; };
@@ -82,7 +84,7 @@
 		4EF0A7FC249F9A4D00A236EB /* EntrySectionHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EF0A7FB249F9A4D00A236EB /* EntrySectionHeader.swift */; };
 		4EF0A800249FDEF000A236EB /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EF0A7FF249FDEF000A236EB /* UIView.swift */; };
 		4EFC685424D9686800159CDC /* ControlView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EFC685324D9686800159CDC /* ControlView.swift */; };
-		4EFC685E24DAC35500159CDC /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EFC685D24DAC35400159CDC /* Location.swift */; };
+		4EFC685E24DAC35500159CDC /* LocationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EFC685D24DAC35400159CDC /* LocationService.swift */; };
 		4EFC686024DACD9700159CDC /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EFC685F24DACD9700159CDC /* MapView.swift */; };
 		4EFDFF3824952F53001EB7C3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EFDFF3724952F53001EB7C3 /* AppDelegate.swift */; };
 		4EFDFF3A24952F53001EB7C3 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EFDFF3924952F53001EB7C3 /* SceneDelegate.swift */; };
@@ -161,6 +163,8 @@
 		4ED6F28A2496A24200C2C3DF /* MainTabController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabController.swift; sourceTree = "<group>"; };
 		4EE20B4B24BA226400905F5C /* UIStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIStackView.swift; sourceTree = "<group>"; };
 		4EEA562E24E812340010C876 /* SwitchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwitchView.swift; sourceTree = "<group>"; };
+		4EEA563024E918E10010C876 /* CLLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CLLocation.swift; sourceTree = "<group>"; };
+		4EEA563224E91C2A0010C876 /* Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
 		4EF0A7EC249F638800A236EB /* MediaData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaData.swift; sourceTree = "<group>"; };
 		4EF0A7EE249F657A00A236EB /* DataStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataStore.swift; sourceTree = "<group>"; };
 		4EF0A7F0249F67C100A236EB /* DataContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataContainer.swift; sourceTree = "<group>"; };
@@ -168,7 +172,7 @@
 		4EF0A7FB249F9A4D00A236EB /* EntrySectionHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntrySectionHeader.swift; sourceTree = "<group>"; };
 		4EF0A7FF249FDEF000A236EB /* UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
 		4EFC685324D9686800159CDC /* ControlView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControlView.swift; sourceTree = "<group>"; };
-		4EFC685D24DAC35400159CDC /* Location.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
+		4EFC685D24DAC35400159CDC /* LocationService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationService.swift; sourceTree = "<group>"; };
 		4EFC685F24DACD9700159CDC /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
 		4EFDFF3424952F53001EB7C3 /* My private track.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "My private track.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4EFDFF3724952F53001EB7C3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -267,7 +271,7 @@
 			children = (
 				4EFDFF3724952F53001EB7C3 /* AppDelegate.swift */,
 				4EB9335824CC1DDE0059F687 /* Authorization.swift */,
-				4EFC685D24DAC35400159CDC /* Location.swift */,
+				4EFC685D24DAC35400159CDC /* LocationService.swift */,
 				4EFDFF3924952F53001EB7C3 /* SceneDelegate.swift */,
 				4E90CA3A2495321C0029E308 /* Settings.swift */,
 			);
@@ -288,6 +292,7 @@
 				4E2FBD5124BB47050025C55B /* TextData.swift */,
 				4E182D1D24A096C60020558B /* TimeSpanData.swift */,
 				4E90CA332495321C0029E308 /* VideoData.swift */,
+				4EEA563224E91C2A0010C876 /* Location.swift */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -320,6 +325,7 @@
 				4EF0A7FF249FDEF000A236EB /* UIView.swift */,
 				4EA191FF2497FFD2005F9177 /* UIViewController.swift */,
 				4ED0128424E11C6A004EF1E7 /* MKMapView.swift */,
+				4EEA563024E918E10010C876 /* CLLocation.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -494,6 +500,7 @@
 				4E182D2024A097250020558B /* FileStore.swift in Sources */,
 				4ED3055424E3DDA400CAA277 /* MapInfoViewController.swift in Sources */,
 				4E90CA4B2495321D0029E308 /* Settings.swift in Sources */,
+				4EEA563124E918E10010C876 /* CLLocation.swift in Sources */,
 				4E6290E324D6A97400AA4628 /* CaptureButton.swift in Sources */,
 				4E4581CA24A290A9009ED3AA /* ScrollStackViewController.swift in Sources */,
 				4E90CA442495321D0029E308 /* EntryData.swift in Sources */,
@@ -504,7 +511,7 @@
 				4E1C43B924C714E900D89BD0 /* EditEntryViewController.swift in Sources */,
 				4EAD117624BD9C7B00079347 /* UIScrollView.swift in Sources */,
 				4E4581BD24A2011F009ED3AA /* UIButton.swift in Sources */,
-				4EFC685E24DAC35500159CDC /* Location.swift in Sources */,
+				4EFC685E24DAC35500159CDC /* LocationService.swift in Sources */,
 				4E90CA7B249537950029E308 /* SettingsViewController.swift in Sources */,
 				4ED3055624E3DDC300CAA277 /* SettingsInfoViewController.swift in Sources */,
 				4E2FBD5624BB47470025C55B /* EntryItemData.swift in Sources */,
@@ -523,6 +530,7 @@
 				4E6C057524AB998A00AE85B2 /* UIImageView.swift in Sources */,
 				4ED3056324E3EEE600CAA277 /* InfoHeader.swift in Sources */,
 				4E6290E124D5677500AA4628 /* CameraViewController.swift in Sources */,
+				4EEA563324E91C2A0010C876 /* Location.swift in Sources */,
 				4ED3056124E3EA0F00CAA277 /* IconInfoText.swift in Sources */,
 				4E2ECFD524DD8F66003FFFF1 /* TableViewController.swift in Sources */,
 				4EFC686024DACD9700159CDC /* MapView.swift in Sources */,

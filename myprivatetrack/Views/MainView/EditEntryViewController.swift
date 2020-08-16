@@ -29,21 +29,19 @@ class EditEntryViewController: EditViewController, ImageCaptureDelegate, VideoCa
             var editItem : EntryItemEditView? = nil
             switch item.type{
             case .text:
-                editItem = TextItemEditView.fromData(data: item as! TextData)
+                editItem = TextItemEditView.fromData(data: item.data as! TextData)
                 break
             case .audio:
-                editItem = AudioItemEditView.fromData(data: item as! AudioData)
+                editItem = AudioItemEditView.fromData(data: item.data as! AudioData)
                 break
             case .image:
-                editItem = ImageItemEditView.fromData(data: item as! ImageData)
+                editItem = ImageItemEditView.fromData(data: item.data as! ImageData)
                 break
             case .video:
-                editItem = VideoItemEditView.fromData(data: item as! VideoData)
+                editItem = VideoItemEditView.fromData(data: item.data as! VideoData)
                 break
             case .location:
-                editItem = LocationItemEditView.fromData(data: item as! LocationData)
-                break
-            default:
+                editItem = LocationItemEditView.fromData(data: item.data as! LocationData)
                 break
             }
             if let editItem = editItem{
@@ -107,7 +105,7 @@ class EditEntryViewController: EditViewController, ImageCaptureDelegate, VideoCa
     
     @objc func addText(){
         let data = TextData()
-        entry.addText(entry: data)
+        entry.addItem(item: data)
         let editView = TextItemEditView.fromData(data: data)
         insertItemView(editView)
     }
@@ -129,7 +127,7 @@ class EditEntryViewController: EditViewController, ImageCaptureDelegate, VideoCa
     @objc func addAudio(){
         if Authorizations.isAudioAuthorized(){
             let data = AudioData()
-            entry.addAudio(entry: data)
+            entry.addItem(item: data)
             let editView = AudioItemEditView.fromData(data: data)
             insertItemView(editView)
         }
@@ -154,11 +152,11 @@ class EditEntryViewController: EditViewController, ImageCaptureDelegate, VideoCa
     
     @objc func addLocation(){
         if Authorizations.isLocationAuthorized(){
-            Location.shared.assertRunning()
+            LocationService.shared.assertRunning()
             let data = LocationData()
             let locationCaptureController = LocationCaptureViewController()
             locationCaptureController.data = data
-            locationCaptureController.coordinate = entry.coordinate
+            locationCaptureController.coordinate = entry.location.coordinate
             locationCaptureController.delegate = self
             locationCaptureController.modalPresentationStyle = .fullScreen
             self.present(locationCaptureController, animated: true)
@@ -186,7 +184,7 @@ class EditEntryViewController: EditViewController, ImageCaptureDelegate, VideoCa
     // ImageCaptureDelegate
     
     func imageCaptured(data: ImageData){
-        entry.addImage(entry: data)
+        entry.addItem(item: data)
         let editView = ImageItemEditView.fromData(data: data)
         insertItemView(editView)
     }
@@ -194,7 +192,7 @@ class EditEntryViewController: EditViewController, ImageCaptureDelegate, VideoCa
     // VideoCaptureDelegate
     
     func videoCaptured(data: VideoData){
-        entry.addVideo(entry: data)
+        entry.addItem(item: data)
         let editView = VideoItemEditView.fromData(data: data)
         insertItemView(editView)
     }
@@ -202,7 +200,7 @@ class EditEntryViewController: EditViewController, ImageCaptureDelegate, VideoCa
     // LocationCaptureDelegate
     
     func locationCaptured(data: LocationData){
-        entry.addLocation(entry: data)
+        entry.addItem(item: data)
         let editView = LocationItemEditView.fromData(data: data)
         insertItemView(editView)
     }

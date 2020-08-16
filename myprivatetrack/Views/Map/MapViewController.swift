@@ -44,7 +44,7 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         mapView.mapType = .satellite
         mapView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         mapView.delegate = self
-        let coord = Location.shared.coordinate
+        let coord = LocationService.shared.location.coordinate
         location = CLLocation(latitude: coord.latitude, longitude: coord.longitude)
         mapView.centerToLocation(location!, regionRadius: radius)
         view.addSubview(mapView)
@@ -66,7 +66,7 @@ class MapViewController: UIViewController, MKMapViewDelegate {
                 if entry.saveLocation{
                     let positionPin = MKPointAnnotation()
                     positionPin.title = entry.creationDate.dateTimeString()
-                    positionPin.coordinate = entry.coordinate
+                    positionPin.coordinate = entry.location.coordinate
                     mapView.addAnnotation(positionPin)
                 }
             }

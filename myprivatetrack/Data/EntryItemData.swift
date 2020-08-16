@@ -8,8 +8,7 @@
 
 import Foundation
 
-enum EntryItemType{
-    case none
+enum EntryItemType: String, Codable{
     case text
     case audio
     case image
@@ -55,6 +54,51 @@ class EntryItemData: Identifiable, Codable{
     
     func isComplete() -> Bool{
         return true
+    }
+    
+}
+
+class EntryItem : Codable{
+    
+    private enum CodingKeys: CodingKey{
+        case type
+        case item
+    }
+    
+    var type : EntryItemType
+    var data : EntryItemData
+    
+    init(item: EntryItemData){
+        self.type = item.type
+        self.data = item
+    }
+    
+    required init(from decoder: Decoder) throws {
+        let values = try decoder.container(keyedBy: CodingKeys.self)
+        type = try values.decode(EntryItemType.self, forKey: .type)
+        switch type{
+        case .text:
+            data = try values.decode(TextData.self, forKey: .item)
+            break
+        case .audio:
+            data = try values.decode(AudioData.self, forKey: .item)
+            break
+        case .image:
+            data = try values.decode(ImageData.self, forKey: .item)
+            break
+        case .video:
+            data = try values.decode(VideoData.self, forKey: .item)
+            break
+        case .location:
+            data = try values.decode(LocationData.self, forKey: .item)
+            break
+        }
+    }
+    
+    func encode(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: CodingKeys.self)
+        try container.encode(type, forKey: .type)
+        try container.encode(data, forKey: .item)
     }
     
 }

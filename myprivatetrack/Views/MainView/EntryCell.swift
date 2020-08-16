@@ -72,36 +72,34 @@ class EntryCell: UITableViewCell{
             for item in entry!.items{
                 switch item.type{
                 case .text:
-                    let itemView = TextItemView.fromData(data: item as! TextData)
+                    let itemView = TextItemView.fromData(data: item.data as! TextData)
                     cellBody.addSubview(itemView)
                     itemView.placeBelow(view: lastView, padding: defaultInsets)
                     lastView = itemView
                     break
                 case .audio:
-                    let itemView = AudioItemView.fromData(data: item as! AudioData)
+                    let itemView = AudioItemView.fromData(data: item.data as! AudioData)
                     cellBody.addSubview(itemView)
                     itemView.placeBelow(view: lastView, padding: defaultInsets)
                     lastView = itemView
                     break
                 case .image:
-                    let itemView = ImageItemView.fromData(data: item as! ImageData)
+                    let itemView = ImageItemView.fromData(data: item.data as! ImageData)
                     cellBody.addSubview(itemView)
                     itemView.placeBelow(view: lastView, padding: defaultInsets)
                     lastView = itemView
                     break
                 case .video:
-                    let itemView = VideoItemView.fromData(data: item as! VideoData)
+                    let itemView = VideoItemView.fromData(data: item.data as! VideoData)
                     cellBody.addSubview(itemView)
                     itemView.placeBelow(view: lastView, padding: defaultInsets)
                     lastView = itemView
                     break
                 case .location:
-                    let itemView = LocationItemView.fromData(data: item as! LocationData)
+                    let itemView = LocationItemView.fromData(data: item.data as! LocationData)
                     cellBody.addSubview(itemView)
                     itemView.placeBelow(view: lastView, padding: defaultInsets)
                     lastView = itemView
-                    break
-                default:
                     break
                 }
             }

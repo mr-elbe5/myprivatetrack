@@ -14,27 +14,16 @@ class EntryData: Identifiable, Codable{
     enum CodingKeys: String, CodingKey {
         case id
         case creationDate
-        case latitude
-        case longitude
+        case location
         case saveLocation
-        case texts
-        case audios
-        case images
-        case videos
-        case locations
+        case items
     }
     
     public var id: UUID
     public var creationDate: Date
-    public var coordinate: CLLocationCoordinate2D
+    public var location: Location
     public var saveLocation: Bool
-    public var texts: Array<TextData>
-    public var audios: Array<AudioData>
-    public var images: Array<ImageData>
-    public var videos: Array<VideoData>
-    public var locations: Array<LocationData>
-    
-    public var items = Array<EntryItemData>()
+    public var items = Array<EntryItem>()
     
     public var isNew = false
     
@@ -42,13 +31,9 @@ class EntryData: Identifiable, Codable{
         self.isNew = isNew
         id = UUID()
         creationDate = Date()
-        coordinate = CLLocationCoordinate2D()
+        location = Location()
         saveLocation = true
-        texts = []
-        audios = []
-        images = []
-        videos = []
-        locations = []
+        items = []
     }
     
     required init(from decoder: Decoder) throws {
@@ -57,18 +42,11 @@ class EntryData: Identifiable, Codable{
         creationDate = try values.decode(Date.self, forKey: .creationDate)
         saveLocation = try values.decode(Bool.self, forKey: .saveLocation)
         if saveLocation{
-            let latitude = try values.decode(Double.self, forKey: .latitude)
-            let longitude = try values.decode(Double.self, forKey: .longitude)
-            coordinate = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
+            location = try values.decode(Location.self, forKey: .location)
         }else{
-            coordinate = CLLocationCoordinate2D()
+            location = Location()
         }
-        texts = try values.decode(Array<TextData>.self, forKey: .texts)
-        audios = try values.decode(Array<AudioData>.self, forKey: .audios)
-        images = try values.decode(Array<ImageData>.self, forKey: .images)
-        videos = try values.decode(Array<VideoData>.self, forKey: .videos)
-        locations = try values.decode(Array<LocationData>.self, forKey: .locations)
-        setItems()
+        items = try values.decode(Array<EntryItem>.self, forKey: .items)
     }
     
     func encode(to encoder: Encoder) throws {
@@ -77,144 +55,39 @@ class EntryData: Identifiable, Codable{
         try container.encode(creationDate, forKey: .creationDate)
         try container.encode(saveLocation, forKey: .saveLocation)
         if saveLocation{
-            try container.encode(coordinate.latitude, forKey: .latitude)
-            try container.encode(coordinate.longitude, forKey: .longitude)
+            try container.encode(location, forKey: .location)
         }
-        try container.encode(texts, forKey: .texts)
-        try container.encode(audios, forKey: .audios)
-        try container.encode(images, forKey: .images)
-        try container.encode(videos, forKey: .videos)
-        try container.encode(locations, forKey: .locations)
+        try container.encode(items, forKey: .items)
     }
     
-    func setItems(){
-        items.removeAll()
-        for text in texts{
-            items.append(text)
-        }
-        for audio in audios{
-            items.append(audio)
-        }
-        for image in images{
-            items.append(image)
-        }
-        for video in videos{
-            items.append(video)
-        }
-        for location in locations{
-            items.append(location)
-        }
-        sortItems()
-    }
-    
-    func sortItems(){
-        items.sort{
-            $0.creationDate < $1.creationDate
-        }
-    }
-    
-    func addText(entry : TextData){
-        texts.append(entry)
-        items.append(entry)
-        sortItems()
-    }
-    
-    func addAudio(entry : AudioData){
-        audios.append(entry)
-        items.append(entry)
-        sortItems()
-    }
-    
-    func addImage(entry : ImageData){
-        images.append(entry)
-        items.append(entry)
-        sortItems()
-    }
-    
-    func addVideo(entry : VideoData){
-        videos.append(entry)
-        items.append(entry)
-        sortItems()
-    }
-    
-    func addLocation(entry : LocationData){
-        locations.append(entry)
-        items.append(entry)
-        sortItems()
+    func addItem(item : EntryItemData){
+        items.append(EntryItem(item: item))
     }
     
     func removeItem(item: EntryItemData){
         item.prepareDelete()
         for i in 0..<items.count{
-            if items[i].id == item.id{
+            if items[i].data.id == item.id{
                 items.remove(at: i)
                 break
             }
-        }
-        switch item.type{
-        case .text:
-            for i in 0..<texts.count{
-                if texts[i].id == item.id{
-                    texts.remove(at: i)
-                    break
-                }
-            }
-            break
-        case .audio:
-            for i in 0..<audios.count{
-                if audios[i].id == item.id{
-                    audios.remove(at: i)
-                    break
-                }
-            }
-            break
-        case .image:
-            for i in 0..<images.count{
-                if images[i].id == item.id{
-                    images.remove(at: i)
-                    break
-                }
-            }
-            break
-        case .video:
-            for i in 0..<videos.count{
-                if videos[i].id == item.id{
-                    videos.remove(at: i)
-                    break
-                }
-            }
-            break
-        case .location:
-            for i in 0..<locations.count{
-                if locations[i].id == item.id{
-                    locations.remove(at: i)
-                    break
-                }
-            }
-            break
-        default: break
         }
     }
     
     func removeAllItems(){
         prepareDeleteItems()
-        texts.removeAll()
-        audios.removeAll()
-        images.removeAll()
-        videos.removeAll()
-        locations.removeAll()
         items.removeAll()
     }
     
     func prepareDeleteItems(){
         for item in items{
-            item.prepareDelete()
+            item.data.prepareDelete()
         }
     }
     
     func isComplete()-> Bool{
         for item in items{
-            if !item.isComplete(){
+            if !item.data.isComplete(){
                 return false
             }
         }
