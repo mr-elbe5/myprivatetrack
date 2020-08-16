@@ -14,6 +14,7 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     
     var headerView = UIView()
     var mapView : MKMapView!
+    var mapLoaded = false
     var location: CLLocation? = nil
     var radius : CLLocationDistance = 10000
     
@@ -55,14 +56,24 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         mapView.setBottomAnchor(guide.bottomAnchor, padding: .zero)
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        print("viewWillAppear")
+        if mapLoaded{
+            mapView.removeAnnotations(mapView.annotations)
+            assertMapPins()
+        }
+    }
+    
     func mapViewDidFinishLoadingMap(_ mapView: MKMapView) {
+        print("finishedLoadingMap")
+        mapLoaded = true
         assertMapPins()
     }
     
     func assertMapPins(){
+        print("assertMapPins")
         for day in dataContainer.days{
             for entry in day.entries{
-                print("saveLoc=\(entry.saveLocation)")
                 if entry.saveLocation{
                     let positionPin = MKPointAnnotation()
                     positionPin.title = entry.creationDate.dateTimeString()
@@ -74,11 +85,11 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     }
     
     func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView){
-        
+        print("didSelect")
     }
     
     func mapView(_ mapView: MKMapView, didDeselect view: MKAnnotationView){
-        
+        print("didDeselect")
     }
     
     @objc func toggleMapStyle() {

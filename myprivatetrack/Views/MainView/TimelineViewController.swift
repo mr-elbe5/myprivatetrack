@@ -127,7 +127,7 @@ class TimelineViewController: TableViewController, SaveEntryDelegate, EntryActio
     // SaveEntryDelegate
     
     func saveEntry(entry: EntryData) {
-        self.navigationController?.popViewController(animated: true)
+        print("save entry")
         if entry.isNew {
             let day = dataContainer.assertDay(date: entry.creationDate)
             day.addEntry(entry: entry)

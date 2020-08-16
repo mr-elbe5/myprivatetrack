@@ -67,6 +67,7 @@ class DataContainer: Identifiable, Codable{
             if found{
                 if day.entries.count == 0{
                     days.remove(at: dayIdx)
+                    dayMap.removeValue(forKey: day.date)
                 }
                 break
             }
