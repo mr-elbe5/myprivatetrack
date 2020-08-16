@@ -146,6 +146,7 @@ class TimelineViewController: TableViewController, SaveEntryDelegate, EntryActio
         let editEventViewController = EditEntryViewController()
         editEventViewController.entry = entry
         editEventViewController.delegate = self
+        editEventViewController.modalPresentationStyle = .fullScreen
         self.present(editEventViewController, animated: true)
     }
     

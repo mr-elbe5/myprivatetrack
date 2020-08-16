@@ -57,7 +57,6 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        print("viewWillAppear")
         if mapLoaded{
             mapView.removeAnnotations(mapView.annotations)
             assertMapPins()
@@ -65,17 +64,15 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     }
     
     func mapViewDidFinishLoadingMap(_ mapView: MKMapView) {
-        print("finishedLoadingMap")
         mapLoaded = true
         assertMapPins()
     }
     
     func assertMapPins(){
-        print("assertMapPins")
         for day in dataContainer.days{
             for entry in day.entries{
                 if entry.saveLocation{
-                    let positionPin = MKPointAnnotation()
+                    let positionPin = EntryAnnotation(entry: entry)
                     positionPin.title = entry.creationDate.dateTimeString()
                     positionPin.coordinate = entry.location.coordinate
                     mapView.addAnnotation(positionPin)
@@ -85,11 +82,13 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     }
     
     func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView){
-        print("didSelect")
-    }
-    
-    func mapView(_ mapView: MKMapView, didDeselect view: MKAnnotationView){
-        print("didDeselect")
+        if let annotation = view.annotation as? EntryAnnotation{
+            print("entry = \(annotation.entry)")
+            let entryController = EntryViewController()
+            entryController.entry = annotation.entry
+            entryController.modalPresentationStyle = .fullScreen
+            self.present(entryController, animated: true)
+        }
     }
     
     @objc func toggleMapStyle() {

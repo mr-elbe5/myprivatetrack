@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-class EntryItemDetailViewController: ModalViewController {
+class EntryItemViewController: ModalViewController {
     
     var item : EntryItemData!
     
