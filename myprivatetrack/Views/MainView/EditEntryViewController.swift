@@ -92,7 +92,7 @@ class EditEntryViewController: EditViewController, ImageCaptureDelegate, VideoCa
         leftStackView.addArrangedSubview(addVideoButton)
         addLocationButton.addTarget(self, action: #selector(addLocation), for: .touchDown)
         leftStackView.addArrangedSubview(addLocationButton)
-        addLocationButton.isEnabled = DataStore.shared.settings.useLocation
+        addLocationButton.isEnabled = GlobalData.shared.settings.useLocation
         let infoButton = IconButton(icon: "info.circle")
         infoButton.addTarget(self, action: #selector(showInfo), for: .touchDown)
         rightStackView.addArrangedSubview(infoButton)
@@ -104,7 +104,7 @@ class EditEntryViewController: EditViewController, ImageCaptureDelegate, VideoCa
         addImageButton.isEnabled = Authorizations.isCameraAuthorized()
         addAudioButton.isEnabled = Authorizations.isAudioAuthorized()
         addVideoButton.isEnabled = Authorizations.isCameraAuthorized() && Authorizations.isAudioAuthorized()
-        addLocationButton.isEnabled = DataStore.shared.settings.useLocation && Authorizations.isLocationAuthorized()
+        addLocationButton.isEnabled = GlobalData.shared.settings.useLocation && Authorizations.isLocationAuthorized()
     }
     
     func switchValueDidChange(sender: SwitchView, isOn: Bool) {
@@ -160,7 +160,7 @@ class EditEntryViewController: EditViewController, ImageCaptureDelegate, VideoCa
     }
     
     @objc func addLocation(){
-        if DataStore.shared.settings.useLocation && Authorizations.isLocationAuthorized(){
+        if GlobalData.shared.settings.useLocation && Authorizations.isLocationAuthorized(){
             LocationService.shared.assertRunning()
             let data = LocationData()
             let locationCaptureController = LocationCaptureViewController()

@@ -79,7 +79,7 @@ class TimelineViewController: TableViewController, SaveEntryDelegate, EntryActio
         addImageButton.isEnabled = Authorizations.isCameraAuthorized()
         addAudioButton.isEnabled = Authorizations.isAudioAuthorized()
         addVideoButton.isEnabled = Authorizations.isCameraAuthorized() && Authorizations.isAudioAuthorized()
-        addLocationButton.isEnabled = DataStore.shared.settings.useLocation && Authorizations.isLocationAuthorized()
+        addLocationButton.isEnabled = GlobalData.shared.settings.useLocation && Authorizations.isLocationAuthorized()
     }
     
     // MainHeaderActionDelegate

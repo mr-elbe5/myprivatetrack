@@ -8,14 +8,14 @@
 
 import Foundation
 
-class DataStore{
+class GlobalData{
     
     enum StoreKey: String, CaseIterable {
         case settings
         case data
     }
     
-    public static var shared = DataStore()
+    public static var shared = GlobalData()
     
     let store: UserDefaults
     

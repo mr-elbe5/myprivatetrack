@@ -69,7 +69,7 @@ class Settings: Identifiable, Codable{
     }
     
     func save(){
-        DataStore.shared.saveSettings()
+        GlobalData.shared.saveSettings()
     }
     
 }

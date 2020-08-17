@@ -36,13 +36,13 @@ extension UIViewController{
     
     var dataContainer : DataContainer {
         get{
-            return DataStore.shared.data
+            return GlobalData.shared.data
         }
     }
     
     var settings : Settings {
         get{
-            return DataStore.shared.settings
+            return GlobalData.shared.settings
         }
     }
     

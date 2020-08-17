@@ -18,15 +18,15 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
         
         FileStore.shared.initialize()
-        DataStore.shared.loadSettings()
-        DataStore.shared.loadData()
+        GlobalData.shared.loadSettings()
+        GlobalData.shared.loadData()
         guard let windowScene = (scene as? UIWindowScene) else { return }
         window = UIWindow(frame: windowScene.coordinateSpace.bounds)
         window?.windowScene = windowScene
         window?.rootViewController = MainTabController()
         window?.makeKeyAndVisible()
         Authorizations.askAllAuthorizations(){ result in
-            if DataStore.shared.settings.useLocation{
+            if GlobalData.shared.settings.useLocation{
                 LocationService.shared.assertRunning()
             }
         }
@@ -60,8 +60,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // to restore the scene back to its current state.
 
         // Save changes in the application's managed object context when the application transitions to the background.
-        DataStore.shared.saveSettings()
-        DataStore.shared.saveData()
+        GlobalData.shared.saveSettings()
+        GlobalData.shared.saveData()
     }
 
 

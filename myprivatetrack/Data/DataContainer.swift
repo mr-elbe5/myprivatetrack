@@ -48,7 +48,7 @@ class DataContainer: Identifiable, Codable{
     }
     
     func save(){
-        DataStore.shared.saveData()
+        GlobalData.shared.saveData()
     }
     
     func deleteEntry(entry: EntryData){

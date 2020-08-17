@@ -80,7 +80,7 @@
 		4EEA563524E9533E0010C876 /* EntryAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EEA563424E9533E0010C876 /* EntryAnnotation.swift */; };
 		4EEA563724E954ED0010C876 /* EntryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EEA563624E954ED0010C876 /* EntryViewController.swift */; };
 		4EF0A7ED249F638800A236EB /* MediaData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EF0A7EC249F638800A236EB /* MediaData.swift */; };
-		4EF0A7EF249F657A00A236EB /* DataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EF0A7EE249F657A00A236EB /* DataStore.swift */; };
+		4EF0A7EF249F657A00A236EB /* GlobalData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EF0A7EE249F657A00A236EB /* GlobalData.swift */; };
 		4EF0A7F1249F67C100A236EB /* DataContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EF0A7F0249F67C100A236EB /* DataContainer.swift */; };
 		4EF0A7F3249F75AF00A236EB /* DayData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EF0A7F2249F75AF00A236EB /* DayData.swift */; };
 		4EF0A7FC249F9A4D00A236EB /* EntrySectionHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EF0A7FB249F9A4D00A236EB /* EntrySectionHeader.swift */; };
@@ -170,7 +170,7 @@
 		4EEA563424E9533E0010C876 /* EntryAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryAnnotation.swift; sourceTree = "<group>"; };
 		4EEA563624E954ED0010C876 /* EntryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryViewController.swift; sourceTree = "<group>"; };
 		4EF0A7EC249F638800A236EB /* MediaData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaData.swift; sourceTree = "<group>"; };
-		4EF0A7EE249F657A00A236EB /* DataStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataStore.swift; sourceTree = "<group>"; };
+		4EF0A7EE249F657A00A236EB /* GlobalData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GlobalData.swift; sourceTree = "<group>"; };
 		4EF0A7F0249F67C100A236EB /* DataContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataContainer.swift; sourceTree = "<group>"; };
 		4EF0A7F2249F75AF00A236EB /* DayData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayData.swift; sourceTree = "<group>"; };
 		4EF0A7FB249F9A4D00A236EB /* EntrySectionHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntrySectionHeader.swift; sourceTree = "<group>"; };
@@ -304,6 +304,8 @@
 				4EFC685D24DAC35400159CDC /* LocationService.swift */,
 				4EFDFF3924952F53001EB7C3 /* SceneDelegate.swift */,
 				4E90CA3A2495321C0029E308 /* Settings.swift */,
+				4E4581B624A1E8CC009ED3AA /* Statics.swift */,
+				4ED6F28A2496A24200C2C3DF /* MainTabController.swift */,
 			);
 			path = System;
 			sourceTree = "<group>";
@@ -323,17 +325,10 @@
 				4E182D1D24A096C60020558B /* TimeSpanData.swift */,
 				4E90CA332495321C0029E308 /* VideoData.swift */,
 				4EEA563224E91C2A0010C876 /* Location.swift */,
-			);
-			path = Data;
-			sourceTree = "<group>";
-		};
-		4E90CA3C2495321D0029E308 /* Storage */ = {
-			isa = PBXGroup;
-			children = (
-				4EF0A7EE249F657A00A236EB /* DataStore.swift */,
+				4EF0A7EE249F657A00A236EB /* GlobalData.swift */,
 				4E182D1F24A097250020558B /* FileStore.swift */,
 			);
-			path = Storage;
+			path = Data;
 			sourceTree = "<group>";
 		};
 		4E90CA3F2495321D0029E308 /* Extensions */ = {
@@ -412,14 +407,11 @@
 			children = (
 				4E90CA302495321C0029E308 /* Data */,
 				4E90CA3F2495321D0029E308 /* Extensions */,
-				4E90CA3C2495321D0029E308 /* Storage */,
 				4E90CA2D249531420029E308 /* System */,
 				4E90CA2C249531350029E308 /* Views */,
 				4EFDFF4524952F54001EB7C3 /* Assets.xcassets */,
-				4ED6F28A2496A24200C2C3DF /* MainTabController.swift */,
 				4EFDFF4724952F54001EB7C3 /* LaunchScreen.storyboard */,
 				4EFDFF4A24952F54001EB7C3 /* Info.plist */,
-				4E4581B624A1E8CC009ED3AA /* Statics.swift */,
 				4E90CA72249532EB0029E308 /* Localizable.strings */,
 				4E1457A124E1C214008EC422 /* InfoPlist.strings */,
 			);
@@ -511,7 +503,7 @@
 				4EEA563724E954ED0010C876 /* EntryViewController.swift in Sources */,
 				4ED3055B24E3E42100CAA277 /* ModalViewController.swift in Sources */,
 				4E66B34124DFFB5B00202932 /* AudioPlayerView.swift in Sources */,
-				4EF0A7EF249F657A00A236EB /* DataStore.swift in Sources */,
+				4EF0A7EF249F657A00A236EB /* GlobalData.swift in Sources */,
 				4EF0A800249FDEF000A236EB /* UIView.swift in Sources */,
 				4EFC685424D9686800159CDC /* ControlView.swift in Sources */,
 				4E2D3CBD24C5E93F00FA319C /* TextItemView.swift in Sources */,
