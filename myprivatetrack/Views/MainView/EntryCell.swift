@@ -56,17 +56,17 @@ class EntryCell: UITableViewCell{
                 editButton.addTarget(self, action: #selector(editEntry), for: .touchDown)
                 cellBody.addSubview(editButton)
                 editButton.enableAnchors()
-                editButton.setTopAnchor(cellBody.topAnchor, padding: 2)
+                editButton.setTopAnchor(cellBody.topAnchor, padding: defaultInset)
                 
                 let deleteButton = IconButton(icon: "xmark.circle")
                 deleteButton.tintColor = UIColor.systemRed
                 deleteButton.addTarget(self, action: #selector(deleteEntry), for: .touchDown)
                 cellBody.addSubview(deleteButton)
                 deleteButton.enableAnchors()
-                deleteButton.setTopAnchor(cellBody.topAnchor, padding: 2)
+                deleteButton.setTopAnchor(cellBody.topAnchor, padding: defaultInset)
                 
-                deleteButton.setTrailingAnchor(cellBody.trailingAnchor, padding: 2)
-                editButton.setTrailingAnchor(deleteButton.leadingAnchor, padding: 2)
+                deleteButton.setTrailingAnchor(cellBody.trailingAnchor, padding: defaultInset)
+                editButton.setTrailingAnchor(deleteButton.leadingAnchor, padding: defaultInset)
             }
             else{
                 let viewButton = IconButton(icon: "magnifyingglass")
@@ -74,8 +74,8 @@ class EntryCell: UITableViewCell{
                 viewButton.addTarget(self, action: #selector(viewEntry), for: .touchDown)
                 cellBody.addSubview(viewButton)
                 viewButton.enableAnchors()
-                viewButton.setTopAnchor(cellBody.topAnchor, padding: 2)
-                viewButton.setTrailingAnchor(cellBody.trailingAnchor, padding: 2)
+                viewButton.setTopAnchor(cellBody.topAnchor, padding: defaultInset)
+                viewButton.setTrailingAnchor(cellBody.trailingAnchor, padding: defaultInset)
             }
             
             var lastView : UIView = timeLabel

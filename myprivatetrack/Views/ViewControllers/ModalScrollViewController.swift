@@ -22,9 +22,9 @@ class ModalScrollViewController: ScrollStackViewController {
         buttonView.addSubview(closeButton)
         closeButton.addTarget(self, action: #selector(close), for: .touchDown)
         closeButton.enableAnchors()
-        closeButton.setTopAnchor(buttonView.topAnchor)
-        closeButton.setTrailingAnchor(buttonView.trailingAnchor)
-        closeButton.setBottomAnchor(buttonView.bottomAnchor)
+        closeButton.setTopAnchor(buttonView.topAnchor,padding: defaultInset)
+        closeButton.setTrailingAnchor(buttonView.trailingAnchor,padding: defaultInset)
+        closeButton.setBottomAnchor(buttonView.bottomAnchor,padding: defaultInset)
         headerView = buttonView
     }
     
