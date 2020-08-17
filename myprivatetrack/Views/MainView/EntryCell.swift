@@ -29,7 +29,7 @@ class EntryCell: UITableViewCell{
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         isUserInteractionEnabled = true
         backgroundColor = .clear
-        cellBody.backgroundColor = UIColor(white: 1, alpha: 0.8)
+        cellBody.backgroundColor = .systemGray6
         cellBody.layer.cornerRadius = 5
         addSubview(cellBody)
         cellBody.fillSuperview(padding: defaultInsets)

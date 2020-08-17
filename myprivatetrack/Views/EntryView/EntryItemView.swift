@@ -33,7 +33,6 @@ class EntryItemEditView : UIView{
     }
     
     func addTopControl(){
-        deleteButton.backgroundColor = .white
         deleteButton.tintColor = UIColor.systemRed
         deleteButton.addTarget(self, action: #selector(deleteItem), for: .touchDown)
         addSubview(deleteButton)

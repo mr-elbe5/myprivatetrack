@@ -27,7 +27,7 @@ class DaySectionHeader : UIView{
         let label = DayHeaderLabel()
         label.text = day.date.dateString()
         label.textAlignment = .center
-        label.backgroundColor = .white
+        label.backgroundColor = .systemBackground
         label.font = UIFont.boldSystemFont(ofSize: 14)
         
         addSubview(label)
