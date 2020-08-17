@@ -31,7 +31,7 @@ class AudioItemView : EntryItemView, AVAudioPlayerDelegate{
         audioView.enablePlayer()
         audioView.placeBelow(anchor: topAnchor)
         if !data.title.isEmpty{
-            let titleView = MediaTitleLabel(text: data.title)
+            let titleView = MediaCommentLabel(text: data.title)
             addSubview(titleView)
             titleView.placeBelow(view: audioView, padding: flatInsets)
             titleView.connectBottom(view: self)

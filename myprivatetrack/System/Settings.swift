@@ -68,4 +68,8 @@ class Settings: Identifiable, Codable{
         try container.encode(resizeScale.rawValue, forKey: .resizeScale)
     }
     
+    func save(){
+        DataStore.shared.saveSettings()
+    }
+    
 }

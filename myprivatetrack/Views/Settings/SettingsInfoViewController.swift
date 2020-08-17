@@ -9,8 +9,13 @@
 import Foundation
 class SettingsInfoViewController: ModalScrollViewController {
     
+    let useLocationHeader = InfoHeader(text: "useLocation".localize())
+    let useLocationText = InfoText(text: "settingsUseLocationInfo".localize())
+    
     override func loadView() {
         super.loadView()
+        stackView.addArrangedSubview(useLocationHeader)
+        stackView.addArrangedSubview(useLocationText)
         
     }
     

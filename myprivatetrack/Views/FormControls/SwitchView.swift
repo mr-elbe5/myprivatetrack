@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 
 protocol SwitchDelegate{
-    func valueDidChange(sender: SwitchView,isOn: Bool)
+    func switchValueDidChange(sender: SwitchView,isOn: Bool)
 }
 
 class SwitchView : UIView{
@@ -32,7 +32,7 @@ class SwitchView : UIView{
     }
     
     @objc func valueDidChange(sender:UISwitch){
-        delegate?.valueDidChange(sender: self,isOn: sender.isOn)
+        delegate?.switchValueDidChange(sender: self,isOn: sender.isOn)
     }
     
 }

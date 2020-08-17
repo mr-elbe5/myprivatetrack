@@ -19,6 +19,12 @@ class EditEntryViewController: EditViewController, ImageCaptureDelegate, VideoCa
     
     var entry : EntryData!
     
+    var addTextButton = IconButton(icon: "text.bubble")
+    var addImageButton = IconButton(icon: "camera")
+    var addAudioButton = IconButton(icon: "mic")
+    let addVideoButton = IconButton(icon: "video")
+    var addLocationButton = IconButton(icon: "map")
+    
     override func loadView() {
         super.loadView()
         let saveLocationSwitch = SwitchView()
@@ -76,21 +82,17 @@ class EditEntryViewController: EditViewController, ImageCaptureDelegate, VideoCa
         addLabel.text = "+"
         addLabel.textColor = UIColor.label
         leftStackView.addArrangedSubview(addLabel)
-        let addTextButton = IconButton(icon: "text.bubble")
         addTextButton.addTarget(self, action: #selector(addText), for: .touchDown)
         leftStackView.addArrangedSubview(addTextButton)
-        let addImageButton = IconButton(icon: "camera")
         addImageButton.addTarget(self, action: #selector(addImage), for: .touchDown)
         leftStackView.addArrangedSubview(addImageButton)
-        let addAudioButton = IconButton(icon: "mic")
         addAudioButton.addTarget(self, action: #selector(addAudio), for: .touchDown)
         leftStackView.addArrangedSubview(addAudioButton)
-        let addVideoButton = IconButton(icon: "video")
         addVideoButton.addTarget(self, action: #selector(addVideo), for: .touchDown)
         leftStackView.addArrangedSubview(addVideoButton)
-        let addLocationButton = IconButton(icon: "map")
         addLocationButton.addTarget(self, action: #selector(addLocation), for: .touchDown)
         leftStackView.addArrangedSubview(addLocationButton)
+        addLocationButton.isEnabled = DataStore.shared.settings.useLocation
         let infoButton = IconButton(icon: "info.circle")
         infoButton.addTarget(self, action: #selector(showInfo), for: .touchDown)
         rightStackView.addArrangedSubview(infoButton)
@@ -98,7 +100,14 @@ class EditEntryViewController: EditViewController, ImageCaptureDelegate, VideoCa
         self.headerView = headerView
     }
     
-    func valueDidChange(sender: SwitchView, isOn: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
+        addImageButton.isEnabled = Authorizations.isCameraAuthorized()
+        addAudioButton.isEnabled = Authorizations.isAudioAuthorized()
+        addVideoButton.isEnabled = Authorizations.isCameraAuthorized() && Authorizations.isAudioAuthorized()
+        addLocationButton.isEnabled = DataStore.shared.settings.useLocation && Authorizations.isLocationAuthorized()
+    }
+    
+    func switchValueDidChange(sender: SwitchView, isOn: Bool) {
         entry.saveLocation = isOn
         print("state= \(entry.saveLocation)")
     }
@@ -151,7 +160,7 @@ class EditEntryViewController: EditViewController, ImageCaptureDelegate, VideoCa
     }
     
     @objc func addLocation(){
-        if Authorizations.isLocationAuthorized(){
+        if DataStore.shared.settings.useLocation && Authorizations.isLocationAuthorized(){
             LocationService.shared.assertRunning()
             let data = LocationData()
             let locationCaptureController = LocationCaptureViewController()

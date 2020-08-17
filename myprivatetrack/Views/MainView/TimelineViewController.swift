@@ -14,6 +14,12 @@ class TimelineViewController: TableViewController, SaveEntryDelegate, EntryActio
     
     var firstAppearance = true
     
+    var addTextButton = IconButton(icon: "text.bubble")
+    var addImageButton = IconButton(icon: "camera")
+    var addAudioButton = IconButton(icon: "mic")
+    let addVideoButton = IconButton(icon: "video")
+    var addLocationButton = IconButton(icon: "map")
+    
     override func loadView(){
         super.loadView()
         tableView.backgroundColor = UIColor.clear
@@ -21,6 +27,8 @@ class TimelineViewController: TableViewController, SaveEntryDelegate, EntryActio
         backgroundImage.contentMode = UIView.ContentMode.scaleAspectFill;
         tableView.backgroundView = backgroundImage
         tableView.register(EntryCell.self, forCellReuseIdentifier: TimelineViewController.CELL_IDENT)
+        tableView.allowsSelection = false
+        tableView.allowsSelectionDuringEditing = false
         tableView.separatorStyle = .none
         tableView.backgroundColor = Statics.defaultBackground
     }
@@ -41,19 +49,14 @@ class TimelineViewController: TableViewController, SaveEntryDelegate, EntryActio
         addLabel.text = "+"
         addLabel.textColor = UIColor.label
         leftStackView.addArrangedSubview(addLabel)
-        let addTextButton = IconButton(icon: "text.bubble")
         addTextButton.addTarget(self, action: #selector(addTextEntry), for: .touchDown)
         leftStackView.addArrangedSubview(addTextButton)
-        let addImageButton = IconButton(icon: "camera")
         addImageButton.addTarget(self, action: #selector(addImageEntry), for: .touchDown)
         leftStackView.addArrangedSubview(addImageButton)
-        let addAudioButton = IconButton(icon: "mic")
         addAudioButton.addTarget(self, action: #selector(addAudioEntry), for: .touchDown)
         leftStackView.addArrangedSubview(addAudioButton)
-        let addVideoButton = IconButton(icon: "video")
         addVideoButton.addTarget(self, action: #selector(addVideoEntry), for: .touchDown)
         leftStackView.addArrangedSubview(addVideoButton)
-        let addLocationButton = IconButton(icon: "map")
         addLocationButton.addTarget(self, action: #selector(addLocationEntry), for: .touchDown)
         leftStackView.addArrangedSubview(addLocationButton)
         let editButton = IconButton(icon: "pencil.circle")
@@ -73,6 +76,10 @@ class TimelineViewController: TableViewController, SaveEntryDelegate, EntryActio
             }
             firstAppearance = false
         }
+        addImageButton.isEnabled = Authorizations.isCameraAuthorized()
+        addAudioButton.isEnabled = Authorizations.isAudioAuthorized()
+        addVideoButton.isEnabled = Authorizations.isCameraAuthorized() && Authorizations.isAudioAuthorized()
+        addLocationButton.isEnabled = DataStore.shared.settings.useLocation && Authorizations.isLocationAuthorized()
     }
     
     // MainHeaderActionDelegate
@@ -143,16 +150,23 @@ class TimelineViewController: TableViewController, SaveEntryDelegate, EntryActio
     // EntryActionDelegate
     
     func editEntry(entry: EntryData) {
-        let editEventViewController = EditEntryViewController()
-        editEventViewController.entry = entry
-        editEventViewController.delegate = self
-        editEventViewController.modalPresentationStyle = .fullScreen
-        self.present(editEventViewController, animated: true)
+        let editEntryViewController = EditEntryViewController()
+        editEntryViewController.entry = entry
+        editEntryViewController.delegate = self
+        editEntryViewController.modalPresentationStyle = .fullScreen
+        self.present(editEntryViewController, animated: true)
     }
     
     func deleteEntry(entry: EntryData) {
         dataContainer.deleteEntry(entry: entry)
         tableView.reloadData()
+    }
+    
+    func viewEntry(entry: EntryData) {
+        let viewEntryViewController = EntryViewController()
+        viewEntryViewController.entry = entry
+        viewEntryViewController.modalPresentationStyle = .fullScreen
+        self.present(viewEntryViewController, animated: true)
     }
     
     // table view callbacks

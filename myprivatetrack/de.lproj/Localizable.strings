@@ -27,6 +27,7 @@
 "notComplete"="Einige Eingaben sind nicht vollständig.";
 "yourPosition"="Deine Position";
 "back"="Zurück";
+"useLocation"="Standortbestimmung benutzen";
 "cameraNotAuthorized"="Die Nutzung der Kamera ist nicht erlaubt. Bitte ändere die entsprechenden Einstellungen.";
 "audioNotAuthorized"="Die Nutzung des Mikrofons ist nicht erlaubt. Bitte ändere die entsprechenden Einstellungen.";
 "videoNotAuthorized"="Die Nutzung der Kamera oder des Mikrofons ist nicht erlaubt. Bitte ändere die entsprechenden Einstellungen.";
@@ -62,4 +63,4 @@
 "editEntrySlowCameraIconInfo"="Mit diesem Icon stellst du beim Aufnehmen eines Fotos auf höchste Bildqualität.";
 "mapInfoHeader"="Kartenansicht";
 "mapTopInfo"="Die Kartenansicht zeigt alle Einträge, die ein Kartenelement enthalten. Die Einträge werden duch eine Nadel dargestellt. Durch Antippen der Nadel wird der gesamte Eintrag angezeigt.";
-
+"settingsUseLocationInfo"="Wenn du keine Standortbestimmung benutzt, erhalten deine Einträge keine Position und du kannst keine Karten-Schnappschuss machen.";

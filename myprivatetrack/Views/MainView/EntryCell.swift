@@ -11,6 +11,7 @@ import UIKit
 protocol EntryActionDelegate{
     func editEntry(entry: EntryData)
     func deleteEntry(entry: EntryData)
+    func viewEntry(entry: EntryData)
 }
 
 class EntryCell: UITableViewCell{
@@ -67,6 +68,15 @@ class EntryCell: UITableViewCell{
                 deleteButton.setTrailingAnchor(cellBody.trailingAnchor, padding: 2)
                 editButton.setTrailingAnchor(deleteButton.leadingAnchor, padding: 2)
             }
+            else{
+                let viewButton = IconButton(icon: "magnifyingglass")
+                viewButton.tintColor = UIColor.systemGray
+                viewButton.addTarget(self, action: #selector(viewEntry), for: .touchDown)
+                cellBody.addSubview(viewButton)
+                viewButton.enableAnchors()
+                viewButton.setTopAnchor(cellBody.topAnchor, padding: 2)
+                viewButton.setTrailingAnchor(cellBody.trailingAnchor, padding: 2)
+            }
             
             var lastView : UIView = timeLabel
             for item in entry!.items{
@@ -119,5 +129,10 @@ class EntryCell: UITableViewCell{
         }
     }
     
+    @objc func viewEntry() {
+        if entry != nil{
+            delegate?.viewEntry(entry: entry!)
+        }
+    }
     
 }

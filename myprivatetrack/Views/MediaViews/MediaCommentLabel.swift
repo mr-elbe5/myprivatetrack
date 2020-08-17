@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-class MediaTitleLabel : UILabel{
+class MediaCommentLabel : UILabel{
     
     init(text: String, tintColor: UIColor = .label){
         super.init(frame: .zero)

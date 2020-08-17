@@ -26,7 +26,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window?.rootViewController = MainTabController()
         window?.makeKeyAndVisible()
         Authorizations.askAllAuthorizations(){ result in
-            LocationService.shared.assertRunning()
+            if DataStore.shared.settings.useLocation{
+                LocationService.shared.assertRunning()
+            }
         }
     }
 

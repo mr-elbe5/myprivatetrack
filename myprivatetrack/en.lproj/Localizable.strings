@@ -27,6 +27,7 @@
 "notComplete"="Some entries are not complete.";
 "yourPosition"="Your position";
 "back"="Back";
+"useLocation"="Use location service";
 "cameraNotAuthorized"="Camera use is not authorized. Please change your settings.";
 "audioNotAuthorized"="Microphone use is not authorized. Please change your settings.";
 "videoNotAuthorized"="Camera or Microphone use is not authorized. Please change your settings.";
@@ -62,3 +63,4 @@
 "editEntrySlowCameraIconInfo"="With this icon you set the photo quality for highest quality.";
 "mapInfoHeader"="Map view";
 "mapTopInfo"="The map view shows all entries containing a map item represented by a needle. By tapping one of these needles the complete entry is shown.";
+"settingsUseLocationInfo"="If you choose not to use location services, your entries will not have a position and you will not be able to take map screenshots.";

@@ -28,7 +28,7 @@ class VideoItemView : EntryItemView{
         videoView.placeBelow(anchor: topAnchor)
         videoView.setAspectRatioConstraint()
         if !data.title.isEmpty{
-            let titleView = MediaTitleLabel(text: data.title)
+            let titleView = MediaCommentLabel(text: data.title)
             addSubview(titleView)
             titleView.placeBelow(view: videoView, padding: flatInsets)
             titleView.connectBottom(view: self)

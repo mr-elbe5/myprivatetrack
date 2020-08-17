@@ -48,7 +48,7 @@ class LocationService : NSObject, CLLocationManagerDelegate{
     }
     
     func assertRunning(){
-        if !active{
+        if DataStore.shared.settings.useLocation && !active{
             startUpdatingLocation()
             if !LocationService.shared.active{
                 DispatchQueue.main.asyncAfter(deadline: .now() + 4.0) {
