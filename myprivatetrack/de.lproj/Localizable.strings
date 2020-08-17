@@ -28,6 +28,8 @@
 "yourPosition"="Deine Position";
 "back"="Zurück";
 "useLocation"="Standortbestimmung benutzen";
+"startDate"="Erster Tag";
+"endDate"="Letzter Tag";
 "cameraNotAuthorized"="Die Nutzung der Kamera ist nicht erlaubt. Bitte ändere die entsprechenden Einstellungen.";
 "audioNotAuthorized"="Die Nutzung des Mikrofons ist nicht erlaubt. Bitte ändere die entsprechenden Einstellungen.";
 "videoNotAuthorized"="Die Nutzung der Kamera oder des Mikrofons ist nicht erlaubt. Bitte ändere die entsprechenden Einstellungen.";

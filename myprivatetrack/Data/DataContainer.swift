@@ -17,6 +17,24 @@ class DataContainer: Identifiable, Codable{
     public var days: Array<DayData>
     private var dayMap = Dictionary<Date, DayData>()
     
+    var firstDayDate : Date?{
+        get{
+            if days.isEmpty{
+                return nil
+            }
+            return days[0].date
+        }
+    }
+    
+    var lastDayDate : Date?{
+        get{
+            if days.isEmpty{
+                return nil
+            }
+            return days[days.count-1].date
+        }
+    }
+    
     init(){
         days = []
     }

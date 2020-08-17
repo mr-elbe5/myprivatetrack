@@ -28,6 +28,8 @@
 "yourPosition"="Your position";
 "back"="Back";
 "useLocation"="Use location service";
+"startDate"="Start date";
+"endDate"="End date";
 "cameraNotAuthorized"="Camera use is not authorized. Please change your settings.";
 "audioNotAuthorized"="Microphone use is not authorized. Please change your settings.";
 "videoNotAuthorized"="Camera or Microphone use is not authorized. Please change your settings.";

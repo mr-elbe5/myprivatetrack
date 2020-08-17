@@ -9,17 +9,17 @@
 import Foundation
 import UIKit
 
-class SettingsViewController: EditViewController, SwitchDelegate{
+class SettingsViewController: EditViewController, SwitchDelegate, DatePickerDelegate{
 
     var useLocationSwitch = SwitchView()
     
     override func loadView() {
         super.loadView()
-        
         let header = InfoHeader(text: "settings".localize())
         stackView.addArrangedSubview(header)
         useLocationSwitch.setupView(text: "useLocation".localize(), isOn: settings.useLocation)
         useLocationSwitch.delegate = self
+        
         stackView.addArrangedSubview(useLocationSwitch)
     }
     
@@ -56,6 +56,8 @@ class SettingsViewController: EditViewController, SwitchDelegate{
         }
         settings.save()
     }
-
-
+    
+    func dateValueDidChange(sender: DatePickerView, date: Date?) {
+        print(date ?? "nil")
+    }
 }
