@@ -51,7 +51,7 @@ class ImageItemView : EntryItemView{
             let viewButton = ViewDetailButton()
             viewButton.addTarget(self, action: #selector(viewItem), for: .touchDown)
             addSubview(viewButton)
-            viewButton.placeTopRight()
+            viewButton.placeTopRight(padding: doubleInsets)
         }
     }
     

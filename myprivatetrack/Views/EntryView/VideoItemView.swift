@@ -17,8 +17,8 @@ class VideoItemView : EntryItemView{
     
     static func fromData(data : VideoData,delegate: VideoItemDelegate? = nil)  -> VideoItemView{
         let itemView = VideoItemView()
-        itemView.setupView(data: data)
         itemView.delegate = delegate
+        itemView.setupView(data: data)
         return itemView
     }
     
@@ -47,7 +47,7 @@ class VideoItemView : EntryItemView{
             let viewButton = ViewDetailButton()
             viewButton.addTarget(self, action: #selector(viewItem), for: .touchDown)
             addSubview(viewButton)
-            viewButton.placeTopRight()
+            viewButton.placeTopRight(padding: doubleInsets)
         }
     }
     

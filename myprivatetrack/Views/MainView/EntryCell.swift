@@ -8,10 +8,9 @@
 
 import UIKit
 
-protocol EntryActionDelegate{
+protocol EntryCellActionDelegate{
     func editEntry(entry: EntryData)
     func deleteEntry(entry: EntryData)
-    func viewEntry(entry: EntryData)
     func viewImageItem(data: ImageData)
     func viewVideoItem(data: VideoData)
 }
@@ -24,7 +23,7 @@ class EntryCell: UITableViewCell, ImageItemDelegate, VideoItemDelegate{
         }
     }
     
-    var delegate: EntryActionDelegate? = nil
+    var delegate: EntryCellActionDelegate? = nil
     
     var cellBody = UIView()
     
@@ -69,12 +68,6 @@ class EntryCell: UITableViewCell, ImageItemDelegate, VideoItemDelegate{
                 
                 deleteButton.setTrailingAnchor(cellBody.trailingAnchor, padding: defaultInset)
                 editButton.setTrailingAnchor(deleteButton.leadingAnchor, padding: defaultInset)
-            }
-            else{
-                let viewButton = ViewDetailButton()
-                viewButton.addTarget(self, action: #selector(viewEntry), for: .touchDown)
-                cellBody.addSubview(viewButton)
-                viewButton.placeTopRight()
             }
             
             var lastView : UIView = timeLabel
@@ -125,12 +118,6 @@ class EntryCell: UITableViewCell, ImageItemDelegate, VideoItemDelegate{
     @objc func deleteEntry() {
         if entry != nil{
             delegate?.deleteEntry(entry: entry!)
-        }
-    }
-    
-    @objc func viewEntry() {
-        if entry != nil{
-            delegate?.viewEntry(entry: entry!)
         }
     }
     

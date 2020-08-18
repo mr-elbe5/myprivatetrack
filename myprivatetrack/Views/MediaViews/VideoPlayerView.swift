@@ -42,7 +42,7 @@ class VideoPlayerView: UIView {
                                                selector: #selector(playerItemDidReachEnd(notification:)),
                                                name: .AVPlayerItemDidPlayToEndTime,
                                                object: player.currentItem)
-        playerLayer.videoGravity = .resizeAspectFill
+        playerLayer.videoGravity = .resizeAspect
         playerLayer.needsDisplayOnBoundsChange = true
         self.layer.addSublayer(playerLayer)
         playButton.setImage(UIImage(systemName: "play.fill"), for: .normal)

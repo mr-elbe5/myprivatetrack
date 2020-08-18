@@ -8,7 +8,7 @@
 
 import UIKit
 
-class TimelineViewController: TableViewController, SaveEntryDelegate, EntryActionDelegate{
+class TimelineViewController: TableViewController, SaveEntryDelegate, EntryCellActionDelegate{
 
     private static let CELL_IDENT = "entryCell"
     
@@ -162,15 +162,7 @@ class TimelineViewController: TableViewController, SaveEntryDelegate, EntryActio
         tableView.reloadData()
     }
     
-    func viewEntry(entry: EntryData) {
-        let viewEntryViewController = EntryViewController()
-        viewEntryViewController.entry = entry
-        viewEntryViewController.modalPresentationStyle = .fullScreen
-        self.present(viewEntryViewController, animated: true)
-    }
-    
     func viewImageItem(data: ImageData) {
-        print("view image item")
         let imageViewController = ImageViewController()
         imageViewController.imageData = data
         imageViewController.modalPresentationStyle = .fullScreen

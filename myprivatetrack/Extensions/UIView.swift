@@ -23,6 +23,12 @@ extension UIView{
         }
     }
     
+    var doubleInsets : UIEdgeInsets{
+        get{
+            return Statics.doubleInsets
+        }
+    }
+    
     var flatInsets : UIEdgeInsets{
         get{
             return Statics.flatInsets
