@@ -1,17 +1,18 @@
 //
-//  InfoViewController.swift
+//  ModalScrollViewController.swift
 //  myprivatetrack
 //
-//  Created by Michael Rönnau on 08.08.20.
+//  Created by Michael Rönnau on 18.08.20.
 //  Copyright © 2020 Michael Rönnau. All rights reserved.
 //
 
 import Foundation
 import UIKit
 
-class ModalScrollViewController: ScrollStackViewController {
+class ModalScrollViewController: ScrollViewController {
     
     override func loadView() {
+        self.scrollViewTopPadding = 0
         super.loadView()
     }
     
@@ -22,9 +23,9 @@ class ModalScrollViewController: ScrollStackViewController {
         buttonView.addSubview(closeButton)
         closeButton.addTarget(self, action: #selector(close), for: .touchDown)
         closeButton.enableAnchors()
-        closeButton.setTopAnchor(buttonView.topAnchor,padding: defaultInset)
-        closeButton.setTrailingAnchor(buttonView.trailingAnchor,padding: defaultInset)
-        closeButton.setBottomAnchor(buttonView.bottomAnchor,padding: defaultInset)
+        closeButton.setTopAnchor(buttonView.topAnchor)
+        closeButton.setTrailingAnchor(buttonView.trailingAnchor)
+        closeButton.setBottomAnchor(buttonView.bottomAnchor)
         headerView = buttonView
     }
     

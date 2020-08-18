@@ -8,6 +8,14 @@
 
 /* Begin PBXBuildFile section */
 		4E04C79124EABD2200FA3D9F /* DatePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E04C79024EABD2200FA3D9F /* DatePickerView.swift */; };
+		4E04C79324EBE18900FA3D9F /* ViewDetailButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E04C79224EBE18900FA3D9F /* ViewDetailButton.swift */; };
+		4E04C79524EBE61C00FA3D9F /* ImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E04C79424EBE61C00FA3D9F /* ImageViewController.swift */; };
+		4E04C79724EBE63000FA3D9F /* VideoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E04C79624EBE63000FA3D9F /* VideoViewController.swift */; };
+		4E04C7A124EC0B9F00FA3D9F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E04C7A024EC0B9F00FA3D9F /* ViewController.swift */; };
+		4E04C7A324EC0CB800FA3D9F /* ScrollViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E04C7A224EC0CB800FA3D9F /* ScrollViewController.swift */; };
+		4E04C7A524EC0FFE00FA3D9F /* ModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E04C7A424EC0FFE00FA3D9F /* ModalViewController.swift */; };
+		4E04C7A724EC113300FA3D9F /* ModalScrollViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E04C7A624EC113300FA3D9F /* ModalScrollViewController.swift */; };
+		4E04C7A924EC148A00FA3D9F /* InfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E04C7A824EC148A00FA3D9F /* InfoViewController.swift */; };
 		4E14579F24E1C214008EC422 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4E1457A124E1C214008EC422 /* InfoPlist.strings */; };
 		4E1457A424E2AF7E008EC422 /* MediaCommentLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E1457A324E2AF7E008EC422 /* MediaCommentLabel.swift */; };
 		4E1457A624E2B3DF008EC422 /* ResizingTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E1457A524E2B3DF008EC422 /* ResizingTextView.swift */; };
@@ -30,12 +38,10 @@
 		4E4581BB24A2007F009ED3AA /* UITextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E4581BA24A2007F009ED3AA /* UITextView.swift */; };
 		4E4581BD24A2011F009ED3AA /* UIButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E4581BC24A2011F009ED3AA /* UIButton.swift */; };
 		4E4581BF24A20178009ED3AA /* UILabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E4581BE24A20178009ED3AA /* UILabel.swift */; };
-		4E4581CA24A290A9009ED3AA /* ScrollStackViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E4581C924A290A9009ED3AA /* ScrollStackViewController.swift */; };
 		4E4CB4DC249E7302005B6428 /* UIImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E4CB4DB249E7302005B6428 /* UIImage.swift */; };
 		4E6290E124D5677500AA4628 /* CameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E6290E024D5677500AA4628 /* CameraViewController.swift */; };
 		4E6290E324D6A97400AA4628 /* CaptureButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E6290E224D6A97400AA4628 /* CaptureButton.swift */; };
 		4E6290E524D83B9700AA4628 /* VideoPlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E6290E424D83B9700AA4628 /* VideoPlayerView.swift */; };
-		4E66B33924DE954200202932 /* ModalScrollViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E66B33824DE954200202932 /* ModalScrollViewController.swift */; };
 		4E66B33B24DE95AD00202932 /* EditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E66B33A24DE95AD00202932 /* EditViewController.swift */; };
 		4E66B33D24DE968A00202932 /* TextButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E66B33C24DE968A00202932 /* TextButton.swift */; };
 		4E66B34124DFFB5B00202932 /* AudioPlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E66B34024DFFB5B00202932 /* AudioPlayerView.swift */; };
@@ -64,9 +70,6 @@
 		4ED3055224E3DD8B00CAA277 /* EditEntryInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED3055124E3DD8B00CAA277 /* EditEntryInfoViewController.swift */; };
 		4ED3055424E3DDA400CAA277 /* MapInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED3055324E3DDA400CAA277 /* MapInfoViewController.swift */; };
 		4ED3055624E3DDC300CAA277 /* SettingsInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED3055524E3DDC300CAA277 /* SettingsInfoViewController.swift */; };
-		4ED3055924E3E01700CAA277 /* EntryItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED3055824E3E01700CAA277 /* EntryItemViewController.swift */; };
-		4ED3055B24E3E42100CAA277 /* ModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED3055A24E3E42100CAA277 /* ModalViewController.swift */; };
-		4ED3055D24E3E47100CAA277 /* StackViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED3055C24E3E47100CAA277 /* StackViewController.swift */; };
 		4ED3055F24E3E8F500CAA277 /* InfoText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED3055E24E3E8F500CAA277 /* InfoText.swift */; };
 		4ED3056124E3EA0F00CAA277 /* IconInfoText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED3056024E3EA0F00CAA277 /* IconInfoText.swift */; };
 		4ED3056324E3EEE600CAA277 /* InfoHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED3056224E3EEE600CAA277 /* InfoHeader.swift */; };
@@ -97,6 +100,14 @@
 
 /* Begin PBXFileReference section */
 		4E04C79024EABD2200FA3D9F /* DatePickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePickerView.swift; sourceTree = "<group>"; };
+		4E04C79224EBE18900FA3D9F /* ViewDetailButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewDetailButton.swift; sourceTree = "<group>"; };
+		4E04C79424EBE61C00FA3D9F /* ImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageViewController.swift; sourceTree = "<group>"; };
+		4E04C79624EBE63000FA3D9F /* VideoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoViewController.swift; sourceTree = "<group>"; };
+		4E04C7A024EC0B9F00FA3D9F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		4E04C7A224EC0CB800FA3D9F /* ScrollViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollViewController.swift; sourceTree = "<group>"; };
+		4E04C7A424EC0FFE00FA3D9F /* ModalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalViewController.swift; sourceTree = "<group>"; };
+		4E04C7A624EC113300FA3D9F /* ModalScrollViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalScrollViewController.swift; sourceTree = "<group>"; };
+		4E04C7A824EC148A00FA3D9F /* InfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoViewController.swift; sourceTree = "<group>"; };
 		4E1457A024E1C214008EC422 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		4E1457A224E1C217008EC422 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		4E1457A324E2AF7E008EC422 /* MediaCommentLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaCommentLabel.swift; sourceTree = "<group>"; };
@@ -120,12 +131,10 @@
 		4E4581BA24A2007F009ED3AA /* UITextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextView.swift; sourceTree = "<group>"; };
 		4E4581BC24A2011F009ED3AA /* UIButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIButton.swift; sourceTree = "<group>"; };
 		4E4581BE24A20178009ED3AA /* UILabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UILabel.swift; sourceTree = "<group>"; };
-		4E4581C924A290A9009ED3AA /* ScrollStackViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollStackViewController.swift; sourceTree = "<group>"; };
 		4E4CB4DB249E7302005B6428 /* UIImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImage.swift; sourceTree = "<group>"; };
 		4E6290E024D5677500AA4628 /* CameraViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraViewController.swift; sourceTree = "<group>"; };
 		4E6290E224D6A97400AA4628 /* CaptureButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaptureButton.swift; sourceTree = "<group>"; };
 		4E6290E424D83B9700AA4628 /* VideoPlayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoPlayerView.swift; sourceTree = "<group>"; };
-		4E66B33824DE954200202932 /* ModalScrollViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalScrollViewController.swift; sourceTree = "<group>"; };
 		4E66B33A24DE95AD00202932 /* EditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditViewController.swift; sourceTree = "<group>"; };
 		4E66B33C24DE968A00202932 /* TextButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextButton.swift; sourceTree = "<group>"; };
 		4E66B34024DFFB5B00202932 /* AudioPlayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioPlayerView.swift; sourceTree = "<group>"; };
@@ -155,9 +164,6 @@
 		4ED3055124E3DD8B00CAA277 /* EditEntryInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditEntryInfoViewController.swift; sourceTree = "<group>"; };
 		4ED3055324E3DDA400CAA277 /* MapInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapInfoViewController.swift; sourceTree = "<group>"; };
 		4ED3055524E3DDC300CAA277 /* SettingsInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsInfoViewController.swift; sourceTree = "<group>"; };
-		4ED3055824E3E01700CAA277 /* EntryItemViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryItemViewController.swift; sourceTree = "<group>"; };
-		4ED3055A24E3E42100CAA277 /* ModalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalViewController.swift; sourceTree = "<group>"; };
-		4ED3055C24E3E47100CAA277 /* StackViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StackViewController.swift; sourceTree = "<group>"; };
 		4ED3055E24E3E8F500CAA277 /* InfoText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoText.swift; sourceTree = "<group>"; };
 		4ED3056024E3EA0F00CAA277 /* IconInfoText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconInfoText.swift; sourceTree = "<group>"; };
 		4ED3056224E3EEE600CAA277 /* InfoHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoHeader.swift; sourceTree = "<group>"; };
@@ -215,6 +221,7 @@
 				4ED3056224E3EEE600CAA277 /* InfoHeader.swift */,
 				4ED3055E24E3E8F500CAA277 /* InfoText.swift */,
 				4E66B33C24DE968A00202932 /* TextButton.swift */,
+				4E04C79224EBE18900FA3D9F /* ViewDetailButton.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -223,11 +230,14 @@
 			isa = PBXGroup;
 			children = (
 				4E66B33A24DE95AD00202932 /* EditViewController.swift */,
-				4E66B33824DE954200202932 /* ModalScrollViewController.swift */,
-				4ED3055A24E3E42100CAA277 /* ModalViewController.swift */,
-				4E4581C924A290A9009ED3AA /* ScrollStackViewController.swift */,
-				4ED3055C24E3E47100CAA277 /* StackViewController.swift */,
 				4E2ECFD424DD8F66003FFFF1 /* TableViewController.swift */,
+				4E04C79424EBE61C00FA3D9F /* ImageViewController.swift */,
+				4E04C79624EBE63000FA3D9F /* VideoViewController.swift */,
+				4E04C7A224EC0CB800FA3D9F /* ScrollViewController.swift */,
+				4E04C7A024EC0B9F00FA3D9F /* ViewController.swift */,
+				4E04C7A424EC0FFE00FA3D9F /* ModalViewController.swift */,
+				4E04C7A624EC113300FA3D9F /* ModalScrollViewController.swift */,
+				4E04C7A824EC148A00FA3D9F /* InfoViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -264,7 +274,6 @@
 				4E2D3CC424C5EEBE00FA319C /* LocationItemView.swift */,
 				4E2D3CBC24C5E93F00FA319C /* TextItemView.swift */,
 				4E2D3CC224C5EE8A00FA319C /* VideoItemView.swift */,
-				4ED3055824E3E01700CAA277 /* EntryItemViewController.swift */,
 				4EEA563624E954ED0010C876 /* EntryViewController.swift */,
 			);
 			path = EntryView;
@@ -504,10 +513,12 @@
 				4E90CA512495321D0029E308 /* String.swift in Sources */,
 				4E90CA4A2495321D0029E308 /* ImageData.swift in Sources */,
 				4EEA563724E954ED0010C876 /* EntryViewController.swift in Sources */,
-				4ED3055B24E3E42100CAA277 /* ModalViewController.swift in Sources */,
+				4E04C7A524EC0FFE00FA3D9F /* ModalViewController.swift in Sources */,
 				4E66B34124DFFB5B00202932 /* AudioPlayerView.swift in Sources */,
+				4E04C79724EBE63000FA3D9F /* VideoViewController.swift in Sources */,
 				4EF0A7EF249F657A00A236EB /* GlobalData.swift in Sources */,
 				4EF0A800249FDEF000A236EB /* UIView.swift in Sources */,
+				4E04C79524EBE61C00FA3D9F /* ImageViewController.swift in Sources */,
 				4EFC685424D9686800159CDC /* ControlView.swift in Sources */,
 				4E2D3CBD24C5E93F00FA319C /* TextItemView.swift in Sources */,
 				4E90CA75249533BA0029E308 /* TimelineViewController.swift in Sources */,
@@ -526,21 +537,24 @@
 				4EB9336324CED3550059F687 /* AVCaptureDevice.swift in Sources */,
 				4E2D3CBF24C5EBA300FA319C /* ImageItemView.swift in Sources */,
 				4E182D2024A097250020558B /* FileStore.swift in Sources */,
+				4E04C7A724EC113300FA3D9F /* ModalScrollViewController.swift in Sources */,
 				4ED3055424E3DDA400CAA277 /* MapInfoViewController.swift in Sources */,
 				4E90CA4B2495321D0029E308 /* Settings.swift in Sources */,
 				4EEA563124E918E10010C876 /* CLLocation.swift in Sources */,
 				4E6290E324D6A97400AA4628 /* CaptureButton.swift in Sources */,
-				4E4581CA24A290A9009ED3AA /* ScrollStackViewController.swift in Sources */,
 				4E90CA442495321D0029E308 /* EntryData.swift in Sources */,
 				4E90CA4F2495321D0029E308 /* Date.swift in Sources */,
 				4EE20B4C24BA226400905F5C /* UIStackView.swift in Sources */,
+				4E04C7A924EC148A00FA3D9F /* InfoViewController.swift in Sources */,
 				4EF0A7F3249F75AF00A236EB /* DayData.swift in Sources */,
 				4E2FBD5424BB47150025C55B /* LocationData.swift in Sources */,
 				4E1C43B924C714E900D89BD0 /* EditEntryViewController.swift in Sources */,
 				4EAD117624BD9C7B00079347 /* UIScrollView.swift in Sources */,
 				4E4581BD24A2011F009ED3AA /* UIButton.swift in Sources */,
 				4EFC685E24DAC35500159CDC /* LocationService.swift in Sources */,
+				4E04C7A124EC0B9F00FA3D9F /* ViewController.swift in Sources */,
 				4E90CA7B249537950029E308 /* SettingsViewController.swift in Sources */,
+				4E04C79324EBE18900FA3D9F /* ViewDetailButton.swift in Sources */,
 				4ED3055624E3DDC300CAA277 /* SettingsInfoViewController.swift in Sources */,
 				4E2FBD5624BB47470025C55B /* EntryItemData.swift in Sources */,
 				4E2D3CC124C5EDC100FA319C /* AudioItemView.swift in Sources */,
@@ -551,8 +565,8 @@
 				4E2D3CC324C5EE8A00FA319C /* VideoItemView.swift in Sources */,
 				4EA192002497FFD2005F9177 /* UIViewController.swift in Sources */,
 				4E182D1E24A096C60020558B /* TimeSpanData.swift in Sources */,
-				4ED3055924E3E01700CAA277 /* EntryItemViewController.swift in Sources */,
 				4E90CA492495321D0029E308 /* AudioData.swift in Sources */,
+				4E04C7A324EC0CB800FA3D9F /* ScrollViewController.swift in Sources */,
 				4ED3B29B24C9927000FD45C8 /* VideoCaptureViewController.swift in Sources */,
 				4E90CA462495321D0029E308 /* VideoData.swift in Sources */,
 				4E6C057524AB998A00AE85B2 /* UIImageView.swift in Sources */,
@@ -562,7 +576,6 @@
 				4ED3056124E3EA0F00CAA277 /* IconInfoText.swift in Sources */,
 				4E2ECFD524DD8F66003FFFF1 /* TableViewController.swift in Sources */,
 				4EFC686024DACD9700159CDC /* MapView.swift in Sources */,
-				4ED3055D24E3E47100CAA277 /* StackViewController.swift in Sources */,
 				4EB9336124CED2C10059F687 /* AVCaptureVideoOrientation.swift in Sources */,
 				4EFDFF3824952F53001EB7C3 /* AppDelegate.swift in Sources */,
 				4E4581BB24A2007F009ED3AA /* UITextView.swift in Sources */,
@@ -576,7 +589,6 @@
 				4E4CB4DC249E7302005B6428 /* UIImage.swift in Sources */,
 				4ED3B29724C9924200FD45C8 /* ImageCaptureViewController.swift in Sources */,
 				4EB9335924CC1DDE0059F687 /* Authorization.swift in Sources */,
-				4E66B33924DE954200202932 /* ModalScrollViewController.swift in Sources */,
 				4ED3055224E3DD8B00CAA277 /* EditEntryInfoViewController.swift in Sources */,
 				4E1457A424E2AF7E008EC422 /* MediaCommentLabel.swift in Sources */,
 				4E90CA502495321D0029E308 /* Codable.swift in Sources */,

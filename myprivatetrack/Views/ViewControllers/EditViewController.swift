@@ -9,10 +9,16 @@
 import Foundation
 import UIKit
 
-class EditViewController: ScrollStackViewController {
+class EditViewController: ScrollViewController {
+    
+    var stackView = UIStackView()
     
     override func loadView() {
         super.loadView()
+        scrollView.setupVertical()
+        scrollView.addSubview(stackView)
+        stackView.fillSuperview(padding: UIEdgeInsets(top: defaultInset, left: .zero, bottom: defaultInset, right: .zero))
+        stackView.setupVertical()
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name:UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name:UIResponder.keyboardWillHideNotification, object: nil)
     }

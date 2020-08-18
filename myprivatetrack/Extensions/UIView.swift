@@ -129,6 +129,12 @@ extension UIView{
         setBottomAnchor(superview?.bottomAnchor, padding: padding.bottom)
     }
     
+    func placeTopRight(padding: UIEdgeInsets = Statics.defaultInsets){
+        enableAnchors()
+        setTopAnchor(superview?.topAnchor, padding: padding.top)
+        setTrailingAnchor(superview?.trailingAnchor, padding: padding.right)
+    }
+    
     func enableAnchors(){
         translatesAutoresizingMaskIntoConstraints = false
     }

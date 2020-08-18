@@ -7,7 +7,7 @@
 //
 
 import Foundation
-class SettingsInfoViewController: ModalScrollViewController {
+class SettingsInfoViewController: InfoViewController {
     
     let useLocationHeader = InfoHeader(text: "useLocation".localize())
     let useLocationText = InfoText(text: "settingsUseLocationInfo".localize())

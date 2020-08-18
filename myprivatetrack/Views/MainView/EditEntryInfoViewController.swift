@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-class EditEntryInfoViewController: ModalScrollViewController {
+class EditEntryInfoViewController: InfoViewController {
     
     let headerText = InfoHeader(text: "editEntryInfoHeader".localize())
     let topText = InfoText(text: "editEntryTopInfo".localize())

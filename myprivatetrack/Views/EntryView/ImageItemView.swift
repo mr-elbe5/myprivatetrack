@@ -9,10 +9,15 @@
 import Foundation
 import UIKit
 
+protocol ImageItemDelegate{
+    func viewImageItem(data: ImageData)
+}
+
 class ImageItemView : EntryItemView{
     
-    static func fromData(data : ImageData)  -> ImageItemView{
+    static func fromData(data : ImageData,delegate : ImageItemDelegate? = nil)  -> ImageItemView{
         let itemView = ImageItemView()
+        itemView.delegate = delegate
         itemView.setupView(data: data)
         return itemView
     }
@@ -20,6 +25,8 @@ class ImageItemView : EntryItemView{
     fileprivate var aspectRatioConstraint:NSLayoutConstraint? = nil
     
     var imageData : ImageData? = nil
+    
+    var delegate : ImageItemDelegate? = nil
     
     var imageView = UIImageView()
     
@@ -39,6 +46,18 @@ class ImageItemView : EntryItemView{
         }
         else{
             imageView.connectBottom(view: self)
+        }
+        if delegate != nil{
+            let viewButton = ViewDetailButton()
+            viewButton.addTarget(self, action: #selector(viewItem), for: .touchDown)
+            addSubview(viewButton)
+            viewButton.placeTopRight()
+        }
+    }
+    
+    @objc func viewItem(){
+        if let imageData = imageData{
+            delegate?.viewImageItem(data: imageData)
         }
     }
     

@@ -169,6 +169,21 @@ class TimelineViewController: TableViewController, SaveEntryDelegate, EntryActio
         self.present(viewEntryViewController, animated: true)
     }
     
+    func viewImageItem(data: ImageData) {
+        print("view image item")
+        let imageViewController = ImageViewController()
+        imageViewController.imageData = data
+        imageViewController.modalPresentationStyle = .fullScreen
+        self.present(imageViewController, animated: true)
+    }
+    
+    func viewVideoItem(data: VideoData) {
+        let videoViewController = VideoViewController()
+        videoViewController.videoData = data
+        videoViewController.modalPresentationStyle = .fullScreen
+        self.present(videoViewController, animated: true)
+    }
+    
     // table view callbacks
     
     func numberOfSections(in tableView: UITableView) -> Int {

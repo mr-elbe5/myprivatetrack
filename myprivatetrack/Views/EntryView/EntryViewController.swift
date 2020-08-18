@@ -13,8 +13,14 @@ class EntryViewController: ModalScrollViewController {
     
     var entry : EntryData!
     
+    var stackView = UIStackView()
+    
     override func loadView() {
         super.loadView()
+        scrollView.setupVertical()
+        scrollView.addSubview(stackView)
+        stackView.fillSuperview(padding: UIEdgeInsets(top: defaultInset, left: .zero, bottom: defaultInset, right: .zero))
+        stackView.setupVertical()
         let label = InfoHeader(text: entry.creationDate.dateTimeString())
         stackView.addArrangedSubview(label)
         for item in entry.items{

@@ -1,20 +1,19 @@
 //
-//  FormViewController.swift
+//  ScrollViewController.swift
 //  myprivatetrack
 //
-//  Created by Michael Rönnau on 23.06.20.
+//  Created by Michael Rönnau on 18.08.20.
 //  Copyright © 2020 Michael Rönnau. All rights reserved.
 //
 
 import Foundation
 import UIKit
 
-class ScrollStackViewController: UIViewController {
+class ScrollViewController: UIViewController {
     
     var scrollViewTopPadding : CGFloat = 1
     var headerView : UIView? = nil
     var scrollView = UIScrollView()
-    var stackView = UIStackView()
     
     override func loadView() {
         super.loadView()
@@ -35,10 +34,6 @@ class ScrollStackViewController: UIViewController {
         scrollView.setTopAnchor(headerView?.bottomAnchor ?? guide.topAnchor, padding: scrollViewTopPadding)
         scrollView.setTrailingAnchor(guide.trailingAnchor,padding: .zero)
         scrollView.setBottomAnchor(guide.bottomAnchor, padding: .zero)
-        scrollView.setupVertical()
-        scrollView.addSubview(stackView)
-        stackView.fillSuperview(padding: UIEdgeInsets(top: defaultInset, left: .zero, bottom: defaultInset, right: .zero))
-        stackView.setupVertical()
     }
     
     func setupHeaderView(){
@@ -46,4 +41,3 @@ class ScrollStackViewController: UIViewController {
     }
     
 }
-

@@ -2,14 +2,16 @@
 //  ModalViewController.swift
 //  myprivatetrack
 //
-//  Created by Michael Rönnau on 12.08.20.
+//  Created by Michael Rönnau on 18.08.20.
 //  Copyright © 2020 Michael Rönnau. All rights reserved.
 //
 
 import Foundation
 import UIKit
 
-class ModalViewController: StackViewController {
+class ModalViewController: ViewController {
+    
+    var stackView = UIStackView()
     
     override func loadView() {
         self.mainViewTopPadding = 0

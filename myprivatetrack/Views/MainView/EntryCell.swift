@@ -12,9 +12,11 @@ protocol EntryActionDelegate{
     func editEntry(entry: EntryData)
     func deleteEntry(entry: EntryData)
     func viewEntry(entry: EntryData)
+    func viewImageItem(data: ImageData)
+    func viewVideoItem(data: VideoData)
 }
 
-class EntryCell: UITableViewCell{
+class EntryCell: UITableViewCell, ImageItemDelegate, VideoItemDelegate{
     
     var entry : EntryData? = nil {
         didSet {
@@ -69,13 +71,10 @@ class EntryCell: UITableViewCell{
                 editButton.setTrailingAnchor(deleteButton.leadingAnchor, padding: defaultInset)
             }
             else{
-                let viewButton = IconButton(icon: "magnifyingglass")
-                viewButton.tintColor = UIColor.systemGray
+                let viewButton = ViewDetailButton()
                 viewButton.addTarget(self, action: #selector(viewEntry), for: .touchDown)
                 cellBody.addSubview(viewButton)
-                viewButton.enableAnchors()
-                viewButton.setTopAnchor(cellBody.topAnchor, padding: defaultInset)
-                viewButton.setTrailingAnchor(cellBody.trailingAnchor, padding: defaultInset)
+                viewButton.placeTopRight()
             }
             
             var lastView : UIView = timeLabel
@@ -94,13 +93,13 @@ class EntryCell: UITableViewCell{
                     lastView = itemView
                     break
                 case .image:
-                    let itemView = ImageItemView.fromData(data: item.data as! ImageData)
+                    let itemView = ImageItemView.fromData(data: item.data as! ImageData, delegate: self)
                     cellBody.addSubview(itemView)
                     itemView.placeBelow(view: lastView, padding: defaultInsets)
                     lastView = itemView
                     break
                 case .video:
-                    let itemView = VideoItemView.fromData(data: item.data as! VideoData)
+                    let itemView = VideoItemView.fromData(data: item.data as! VideoData, delegate: self)
                     cellBody.addSubview(itemView)
                     itemView.placeBelow(view: lastView, padding: defaultInsets)
                     lastView = itemView
@@ -133,6 +132,14 @@ class EntryCell: UITableViewCell{
         if entry != nil{
             delegate?.viewEntry(entry: entry!)
         }
+    }
+    
+    func viewImageItem(data: ImageData){
+        delegate?.viewImageItem(data: data)
+    }
+    
+    func viewVideoItem(data: VideoData){
+        delegate?.viewVideoItem(data: data)
     }
     
 }

@@ -9,15 +9,22 @@
 import Foundation
 import UIKit
 
+protocol VideoItemDelegate{
+    func viewVideoItem(data: VideoData)
+}
+
 class VideoItemView : EntryItemView{
     
-    static func fromData(data : VideoData)  -> VideoItemView{
+    static func fromData(data : VideoData,delegate: VideoItemDelegate? = nil)  -> VideoItemView{
         let itemView = VideoItemView()
         itemView.setupView(data: data)
+        itemView.delegate = delegate
         return itemView
     }
     
     var videoData : VideoData? = nil
+    
+    var delegate : VideoItemDelegate? = nil
     
     var videoView = VideoPlayerView()
     
@@ -35,6 +42,18 @@ class VideoItemView : EntryItemView{
         }
         else{
             videoView.connectBottom(view: self)
+        }
+        if delegate != nil{
+            let viewButton = ViewDetailButton()
+            viewButton.addTarget(self, action: #selector(viewItem), for: .touchDown)
+            addSubview(viewButton)
+            viewButton.placeTopRight()
+        }
+    }
+    
+    @objc func viewItem(){
+        if let videoData = videoData{
+            delegate?.viewVideoItem(data: videoData)
         }
     }
     

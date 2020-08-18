@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-class TimelineInfoViewController: ModalScrollViewController {
+class TimelineInfoViewController: InfoViewController {
     
     let privacyHeader = InfoHeader(text: "privacyInfoHeader".localize())
     let privacyHeaderText = InfoText(text: "privacyInfoText".localize())
@@ -27,6 +27,7 @@ class TimelineInfoViewController: ModalScrollViewController {
     
     override func loadView() {
         super.loadView()
+        print("TimelineInfoViewController")
         stackView.addArrangedSubview(privacyHeader)
         stackView.addArrangedSubview(privacyHeaderText)
         stackView.addArrangedSubview(headerText)

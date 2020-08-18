@@ -7,7 +7,7 @@
 //
 
 import Foundation
-class MapInfoViewController: ModalScrollViewController {
+class MapInfoViewController: InfoViewController {
     
     let headerText = InfoHeader(text: "mapInfoHeader".localize())
     let topText = InfoText(text: "mapTopInfo".localize())
