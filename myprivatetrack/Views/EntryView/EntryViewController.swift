@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-class EntryViewController: ModalScrollViewController {
+class EntryViewController: ModalScrollViewController, ImageItemDelegate, VideoItemDelegate {
     
     var entry : EntryData!
     
@@ -34,11 +34,11 @@ class EntryViewController: ModalScrollViewController {
                 stackView.addArrangedSubview(itemView)
                 break
             case .image:
-                let itemView = ImageItemView.fromData(data: item.data as! ImageData)
+                let itemView = ImageItemView.fromData(data: item.data as! ImageData,delegate: self)
                 stackView.addArrangedSubview(itemView)
                 break
             case .video:
-                let itemView = VideoItemView.fromData(data: item.data as! VideoData)
+                let itemView = VideoItemView.fromData(data: item.data as! VideoData,delegate: self)
                 stackView.addArrangedSubview(itemView)
                 break
             case .location:
@@ -47,6 +47,20 @@ class EntryViewController: ModalScrollViewController {
                 break
             }
         }
+    }
+    
+    func viewImageItem(data: ImageData) {
+        let imageViewController = ImageViewController()
+        imageViewController.imageData = data
+        imageViewController.modalPresentationStyle = .fullScreen
+        self.present(imageViewController, animated: true)
+    }
+    
+    func viewVideoItem(data: VideoData) {
+        let videoViewController = VideoViewController()
+        videoViewController.videoData = data
+        videoViewController.modalPresentationStyle = .fullScreen
+        self.present(videoViewController, animated: true)
     }
     
 }
