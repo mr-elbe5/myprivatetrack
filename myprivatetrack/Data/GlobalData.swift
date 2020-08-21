@@ -28,12 +28,25 @@ class GlobalData{
     
     private func save(forKey key: StoreKey, value: Codable) {
         let storeString = value.serialize()
+        print(value.toJSON())
         store.set(storeString, forKey: key.rawValue)
+    }
+    
+    private func saveAsJSON(forKey key: StoreKey, value: Codable) {
+        let jsonString = value.toJSON()
+        store.set(jsonString, forKey: key.rawValue)
     }
     
     private func load<T : Codable>(forKey key: StoreKey) -> T? {
         if let storedString = store.value(forKey: key.rawValue) as? String {
             return T.deserialize(encoded: storedString)
+        }
+        return nil
+    }
+    
+    private func loadFromJSON<T : Codable>(forKey key: StoreKey) -> T? {
+        if let storedString = store.value(forKey: key.rawValue) as? String {
+            return T.fromJSON(encoded: storedString)
         }
         return nil
     }
