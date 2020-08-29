@@ -1,6 +1,5 @@
 //
 //  SwitchView.swift
-//  myprivatetrack
 //
 //  Created by Michael Rönnau on 15.08.20.
 //  Copyright © 2020 Michael Rönnau. All rights reserved.
@@ -23,7 +22,7 @@ public class SwitchView : UIView{
     public func setupView(labelText: String, isOn : Bool){
         label.text = labelText
         addSubview(label)
-        switcher.transform = CGAffineTransform(scaleX: 0.75, y: 0.75)
+        switcher.scaleBy(0.75)
         switcher.isOn = isOn
         switcher.addTarget(self, action: #selector(valueDidChange), for: .valueChanged)
         addSubview(switcher)

@@ -1,6 +1,5 @@
 //
 //  SettingsViewController.swift
-//  myprivatetrack
 //
 //  Created by Michael Rönnau on 13.06.20.
 //  Copyright © 2020 Michael Rönnau. All rights reserved.
@@ -41,7 +40,7 @@ class SettingsViewController: EditViewController, SwitchDelegate, UIDocumentPick
         let rightStackView = UIStackView()
         headerView.backgroundColor = UIColor.systemBackground
         headerView.addSubview(rightStackView)
-        rightStackView.setupHorizontal(spacing: defaultInset)
+        rightStackView.setupHorizontal(spacing: 2*defaultInset)
         rightStackView.placeBefore(anchor: headerView.trailingAnchor, padding: defaultInsets)
         
         let infoButton = IconButton(icon: "info.circle")

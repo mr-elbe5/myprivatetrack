@@ -1,6 +1,5 @@
 //
 //  UIViewController.swift
-//  myprivatetrack
 //
 //  Created by Michael Rönnau on 15.06.20.
 //  Copyright © 2020 Michael Rönnau. All rights reserved.

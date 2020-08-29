@@ -256,6 +256,9 @@
 		4E90CA2C249531350029E308 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				4ED21BE224FAA39300A6FEA3 /* UIView.swift */,
+				4ED21BD924FAA39300A6FEA3 /* UIStackView.swift */,
+				4ED21BD124FAA39300A6FEA3 /* UIScrollView.swift */,
 				4ED21BA224FAA2B800A6FEA3 /* Controls */,
 				4E2D3CBB24C5E87A00FA319C /* EntryViews */,
 			);
@@ -294,18 +297,18 @@
 		4ED21B3424FA9A3500A6FEA3 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				4ED21C3424FAA83E00A6FEA3 /* UIViewController.swift */,
 				4ED21B9724FAA29F00A6FEA3 /* EditViewController.swift */,
 				4ED21B9524FAA29F00A6FEA3 /* ImageViewController.swift */,
 				4ED21B9224FAA29F00A6FEA3 /* InfoViewController.swift */,
+				4ED21BC724FAA36C00A6FEA3 /* MainTabController.swift */,
 				4ED21B9424FAA29F00A6FEA3 /* ModalScrollViewController.swift */,
 				4ED21B9124FAA29F00A6FEA3 /* ModalViewController.swift */,
 				4ED21B9624FAA29F00A6FEA3 /* ScrollViewController.swift */,
 				4ED21B9824FAA29F00A6FEA3 /* TableViewController.swift */,
+				4ED21C3424FAA83E00A6FEA3 /* UIViewController.swift */,
 				4ED21B9024FAA29F00A6FEA3 /* ViewController.swift */,
-				4ED21BC724FAA36C00A6FEA3 /* MainTabController.swift */,
-				4EF0A7F7249F987500A236EB /* Settings */,
 				4EF0A7F5249F986100A236EB /* Map */,
+				4EF0A7F7249F987500A236EB /* Settings */,
 				4E2ECFD624DD9E42003FFFF1 /* Timeline */,
 			);
 			path = ViewControllers;
@@ -316,22 +319,22 @@
 			children = (
 				4ED21C3A24FAAC6D00A6FEA3 /* AudioPlayerView.swift */,
 				4ED21C3C24FAAC6D00A6FEA3 /* AudioRecorderView.swift */,
+				4ED21B7C24FAA20F00A6FEA3 /* Authorization.swift */,
 				4ED21C3D24FAAC6E00A6FEA3 /* AVCaptureDevice.swift */,
 				4ED21C4224FAAC6E00A6FEA3 /* AVCaptureVideoOrientation.swift */,
 				4ED21C3F24FAAC6E00A6FEA3 /* CameraViewController.swift */,
 				4ED21C3924FAAC6D00A6FEA3 /* CaptureButton.swift */,
+				4ED21B8024FAA23B00A6FEA3 /* CLLocation.swift */,
 				4ED21C4524FAAC6E00A6FEA3 /* EntryAnnotation.swift */,
 				4ED21C4324FAAC6E00A6FEA3 /* ImageCaptureViewController.swift */,
 				4ED21C4424FAAC6E00A6FEA3 /* LocationCaptureViewController.swift */,
+				4ED21B7D24FAA20F00A6FEA3 /* LocationService.swift */,
 				4ED21C4624FAAC6E00A6FEA3 /* MapView.swift */,
 				4ED21C4024FAAC6E00A6FEA3 /* MediaCommentLabel.swift */,
+				4ED21BBB24FAA36000A6FEA3 /* MKMapView.swift */,
 				4ED21C3B24FAAC6D00A6FEA3 /* VideoCaptureViewController.swift */,
 				4ED21C4124FAAC6E00A6FEA3 /* VideoPlayerView.swift */,
 				4ED21C3E24FAAC6E00A6FEA3 /* VideoViewController.swift */,
-				4ED21B7C24FAA20F00A6FEA3 /* Authorization.swift */,
-				4ED21B8024FAA23B00A6FEA3 /* CLLocation.swift */,
-				4ED21B7D24FAA20F00A6FEA3 /* LocationService.swift */,
-				4ED21BBB24FAA36000A6FEA3 /* MKMapView.swift */,
 			);
 			path = Hardware;
 			sourceTree = "<group>";
@@ -353,11 +356,8 @@
 				4ED21BD724FAA39300A6FEA3 /* UIImage.swift */,
 				4ED21BDB24FAA39300A6FEA3 /* UIImageView.swift */,
 				4ED21BD424FAA39300A6FEA3 /* UILabel.swift */,
-				4ED21BD124FAA39300A6FEA3 /* UIScrollView.swift */,
-				4ED21BD924FAA39300A6FEA3 /* UIStackView.swift */,
 				4ED21BD824FAA39300A6FEA3 /* UITextField.swift */,
 				4ED21BD624FAA39300A6FEA3 /* UITextView.swift */,
-				4ED21BE224FAA39300A6FEA3 /* UIView.swift */,
 				4ED21BDA24FAA39300A6FEA3 /* ViewDetailButton.swift */,
 			);
 			path = Controls;
@@ -367,12 +367,12 @@
 			isa = PBXGroup;
 			children = (
 				4ED21BBE24FAA36000A6FEA3 /* Codable.swift */,
-				4ED21BC024FAA36000A6FEA3 /* Date.swift */,
-				4ED21BBF24FAA36000A6FEA3 /* String.swift */,
-				4ED21BBC24FAA36000A6FEA3 /* URL.swift */,
 				4ED21B7724FAA17200A6FEA3 /* DataStore.swift */,
+				4ED21BC024FAA36000A6FEA3 /* Date.swift */,
 				4ED21B7824FAA17200A6FEA3 /* FileStore.swift */,
 				4ED21BC924FAA36C00A6FEA3 /* Settings.swift */,
+				4ED21BBF24FAA36000A6FEA3 /* String.swift */,
+				4ED21BBC24FAA36000A6FEA3 /* URL.swift */,
 			);
 			path = Data;
 			sourceTree = "<group>";

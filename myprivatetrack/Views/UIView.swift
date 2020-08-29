@@ -1,6 +1,5 @@
 //
 //  UIView.swift
-//  myprivatetrack
 //
 //  Created by Michael Rönnau on 21.06.20.
 //  Copyright © 2020 Michael Rönnau. All rights reserved.
@@ -50,6 +49,10 @@ extension UIView{
         layer.borderColor = UIColor.lightGray.cgColor
         layer.borderWidth = 0.5
         layer.cornerRadius = 5
+    }
+    
+    public func scaleBy(_ factor: CGFloat){
+        self.transform = CGAffineTransform(scaleX: factor, y:factor)
     }
     
     public func resetConstraints(){

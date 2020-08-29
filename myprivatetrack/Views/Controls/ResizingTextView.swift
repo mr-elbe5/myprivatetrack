@@ -1,6 +1,5 @@
 //
 //  ResizingTextView.swift
-//  myprivatetrack
 //
 //  Created by Michael Rönnau on 11.08.20.
 //  Copyright © 2020 Michael Rönnau. All rights reserved.

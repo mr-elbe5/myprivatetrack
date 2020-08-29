@@ -1,6 +1,5 @@
 //
 //  ExportViewController.swift
-//  myprivatetrack
 //
 //  Created by Michael Rönnau on 26.08.20.
 //  Copyright © 2020 Michael Rönnau. All rights reserved.
@@ -42,7 +41,7 @@ class BackupViewController: ModalScrollViewController, DatePickerDelegate{
         let rightStackView = UIStackView()
         headerView.backgroundColor = UIColor.systemBackground
         headerView.addSubview(rightStackView)
-        rightStackView.setupHorizontal(spacing: defaultInset)
+        rightStackView.setupHorizontal(spacing: 2*defaultInset)
         rightStackView.placeBefore(anchor: headerView.trailingAnchor, padding: defaultInsets)
         
         let infoButton = IconButton(icon: "info.circle")

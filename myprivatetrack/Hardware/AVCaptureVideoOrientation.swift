@@ -1,6 +1,5 @@
 //
 //  AVCaptureVideoOrientation.swift
-//  myprivatetrack
 //
 //  Created by Michael Rönnau on 27.07.20.
 //  Copyright © 2020 Michael Rönnau. All rights reserved.

@@ -1,6 +1,5 @@
 //
 //  AudioRecorder.swift
-//  myprivatetrack
 //
 //  Created by Michael Rönnau on 09.08.20.
 //  Copyright © 2020 Michael Rönnau. All rights reserved.

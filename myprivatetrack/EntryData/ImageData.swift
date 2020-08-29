@@ -1,6 +1,5 @@
 //
 //  ImageData.swift
-//  myprivatetrack
 //
 //  Created by Michael Rönnau on 04.04.20.
 //  Copyright © 2020 Michael Rönnau. All rights reserved.

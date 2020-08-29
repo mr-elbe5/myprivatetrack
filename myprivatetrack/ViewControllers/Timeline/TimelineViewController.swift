@@ -1,6 +1,5 @@
 //
 //  TimelineViewController.swift
-//  myprivatetrack
 //
 //  Created by Michael Rönnau on 13.06.20.
 //  Copyright © 2020 Michael Rönnau. All rights reserved.
@@ -40,14 +39,15 @@ class TimelineViewController: TableViewController, SaveEntryDelegate, EntryCellA
         headerView.backgroundColor = UIColor.systemBackground
         headerView.addSubview(leftStackView)
         headerView.addSubview(rightStackView)
-        leftStackView.setupHorizontal(spacing: defaultInset)
+        leftStackView.setupHorizontal(spacing: 2*defaultInset)
         leftStackView.placeAfter(anchor: headerView.leadingAnchor, padding: defaultInsets)
-        rightStackView.setupHorizontal(spacing: defaultInset)
+        rightStackView.setupHorizontal(spacing: 2*defaultInset)
         rightStackView.placeBefore(anchor: headerView.trailingAnchor, padding: defaultInsets)
         
         let addLabel = UILabel()
         addLabel.text = "+"
         addLabel.textColor = UIColor.label
+        addLabel.scaleBy(1.25)
         leftStackView.addArrangedSubview(addLabel)
         addTextButton.addTarget(self, action: #selector(addTextEntry), for: .touchDown)
         leftStackView.addArrangedSubview(addTextButton)
