@@ -9,7 +9,7 @@
 import UIKit
 
 enum TabTags{
-    case events, map, settings
+    case timeline, map, settings
 }
 
 class MainTabController: UITabBarController {
@@ -17,7 +17,7 @@ class MainTabController: UITabBarController {
     override func loadView() {
         super.loadView()
         let timelineViewController = TimelineViewController()
-        timelineViewController.tabBarItem = UITabBarItem(title: NSLocalizedString("timeline", comment: ""), image: UIImage(systemName: "rectangle.stack"), tag: TabTags.events.hashValue)
+        timelineViewController.tabBarItem = UITabBarItem(title: NSLocalizedString("timeline", comment: ""), image: UIImage(systemName: "rectangle.stack"), tag: TabTags.timeline.hashValue)
         let mapViewController = MapViewController()
         mapViewController.tabBarItem = UITabBarItem(title: NSLocalizedString("map", comment: ""), image: UIImage(systemName: "globe"), tag: TabTags.map.hashValue)
         let settingsViewController = SettingsViewController()
@@ -26,6 +26,28 @@ class MainTabController: UITabBarController {
         let tabBarList = [timelineViewController, mapViewController, settingsViewController]
         viewControllers = tabBarList
         selectedViewController = timelineViewController
+    }
+    
+    static func getViewController(tag: TabTags) -> UIViewController?{
+        let viewController = UIApplication.shared.windows.first!.rootViewController as! MainTabController
+        for viewController in viewController.viewControllers!{
+            if viewController.tabBarItem!.tag == tag.hashValue{
+                return viewController
+            }
+        }
+        return nil
+    }
+    
+    static func getTimelineViewController() -> TimelineViewController?{
+        return getViewController(tag: .timeline) as! TimelineViewController?
+    }
+    
+    static func getMapViewController() -> MapViewController?{
+        return getViewController(tag: .map) as! MapViewController?
+    }
+    
+    static func getSettingsViewController() -> SettingsViewController?{
+        return getViewController(tag: .settings) as! SettingsViewController?
     }
 
 }

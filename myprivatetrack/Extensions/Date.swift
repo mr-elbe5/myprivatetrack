@@ -1,6 +1,6 @@
 //
 //  Date.swift
-//  myprivatetrack
+//  E5Data
 //
 //  Created by Michael Rönnau on 06.06.20.
 //  Copyright © 2020 Michael Rönnau. All rights reserved.
@@ -10,50 +10,51 @@ import Foundation
 
 extension Date{
     
-    func startOfDay() -> Date{
+    public func startOfDay() -> Date{
         var cal = Calendar.current
         cal.timeZone = TimeZone(abbreviation: "UTC")!
         return cal.startOfDay(for: self)
     }
     
-    func startOfMonth() -> Date{
+    public func startOfMonth() -> Date{
         var cal = Calendar.current
         cal.timeZone = TimeZone(abbreviation: "UTC")!
         let components = cal .dateComponents([.month, .year], from: self)
         return cal.date(from: components)!
     }
     
-    func dateString() -> String{
+    public func dateString() -> String{
         return DateFormats.dateOnlyFormatter.string(from: self)
     }
     
-    func dateTimeString() -> String{
+    public func dateTimeString() -> String{
         return DateFormats.dateTimeFormatter.string(from: self)
     }
     
-    func fileDate() -> String{
+    public func fileDate() -> String{
         return DateFormats.fileDateFormatter.string(from: self)
     }
     
-    func timeString() -> String{
+    public func timeString() -> String{
         return DateFormats.timeOnlyFormatter.string(from: self)
     }
     
 }
 
 extension Date {
- var millisecondsSince1970:Int64 {
+ 
+    public var millisecondsSince1970:Int64 {
         return Int64((self.timeIntervalSince1970 * 1000.0).rounded())
     }
 
-    init(milliseconds:Int) {
+    public init(milliseconds:Int) {
         self = Date(timeIntervalSince1970: TimeInterval(milliseconds / 1000))
     }
 }
 
 class DateFormats{
     
-    static var dateOnlyFormatter : DateFormatter{
+    public static var dateOnlyFormatter : DateFormatter{
         get{
             let dateFormatter = DateFormatter()
             dateFormatter.dateStyle = .medium
@@ -62,7 +63,7 @@ class DateFormats{
         }
     }
     
-    static var timeOnlyFormatter : DateFormatter{
+    public static var timeOnlyFormatter : DateFormatter{
         get{
             let dateFormatter = DateFormatter()
             dateFormatter.dateStyle = .none
@@ -71,7 +72,7 @@ class DateFormats{
         }
     }
     
-    static var dateTimeFormatter : DateFormatter{
+    public static var dateTimeFormatter : DateFormatter{
         get{
             let dateFormatter = DateFormatter()
             dateFormatter.dateStyle = .medium
@@ -80,7 +81,7 @@ class DateFormats{
         }
     }
     
-    static var fileDateFormatter : DateFormatter{
+    public static var fileDateFormatter : DateFormatter{
         get{
             let dateFormatter = DateFormatter()
             dateFormatter.timeZone = .none

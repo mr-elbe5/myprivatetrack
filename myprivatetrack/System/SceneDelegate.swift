@@ -17,16 +17,16 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // If using a storyboard, the `window` property will automatically be initialized and attached to the scene.
         // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
         
-        FileStore.shared.initialize()
-        GlobalData.shared.loadSettings()
-        GlobalData.shared.loadData()
+        FileStore.initialize()
+        Settings.load()
+        GlobalData.load()
         guard let windowScene = (scene as? UIWindowScene) else { return }
         window = UIWindow(frame: windowScene.coordinateSpace.bounds)
         window?.windowScene = windowScene
         window?.rootViewController = MainTabController()
         window?.makeKeyAndVisible()
-        Authorizations.askAllAuthorizations(){ result in
-            if GlobalData.shared.settings.useLocation{
+        Authorization.askAllAuthorizations(){ result in
+            if Settings.shared.useLocation{
                 LocationService.shared.assertRunning()
             }
         }
@@ -60,8 +60,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // to restore the scene back to its current state.
 
         // Save changes in the application's managed object context when the application transitions to the background.
-        GlobalData.shared.saveSettings()
-        GlobalData.shared.saveData()
+        Settings.shared.save()
+        GlobalData.shared.save()
     }
 
 

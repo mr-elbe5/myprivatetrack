@@ -23,6 +23,12 @@ enum ImageMaxSide: Int{
 
 class Settings: Identifiable, Codable{
     
+    public static var shared = Settings()
+    
+    public static func load(){
+        shared = DataStore.shared.load(forKey: .settings) ?? Settings()
+    }
+    
     enum CodingKeys: String, CodingKey {
         case useLocation
         case mapStartSize
@@ -51,7 +57,7 @@ class Settings: Identifiable, Codable{
     }
     
     func save(){
-        GlobalData.shared.saveSettings()
+        DataStore.shared.save(forKey: .settings, value: self)
     }
     
 }
