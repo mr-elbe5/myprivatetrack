@@ -14,13 +14,6 @@
 		4ED21B7E24FAA20F00A6FEA3 /* Authorization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED21B7C24FAA20F00A6FEA3 /* Authorization.swift */; };
 		4ED21B7F24FAA20F00A6FEA3 /* LocationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED21B7D24FAA20F00A6FEA3 /* LocationService.swift */; };
 		4ED21B8124FAA23B00A6FEA3 /* CLLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED21B8024FAA23B00A6FEA3 /* CLLocation.swift */; };
-		4ED21B8924FAA27F00A6FEA3 /* AudioPlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED21B8224FAA27E00A6FEA3 /* AudioPlayerView.swift */; };
-		4ED21B8A24FAA27F00A6FEA3 /* AudioRecorderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED21B8324FAA27E00A6FEA3 /* AudioRecorderView.swift */; };
-		4ED21B8B24FAA27F00A6FEA3 /* VideoPlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED21B8424FAA27E00A6FEA3 /* VideoPlayerView.swift */; };
-		4ED21B8C24FAA27F00A6FEA3 /* CaptureButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED21B8524FAA27E00A6FEA3 /* CaptureButton.swift */; };
-		4ED21B8D24FAA27F00A6FEA3 /* AVCaptureVideoOrientation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED21B8624FAA27F00A6FEA3 /* AVCaptureVideoOrientation.swift */; };
-		4ED21B8E24FAA27F00A6FEA3 /* VideoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED21B8724FAA27F00A6FEA3 /* VideoViewController.swift */; };
-		4ED21B8F24FAA27F00A6FEA3 /* AVCaptureDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED21B8824FAA27F00A6FEA3 /* AVCaptureDevice.swift */; };
 		4ED21B9924FAA29F00A6FEA3 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED21B9024FAA29F00A6FEA3 /* ViewController.swift */; };
 		4ED21B9A24FAA29F00A6FEA3 /* ModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED21B9124FAA29F00A6FEA3 /* ModalViewController.swift */; };
 		4ED21B9B24FAA29F00A6FEA3 /* InfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED21B9224FAA29F00A6FEA3 /* InfoViewController.swift */; };
@@ -85,13 +78,6 @@
 		4ED21C1024FAA3B900A6FEA3 /* EditEntryInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED21C0A24FAA3B900A6FEA3 /* EditEntryInfoViewController.swift */; };
 		4ED21C1324FAA3D000A6FEA3 /* MapInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED21C1124FAA3D000A6FEA3 /* MapInfoViewController.swift */; };
 		4ED21C1424FAA3D000A6FEA3 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED21C1224FAA3D000A6FEA3 /* MapViewController.swift */; };
-		4ED21C1C24FAA45700A6FEA3 /* VideoCaptureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED21C1524FAA45600A6FEA3 /* VideoCaptureViewController.swift */; };
-		4ED21C1D24FAA45700A6FEA3 /* LocationCaptureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED21C1624FAA45600A6FEA3 /* LocationCaptureViewController.swift */; };
-		4ED21C1E24FAA45700A6FEA3 /* MediaCommentLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED21C1724FAA45600A6FEA3 /* MediaCommentLabel.swift */; };
-		4ED21C1F24FAA45700A6FEA3 /* ImageCaptureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED21C1824FAA45600A6FEA3 /* ImageCaptureViewController.swift */; };
-		4ED21C2024FAA45700A6FEA3 /* CameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED21C1924FAA45600A6FEA3 /* CameraViewController.swift */; };
-		4ED21C2124FAA45700A6FEA3 /* EntryAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED21C1A24FAA45700A6FEA3 /* EntryAnnotation.swift */; };
-		4ED21C2224FAA45700A6FEA3 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED21C1B24FAA45700A6FEA3 /* MapView.swift */; };
 		4ED21C2924FAA47500A6FEA3 /* SettingsInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED21C2324FAA47400A6FEA3 /* SettingsInfoViewController.swift */; };
 		4ED21C2A24FAA47500A6FEA3 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED21C2424FAA47400A6FEA3 /* SettingsViewController.swift */; };
 		4ED21C2B24FAA47500A6FEA3 /* BackupInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED21C2524FAA47400A6FEA3 /* BackupInfoViewController.swift */; };
@@ -101,6 +87,20 @@
 		4ED21C3124FAA59900A6FEA3 /* Zip in Frameworks */ = {isa = PBXBuildFile; productRef = 4ED21C3024FAA59900A6FEA3 /* Zip */; };
 		4ED21C3524FAA83E00A6FEA3 /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED21C3424FAA83E00A6FEA3 /* UIViewController.swift */; };
 		4ED21C3824FAA96600A6FEA3 /* Statics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED21C3724FAA96600A6FEA3 /* Statics.swift */; };
+		4ED21C4724FAAC6E00A6FEA3 /* CaptureButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED21C3924FAAC6D00A6FEA3 /* CaptureButton.swift */; };
+		4ED21C4824FAAC6E00A6FEA3 /* AudioPlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED21C3A24FAAC6D00A6FEA3 /* AudioPlayerView.swift */; };
+		4ED21C4924FAAC6E00A6FEA3 /* VideoCaptureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED21C3B24FAAC6D00A6FEA3 /* VideoCaptureViewController.swift */; };
+		4ED21C4A24FAAC6E00A6FEA3 /* AudioRecorderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED21C3C24FAAC6D00A6FEA3 /* AudioRecorderView.swift */; };
+		4ED21C4B24FAAC6E00A6FEA3 /* AVCaptureDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED21C3D24FAAC6E00A6FEA3 /* AVCaptureDevice.swift */; };
+		4ED21C4C24FAAC6E00A6FEA3 /* VideoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED21C3E24FAAC6E00A6FEA3 /* VideoViewController.swift */; };
+		4ED21C4D24FAAC6E00A6FEA3 /* CameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED21C3F24FAAC6E00A6FEA3 /* CameraViewController.swift */; };
+		4ED21C4E24FAAC6E00A6FEA3 /* MediaCommentLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED21C4024FAAC6E00A6FEA3 /* MediaCommentLabel.swift */; };
+		4ED21C4F24FAAC6E00A6FEA3 /* VideoPlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED21C4124FAAC6E00A6FEA3 /* VideoPlayerView.swift */; };
+		4ED21C5024FAAC6E00A6FEA3 /* AVCaptureVideoOrientation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED21C4224FAAC6E00A6FEA3 /* AVCaptureVideoOrientation.swift */; };
+		4ED21C5124FAAC6E00A6FEA3 /* ImageCaptureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED21C4324FAAC6E00A6FEA3 /* ImageCaptureViewController.swift */; };
+		4ED21C5224FAAC6E00A6FEA3 /* LocationCaptureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED21C4424FAAC6E00A6FEA3 /* LocationCaptureViewController.swift */; };
+		4ED21C5324FAAC6E00A6FEA3 /* EntryAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED21C4524FAAC6E00A6FEA3 /* EntryAnnotation.swift */; };
+		4ED21C5424FAAC6E00A6FEA3 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED21C4624FAAC6E00A6FEA3 /* MapView.swift */; };
 		4EFDFF4624952F54001EB7C3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4EFDFF4524952F54001EB7C3 /* Assets.xcassets */; };
 		4EFDFF4924952F54001EB7C3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4EFDFF4724952F54001EB7C3 /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
@@ -115,13 +115,6 @@
 		4ED21B7C24FAA20F00A6FEA3 /* Authorization.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Authorization.swift; sourceTree = "<group>"; };
 		4ED21B7D24FAA20F00A6FEA3 /* LocationService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationService.swift; sourceTree = "<group>"; };
 		4ED21B8024FAA23B00A6FEA3 /* CLLocation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CLLocation.swift; sourceTree = "<group>"; };
-		4ED21B8224FAA27E00A6FEA3 /* AudioPlayerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AudioPlayerView.swift; path = ../AVMedia/AudioPlayerView.swift; sourceTree = "<group>"; };
-		4ED21B8324FAA27E00A6FEA3 /* AudioRecorderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AudioRecorderView.swift; path = ../AVMedia/AudioRecorderView.swift; sourceTree = "<group>"; };
-		4ED21B8424FAA27E00A6FEA3 /* VideoPlayerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = VideoPlayerView.swift; path = ../AVMedia/VideoPlayerView.swift; sourceTree = "<group>"; };
-		4ED21B8524FAA27E00A6FEA3 /* CaptureButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CaptureButton.swift; path = ../AVMedia/CaptureButton.swift; sourceTree = "<group>"; };
-		4ED21B8624FAA27F00A6FEA3 /* AVCaptureVideoOrientation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AVCaptureVideoOrientation.swift; path = ../AVMedia/AVCaptureVideoOrientation.swift; sourceTree = "<group>"; };
-		4ED21B8724FAA27F00A6FEA3 /* VideoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = VideoViewController.swift; path = ../AVMedia/VideoViewController.swift; sourceTree = "<group>"; };
-		4ED21B8824FAA27F00A6FEA3 /* AVCaptureDevice.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AVCaptureDevice.swift; path = ../AVMedia/AVCaptureDevice.swift; sourceTree = "<group>"; };
 		4ED21B9024FAA29F00A6FEA3 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		4ED21B9124FAA29F00A6FEA3 /* ModalViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModalViewController.swift; sourceTree = "<group>"; };
 		4ED21B9224FAA29F00A6FEA3 /* InfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InfoViewController.swift; sourceTree = "<group>"; };
@@ -186,13 +179,6 @@
 		4ED21C0A24FAA3B900A6FEA3 /* EditEntryInfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditEntryInfoViewController.swift; sourceTree = "<group>"; };
 		4ED21C1124FAA3D000A6FEA3 /* MapInfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapInfoViewController.swift; sourceTree = "<group>"; };
 		4ED21C1224FAA3D000A6FEA3 /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
-		4ED21C1524FAA45600A6FEA3 /* VideoCaptureViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = VideoCaptureViewController.swift; path = ../AVMedia/VideoCaptureViewController.swift; sourceTree = "<group>"; };
-		4ED21C1624FAA45600A6FEA3 /* LocationCaptureViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LocationCaptureViewController.swift; path = ../AVMedia/LocationCaptureViewController.swift; sourceTree = "<group>"; };
-		4ED21C1724FAA45600A6FEA3 /* MediaCommentLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MediaCommentLabel.swift; path = ../AVMedia/MediaCommentLabel.swift; sourceTree = "<group>"; };
-		4ED21C1824FAA45600A6FEA3 /* ImageCaptureViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ImageCaptureViewController.swift; path = ../AVMedia/ImageCaptureViewController.swift; sourceTree = "<group>"; };
-		4ED21C1924FAA45600A6FEA3 /* CameraViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CameraViewController.swift; path = ../AVMedia/CameraViewController.swift; sourceTree = "<group>"; };
-		4ED21C1A24FAA45700A6FEA3 /* EntryAnnotation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EntryAnnotation.swift; path = ../AVMedia/EntryAnnotation.swift; sourceTree = "<group>"; };
-		4ED21C1B24FAA45700A6FEA3 /* MapView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MapView.swift; path = ../AVMedia/MapView.swift; sourceTree = "<group>"; };
 		4ED21C2324FAA47400A6FEA3 /* SettingsInfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsInfoViewController.swift; sourceTree = "<group>"; };
 		4ED21C2424FAA47400A6FEA3 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		4ED21C2524FAA47400A6FEA3 /* BackupInfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BackupInfoViewController.swift; sourceTree = "<group>"; };
@@ -201,6 +187,20 @@
 		4ED21C2824FAA47400A6FEA3 /* RestoreViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RestoreViewController.swift; sourceTree = "<group>"; };
 		4ED21C3424FAA83E00A6FEA3 /* UIViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
 		4ED21C3724FAA96600A6FEA3 /* Statics.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Statics.swift; sourceTree = "<group>"; };
+		4ED21C3924FAAC6D00A6FEA3 /* CaptureButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CaptureButton.swift; sourceTree = "<group>"; };
+		4ED21C3A24FAAC6D00A6FEA3 /* AudioPlayerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudioPlayerView.swift; sourceTree = "<group>"; };
+		4ED21C3B24FAAC6D00A6FEA3 /* VideoCaptureViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoCaptureViewController.swift; sourceTree = "<group>"; };
+		4ED21C3C24FAAC6D00A6FEA3 /* AudioRecorderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudioRecorderView.swift; sourceTree = "<group>"; };
+		4ED21C3D24FAAC6E00A6FEA3 /* AVCaptureDevice.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AVCaptureDevice.swift; sourceTree = "<group>"; };
+		4ED21C3E24FAAC6E00A6FEA3 /* VideoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoViewController.swift; sourceTree = "<group>"; };
+		4ED21C3F24FAAC6E00A6FEA3 /* CameraViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraViewController.swift; sourceTree = "<group>"; };
+		4ED21C4024FAAC6E00A6FEA3 /* MediaCommentLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MediaCommentLabel.swift; sourceTree = "<group>"; };
+		4ED21C4124FAAC6E00A6FEA3 /* VideoPlayerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoPlayerView.swift; sourceTree = "<group>"; };
+		4ED21C4224FAAC6E00A6FEA3 /* AVCaptureVideoOrientation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AVCaptureVideoOrientation.swift; sourceTree = "<group>"; };
+		4ED21C4324FAAC6E00A6FEA3 /* ImageCaptureViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageCaptureViewController.swift; sourceTree = "<group>"; };
+		4ED21C4424FAAC6E00A6FEA3 /* LocationCaptureViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationCaptureViewController.swift; sourceTree = "<group>"; };
+		4ED21C4524FAAC6E00A6FEA3 /* EntryAnnotation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EntryAnnotation.swift; sourceTree = "<group>"; };
+		4ED21C4624FAAC6E00A6FEA3 /* MapView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
 		4EFDFF3424952F53001EB7C3 /* My private track.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "My private track.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4EFDFF4524952F54001EB7C3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4EFDFF4824952F54001EB7C3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -314,24 +314,24 @@
 		4ED21B7B24FAA18700A6FEA3 /* Hardware */ = {
 			isa = PBXGroup;
 			children = (
+				4ED21C3A24FAAC6D00A6FEA3 /* AudioPlayerView.swift */,
+				4ED21C3C24FAAC6D00A6FEA3 /* AudioRecorderView.swift */,
+				4ED21C3D24FAAC6E00A6FEA3 /* AVCaptureDevice.swift */,
+				4ED21C4224FAAC6E00A6FEA3 /* AVCaptureVideoOrientation.swift */,
+				4ED21C3F24FAAC6E00A6FEA3 /* CameraViewController.swift */,
+				4ED21C3924FAAC6D00A6FEA3 /* CaptureButton.swift */,
+				4ED21C4524FAAC6E00A6FEA3 /* EntryAnnotation.swift */,
+				4ED21C4324FAAC6E00A6FEA3 /* ImageCaptureViewController.swift */,
+				4ED21C4424FAAC6E00A6FEA3 /* LocationCaptureViewController.swift */,
+				4ED21C4624FAAC6E00A6FEA3 /* MapView.swift */,
+				4ED21C4024FAAC6E00A6FEA3 /* MediaCommentLabel.swift */,
+				4ED21C3B24FAAC6D00A6FEA3 /* VideoCaptureViewController.swift */,
+				4ED21C4124FAAC6E00A6FEA3 /* VideoPlayerView.swift */,
+				4ED21C3E24FAAC6E00A6FEA3 /* VideoViewController.swift */,
 				4ED21B7C24FAA20F00A6FEA3 /* Authorization.swift */,
 				4ED21B8024FAA23B00A6FEA3 /* CLLocation.swift */,
 				4ED21B7D24FAA20F00A6FEA3 /* LocationService.swift */,
 				4ED21BBB24FAA36000A6FEA3 /* MKMapView.swift */,
-				4ED21C1924FAA45600A6FEA3 /* CameraViewController.swift */,
-				4ED21C1A24FAA45700A6FEA3 /* EntryAnnotation.swift */,
-				4ED21C1824FAA45600A6FEA3 /* ImageCaptureViewController.swift */,
-				4ED21C1624FAA45600A6FEA3 /* LocationCaptureViewController.swift */,
-				4ED21C1B24FAA45700A6FEA3 /* MapView.swift */,
-				4ED21C1724FAA45600A6FEA3 /* MediaCommentLabel.swift */,
-				4ED21C1524FAA45600A6FEA3 /* VideoCaptureViewController.swift */,
-				4ED21B8224FAA27E00A6FEA3 /* AudioPlayerView.swift */,
-				4ED21B8324FAA27E00A6FEA3 /* AudioRecorderView.swift */,
-				4ED21B8824FAA27F00A6FEA3 /* AVCaptureDevice.swift */,
-				4ED21B8624FAA27F00A6FEA3 /* AVCaptureVideoOrientation.swift */,
-				4ED21B8524FAA27E00A6FEA3 /* CaptureButton.swift */,
-				4ED21B8424FAA27E00A6FEA3 /* VideoPlayerView.swift */,
-				4ED21B8724FAA27F00A6FEA3 /* VideoViewController.swift */,
 			);
 			path = Hardware;
 			sourceTree = "<group>";
@@ -517,44 +517,46 @@
 				4ED21C0424FAA39E00A6FEA3 /* EntryItemView.swift in Sources */,
 				4ED21BC524FAA36000A6FEA3 /* String.swift in Sources */,
 				4ED21BBA24FAA32500A6FEA3 /* EntryItemData.swift in Sources */,
+				4ED21C5324FAAC6E00A6FEA3 /* EntryAnnotation.swift in Sources */,
 				4ED21BCB24FAA36C00A6FEA3 /* MainTabController.swift in Sources */,
 				4ED21BE624FAA39300A6FEA3 /* InfoHeader.swift in Sources */,
 				4ED21BEA24FAA39300A6FEA3 /* UITextView.swift in Sources */,
 				4ED21C0124FAA39E00A6FEA3 /* VideoItemView.swift in Sources */,
 				4ED21C3524FAA83E00A6FEA3 /* UIViewController.swift in Sources */,
+				4ED21C4A24FAAC6E00A6FEA3 /* AudioRecorderView.swift in Sources */,
 				4ED21BFE24FAA39E00A6FEA3 /* EntryViewController.swift in Sources */,
 				4ED21C0D24FAA3B900A6FEA3 /* TimelineViewController.swift in Sources */,
+				4ED21C4924FAAC6E00A6FEA3 /* VideoCaptureViewController.swift in Sources */,
 				4ED21BE924FAA39300A6FEA3 /* ControlView.swift in Sources */,
-				4ED21C1D24FAA45700A6FEA3 /* LocationCaptureViewController.swift in Sources */,
 				4ED21BA024FAA29F00A6FEA3 /* EditViewController.swift in Sources */,
 				4ED21BF324FAA39300A6FEA3 /* SwitchView.swift in Sources */,
 				4ED21BA124FAA29F00A6FEA3 /* TableViewController.swift in Sources */,
 				4ED21BF124FAA39300A6FEA3 /* UIButton.swift in Sources */,
 				4ED21BF524FAA39300A6FEA3 /* TextView.swift in Sources */,
-				4ED21C1C24FAA45700A6FEA3 /* VideoCaptureViewController.swift in Sources */,
+				4ED21C5124FAAC6E00A6FEA3 /* ImageCaptureViewController.swift in Sources */,
+				4ED21C5024FAAC6E00A6FEA3 /* AVCaptureVideoOrientation.swift in Sources */,
 				4ED21BB924FAA32500A6FEA3 /* Location.swift in Sources */,
 				4ED21C0024FAA39E00A6FEA3 /* AudioItemView.swift in Sources */,
 				4ED21BB824FAA32500A6FEA3 /* LocationData.swift in Sources */,
 				4ED21C1424FAA3D000A6FEA3 /* MapViewController.swift in Sources */,
-				4ED21B8D24FAA27F00A6FEA3 /* AVCaptureVideoOrientation.swift in Sources */,
 				4ED21C2A24FAA47500A6FEA3 /* SettingsViewController.swift in Sources */,
 				4ED21B8124FAA23B00A6FEA3 /* CLLocation.swift in Sources */,
-				4ED21C1F24FAA45700A6FEA3 /* ImageCaptureViewController.swift in Sources */,
 				4ED21C2D24FAA47500A6FEA3 /* BackupViewController.swift in Sources */,
 				4ED21BC124FAA36000A6FEA3 /* MKMapView.swift in Sources */,
+				4ED21C5224FAAC6E00A6FEA3 /* LocationCaptureViewController.swift in Sources */,
 				4ED21BE724FAA39300A6FEA3 /* TextButton.swift in Sources */,
 				4ED21BB224FAA32500A6FEA3 /* TimeSpanData.swift in Sources */,
 				4ED21BEF24FAA39300A6FEA3 /* UIImageView.swift in Sources */,
 				4ED21C1024FAA3B900A6FEA3 /* EditEntryInfoViewController.swift in Sources */,
 				4ED21BAF24FAA32500A6FEA3 /* GlobalData.swift in Sources */,
+				4ED21C4F24FAAC6E00A6FEA3 /* VideoPlayerView.swift in Sources */,
 				4ED21BC224FAA36000A6FEA3 /* URL.swift in Sources */,
 				4ED21BE324FAA39300A6FEA3 /* DatePickerView.swift in Sources */,
-				4ED21C2124FAA45700A6FEA3 /* EntryAnnotation.swift in Sources */,
+				4ED21C4C24FAAC6E00A6FEA3 /* VideoViewController.swift in Sources */,
 				4ED21B7E24FAA20F00A6FEA3 /* Authorization.swift in Sources */,
-				4ED21C1E24FAA45700A6FEA3 /* MediaCommentLabel.swift in Sources */,
 				4ED21BF424FAA39300A6FEA3 /* IconInfoText.swift in Sources */,
-				4ED21B8F24FAA27F00A6FEA3 /* AVCaptureDevice.swift in Sources */,
 				4ED21C0F24FAA3B900A6FEA3 /* EntryCell.swift in Sources */,
+				4ED21C4724FAAC6E00A6FEA3 /* CaptureButton.swift in Sources */,
 				4ED21C0E24FAA3B900A6FEA3 /* EntrySectionHeader.swift in Sources */,
 				4ED21BB624FAA32500A6FEA3 /* MediaData.swift in Sources */,
 				4ED21C0C24FAA3B900A6FEA3 /* EditEntryViewController.swift in Sources */,
@@ -568,10 +570,10 @@
 				4ED21C2E24FAA47500A6FEA3 /* RestoreViewController.swift in Sources */,
 				4ED21BB124FAA32500A6FEA3 /* TextData.swift in Sources */,
 				4ED21B9B24FAA29F00A6FEA3 /* InfoViewController.swift in Sources */,
+				4ED21C5424FAAC6E00A6FEA3 /* MapView.swift in Sources */,
 				4ED21C1324FAA3D000A6FEA3 /* MapInfoViewController.swift in Sources */,
-				4ED21B8924FAA27F00A6FEA3 /* AudioPlayerView.swift in Sources */,
-				4ED21C2024FAA45700A6FEA3 /* CameraViewController.swift in Sources */,
 				4ED21BC424FAA36000A6FEA3 /* Codable.swift in Sources */,
+				4ED21C4D24FAAC6E00A6FEA3 /* CameraViewController.swift in Sources */,
 				4ED21C0224FAA39E00A6FEA3 /* ImageItemView.swift in Sources */,
 				4ED21BEE24FAA39300A6FEA3 /* ViewDetailButton.swift in Sources */,
 				4ED21B7924FAA17200A6FEA3 /* DataStore.swift in Sources */,
@@ -579,30 +581,28 @@
 				4ED21BB524FAA32500A6FEA3 /* AudioData.swift in Sources */,
 				4ED21BE524FAA39300A6FEA3 /* UIScrollView.swift in Sources */,
 				4ED21BFF24FAA39E00A6FEA3 /* LocationItemView.swift in Sources */,
+				4ED21C4824FAAC6E00A6FEA3 /* AudioPlayerView.swift in Sources */,
 				4ED21C2924FAA47500A6FEA3 /* SettingsInfoViewController.swift in Sources */,
 				4ED21B7F24FAA20F00A6FEA3 /* LocationService.swift in Sources */,
 				4ED21C0324FAA39E00A6FEA3 /* TextItemView.swift in Sources */,
 				4ED21B9E24FAA29F00A6FEA3 /* ImageViewController.swift in Sources */,
 				4ED21BED24FAA39300A6FEA3 /* UIStackView.swift in Sources */,
-				4ED21B8E24FAA27F00A6FEA3 /* VideoViewController.swift in Sources */,
 				4ED21C0B24FAA3B900A6FEA3 /* TimelineInfoViewController.swift in Sources */,
 				4ED21BEB24FAA39300A6FEA3 /* UIImage.swift in Sources */,
 				4ED21B9924FAA29F00A6FEA3 /* ViewController.swift in Sources */,
 				4ED21BCE24FAA36C00A6FEA3 /* AppDelegate.swift in Sources */,
-				4ED21B8A24FAA27F00A6FEA3 /* AudioRecorderView.swift in Sources */,
 				4ED21B7A24FAA17200A6FEA3 /* FileStore.swift in Sources */,
-				4ED21B8C24FAA27F00A6FEA3 /* CaptureButton.swift in Sources */,
 				4ED21C2B24FAA47500A6FEA3 /* BackupInfoViewController.swift in Sources */,
 				4ED21BF024FAA39300A6FEA3 /* ResizingTextView.swift in Sources */,
 				4ED21BF624FAA39300A6FEA3 /* UIView.swift in Sources */,
 				4ED21BF224FAA39300A6FEA3 /* InfoText.swift in Sources */,
+				4ED21C4E24FAAC6E00A6FEA3 /* MediaCommentLabel.swift in Sources */,
 				4ED21BB424FAA32500A6FEA3 /* DayData.swift in Sources */,
-				4ED21C2224FAA45700A6FEA3 /* MapView.swift in Sources */,
 				4ED21B9F24FAA29F00A6FEA3 /* ScrollViewController.swift in Sources */,
 				4ED21BCC24FAA36C00A6FEA3 /* SceneDelegate.swift in Sources */,
 				4ED21BE824FAA39300A6FEA3 /* UILabel.swift in Sources */,
 				4ED21BB324FAA32500A6FEA3 /* VideoData.swift in Sources */,
-				4ED21B8B24FAA27F00A6FEA3 /* VideoPlayerView.swift in Sources */,
+				4ED21C4B24FAAC6E00A6FEA3 /* AVCaptureDevice.swift in Sources */,
 				4ED21BC624FAA36000A6FEA3 /* Date.swift in Sources */,
 				4ED21BB024FAA32500A6FEA3 /* ImageData.swift in Sources */,
 			);
