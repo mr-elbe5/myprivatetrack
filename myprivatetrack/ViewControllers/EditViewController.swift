@@ -19,6 +19,7 @@ open class EditViewController: ScrollViewController {
         stackView.fillSuperview(padding: UIEdgeInsets(top: defaultInset, left: .zero, bottom: defaultInset, right: .zero))
         stackView.setupVertical()
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name:UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardDidShow), name:UIResponder.keyboardDidShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name:UIResponder.keyboardWillHideNotification, object: nil)
     }
     
@@ -32,10 +33,23 @@ open class EditViewController: ScrollViewController {
         contentInset.bottom = keyboardFrame.size.height
         scrollView.contentInset = contentInset
     }
-
+    
+    @objc public func keyboardDidShow(notification:NSNotification){
+        if let firstResponder = stackView.firstResponder{
+            let rect : CGRect = firstResponder.frame
+            var parentView = firstResponder.superview
+            var offset : CGFloat = 0
+            while parentView != nil && parentView != scrollView {
+                offset += parentView!.frame.minY
+                parentView = parentView?.superview
+            }
+            scrollView.scrollRectToVisible(.init(x: rect.minX, y: rect.minY + offset, width: rect.width, height: rect.height), animated: true)
+        }
+    }
+    
     @objc public func keyboardWillHide(notification:NSNotification){
-
         let contentInset:UIEdgeInsets = UIEdgeInsets.zero
         scrollView.contentInset = contentInset
     }
+    
 }

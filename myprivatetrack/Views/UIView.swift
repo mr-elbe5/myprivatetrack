@@ -55,6 +55,18 @@ extension UIView{
         self.transform = CGAffineTransform(scaleX: factor, y:factor)
     }
     
+    var firstResponder : UIView? {
+        guard !isFirstResponder else {
+            return self
+        }
+        for subview in subviews {
+            if let view = subview.firstResponder {
+                return view
+            }
+        }
+        return nil
+    }
+    
     public func resetConstraints(){
         for constraint in constraints{
             constraint.isActive = false

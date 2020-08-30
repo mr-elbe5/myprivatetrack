@@ -57,6 +57,7 @@ class TextItemEditView : EntryItemEditView, UITextViewDelegate{
         textView.isScrollEnabled = false
         textView.delegate = self
         addSubview(textView)
+        textView.setKeyboardToolbar()
     }
     
     func setupData(data: TextData, placeholder: String? = nil){
@@ -68,6 +69,11 @@ class TextItemEditView : EntryItemEditView, UITextViewDelegate{
     override func setLayoutConstraints(){
         textView.placeBelow(anchor: deleteButton.bottomAnchor, padding: flatInsets)
         textView.connectBottom(view: self)
+    }
+    
+    override func setFocus(){
+        textView.becomeFirstResponder()
+        
     }
     
     @objc func textViewDidChange(_ textView: UITextView) {

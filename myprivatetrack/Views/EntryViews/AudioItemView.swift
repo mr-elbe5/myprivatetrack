@@ -70,6 +70,7 @@ class AudioItemEditView : EntryItemEditView, UITextViewDelegate, AVAudioRecorder
         titleView.setDefaults(placeholder: "comment".localize())
         titleView.delegate = self
         addSubview(titleView)
+        titleView.setKeyboardToolbar()
     }
     
     func setupData(data: AudioData){
@@ -86,6 +87,10 @@ class AudioItemEditView : EntryItemEditView, UITextViewDelegate, AVAudioRecorder
         audioView.placeBelow(anchor: deleteButton.bottomAnchor, padding: flatInsets)
         titleView.placeBelow(view: audioView)
         titleView.connectBottom(view: self)
+    }
+    
+    override func setFocus(){
+        titleView.becomeFirstResponder()
     }
     
     func textViewDidChange(_ textView: UITextView) {

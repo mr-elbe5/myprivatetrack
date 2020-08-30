@@ -138,7 +138,6 @@ class TimelineViewController: TableViewController, SaveEntryDelegate, EntryCellA
     // SaveEntryDelegate
     
     func saveEntry(entry: EntryData) {
-        print("save entry")
         if entry.isNew {
             let day = globalData.assertDay(date: entry.creationDate)
             day.addEntry(entry: entry)

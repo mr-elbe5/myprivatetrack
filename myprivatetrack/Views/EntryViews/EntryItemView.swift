@@ -48,6 +48,9 @@ class EntryItemEditView : UIView{
         fatalError("not implemented")
     }
     
+    func setFocus(){
+    }
+    
     @objc func deleteItem(){
         delegate?.deleteItem(itemView: self)
     }

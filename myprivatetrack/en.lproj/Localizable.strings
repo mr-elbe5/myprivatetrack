@@ -44,6 +44,7 @@
 "success"="Success";
 "backupRestored"="The selected days have been restored.";
 "fileOpenError"="The file could not be opened.";
+"done"="Done";
 "cameraNotAuthorized"="Camera use is not authorized. Please change your settings.";
 "audioNotAuthorized"="Microphone use is not authorized. Please change your settings.";
 "videoNotAuthorized"="Camera or Microphone use is not authorized. Please change your settings.";

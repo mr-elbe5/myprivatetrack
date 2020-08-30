@@ -115,7 +115,7 @@ class ImageItemEditView : EntryItemEditView, UITextViewDelegate{
         titleView.setDefaults(placeholder: "comment".localize())
         titleView.delegate = self
         addSubview(titleView)
-        
+        titleView.setKeyboardToolbar()
     }
     
     func setupData(data: ImageData){
@@ -129,6 +129,10 @@ class ImageItemEditView : EntryItemEditView, UITextViewDelegate{
         imageView.setAspectRatioConstraint()
         titleView.placeBelow(view: imageView, padding: flatInsets)
         titleView.connectBottom(view: self)
+    }
+    
+    override func setFocus(){
+        titleView.becomeFirstResponder()
     }
     
     func textViewDidChange(_ textView: UITextView) {

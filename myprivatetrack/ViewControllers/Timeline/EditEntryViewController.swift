@@ -184,6 +184,7 @@ class EditEntryViewController: EditViewController, ImageCaptureDelegate, VideoCa
         editView.delegate = self
         stackView.insertArrangedSubview(editView, at: stackView.arrangedSubviews.count-1)
         scrollView.setNeedsLayout()
+        editView.setFocus()
     }
     
     func showError(_ reason: String){
