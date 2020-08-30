@@ -43,7 +43,7 @@ class VideoItemView : EntryItemView{
             videoView.connectBottom(view: self)
         }
         if delegate != nil{
-            let viewButton = ViewDetailButton()
+            let viewButton = ViewDetailButton(withBackground: true)
             viewButton.addTarget(self, action: #selector(viewItem), for: .touchDown)
             addSubview(viewButton)
             viewButton.placeTopRight(padding: doubleInsets)

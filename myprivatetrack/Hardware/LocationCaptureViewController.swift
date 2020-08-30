@@ -26,7 +26,7 @@ class LocationCaptureViewController: UIViewController, CLLocationManagerDelegate
     var buttonView = UIView()
     var cancelButton = IconButton(icon: "chevron.left", tintColor: .white)
     var mapTypeButton = IconButton(icon: "map", tintColor: .white)
-    var saveButton = IconButton(icon: "camera", tintColor: .white)
+    var captureButton = CaptureButton()
     
     override func loadView() {
         super.loadView()
@@ -53,10 +53,14 @@ class LocationCaptureViewController: UIViewController, CLLocationManagerDelegate
         buttonView.addSubview(cancelButton)
         cancelButton.placeAfter(anchor: buttonView.leadingAnchor, padding: Statics.defaultInsets)
         
-        saveButton.addTarget(self, action: #selector(save), for: .touchDown)
-        buttonView.addSubview(saveButton)
-        saveButton.isEnabled = false
-        saveButton.placeBefore(anchor: buttonView.trailingAnchor, padding: Statics.defaultInsets)
+        captureButton.addTarget(self, action: #selector(save), for: .touchDown)
+        mapView.addSubview(captureButton)
+        captureButton.isEnabled = false
+        captureButton.enableAnchors()
+        captureButton.setBottomAnchor(buttonView.topAnchor,padding: Statics.defaultInset)
+        captureButton.setCenterXAnchor(mapView.centerXAnchor)
+        captureButton.setWidthAnchor(50)
+        captureButton.setHeightAnchor(50)
         
         mapTypeButton.addTarget(self, action: #selector(toggleMapType), for: .touchDown)
         buttonView.addSubview(mapTypeButton)
@@ -66,7 +70,7 @@ class LocationCaptureViewController: UIViewController, CLLocationManagerDelegate
     }
     
     func didFinishLoading() {
-        saveButton.isEnabled = true
+        captureButton.isEnabled = true
         mapTypeButton.isEnabled = true
     }
     

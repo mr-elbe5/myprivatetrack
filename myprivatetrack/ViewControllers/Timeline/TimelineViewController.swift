@@ -169,6 +169,13 @@ class TimelineViewController: TableViewController, SaveEntryDelegate, EntryCellA
         tableView.reloadData()
     }
     
+    func viewEntry(entry: EntryData) {
+        let entryController = EntryViewController()
+        entryController.entry = entry
+        entryController.modalPresentationStyle = .fullScreen
+        self.present(entryController, animated: true)
+    }
+    
     func viewImageItem(data: ImageData) {
         let imageViewController = ImageViewController()
         imageViewController.uiImage = data.getImage()

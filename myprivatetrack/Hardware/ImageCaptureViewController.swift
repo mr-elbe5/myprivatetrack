@@ -22,7 +22,7 @@ class ImageCaptureViewController: CameraViewController, AVCapturePhotoCaptureDel
     var delegate: ImageCaptureDelegate? = nil
     
     var cancelButton = IconButton(icon: "chevron.left", tintColor: .white)
-    var photoButton = CaptureButton()
+    var captureButton = CaptureButton()
     var cameraButton = IconButton(icon: "camera.rotate", tintColor: .white)
     var photoQualityControl = UISegmentedControl(items: qualityItems)
     
@@ -46,14 +46,13 @@ class ImageCaptureViewController: CameraViewController, AVCapturePhotoCaptureDel
         cameraButton.addTarget(self, action: #selector(changeCamera), for: .touchDown)
         buttonView.addSubview(cameraButton)
         cameraButton.placeBefore(anchor: buttonView.trailingAnchor, padding: Statics.flatInsets)
-        photoButton.buttonColor = .white
-        photoButton.addTarget(self, action: #selector(capturePhoto), for: .touchDown)
-        bodyView.addSubview(photoButton)
-        photoButton.enableAnchors()
-        photoButton.setBottomAnchor(buttonView.topAnchor,padding: Statics.defaultInset)
-        photoButton.setCenterXAnchor(bodyView.centerXAnchor)
-        photoButton.setWidthAnchor(50)
-        photoButton.setHeightAnchor(50)
+        captureButton.addTarget(self, action: #selector(capturePhoto), for: .touchDown)
+        bodyView.addSubview(captureButton)
+        captureButton.enableAnchors()
+        captureButton.setBottomAnchor(buttonView.topAnchor,padding: Statics.defaultInset)
+        captureButton.setCenterXAnchor(bodyView.centerXAnchor)
+        captureButton.setWidthAnchor(50)
+        captureButton.setHeightAnchor(50)
     }
     
     override func enableButtons(flag: Bool){
@@ -62,7 +61,7 @@ class ImageCaptureViewController: CameraViewController, AVCapturePhotoCaptureDel
     }
     
     override func enableCameraButtons(flag: Bool){
-        photoButton.isEnabled = flag
+        captureButton.isEnabled = flag
         cameraButton.isEnabled = flag
         photoQualityControl.isEnabled = flag
     }
@@ -198,7 +197,7 @@ class ImageCaptureViewController: CameraViewController, AVCapturePhotoCaptureDel
             DispatchQueue.main.async {
                 // Only enable the ability to change camera if the device has more than one camera.
                 self.cameraButton.isEnabled = isSessionRunning && self.videoDeviceDiscoverySession.uniqueDevicePositionsCount > 1
-                self.photoButton.isEnabled = isSessionRunning
+                self.captureButton.isEnabled = isSessionRunning
                 self.photoQualityControl.isEnabled = isSessionRunning
             }
         }

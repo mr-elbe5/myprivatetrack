@@ -10,3 +10,4 @@
 "NSMicrophoneUsageDescription"="The microphone is needed for recording audio and video.";
 "NSCameraUsageDescription"="The camera is needed for taking pictures and recording videos.";
 "NSPhotoLibraryUsageDescription"="The photo library is used for exporting pictures on demand.";
+"NSDocumentsFolderUsageDescription"="The documents folder is used for export and import";

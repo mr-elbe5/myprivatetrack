@@ -10,9 +10,14 @@ import UIKit
 
 public class ViewDetailButton : IconButton{
     
-    public init(){
+    public init(withBackground: Bool = false){
         super.init(icon: "magnifyingglass")
         tintColor = UIColor.systemGray
+        if withBackground{
+            backgroundColor = .systemBackground
+            layer.cornerRadius = 5
+            layer.masksToBounds = true
+        }
     }
     
     required init?(coder: NSCoder) {
