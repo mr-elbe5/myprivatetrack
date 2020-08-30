@@ -73,8 +73,8 @@
 		4ED21C0B24FAA3B900A6FEA3 /* TimelineInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED21C0524FAA3B900A6FEA3 /* TimelineInfoViewController.swift */; };
 		4ED21C0C24FAA3B900A6FEA3 /* EditEntryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED21C0624FAA3B900A6FEA3 /* EditEntryViewController.swift */; };
 		4ED21C0D24FAA3B900A6FEA3 /* TimelineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED21C0724FAA3B900A6FEA3 /* TimelineViewController.swift */; };
-		4ED21C0E24FAA3B900A6FEA3 /* EntrySectionHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED21C0824FAA3B900A6FEA3 /* EntrySectionHeader.swift */; };
-		4ED21C0F24FAA3B900A6FEA3 /* EntryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED21C0924FAA3B900A6FEA3 /* EntryCell.swift */; };
+		4ED21C0E24FAA3B900A6FEA3 /* TimelineSectionHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED21C0824FAA3B900A6FEA3 /* TimelineSectionHeader.swift */; };
+		4ED21C0F24FAA3B900A6FEA3 /* TimelineEntryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED21C0924FAA3B900A6FEA3 /* TimelineEntryCell.swift */; };
 		4ED21C1024FAA3B900A6FEA3 /* EditEntryInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED21C0A24FAA3B900A6FEA3 /* EditEntryInfoViewController.swift */; };
 		4ED21C1324FAA3D000A6FEA3 /* MapInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED21C1124FAA3D000A6FEA3 /* MapInfoViewController.swift */; };
 		4ED21C1424FAA3D000A6FEA3 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED21C1224FAA3D000A6FEA3 /* MapViewController.swift */; };
@@ -174,8 +174,8 @@
 		4ED21C0524FAA3B900A6FEA3 /* TimelineInfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimelineInfoViewController.swift; sourceTree = "<group>"; };
 		4ED21C0624FAA3B900A6FEA3 /* EditEntryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditEntryViewController.swift; sourceTree = "<group>"; };
 		4ED21C0724FAA3B900A6FEA3 /* TimelineViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimelineViewController.swift; sourceTree = "<group>"; };
-		4ED21C0824FAA3B900A6FEA3 /* EntrySectionHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EntrySectionHeader.swift; sourceTree = "<group>"; };
-		4ED21C0924FAA3B900A6FEA3 /* EntryCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EntryCell.swift; sourceTree = "<group>"; };
+		4ED21C0824FAA3B900A6FEA3 /* TimelineSectionHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimelineSectionHeader.swift; sourceTree = "<group>"; };
+		4ED21C0924FAA3B900A6FEA3 /* TimelineEntryCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimelineEntryCell.swift; sourceTree = "<group>"; };
 		4ED21C0A24FAA3B900A6FEA3 /* EditEntryInfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditEntryInfoViewController.swift; sourceTree = "<group>"; };
 		4ED21C1124FAA3D000A6FEA3 /* MapInfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapInfoViewController.swift; sourceTree = "<group>"; };
 		4ED21C1224FAA3D000A6FEA3 /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
@@ -230,6 +230,8 @@
 			isa = PBXGroup;
 			children = (
 				4ED21BF924FAA39E00A6FEA3 /* AudioItemView.swift */,
+				4ED21C0A24FAA3B900A6FEA3 /* EditEntryInfoViewController.swift */,
+				4ED21C0624FAA3B900A6FEA3 /* EditEntryViewController.swift */,
 				4ED21BFD24FAA39E00A6FEA3 /* EntryItemView.swift */,
 				4ED21BF724FAA39E00A6FEA3 /* EntryViewController.swift */,
 				4ED21BFB24FAA39E00A6FEA3 /* ImageItemView.swift */,
@@ -243,10 +245,8 @@
 		4E2ECFD624DD9E42003FFFF1 /* Timeline */ = {
 			isa = PBXGroup;
 			children = (
-				4ED21C0A24FAA3B900A6FEA3 /* EditEntryInfoViewController.swift */,
-				4ED21C0624FAA3B900A6FEA3 /* EditEntryViewController.swift */,
-				4ED21C0924FAA3B900A6FEA3 /* EntryCell.swift */,
-				4ED21C0824FAA3B900A6FEA3 /* EntrySectionHeader.swift */,
+				4ED21C0924FAA3B900A6FEA3 /* TimelineEntryCell.swift */,
+				4ED21C0824FAA3B900A6FEA3 /* TimelineSectionHeader.swift */,
 				4ED21C0524FAA3B900A6FEA3 /* TimelineInfoViewController.swift */,
 				4ED21C0724FAA3B900A6FEA3 /* TimelineViewController.swift */,
 			);
@@ -555,9 +555,9 @@
 				4ED21C4C24FAAC6E00A6FEA3 /* VideoViewController.swift in Sources */,
 				4ED21B7E24FAA20F00A6FEA3 /* Authorization.swift in Sources */,
 				4ED21BF424FAA39300A6FEA3 /* IconInfoText.swift in Sources */,
-				4ED21C0F24FAA3B900A6FEA3 /* EntryCell.swift in Sources */,
+				4ED21C0F24FAA3B900A6FEA3 /* TimelineEntryCell.swift in Sources */,
 				4ED21C4724FAAC6E00A6FEA3 /* CaptureButton.swift in Sources */,
-				4ED21C0E24FAA3B900A6FEA3 /* EntrySectionHeader.swift in Sources */,
+				4ED21C0E24FAA3B900A6FEA3 /* TimelineSectionHeader.swift in Sources */,
 				4ED21BB624FAA32500A6FEA3 /* MediaData.swift in Sources */,
 				4ED21C0C24FAA3B900A6FEA3 /* EditEntryViewController.swift in Sources */,
 				4ED21BEC24FAA39300A6FEA3 /* UITextField.swift in Sources */,

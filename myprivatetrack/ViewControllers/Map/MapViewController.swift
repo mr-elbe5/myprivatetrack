@@ -70,10 +70,10 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     func assertMapPins(){
         for day in globalData.days{
             for entry in day.entries{
-                if entry.saveLocation{
+                if entry.saveLocation, let loc = entry.location{
                     let positionPin = EntryAnnotation(entry: entry)
                     positionPin.title = entry.creationDate.dateTimeString()
-                    positionPin.coordinate = entry.location.coordinate
+                    positionPin.coordinate = loc.coordinate
                     mapView.addAnnotation(positionPin)
                 }
             }

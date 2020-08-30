@@ -20,8 +20,15 @@ class EntryViewController: ModalScrollViewController, ImageItemDelegate, VideoIt
         scrollView.addSubview(stackView)
         stackView.fillSuperview(padding: UIEdgeInsets(top: defaultInset, left: .zero, bottom: defaultInset, right: .zero))
         stackView.setupVertical()
-        let label = InfoHeader(text: entry.creationDate.dateTimeString())
-        stackView.addArrangedSubview(label)
+        let timeLabel = InfoHeader(text: entry.creationDate.dateTimeString())
+        timeLabel.label.textAlignment = .center
+        stackView.addArrangedSubview(timeLabel)
+        if entry.saveLocation, let loc = entry.location{
+            let locationLabel = UILabel()
+            locationLabel.text = loc.asString
+            locationLabel.textAlignment = .center
+            stackView.addArrangedSubview(locationLabel)
+        }
         for item in entry.items{
             switch item.type{
             case .text:

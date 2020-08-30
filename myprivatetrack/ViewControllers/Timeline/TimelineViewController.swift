@@ -18,6 +18,7 @@ class TimelineViewController: TableViewController, SaveEntryDelegate, EntryCellA
     var addAudioButton = IconButton(icon: "mic")
     let addVideoButton = IconButton(icon: "video")
     var addLocationButton = IconButton(icon: "map")
+    let editButton = IconButton(icon: "pencil.circle")
     
     override func loadView(){
         super.loadView()
@@ -25,7 +26,7 @@ class TimelineViewController: TableViewController, SaveEntryDelegate, EntryCellA
         let backgroundImage = UIImageView(image: UIImage(named: "meersonne"))
         backgroundImage.contentMode = UIView.ContentMode.scaleAspectFill;
         tableView.backgroundView = backgroundImage
-        tableView.register(EntryCell.self, forCellReuseIdentifier: TimelineViewController.CELL_IDENT)
+        tableView.register(TimelineEntryCell.self, forCellReuseIdentifier: TimelineViewController.CELL_IDENT)
         tableView.allowsSelection = false
         tableView.allowsSelectionDuringEditing = false
         tableView.separatorStyle = .none
@@ -59,13 +60,11 @@ class TimelineViewController: TableViewController, SaveEntryDelegate, EntryCellA
         leftStackView.addArrangedSubview(addVideoButton)
         addLocationButton.addTarget(self, action: #selector(addLocationEntry), for: .touchDown)
         leftStackView.addArrangedSubview(addLocationButton)
-        let editButton = IconButton(icon: "pencil.circle")
         editButton.addTarget(self, action: #selector(toggleEditMode), for: .touchDown)
         rightStackView.addArrangedSubview(editButton)
         let infoButton = IconButton(icon: "info.circle")
         infoButton.addTarget(self, action: #selector(showInfo), for: .touchDown)
         rightStackView.addArrangedSubview(infoButton)
-        
         self.headerView = headerView
     }
     
@@ -122,9 +121,11 @@ class TimelineViewController: TableViewController, SaveEntryDelegate, EntryCellA
     
     @objc func toggleEditMode(){
         if !tableView.isEditing{
+            editButton.tintColor = .systemRed
             tableView.setEditing(true, animated: true)
         }
         else{
+            editButton.tintColor = .systemBlue
             tableView.setEditing(false, animated: true)
         }
         tableView.reloadData()
@@ -196,7 +197,7 @@ class TimelineViewController: TableViewController, SaveEntryDelegate, EntryCellA
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let headerView = DaySectionHeader()
+        let headerView = TimelineSectionHeader()
         headerView.setupView(day: globalData.days[section])
         return headerView
     }
@@ -211,7 +212,7 @@ class TimelineViewController: TableViewController, SaveEntryDelegate, EntryCellA
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: TimelineViewController.CELL_IDENT, for: indexPath) as! EntryCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: TimelineViewController.CELL_IDENT, for: indexPath) as! TimelineEntryCell
         let day = globalData.days[indexPath.section]
         let event = day.entries[indexPath.row]
         cell.entry = event

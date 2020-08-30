@@ -45,6 +45,10 @@
 "backupRestored"="Die ausgewählten Tage wurden wiederhergestellt.";
 "fileOpenError"="Die Datei konnte nicht geöffnet werden.";
 "done"="Fertig";
+"north"="Nord";
+"east"="Ost";
+"south"="Süd";
+"west"="West";
 "cameraNotAuthorized"="Die Nutzung der Kamera ist nicht erlaubt. Bitte ändere die entsprechenden Einstellungen.";
 "audioNotAuthorized"="Die Nutzung des Mikrofons ist nicht erlaubt. Bitte ändere die entsprechenden Einstellungen.";
 "videoNotAuthorized"="Die Nutzung der Kamera oder des Mikrofons ist nicht erlaubt. Bitte ändere die entsprechenden Einstellungen.";

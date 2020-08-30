@@ -15,7 +15,7 @@ protocol EntryCellActionDelegate{
     func viewVideoItem(data: VideoData)
 }
 
-class EntryCell: UITableViewCell, ImageItemDelegate, VideoItemDelegate{
+class TimelineEntryCell: UITableViewCell, ImageItemDelegate, VideoItemDelegate{
     
     var entry : EntryData? = nil {
         didSet {
@@ -50,6 +50,15 @@ class EntryCell: UITableViewCell, ImageItemDelegate, VideoItemDelegate{
             timeLabel.textAlignment = .center
             cellBody.addSubview(timeLabel)
             timeLabel.placeBelow(anchor: cellBody.topAnchor, padding: defaultInsets)
+            var lastView : UIView = timeLabel
+            if entry!.saveLocation, let loc = entry!.location{
+                let locationLabel = UILabel()
+                locationLabel.text = loc.asString
+                locationLabel.textAlignment = .center
+                cellBody.addSubview(locationLabel)
+                locationLabel.placeBelow(anchor: lastView.bottomAnchor, padding: defaultInsets)
+                lastView = locationLabel
+            }
             if isEditing{
                 let editButton = IconButton(icon: "pencil.circle")
                 editButton.tintColor = UIColor.systemBlue
@@ -75,7 +84,6 @@ class EntryCell: UITableViewCell, ImageItemDelegate, VideoItemDelegate{
                 viewButton.placeTopRight(padding: doubleInsets)
             }
             
-            var lastView : UIView = timeLabel
             for item in entry!.items{
                 switch item.type{
                 case .text:

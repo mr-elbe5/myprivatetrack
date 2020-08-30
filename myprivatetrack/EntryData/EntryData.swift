@@ -20,7 +20,7 @@ class EntryData: Identifiable, Codable{
     
     public var id: UUID
     public var creationDate: Date
-    public var location: Location
+    public var location: Location? = nil
     public var saveLocation: Bool
     public var items = Array<EntryItem>()
     
@@ -43,7 +43,7 @@ class EntryData: Identifiable, Codable{
         if saveLocation{
             location = try values.decode(Location.self, forKey: .location)
         }else{
-            location = Location()
+            location = nil
         }
         items = try values.decode(Array<EntryItem>.self, forKey: .items)
     }

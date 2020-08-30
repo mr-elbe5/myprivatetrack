@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-class DayHeaderLabel: UILabel {
+class TimelineSectionHeaderLabel: UILabel {
     
     override var intrinsicContentSize: CGSize{
         let originalSize = super.intrinsicContentSize
@@ -20,10 +20,10 @@ class DayHeaderLabel: UILabel {
     
 }
 
-class DaySectionHeader : UIView{
+class TimelineSectionHeader : UIView{
     
     public func setupView(day: DayData){
-        let label = DayHeaderLabel()
+        let label = TimelineSectionHeaderLabel()
         label.text = day.date.dateString()
         label.textAlignment = .center
         label.backgroundColor = .systemBackground

@@ -160,12 +160,12 @@ class EditEntryViewController: EditViewController, ImageCaptureDelegate, VideoCa
     }
     
     @objc func addLocation(){
-        if Settings.shared.useLocation && Authorization.isLocationAuthorized(){
+        if Settings.shared.useLocation &&  Authorization.isLocationAuthorized(), let loc = entry.location{
             LocationService.shared.assertRunning()
             let data = LocationData()
             let locationCaptureController = LocationCaptureViewController()
             locationCaptureController.data = data
-            locationCaptureController.coordinate = entry.location.coordinate
+            locationCaptureController.coordinate = loc.coordinate
             locationCaptureController.delegate = self
             locationCaptureController.modalPresentationStyle = .fullScreen
             self.present(locationCaptureController, animated: true)
