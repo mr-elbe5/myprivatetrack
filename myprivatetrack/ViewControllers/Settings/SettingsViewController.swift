@@ -9,26 +9,21 @@ import Foundation
 import UIKit
 import Zip
 
-class SettingsViewController: EditViewController, SwitchDelegate, UIDocumentPickerDelegate{
+class SettingsViewController: EditViewController, UIDocumentPickerDelegate{
 
-    var useLocationSwitch = SwitchView()
-    
     var resetButton = TextButton(text: "deleteData".localize())
     var exportButton = TextButton(text: "backupData".localize())
-    var passwordField = TextView()
+    var passwordField = TextEditLine()
     var importButton = TextButton(text: "restoreData".localize())
     
     override func loadView() {
         super.loadView()
         let header = InfoHeader(text: "settings".localize())
         stackView.addArrangedSubview(header)
-        useLocationSwitch.setupView(labelText: "useLocation".localize(), isOn: settings.useLocation)
-        useLocationSwitch.delegate = self
         resetButton.addTarget(self, action: #selector(resetData), for: .touchDown)
         passwordField.setupView(labelText: "backupPassword".localize(), text: "", secure: true)
         exportButton.addTarget(self, action: #selector(exportData), for: .touchDown)
         importButton.addTarget(self, action: #selector(importData), for: .touchDown)
-        stackView.addArrangedSubview(useLocationSwitch)
         stackView.addArrangedSubview(resetButton)
         stackView.addArrangedSubview(passwordField)
         stackView.addArrangedSubview(exportButton)
@@ -112,20 +107,6 @@ class SettingsViewController: EditViewController, SwitchDelegate, UIDocumentPick
     
     func documentPickerWasCancelled(_ controller: UIDocumentPickerViewController) {
         print("cancelled")
-    }
-    
-    func switchValueDidChange(sender: SwitchView, isOn: Bool) {
-        if sender == useLocationSwitch{
-            settings.useLocation = isOn
-            if settings.useLocation{
-                LocationService.shared.startUpdatingLocation()
-            }
-            else{
-                LocationService.shared.stopUpdatingLocation()
-            }
-            
-        }
-        settings.save()
     }
     
 }

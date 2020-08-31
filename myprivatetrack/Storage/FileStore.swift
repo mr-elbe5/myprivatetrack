@@ -102,6 +102,52 @@ public class FileStore {
         }
     }
     
+    static func copyImageToLibrary(name: String, fromDir: URL) -> Bool{
+        var success = false
+        Authorization.askPhotoLibraryAuthorization(){ result in
+            if result{
+                let url = getURL(dirURL: fromDir, fileName: name)
+                if let data = readFile(url: url){
+                    if let image = UIImage(data: data){
+                        UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil)
+                        success = true
+                    }
+                    else{
+                        print("could create image from file")
+                    }
+                }
+                else{
+                    print("could not read file")
+                }
+            }
+            else{
+                print("no lib permission")
+            }
+        }
+        return success
+    }
+    
+    static func copyVideoToLibrary(name: String, fromDir: URL) -> Bool{
+        var success = false
+        Authorization.askPhotoLibraryAuthorization(){ result in
+            if result{
+                let url = getURL(dirURL: fromDir, fileName: name)
+                PHPhotoLibrary.shared().performChanges({
+                    PHAssetChangeRequest.creationRequestForAssetFromVideo(atFileURL: url)
+                }) { saved, error in
+                    if saved {
+                        print("video saved")
+                        success = true
+                    }
+                }
+            }
+            else{
+                print("no lib permission")
+            }
+        }
+        return success
+    }
+    
     static public func renameFile(dirURL: URL, fromName: String, toName: String) -> Bool{
         do{
             try FileManager.default.moveItem(at: getURL(dirURL: dirURL, fileName: fromName),to: getURL(dirURL: dirURL, fileName: toName))

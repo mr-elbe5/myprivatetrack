@@ -47,8 +47,8 @@ class EntryViewController: ModalScrollViewController, ImageItemDelegate, VideoIt
                 let itemView = VideoItemView.fromData(data: item.data as! VideoData,delegate: self)
                 stackView.addArrangedSubview(itemView)
                 break
-            case .location:
-                let itemView = LocationItemView.fromData(data: item.data as! LocationData)
+            case .map:
+                let itemView = LocationItemView.fromData(data: item.data as! MapData)
                 stackView.addArrangedSubview(itemView)
                 break
             }
@@ -62,11 +62,19 @@ class EntryViewController: ModalScrollViewController, ImageItemDelegate, VideoIt
         self.present(imageViewController, animated: true)
     }
     
+    func shareImageItem(data: ImageData) {
+        print("share")
+    }
+    
     func viewVideoItem(data: VideoData) {
         let videoViewController = VideoViewController()
         videoViewController.videoURL = data.fileURL
         videoViewController.modalPresentationStyle = .fullScreen
         self.present(videoViewController, animated: true)
+    }
+    
+    func shareVideoItem(data: VideoData) {
+        print("share")
     }
     
 }

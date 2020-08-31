@@ -82,7 +82,7 @@ class TimelineViewController: TableViewController, SaveEntryDelegate, EntryCellA
         addImageButton.isEnabled = Authorization.isCameraAuthorized()
         addAudioButton.isEnabled = Authorization.isAudioAuthorized()
         addVideoButton.isEnabled = Authorization.isCameraAuthorized() && Authorization.isAudioAuthorized()
-        addLocationButton.isEnabled = Settings.shared.useLocation && Authorization.isLocationAuthorized()
+        addLocationButton.isEnabled = Authorization.isLocationAuthorized()
     }
     
     // MainHeaderActionDelegate
@@ -183,11 +183,43 @@ class TimelineViewController: TableViewController, SaveEntryDelegate, EntryCellA
         self.present(imageViewController, animated: true)
     }
     
+    func shareImageItem(data: ImageData) {
+        let alertController = UIAlertController(title: title, message: "shareImage".localize(), preferredStyle: .actionSheet)
+        alertController.addAction(UIAlertAction(title: "imageLibrary".localize(), style: .default) { action in
+            if !FileStore.copyImageToLibrary(name: data.fileName, fromDir: FileStore.privateURL){
+                self.showAlert(title: "error".localize(), text: "copyError")
+            }
+        })
+        alertController.addAction(UIAlertAction(title: "ownDocuments".localize(), style: .default) { action in
+            if !FileStore.copyFile(name: data.fileName, fromDir: FileStore.privateURL, toDir: FileStore.documentURL){
+                self.showAlert(title: "error".localize(), text: "copyError")
+            }
+        })
+        alertController.addAction(UIAlertAction(title: "cancel".localize(), style: .cancel))
+        self.present(alertController, animated: true)
+    }
+    
     func viewVideoItem(data: VideoData) {
         let videoViewController = VideoViewController()
         videoViewController.videoURL = data.fileURL
         videoViewController.modalPresentationStyle = .fullScreen
         self.present(videoViewController, animated: true)
+    }
+    
+    func shareVideoItem(data: VideoData) {
+        let alertController = UIAlertController(title: title, message: "shareImage".localize(), preferredStyle: .actionSheet)
+        alertController.addAction(UIAlertAction(title: "imageLibrary".localize(), style: .default) { action in
+            if !FileStore.copyVideoToLibrary(name: data.fileName, fromDir: FileStore.privateURL){
+                self.showAlert(title: "error".localize(), text: "copyError")
+            }
+        })
+        alertController.addAction(UIAlertAction(title: "ownDocuments".localize(), style: .default) { action in
+            if !FileStore.copyFile(name: data.fileName, fromDir: FileStore.privateURL, toDir: FileStore.documentURL){
+                self.showAlert(title: "error".localize(), text: "copyError")
+            }
+        })
+        alertController.addAction(UIAlertAction(title: "cancel".localize(), style: .cancel))
+        self.present(alertController, animated: true)
     }
     
     // table view callbacks

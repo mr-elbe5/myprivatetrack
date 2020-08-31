@@ -8,20 +8,12 @@
 import Foundation
 import UIKit
 
-open class ControlView: UIView{
+open class ButtonStackView: UIView{
     
     public var stackView = UIStackView()
     
     public func setupView(){
         addSubview(stackView)
-    }
-    
-}
-
-open class RightHorizonalControlView: ControlView{
-    
-    override public func setupView(){
-        super.setupView()
         stackView.setupHorizontal(spacing: defaultInset)
         stackView.placeBefore(anchor: trailingAnchor, padding: defaultInsets)
     }

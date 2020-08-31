@@ -49,7 +49,7 @@ class TextItemEditView : EntryItemEditView, UITextViewDelegate{
         }
     }
     
-    var textView = ResizingTextView()
+    var textView = TextEditArea()
     
     override func setupSubviews(){
         addTopControl()
@@ -80,7 +80,7 @@ class TextItemEditView : EntryItemEditView, UITextViewDelegate{
         if textData != nil{
             textData!.text = textView.text!.trim()
         }
-        (textView as! ResizingTextView).textDidChange()
+        (textView as! TextEditArea).textDidChange()
     }
 
 }

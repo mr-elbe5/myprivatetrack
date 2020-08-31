@@ -10,17 +10,17 @@ import UIKit
 
 class LocationItemView : EntryItemView{
     
-    static func fromData(data : LocationData)  -> LocationItemView{
+    static func fromData(data : MapData)  -> LocationItemView{
         let itemView = LocationItemView()
         itemView.setupView(data: data)
         return itemView
     }
     
-    var locationData : LocationData? = nil
+    var locationData : MapData? = nil
     
     var imageView = UIImageView()
     
-    func setupView(data: LocationData){
+    func setupView(data: MapData){
         imageView.setDefaults()
         imageView.setRoundedBorders()
         addSubview(imageView)
@@ -43,17 +43,17 @@ class LocationItemView : EntryItemView{
 
 class LocationItemDetailView : EntryItemDetailView{
     
-    static func fromData(data : LocationData)  -> LocationItemDetailView{
+    static func fromData(data : MapData)  -> LocationItemDetailView{
         let itemView = LocationItemDetailView()
         itemView.setupView(data: data)
         return itemView
     }
     
-    var locationData : LocationData? = nil
+    var locationData : MapData? = nil
     
     var imageView = UIImageView()
     
-    func setupView(data: LocationData){
+    func setupView(data: MapData){
         imageView.setDefaults()
         imageView.setRoundedBorders()
         addSubview(imageView)
@@ -65,7 +65,7 @@ class LocationItemDetailView : EntryItemDetailView{
 
 class LocationItemEditView : EntryItemEditView, UITextViewDelegate{
     
-    static func fromData(data : LocationData)  -> LocationItemEditView{
+    static func fromData(data : MapData)  -> LocationItemEditView{
         let editView = LocationItemEditView()
         editView.setupSubviews()
         editView.setupData(data: data)
@@ -73,7 +73,7 @@ class LocationItemEditView : EntryItemEditView, UITextViewDelegate{
         return editView
     }
     
-    var locationData : LocationData!
+    var locationData : MapData!
     
     override var data: EntryItemData{
         get{
@@ -82,7 +82,7 @@ class LocationItemEditView : EntryItemEditView, UITextViewDelegate{
     }
     
     var imageView = UIImageView()
-    var titleView = ResizingTextView()
+    var titleView = TextEditArea()
 
     override func setupSubviews(){
         addTopControl()
@@ -95,7 +95,7 @@ class LocationItemEditView : EntryItemEditView, UITextViewDelegate{
         titleView.setKeyboardToolbar()
     }
     
-    func setupData(data: LocationData){
+    func setupData(data: MapData){
         self.locationData = data
         imageView.image = data.getImage()
         titleView.text = data.title

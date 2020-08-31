@@ -11,12 +11,12 @@ import CoreLocation
 import MapKit
 
 protocol LocationCaptureDelegate{
-    func locationCaptured(data: LocationData)
+    func locationCaptured(data: MapData)
 }
 
 class LocationCaptureViewController: UIViewController, CLLocationManagerDelegate, MapViewDelegate {
     
-    var data : LocationData!
+    var data : MapData!
     var coordinate : CLLocationCoordinate2D!
     
     var delegate: LocationCaptureDelegate? = nil

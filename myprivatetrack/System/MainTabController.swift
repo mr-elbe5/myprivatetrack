@@ -18,9 +18,9 @@ class MainTabController: UITabBarController {
         let timelineViewController = TimelineViewController()
         timelineViewController.tabBarItem = UITabBarItem(title: NSLocalizedString("timeline", comment: ""), image: UIImage(systemName: "rectangle.stack"), tag: TabTags.timeline.hashValue)
         let mapViewController = MapViewController()
-        mapViewController.tabBarItem = UITabBarItem(title: NSLocalizedString("map", comment: ""), image: UIImage(systemName: "globe"), tag: TabTags.map.hashValue)
+        mapViewController.tabBarItem = UITabBarItem(title: "map".localize(), image: UIImage(systemName: "globe"), tag: TabTags.map.hashValue)
         let settingsViewController = SettingsViewController()
-        settingsViewController.tabBarItem = UITabBarItem(title: NSLocalizedString("settings", comment: ""), image: UIImage(systemName: "slider.horizontal.3"), tag: TabTags.settings.hashValue)
+        settingsViewController.tabBarItem = UITabBarItem(title: "settings".localize(), image: UIImage(systemName: "slider.horizontal.3"), tag: TabTags.settings.hashValue)
         
         let tabBarList = [timelineViewController, mapViewController, settingsViewController]
         viewControllers = tabBarList

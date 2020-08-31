@@ -47,7 +47,7 @@ extension UIViewController{
     
     public func showAlert(title: String, text: String, onOk: (() -> Void)? = nil){
         let alertController = UIAlertController(title: title, message: text, preferredStyle: .alert)
-        alertController.addAction(UIAlertAction(title: NSLocalizedString("ok",comment: ""),style: .default) { action in
+        alertController.addAction(UIAlertAction(title: "ok".localize(),style: .default) { action in
             onOk?()
         })
         self.present(alertController, animated: true)
@@ -55,10 +55,10 @@ extension UIViewController{
     
     public func showApprove(title: String, text: String, onApprove: (() -> Void)? = nil){
         let alertController = UIAlertController(title: title, message: text, preferredStyle: .alert)
-        alertController.addAction(UIAlertAction(title: NSLocalizedString("yes",comment: ""), style: .default) { action in
+        alertController.addAction(UIAlertAction(title: "yes".localize(), style: .default) { action in
             onApprove?()
         })
-        alertController.addAction(UIAlertAction(title: NSLocalizedString("no",comment: ""), style: .cancel))
+        alertController.addAction(UIAlertAction(title: "no".localize(), style: .cancel))
         self.present(alertController, animated: true)
     }
     

@@ -10,6 +10,7 @@ import UIKit
 
 protocol ImageItemDelegate{
     func viewImageItem(data: ImageData)
+    func shareImageItem(data: ImageData)
 }
 
 class ImageItemView : EntryItemView{
@@ -47,16 +48,28 @@ class ImageItemView : EntryItemView{
             imageView.connectBottom(view: self)
         }
         if delegate != nil{
-            let viewButton = ViewDetailButton(withBackground: true)
+            let sv = UIStackView()
+            sv.setupHorizontal(distribution: .fillEqually, spacing: 2*defaultInset)
+            addSubview(sv)
+            sv.placeTopRight(padding: doubleInsets)
+            let viewButton = IconButton(icon: "magnifyingglass", tintColor: .systemBlue, backgroundColor: .systemBackground)
             viewButton.addTarget(self, action: #selector(viewItem), for: .touchDown)
-            addSubview(viewButton)
-            viewButton.placeTopRight(padding: doubleInsets)
+            sv.addArrangedSubview(viewButton)
+            let shareButton = IconButton(icon: "square.and.arrow.up", tintColor: .systemBlue, backgroundColor: .systemBackground)
+            shareButton.addTarget(self, action: #selector(shareItem), for: .touchDown)
+            sv.addArrangedSubview(shareButton)
         }
     }
     
     @objc func viewItem(){
         if let imageData = imageData{
             delegate?.viewImageItem(data: imageData)
+        }
+    }
+    
+    @objc func shareItem(){
+        if let imageData = imageData{
+            delegate?.shareImageItem(data: imageData)
         }
     }
     
@@ -105,7 +118,7 @@ class ImageItemEditView : EntryItemEditView, UITextViewDelegate{
     }
     
     var imageView = UIImageView()
-    var titleView = ResizingTextView()
+    var titleView = TextEditArea()
 
     override func setupSubviews(){
         addTopControl()

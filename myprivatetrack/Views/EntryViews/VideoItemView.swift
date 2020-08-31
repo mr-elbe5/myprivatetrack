@@ -10,6 +10,7 @@ import UIKit
 
 protocol VideoItemDelegate{
     func viewVideoItem(data: VideoData)
+    func shareVideoItem(data: VideoData)
 }
 
 class VideoItemView : EntryItemView{
@@ -43,16 +44,28 @@ class VideoItemView : EntryItemView{
             videoView.connectBottom(view: self)
         }
         if delegate != nil{
-            let viewButton = ViewDetailButton(withBackground: true)
+            let sv = UIStackView()
+            sv.setupHorizontal(distribution: .fillEqually, spacing: 2*defaultInset)
+            addSubview(sv)
+            sv.placeTopRight(padding: doubleInsets)
+            let viewButton = IconButton(icon: "magnifyingglass", tintColor: .systemBlue, backgroundColor: .systemBackground)
             viewButton.addTarget(self, action: #selector(viewItem), for: .touchDown)
-            addSubview(viewButton)
-            viewButton.placeTopRight(padding: doubleInsets)
+            sv.addArrangedSubview(viewButton)
+            let shareButton = IconButton(icon: "square.and.arrow.up", tintColor: .systemBlue, backgroundColor: .systemBackground)
+            shareButton.addTarget(self, action: #selector(shareItem), for: .touchDown)
+            sv.addArrangedSubview(shareButton)
         }
     }
     
     @objc func viewItem(){
         if let videoData = videoData{
             delegate?.viewVideoItem(data: videoData)
+        }
+    }
+    
+    @objc func shareItem(){
+        if let videoData = videoData{
+            delegate?.shareVideoItem(data: videoData)
         }
     }
     
@@ -71,7 +84,7 @@ class VideoItemEditView : EntryItemEditView, UITextViewDelegate{
     var videoData : VideoData!
     
     var videoView = VideoPlayerView()
-    var titleView = ResizingTextView()
+    var titleView = TextEditArea()
     
     override var data: EntryItemData{
         get{

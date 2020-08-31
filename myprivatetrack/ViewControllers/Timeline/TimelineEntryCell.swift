@@ -12,7 +12,9 @@ protocol EntryCellActionDelegate{
     func deleteEntry(entry: EntryData)
     func viewEntry(entry: EntryData)
     func viewImageItem(data: ImageData)
+    func shareImageItem(data: ImageData)
     func viewVideoItem(data: VideoData)
+    func shareVideoItem(data: VideoData)
 }
 
 class TimelineEntryCell: UITableViewCell, ImageItemDelegate, VideoItemDelegate{
@@ -78,7 +80,7 @@ class TimelineEntryCell: UITableViewCell, ImageItemDelegate, VideoItemDelegate{
                 editButton.setTrailingAnchor(deleteButton.leadingAnchor, padding: defaultInset)
             }
             else{
-                let viewButton = ViewDetailButton()
+                let viewButton = IconButton(icon: "magnifyingglass", tintColor: .systemBlue)
                 viewButton.addTarget(self, action: #selector(viewEntry), for: .touchDown)
                 cellBody.addSubview(viewButton)
                 viewButton.placeTopRight(padding: doubleInsets)
@@ -110,8 +112,8 @@ class TimelineEntryCell: UITableViewCell, ImageItemDelegate, VideoItemDelegate{
                     itemView.placeBelow(view: lastView, padding: defaultInsets)
                     lastView = itemView
                     break
-                case .location:
-                    let itemView = LocationItemView.fromData(data: item.data as! LocationData)
+                case .map:
+                    let itemView = LocationItemView.fromData(data: item.data as! MapData)
                     cellBody.addSubview(itemView)
                     itemView.placeBelow(view: lastView, padding: defaultInsets)
                     lastView = itemView
@@ -144,8 +146,16 @@ class TimelineEntryCell: UITableViewCell, ImageItemDelegate, VideoItemDelegate{
         delegate?.viewImageItem(data: data)
     }
     
+    func shareImageItem(data: ImageData){
+        delegate?.shareImageItem(data: data)
+    }
+    
     func viewVideoItem(data: VideoData){
         delegate?.viewVideoItem(data: data)
+    }
+    
+    func shareVideoItem(data: VideoData){
+        delegate?.shareVideoItem(data: data)
     }
     
 }

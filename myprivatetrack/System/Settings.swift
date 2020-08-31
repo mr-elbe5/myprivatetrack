@@ -9,9 +9,9 @@ import Foundation
 import UIKit
 
 enum MapStartSize: Int{
-    case small = 500
-    case mid = 1000
-    case large = 4000
+    case small = 100
+    case mid = 5000
+    case large = 20000
 }
 
 enum ImageMaxSide: Int{
@@ -29,12 +29,12 @@ class Settings: Identifiable, Codable{
     }
     
     enum CodingKeys: String, CodingKey {
-        case useLocation
+        case saveLocation
         case mapStartSize
         case imageMaxSide
     }
     
-    var useLocation = true
+    var saveLocation = false
     var mapStartSize : MapStartSize = .mid
     var imageMaxSide : ImageMaxSide = .mid
     
@@ -43,14 +43,14 @@ class Settings: Identifiable, Codable{
     
     required init(from decoder: Decoder) throws {
         let values = try decoder.container(keyedBy: CodingKeys.self)
-        useLocation = try values.decode(Bool.self, forKey: .useLocation)
+        saveLocation = try values.decode(Bool.self, forKey: .saveLocation)
         mapStartSize = MapStartSize(rawValue: try values.decode(Int.self, forKey: .mapStartSize))!
         imageMaxSide = ImageMaxSide(rawValue: try values.decode(Int.self, forKey: .imageMaxSide))!
     }
     
     func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
-        try container.encode(useLocation, forKey: .useLocation)
+        try container.encode(saveLocation, forKey: .saveLocation)
         try container.encode(mapStartSize.rawValue, forKey: .mapStartSize)
         try container.encode(imageMaxSide.rawValue, forKey: .imageMaxSide)
     }

@@ -55,7 +55,7 @@ class AudioItemEditView : EntryItemEditView, UITextViewDelegate, AVAudioRecorder
     var audioData : AudioData!
     
     var audioView = AudioRecorderView()
-    var titleView = ResizingTextView()
+    var titleView = TextEditArea()
     
     override var data: EntryItemData{
         get{

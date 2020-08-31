@@ -8,13 +8,13 @@
 import Foundation
 import UIKit
 
-class LocationData: MediaData{
+class MapData: MediaData{
     
     private var image : UIImage? = nil
     
     override public var type : EntryItemType{
         get{
-            return .location
+            return .map
         }
     }
     

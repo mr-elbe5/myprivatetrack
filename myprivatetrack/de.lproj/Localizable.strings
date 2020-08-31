@@ -49,6 +49,9 @@
 "east"="Ost";
 "south"="Süd";
 "west"="West";
+"imageLibrary"="Fotos";
+"ownDocuments"="Dateien - Auf meinem iPhone/iPad";
+"copyError"="Die Datei konnte nicht kopiert werden.";
 "cameraNotAuthorized"="Die Nutzung der Kamera ist nicht erlaubt. Bitte ändere die entsprechenden Einstellungen.";
 "audioNotAuthorized"="Die Nutzung des Mikrofons ist nicht erlaubt. Bitte ändere die entsprechenden Einstellungen.";
 "videoNotAuthorized"="Die Nutzung der Kamera oder des Mikrofons ist nicht erlaubt. Bitte ändere die entsprechenden Einstellungen.";

@@ -12,7 +12,7 @@ enum EntryItemType: String, Codable{
     case audio
     case image
     case video
-    case location
+    case map
 }
 
 class EntryItemData: Identifiable, Codable{
@@ -85,8 +85,8 @@ class EntryItem : Identifiable, Codable{
         case .video:
             data = try values.decode(VideoData.self, forKey: .item)
             break
-        case .location:
-            data = try values.decode(LocationData.self, forKey: .item)
+        case .map:
+            data = try values.decode(MapData.self, forKey: .item)
             break
         }
     }
