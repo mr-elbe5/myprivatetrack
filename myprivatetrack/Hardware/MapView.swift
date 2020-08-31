@@ -18,7 +18,7 @@ class MapView : UIView, MKMapViewDelegate{
     
     private var mapView : MKMapView!
     
-    var location : CLLocation? = nil
+    var location : Location? = nil
     var radius : CLLocationDistance = 1000
     
     var positionPin : MKPointAnnotation? = nil
@@ -38,9 +38,16 @@ class MapView : UIView, MKMapViewDelegate{
         addSubview(mapView)
     }
     
-    func setLocation(coordinate : CLLocationCoordinate2D){
-        location = CLLocation(latitude: coordinate.latitude, longitude: coordinate.longitude)
-        mapView.centerToLocation(location!, regionRadius: radius)
+    func setLocation(location : Location){
+        if self.location == nil{
+            self.location = location
+            mapView.centerToLocation(location, regionRadius: radius)
+        }
+        self.location = location
+        if let pin = positionPin{
+            pin.coordinate = location.coordinate
+        }
+            
     }
     
     func toggleMapType(){

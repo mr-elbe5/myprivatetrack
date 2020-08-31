@@ -14,10 +14,9 @@ protocol LocationCaptureDelegate{
     func locationCaptured(data: MapData)
 }
 
-class LocationCaptureViewController: UIViewController, CLLocationManagerDelegate, MapViewDelegate {
+class LocationCaptureViewController: UIViewController, LocationServiceDelegate, MapViewDelegate {
     
     var data : MapData!
-    var coordinate : CLLocationCoordinate2D!
     
     var delegate: LocationCaptureDelegate? = nil
     
@@ -30,13 +29,16 @@ class LocationCaptureViewController: UIViewController, CLLocationManagerDelegate
     
     override func loadView() {
         super.loadView()
+        LocationService.shared.checkRunning()
         self.modalPresentationStyle = .fullScreen
         bodyView.backgroundColor = .black
         view.addSubview(bodyView)
         bodyView.fillSafeAreaOf(view: view, padding: .zero)
         bodyView.addSubview(mapView)
         mapView.setupView()
-        mapView.setLocation(coordinate: coordinate)
+        if let loc = LocationService.shared.getLocation(){
+            mapView.setLocation(location: loc)
+        }
         mapView.placeBelow(anchor: bodyView.topAnchor, padding: .zero)
         mapView.delegate = self
         buttonView.backgroundColor = .black
@@ -72,6 +74,19 @@ class LocationCaptureViewController: UIViewController, CLLocationManagerDelegate
     func didFinishLoading() {
         captureButton.isEnabled = true
         mapTypeButton.isEnabled = true
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        LocationService.shared.delegate = self
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        LocationService.shared.delegate = nil
+    }
+    
+    func locationDidChange(location: Location){
+        //print("location capture loc = \(location.coordinate)")
+        mapView.setLocation(location: location)
     }
     
     @objc func toggleMapType(){

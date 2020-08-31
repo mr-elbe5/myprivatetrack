@@ -8,10 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		4E14579F24E1C214008EC422 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4E1457A124E1C214008EC422 /* InfoPlist.strings */; };
+		4E3C5ACE24FCF2F300E11A35 /* FileError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E3C5ACD24FCF2F300E11A35 /* FileError.swift */; };
+		4E3C5AD024FCFC3300E11A35 /* CLLocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E3C5ACF24FCFC3300E11A35 /* CLLocationManager.swift */; };
+		4E3C5AD224FD00E600E11A35 /* LocationError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E3C5AD124FD00E600E11A35 /* LocationError.swift */; };
 		4E90CA70249532EB0029E308 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4E90CA72249532EB0029E308 /* Localizable.strings */; };
 		4ED21B7924FAA17200A6FEA3 /* DataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED21B7724FAA17200A6FEA3 /* DataStore.swift */; };
 		4ED21B7A24FAA17200A6FEA3 /* FileStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED21B7824FAA17200A6FEA3 /* FileStore.swift */; };
-		4ED21B7E24FAA20F00A6FEA3 /* Authorization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED21B7C24FAA20F00A6FEA3 /* Authorization.swift */; };
 		4ED21B7F24FAA20F00A6FEA3 /* LocationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED21B7D24FAA20F00A6FEA3 /* LocationService.swift */; };
 		4ED21B8124FAA23B00A6FEA3 /* CLLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED21B8024FAA23B00A6FEA3 /* CLLocation.swift */; };
 		4ED21B9924FAA29F00A6FEA3 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED21B9024FAA29F00A6FEA3 /* ViewController.swift */; };
@@ -107,11 +109,13 @@
 /* Begin PBXFileReference section */
 		4E1457A024E1C214008EC422 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		4E1457A224E1C217008EC422 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		4E3C5ACD24FCF2F300E11A35 /* FileError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileError.swift; sourceTree = "<group>"; };
+		4E3C5ACF24FCFC3300E11A35 /* CLLocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CLLocationManager.swift; sourceTree = "<group>"; };
+		4E3C5AD124FD00E600E11A35 /* LocationError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationError.swift; sourceTree = "<group>"; };
 		4E90CA71249532EB0029E308 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		4E90CA73249533080029E308 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
 		4ED21B7724FAA17200A6FEA3 /* DataStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DataStore.swift; path = ../Storage/DataStore.swift; sourceTree = "<group>"; };
 		4ED21B7824FAA17200A6FEA3 /* FileStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FileStore.swift; path = ../Storage/FileStore.swift; sourceTree = "<group>"; };
-		4ED21B7C24FAA20F00A6FEA3 /* Authorization.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Authorization.swift; sourceTree = "<group>"; };
 		4ED21B7D24FAA20F00A6FEA3 /* LocationService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationService.swift; sourceTree = "<group>"; };
 		4ED21B8024FAA23B00A6FEA3 /* CLLocation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CLLocation.swift; sourceTree = "<group>"; };
 		4ED21B9024FAA29F00A6FEA3 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -316,7 +320,6 @@
 			children = (
 				4ED21C3A24FAAC6D00A6FEA3 /* AudioPlayerView.swift */,
 				4ED21C3C24FAAC6D00A6FEA3 /* AudioRecorderView.swift */,
-				4ED21B7C24FAA20F00A6FEA3 /* Authorization.swift */,
 				4ED21C3D24FAAC6E00A6FEA3 /* AVCaptureDevice.swift */,
 				4ED21C4224FAAC6E00A6FEA3 /* AVCaptureVideoOrientation.swift */,
 				4ED21C3F24FAAC6E00A6FEA3 /* CameraViewController.swift */,
@@ -332,6 +335,8 @@
 				4ED21C3B24FAAC6D00A6FEA3 /* VideoCaptureViewController.swift */,
 				4ED21C4124FAAC6E00A6FEA3 /* VideoPlayerView.swift */,
 				4ED21C3E24FAAC6E00A6FEA3 /* VideoViewController.swift */,
+				4E3C5ACF24FCFC3300E11A35 /* CLLocationManager.swift */,
+				4E3C5AD124FD00E600E11A35 /* LocationError.swift */,
 			);
 			path = Hardware;
 			sourceTree = "<group>";
@@ -370,6 +375,7 @@
 				4ED21BC924FAA36C00A6FEA3 /* Settings.swift */,
 				4ED21BBF24FAA36000A6FEA3 /* String.swift */,
 				4ED21BBC24FAA36000A6FEA3 /* URL.swift */,
+				4E3C5ACD24FCF2F300E11A35 /* FileError.swift */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -538,11 +544,13 @@
 				4ED21C1424FAA3D000A6FEA3 /* MapViewController.swift in Sources */,
 				4ED21C2A24FAA47500A6FEA3 /* SettingsViewController.swift in Sources */,
 				4ED21B8124FAA23B00A6FEA3 /* CLLocation.swift in Sources */,
+				4E3C5ACE24FCF2F300E11A35 /* FileError.swift in Sources */,
 				4ED21C2D24FAA47500A6FEA3 /* BackupViewController.swift in Sources */,
 				4ED21BC124FAA36000A6FEA3 /* MKMapView.swift in Sources */,
 				4ED21C5224FAAC6E00A6FEA3 /* LocationCaptureViewController.swift in Sources */,
 				4ED21BE724FAA39300A6FEA3 /* TextButton.swift in Sources */,
 				4ED21BB224FAA32500A6FEA3 /* TimeSpanData.swift in Sources */,
+				4E3C5AD224FD00E600E11A35 /* LocationError.swift in Sources */,
 				4ED21BEF24FAA39300A6FEA3 /* UIImageView.swift in Sources */,
 				4ED21C1024FAA3B900A6FEA3 /* EditEntryInfoViewController.swift in Sources */,
 				4ED21BAF24FAA32500A6FEA3 /* GlobalData.swift in Sources */,
@@ -550,7 +558,6 @@
 				4ED21BC224FAA36000A6FEA3 /* URL.swift in Sources */,
 				4ED21BE324FAA39300A6FEA3 /* DatePickerView.swift in Sources */,
 				4ED21C4C24FAAC6E00A6FEA3 /* VideoViewController.swift in Sources */,
-				4ED21B7E24FAA20F00A6FEA3 /* Authorization.swift in Sources */,
 				4ED21BF424FAA39300A6FEA3 /* IconInfoText.swift in Sources */,
 				4ED21C0F24FAA3B900A6FEA3 /* TimelineEntryCell.swift in Sources */,
 				4ED21C4724FAAC6E00A6FEA3 /* CaptureButton.swift in Sources */,
@@ -595,6 +602,7 @@
 				4ED21C4E24FAAC6E00A6FEA3 /* MediaCommentLabel.swift in Sources */,
 				4ED21BB424FAA32500A6FEA3 /* DayData.swift in Sources */,
 				4ED21B9F24FAA29F00A6FEA3 /* ScrollViewController.swift in Sources */,
+				4E3C5AD024FCFC3300E11A35 /* CLLocationManager.swift in Sources */,
 				4ED21BCC24FAA36C00A6FEA3 /* SceneDelegate.swift in Sources */,
 				4ED21BE824FAA39300A6FEA3 /* UILabel.swift in Sources */,
 				4ED21BB324FAA32500A6FEA3 /* VideoData.swift in Sources */,

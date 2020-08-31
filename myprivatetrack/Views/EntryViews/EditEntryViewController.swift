@@ -7,6 +7,8 @@
 
 import Foundation
 import UIKit
+import AVFoundation
+import CoreLocation
 
 protocol SaveEntryDelegate{
     func saveEntry(entry: EntryData)
@@ -113,52 +115,57 @@ class EditEntryViewController: EditViewController, ImageCaptureDelegate, VideoCa
     }
     
     @objc func addImage(){
-        if Authorization.isCameraAuthorized(){
-            let data = ImageData()
-            let imageCaptureController = ImageCaptureViewController()
-            imageCaptureController.data = data
-            imageCaptureController.delegate = self
-            imageCaptureController.modalPresentationStyle = .fullScreen
-            self.present(imageCaptureController, animated: true)
+        AVCaptureDevice.askCameraAuthorization(){ result in
+            if result{
+                let data = ImageData()
+                let imageCaptureController = ImageCaptureViewController()
+                imageCaptureController.data = data
+                imageCaptureController.delegate = self
+                imageCaptureController.modalPresentationStyle = .fullScreen
+                self.present(imageCaptureController, animated: true)
+            }
+            else{
+                self.showError("cameraNotAuthorized")
+            }
         }
-        else{
-            showError("cameraNotAuthorized")
-        }
+        
     }
     
     @objc func addAudio(){
-        if Authorization.isAudioAuthorized(){
-            let data = AudioData()
-            entry.addItem(item: data)
-            let editView = AudioItemEditView.fromData(data: data)
-            insertItemView(editView)
-        }
-        else{
-            showError("audioNotAuthorized")
+        AVCaptureDevice.askAudioAuthorization(){ result in
+            if result{
+                let data = AudioData()
+                self.entry.addItem(item: data)
+                let editView = AudioItemEditView.fromData(data: data)
+                self.insertItemView(editView)
+            }
+            else{
+                self.showError("audioNotAuthorized")
+            }
         }
     }
     
     @objc func addVideo(){
-        if Authorization.isAudioAuthorized() && Authorization.isCameraAuthorized(){
-            let data = VideoData()
-            let videoCaptureController = VideoCaptureViewController()
-            videoCaptureController.data = data
-            videoCaptureController.delegate = self
-            videoCaptureController.modalPresentationStyle = .fullScreen
-            self.present(videoCaptureController, animated: true)
-        }
-        else{
-            showError("videoNotAuthorized")
+        AVCaptureDevice.askVideoAuthorization(){ result in
+            if result{
+                let data = VideoData()
+                let videoCaptureController = VideoCaptureViewController()
+                videoCaptureController.data = data
+                videoCaptureController.delegate = self
+                videoCaptureController.modalPresentationStyle = .fullScreen
+                self.present(videoCaptureController, animated: true)
+            }
+            else{
+                self.showError("videoNotAuthorized")
+            }
         }
     }
     
     @objc func addLocation(){
-        if Authorization.isLocationAuthorized(), let loc = entry.location{
-            LocationService.shared.assertRunning()
+        if CLLocationManager.authorized{
             let data = MapData()
             let locationCaptureController = LocationCaptureViewController()
             locationCaptureController.data = data
-            locationCaptureController.coordinate = loc.coordinate
             locationCaptureController.delegate = self
             locationCaptureController.modalPresentationStyle = .fullScreen
             self.present(locationCaptureController, animated: true)

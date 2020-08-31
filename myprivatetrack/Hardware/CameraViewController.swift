@@ -44,7 +44,7 @@ class CameraViewController: UIViewController {
         bodyView.addSubview(buttonView)
         buttonView.placeAbove(anchor: bodyView.bottomAnchor, padding: .zero)
         addButtons()
-        Authorization.askCameraAuthorization(){ result in
+        AVCaptureDevice.askCameraAuthorization(){ result in
             self.preview.session = self.session
             self.sessionQueue.async {
                 self.configureSession()

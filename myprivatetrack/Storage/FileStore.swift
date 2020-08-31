@@ -97,39 +97,61 @@ public class FileStore {
         do{
             try FileManager.default.copyItem(at: getURL(dirURL: fromDir,fileName: name), to: getURL(dirURL: toDir, fileName: name))
             return true
-        } catch{
+        } catch let err{
+            print("Error copying file: " + err.localizedDescription)
             return false
         }
     }
     
-    static func copyImageToLibrary(name: String, fromDir: URL) -> Bool{
-        var success = false
-        Authorization.askPhotoLibraryAuthorization(){ result in
+    public static func askPhotoLibraryAuthorization(callback: @escaping (_ result: Bool) -> Void){
+        switch PHPhotoLibrary.authorizationStatus(){
+        case .authorized:
+            callback(true)
+            break
+        case .notDetermined:
+            PHPhotoLibrary.requestAuthorization(){ granted in
+                if granted == .authorized{
+                    callback(true)
+                }
+                else{
+                    callback(false)
+                }
+            }
+            break
+        default:
+            callback(false)
+            break
+        }
+    }
+    
+    static func copyImageToLibrary(name: String, fromDir: URL, callback: @escaping (_ result: Bool, _ error: FileError?) -> Void){
+        askPhotoLibraryAuthorization(){ result in
             if result{
                 let url = getURL(dirURL: fromDir, fileName: name)
                 if let data = readFile(url: url){
                     if let image = UIImage(data: data){
                         UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil)
-                        success = true
+                        callback(true, nil)
+                        return
                     }
                     else{
-                        print("could create image from file")
+                        callback(false, .save)
+                        return
                     }
                 }
                 else{
-                    print("could not read file")
+                    callback(false, .read)
                 }
             }
             else{
-                print("no lib permission")
+                callback(false, .unauthorized)
             }
         }
-        return success
+        callback(false, .unexpected)
     }
     
-    static func copyVideoToLibrary(name: String, fromDir: URL) -> Bool{
-        var success = false
-        Authorization.askPhotoLibraryAuthorization(){ result in
+    static func copyVideoToLibrary(name: String, fromDir: URL, callback: @escaping (_ result: Bool, _ error: FileError?) -> Void){
+        askPhotoLibraryAuthorization(){ result in
             if result{
                 let url = getURL(dirURL: fromDir, fileName: name)
                 PHPhotoLibrary.shared().performChanges({
@@ -137,15 +159,21 @@ public class FileStore {
                 }) { saved, error in
                     if saved {
                         print("video saved")
-                        success = true
+                        callback(true, nil)
+                        return
+                    }
+                    else{
+                        callback(false, .save)
+                        return
                     }
                 }
             }
             else{
-                print("no lib permission")
+                callback(false, .unauthorized)
+                return
             }
         }
-        return success
+        callback(false, .unexpected)
     }
     
     static public func renameFile(dirURL: URL, fromName: String, toName: String) -> Bool{

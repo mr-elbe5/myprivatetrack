@@ -79,10 +79,6 @@ class TimelineViewController: TableViewController, SaveEntryDelegate, EntryCellA
             }
             firstAppearance = false
         }
-        addImageButton.isEnabled = Authorization.isCameraAuthorized()
-        addAudioButton.isEnabled = Authorization.isAudioAuthorized()
-        addVideoButton.isEnabled = Authorization.isCameraAuthorized() && Authorization.isAudioAuthorized()
-        addLocationButton.isEnabled = Authorization.isLocationAuthorized()
     }
     
     // MainHeaderActionDelegate
@@ -90,9 +86,7 @@ class TimelineViewController: TableViewController, SaveEntryDelegate, EntryCellA
     func openEntryController() -> EditEntryViewController{
         let createEventViewController = EditEntryViewController()
         createEventViewController.entry = EntryData(isNew: true)
-        if Authorization.isLocationAuthorized(){
-            createEventViewController.entry.location = Location(LocationService.shared.location)
-        }
+        createEventViewController.entry.location = LocationService.shared.getLocation()
         createEventViewController.delegate = self
         createEventViewController.modalPresentationStyle = .fullScreen
         self.present(createEventViewController, animated: true)
@@ -186,8 +180,10 @@ class TimelineViewController: TableViewController, SaveEntryDelegate, EntryCellA
     func shareImageItem(data: ImageData) {
         let alertController = UIAlertController(title: title, message: "shareImage".localize(), preferredStyle: .actionSheet)
         alertController.addAction(UIAlertAction(title: "imageLibrary".localize(), style: .default) { action in
-            if !FileStore.copyImageToLibrary(name: data.fileName, fromDir: FileStore.privateURL){
-                self.showAlert(title: "error".localize(), text: "copyError")
+            FileStore.copyImageToLibrary(name: data.fileName, fromDir: FileStore.privateURL){ result, error in
+                if !result, let err = error{
+                    self.showAlert(title: "error".localize(), text: err.errorDescription!)
+                }
             }
         })
         alertController.addAction(UIAlertAction(title: "ownDocuments".localize(), style: .default) { action in
@@ -209,8 +205,10 @@ class TimelineViewController: TableViewController, SaveEntryDelegate, EntryCellA
     func shareVideoItem(data: VideoData) {
         let alertController = UIAlertController(title: title, message: "shareImage".localize(), preferredStyle: .actionSheet)
         alertController.addAction(UIAlertAction(title: "imageLibrary".localize(), style: .default) { action in
-            if !FileStore.copyVideoToLibrary(name: data.fileName, fromDir: FileStore.privateURL){
-                self.showAlert(title: "error".localize(), text: "copyError")
+            FileStore.copyVideoToLibrary(name: data.fileName, fromDir: FileStore.privateURL){ result, error in
+                if !result, let err = error{
+                    self.showAlert(title: "error".localize(), text: err.errorDescription!)
+                }
             }
         })
         alertController.addAction(UIAlertAction(title: "ownDocuments".localize(), style: .default) { action in

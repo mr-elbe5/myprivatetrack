@@ -8,8 +8,8 @@
 import Foundation
 import CoreLocation
 
-public protocol LocationDelegate{
-    func loctionDidChange(coordinate: CLLocationCoordinate2D)
+public protocol LocationServiceDelegate{
+    func locationDidChange(location: Location)
 }
 
 public class LocationService : NSObject, CLLocationManagerDelegate{
@@ -17,9 +17,9 @@ public class LocationService : NSObject, CLLocationManagerDelegate{
     public static var shared = LocationService()
     public static var deviation : Double = 0.0001
     
-    public var location = CLLocation()
-    public var active = false
-    public var delegate : LocationDelegate? = nil
+    public var clLocation : CLLocation? = nil
+    public var running = false
+    public var delegate : LocationServiceDelegate? = nil
     
     private let locationManager = CLLocationManager()
     
@@ -31,14 +31,32 @@ public class LocationService : NSObject, CLLocationManagerDelegate{
     
     public var authorized : Bool{
         get{
-            switch CLLocationManager.authorizationStatus(){
-            case .authorizedAlways:
-                return true
-            case.authorizedWhenInUse:
-                return true
-            default:
-                return false
-            }
+            return CLLocationManager.authorized
+        }
+    }
+    
+    public func getLocation() -> Location? {
+        return clLocation == nil ? nil : Location(clLocation!)
+    }
+    
+    public func start(){
+        if authorized{
+            locationManager.startUpdatingLocation()
+            running = true
+        }
+    }
+    
+    public func checkRunning(){
+        if authorized && !running{
+            print("run after check")
+            locationManager.startUpdatingLocation()
+            running = true
+        }
+    }
+    
+    public func stop(){
+        if running{
+            locationManager.stopUpdatingLocation()
         }
     }
     
@@ -46,46 +64,16 @@ public class LocationService : NSObject, CLLocationManagerDelegate{
         self.locationManager.requestWhenInUseAuthorization()
     }
     
-    public func assertRunning(){
-        if !active{
-            startUpdatingLocation()
-            if !LocationService.shared.active{
-                DispatchQueue.main.asyncAfter(deadline: .now() + 4.0) {
-                    self.startUpdatingLocation()
-                    if !LocationService.shared.active{
-                        DispatchQueue.main.asyncAfter(deadline: .now() + 4.0) {
-                            self.startUpdatingLocation()
-                        }
-                    }
-                }
-            }
-        }
-    }
-    
-    public func startUpdatingLocation(){
-        if !authorized {
-            active = false
-            return
-        }
-        if !active{
-            locationManager.startUpdatingLocation()
-            active = true
-        }
-    }
-    
-    public func stopUpdatingLocation(){
-        if active {
-            locationManager.stopUpdatingLocation()
-            active = false
-        }
-    }
-    
     public func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        if !running{
+            print("i am running!")
+            running = true
+        }
         guard let newLocation = locations.last else { return }
-        if location.differs(from: newLocation, byMoreThan: LocationService.deviation){
-            location = newLocation
+        if clLocation == nil || newLocation.distance(from: clLocation!) > 5{
+            clLocation = newLocation
             if let delegate = delegate{
-                delegate.loctionDidChange(coordinate: location.coordinate)
+                delegate.locationDidChange(location: Location(clLocation!))
             }
         }
     }

@@ -9,16 +9,17 @@ import Foundation
 import UIKit
 import MapKit
 
-class MapViewController: UIViewController, MKMapViewDelegate {
+class MapViewController: UIViewController, MKMapViewDelegate, LocationServiceDelegate {
     
     var headerView = UIView()
     var mapView : MKMapView!
     var mapLoaded = false
-    var location: CLLocation? = nil
+    var location: Location? = nil
     var radius : CLLocationDistance = 10000
     
     override func loadView() {
         super.loadView()
+        LocationService.shared.checkRunning()
         let guide = view.safeAreaLayoutGuide
         view.addSubview(headerView)
         headerView.enableAnchors()
@@ -44,15 +45,28 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         mapView.mapType = .satellite
         mapView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         mapView.delegate = self
-        let coord = LocationService.shared.location.coordinate
-        location = CLLocation(latitude: coord.latitude, longitude: coord.longitude)
-        mapView.centerToLocation(location!, regionRadius: radius)
         view.addSubview(mapView)
         mapView.enableAnchors()
         mapView.setLeadingAnchor(guide.leadingAnchor, padding: .zero)
         mapView.setTopAnchor(headerView.bottomAnchor, padding: 1)
         mapView.setTrailingAnchor(guide.trailingAnchor,padding: .zero)
         mapView.setBottomAnchor(guide.bottomAnchor, padding: .zero)
+    }
+    
+    func locationDidChange(location: Location){
+        //print("map loc = \(location.coordinate)")
+        if self.location == nil{
+            self.location = location
+            self.mapView.centerToLocation(location, regionRadius: self.radius)
+        }
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        LocationService.shared.delegate = self
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        LocationService.shared.delegate = nil
     }
     
     func setNeedsUpdate(){
