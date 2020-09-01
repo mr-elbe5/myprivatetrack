@@ -52,6 +52,10 @@
 "imageLibrary"="Fotos";
 "ownDocuments"="Dateien - Auf meinem iPhone/iPad";
 "copyError"="Die Datei konnte nicht kopiert werden.";
+"selectBackground"="Hintergrundbild wählen";
+"backgroundImageInfo"="Du kannst ein Bild aus der Fotobibliothek oder das Standardbild wählen.";
+"ownBackground"="Fotobibliothek";
+"defaultBackground"="Standardbild";
 "cameraNotAuthorized"="Die Nutzung der Kamera ist nicht erlaubt. Bitte ändere die entsprechenden Einstellungen.";
 "audioNotAuthorized"="Die Nutzung des Mikrofons ist nicht erlaubt. Bitte ändere die entsprechenden Einstellungen.";
 "videoNotAuthorized"="Die Nutzung der Kamera oder des Mikrofons ist nicht erlaubt. Bitte ändere die entsprechenden Einstellungen.";

@@ -9,21 +9,30 @@ import Foundation
 import UIKit
 import Zip
 
-class SettingsViewController: EditViewController, UIDocumentPickerDelegate{
+enum SettingsPickerType{
+    case backup
+}
 
+class SettingsViewController: EditViewController, UIDocumentPickerDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate{
+
+    var backgroundButton = TextButton(text: "selectBackground".localize())
     var resetButton = TextButton(text: "deleteData".localize())
     var exportButton = TextButton(text: "backupData".localize())
     var passwordField = TextEditLine()
     var importButton = TextButton(text: "restoreData".localize())
     
+    var pickerType : SettingsPickerType? = nil
+    
     override func loadView() {
         super.loadView()
         let header = InfoHeader(text: "settings".localize())
         stackView.addArrangedSubview(header)
+        backgroundButton.addTarget(self, action: #selector(selectBackground), for: .touchDown)
         resetButton.addTarget(self, action: #selector(resetData), for: .touchDown)
         passwordField.setupView(labelText: "backupPassword".localize(), text: "", secure: true)
         exportButton.addTarget(self, action: #selector(exportData), for: .touchDown)
         importButton.addTarget(self, action: #selector(importData), for: .touchDown)
+        stackView.addArrangedSubview(backgroundButton)
         stackView.addArrangedSubview(resetButton)
         stackView.addArrangedSubview(passwordField)
         stackView.addArrangedSubview(exportButton)
@@ -48,6 +57,33 @@ class SettingsViewController: EditViewController, UIDocumentPickerDelegate{
     @objc func showInfo(){
         let infoController = SettingsInfoViewController()
         self.present(infoController, animated: true)
+    }
+    
+    @objc func selectBackground(){
+        let alertController = UIAlertController(title: "selectBackground".localize(), message: "backgroundImageInfo".localize(), preferredStyle: .actionSheet)
+        alertController.addAction(UIAlertAction(title: "ownBackground".localize(), style: .default) { action in
+            let pickerController = UIImagePickerController()
+            pickerController.delegate = self
+            pickerController.allowsEditing = true
+            pickerController.mediaTypes = ["public.image"]
+            pickerController.sourceType = .photoLibrary
+            pickerController.modalPresentationStyle = .fullScreen
+            self.present(pickerController, animated: true, completion: nil)
+        })
+        alertController.addAction(UIAlertAction(title: "defaultBackground".localize(), style: .default) { action in
+            Settings.shared.backgroundURL = nil
+            MainTabController.getTimelineViewController()?.updateBackground()
+        })
+        alertController.addAction(UIAlertAction(title: "cancel".localize(), style: .cancel) { action in
+        })
+        self.present(alertController, animated: true)
+    }
+    
+    public func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]) {
+        guard let imageURL = info[.imageURL] as? URL else {return}
+        Settings.shared.backgroundURL = imageURL
+        MainTabController.getTimelineViewController()?.updateBackground()
+        picker.dismiss(animated: true, completion: nil)
     }
     
     @objc func resetData(){
@@ -77,10 +113,21 @@ class SettingsViewController: EditViewController, UIDocumentPickerDelegate{
         filePicker.directoryURL = FileStore.documentURL
         filePicker.delegate = self
         filePicker.modalPresentationStyle = .fullScreen
+        self.pickerType = .backup
         self.present(filePicker, animated: true, completion: nil)
     }
     
     func documentPicker(_ controller: UIDocumentPickerViewController, didPickDocumentsAt urls: [URL]) {
+        if let type = pickerType{
+            switch type{
+            case .backup:
+                backupPicked(didPickDocumentsAt: urls)
+                break
+            }
+        }
+    }
+    
+    func backupPicked(didPickDocumentsAt urls: [URL]) {
         if let zipURL = urls.first{
             if !FileStore.fileExists(url: zipURL){
                 print("no import file")
@@ -105,8 +152,5 @@ class SettingsViewController: EditViewController, UIDocumentPickerDelegate{
         }
     }
     
-    func documentPickerWasCancelled(_ controller: UIDocumentPickerViewController) {
-        print("cancelled")
-    }
-    
 }
+

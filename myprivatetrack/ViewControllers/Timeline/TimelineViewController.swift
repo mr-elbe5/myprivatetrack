@@ -13,6 +13,8 @@ class TimelineViewController: TableViewController, SaveEntryDelegate, EntryCellA
     
     var firstAppearance = true
     
+    var backgroundView = UIImageView(image: Settings.shared.backgroundImage)
+    
     var addTextButton = IconButton(icon: "text.bubble")
     var addImageButton = IconButton(icon: "camera")
     var addAudioButton = IconButton(icon: "mic")
@@ -23,9 +25,9 @@ class TimelineViewController: TableViewController, SaveEntryDelegate, EntryCellA
     override func loadView(){
         super.loadView()
         tableView.backgroundColor = UIColor.clear
-        let backgroundImage = UIImageView(image: UIImage(named: "meersonne"))
-        backgroundImage.contentMode = UIView.ContentMode.scaleAspectFill;
-        tableView.backgroundView = backgroundImage
+        let backgroundView = UIImageView(image: Settings.shared.backgroundImage)
+        backgroundView.contentMode = UIView.ContentMode.scaleAspectFill;
+        tableView.backgroundView = backgroundView
         tableView.register(TimelineEntryCell.self, forCellReuseIdentifier: TimelineViewController.CELL_IDENT)
         tableView.allowsSelection = false
         tableView.allowsSelectionDuringEditing = false
@@ -70,6 +72,13 @@ class TimelineViewController: TableViewController, SaveEntryDelegate, EntryCellA
     
     func setNeedsUpdate(){
         tableView.reloadData()
+    }
+    
+    func updateBackground(){
+        let backgroundView = UIImageView(image: Settings.shared.backgroundImage)
+        backgroundView.contentMode = UIView.ContentMode.scaleAspectFill;
+        tableView.backgroundView = backgroundView
+        tableView.setNeedsLayout()
     }
     
     override func viewDidAppear(_ animated: Bool) {

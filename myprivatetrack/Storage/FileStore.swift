@@ -103,6 +103,16 @@ public class FileStore {
         }
     }
     
+    static public func copyFile(fromURL: URL, toURL: URL) -> Bool{
+        do{
+            try FileManager.default.copyItem(at: fromURL, to: toURL)
+            return true
+        } catch let err{
+            print("Error copying file: " + err.localizedDescription)
+            return false
+        }
+    }
+    
     public static func askPhotoLibraryAuthorization(callback: @escaping (_ result: Bool) -> Void){
         switch PHPhotoLibrary.authorizationStatus(){
         case .authorized:
@@ -125,6 +135,32 @@ public class FileStore {
     }
     
     static func copyImageToLibrary(name: String, fromDir: URL, callback: @escaping (_ result: Bool, _ error: FileError?) -> Void){
+        askPhotoLibraryAuthorization(){ result in
+            if result{
+                let url = getURL(dirURL: fromDir, fileName: name)
+                if let data = readFile(url: url){
+                    if let image = UIImage(data: data){
+                        UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil)
+                        callback(true, nil)
+                        return
+                    }
+                    else{
+                        callback(false, .save)
+                        return
+                    }
+                }
+                else{
+                    callback(false, .read)
+                }
+            }
+            else{
+                callback(false, .unauthorized)
+            }
+        }
+        callback(false, .unexpected)
+    }
+    
+    static func copyImageFromLibrary(name: String, fromDir: URL, callback: @escaping (_ result: Bool, _ error: FileError?) -> Void){
         askPhotoLibraryAuthorization(){ result in
             if result{
                 let url = getURL(dirURL: fromDir, fileName: name)

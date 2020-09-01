@@ -52,6 +52,10 @@
 "imageLibrary"="Photos";
 "ownDocuments"="Files - On my iPhone/iPad";
 "copyError"="The file could not be copied.";
+"selectBackground"="Select background image";
+"backgroundImageInfo"="You can select an image from your photo library or the default image";
+"ownBackground"="Photo library";
+"defaultBackground"="Default image";
 "cameraNotAuthorized"="Camera use is not authorized. Please change your settings.";
 "audioNotAuthorized"="Microphone use is not authorized. Please change your settings.";
 "videoNotAuthorized"="Camera or Microphone use is not authorized. Please change your settings.";
