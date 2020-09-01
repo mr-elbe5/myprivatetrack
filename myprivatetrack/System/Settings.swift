@@ -32,13 +32,13 @@ class Settings: Identifiable, Codable{
         case saveLocation
         case mapStartSize
         case imageMaxSide
-        case backgroundURL
+        case backgroundName
     }
     
     var saveLocation = false
     var mapStartSize : MapStartSize = .mid
     var imageMaxSide : ImageMaxSide = .mid
-    var backgroundURL : URL? = nil
+    var backgroundName : String? = nil
     
     init(){
     }
@@ -48,7 +48,7 @@ class Settings: Identifiable, Codable{
         saveLocation = try values.decode(Bool.self, forKey: .saveLocation)
         mapStartSize = MapStartSize(rawValue: try values.decode(Int.self, forKey: .mapStartSize))!
         imageMaxSide = ImageMaxSide(rawValue: try values.decode(Int.self, forKey: .imageMaxSide))!
-        backgroundURL = try values.decode(URL.self, forKey: .backgroundURL)
+        backgroundName = try values.decode(String.self, forKey: .backgroundName)
     }
     
     func encode(to encoder: Encoder) throws {
@@ -56,7 +56,7 @@ class Settings: Identifiable, Codable{
         try container.encode(saveLocation, forKey: .saveLocation)
         try container.encode(mapStartSize.rawValue, forKey: .mapStartSize)
         try container.encode(imageMaxSide.rawValue, forKey: .imageMaxSide)
-        try container.encode(backgroundURL, forKey: .backgroundURL)
+        try container.encode(backgroundName, forKey: .backgroundName)
     }
     
     func save(){
@@ -65,7 +65,8 @@ class Settings: Identifiable, Codable{
     
     var backgroundImage : UIImage?{
         get{
-            if let url = backgroundURL{
+            if let name = backgroundName{
+                let url = FileStore.getURL(dirURL: FileStore.privateURL, fileName: name)
                 if FileStore.fileExists(url: url){
                     if let data = FileStore.readFile(url: url){
                         return UIImage(data: data)

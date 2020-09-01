@@ -7,7 +7,7 @@
 
 import Foundation
 import UIKit
-import Zip
+import ZIPFoundation
 
 class RestoreViewController: ModalScrollViewController, DatePickerDelegate{
 

@@ -9,6 +9,7 @@ import Foundation
 import UIKit
 import Photos
 import Compression
+import ZIPFoundation
 
 public class FileStore {
     
@@ -233,6 +234,17 @@ public class FileStore {
         }
     }
     
+    static public func deleteFile(url: URL) -> Bool{
+        do{
+            try FileManager.default.removeItem(at: url)
+            print("file deleted: \(url)")
+            return true
+        }
+        catch {
+            return false
+        }
+    }
+    
     static public func listAllFiles(dirPath: String) -> Array<String>{
         return try! FileManager.default.contentsOfDirectory(atPath: dirPath)
     }
@@ -255,6 +267,35 @@ public class FileStore {
             }
         }
         print("\(count) files deleted")
+    }
+    
+    static public func zipFiles(sourceFiles: [URL], zipURL: URL){
+        guard let archive = Archive(url: zipURL, accessMode: .create) else  {
+            return
+        }
+        for fileURL in sourceFiles{
+            do {
+                try archive.addEntry(with: fileURL.lastPathComponent, relativeTo: fileURL.deletingLastPathComponent())
+            } catch {
+                print("Adding entry to ZIP archive failed with error:\(error)")
+            }
+        }
+    }
+    
+    static public func zipDirectory(sourceURL: URL, zipURL: URL){
+        do {
+            try FileManager.default.zipItem(at: sourceURL, to: zipURL)
+        } catch {
+            print("Creation of ZIP archive failed with error:\(error)")
+        }
+    }
+    
+    static public func unzipDirectory(zipURL: URL, destinationURL: URL){
+        do {
+            try FileManager.default.unzipItem(at: zipURL, to: destinationURL)
+        } catch {
+            print("Extraction of ZIP archive failed with error:\(error)")
+        }
     }
     
 }

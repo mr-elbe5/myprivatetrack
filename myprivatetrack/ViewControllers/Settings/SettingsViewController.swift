@@ -7,7 +7,6 @@
 
 import Foundation
 import UIKit
-import Zip
 
 enum SettingsPickerType{
     case backup
@@ -18,7 +17,6 @@ class SettingsViewController: EditViewController, UIDocumentPickerDelegate, UIIm
     var backgroundButton = TextButton(text: "selectBackground".localize())
     var resetButton = TextButton(text: "deleteData".localize())
     var exportButton = TextButton(text: "backupData".localize())
-    var passwordField = TextEditLine()
     var importButton = TextButton(text: "restoreData".localize())
     
     var pickerType : SettingsPickerType? = nil
@@ -29,12 +27,10 @@ class SettingsViewController: EditViewController, UIDocumentPickerDelegate, UIIm
         stackView.addArrangedSubview(header)
         backgroundButton.addTarget(self, action: #selector(selectBackground), for: .touchDown)
         resetButton.addTarget(self, action: #selector(resetData), for: .touchDown)
-        passwordField.setupView(labelText: "backupPassword".localize(), text: "", secure: true)
-        exportButton.addTarget(self, action: #selector(exportData), for: .touchDown)
-        importButton.addTarget(self, action: #selector(importData), for: .touchDown)
+        exportButton.addTarget(self, action: #selector(backupData), for: .touchDown)
+        importButton.addTarget(self, action: #selector(restoreData), for: .touchDown)
         stackView.addArrangedSubview(backgroundButton)
         stackView.addArrangedSubview(resetButton)
-        stackView.addArrangedSubview(passwordField)
         stackView.addArrangedSubview(exportButton)
         stackView.addArrangedSubview(importButton)
     }
@@ -54,6 +50,10 @@ class SettingsViewController: EditViewController, UIDocumentPickerDelegate, UIIm
         self.headerView = headerView
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        exportButton.isEnabled = globalData.days.count > 0
+    }
+    
     @objc func showInfo(){
         let infoController = SettingsInfoViewController()
         self.present(infoController, animated: true)
@@ -71,7 +71,8 @@ class SettingsViewController: EditViewController, UIDocumentPickerDelegate, UIIm
             self.present(pickerController, animated: true, completion: nil)
         })
         alertController.addAction(UIAlertAction(title: "defaultBackground".localize(), style: .default) { action in
-            Settings.shared.backgroundURL = nil
+            Settings.shared.backgroundName = nil
+            Settings.shared.save()
             MainTabController.getTimelineViewController()?.updateBackground()
         })
         alertController.addAction(UIAlertAction(title: "cancel".localize(), style: .cancel) { action in
@@ -81,8 +82,16 @@ class SettingsViewController: EditViewController, UIDocumentPickerDelegate, UIIm
     
     public func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]) {
         guard let imageURL = info[.imageURL] as? URL else {return}
-        Settings.shared.backgroundURL = imageURL
-        MainTabController.getTimelineViewController()?.updateBackground()
+        let imageName = "background." + imageURL.pathExtension
+        let url = FileStore.getURL(dirURL: FileStore.privateURL, fileName: imageName)
+        if FileStore.fileExists(url: url){
+            _ = FileStore.deleteFile(url: url)
+        }
+        if FileStore.copyFile(fromURL: imageURL, toURL: url){
+            Settings.shared.backgroundName = imageName
+            Settings.shared.save()
+            MainTabController.getTimelineViewController()?.updateBackground()
+        }
         picker.dismiss(animated: true, completion: nil)
     }
     
@@ -100,14 +109,13 @@ class SettingsViewController: EditViewController, UIDocumentPickerDelegate, UIIm
         
     }
     
-    @objc func exportData(){
-        let exportViewController = BackupViewController()
-        exportViewController.password = passwordField.text!.isEmpty ? nil : passwordField.text
-        exportViewController.modalPresentationStyle = .fullScreen
-        self.present(exportViewController, animated: true)
+    @objc func backupData(){
+        let backupViewController = BackupViewController()
+        backupViewController.modalPresentationStyle = .fullScreen
+        self.present(backupViewController, animated: true)
     }
     
-    @objc func importData(){
+    @objc func restoreData(){
         let filePicker = UIDocumentPickerViewController(documentTypes: ["com.pkware.zip-archive"], in: .open)
         filePicker.allowsMultipleSelection = false
         filePicker.directoryURL = FileStore.documentURL
@@ -132,22 +140,16 @@ class SettingsViewController: EditViewController, UIDocumentPickerDelegate, UIIm
             if !FileStore.fileExists(url: zipURL){
                 print("no import file")
             }else{
-                let password = passwordField.text!.isEmpty ? nil : passwordField.text
                 FileStore.deleteAllFiles(dirURL: FileStore.temporaryURL)
-                do {
-                    try Zip.unzipFile(zipURL, destination: FileStore.temporaryURL, overwrite: true, password: password)
-                    let data = GlobalData.readFromTemporaryFile()
-                    let fileNames = FileStore.listAllFiles(dirPath: FileStore.temporaryPath)
-                    let importViewController = RestoreViewController()
-                    importViewController.data = data
-                    importViewController.fileNames = fileNames
-                    importViewController.modalPresentationStyle = .fullScreen
-                    self.present(importViewController, animated: true)
-                }
-                catch {
-                    print("Could not expand zip file")
-                    showAlert(title: "error".localize(), text: "fileOpenError".localize())
-                }
+                FileStore.unzipDirectory(zipURL: zipURL, destinationURL: FileStore.temporaryURL)
+                let data = GlobalData.readFromTemporaryFile()
+                let fileNames = FileStore.listAllFiles(dirPath: FileStore.temporaryPath)
+                let importViewController = RestoreViewController()
+                importViewController.data = data
+                importViewController.fileNames = fileNames
+                importViewController.modalPresentationStyle = .fullScreen
+                self.present(importViewController, animated: true)
+                
             }
         }
     }

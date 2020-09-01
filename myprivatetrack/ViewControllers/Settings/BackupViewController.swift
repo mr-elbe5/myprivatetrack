@@ -7,15 +7,13 @@
 
 import Foundation
 import UIKit
-import Zip
 
 class BackupViewController: ModalScrollViewController, DatePickerDelegate{
 
     public var stackView = UIStackView()
     
-    var startDate : Date!
-    var endDate : Date!
-    var password: String?
+    var startDate : Date? = nil
+    var endDate : Date? = nil
     var startDateView = DatePickerView()
     var endDateView = DatePickerView()
     var backupButton = TextButton(text: "backupData".localize())
@@ -59,38 +57,37 @@ class BackupViewController: ModalScrollViewController, DatePickerDelegate{
     }
     
     @objc func backupData(){
-        let fromString = startDate.dateString().replacingOccurrences(of: ".", with: "-")
-        let toString = endDate.dateString().replacingOccurrences(of: ".", with: "-")
-        let zipFileName = "backup_" + fromString + "_" + toString + ".zip"
-        let data = GlobalData.shared.getCopy(fromDate: startDate, toDate: endDate)
-        let fileNames = data.getActiveFileNames()
-        var urls = Array<URL>()
-        if let dataFileUrl = data.saveAsTemporaryFile(){
-            urls.append(dataFileUrl)
-        }
-        print(fileNames)
-        for name in fileNames{
-            if FileStore.fileExists(dirPath: FileStore.privatePath, fileName: name){
-                urls.append(FileStore.getURL(dirURL: FileStore.privateURL,fileName: name))
+        if let from = startDate, let to = endDate{
+            let fromString = from.dateString().replacingOccurrences(of: ".", with: "-")
+            let toString = to.dateString().replacingOccurrences(of: ".", with: "-")
+            let zipFileName = "backup_" + fromString + "_" + toString + ".zip"
+            let data = GlobalData.shared.getCopy(fromDate: from, toDate: to)
+            let fileNames = data.getActiveFileNames()
+            var urls = Array<URL>()
+            if let dataFileUrl = data.saveAsTemporaryFile(){
+                urls.append(dataFileUrl)
             }
-            else{
-                print("file missing: \(name)")
+            print(fileNames)
+            for name in fileNames{
+                if FileStore.fileExists(dirPath: FileStore.privatePath, fileName: name){
+                    urls.append(FileStore.getURL(dirURL: FileStore.privateURL,fileName: name))
+                }
+                else{
+                    print("file missing: \(name)")
+                }
+            }
+            let zipURL = FileStore.getURL(dirURL: FileStore.documentURL,fileName: zipFileName)
+            FileStore.zipFiles(sourceFiles: urls, zipURL: zipURL)
+            if FileStore.fileExists(url: zipURL){
+                showAlert(title: "success".localize(), text: "backupSuccessInfo".localize()){
+                    self.dismiss(animated: true)
+                }
+            }else{
+                print("could not create export file")
             }
         }
-        let zipURL = FileStore.getURL(dirURL: FileStore.documentURL,fileName: zipFileName)
-        do {
-            try Zip.zipFiles(paths: urls, zipFilePath: zipURL, password: password, progress: { (progress) -> () in
-            })
-        }
-        catch {
-          print("Could not create zip file")
-        }
-        if FileStore.fileExists(url: zipURL){
-            showAlert(title: "success".localize(), text: "backupSuccessInfo".localize()){
-                self.dismiss(animated: true)
-            }
-        }else{
-            print("could not create export file")
+        else{
+            print("could not create export file: no data")
         }
     }
     

@@ -2,12 +2,12 @@
   "object": {
     "pins": [
       {
-        "package": "Zip",
-        "repositoryURL": "https://github.com/marmelroy/Zip.git",
+        "package": "ZIPFoundation",
+        "repositoryURL": "https://github.com/weichsel/ZIPFoundation.git",
         "state": {
           "branch": null,
-          "revision": "80b1c3005ee25b4c7ce46c4029ac3347e8d5e37e",
-          "version": "2.0.0"
+          "revision": "ec32d62d412578542c0ffb7a6ce34d3e64b43b94",
+          "version": "0.9.11"
         }
       }
     ]

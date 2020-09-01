@@ -11,7 +11,6 @@ class TextData: EntryItemData{
     
     enum TextCodingKeys: String, CodingKey {
         case text
-        case multiline
     }
     
     override public var type : EntryItemType{
@@ -21,18 +20,15 @@ class TextData: EntryItemData{
     }
     
     public var text: String
-    public var isMultiline: Bool
     
     init(){
         text = ""
-        isMultiline = false
         super.init()
     }
     
     required init(from decoder: Decoder) throws {
         let values = try decoder.container(keyedBy: TextCodingKeys.self)
         text = try values.decode(String.self, forKey: .text)
-        isMultiline = try values.decode(Bool.self, forKey: .multiline)
         try super.init(from: decoder)
     }
     
@@ -40,7 +36,6 @@ class TextData: EntryItemData{
         try super.encode(to: encoder)
         var container = encoder.container(keyedBy: TextCodingKeys.self)
         try container.encode(text, forKey: .text)
-        try container.encode(isMultiline, forKey: .multiline)
     }
     
     override func isComplete() -> Bool{

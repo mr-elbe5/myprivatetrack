@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		4E14579F24E1C214008EC422 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4E1457A124E1C214008EC422 /* InfoPlist.strings */; };
+		4E29EE7224FE5D91000E3389 /* ZIPFoundation in Frameworks */ = {isa = PBXBuildFile; productRef = 4E29EE7124FE5D91000E3389 /* ZIPFoundation */; };
 		4E3C5ACE24FCF2F300E11A35 /* FileError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E3C5ACD24FCF2F300E11A35 /* FileError.swift */; };
 		4E3C5AD024FCFC3300E11A35 /* CLLocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E3C5ACF24FCFC3300E11A35 /* CLLocationManager.swift */; };
 		4E3C5AD224FD00E600E11A35 /* LocationError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E3C5AD124FD00E600E11A35 /* LocationError.swift */; };
@@ -85,7 +86,6 @@
 		4ED21C2C24FAA47500A6FEA3 /* RestoreInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED21C2624FAA47400A6FEA3 /* RestoreInfoViewController.swift */; };
 		4ED21C2D24FAA47500A6FEA3 /* BackupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED21C2724FAA47400A6FEA3 /* BackupViewController.swift */; };
 		4ED21C2E24FAA47500A6FEA3 /* RestoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED21C2824FAA47400A6FEA3 /* RestoreViewController.swift */; };
-		4ED21C3124FAA59900A6FEA3 /* Zip in Frameworks */ = {isa = PBXBuildFile; productRef = 4ED21C3024FAA59900A6FEA3 /* Zip */; };
 		4ED21C3524FAA83E00A6FEA3 /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED21C3424FAA83E00A6FEA3 /* UIViewController.swift */; };
 		4ED21C3824FAA96600A6FEA3 /* Statics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED21C3724FAA96600A6FEA3 /* Statics.swift */; };
 		4ED21C4724FAAC6E00A6FEA3 /* CaptureButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED21C3924FAAC6D00A6FEA3 /* CaptureButton.swift */; };
@@ -214,7 +214,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4ED21C3124FAA59900A6FEA3 /* Zip in Frameworks */,
+				4E29EE7224FE5D91000E3389 /* ZIPFoundation in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -454,7 +454,7 @@
 			);
 			name = myprivatetrack;
 			packageProductDependencies = (
-				4ED21C3024FAA59900A6FEA3 /* Zip */,
+				4E29EE7124FE5D91000E3389 /* ZIPFoundation */,
 			);
 			productName = myprivatetrack;
 			productReference = 4EFDFF3424952F53001EB7C3 /* My private track.app */;
@@ -487,7 +487,7 @@
 			);
 			mainGroup = 4EFDFF2B24952F53001EB7C3;
 			packageReferences = (
-				4ED21C2F24FAA59900A6FEA3 /* XCRemoteSwiftPackageReference "Zip" */,
+				4E29EE7024FE5D91000E3389 /* XCRemoteSwiftPackageReference "ZIPFoundation" */,
 			);
 			productRefGroup = 4EFDFF3524952F53001EB7C3 /* Products */;
 			projectDirPath = "";
@@ -837,21 +837,21 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		4ED21C2F24FAA59900A6FEA3 /* XCRemoteSwiftPackageReference "Zip" */ = {
+		4E29EE7024FE5D91000E3389 /* XCRemoteSwiftPackageReference "ZIPFoundation" */ = {
 			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/marmelroy/Zip.git";
+			repositoryURL = "https://github.com/weichsel/ZIPFoundation.git";
 			requirement = {
 				kind = upToNextMinorVersion;
-				minimumVersion = 2.0.0;
+				minimumVersion = 0.9.11;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		4ED21C3024FAA59900A6FEA3 /* Zip */ = {
+		4E29EE7124FE5D91000E3389 /* ZIPFoundation */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 4ED21C2F24FAA59900A6FEA3 /* XCRemoteSwiftPackageReference "Zip" */;
-			productName = Zip;
+			package = 4E29EE7024FE5D91000E3389 /* XCRemoteSwiftPackageReference "ZIPFoundation" */;
+			productName = ZIPFoundation;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
