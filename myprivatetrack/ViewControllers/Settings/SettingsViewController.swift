@@ -82,7 +82,7 @@ class SettingsViewController: EditViewController, UIDocumentPickerDelegate, UIIm
     
     public func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]) {
         guard let imageURL = info[.imageURL] as? URL else {return}
-        let imageName = "background." + imageURL.pathExtension
+        let imageName = Statics.backgroundName + imageURL.pathExtension
         let url = FileStore.getURL(dirURL: FileStore.privateURL, fileName: imageName)
         if FileStore.fileExists(url: url){
             _ = FileStore.deleteFile(url: url)
@@ -118,7 +118,7 @@ class SettingsViewController: EditViewController, UIDocumentPickerDelegate, UIIm
     @objc func restoreData(){
         let filePicker = UIDocumentPickerViewController(documentTypes: ["com.pkware.zip-archive"], in: .open)
         filePicker.allowsMultipleSelection = false
-        filePicker.directoryURL = FileStore.documentURL
+        filePicker.directoryURL = FileStore.backupDirURL
         filePicker.delegate = self
         filePicker.modalPresentationStyle = .fullScreen
         self.pickerType = .backup

@@ -21,6 +21,8 @@ public class FileStore {
     static public var privateURL : URL = FileManager.default.urls(for: .applicationSupportDirectory,in: FileManager.SearchPathDomainMask.userDomainMask).first!
     static public var documentPath: String = NSSearchPathForDirectoriesInDomains(.documentDirectory,.userDomainMask,true).first!
     static public var documentURL : URL = FileManager.default.urls(for: .documentDirectory,in: FileManager.SearchPathDomainMask.userDomainMask).first!
+    static public var backupDirURL = documentURL.appendingPathComponent(Statics.backupDir)
+    static public var exportDirURL = documentURL.appendingPathComponent(Statics.exportDir)
     static public var imageLibraryPath: String = NSSearchPathForDirectoriesInDomains(.picturesDirectory,.userDomainMask,true).first!
     static public var imageLibraryURL : URL = FileManager.default.urls(for: .picturesDirectory,in: FileManager.SearchPathDomainMask.userDomainMask).first!
     static public var temporaryPath : String {
@@ -36,6 +38,8 @@ public class FileStore {
     
     static public func initialize() {
         try! FileManager.default.createDirectory(at: privateURL, withIntermediateDirectories: true, attributes: nil)
+        try! FileManager.default.createDirectory(at: backupDirURL, withIntermediateDirectories: true, attributes: nil)
+        try! FileManager.default.createDirectory(at: exportDirURL, withIntermediateDirectories: true, attributes: nil)
     }
     
     static public func getPath(dirPath: String, fileName: String ) -> String

@@ -60,7 +60,7 @@ class BackupViewController: ModalScrollViewController, DatePickerDelegate{
         if let from = startDate, let to = endDate{
             let fromString = from.dateString().replacingOccurrences(of: ".", with: "-")
             let toString = to.dateString().replacingOccurrences(of: ".", with: "-")
-            let zipFileName = "backup_" + fromString + "_" + toString + ".zip"
+            let zipFileName = Statics.backupName + fromString + "_" + toString + ".zip"
             let data = GlobalData.shared.getCopy(fromDate: from, toDate: to)
             let fileNames = data.getActiveFileNames()
             var urls = Array<URL>()
@@ -76,7 +76,7 @@ class BackupViewController: ModalScrollViewController, DatePickerDelegate{
                     print("file missing: \(name)")
                 }
             }
-            let zipURL = FileStore.getURL(dirURL: FileStore.documentURL,fileName: zipFileName)
+            let zipURL = FileStore.getURL(dirURL: FileStore.backupDirURL,fileName: zipFileName)
             FileStore.zipFiles(sourceFiles: urls, zipURL: zipURL)
             if FileStore.fileExists(url: zipURL){
                 showAlert(title: "success".localize(), text: "backupSuccessInfo".localize()){

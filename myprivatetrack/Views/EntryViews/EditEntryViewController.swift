@@ -117,12 +117,14 @@ class EditEntryViewController: EditViewController, ImageCaptureDelegate, VideoCa
     @objc func addImage(){
         AVCaptureDevice.askCameraAuthorization(){ result in
             if result{
-                let data = ImageData()
-                let imageCaptureController = ImageCaptureViewController()
-                imageCaptureController.data = data
-                imageCaptureController.delegate = self
-                imageCaptureController.modalPresentationStyle = .fullScreen
-                self.present(imageCaptureController, animated: true)
+                DispatchQueue.main.async {
+                    let data = ImageData()
+                    let imageCaptureController = ImageCaptureViewController()
+                    imageCaptureController.data = data
+                    imageCaptureController.delegate = self
+                    imageCaptureController.modalPresentationStyle = .fullScreen
+                    self.present(imageCaptureController, animated: true)
+                }
             }
             else{
                 self.showError("cameraNotAuthorized")
@@ -134,10 +136,12 @@ class EditEntryViewController: EditViewController, ImageCaptureDelegate, VideoCa
     @objc func addAudio(){
         AVCaptureDevice.askAudioAuthorization(){ result in
             if result{
-                let data = AudioData()
-                self.entry.addItem(item: data)
-                let editView = AudioItemEditView.fromData(data: data)
-                self.insertItemView(editView)
+                DispatchQueue.main.async {
+                    let data = AudioData()
+                    self.entry.addItem(item: data)
+                    let editView = AudioItemEditView.fromData(data: data)
+                    self.insertItemView(editView)
+                }
             }
             else{
                 self.showError("audioNotAuthorized")
@@ -148,12 +152,14 @@ class EditEntryViewController: EditViewController, ImageCaptureDelegate, VideoCa
     @objc func addVideo(){
         AVCaptureDevice.askVideoAuthorization(){ result in
             if result{
-                let data = VideoData()
-                let videoCaptureController = VideoCaptureViewController()
-                videoCaptureController.data = data
-                videoCaptureController.delegate = self
-                videoCaptureController.modalPresentationStyle = .fullScreen
-                self.present(videoCaptureController, animated: true)
+                DispatchQueue.main.async {
+                    let data = VideoData()
+                    let videoCaptureController = VideoCaptureViewController()
+                    videoCaptureController.data = data
+                    videoCaptureController.delegate = self
+                    videoCaptureController.modalPresentationStyle = .fullScreen
+                    self.present(videoCaptureController, animated: true)
+                }
             }
             else{
                 self.showError("videoNotAuthorized")

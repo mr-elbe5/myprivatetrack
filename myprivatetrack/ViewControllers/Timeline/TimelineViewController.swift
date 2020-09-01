@@ -196,7 +196,7 @@ class TimelineViewController: TableViewController, SaveEntryDelegate, EntryCellA
             }
         })
         alertController.addAction(UIAlertAction(title: "ownDocuments".localize(), style: .default) { action in
-            if !FileStore.copyFile(name: data.fileName, fromDir: FileStore.privateURL, toDir: FileStore.documentURL){
+            if !FileStore.copyFile(name: data.fileName, fromDir: FileStore.privateURL, toDir: FileStore.exportDirURL){
                 self.showAlert(title: "error".localize(), text: "copyError")
             }
         })
@@ -221,7 +221,7 @@ class TimelineViewController: TableViewController, SaveEntryDelegate, EntryCellA
             }
         })
         alertController.addAction(UIAlertAction(title: "ownDocuments".localize(), style: .default) { action in
-            if !FileStore.copyFile(name: data.fileName, fromDir: FileStore.privateURL, toDir: FileStore.documentURL){
+            if !FileStore.copyFile(name: data.fileName, fromDir: FileStore.privateURL, toDir: FileStore.exportDirURL){
                 self.showAlert(title: "error".localize(), text: "copyError")
             }
         })

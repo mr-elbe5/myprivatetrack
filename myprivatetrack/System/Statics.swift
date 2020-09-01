@@ -8,6 +8,18 @@
 import Foundation
 import UIKit
 
+enum MapStartSize: Int{
+    case small = 100
+    case mid = 5000
+    case large = 20000
+}
+
+enum ImageMaxSide: Int{
+    case small = 1024
+    case mid = 20148
+    case large = 4096
+}
+
 public struct Statics{
     
     public static var defaultInset : CGFloat = 10
@@ -22,4 +34,11 @@ public struct Statics{
     
     public static var doubleInsets : UIEdgeInsets = .init(top: 2 * defaultInset, left: 2 * defaultInset, bottom: 2 * defaultInset, right: 2 * defaultInset)
     
+    public static var backupDir : String = "backups"
+    
+    public static var exportDir : String = "export"
+    
+    public static var backupName : String = "backup_"
+    
+    public static var backgroundName : String = "background."
 }

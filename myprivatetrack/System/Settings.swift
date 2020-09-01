@@ -8,18 +8,6 @@
 import Foundation
 import UIKit
 
-enum MapStartSize: Int{
-    case small = 100
-    case mid = 5000
-    case large = 20000
-}
-
-enum ImageMaxSide: Int{
-    case small = 1024
-    case mid = 20148
-    case large = 4096
-}
-
 class Settings: Identifiable, Codable{
     
     public static var shared = Settings()

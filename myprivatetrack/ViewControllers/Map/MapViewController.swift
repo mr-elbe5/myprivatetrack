@@ -12,7 +12,7 @@ import MapKit
 class MapViewController: UIViewController, MKMapViewDelegate, LocationServiceDelegate {
     
     var headerView = UIView()
-    var mapView : MKMapView!
+    var mkMapView = MKMapView()
     var mapLoaded = false
     var location: Location? = nil
     var radius : CLLocationDistance = 10000
@@ -41,27 +41,32 @@ class MapViewController: UIViewController, MKMapViewDelegate, LocationServiceDel
         let infoButton = IconButton(icon: "info.circle")
         infoButton.addTarget(self, action: #selector(showInfo), for: .touchDown)
         rightStackView.addArrangedSubview(infoButton)
-        mapView = MKMapView()
-        mapView.mapType = .satellite
-        mapView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-        mapView.delegate = self
-        view.addSubview(mapView)
-        mapView.enableAnchors()
-        mapView.setLeadingAnchor(guide.leadingAnchor, padding: .zero)
-        mapView.setTopAnchor(headerView.bottomAnchor, padding: 1)
-        mapView.setTrailingAnchor(guide.trailingAnchor,padding: .zero)
-        mapView.setBottomAnchor(guide.bottomAnchor, padding: .zero)
+        mkMapView.mapType = .satellite
+        mkMapView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        mkMapView.delegate = self
+        view.addSubview(mkMapView)
+        mkMapView.enableAnchors()
+        mkMapView.setLeadingAnchor(guide.leadingAnchor, padding: .zero)
+        mkMapView.setTopAnchor(headerView.bottomAnchor, padding: 1)
+        mkMapView.setTrailingAnchor(guide.trailingAnchor,padding: .zero)
+        mkMapView.setBottomAnchor(guide.bottomAnchor, padding: .zero)
     }
     
     func locationDidChange(location: Location){
         //print("map loc = \(location.coordinate)")
         if self.location == nil{
             self.location = location
-            self.mapView.centerToLocation(location, regionRadius: self.radius)
+            mkMapView.centerToLocation(location, regionRadius: self.radius)
         }
     }
     
     override func viewDidAppear(_ animated: Bool) {
+        if location == nil{
+            location = LocationService.shared.getLocation()
+            if let loc = location{
+                self.mkMapView.centerToLocation(loc, regionRadius: self.radius)
+            }
+        }
         LocationService.shared.delegate = self
     }
     
@@ -71,7 +76,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, LocationServiceDel
     
     func setNeedsUpdate(){
         if mapLoaded{
-            mapView.removeAnnotations(mapView.annotations)
+            mkMapView.removeAnnotations(mkMapView.annotations)
             assertMapPins()
         }
     }
@@ -88,7 +93,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, LocationServiceDel
                     let positionPin = EntryAnnotation(entry: entry)
                     positionPin.title = entry.creationDate.dateTimeString()
                     positionPin.coordinate = loc.coordinate
-                    mapView.addAnnotation(positionPin)
+                    mkMapView.addAnnotation(positionPin)
                 }
             }
         }
@@ -105,11 +110,11 @@ class MapViewController: UIViewController, MKMapViewDelegate, LocationServiceDel
     }
     
     @objc func toggleMapStyle() {
-        if mapView.mapType == .satellite{
-            mapView.mapType = .standard
+        if mkMapView.mapType == .satellite{
+            mkMapView.mapType = .standard
         }
         else{
-            mapView.mapType = .satellite
+            mkMapView.mapType = .satellite
         }
     }
     
@@ -120,9 +125,9 @@ class MapViewController: UIViewController, MKMapViewDelegate, LocationServiceDel
     
     func takeScreenshot(callback: @escaping (_ result: UIImage?) -> Void){
         let options = MKMapSnapshotter.Options()
-        options.camera = self.mapView.camera
-        options.region = self.mapView.region
-        options.mapType = self.mapView.mapType
+        options.camera = self.mkMapView.camera
+        options.region = self.mkMapView.region
+        options.mapType = self.mkMapView.mapType
         let snapshotter = MKMapSnapshotter(options: options)
         snapshotter.start { snapshot, error in
             if error != nil {
