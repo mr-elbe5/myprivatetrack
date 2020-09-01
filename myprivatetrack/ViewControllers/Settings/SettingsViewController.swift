@@ -16,8 +16,9 @@ class SettingsViewController: EditViewController, UIDocumentPickerDelegate, UIIm
 
     var backgroundButton = TextButton(text: "selectBackground".localize())
     var resetButton = TextButton(text: "deleteData".localize())
-    var exportButton = TextButton(text: "backupData".localize())
-    var importButton = TextButton(text: "restoreData".localize())
+    var fullBackupButton = TextButton(text: "fullBackupData".localize())
+    var partialBackupButton = TextButton(text: "partialBackupData".localize())
+    var restoreButton = TextButton(text: "restoreData".localize())
     
     var pickerType : SettingsPickerType? = nil
     
@@ -27,12 +28,14 @@ class SettingsViewController: EditViewController, UIDocumentPickerDelegate, UIIm
         stackView.addArrangedSubview(header)
         backgroundButton.addTarget(self, action: #selector(selectBackground), for: .touchDown)
         resetButton.addTarget(self, action: #selector(resetData), for: .touchDown)
-        exportButton.addTarget(self, action: #selector(backupData), for: .touchDown)
-        importButton.addTarget(self, action: #selector(restoreData), for: .touchDown)
+        fullBackupButton.addTarget(self, action: #selector(fullBackupData), for: .touchDown)
+        partialBackupButton.addTarget(self, action: #selector(partialBackupData), for: .touchDown)
+        restoreButton.addTarget(self, action: #selector(restoreData), for: .touchDown)
         stackView.addArrangedSubview(backgroundButton)
         stackView.addArrangedSubview(resetButton)
-        stackView.addArrangedSubview(exportButton)
-        stackView.addArrangedSubview(importButton)
+        stackView.addArrangedSubview(fullBackupButton)
+        stackView.addArrangedSubview(partialBackupButton)
+        stackView.addArrangedSubview(restoreButton)
     }
     
     override func setupHeaderView(){
@@ -51,7 +54,8 @@ class SettingsViewController: EditViewController, UIDocumentPickerDelegate, UIIm
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        exportButton.isEnabled = globalData.days.count > 0
+        fullBackupButton.isEnabled = globalData.days.count > 0
+        partialBackupButton.isEnabled = globalData.days.count > 0
     }
     
     @objc func showInfo(){
@@ -109,7 +113,35 @@ class SettingsViewController: EditViewController, UIDocumentPickerDelegate, UIIm
         
     }
     
-    @objc func backupData(){
+    @objc func fullBackupData(){
+        let zipFileName = Statics.backupOfName + Date().dateString().replacingOccurrences(of: ".", with: "-") + ".zip"
+        let data = GlobalData.shared
+        let fileNames = data.getActiveFileNames()
+        var urls = Array<URL>()
+        if let dataFileUrl = data.saveAsTemporaryFile(){
+            urls.append(dataFileUrl)
+        }
+        print(fileNames)
+        for name in fileNames{
+            if FileStore.fileExists(dirPath: FileStore.privatePath, fileName: name){
+                urls.append(FileStore.getURL(dirURL: FileStore.privateURL,fileName: name))
+            }
+            else{
+                print("file missing: \(name)")
+            }
+        }
+        let zipURL = FileStore.getURL(dirURL: FileStore.backupDirURL,fileName: zipFileName)
+        FileStore.zipFiles(sourceFiles: urls, zipURL: zipURL)
+        if FileStore.fileExists(url: zipURL){
+            showAlert(title: "success".localize(), text: "backupSuccessInfo".localize()){
+                self.dismiss(animated: true)
+            }
+        }else{
+            print("could not create export file")
+        }
+    }
+    
+    @objc func partialBackupData(){
         let backupViewController = BackupViewController()
         backupViewController.modalPresentationStyle = .fullScreen
         self.present(backupViewController, animated: true)

@@ -38,7 +38,9 @@
 "deleteApproveInfo"="Wenn du zustimmst, werden allen Daten und Medien gelöscht.";
 "fromDate" = "Ab Datum";
 "toDate" = "Bis Datum";
-"backupData"="Einträge sichern";
+"backup"="Restore";
+"fullBackupData"="Alle Einträge sichern";
+"partialBackupData"="Einträge einer Zeitspanne sichern";
 "restoreData"="Einträge wiederherstellen";
 "backupPassword"="Sicherungspasswort";
 "backupSuccessInfo"="Sicherung wurde erstellt.";

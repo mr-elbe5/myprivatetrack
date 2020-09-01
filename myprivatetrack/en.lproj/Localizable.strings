@@ -37,7 +37,9 @@
 "deleteApproveInfo"="If you approve, you lose all your entries and media.";
 "fromDate" = "From date";
 "toDate" = "To date";
-"backupData"="Backup entries";
+"backup"="Backup";
+"fullBackupData"="Backup all entries";
+"partialBackupData"="Backup entries of time span";
 "restoreData"="Restore entries";
 "backupPassword"="Backup Password";
 "backupSuccessInfo"="Backup has been created.";

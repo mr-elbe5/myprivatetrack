@@ -48,7 +48,7 @@ public class LocationService : NSObject, CLLocationManagerDelegate{
     
     public func checkRunning(){
         if authorized && !running{
-            print("run after check")
+            //print("run after check")
             locationManager.startUpdatingLocation()
             running = true
         }
@@ -65,10 +65,6 @@ public class LocationService : NSObject, CLLocationManagerDelegate{
     }
     
     public func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        if !running{
-            print("i am running!")
-            running = true
-        }
         guard let newLocation = locations.last else { return }
         if clLocation == nil || newLocation.distance(from: clLocation!) > 5{
             clLocation = newLocation

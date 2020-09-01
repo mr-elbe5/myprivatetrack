@@ -16,7 +16,7 @@ class BackupViewController: ModalScrollViewController, DatePickerDelegate{
     var endDate : Date? = nil
     var startDateView = DatePickerView()
     var endDateView = DatePickerView()
-    var backupButton = TextButton(text: "backupData".localize())
+    var backupButton = TextButton(text: "backup".localize())
     
     override func loadView() {
         super.loadView()

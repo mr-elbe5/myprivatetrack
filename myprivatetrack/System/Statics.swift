@@ -38,6 +38,8 @@ public struct Statics{
     
     public static var exportDir : String = "export"
     
+    public static var backupOfName : String = "backup_of_"
+    
     public static var backupName : String = "backup_"
     
     public static var backgroundName : String = "background."
