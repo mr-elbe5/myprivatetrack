@@ -14,7 +14,7 @@ protocol SaveEntryDelegate{
     func saveEntry(entry: EntryData)
 }
 
-class EditEntryViewController: EditViewController, ImageCaptureDelegate, VideoCaptureDelegate, LocationCaptureDelegate, DeleteEntryActionDelegate, SwitchDelegate{
+class EditEntryViewController: EditViewController, ImageCaptureDelegate, VideoCaptureDelegate, MapCaptureDelegate, DeleteEntryActionDelegate, SwitchDelegate{
     
     var delegate : SaveEntryDelegate? = nil
     
@@ -170,7 +170,7 @@ class EditEntryViewController: EditViewController, ImageCaptureDelegate, VideoCa
     @objc func addLocation(){
         if CLLocationManager.authorized{
             let data = MapData()
-            let locationCaptureController = LocationCaptureViewController()
+            let locationCaptureController = MapCaptureViewController()
             locationCaptureController.data = data
             locationCaptureController.delegate = self
             locationCaptureController.modalPresentationStyle = .fullScreen
@@ -215,7 +215,7 @@ class EditEntryViewController: EditViewController, ImageCaptureDelegate, VideoCa
     
     // LocationCaptureDelegate
     
-    func locationCaptured(data: MapData){
+    func mapCaptured(data: MapData){
         entry.addItem(item: data)
         let editView = LocationItemEditView.fromData(data: data)
         insertItemView(editView)

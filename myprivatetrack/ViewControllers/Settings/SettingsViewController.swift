@@ -114,6 +114,9 @@ class SettingsViewController: EditViewController, UIDocumentPickerDelegate, UIIm
     }
     
     @objc func fullBackupData(){
+        let indicator = UIActivityIndicatorView(frame: CGRect(x: self.view.center.x - 30, y: self.view.center.y - 30, width: 60, height: 60))
+        view.addSubview(indicator)
+        indicator.startAnimating()
         let zipFileName = Statics.backupOfName + Date().dateString().replacingOccurrences(of: ".", with: "-") + ".zip"
         let data = GlobalData.shared
         let fileNames = data.getActiveFileNames()
@@ -132,6 +135,7 @@ class SettingsViewController: EditViewController, UIDocumentPickerDelegate, UIIm
         }
         let zipURL = FileStore.getURL(dirURL: FileStore.backupDirURL,fileName: zipFileName)
         FileStore.zipFiles(sourceFiles: urls, zipURL: zipURL)
+        indicator.stopAnimating()
         if FileStore.fileExists(url: zipURL){
             showAlert(title: "success".localize(), text: "backupSuccessInfo".localize()){
                 self.dismiss(animated: true)

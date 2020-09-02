@@ -10,15 +10,15 @@ import UIKit
 import CoreLocation
 import MapKit
 
-protocol LocationCaptureDelegate{
-    func locationCaptured(data: MapData)
+protocol MapCaptureDelegate{
+    func mapCaptured(data: MapData)
 }
 
-class LocationCaptureViewController: UIViewController, LocationServiceDelegate, MapViewDelegate {
+class MapCaptureViewController: UIViewController, LocationServiceDelegate, MapViewDelegate {
     
     var data : MapData!
     
-    var delegate: LocationCaptureDelegate? = nil
+    var delegate: MapCaptureDelegate? = nil
     
     var mapView = MapView()
     var bodyView = UIView()
@@ -85,7 +85,6 @@ class LocationCaptureViewController: UIViewController, LocationServiceDelegate, 
     }
     
     func locationDidChange(location: Location){
-        //print("location capture loc = \(location.coordinate)")
         mapView.setLocation(location: location)
     }
     
@@ -106,7 +105,7 @@ class LocationCaptureViewController: UIViewController, LocationServiceDelegate, 
             if let screenshot = screenshot{
                 self.data.saveImage(uiImage: screenshot)
                 if let delegate = self.delegate{
-                    delegate.locationCaptured(data: self.data)
+                    delegate.mapCaptured(data: self.data)
                 }
                 indicator.stopAnimating()
                 self.dismiss(animated: true)

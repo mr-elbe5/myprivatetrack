@@ -113,7 +113,7 @@ class TimelineEntryCell: UITableViewCell, ImageItemDelegate, VideoItemDelegate{
                     lastView = itemView
                     break
                 case .map:
-                    let itemView = LocationItemView.fromData(data: item.data as! MapData)
+                    let itemView = MapItemView.fromData(data: item.data as! MapData)
                     cellBody.addSubview(itemView)
                     itemView.placeBelow(view: lastView, padding: defaultInsets)
                     lastView = itemView

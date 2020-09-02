@@ -48,7 +48,7 @@ class EntryViewController: ModalScrollViewController, ImageItemDelegate, VideoIt
                 stackView.addArrangedSubview(itemView)
                 break
             case .map:
-                let itemView = LocationItemView.fromData(data: item.data as! MapData)
+                let itemView = MapItemView.fromData(data: item.data as! MapData)
                 stackView.addArrangedSubview(itemView)
                 break
             }

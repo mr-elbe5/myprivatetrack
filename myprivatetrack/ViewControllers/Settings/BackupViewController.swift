@@ -58,6 +58,9 @@ class BackupViewController: ModalScrollViewController, DatePickerDelegate{
     
     @objc func backupData(){
         if let from = startDate, let to = endDate{
+            let indicator = UIActivityIndicatorView(frame: CGRect(x: self.view.center.x - 30, y: self.view.center.y - 30, width: 60, height: 60))
+            view.addSubview(indicator)
+            indicator.startAnimating()
             let fromString = from.dateString().replacingOccurrences(of: ".", with: "-")
             let toString = to.dateString().replacingOccurrences(of: ".", with: "-")
             let zipFileName = Statics.backupName + fromString + "_" + toString + ".zip"
@@ -78,6 +81,7 @@ class BackupViewController: ModalScrollViewController, DatePickerDelegate{
             }
             let zipURL = FileStore.getURL(dirURL: FileStore.backupDirURL,fileName: zipFileName)
             FileStore.zipFiles(sourceFiles: urls, zipURL: zipURL)
+            indicator.stopAnimating()
             if FileStore.fileExists(url: zipURL){
                 showAlert(title: "success".localize(), text: "backupSuccessInfo".localize()){
                     self.dismiss(animated: true)

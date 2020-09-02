@@ -8,10 +8,10 @@
 import Foundation
 import UIKit
 
-class LocationItemView : EntryItemView{
+class MapItemView : EntryItemView{
     
-    static func fromData(data : MapData)  -> LocationItemView{
-        let itemView = LocationItemView()
+    static func fromData(data : MapData)  -> MapItemView{
+        let itemView = MapItemView()
         itemView.setupView(data: data)
         return itemView
     }
