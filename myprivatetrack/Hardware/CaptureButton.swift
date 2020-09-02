@@ -20,6 +20,12 @@ public class CaptureButton: UIButton {
         }
     }
     
+    public var outerColor: UIColor = UIColor.white {
+        didSet {
+            innerCircleLayer.fillColor = buttonColor.cgColor
+        }
+    }
+    
     public var buttonState: ButtonState = .normal {
         didSet {
             self.setNeedsLayout()
@@ -50,7 +56,7 @@ public class CaptureButton: UIButton {
         let layer = CAShapeLayer()
         layer.path        = self.outerCircle.cgPath
         layer.fillColor   = UIColor.clear.cgColor
-        layer.strokeColor = UIColor.white.cgColor
+        layer.strokeColor = self.outerColor.cgColor
         layer.lineWidth   = lineWidth
         return layer
     }()

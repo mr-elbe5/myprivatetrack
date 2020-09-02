@@ -101,7 +101,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, LocationServiceDel
     
     func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView){
         if let annotation = view.annotation as? EntryAnnotation{
-            print("entry = \(annotation.entry)")
+            //print("entry = \(annotation.entry)")
             let entryController = EntryViewController()
             entryController.entry = annotation.entry
             entryController.modalPresentationStyle = .fullScreen

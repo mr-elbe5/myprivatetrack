@@ -78,7 +78,7 @@ class AudioItemEditView : EntryItemEditView, UITextViewDelegate, AVAudioRecorder
         audioView.url = data.fileURL
         audioView.enableRecording()
         if audioData.fileExists(){
-            audioView.enablePlayer()
+            audioView.player.enablePlayer()
         }
         titleView.text = data.title
     }

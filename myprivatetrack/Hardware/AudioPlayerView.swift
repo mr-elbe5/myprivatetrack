@@ -13,13 +13,30 @@ public class AudioPlayerView : UIView, AVAudioPlayerDelegate{
     
     public var player : AVPlayer
     public var playerItem : AVPlayerItem? = nil
+    
     public var playProgress = UIProgressView()
     public var rewindButton = IconButton(icon: "repeat")
     public var playButton = IconButton(icon: "play.fill")
     
     public var timeObserverToken : Any? = nil
     
-    public var url : URL? = nil
+    private var _url : URL? = nil
+    public var url : URL?{
+        get{
+            return _url
+        }
+        set{
+            _url = newValue
+            print(_url)
+            playProgress.setProgress(0, animated: false)
+            rewindButton.isEnabled = false
+            if _url == nil{
+                playButton.isEnabled = false
+            } else {
+                playButton.isEnabled = true
+            }
+        }
+    }
     
     override public init(frame: CGRect) {
         self.player = AVPlayer()
@@ -43,6 +60,8 @@ public class AudioPlayerView : UIView, AVAudioPlayerDelegate{
         addSubview(rewindButton)
         playButton.addTarget(self, action: #selector(togglePlay), for: .touchDown)
         addSubview(playButton)
+        rewindButton.isEnabled = false
+        playButton.isEnabled = false
     }
     
     public func layoutView(){
@@ -62,6 +81,7 @@ public class AudioPlayerView : UIView, AVAudioPlayerDelegate{
             player.replaceCurrentItem(with: playerItem!)
             player.rate = 0
             addPeriodicTimeObserver(duration: asset.duration)
+            rewindButton.isEnabled = false
         }
     }
     
@@ -69,6 +89,9 @@ public class AudioPlayerView : UIView, AVAudioPlayerDelegate{
         player.rate = 0
         removePeriodicTimeObserver()
         playerItem = nil
+        playProgress.setProgress(0, animated: false)
+        rewindButton.isEnabled = false
+        playButton.isEnabled = false
     }
     
     public func addPeriodicTimeObserver(duration: CMTime) {
@@ -97,16 +120,22 @@ public class AudioPlayerView : UIView, AVAudioPlayerDelegate{
             item.seek(to: CMTime.zero, completionHandler: nil)
         }
         playButton.setImage(UIImage(systemName: "play.fill"), for: .normal)
+        playProgress.setProgress(0, animated: false)
+        rewindButton.isEnabled = false
+        playButton.isEnabled = true
     }
     
     @objc public func togglePlay(){
         if player.rate == 0{
+            print("play")
             player.rate = 1
             playButton.setImage(UIImage(systemName: "pause.fill"), for: .normal)
+            rewindButton.isEnabled = false
         }
         else{
             player.rate = 0
             playButton.setImage(UIImage(systemName: "play.fill"), for: .normal)
+            rewindButton.isEnabled = true
         }
     }
     
@@ -115,6 +144,8 @@ public class AudioPlayerView : UIView, AVAudioPlayerDelegate{
             playerItem.seek(to: CMTime.zero, completionHandler: nil)
             player.rate = 0
             playButton.setImage(UIImage(systemName: "play.fill"), for: .normal)
+            playButton.isEnabled = false
+            rewindButton.isEnabled = true
         }
     }
     
