@@ -16,7 +16,6 @@
 		4ED21B7924FAA17200A6FEA3 /* DataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED21B7724FAA17200A6FEA3 /* DataStore.swift */; };
 		4ED21B7A24FAA17200A6FEA3 /* FileStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED21B7824FAA17200A6FEA3 /* FileStore.swift */; };
 		4ED21B7F24FAA20F00A6FEA3 /* LocationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED21B7D24FAA20F00A6FEA3 /* LocationService.swift */; };
-		4ED21B8124FAA23B00A6FEA3 /* CLLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED21B8024FAA23B00A6FEA3 /* CLLocation.swift */; };
 		4ED21B9924FAA29F00A6FEA3 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED21B9024FAA29F00A6FEA3 /* ViewController.swift */; };
 		4ED21B9A24FAA29F00A6FEA3 /* ModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED21B9124FAA29F00A6FEA3 /* ModalViewController.swift */; };
 		4ED21B9B24FAA29F00A6FEA3 /* InfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED21B9224FAA29F00A6FEA3 /* InfoViewController.swift */; };
@@ -117,7 +116,6 @@
 		4ED21B7724FAA17200A6FEA3 /* DataStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataStore.swift; sourceTree = "<group>"; };
 		4ED21B7824FAA17200A6FEA3 /* FileStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileStore.swift; sourceTree = "<group>"; };
 		4ED21B7D24FAA20F00A6FEA3 /* LocationService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationService.swift; sourceTree = "<group>"; };
-		4ED21B8024FAA23B00A6FEA3 /* CLLocation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CLLocation.swift; sourceTree = "<group>"; };
 		4ED21B9024FAA29F00A6FEA3 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		4ED21B9124FAA29F00A6FEA3 /* ModalViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModalViewController.swift; sourceTree = "<group>"; };
 		4ED21B9224FAA29F00A6FEA3 /* InfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InfoViewController.swift; sourceTree = "<group>"; };
@@ -267,7 +265,6 @@
 		4E775B6F2500338F003BEC92 /* Map */ = {
 			isa = PBXGroup;
 			children = (
-				4ED21B8024FAA23B00A6FEA3 /* CLLocation.swift */,
 				4ED21C4624FAAC6E00A6FEA3 /* MapView.swift */,
 				4ED21BBB24FAA36000A6FEA3 /* MKMapView.swift */,
 				4E3C5ACF24FCFC3300E11A35 /* CLLocationManager.swift */,
@@ -607,7 +604,6 @@
 				4ED21BB824FAA32500A6FEA3 /* MapData.swift in Sources */,
 				4ED21C1424FAA3D000A6FEA3 /* MapViewController.swift in Sources */,
 				4ED21C2A24FAA47500A6FEA3 /* SettingsViewController.swift in Sources */,
-				4ED21B8124FAA23B00A6FEA3 /* CLLocation.swift in Sources */,
 				4E3C5ACE24FCF2F300E11A35 /* FileError.swift in Sources */,
 				4ED21C2D24FAA47500A6FEA3 /* BackupViewController.swift in Sources */,
 				4ED21BC124FAA36000A6FEA3 /* MKMapView.swift in Sources */,

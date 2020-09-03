@@ -104,7 +104,7 @@ class EditEntryViewController: EditViewController, ImageCaptureDelegate, VideoCa
     func switchValueDidChange(sender: SwitchView, isOn: Bool) {
         entry.saveLocation = isOn
         Settings.shared.saveLocation = isOn
-        print("state= \(entry.saveLocation)")
+        Settings.shared.save()
     }
     
     @objc func addText(){

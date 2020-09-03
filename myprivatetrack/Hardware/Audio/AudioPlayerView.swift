@@ -27,7 +27,6 @@ public class AudioPlayerView : UIView, AVAudioPlayerDelegate{
         }
         set{
             _url = newValue
-            print(_url)
             playProgress.setProgress(0, animated: false)
             rewindButton.isEnabled = false
             if _url == nil{

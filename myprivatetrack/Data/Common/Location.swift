@@ -33,7 +33,7 @@ public class Location: Identifiable, Codable{
         get{
             let latitudeText = coordinate.latitude > 0 ? "north".localize() : "south".localize()
             let longitudeText = coordinate.longitude > 0 ? "east".localize() : "west".localize()
-            return String(format: "%f", abs(coordinate.latitude)) + "° " + latitudeText + ", " + String(format: "%f", abs(coordinate.longitude)) + "° "  + longitudeText
+            return String(format: "%.04f", abs(coordinate.latitude)) + "° " + latitudeText + ", " + String(format: "%.04f", abs(coordinate.longitude)) + "° "  + longitudeText
         }
     }
     

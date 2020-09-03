@@ -18,10 +18,12 @@ public class LocationService : NSObject, CLLocationManagerDelegate{
     public static var deviation : Double = 0.0001
     
     public var clLocation : CLLocation? = nil
+    public var placemark : CLPlacemark? = nil
     public var running = false
     public var delegate : LocationServiceDelegate? = nil
     
     private let locationManager = CLLocationManager()
+    private let geocoder = CLGeocoder()
     
     override init() {
         super.init()
@@ -37,6 +39,32 @@ public class LocationService : NSObject, CLLocationManagerDelegate{
     
     public func getLocation() -> Location? {
         return clLocation == nil ? nil : Location(clLocation!)
+    }
+    
+    public func getLocationDescription() -> String {
+        var s = ""
+        if let place = placemark{
+            if let name = place.name{
+                s += name
+            }
+            if let locality = place.locality{
+                if !s.isEmpty{
+                    s += ", "
+                }
+                s += locality
+            }
+        }
+        return s
+    }
+    
+    func lookUpCurrentLocation() {
+        if let lastLocation = clLocation {
+            geocoder.reverseGeocodeLocation(lastLocation, completionHandler: { (placemarks, error) in
+                if error == nil {
+                    self.placemark = placemarks?[0]
+                }
+            })
+        }
     }
     
     public func start(){
@@ -68,8 +96,10 @@ public class LocationService : NSObject, CLLocationManagerDelegate{
         guard let newLocation = locations.last else { return }
         if clLocation == nil || newLocation.distance(from: clLocation!) > 5{
             clLocation = newLocation
+            lookUpCurrentLocation()
             if let delegate = delegate{
                 delegate.locationDidChange(location: Location(clLocation!))
+                
             }
         }
     }

@@ -25,15 +25,14 @@ public class DataStore{
     
     public func save(forKey key: StoreKey, value: Codable) {
         let storeString = value.toJSON()
-        //print(storeString)
         store.set(storeString, forKey: key.rawValue)
     }
     
     public func load<T : Codable>(forKey key: StoreKey) -> T? {
         if let storedString = store.value(forKey: key.rawValue) as? String {
-            //print(storedString)
             return T.fromJSON(encoded: storedString)
         }
+        print("error loading json")
         return nil
     }
     

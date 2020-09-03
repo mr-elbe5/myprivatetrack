@@ -13,7 +13,7 @@ class Settings: Identifiable, Codable{
     public static var shared = Settings()
     
     public static func load(){
-        shared = DataStore.shared.load(forKey: .settings) ?? Settings()
+        Settings.shared = DataStore.shared.load(forKey: .settings) ?? Settings()
     }
     
     enum CodingKeys: String, CodingKey {
@@ -34,8 +34,8 @@ class Settings: Identifiable, Codable{
     required init(from decoder: Decoder) throws {
         let values = try decoder.container(keyedBy: CodingKeys.self)
         saveLocation = try values.decode(Bool.self, forKey: .saveLocation)
-        mapStartSize = MapStartSize(rawValue: try values.decode(Int.self, forKey: .mapStartSize))!
-        imageMaxSide = ImageMaxSide(rawValue: try values.decode(Int.self, forKey: .imageMaxSide))!
+        mapStartSize = MapStartSize(rawValue: try values.decode(Int.self, forKey: .mapStartSize)) ?? MapStartSize.mid
+        imageMaxSide = ImageMaxSide(rawValue: try values.decode(Int.self, forKey: .imageMaxSide)) ?? ImageMaxSide.mid
         backgroundName = try values.decode(String.self, forKey: .backgroundName)
     }
     

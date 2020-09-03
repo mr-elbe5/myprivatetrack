@@ -16,7 +16,7 @@ enum MapStartSize: Int{
 
 enum ImageMaxSide: Int{
     case small = 1024
-    case mid = 20148
+    case mid = 2148
     case large = 4096
 }
 

@@ -94,8 +94,10 @@ class TimelineViewController: TableViewController, SaveEntryDelegate, EntryCellA
     
     func openEntryController() -> EditEntryViewController{
         let createEventViewController = EditEntryViewController()
-        createEventViewController.entry = EntryData(isNew: true)
-        createEventViewController.entry.location = LocationService.shared.getLocation()
+        let entry = EntryData(isNew: true)
+        entry.location = LocationService.shared.getLocation()
+        entry.locationDescription = LocationService.shared.getLocationDescription()
+        createEventViewController.entry = entry
         createEventViewController.delegate = self
         createEventViewController.modalPresentationStyle = .fullScreen
         self.present(createEventViewController, animated: true)

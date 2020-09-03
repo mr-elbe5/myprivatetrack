@@ -14,6 +14,7 @@ class EntryData: Identifiable, Codable{
         case id
         case creationDate
         case location
+        case locationDescription
         case saveLocation
         case items
     }
@@ -21,6 +22,7 @@ class EntryData: Identifiable, Codable{
     public var id: UUID
     public var creationDate: Date
     public var location: Location? = nil
+    public var locationDescription: String = ""
     public var saveLocation: Bool
     public var items = Array<EntryItem>()
     
@@ -42,8 +44,10 @@ class EntryData: Identifiable, Codable{
         saveLocation = try values.decode(Bool.self, forKey: .saveLocation)
         if saveLocation{
             location = try values.decode(Location.self, forKey: .location)
+            locationDescription = try values.decode(String.self, forKey: .locationDescription)
         }else{
             location = nil
+            locationDescription = ""
         }
         items = try values.decode(Array<EntryItem>.self, forKey: .items)
     }
@@ -55,6 +59,7 @@ class EntryData: Identifiable, Codable{
         try container.encode(saveLocation, forKey: .saveLocation)
         if saveLocation{
             try container.encode(location, forKey: .location)
+            try container.encode(locationDescription, forKey: .locationDescription)
         }
         try container.encode(items, forKey: .items)
     }

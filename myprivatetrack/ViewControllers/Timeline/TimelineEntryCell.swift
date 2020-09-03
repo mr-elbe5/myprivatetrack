@@ -60,6 +60,15 @@ class TimelineEntryCell: UITableViewCell, ImageItemDelegate, VideoItemDelegate{
                 cellBody.addSubview(locationLabel)
                 locationLabel.placeBelow(anchor: lastView.bottomAnchor, padding: defaultInsets)
                 lastView = locationLabel
+                let desc = entry!.locationDescription
+                if !desc.isEmpty{
+                    let locationDescriptionLabel = UILabel()
+                    locationDescriptionLabel.text = desc
+                    locationDescriptionLabel.textAlignment = .center
+                    cellBody.addSubview(locationDescriptionLabel)
+                    locationDescriptionLabel.placeBelow(anchor: lastView.bottomAnchor, padding: defaultInsets)
+                    lastView = locationDescriptionLabel
+                }
             }
             if isEditing{
                 let editButton = IconButton(icon: "pencil.circle")
