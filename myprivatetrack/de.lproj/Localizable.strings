@@ -58,6 +58,9 @@
 "backgroundImageInfo"="Du kannst ein Bild aus der Fotobibliothek oder das Standardbild wählen.";
 "ownBackground"="Fotobibliothek";
 "defaultBackground"="Standardbild";
+"speed"="Geschwindigkeit";
+"balanced"="Ausbalanciert";
+"quality"="Qualität";
 "cameraNotAuthorized"="Die Nutzung der Kamera ist nicht erlaubt. Bitte ändere die entsprechenden Einstellungen.";
 "audioNotAuthorized"="Die Nutzung des Mikrofons ist nicht erlaubt. Bitte ändere die entsprechenden Einstellungen.";
 "videoNotAuthorized"="Die Nutzung der Kamera oder des Mikrofons ist nicht erlaubt. Bitte ändere die entsprechenden Einstellungen.";

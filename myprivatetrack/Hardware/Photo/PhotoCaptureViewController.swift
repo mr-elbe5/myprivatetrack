@@ -15,37 +15,24 @@ protocol PhotoCaptureDelegate{
 }
 
 class PhotoCaptureViewController: CameraViewController, AVCapturePhotoCaptureDelegate {
-    static var qualityItems : Array<UIImage> = [UIImage(systemName: "hare")!,UIImage(systemName: "gauge")!,UIImage(systemName: "tortoise")!]
+    static var qualityItems : Array<String> = ["speed".localize(),"balanced".localize(),"quality".localize()]
     
     var data : PhotoData!
     
     var delegate: PhotoCaptureDelegate? = nil
     
-    var cancelButton = IconButton(icon: "chevron.left", tintColor: .white)
     var captureButton = CaptureButton()
-    var cameraButton = IconButton(icon: "camera.rotate", tintColor: .white)
     var photoQualityControl = UISegmentedControl(items: qualityItems)
+    var cancelButton = IconButton(icon: "chevron.left", tintColor: .white)
+    var flashButton = IconButton(icon: "bolt.badge.a", tintColor: .white)
+    var cameraButton = IconButton(icon: "camera.rotate", tintColor: .white)
     
     private let photoOutput = AVCapturePhotoOutput()
     private var photoQuality: AVCapturePhotoOutput.QualityPrioritization = .balanced
+    private var flashMode : AVCaptureDevice.FlashMode = .auto
     
     override func addButtons(){
         buttonView.backgroundColor = .black
-        cancelButton.setTitle("back".localize(), for: .normal)
-        cancelButton.addTarget(self, action: #selector(cancel), for: .touchDown)
-        buttonView.addSubview(cancelButton)
-        cancelButton.placeAfter(anchor: buttonView.leadingAnchor, padding: Statics.flatInsets)
-        photoQualityControl.backgroundColor = .clear
-        photoQualityControl.setTitleTextAttributes([.foregroundColor: UIColor.white, NSAttributedString.Key.font: UIFont.systemFont(ofSize: 13, weight: .regular)], for: .normal)
-        photoQualityControl.selectedSegmentIndex = 1
-        photoQualityControl.selectedSegmentTintColor = UIColor.systemGray2
-        photoQualityControl.addTarget(self, action: #selector(togglePhotoQuality), for: .valueChanged)
-        buttonView.addSubview(photoQualityControl)
-        photoQualityControl.placeXCentered(padding: Statics.flatInsets)
-        cameraButton.setImage(UIImage(systemName: "camera.rotate"), for: .normal)
-        cameraButton.addTarget(self, action: #selector(changeCamera), for: .touchDown)
-        buttonView.addSubview(cameraButton)
-        cameraButton.placeBefore(anchor: buttonView.trailingAnchor, padding: Statics.flatInsets)
         captureButton.addTarget(self, action: #selector(capturePhoto), for: .touchDown)
         bodyView.addSubview(captureButton)
         captureButton.enableAnchors()
@@ -53,6 +40,30 @@ class PhotoCaptureViewController: CameraViewController, AVCapturePhotoCaptureDel
         captureButton.setCenterXAnchor(bodyView.centerXAnchor)
         captureButton.setWidthAnchor(50)
         captureButton.setHeightAnchor(50)
+        photoQualityControl.backgroundColor = .clear
+        photoQualityControl.setTitleTextAttributes([.foregroundColor: UIColor.white, NSAttributedString.Key.font: UIFont.systemFont(ofSize: 13, weight: .regular)], for: .normal)
+        photoQualityControl.selectedSegmentIndex = 1
+        photoQualityControl.selectedSegmentTintColor = UIColor.systemGray2
+        photoQualityControl.addTarget(self, action: #selector(togglePhotoQuality), for: .valueChanged)
+        buttonView.addSubview(photoQualityControl)
+        photoQualityControl.placeBelow(anchor: buttonView.topAnchor)
+        let bottomView = UIView()
+        bottomView.backgroundColor = .clear
+        buttonView.addSubview(bottomView)
+        bottomView.placeBelow(view: photoQualityControl)
+        bottomView.connectBottom(view: buttonView)
+        cancelButton.setTitle("back".localize(), for: .normal)
+        cancelButton.addTarget(self, action: #selector(cancel), for: .touchDown)
+        bottomView.addSubview(cancelButton)
+        cancelButton.placeAfter(anchor: bottomView.leadingAnchor)
+        cameraButton.setImage(UIImage(systemName: "camera.rotate"), for: .normal)
+        cameraButton.addTarget(self, action: #selector(changeCamera), for: .touchDown)
+        bottomView.addSubview(cameraButton)
+        cameraButton.placeBefore(anchor: bottomView.trailingAnchor)
+        flashButton.setImage(UIImage(systemName: "bolt.badge.a"), for: .normal)
+        flashButton.addTarget(self, action: #selector(toggleFlash), for: .touchDown)
+        bottomView.addSubview(flashButton)
+        flashButton.placeBefore(anchor: cameraButton.leadingAnchor,padding: UIEdgeInsets(top: defaultInset, left: defaultInset, bottom: defaultInset, right: 2*defaultInset))
     }
     
     override func enableButtons(flag: Bool){
@@ -71,10 +82,10 @@ class PhotoCaptureViewController: CameraViewController, AVCapturePhotoCaptureDel
             session.addOutput(photoOutput)
             
             photoOutput.isHighResolutionCaptureEnabled = true
-            photoOutput.isLivePhotoCaptureEnabled = photoOutput.isLivePhotoCaptureSupported
-            photoOutput.isDepthDataDeliveryEnabled = photoOutput.isDepthDataDeliverySupported
-            photoOutput.isPortraitEffectsMatteDeliveryEnabled = photoOutput.isPortraitEffectsMatteDeliverySupported
-            photoOutput.enabledSemanticSegmentationMatteTypes = photoOutput.availableSemanticSegmentationMatteTypes
+            photoOutput.isLivePhotoCaptureEnabled = false
+            photoOutput.isDepthDataDeliveryEnabled = false
+            photoOutput.isPortraitEffectsMatteDeliveryEnabled = false
+            photoOutput.enabledSemanticSegmentationMatteTypes = []
             photoOutput.maxPhotoQualityPrioritization = .quality
             photoQuality = .balanced
             
@@ -131,6 +142,23 @@ class PhotoCaptureViewController: CameraViewController, AVCapturePhotoCaptureDel
         }
     }
     
+    @objc func toggleFlash() {
+        switch flashMode{
+        case .auto:
+            flashMode = .on
+            self.flashButton.setImage(UIImage(systemName: "bolt"), for: .normal)
+            break
+        case .on:
+            flashMode = .off
+            self.flashButton.setImage(UIImage(systemName: "bolt.slash"), for: .normal)
+            break
+        default:
+            flashMode = .auto
+            self.flashButton.setImage(UIImage(systemName: "bolt.badge.a"), for: .normal)
+            break
+        }
+    }
+    
     @objc func capturePhoto() {
         let videoPreviewLayerOrientation = preview.videoPreviewLayer.connection?.videoOrientation
         
@@ -143,7 +171,7 @@ class PhotoCaptureViewController: CameraViewController, AVCapturePhotoCaptureDel
                 photoSettings = AVCapturePhotoSettings(format: [AVVideoCodecKey: AVVideoCodecType.jpeg])
             }
             if self.videoDeviceInput.device.isFlashAvailable {
-                photoSettings.flashMode = .auto
+                photoSettings.flashMode = self.flashMode
             }
             photoSettings.isHighResolutionPhotoEnabled = true
             if !photoSettings.__availablePreviewPhotoPixelFormatTypes.isEmpty {

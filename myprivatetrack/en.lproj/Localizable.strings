@@ -58,6 +58,9 @@
 "backgroundImageInfo"="You can select an image from your photo library or the default image";
 "ownBackground"="Photo library";
 "defaultBackground"="Default image";
+"speed"="Speed";
+"balanced"="Balanced";
+"quality"="Quality";
 "cameraNotAuthorized"="Camera use is not authorized. Please change your settings.";
 "audioNotAuthorized"="Microphone use is not authorized. Please change your settings.";
 "videoNotAuthorized"="Camera or Microphone use is not authorized. Please change your settings.";
