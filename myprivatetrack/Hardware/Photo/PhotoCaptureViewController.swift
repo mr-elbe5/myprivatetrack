@@ -10,16 +10,16 @@ import UIKit
 import AVFoundation
 import Photos
 
-protocol ImageCaptureDelegate{
-    func imageCaptured(data: ImageData)
+protocol PhotoCaptureDelegate{
+    func photoCaptured(data: PhotoData)
 }
 
-class ImageCaptureViewController: CameraViewController, AVCapturePhotoCaptureDelegate {
+class PhotoCaptureViewController: CameraViewController, AVCapturePhotoCaptureDelegate {
     static var qualityItems : Array<UIImage> = [UIImage(systemName: "hare")!,UIImage(systemName: "gauge")!,UIImage(systemName: "tortoise")!]
     
-    var data : ImageData!
+    var data : PhotoData!
     
-    var delegate: ImageCaptureDelegate? = nil
+    var delegate: PhotoCaptureDelegate? = nil
     
     var cancelButton = IconButton(icon: "chevron.left", tintColor: .white)
     var captureButton = CaptureButton()
@@ -167,9 +167,9 @@ class ImageCaptureViewController: CameraViewController, AVCapturePhotoCaptureDel
             print("Error capturing photo: \(error)")
         } else {
             if let photoData = photo.fileDataRepresentation(){
-                let data = ImageData()
+                let data = PhotoData()
                 data.saveImage(uiImage: UIImage(data: photoData))
-                delegate?.imageCaptured(data: data)
+                delegate?.photoCaptured(data: data)
                 self.dismiss(animated: true)
             }
         }

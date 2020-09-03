@@ -14,14 +14,14 @@ protocol SaveEntryDelegate{
     func saveEntry(entry: EntryData)
 }
 
-class EditEntryViewController: EditViewController, ImageCaptureDelegate, VideoCaptureDelegate, MapCaptureDelegate, DeleteEntryActionDelegate, SwitchDelegate{
+class EditEntryViewController: EditViewController, PhotoCaptureDelegate, VideoCaptureDelegate, MapCaptureDelegate, DeleteEntryActionDelegate, SwitchDelegate{
     
     var delegate : SaveEntryDelegate? = nil
     
     var entry : EntryData!
     
     var addTextButton = IconButton(icon: "text.bubble")
-    var addImageButton = IconButton(icon: "camera")
+    var addPhotoButton = IconButton(icon: "camera")
     var addAudioButton = IconButton(icon: "mic")
     let addVideoButton = IconButton(icon: "video")
     var addLocationButton = IconButton(icon: "map")
@@ -41,8 +41,8 @@ class EditEntryViewController: EditViewController, ImageCaptureDelegate, VideoCa
             case .audio:
                 editItem = AudioItemEditView.fromData(data: item.data as! AudioData)
                 break
-            case .image:
-                editItem = ImageItemEditView.fromData(data: item.data as! ImageData)
+            case .photo:
+                editItem = PhotoItemEditView.fromData(data: item.data as! PhotoData)
                 break
             case .video:
                 editItem = VideoItemEditView.fromData(data: item.data as! VideoData)
@@ -86,8 +86,8 @@ class EditEntryViewController: EditViewController, ImageCaptureDelegate, VideoCa
         leftStackView.addArrangedSubview(addLabel)
         addTextButton.addTarget(self, action: #selector(addText), for: .touchDown)
         leftStackView.addArrangedSubview(addTextButton)
-        addImageButton.addTarget(self, action: #selector(addImage), for: .touchDown)
-        leftStackView.addArrangedSubview(addImageButton)
+        addPhotoButton.addTarget(self, action: #selector(addImage), for: .touchDown)
+        leftStackView.addArrangedSubview(addPhotoButton)
         addAudioButton.addTarget(self, action: #selector(addAudio), for: .touchDown)
         leftStackView.addArrangedSubview(addAudioButton)
         addVideoButton.addTarget(self, action: #selector(addVideo), for: .touchDown)
@@ -118,8 +118,8 @@ class EditEntryViewController: EditViewController, ImageCaptureDelegate, VideoCa
         AVCaptureDevice.askCameraAuthorization(){ result in
             if result{
                 DispatchQueue.main.async {
-                    let data = ImageData()
-                    let imageCaptureController = ImageCaptureViewController()
+                    let data = PhotoData()
+                    let imageCaptureController = PhotoCaptureViewController()
                     imageCaptureController.data = data
                     imageCaptureController.delegate = self
                     imageCaptureController.modalPresentationStyle = .fullScreen
@@ -199,9 +199,9 @@ class EditEntryViewController: EditViewController, ImageCaptureDelegate, VideoCa
     
     // ImageCaptureDelegate
     
-    func imageCaptured(data: ImageData){
+    func photoCaptured(data: PhotoData){
         entry.addItem(item: data)
-        let editView = ImageItemEditView.fromData(data: data)
+        let editView = PhotoItemEditView.fromData(data: data)
         insertItemView(editView)
     }
     

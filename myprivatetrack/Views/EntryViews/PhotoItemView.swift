@@ -8,15 +8,15 @@
 import Foundation
 import UIKit
 
-protocol ImageItemDelegate{
-    func viewImageItem(data: ImageData)
-    func shareImageItem(data: ImageData)
+protocol PhotoItemDelegate{
+    func viewPhotoItem(data: PhotoData)
+    func sharePhotoItem(data: PhotoData)
 }
 
-class ImageItemView : EntryItemView{
+class PhotoItemView : EntryItemView{
     
-    static func fromData(data : ImageData,delegate : ImageItemDelegate? = nil)  -> ImageItemView{
-        let itemView = ImageItemView()
+    static func fromData(data : PhotoData,delegate : PhotoItemDelegate? = nil)  -> PhotoItemView{
+        let itemView = PhotoItemView()
         itemView.delegate = delegate
         itemView.setupView(data: data)
         return itemView
@@ -24,17 +24,17 @@ class ImageItemView : EntryItemView{
     
     fileprivate var aspectRatioConstraint:NSLayoutConstraint? = nil
     
-    var imageData : ImageData? = nil
+    var photoData : PhotoData? = nil
     
-    var delegate : ImageItemDelegate? = nil
+    var delegate : PhotoItemDelegate? = nil
     
     var imageView = UIImageView()
     
-    func setupView(data: ImageData){
+    func setupView(data: PhotoData){
         imageView.setDefaults()
         imageView.setRoundedBorders()
         addSubview(imageView)
-        self.imageData = data
+        self.photoData = data
         imageView.image = data.getImage()
         imageView.placeBelow(anchor: topAnchor)
         imageView.setAspectRatioConstraint()
@@ -62,45 +62,45 @@ class ImageItemView : EntryItemView{
     }
     
     @objc func viewItem(){
-        if let imageData = imageData{
-            delegate?.viewImageItem(data: imageData)
+        if let imageData = photoData{
+            delegate?.viewPhotoItem(data: imageData)
         }
     }
     
     @objc func shareItem(){
-        if let imageData = imageData{
-            delegate?.shareImageItem(data: imageData)
+        if let imageData = photoData{
+            delegate?.sharePhotoItem(data: imageData)
         }
     }
     
 }
 
-class ImageItemDetailView : EntryItemDetailView{
+class PhotoItemDetailView : EntryItemDetailView{
     
-    var imageData : ImageData? = nil
+    var photoData : PhotoData? = nil
     
     var imageView = UIImageView()
     
-    static func fromData(data : ImageData)  -> ImageItemDetailView{
-        let itemView = ImageItemDetailView()
+    static func fromData(data : PhotoData)  -> PhotoItemDetailView{
+        let itemView = PhotoItemDetailView()
         itemView.setupView(data: data)
         return itemView
     }
     
-    func setupView(data: ImageData){
+    func setupView(data: PhotoData){
         imageView.setDefaults()
         addSubview(imageView)
-        self.imageData = data
+        self.photoData = data
         imageView.image = data.getImage()
         imageView.fillSuperview()
     }
     
 }
 
-class ImageItemEditView : EntryItemEditView, UITextViewDelegate{
+class PhotoItemEditView : EntryItemEditView, UITextViewDelegate{
     
-    static func fromData(data : ImageData)  -> ImageItemEditView{
-        let editView = ImageItemEditView()
+    static func fromData(data : PhotoData)  -> PhotoItemEditView{
+        let editView = PhotoItemEditView()
         editView.setupSubviews()
         editView.setupData(data: data)
         editView.setLayoutConstraints()
@@ -109,11 +109,11 @@ class ImageItemEditView : EntryItemEditView, UITextViewDelegate{
     
     fileprivate var aspectRatioConstraint:NSLayoutConstraint? = nil
     
-    var imageData : ImageData!
+    var photoData : PhotoData!
     
     override var data: EntryItemData{
         get{
-            return imageData
+            return photoData
         }
     }
     
@@ -131,8 +131,8 @@ class ImageItemEditView : EntryItemEditView, UITextViewDelegate{
         titleView.setKeyboardToolbar()
     }
     
-    func setupData(data: ImageData){
-        self.imageData = data
+    func setupData(data: PhotoData){
+        self.photoData = data
         imageView.image = data.getImage()
         titleView.text = data.title
     }
@@ -149,8 +149,8 @@ class ImageItemEditView : EntryItemEditView, UITextViewDelegate{
     }
     
     func textViewDidChange(_ textView: UITextView) {
-        if imageData != nil{
-            imageData!.title = textView.text!.trim()
+        if photoData != nil{
+            photoData!.title = textView.text!.trim()
         }
         titleView.textDidChange()
     }

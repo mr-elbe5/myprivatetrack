@@ -16,7 +16,7 @@ class TimelineViewController: TableViewController, SaveEntryDelegate, EntryCellA
     var backgroundView = UIImageView(image: Settings.shared.backgroundImage)
     
     var addTextButton = IconButton(icon: "text.bubble")
-    var addImageButton = IconButton(icon: "camera")
+    var addPhotoButton = IconButton(icon: "camera")
     var addAudioButton = IconButton(icon: "mic")
     let addVideoButton = IconButton(icon: "video")
     var addLocationButton = IconButton(icon: "map")
@@ -54,8 +54,8 @@ class TimelineViewController: TableViewController, SaveEntryDelegate, EntryCellA
         leftStackView.addArrangedSubview(addLabel)
         addTextButton.addTarget(self, action: #selector(addTextEntry), for: .touchDown)
         leftStackView.addArrangedSubview(addTextButton)
-        addImageButton.addTarget(self, action: #selector(addImageEntry), for: .touchDown)
-        leftStackView.addArrangedSubview(addImageButton)
+        addPhotoButton.addTarget(self, action: #selector(addPhotoEntry), for: .touchDown)
+        leftStackView.addArrangedSubview(addPhotoButton)
         addAudioButton.addTarget(self, action: #selector(addAudioEntry), for: .touchDown)
         leftStackView.addArrangedSubview(addAudioButton)
         addVideoButton.addTarget(self, action: #selector(addVideoEntry), for: .touchDown)
@@ -108,7 +108,7 @@ class TimelineViewController: TableViewController, SaveEntryDelegate, EntryCellA
         openEntryController().addText()
     }
     
-    @objc func addImageEntry(){
+    @objc func addPhotoEntry(){
         openEntryController().addImage()
     }
     
@@ -181,14 +181,14 @@ class TimelineViewController: TableViewController, SaveEntryDelegate, EntryCellA
         self.present(entryController, animated: true)
     }
     
-    func viewImageItem(data: ImageData) {
-        let imageViewController = ImageViewController()
-        imageViewController.uiImage = data.getImage()
-        imageViewController.modalPresentationStyle = .fullScreen
-        self.present(imageViewController, animated: true)
+    func viewPhotoItem(data: PhotoData) {
+        let photoViewController = PhotoViewController()
+        photoViewController.uiImage = data.getImage()
+        photoViewController.modalPresentationStyle = .fullScreen
+        self.present(photoViewController, animated: true)
     }
     
-    func shareImageItem(data: ImageData) {
+    func sharePhotoItem(data: PhotoData) {
         let alertController = UIAlertController(title: title, message: "shareImage".localize(), preferredStyle: .actionSheet)
         alertController.addAction(UIAlertAction(title: "imageLibrary".localize(), style: .default) { action in
             FileStore.copyImageToLibrary(name: data.fileName, fromDir: FileStore.privateURL){ result, error in

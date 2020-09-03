@@ -15,7 +15,8 @@ public protocol LocationServiceDelegate{
 public class LocationService : NSObject, CLLocationManagerDelegate{
     
     public static var shared = LocationService()
-    public static var deviation : Double = 0.0001
+    // min location difference in meters
+    public static var deviation : CLLocationDistance = 5
     
     public var clLocation : CLLocation? = nil
     public var placemark : CLPlacemark? = nil
@@ -94,7 +95,7 @@ public class LocationService : NSObject, CLLocationManagerDelegate{
     
     public func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         guard let newLocation = locations.last else { return }
-        if clLocation == nil || newLocation.distance(from: clLocation!) > 5{
+        if clLocation == nil || newLocation.distance(from: clLocation!) > LocationService.deviation{
             clLocation = newLocation
             lookUpCurrentLocation()
             if let delegate = delegate{

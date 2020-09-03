@@ -11,13 +11,13 @@ protocol EntryCellActionDelegate{
     func editEntry(entry: EntryData)
     func deleteEntry(entry: EntryData)
     func viewEntry(entry: EntryData)
-    func viewImageItem(data: ImageData)
-    func shareImageItem(data: ImageData)
+    func viewPhotoItem(data: PhotoData)
+    func sharePhotoItem(data: PhotoData)
     func viewVideoItem(data: VideoData)
     func shareVideoItem(data: VideoData)
 }
 
-class TimelineEntryCell: UITableViewCell, ImageItemDelegate, VideoItemDelegate{
+class TimelineEntryCell: UITableViewCell, PhotoItemDelegate, VideoItemDelegate{
     
     var entry : EntryData? = nil {
         didSet {
@@ -109,8 +109,8 @@ class TimelineEntryCell: UITableViewCell, ImageItemDelegate, VideoItemDelegate{
                     itemView.placeBelow(view: lastView, padding: defaultInsets)
                     lastView = itemView
                     break
-                case .image:
-                    let itemView = ImageItemView.fromData(data: item.data as! ImageData, delegate: self)
+                case .photo:
+                    let itemView = PhotoItemView.fromData(data: item.data as! PhotoData, delegate: self)
                     cellBody.addSubview(itemView)
                     itemView.placeBelow(view: lastView, padding: defaultInsets)
                     lastView = itemView
@@ -151,12 +151,12 @@ class TimelineEntryCell: UITableViewCell, ImageItemDelegate, VideoItemDelegate{
         }
     }
     
-    func viewImageItem(data: ImageData){
-        delegate?.viewImageItem(data: data)
+    func viewPhotoItem(data: PhotoData){
+        delegate?.viewPhotoItem(data: data)
     }
     
-    func shareImageItem(data: ImageData){
-        delegate?.shareImageItem(data: data)
+    func sharePhotoItem(data: PhotoData){
+        delegate?.sharePhotoItem(data: data)
     }
     
     func viewVideoItem(data: VideoData){

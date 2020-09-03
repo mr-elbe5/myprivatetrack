@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-public class ImageViewController: ModalScrollViewController, UIScrollViewDelegate {
+public class PhotoViewController: ModalScrollViewController, UIScrollViewDelegate {
     
     public var uiImage : UIImage? = nil
     public var imageView : UIImageView? = nil
@@ -31,6 +31,7 @@ public class ImageViewController: ModalScrollViewController, UIScrollViewDelegat
             let minWidthScale = scrollView.bounds.width / imageView!.image!.size.width
             let minHeightScale = scrollView.bounds.height / imageView!.image!.size.height
             scrollView.minimumZoomScale = min(minWidthScale,minHeightScale)
+            scrollView.setZoomScale(scrollView.minimumZoomScale, animated: true)
         }
     }
     

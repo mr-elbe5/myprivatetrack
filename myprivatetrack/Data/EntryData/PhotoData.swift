@@ -1,5 +1,5 @@
 //
-//  ImageData.swift
+//  PhotoData.swift
 //
 //  Created by Michael Rönnau on 04.04.20.
 //  Copyright © 2020 Michael Rönnau. All rights reserved.
@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-class ImageData : MediaData{
+class PhotoData : MediaData{
     
     static let previewSize : CGFloat = 800
     
@@ -17,7 +17,7 @@ class ImageData : MediaData{
     
     override public var type : EntryItemType{
         get{
-            return .image
+            return .photo
         }
     }
     
@@ -46,7 +46,7 @@ class ImageData : MediaData{
         if uiImage != nil{
             super.saveImage(uiImage: uiImage!)
             if !FileStore.fileExists(dirPath: FileStore.privatePath, fileName: previewName){
-                let preview = uiImage!.resize(maxWidth: ImageData.previewSize, maxHeight: ImageData.previewSize)
+                let preview = uiImage!.resize(maxWidth: PhotoData.previewSize, maxHeight: PhotoData.previewSize)
                     if let data = preview.jpegData(compressionQuality: 0.8){
                         let url = FileStore.getURL(dirURL: FileStore.privateURL, fileName: previewName)
                         _ = FileStore.saveFile(data: data, url: url)

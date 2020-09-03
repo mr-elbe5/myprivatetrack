@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-class EntryViewController: ModalScrollViewController, ImageItemDelegate, VideoItemDelegate {
+class EntryViewController: ModalScrollViewController, PhotoItemDelegate, VideoItemDelegate {
     
     var entry : EntryData!
     
@@ -39,8 +39,8 @@ class EntryViewController: ModalScrollViewController, ImageItemDelegate, VideoIt
                 let itemView = AudioItemView.fromData(data: item.data as! AudioData)
                 stackView.addArrangedSubview(itemView)
                 break
-            case .image:
-                let itemView = ImageItemView.fromData(data: item.data as! ImageData,delegate: self)
+            case .photo:
+                let itemView = PhotoItemView.fromData(data: item.data as! PhotoData,delegate: self)
                 stackView.addArrangedSubview(itemView)
                 break
             case .video:
@@ -55,14 +55,14 @@ class EntryViewController: ModalScrollViewController, ImageItemDelegate, VideoIt
         }
     }
     
-    func viewImageItem(data: ImageData) {
-        let imageViewController = ImageViewController()
+    func viewPhotoItem(data: PhotoData) {
+        let imageViewController = PhotoViewController()
         imageViewController.uiImage = data.getImage()
         imageViewController.modalPresentationStyle = .fullScreen
         self.present(imageViewController, animated: true)
     }
     
-    func shareImageItem(data: ImageData) {
+    func sharePhotoItem(data: PhotoData) {
         print("share")
     }
     
