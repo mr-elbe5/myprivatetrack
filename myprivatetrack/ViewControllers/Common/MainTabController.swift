@@ -8,7 +8,7 @@
 import UIKit
 
 enum TabTags{
-    case timeline, map, settings
+    case timeline, map, settings, info
 }
 
 class MainTabController: UITabBarController {
@@ -21,8 +21,10 @@ class MainTabController: UITabBarController {
         mapViewController.tabBarItem = UITabBarItem(title: "map".localize(), image: UIImage(systemName: "globe"), tag: TabTags.map.hashValue)
         let settingsViewController = SettingsViewController()
         settingsViewController.tabBarItem = UITabBarItem(title: "settings".localize(), image: UIImage(systemName: "slider.horizontal.3"), tag: TabTags.settings.hashValue)
+        let infoViewController = AppInfoViewController()
+        infoViewController.tabBarItem = UITabBarItem(title: "info".localize(), image: UIImage(systemName: "info"), tag: TabTags.info.hashValue)
         
-        let tabBarList = [timelineViewController, mapViewController, settingsViewController]
+        let tabBarList = [timelineViewController, mapViewController, settingsViewController, infoViewController]
         viewControllers = tabBarList
         selectedViewController = timelineViewController
     }
@@ -47,6 +49,10 @@ class MainTabController: UITabBarController {
     
     static func getSettingsViewController() -> SettingsViewController?{
         return getViewController(tag: .settings) as! SettingsViewController?
+    }
+    
+    static func getInfoViewController() -> InfoViewController?{
+        return getViewController(tag: .info) as! InfoViewController?
     }
 
 }

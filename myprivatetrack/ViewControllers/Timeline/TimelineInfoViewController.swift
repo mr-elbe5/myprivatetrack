@@ -10,8 +10,6 @@ import UIKit
 
 class TimelineInfoViewController: InfoViewController {
     
-    let privacyHeader = InfoHeader(text: "privacyInfoHeader".localize())
-    let privacyHeaderText = InfoText(text: "privacyInfoText".localize())
     let headerText = InfoHeader(text: "timelineInfoHeader".localize(), paddingTop: 2 * Statics.defaultInset)
     let topText = InfoText(text: "timelineTopInfo".localize())
     let iconTextInfo = IconInfoText(icon: "text.bubble", text: "timelineTextIconInfo".localize())
@@ -26,9 +24,6 @@ class TimelineInfoViewController: InfoViewController {
     
     override func loadView() {
         super.loadView()
-        print("TimelineInfoViewController")
-        stackView.addArrangedSubview(privacyHeader)
-        stackView.addArrangedSubview(privacyHeaderText)
         stackView.addArrangedSubview(headerText)
         stackView.addArrangedSubview(topText)
         stackView.addArrangedSubview(iconTextInfo)
