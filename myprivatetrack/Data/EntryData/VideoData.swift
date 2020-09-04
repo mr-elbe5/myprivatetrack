@@ -7,7 +7,7 @@
 
 import Foundation
 
-class VideoData : MediaData{
+class VideoData : FileEntryItemData{
     
     enum VideoCodingKeys: String, CodingKey {
         case time

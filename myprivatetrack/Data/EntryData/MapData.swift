@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-class MapData: MediaData{
+class MapData: ImageEntryItemData{
     
     private var image : UIImage? = nil
     
@@ -22,14 +22,6 @@ class MapData: MediaData{
         get{
             return "map_\(creationDate.fileDate()).jpg"
         }
-    }
-    
-    override func isComplete() -> Bool{
-        return fileExists()
-    }
-    
-    override func addActiveFileNames( to fileNames: inout Array<String>){
-        fileNames.append(fileName)
     }
     
 }

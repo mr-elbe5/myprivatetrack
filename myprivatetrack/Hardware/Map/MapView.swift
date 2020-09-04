@@ -19,7 +19,7 @@ class MapView : UIView, MKMapViewDelegate{
     private var mapView : MKMapView!
     
     var location : Location? = nil
-    var radius : CLLocationDistance = 1000
+    var radius : CLLocationDistance = Settings.shared.mapStartSize.rawValue
     
     var positionPin : MKPointAnnotation? = nil
     var delegate : MapViewDelegate? = nil

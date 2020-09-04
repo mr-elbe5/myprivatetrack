@@ -17,6 +17,7 @@
 "cancel" = "Abbrechen";
 "yes"="Ja";
 "no"="Nein";
+"ok"="Ok";
 "reset" = "Zurücksetzen";
 "yourText"="Dein Text...";
 "title"="Titel";
@@ -33,6 +34,7 @@
 "useLocation"="Standortbestimmung benutzen";
 "startDate"="Erster Tag";
 "endDate"="Letzter Tag";
+"entries"="Einträge";
 "deleteData" = "Einträge löschen";
 "reallyDelete"="Wirklich alle Daten löschen?";
 "deleteApproveInfo"="Wenn du zustimmst, werden allen Daten und Medien gelöscht.";
@@ -61,13 +63,20 @@
 "speed"="Geschwindigkeit";
 "balanced"="Ausbalanciert";
 "quality"="Qualität";
+"mapStartSize"="Anfangsgröße für Kartensnapshots";
+"backgroundImage"="Hintergrundbild";
 "cameraNotAuthorized"="Die Nutzung der Kamera ist nicht erlaubt. Bitte ändere die entsprechenden Einstellungen.";
 "audioNotAuthorized"="Die Nutzung des Mikrofons ist nicht erlaubt. Bitte ändere die entsprechenden Einstellungen.";
 "videoNotAuthorized"="Die Nutzung der Kamera oder des Mikrofons ist nicht erlaubt. Bitte ändere die entsprechenden Einstellungen.";
 "locationNotAuthorized"="Die App darf deinen Standort nicht feststellen. Bitte ändere die entsprechenden Einstellungen.";
 "photoLibraryNotAuthorized"="Die Nutzung der Fotobibliothek ist nicht erlaubt. Bitte ändere die entsprechenden Einstellungen.";
 "privacyInfoHeader"="Deine Privatshäre";
-"privacyInfoText"="Diese App ist für private Daten erstellt. Keine eingegebene Daten verlassen das iPhone oder iPad, solange sie nicht explizit exportiert werden. Es gibt keine Werbung. Das Netzwerk wird lediglich genutzt, um Kartenkacheln zu laden oder den Ort deiner Einträge auf Karten darzustellen. Es werden fast ausschliesslich Apple-APIs und -Services benutzt, lediglich eine Drittanbieter-Software für zip/unzip wird benutzt (ebenfalls open source). Der gesamte Code ist zur Überprüfung bei Github unter https://github.com/mr-elbe5/myprivatetrack.git offengelegt.";
+"privacyInfoText1"="Diese App ist für private Daten erstellt.";
+"privacyInfoText2"="Keine eingegebene Daten verlassen das iPhone oder iPad, solange sie nicht explizit exportiert werden.";
+"privacyInfoText3"="Es gibt keine Werbung.";
+"privacyInfoText4"="Das Netzwerk wird lediglich genutzt, um Kartenkacheln zu laden oder den Ort deiner Einträge auf Karten darzustellen.";
+"privacyInfoText5"="Es werden nur Apple-APIs und -Services benutzt, mit Ausnahme des Open-Source-Projekts ZipFoundation, das für die Sicherung und Wiederherstellung eingebunden ist.";
+"privacyInfoText6"="Der Code dieser App ist bei Github unter https://github.com/mr-elbe5/myprivatetrack.git offengelegt.";
 "timelineInfoHeader"="Tagesansicht";
 "timelineTopInfo"="Die Tagesansicht zeigt alle Einträge nach Tag und Zeit sortiert. Durch Antippen der linken Icons kannst du einen neuen Eintrag erzeugen, der mit dem jeweiligen Typ startet : Text, Bild, Audio, Video oder Karte. Mit dem rechten Bleistift-Icon kannst du zwischen Anzeige- und Editiermodus wechseln (siehe unten).";
 "timelineTextIconInfo"="Mit diesem Icon startest du einen neuen Eintrag, der mit dem Eingeben eines Textes beginnt.";
@@ -105,3 +114,4 @@
 "backupInfo"="Du kannst den ersten und letzten Tag der zu sichernden Einträge wählen. Mit Drücken auf auf 'Sichern' wird im Dokumentenverzeichnis der App eine Datei mit dem Namen 'backup_...' erzeugt (man kann sie z.B. auch in der 'Dateien' - App sehen). Alle Sicherungsdateien können für eine spätere Wiederherstellung benutzt werden. Denke bitte daran, dass diese Dateien auch von anderen Apps gesehen und (wenn nicht durch ein Passwort geschützt) geöffnet werden können. Wiilst du die Sicherungsdatei ausserhalb der App öffnen, solltest du kein Passwort verwenden.";
 "restore"="Wiederherstellen";
 "restoreInfo"="Du kannst den ersten und letzten Tag für die Wiederherstellung wählen. Nach der Auswahl der Tage werden sie zu den bestehenden Tagen hinzugefügt oder mit ihnen zusammengelegt.";
+

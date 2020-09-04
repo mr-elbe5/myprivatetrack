@@ -29,7 +29,7 @@ class PhotoCaptureViewController: CameraViewController, AVCapturePhotoCaptureDel
     
     private let photoOutput = AVCapturePhotoOutput()
     private var photoQuality: AVCapturePhotoOutput.QualityPrioritization = .balanced
-    private var flashMode : AVCaptureDevice.FlashMode = .auto
+    private var flashMode : AVCaptureDevice.FlashMode = Settings.shared.flashMode
     
     override func addButtons(){
         buttonView.backgroundColor = .black
@@ -137,6 +137,7 @@ class PhotoCaptureViewController: CameraViewController, AVCapturePhotoCaptureDel
             self.photoOutput.maxPhotoQualityPrioritization = .quality
             
             self.session.commitConfiguration()
+            
         } catch {
             print("Error occurred while creating video device input: \(error)")
         }
@@ -157,6 +158,8 @@ class PhotoCaptureViewController: CameraViewController, AVCapturePhotoCaptureDel
             self.flashButton.setImage(UIImage(systemName: "bolt.badge.a"), for: .normal)
             break
         }
+        Settings.shared.flashMode = flashMode
+        Settings.shared.save()
     }
     
     @objc func capturePhoto() {
@@ -174,10 +177,12 @@ class PhotoCaptureViewController: CameraViewController, AVCapturePhotoCaptureDel
                 photoSettings.flashMode = self.flashMode
             }
             photoSettings.isHighResolutionPhotoEnabled = true
+            
             if !photoSettings.__availablePreviewPhotoPixelFormatTypes.isEmpty {
                 photoSettings.previewPhotoFormat = [kCVPixelBufferPixelFormatTypeKey as String: photoSettings.__availablePreviewPhotoPixelFormatTypes.first!]
             }
             photoSettings.isDepthDataDeliveryEnabled = false
+            
             photoSettings.photoQualityPrioritization = self.photoQuality
             // shutter animation
             DispatchQueue.main.async {
@@ -194,9 +199,9 @@ class PhotoCaptureViewController: CameraViewController, AVCapturePhotoCaptureDel
         if let error = error {
             print("Error capturing photo: \(error)")
         } else {
-            if let photoData = photo.fileDataRepresentation(){
+            if let imageData = photo.fileDataRepresentation(), let image = UIImage(data: imageData){
                 let data = PhotoData()
-                data.saveImage(uiImage: UIImage(data: photoData))
+                data.saveImage(uiImage: image)
                 delegate?.photoCaptured(data: data)
                 self.dismiss(animated: true)
             }

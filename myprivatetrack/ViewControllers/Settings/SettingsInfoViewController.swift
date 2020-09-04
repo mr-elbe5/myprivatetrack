@@ -9,8 +9,9 @@ import Foundation
 
 class SettingsInfoViewController: InfoViewController {
     
-    let useLocationHeader = InfoHeader(text: "useLocation".localize())
+    let settingsHeader = InfoHeader(text: "settings".localize())
     let useLocationText = InfoText(text: "settingsUseLocationInfo".localize())
+    let entriesHeader = InfoHeader(text: "entries".localize())
     let resetText = InfoText(text: "settingsResetInfo".localize())
     let passwordText = InfoText(text: "settingsPasswordInfo".localize())
     let backupText = InfoText(text: "settingsBackupInfo".localize())
@@ -18,8 +19,9 @@ class SettingsInfoViewController: InfoViewController {
     
     override func loadView() {
         super.loadView()
-        stackView.addArrangedSubview(useLocationHeader)
+        stackView.addArrangedSubview(settingsHeader)
         stackView.addArrangedSubview(useLocationText)
+        stackView.addArrangedSubview(entriesHeader)
         stackView.addArrangedSubview(resetText)
         stackView.addArrangedSubview(passwordText)
         stackView.addArrangedSubview(backupText)

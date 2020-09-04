@@ -8,9 +8,9 @@
 import Foundation
 import UIKit
 
-class MediaData: EntryItemData{
+class FileEntryItemData: EntryItemData{
     
-    enum MediaCodingKeys: String, CodingKey {
+    enum FileEntryCodingKeys: String, CodingKey {
         case title
     }
     
@@ -39,14 +39,14 @@ class MediaData: EntryItemData{
     }
     
     required init(from decoder: Decoder) throws {
-        let values = try decoder.container(keyedBy: MediaCodingKeys.self)
+        let values = try decoder.container(keyedBy: FileEntryCodingKeys.self)
         title = try values.decode(String.self, forKey: .title)
         try super.init(from: decoder)
     }
     
     override func encode(to encoder: Encoder) throws {
         try super.encode(to: encoder)
-        var container = encoder.container(keyedBy: MediaCodingKeys.self)
+        var container = encoder.container(keyedBy: FileEntryCodingKeys.self)
         try container.encode(title, forKey: .title)
     }
     
@@ -55,24 +55,10 @@ class MediaData: EntryItemData{
         return FileStore.readFile(url: url)
     }
     
-    func getImage() -> UIImage?{
-        if let data = getFile(){
-            return UIImage(data: data)
-        } else{
-            return nil
-        }
-    }
-    
     func saveFile(data: Data){
         if !FileStore.fileExists(dirPath: FileStore.privatePath, fileName: fileName){
             let url = FileStore.getURL(dirURL: FileStore.privateURL,fileName: fileName)
             _ = FileStore.saveFile(data: data, url: url)
-        }
-    }
-    
-    func saveImage(uiImage: UIImage){
-        if let data = uiImage.jpegData(compressionQuality: 0.8){
-            saveFile(data: data)
         }
     }
     
@@ -86,6 +72,14 @@ class MediaData: EntryItemData{
                 print("error: could not delete file: \(fileName)")
             }
         }
+    }
+    
+    override func isComplete() -> Bool{
+        return fileExists()
+    }
+    
+    override func addActiveFileNames( to fileNames: inout Array<String>){
+        fileNames.append(fileName)
     }
     
 }

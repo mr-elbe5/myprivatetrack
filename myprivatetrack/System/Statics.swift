@@ -8,16 +8,10 @@
 import Foundation
 import UIKit
 
-enum MapStartSize: Int{
-    case small = 100
-    case mid = 5000
-    case large = 20000
-}
-
-enum ImageMaxSide: Int{
-    case small = 1024
-    case mid = 2148
-    case large = 4096
+enum MapStartSize: Double{
+    case small = 100.0
+    case mid = 1000.0
+    case large = 5000.0
 }
 
 public struct Statics{

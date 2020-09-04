@@ -140,7 +140,6 @@ class CameraViewController: UIViewController {
                             initialVideoOrientation = videoOrientation
                         }
                     }
-                    
                     self.preview.videoPreviewLayer.connection?.videoOrientation = initialVideoOrientation
                 }
             } else {

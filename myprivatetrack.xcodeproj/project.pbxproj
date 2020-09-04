@@ -33,7 +33,7 @@
 		4ED21BB324FAA32500A6FEA3 /* VideoData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED21BA724FAA32400A6FEA3 /* VideoData.swift */; };
 		4ED21BB424FAA32500A6FEA3 /* DayData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED21BA824FAA32400A6FEA3 /* DayData.swift */; };
 		4ED21BB524FAA32500A6FEA3 /* AudioData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED21BA924FAA32400A6FEA3 /* AudioData.swift */; };
-		4ED21BB624FAA32500A6FEA3 /* MediaData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED21BAA24FAA32400A6FEA3 /* MediaData.swift */; };
+		4ED21BB624FAA32500A6FEA3 /* FileEntryItemData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED21BAA24FAA32400A6FEA3 /* FileEntryItemData.swift */; };
 		4ED21BB724FAA32500A6FEA3 /* EntryData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED21BAB24FAA32400A6FEA3 /* EntryData.swift */; };
 		4ED21BB824FAA32500A6FEA3 /* MapData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED21BAC24FAA32400A6FEA3 /* MapData.swift */; };
 		4ED21BB924FAA32500A6FEA3 /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED21BAD24FAA32400A6FEA3 /* Location.swift */; };
@@ -103,6 +103,7 @@
 		4ED21C5224FAAC6E00A6FEA3 /* MapCaptureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED21C4424FAAC6E00A6FEA3 /* MapCaptureViewController.swift */; };
 		4ED21C5324FAAC6E00A6FEA3 /* EntryAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED21C4524FAAC6E00A6FEA3 /* EntryAnnotation.swift */; };
 		4ED21C5424FAAC6E00A6FEA3 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED21C4624FAAC6E00A6FEA3 /* MapView.swift */; };
+		4ED95E1C25022D120084648A /* ImageEntryItemData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED95E1B25022D120084648A /* ImageEntryItemData.swift */; };
 		4EFDFF4624952F54001EB7C3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4EFDFF4524952F54001EB7C3 /* Assets.xcassets */; };
 		4EFDFF4924952F54001EB7C3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4EFDFF4724952F54001EB7C3 /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
@@ -135,7 +136,7 @@
 		4ED21BA724FAA32400A6FEA3 /* VideoData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoData.swift; sourceTree = "<group>"; };
 		4ED21BA824FAA32400A6FEA3 /* DayData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DayData.swift; sourceTree = "<group>"; };
 		4ED21BA924FAA32400A6FEA3 /* AudioData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudioData.swift; sourceTree = "<group>"; };
-		4ED21BAA24FAA32400A6FEA3 /* MediaData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MediaData.swift; sourceTree = "<group>"; };
+		4ED21BAA24FAA32400A6FEA3 /* FileEntryItemData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileEntryItemData.swift; sourceTree = "<group>"; };
 		4ED21BAB24FAA32400A6FEA3 /* EntryData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EntryData.swift; sourceTree = "<group>"; };
 		4ED21BAC24FAA32400A6FEA3 /* MapData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapData.swift; sourceTree = "<group>"; };
 		4ED21BAD24FAA32400A6FEA3 /* Location.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
@@ -205,6 +206,7 @@
 		4ED21C4424FAAC6E00A6FEA3 /* MapCaptureViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapCaptureViewController.swift; sourceTree = "<group>"; };
 		4ED21C4524FAAC6E00A6FEA3 /* EntryAnnotation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EntryAnnotation.swift; sourceTree = "<group>"; };
 		4ED21C4624FAAC6E00A6FEA3 /* MapView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
+		4ED95E1B25022D120084648A /* ImageEntryItemData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageEntryItemData.swift; sourceTree = "<group>"; };
 		4EFDFF3424952F53001EB7C3 /* My private track.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "My private track.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4EFDFF4524952F54001EB7C3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4EFDFF4824952F54001EB7C3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -391,10 +393,11 @@
 				4ED21BA324FAA32400A6FEA3 /* GlobalData.swift */,
 				4ED21BA424FAA32400A6FEA3 /* PhotoData.swift */,
 				4ED21BAC24FAA32400A6FEA3 /* MapData.swift */,
-				4ED21BAA24FAA32400A6FEA3 /* MediaData.swift */,
+				4ED21BAA24FAA32400A6FEA3 /* FileEntryItemData.swift */,
 				4ED21BA524FAA32400A6FEA3 /* TextData.swift */,
 				4ED21BA624FAA32400A6FEA3 /* TimeSpanData.swift */,
 				4ED21BA724FAA32400A6FEA3 /* VideoData.swift */,
+				4ED95E1B25022D120084648A /* ImageEntryItemData.swift */,
 			);
 			path = EntryData;
 			sourceTree = "<group>";
@@ -634,11 +637,12 @@
 				4ED21BC224FAA36000A6FEA3 /* URL.swift in Sources */,
 				4ED21BE324FAA39300A6FEA3 /* DatePickerView.swift in Sources */,
 				4ED21C4C24FAAC6E00A6FEA3 /* VideoViewController.swift in Sources */,
+				4ED95E1C25022D120084648A /* ImageEntryItemData.swift in Sources */,
 				4ED21BF424FAA39300A6FEA3 /* IconInfoText.swift in Sources */,
 				4ED21C0F24FAA3B900A6FEA3 /* TimelineEntryCell.swift in Sources */,
 				4ED21C4724FAAC6E00A6FEA3 /* CaptureButton.swift in Sources */,
 				4ED21C0E24FAA3B900A6FEA3 /* TimelineSectionHeader.swift in Sources */,
-				4ED21BB624FAA32500A6FEA3 /* MediaData.swift in Sources */,
+				4ED21BB624FAA32500A6FEA3 /* FileEntryItemData.swift in Sources */,
 				4ED21C0C24FAA3B900A6FEA3 /* EditEntryViewController.swift in Sources */,
 				4ED21BEC24FAA39300A6FEA3 /* UITextField.swift in Sources */,
 				4ED21BE424FAA39300A6FEA3 /* IconButton.swift in Sources */,

@@ -7,6 +7,7 @@
 
 import Foundation
 import UIKit
+import AVFoundation
 
 class Settings: Identifiable, Codable{
     
@@ -18,15 +19,28 @@ class Settings: Identifiable, Codable{
     
     enum CodingKeys: String, CodingKey {
         case saveLocation
+        case flashMode
         case mapStartSize
-        case imageMaxSide
         case backgroundName
     }
     
-    var saveLocation = false
+    var saveLocation = true
+    var flashMode : AVCaptureDevice.FlashMode = .off
     var mapStartSize : MapStartSize = .mid
-    var imageMaxSide : ImageMaxSide = .mid
     var backgroundName : String? = nil
+    
+    var mapStartSizeIndex : Int{
+        get{
+            switch mapStartSize{
+            case .small:
+                return 0
+            case .mid:
+                return 1
+            case .large:
+                return 2
+            }
+        }
+    }
     
     init(){
     }
@@ -34,16 +48,20 @@ class Settings: Identifiable, Codable{
     required init(from decoder: Decoder) throws {
         let values = try decoder.container(keyedBy: CodingKeys.self)
         saveLocation = try values.decode(Bool.self, forKey: .saveLocation)
-        mapStartSize = MapStartSize(rawValue: try values.decode(Int.self, forKey: .mapStartSize)) ?? MapStartSize.mid
-        imageMaxSide = ImageMaxSide(rawValue: try values.decode(Int.self, forKey: .imageMaxSide)) ?? ImageMaxSide.mid
-        backgroundName = try values.decode(String.self, forKey: .backgroundName)
+        flashMode = AVCaptureDevice.FlashMode(rawValue: try values.decode(Int.self, forKey: .flashMode)) ?? .off
+        mapStartSize = MapStartSize(rawValue: try values.decode(Double.self, forKey: .mapStartSize)) ?? MapStartSize.mid
+        do{
+            backgroundName = try values.decode(String.self, forKey: .backgroundName)
+        } catch{
+            backgroundName = nil
+        }
     }
     
     func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encode(saveLocation, forKey: .saveLocation)
-        try container.encode(mapStartSize.rawValue, forKey: .mapStartSize)
-        try container.encode(imageMaxSide.rawValue, forKey: .imageMaxSide)
+        try container.encode(flashMode.rawValue, forKey: .flashMode)
+        try container.encode(Double(mapStartSize.rawValue), forKey: .mapStartSize)
         try container.encode(backgroundName, forKey: .backgroundName)
     }
     

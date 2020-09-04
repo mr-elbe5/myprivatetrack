@@ -7,7 +7,7 @@
 
 import Foundation
 
-class AudioData : MediaData{
+class AudioData : FileEntryItemData{
     
     enum AudioCodingKeys: String, CodingKey {
         case time

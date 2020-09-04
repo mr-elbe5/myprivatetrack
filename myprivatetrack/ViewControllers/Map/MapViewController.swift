@@ -61,13 +61,18 @@ class MapViewController: UIViewController, MKMapViewDelegate, LocationServiceDel
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        if location == nil{
-            location = LocationService.shared.getLocation()
-            if let loc = location{
-                self.mkMapView.centerToLocation(loc, regionRadius: self.radius)
+        if CLLocationManager.authorized{
+            if location == nil{
+                location = LocationService.shared.getLocation()
+                if let loc = location{
+                    self.mkMapView.centerToLocation(loc, regionRadius: self.radius)
+                }
             }
+            LocationService.shared.delegate = self
         }
-        LocationService.shared.delegate = self
+        else{
+            showError("locationNotAuthorized")
+        }
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -121,6 +126,10 @@ class MapViewController: UIViewController, MKMapViewDelegate, LocationServiceDel
     @objc func showInfo(){
         let infoController = MapInfoViewController()
         self.present(infoController, animated: true)
+    }
+    
+    func showError(_ reason: String){
+        showAlert(title: "error".localize(), text: reason.localize())
     }
     
     func takeScreenshot(callback: @escaping (_ result: UIImage?) -> Void){

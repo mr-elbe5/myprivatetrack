@@ -36,7 +36,7 @@ class EntryItemEditView : UIView{
         deleteButton.addTarget(self, action: #selector(deleteItem), for: .touchDown)
         addSubview(deleteButton)
         deleteButton.enableAnchors()
-        deleteButton.setTopAnchor(topAnchor, padding: 2)
+        deleteButton.setTopAnchor(topAnchor, padding: defaultInset / 2)
         deleteButton.setTrailingAnchor(trailingAnchor, padding: Statics.defaultInset)
     }
     

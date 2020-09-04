@@ -17,6 +17,7 @@
 "cancel" = "Cancel";
 "yes"="Yes";
 "no"="No";
+"ok"="Ok";
 "reset" = "Reset";
 "yourText"="Your text...";
 "title"="Title";
@@ -32,6 +33,7 @@
 "useLocation"="Use location service";
 "startDate"="Start date";
 "endDate"="End date";
+"entries"="Entries";
 "deleteData" = "Delete entries";
 "reallyDelete"="Really delete all data?";
 "deleteApproveInfo"="If you approve, you lose all your entries and media.";
@@ -61,13 +63,20 @@
 "speed"="Speed";
 "balanced"="Balanced";
 "quality"="Quality";
+"mapStartSize"="Start size for capturing map images";
+"backgroundImage"="Background image";
 "cameraNotAuthorized"="Camera use is not authorized. Please change your settings.";
 "audioNotAuthorized"="Microphone use is not authorized. Please change your settings.";
 "videoNotAuthorized"="Camera or Microphone use is not authorized. Please change your settings.";
 "locationNotAuthorized"="Finding your location is not authorized. Please change your settings.";
 "photoLibraryNotAuthorized"="The use of the photo library is not authorized. Please change your settings.";
 "privacyInfoHeader"="Your privacy";
-"privacyInfoText"="This app is designed for private data. None of your entered data leaves your iPhone or iPad, if you do not explicitly export it. There are no ads. The only use of the network is for getting map tiles and the location service for showing the location of your entries on the map. Mostly Apple APIs and services are used, only one third party software is used for zipping and unzipping files (open source as well). All code is published on GitHub under https://github.com/mr-elbe5/myprivatetrack.git for your survey if you like.";
+"privacyInfoText1"="This app is designed for private data.";
+"privacyInfoText2"="None of your entered data leaves your iPhone or iPad, if you do not explicitly export it.";
+"privacyInfoText3"="There are no ads.";
+"privacyInfoText4"="The only use of the network is for getting map tiles and the location service for showing the location of your entries on the map.";
+"privacyInfoText5"="Only Apple APIs and services are used, except for the open source project ZipFoundation, which is embedded for backup and restore.";
+"privacyInfoText6"="The code of this app is published on GitHub under https://github.com/mr-elbe5/myprivatetrack.git.";
 "timelineInfoHeader"="Timeline view";
 "timelineTopInfo"="The time line view shows all entries sorted by the day and of their creation. By tapping one of the left icons you can create a new entry starting with the respective item type: text, image, audio, video or map. With the right pencil icon you can toggle between view and edit mode (see below).";
 "timelineTextIconInfo"="With this icon you start creating a new entry by writing a text.";

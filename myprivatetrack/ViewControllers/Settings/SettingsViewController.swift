@@ -13,8 +13,11 @@ enum SettingsPickerType{
 }
 
 class SettingsViewController: EditViewController, UIDocumentPickerDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate{
+    
+    static var sizeItems : Array<String> = ["small".localize(),"medium".localize(),"large".localize()]
 
     var backgroundButton = TextButton(text: "selectBackground".localize())
+    var mapStartSizeControl = UISegmentedControl(items: sizeItems)
     var resetButton = TextButton(text: "deleteData".localize())
     var fullBackupButton = TextButton(text: "fullBackupData".localize())
     var partialBackupButton = TextButton(text: "partialBackupData".localize())
@@ -24,14 +27,22 @@ class SettingsViewController: EditViewController, UIDocumentPickerDelegate, UIIm
     
     override func loadView() {
         super.loadView()
-        let header = InfoHeader(text: "settings".localize())
-        stackView.addArrangedSubview(header)
+        let backgroundHeader = InfoHeader(text: "backgroundImage".localize())
         backgroundButton.addTarget(self, action: #selector(selectBackground), for: .touchDown)
+        let mapSizeHeader = InfoHeader(text: "mapStartSize".localize())
+        mapStartSizeControl.setTitleTextAttributes([.foregroundColor: UIColor.label, NSAttributedString.Key.font: UIFont.systemFont(ofSize: 13, weight: .regular)], for: .normal)
+        mapStartSizeControl.selectedSegmentIndex = Settings.shared.mapStartSizeIndex
+        mapStartSizeControl.addTarget(self, action: #selector(toggleMapStartSize), for: .valueChanged)
+        let entriesHeader = InfoHeader(text: "entries".localize())
         resetButton.addTarget(self, action: #selector(resetData), for: .touchDown)
         fullBackupButton.addTarget(self, action: #selector(fullBackupData), for: .touchDown)
         partialBackupButton.addTarget(self, action: #selector(partialBackupData), for: .touchDown)
         restoreButton.addTarget(self, action: #selector(restoreData), for: .touchDown)
+        stackView.addArrangedSubview(backgroundHeader)
         stackView.addArrangedSubview(backgroundButton)
+        stackView.addArrangedSubview(mapSizeHeader)
+        stackView.addArrangedSubview(mapStartSizeControl)
+        stackView.addArrangedSubview(entriesHeader)
         stackView.addArrangedSubview(resetButton)
         stackView.addArrangedSubview(fullBackupButton)
         stackView.addArrangedSubview(partialBackupButton)
@@ -97,6 +108,24 @@ class SettingsViewController: EditViewController, UIDocumentPickerDelegate, UIIm
             MainTabController.getTimelineViewController()?.updateBackground()
         }
         picker.dismiss(animated: true, completion: nil)
+    }
+    
+    @objc func toggleMapStartSize() {
+        let selectedSize = mapStartSizeControl.selectedSegmentIndex
+        switch selectedSize {
+        case 0 :
+            Settings.shared.mapStartSize = .small
+            break
+        case 1 :
+            Settings.shared.mapStartSize = .mid
+            break
+        case 2 :
+            Settings.shared.mapStartSize = .large
+            break
+        default:
+            break
+        }
+        Settings.shared.save()
     }
     
     @objc func resetData(){
