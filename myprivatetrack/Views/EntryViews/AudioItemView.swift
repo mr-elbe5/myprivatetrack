@@ -84,7 +84,7 @@ class AudioItemEditView : EntryItemEditView, UITextViewDelegate, AVAudioRecorder
     }
     
     override func setLayoutConstraints(){
-        audioView.placeBelow(anchor: deleteButton.bottomAnchor, padding: flatInsets)
+        audioView.placeBelow(anchor: deleteButton.bottomAnchor, padding: deleteInsets)
         titleView.placeBelow(view: audioView)
         titleView.connectBottom(view: self)
     }

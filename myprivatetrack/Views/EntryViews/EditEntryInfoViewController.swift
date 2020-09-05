@@ -18,12 +18,10 @@ class EditEntryInfoViewController: InfoViewController {
     let iconVideoInfo = IconInfoText(icon: "video", text: "editEntryVideoIconInfo".localize())
     let iconMapInfo = IconInfoText(icon: "map", text: "editEntryMapIconInfo".localize())
     let itemHeaderText = InfoHeader(text: "editEntryItemInfoHeader".localize(), paddingTop: 2 * Statics.defaultInset)
-    let iconDeleteInfo = IconInfoText(icon: "xmark.circle", text: "editEntryDeleteIconInfo".localize())
+    let iconDeleteInfo = IconInfoText(icon: "xmark.circle", text: "editEntryDeleteIconInfo".localize(),iconColor: .systemRed)
     let othersHeaderText = InfoHeader(text: "editEntryOthersHeader".localize(), paddingTop: 2 * Statics.defaultInset)
     let iconToggleCameraInfo = IconInfoText(icon: "camera.rotate", text: "editEntryToggleCameraIconInfo".localize())
-    let iconFastCameraInfo = IconInfoText(icon: "hare", text: "editEntryFastCameraIconInfo".localize())
-    let iconMediumCameraInfo = IconInfoText(icon: "gauge", text: "editEntryMediumCameraIconInfo".localize())
-    let iconSlowCameraInfo = IconInfoText(icon: "tortoise", text: "editEntrySlowCameraIconInfo".localize())
+    let iconFlashCameraInfo = IconInfoText(icon: "flash", text: "editEntryFlashIconInfo".localize())
     let iconToggleMapInfo = IconInfoText(icon: "map", text: "editEntryToggleMapIconInfo".localize())
     
     override func loadView() {
@@ -39,9 +37,7 @@ class EditEntryInfoViewController: InfoViewController {
         stackView.addArrangedSubview(iconDeleteInfo)
         stackView.addArrangedSubview(othersHeaderText)
         stackView.addArrangedSubview(iconToggleCameraInfo)
-        stackView.addArrangedSubview(iconFastCameraInfo)
-        stackView.addArrangedSubview(iconMediumCameraInfo)
-        stackView.addArrangedSubview(iconSlowCameraInfo)
+        stackView.addArrangedSubview(iconFlashCameraInfo)
         stackView.addArrangedSubview(iconToggleMapInfo)
     }
     

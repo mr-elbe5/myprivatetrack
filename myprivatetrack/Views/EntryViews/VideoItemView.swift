@@ -108,7 +108,7 @@ class VideoItemEditView : EntryItemEditView, UITextViewDelegate{
     }
     
     override func setLayoutConstraints(){
-        videoView.placeBelow(anchor: deleteButton.bottomAnchor, padding: flatInsets)
+        videoView.placeBelow(anchor: deleteButton.bottomAnchor, padding: deleteInsets)
         videoView.setAspectRatioConstraint()
         titleView.placeBelow(view: videoView)
         titleView.connectBottom(view: self)

@@ -138,7 +138,7 @@ class PhotoItemEditView : EntryItemEditView, UITextViewDelegate{
     }
     
     override func setLayoutConstraints(){
-        imageView.placeBelow(anchor: deleteButton.bottomAnchor, padding: flatInsets)
+        imageView.placeBelow(anchor: deleteButton.bottomAnchor, padding: deleteInsets)
         imageView.setAspectRatioConstraint()
         titleView.placeBelow(view: imageView, padding: flatInsets)
         titleView.connectBottom(view: self)

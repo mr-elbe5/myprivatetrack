@@ -10,21 +10,23 @@ import Foundation
 class SettingsInfoViewController: InfoViewController {
     
     let settingsHeader = InfoHeader(text: "settings".localize())
-    let useLocationText = InfoText(text: "settingsUseLocationInfo".localize())
+    let backgroundText = InfoText(text: "settingsBackgroundInfo".localize())
+    let mapSizeText = InfoText(text: "settingsMapSizeInfo".localize())
     let entriesHeader = InfoHeader(text: "entries".localize())
     let resetText = InfoText(text: "settingsResetInfo".localize())
-    let passwordText = InfoText(text: "settingsPasswordInfo".localize())
-    let backupText = InfoText(text: "settingsBackupInfo".localize())
+    let fullBackupText = InfoText(text: "settingsFullBackupInfo".localize())
+    let partialBackupText = InfoText(text: "settingsPartialBackupInfo".localize())
     let restoreText = InfoText(text: "settingsRestoreInfo".localize())
     
     override func loadView() {
         super.loadView()
         stackView.addArrangedSubview(settingsHeader)
-        stackView.addArrangedSubview(useLocationText)
+        stackView.addArrangedSubview(backgroundText)
+        stackView.addArrangedSubview(mapSizeText)
         stackView.addArrangedSubview(entriesHeader)
         stackView.addArrangedSubview(resetText)
-        stackView.addArrangedSubview(passwordText)
-        stackView.addArrangedSubview(backupText)
+        stackView.addArrangedSubview(fullBackupText)
+        stackView.addArrangedSubview(partialBackupText)
         stackView.addArrangedSubview(restoreText)
     }
     

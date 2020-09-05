@@ -22,6 +22,8 @@ class EntryItemDetailView : UIView{
 
 class EntryItemEditView : UIView{
     
+    var deleteInsets = UIEdgeInsets(top: 0, left: Statics.defaultInset, bottom: Statics.defaultInset/2, right: Statics.defaultInset)
+    
     var deleteButton = IconButton(icon: "xmark.circle")
     var delegate : DeleteEntryActionDelegate? = nil
     
