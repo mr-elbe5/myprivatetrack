@@ -69,6 +69,13 @@ class TimelineEntryCell: UITableViewCell, PhotoItemDelegate, VideoItemDelegate{
                     locationDescriptionLabel.placeBelow(anchor: lastView.bottomAnchor, padding: defaultInsets)
                     lastView = locationDescriptionLabel
                 }
+                if entry!.hasMapSection{
+                    let mapView = MapItemView()
+                    mapView.setupView(data: entry!)
+                    cellBody.addSubview(mapView)
+                    mapView.placeBelow(view: lastView)
+                    lastView = mapView
+                }
             }
             if isEditing{
                 let editButton = IconButton(icon: "pencil.circle")
@@ -117,12 +124,6 @@ class TimelineEntryCell: UITableViewCell, PhotoItemDelegate, VideoItemDelegate{
                     break
                 case .video:
                     let itemView = VideoItemView.fromData(data: item.data as! VideoData, delegate: self)
-                    cellBody.addSubview(itemView)
-                    itemView.placeBelow(view: lastView, padding: defaultInsets)
-                    lastView = itemView
-                    break
-                case .map:
-                    let itemView = MapItemView.fromData(data: item.data as! MapData)
                     cellBody.addSubview(itemView)
                     itemView.placeBelow(view: lastView, padding: defaultInsets)
                     lastView = itemView

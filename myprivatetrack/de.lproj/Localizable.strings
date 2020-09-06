@@ -6,6 +6,7 @@
   Copyright © 2020 Michael Rönnau. All rights reserved.
 */
 "addItem"="Hinzufügen:";
+"addMapSection"="Kartenausschnitt hinzufügen";
 "audioNotAuthorized"="Die Nutzung des Mikrofons ist nicht erlaubt. Bitte ändere die entsprechenden Einstellungen.";
 "back"="Zurück";
 "backgroundImage"="Hintergrundbild";
@@ -80,6 +81,7 @@
 "restoreInfo"="Du kannst den ersten und letzten Tag für die Wiederherstellung wählen. Nach der Auswahl der Tage werden sie zu den bestehenden Tagen hinzugefügt oder mit ihnen zusammengelegt.";
 "restore"="Wiederherstellen";
 "save" = "Speichern";
+"saveLocation"="Position speichern";
 "selectBackground"="Hintergrundbild wählen";
 "settingsBackupInfo"="Mit 'Sichern' kannst du deine Einträge und Medien als zip-Datei sichern (alle oder für einen bestimmten Zeitraum). Du kannst diese Dateien mit einem Passwort schützen.";
 "settings"="Einstellungen";

@@ -10,12 +10,6 @@ import UIKit
 
 class FileEntryItemData: EntryItemData{
     
-    enum FileEntryCodingKeys: String, CodingKey {
-        case title
-    }
-    
-    public var title: String = ""
-    
     var fileName : String {
         get{
             return id.uuidString
@@ -32,22 +26,6 @@ class FileEntryItemData: EntryItemData{
         get{
             return FileStore.getURL(dirURL: FileStore.privateURL,fileName: fileName)
         }
-    }
-    
-    init(){
-        super.init()
-    }
-    
-    required init(from decoder: Decoder) throws {
-        let values = try decoder.container(keyedBy: FileEntryCodingKeys.self)
-        title = try values.decode(String.self, forKey: .title)
-        try super.init(from: decoder)
-    }
-    
-    override func encode(to encoder: Encoder) throws {
-        try super.encode(to: encoder)
-        var container = encoder.container(keyedBy: FileEntryCodingKeys.self)
-        try container.encode(title, forKey: .title)
     }
     
     func getFile() -> Data?{

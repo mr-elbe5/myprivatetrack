@@ -7,6 +7,7 @@
 
 import Foundation
 import CoreLocation
+import UIKit
 
 class EntryData: Identifiable, Codable{
     
@@ -16,6 +17,7 @@ class EntryData: Identifiable, Codable{
         case location
         case locationDescription
         case saveLocation
+        case hasMapSection
         case items
     }
     
@@ -24,9 +26,16 @@ class EntryData: Identifiable, Codable{
     public var location: Location? = nil
     public var locationDescription: String = ""
     public var saveLocation: Bool
+    public var hasMapSection: Bool = false
     public var items = Array<EntryItem>()
     
     public var isNew = false
+    
+    public var fileName : String{
+        get{
+            return id.uuidString + "_map.jpg"
+        }
+    }
     
     init(isNew: Bool = false){
         self.isNew = isNew
@@ -37,6 +46,38 @@ class EntryData: Identifiable, Codable{
         items = []
     }
     
+    func getMapSection() -> UIImage?{
+        if hasMapSection{
+            let url = FileStore.getURL(dirURL: FileStore.privateURL,fileName: fileName)
+            if let data = FileStore.readFile(url: url){
+                return UIImage(data: data)
+            }
+        }
+        return nil
+    }
+    
+    func saveMapSection(uiImage: UIImage) -> Bool{
+        hasMapSection = false
+        let url = FileStore.getURL(dirURL: FileStore.privateURL,fileName: fileName)
+        if FileStore.fileExists(url: url){
+            _ = FileStore.deleteFile(url: url)
+        }
+        if let data = uiImage.jpegData(compressionQuality: 0.8){
+            if FileStore.saveFile(data: data, url: url){
+                hasMapSection = true
+                return true
+            }
+        }
+        return false
+    }
+    
+    public func deleteMapSection(){
+        let url = FileStore.getURL(dirURL: FileStore.privateURL,fileName: fileName)
+        if FileStore.fileExists(url: url){
+            _ = FileStore.deleteFile(url: url)
+        }
+    }
+    
     required init(from decoder: Decoder) throws {
         let values = try decoder.container(keyedBy: CodingKeys.self)
         id = try values.decode(UUID.self, forKey: .id)
@@ -45,9 +86,11 @@ class EntryData: Identifiable, Codable{
         if saveLocation{
             location = try values.decode(Location.self, forKey: .location)
             locationDescription = try values.decode(String.self, forKey: .locationDescription)
+            hasMapSection = try values.decode(Bool.self, forKey: .hasMapSection)
         }else{
             location = nil
             locationDescription = ""
+            hasMapSection = false
         }
         items = try values.decode(Array<EntryItem>.self, forKey: .items)
     }
@@ -60,6 +103,7 @@ class EntryData: Identifiable, Codable{
         if saveLocation{
             try container.encode(location, forKey: .location)
             try container.encode(locationDescription, forKey: .locationDescription)
+            try container.encode(hasMapSection, forKey: .hasMapSection)
         }
         try container.encode(items, forKey: .items)
     }

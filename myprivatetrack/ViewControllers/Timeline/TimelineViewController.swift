@@ -19,7 +19,6 @@ class TimelineViewController: TableViewController, SaveEntryDelegate, EntryCellA
     var addPhotoButton = IconButton(icon: "camera")
     var addAudioButton = IconButton(icon: "mic")
     let addVideoButton = IconButton(icon: "video")
-    var addLocationButton = IconButton(icon: "map")
     let editButton = IconButton(icon: "pencil.circle")
     
     override func loadView(){
@@ -60,8 +59,6 @@ class TimelineViewController: TableViewController, SaveEntryDelegate, EntryCellA
         leftStackView.addArrangedSubview(addAudioButton)
         addVideoButton.addTarget(self, action: #selector(addVideoEntry), for: .touchDown)
         leftStackView.addArrangedSubview(addVideoButton)
-        addLocationButton.addTarget(self, action: #selector(addLocationEntry), for: .touchDown)
-        leftStackView.addArrangedSubview(addLocationButton)
         editButton.addTarget(self, action: #selector(toggleEditMode), for: .touchDown)
         rightStackView.addArrangedSubview(editButton)
         let infoButton = IconButton(icon: "info.circle")
@@ -118,10 +115,6 @@ class TimelineViewController: TableViewController, SaveEntryDelegate, EntryCellA
     
     @objc func addVideoEntry(){
         openEntryController().addVideo()
-    }
-    
-    @objc func addLocationEntry(){
-        openEntryController().addLocation()
     }
     
     @objc func toggleEditMode(){

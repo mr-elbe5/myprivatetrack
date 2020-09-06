@@ -28,6 +28,11 @@ class EntryViewController: ModalScrollViewController, PhotoItemDelegate, VideoIt
             locationLabel.text = loc.asString
             locationLabel.textAlignment = .center
             stackView.addArrangedSubview(locationLabel)
+            if entry!.hasMapSection{
+                let mapView = MapItemView()
+                mapView.setupView(data: entry!)
+                stackView.addArrangedSubview(mapView)
+            }
         }
         for item in entry.items{
             switch item.type{
@@ -45,10 +50,6 @@ class EntryViewController: ModalScrollViewController, PhotoItemDelegate, VideoIt
                 break
             case .video:
                 let itemView = VideoItemView.fromData(data: item.data as! VideoData,delegate: self)
-                stackView.addArrangedSubview(itemView)
-                break
-            case .map:
-                let itemView = MapItemView.fromData(data: item.data as! MapData)
                 stackView.addArrangedSubview(itemView)
                 break
             }

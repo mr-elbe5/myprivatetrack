@@ -35,7 +35,6 @@
 		4ED21BB524FAA32500A6FEA3 /* AudioData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED21BA924FAA32400A6FEA3 /* AudioData.swift */; };
 		4ED21BB624FAA32500A6FEA3 /* FileEntryItemData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED21BAA24FAA32400A6FEA3 /* FileEntryItemData.swift */; };
 		4ED21BB724FAA32500A6FEA3 /* EntryData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED21BAB24FAA32400A6FEA3 /* EntryData.swift */; };
-		4ED21BB824FAA32500A6FEA3 /* MapData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED21BAC24FAA32400A6FEA3 /* MapData.swift */; };
 		4ED21BB924FAA32500A6FEA3 /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED21BAD24FAA32400A6FEA3 /* Location.swift */; };
 		4ED21BBA24FAA32500A6FEA3 /* EntryItemData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED21BAE24FAA32500A6FEA3 /* EntryItemData.swift */; };
 		4ED21BC124FAA36000A6FEA3 /* MKMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED21BBB24FAA36000A6FEA3 /* MKMapView.swift */; };
@@ -138,7 +137,6 @@
 		4ED21BA924FAA32400A6FEA3 /* AudioData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudioData.swift; sourceTree = "<group>"; };
 		4ED21BAA24FAA32400A6FEA3 /* FileEntryItemData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileEntryItemData.swift; sourceTree = "<group>"; };
 		4ED21BAB24FAA32400A6FEA3 /* EntryData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EntryData.swift; sourceTree = "<group>"; };
-		4ED21BAC24FAA32400A6FEA3 /* MapData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapData.swift; sourceTree = "<group>"; };
 		4ED21BAD24FAA32400A6FEA3 /* Location.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
 		4ED21BAE24FAA32500A6FEA3 /* EntryItemData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EntryItemData.swift; sourceTree = "<group>"; };
 		4ED21BBB24FAA36000A6FEA3 /* MKMapView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MKMapView.swift; sourceTree = "<group>"; };
@@ -392,7 +390,6 @@
 				4ED21BAE24FAA32500A6FEA3 /* EntryItemData.swift */,
 				4ED21BA324FAA32400A6FEA3 /* GlobalData.swift */,
 				4ED21BA424FAA32400A6FEA3 /* PhotoData.swift */,
-				4ED21BAC24FAA32400A6FEA3 /* MapData.swift */,
 				4ED21BAA24FAA32400A6FEA3 /* FileEntryItemData.swift */,
 				4ED21BA524FAA32400A6FEA3 /* TextData.swift */,
 				4ED21BA624FAA32400A6FEA3 /* TimeSpanData.swift */,
@@ -619,7 +616,6 @@
 				4ED21C5024FAAC6E00A6FEA3 /* AVCaptureVideoOrientation.swift in Sources */,
 				4ED21BB924FAA32500A6FEA3 /* Location.swift in Sources */,
 				4ED21C0024FAA39E00A6FEA3 /* AudioItemView.swift in Sources */,
-				4ED21BB824FAA32500A6FEA3 /* MapData.swift in Sources */,
 				4ED21C1424FAA3D000A6FEA3 /* MapViewController.swift in Sources */,
 				4ED21C2A24FAA47500A6FEA3 /* SettingsViewController.swift in Sources */,
 				4E3C5ACE24FCF2F300E11A35 /* FileError.swift in Sources */,

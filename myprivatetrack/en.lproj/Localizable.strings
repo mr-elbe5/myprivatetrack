@@ -6,6 +6,7 @@
   Copyright © 2020 Michael Rönnau. All rights reserved.
 */
 "addItem"="Add:";
+"addMapSection"="Add map section";
 "audioNotAuthorized"="Microphone use is not authorized. Please change your settings.";
 "back"="Back";
 "backgroundImage"="Background image";
@@ -77,6 +78,7 @@
 "restoreInfo"="You can select the first and the last of days to be restored. After selecting the days, the entries of these days will be added or merged to your current days.";
 "restore"="Restore";
 "save" = "Save";
+"saveLocation"="Save location";
 "selectBackground"="Select background image";
 "settingsBackgroundInfo"="With this button you can set the background image. You can select an image of your photo libraray or return to the default image.";
 "settingsFullBackupInfo"="With the full backup button you create a backup file of all your entries. It can be found in Files > On my IPhone/iPad > My Private Track > Backups with the current date in its name.";

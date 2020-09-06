@@ -30,6 +30,10 @@ public class SwitchView : UIView{
         switcher.placeBefore(anchor: trailingAnchor)
     }
     
+    public func setEnabled(_ flag: Bool){
+        switcher.isEnabled = flag
+    }
+    
     @objc public func valueDidChange(sender:UISwitch){
         delegate?.switchValueDidChange(sender: self,isOn: sender.isOn)
     }

@@ -11,12 +11,12 @@ import CoreLocation
 import MapKit
 
 protocol MapCaptureDelegate{
-    func mapCaptured(data: MapData)
+    func mapCaptured(data: EntryData)
 }
 
 class MapCaptureViewController: UIViewController, LocationServiceDelegate, MapViewDelegate {
     
-    var data : MapData!
+    var data : EntryData!
     
     var delegate: MapCaptureDelegate? = nil
     
@@ -103,9 +103,11 @@ class MapCaptureViewController: UIViewController, LocationServiceDelegate, MapVi
         indicator.startAnimating()
         mapView.takeScreenshot(){ screenshot in
             if let screenshot = screenshot{
-                self.data.saveImage(uiImage: screenshot)
-                if let delegate = self.delegate{
-                    delegate.mapCaptured(data: self.data)
+                if self.data.saveMapSection(uiImage: screenshot){
+                    self.data.hasMapSection = true
+                    if let delegate = self.delegate{
+                        delegate.mapCaptured(data: self.data)
+                    }
                 }
                 indicator.stopAnimating()
                 self.dismiss(animated: true)
