@@ -32,7 +32,6 @@
 "editEntryImageIconInfo"="Mit diesem Icon erstellst du ein neues Bild-Element mit der Kamera";
 "editEntryInfoHeader"="Eintrag editieren";
 "editEntryItemInfoHeader"="Element löschen";
-"editEntryMapIconInfo"="Mit diesem Icon erstellst du ein neues Karten-Element duch einen Karten-Schappschuss Deiner Position";
 "editEntryOthersHeader"="Weitere Icons";
 "editEntryTextIconInfo"="Mit diesem Icon erstellst du ein neues Text-Element.";
 "editEntryToggleCameraIconInfo"="Mit diesem Icon wechselst du beim Aufnehmen eines Fotos oder eines Videos die Kamera.";
@@ -56,7 +55,7 @@
 "media"="Medien";
 "medium"="mittel";
 "newEntry"="Neuer Eintrag";
-"noItems"="Es ist minestens ein Eintrag nötig.";
+"noItems"="Es ist minestens ein Eintrag oder die Position nötig.";
 "no"="Nein";
 "north"="Nord";
 "notComplete"="Einige Eingaben sind nicht vollständig.";
@@ -103,14 +102,15 @@
 "timelineDetailIconInfo"="Mit diesem Icon bekommst du die Detailansicht des Eintrags oder eines seiner Elemente.";
 "timelineEditIconInfo"="Mit diesem Icon editierst du den Eintrag wie bei der Erstellung.";
 "timelineEditInfo"="Mit dem rechten Bleistiftsymbol kannst du zwischen Anzeige- und Editiermodus wechseln. Im Editiermodus erscheinen zwei Icons bei jedem Eintrag:";
+"timelineEmptyIconInfo"="Mit diesem Icon startest du einen leeren neuen Eintrag.";
 "timelineImageIconInfo"="Mit diesem Icon startest du einen neuen Eintrag, der mit dem Aufnehmen eines Fotos beginnt.";
 "timelineInfoEditHeader"="Editiermodus";
 "timelineInfoHeader"="Tagesansicht";
-"timelineMapIconInfo"="Mit diesem Icon startest du einen neuen Eintrag, der mit dem Aufnehmen eines Kartenausschnitts beginnt.";
 "timeline"="Tage";
+"timelineLocationInfo"="Wenn der Schalter 'Position speichern' an ist, kannst du einen Kartenausschnitt hinzufügen.";
 "timelineShareIconInfo"="Mit diesem Icon kannst du ein Element in 'Fotos' oder das Dokumentenverzeichnis dieser App ('Dateien') kopieren.";
 "timelineTextIconInfo"="Mit diesem Icon startest du einen neuen Eintrag, der mit dem Eingeben eines Textes beginnt.";
-"timelineTopInfo"="Die Tagesansicht zeigt alle Einträge nach Tag und Zeit sortiert. Durch Antippen der linken Icons kannst du einen neuen Eintrag erzeugen, der mit dem jeweiligen Typ startet : Text, Bild, Audio, Video oder Karte. Mit dem rechten Bleistift-Icon kannst du zwischen Anzeige- und Editiermodus wechseln (siehe unten).";
+"timelineTopInfo"="Die Tagesansicht zeigt alle Einträge nach Tag und Zeit sortiert. Durch Antippen der linken Icons kannst du einen neuen Eintrag erzeugen, der mit dem jeweiligen Typ startet : leer, Text, Bild, Audio oder Video. Mit dem rechten Bleistift-Icon kannst du zwischen Anzeige- und Editiermodus wechseln (siehe unten).";
 "timelineVideoIconInfo"="Mit diesem Icon startest du einen neuen Eintrag, der mit dem Aufnehmen eines Videos beginnt.";
 "title"="Titel";
 "toDate" = "Bis Datum";

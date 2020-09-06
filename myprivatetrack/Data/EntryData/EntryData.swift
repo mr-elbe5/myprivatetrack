@@ -31,9 +31,15 @@ class EntryData: Identifiable, Codable{
     
     public var isNew = false
     
-    public var fileName : String{
+    public var mapSectionFileName : String{
         get{
             return id.uuidString + "_map.jpg"
+        }
+    }
+    
+    public var mapSectionFileURL : URL{
+        get{
+            return FileStore.getURL(dirURL: FileStore.privateURL,fileName: mapSectionFileName)
         }
     }
     
@@ -46,10 +52,13 @@ class EntryData: Identifiable, Codable{
         items = []
     }
     
+    func hasMapSectionFile() -> Bool{
+        return hasMapSection && FileStore.fileExists(url: mapSectionFileURL)
+    }
+    
     func getMapSection() -> UIImage?{
         if hasMapSection{
-            let url = FileStore.getURL(dirURL: FileStore.privateURL,fileName: fileName)
-            if let data = FileStore.readFile(url: url){
+            if let data = FileStore.readFile(url: mapSectionFileURL){
                 return UIImage(data: data)
             }
         }
@@ -58,7 +67,7 @@ class EntryData: Identifiable, Codable{
     
     func saveMapSection(uiImage: UIImage) -> Bool{
         hasMapSection = false
-        let url = FileStore.getURL(dirURL: FileStore.privateURL,fileName: fileName)
+        let url = FileStore.getURL(dirURL: FileStore.privateURL,fileName: mapSectionFileName)
         if FileStore.fileExists(url: url){
             _ = FileStore.deleteFile(url: url)
         }
@@ -72,10 +81,7 @@ class EntryData: Identifiable, Codable{
     }
     
     public func deleteMapSection(){
-        let url = FileStore.getURL(dirURL: FileStore.privateURL,fileName: fileName)
-        if FileStore.fileExists(url: url){
-            _ = FileStore.deleteFile(url: url)
-        }
+        _ = FileStore.deleteFile(url: mapSectionFileURL)
     }
     
     required init(from decoder: Decoder) throws {
@@ -143,6 +149,9 @@ class EntryData: Identifiable, Codable{
     }
     
     func addActiveFileNames( to fileNames: inout Array<String>){
+        if hasMapSectionFile(){
+            fileNames.append(mapSectionFileName)
+        }
         for item in items{
             item.addActiveFileNames(to: &fileNames)
         }

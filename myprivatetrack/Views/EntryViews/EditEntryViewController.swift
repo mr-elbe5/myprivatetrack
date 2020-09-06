@@ -267,7 +267,7 @@ class EditEntryViewController: EditViewController, PhotoCaptureDelegate, VideoCa
     // SaveActionDelegate
     
     @objc func save(){
-        if entry.items.count == 0{
+        if !entry.saveLocation && entry.items.count == 0{
             showAlert(title: "error".localize(), text: "noItems".localize())
             return
         }

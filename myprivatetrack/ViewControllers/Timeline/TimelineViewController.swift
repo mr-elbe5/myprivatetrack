@@ -15,6 +15,7 @@ class TimelineViewController: TableViewController, SaveEntryDelegate, EntryCellA
     
     var backgroundView = UIImageView(image: Settings.shared.backgroundImage)
     
+    var addEmptyButton = IconButton(icon: "rectangle")
     var addTextButton = IconButton(icon: "text.bubble")
     var addPhotoButton = IconButton(icon: "camera")
     var addAudioButton = IconButton(icon: "mic")
@@ -51,6 +52,8 @@ class TimelineViewController: TableViewController, SaveEntryDelegate, EntryCellA
         addLabel.textColor = UIColor.label
         addLabel.scaleBy(1.25)
         leftStackView.addArrangedSubview(addLabel)
+        addEmptyButton.addTarget(self, action: #selector(addEmptyEntry), for: .touchDown)
+        leftStackView.addArrangedSubview(addEmptyButton)
         addTextButton.addTarget(self, action: #selector(addTextEntry), for: .touchDown)
         leftStackView.addArrangedSubview(addTextButton)
         addPhotoButton.addTarget(self, action: #selector(addPhotoEntry), for: .touchDown)
@@ -99,6 +102,10 @@ class TimelineViewController: TableViewController, SaveEntryDelegate, EntryCellA
         createEventViewController.modalPresentationStyle = .fullScreen
         self.present(createEventViewController, animated: true)
         return createEventViewController
+    }
+    
+    @objc func addEmptyEntry(){
+        _ = openEntryController()
     }
     
     @objc func addTextEntry(){

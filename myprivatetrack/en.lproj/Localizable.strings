@@ -32,7 +32,6 @@
 "editEntryImageIconInfo"="With this icon you add a new image item by taking a photo.";
 "editEntryInfoHeader"="Edit entry";
 "editEntryItemInfoHeader"="Deleting an item";
-"editEntryMapIconInfo"="With this icon you add a new map item by taking a map snapshot.";
 "editEntryOthersHeader"="Other icons";
 "editEntryTextIconInfo"="With this icon you add a new text item by writing a text.";
 "editEntryToggleCameraIconInfo"="With this icon you toggle the camera when you take a photo or video.";
@@ -54,7 +53,7 @@
 "mapTopInfo"="The map view shows all entries containing a map item represented by a needle. By tapping one of these needles the complete entry is shown.";
 "media"="Media";
 "newEntry"="New Entry";
-"noItems"="You need at least one item.";
+"noItems"="You need at least one item or a position.";
 "no"="No";
 "north"="North";
 "notComplete"="Some entries are not complete.";
@@ -99,13 +98,14 @@
 "timelineDetailIconInfo"="With this icon you get a detailed view oh an entry or one of its items.";
 "timelineEditIconInfo"="With this icon you start editing the entry as during creation.";
 "timelineEditInfo"="With the right pencil icon you can toggle between view and edit mode. In edit mode two icons appear at each entry:";
+"timelineEmptyIconInfo"="With this icon you start creating an empty new entry.";
 "timelineImageIconInfo"="With this icon you start creating a new entry by taking a photo.";
 "timelineInfoEditHeader"="Edit mode";
 "timelineInfoHeader"="Timeline view";
-"timelineMapIconInfo"="With this icon you start creating a new entry by taking a map snapshot.";
+"timelineLocationInfo"="If the switch 'Save position' is on, you can add a map section.";
 "timelineShareIconInfo"="With this icon you can share/export an item to the image library or to the documents folder ('Files') of this app.";
 "timelineTextIconInfo"="With this icon you start creating a new entry by writing a text.";
-"timelineTopInfo"="The time line view shows all entries sorted by the day and of their creation. By tapping one of the left icons you can create a new entry starting with the respective item type: text, image, audio, video or map. With the right pencil icon you can toggle between view and edit mode (see below).";
+"timelineTopInfo"="The time line view shows all entries sorted by the day and of their creation. By tapping one of the left icons you can create a new entry starting with the respective item type: empty, text, image, audio or video. With the right pencil icon you can toggle between view and edit mode (see below).";
 "timelineVideoIconInfo"="With this icon you start creating a new entry by recording a video.";
 "title"="Title";
 "toDate" = "To date";

@@ -130,6 +130,11 @@ class RestoreViewController: ModalScrollViewController, DatePickerDelegate{
     }
     
     private func addFiles(entry: EntryData){
+        if entry.hasMapSection{
+            if fileNames.contains(entry.mapSectionFileName) && !FileStore.fileExists(url: FileStore.getURL(dirURL: FileStore.privateURL, fileName: entry.mapSectionFileName)){
+                _ = FileStore.copyFile(name: entry.mapSectionFileName, fromDir: FileStore.temporaryURL, toDir: FileStore.privateURL)
+            }
+        }
         for item in entry.items{
             var fnames = Array<String>()
             item.addActiveFileNames(to: &fnames)
