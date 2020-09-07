@@ -21,34 +21,16 @@ public class AudioRecorderView : UIView, AVAudioRecorderDelegate{
     public var player = AudioPlayerView()
     public var recordButton = CaptureButton()
     public var timeLabel = UILabel()
-    public var progressContainer = UIView()
-    public var lowLabel = UIImageView(image: UIImage(systemName: "speaker"))
-    public var progress = UIProgressView()
-    public var loudLabel = UIImageView(image: UIImage(systemName: "speaker.3"))
+    public var progress = AudioProgressView()
     
-    override public init(frame: CGRect) {
-        super.init(frame: frame)
-        setupView()
-        layoutView()
-    }
-
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
     
     public func setupView() {
         backgroundColor = .black
         timeLabel.textAlignment = .center
         timeLabel.textColor = .white
         addSubview(timeLabel)
-        addSubview(progressContainer)
-        lowLabel.tintColor = .white
-        progressContainer.addSubview(lowLabel)
-        progress.progressTintColor = .systemRed
-        progress.progress = 0.0
-        progressContainer.addSubview(progress)
-        loudLabel.tintColor = .white
-        progressContainer.addSubview(loudLabel)
+        progress.setupView()
+        addSubview(progress)
         recordButton.addTarget(self, action: #selector(toggleRecording), for: .touchUpInside)
         addSubview(recordButton)
         self.recordButton.isEnabled = true
@@ -59,23 +41,18 @@ public class AudioRecorderView : UIView, AVAudioRecorderDelegate{
 
     public func layoutView(){
         timeLabel.placeBelow(anchor: topAnchor)
-        progressContainer.placeBelow(view: timeLabel)
-        lowLabel.placeAfter(anchor: progressContainer.leadingAnchor)
-        loudLabel.placeBefore(anchor: progressContainer.trailingAnchor)
-        progress.enableAnchors()
-        progress.setLeadingAnchor(lowLabel.trailingAnchor, padding: defaultInset)
-        progress.setTrailingAnchor(loudLabel.leadingAnchor, padding: defaultInset)
-        progress.setCenterYAnchor(progressContainer.centerYAnchor)
+        progress.placeBelow(view: timeLabel)
+        progress.layoutView()
         recordButton.enableAnchors()
-        recordButton.setTopAnchor(progressContainer.bottomAnchor)
+        recordButton.setTopAnchor(progress.bottomAnchor)
         recordButton.setCenterXAnchor(centerXAnchor)
         recordButton.setWidthAnchor(50)
         recordButton.setHeightAnchor(50)
+        player.placeBelow(view: progress)
         player.layoutView()
-        player.placeBelow(view: recordButton)
         player.setBottomAnchor(bottomAnchor,padding: Statics.defaultInset)
         player.isHidden = true
-        updateProgress(time: 0.0, decibels: 0.0)
+        updateTime(time: 0.0)
     }
     
     public func enableRecording(){
@@ -123,7 +100,8 @@ public class AudioRecorderView : UIView, AVAudioRecorderDelegate{
                         self.audioRecorder!.updateMeters()
                         DispatchQueue.main.async {
                             self.currentTime = self.audioRecorder!.currentTime
-                            self.updateProgress(time: self.currentTime,decibels: self.audioRecorder!.averagePower(forChannel: 0))
+                            self.updateTime(time: self.currentTime)
+                            self.updateProgress(decibels: self.audioRecorder!.averagePower(forChannel: 0))
                         }
                         // 1/10s
                         usleep(100000)
@@ -151,9 +129,12 @@ public class AudioRecorderView : UIView, AVAudioRecorderDelegate{
         recordButton.buttonState = .normal
     }
     
-    public func updateProgress(time: Double, decibels: Float){
+    public func updateTime(time: Double){
         timeLabel.text = String(format: "%.02f s", time)
-        progress.setProgress((min(max(-60.0, decibels),0) + 60.0) / 60.0, animated: true)
+    }
+    
+    public func updateProgress(decibels: Float){
+        progress.setProgress((min(max(-60.0, decibels),0) + 60.0) / 60.0)
     }
     
     @objc public func toggleRecording() {
@@ -168,6 +149,39 @@ public class AudioRecorderView : UIView, AVAudioRecorderDelegate{
         if !flag {
             finishRecording(success: flag)
         }
+    }
+    
+}
+
+public class AudioProgressView : UIView{
+    
+    public var lowLabel = UIImageView(image: UIImage(systemName: "speaker"))
+    public var progress = UIProgressView()
+    public var loudLabel = UIImageView(image: UIImage(systemName: "speaker.3"))
+    
+    public func setupView() {
+        backgroundColor = .clear
+        lowLabel.tintColor = .white
+        addSubview(lowLabel)
+        progress.progressTintColor = .systemRed
+        progress.progress = 0.0
+        addSubview(progress)
+        loudLabel.tintColor = .white
+        addSubview(loudLabel)
+        
+    }
+    
+    public func layoutView(){
+        lowLabel.placeAfter(anchor: leadingAnchor)
+        loudLabel.placeBefore(anchor: trailingAnchor)
+        progress.enableAnchors()
+        progress.setLeadingAnchor(lowLabel.trailingAnchor,padding: defaultInset,priority: highPriority)
+        progress.setTrailingAnchor(loudLabel.leadingAnchor, padding: defaultInset,priority: highPriority)
+        progress.setCenterYAnchor(centerYAnchor,priority: highPriority)
+    }
+    
+    func setProgress(_ value: Float){
+        progress.setProgress(value, animated: true)
     }
     
 }

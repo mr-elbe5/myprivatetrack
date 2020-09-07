@@ -45,8 +45,6 @@ public class AudioPlayerView : UIView, AVAudioPlayerDelegate{
                                                selector: #selector(playerItemDidReachEnd(notification:)),
                                                name: .AVPlayerItemDidPlayToEndTime,
                                                object: player.currentItem)
-        setupView()
-        layoutView()
     }
 
     required init?(coder aDecoder: NSCoder) {

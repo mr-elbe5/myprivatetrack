@@ -10,6 +10,7 @@
 		4E14579F24E1C214008EC422 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4E1457A124E1C214008EC422 /* InfoPlist.strings */; };
 		4E24FC902501632700BCE81B /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 4E24FC8F2501632700BCE81B /* README.md */; };
 		4E24FC93250164DA00BCE81B /* AppInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E24FC92250164DA00BCE81B /* AppInfoViewController.swift */; };
+		4E24FC952506600C00BCE81B /* IndicatorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E24FC942506600C00BCE81B /* IndicatorViewController.swift */; };
 		4E29EE7224FE5D91000E3389 /* ZIPFoundation in Frameworks */ = {isa = PBXBuildFile; productRef = 4E29EE7124FE5D91000E3389 /* ZIPFoundation */; };
 		4E3C5ACE24FCF2F300E11A35 /* FileError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E3C5ACD24FCF2F300E11A35 /* FileError.swift */; };
 		4E3C5AD024FCFC3300E11A35 /* CLLocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E3C5ACF24FCFC3300E11A35 /* CLLocationManager.swift */; };
@@ -112,6 +113,7 @@
 		4E1457A224E1C217008EC422 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		4E24FC8F2501632700BCE81B /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		4E24FC92250164DA00BCE81B /* AppInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppInfoViewController.swift; sourceTree = "<group>"; };
+		4E24FC942506600C00BCE81B /* IndicatorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndicatorViewController.swift; sourceTree = "<group>"; };
 		4E3C5ACD24FCF2F300E11A35 /* FileError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileError.swift; sourceTree = "<group>"; };
 		4E3C5ACF24FCFC3300E11A35 /* CLLocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CLLocationManager.swift; sourceTree = "<group>"; };
 		4E3C5AD124FD00E600E11A35 /* LocationError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationError.swift; sourceTree = "<group>"; };
@@ -331,6 +333,7 @@
 				4ED21B9824FAA29F00A6FEA3 /* TableViewController.swift */,
 				4ED21C3424FAA83E00A6FEA3 /* UIViewController.swift */,
 				4ED21B9024FAA29F00A6FEA3 /* ViewController.swift */,
+				4E24FC942506600C00BCE81B /* IndicatorViewController.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -622,6 +625,7 @@
 				4ED21C2D24FAA47500A6FEA3 /* BackupViewController.swift in Sources */,
 				4ED21BC124FAA36000A6FEA3 /* MKMapView.swift in Sources */,
 				4ED21C5224FAAC6E00A6FEA3 /* MapCaptureViewController.swift in Sources */,
+				4E24FC952506600C00BCE81B /* IndicatorViewController.swift in Sources */,
 				4E24FC93250164DA00BCE81B /* AppInfoViewController.swift in Sources */,
 				4ED21BE724FAA39300A6FEA3 /* TextButton.swift in Sources */,
 				4ED21BB224FAA32500A6FEA3 /* TimeSpanData.swift in Sources */,
@@ -842,7 +846,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 6;
+				CURRENT_PROJECT_VERSION = 7;
 				DEVELOPMENT_TEAM = 5UG99476V8;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -869,7 +873,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 6;
+				CURRENT_PROJECT_VERSION = 7;
 				DEVELOPMENT_TEAM = 5UG99476V8;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",

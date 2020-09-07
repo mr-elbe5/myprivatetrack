@@ -98,8 +98,11 @@ public class FileStore {
         }
     }
     
-    static public func copyFile(name: String,fromDir: URL, toDir: URL) -> Bool{
+    static public func copyFile(name: String,fromDir: URL, toDir: URL, replace: Bool = false) -> Bool{
         do{
+            if replace && fileExists(url: getURL(dirURL: toDir, fileName: name)){
+                _ = deleteFile(url: getURL(dirURL: toDir, fileName: name))
+            }
             try FileManager.default.copyItem(at: getURL(dirURL: fromDir,fileName: name), to: getURL(dirURL: toDir, fileName: name))
             return true
         } catch let err{
@@ -108,8 +111,11 @@ public class FileStore {
         }
     }
     
-    static public func copyFile(fromURL: URL, toURL: URL) -> Bool{
+    static public func copyFile(fromURL: URL, toURL: URL, replace: Bool = false) -> Bool{
         do{
+            if replace && fileExists(url: toURL){
+                _ = deleteFile(url: toURL)
+            }
             try FileManager.default.copyItem(at: fromURL, to: toURL)
             return true
         } catch let err{
@@ -162,7 +168,6 @@ public class FileStore {
                 callback(false, .unauthorized)
             }
         }
-        callback(false, .unexpected)
     }
     
     static func copyImageFromLibrary(name: String, fromDir: URL, callback: @escaping (_ result: Bool, _ error: FileError?) -> Void){
@@ -188,7 +193,6 @@ public class FileStore {
                 callback(false, .unauthorized)
             }
         }
-        callback(false, .unexpected)
     }
     
     static func copyVideoToLibrary(name: String, fromDir: URL, callback: @escaping (_ result: Bool, _ error: FileError?) -> Void){
@@ -214,7 +218,6 @@ public class FileStore {
                 return
             }
         }
-        callback(false, .unexpected)
     }
     
     static public func renameFile(dirURL: URL, fromName: String, toName: String) -> Bool{

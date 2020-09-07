@@ -192,14 +192,22 @@ class TimelineViewController: TableViewController, SaveEntryDelegate, EntryCellA
         let alertController = UIAlertController(title: title, message: "shareImage".localize(), preferredStyle: .actionSheet)
         alertController.addAction(UIAlertAction(title: "imageLibrary".localize(), style: .default) { action in
             FileStore.copyImageToLibrary(name: data.fileName, fromDir: FileStore.privateURL){ result, error in
-                if !result, let err = error{
-                    self.showAlert(title: "error".localize(), text: err.errorDescription!)
+                DispatchQueue.main.async {
+                    if result{
+                        self.showAlert(title: "success".localize(), text: "photoShared".localize())
+                    }
+                    else if let err = error{
+                        self.showAlert(title: "error".localize(), text: err.errorDescription!)
+                    }
                 }
             }
         })
         alertController.addAction(UIAlertAction(title: "ownDocuments".localize(), style: .default) { action in
-            if !FileStore.copyFile(name: data.fileName, fromDir: FileStore.privateURL, toDir: FileStore.exportDirURL){
-                self.showAlert(title: "error".localize(), text: "copyError")
+            if FileStore.copyFile(name: data.fileName, fromDir: FileStore.privateURL, toDir: FileStore.exportDirURL, replace: true){
+                self.showAlert(title: "success".localize(), text: "photoShared".localize())
+            }
+            else{
+                self.showAlert(title: "error".localize(), text: "copyError".localize())
             }
         })
         alertController.addAction(UIAlertAction(title: "cancel".localize(), style: .cancel))
@@ -217,14 +225,22 @@ class TimelineViewController: TableViewController, SaveEntryDelegate, EntryCellA
         let alertController = UIAlertController(title: title, message: "shareImage".localize(), preferredStyle: .actionSheet)
         alertController.addAction(UIAlertAction(title: "imageLibrary".localize(), style: .default) { action in
             FileStore.copyVideoToLibrary(name: data.fileName, fromDir: FileStore.privateURL){ result, error in
-                if !result, let err = error{
-                    self.showAlert(title: "error".localize(), text: err.errorDescription!)
+                DispatchQueue.main.async {
+                    if result{
+                        self.showAlert(title: "success".localize(), text: "videoShared".localize())
+                    }
+                    else if let err = error{
+                        self.showAlert(title: "error".localize(), text: err.errorDescription!)
+                    }
                 }
             }
         })
         alertController.addAction(UIAlertAction(title: "ownDocuments".localize(), style: .default) { action in
-            if !FileStore.copyFile(name: data.fileName, fromDir: FileStore.privateURL, toDir: FileStore.exportDirURL){
-                self.showAlert(title: "error".localize(), text: "copyError")
+            if FileStore.copyFile(name: data.fileName, fromDir: FileStore.privateURL, toDir: FileStore.exportDirURL, replace: true){
+                self.showAlert(title: "success".localize(), text: "videoShared".localize())
+            }
+            else{
+                self.showAlert(title: "error".localize(), text: "copyError".localize())
             }
         })
         alertController.addAction(UIAlertAction(title: "cancel".localize(), style: .cancel))

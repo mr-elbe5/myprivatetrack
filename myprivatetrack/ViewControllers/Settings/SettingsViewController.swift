@@ -23,6 +23,8 @@ class SettingsViewController: EditViewController, UIDocumentPickerDelegate, UIIm
     var partialBackupButton = TextButton(text: "partialBackupData".localize())
     var restoreButton = TextButton(text: "restoreData".localize())
     
+    var indicator = UIActivityIndicatorView(style: .large)
+    
     var pickerType : SettingsPickerType? = nil
     
     override func loadView() {
@@ -47,6 +49,8 @@ class SettingsViewController: EditViewController, UIDocumentPickerDelegate, UIIm
         stackView.addArrangedSubview(fullBackupButton)
         stackView.addArrangedSubview(partialBackupButton)
         stackView.addArrangedSubview(restoreButton)
+        view.addSubview(indicator)
+        indicator.setCentral(view: view)
     }
     
     override func setupHeaderView(){
@@ -143,8 +147,6 @@ class SettingsViewController: EditViewController, UIDocumentPickerDelegate, UIIm
     }
     
     @objc func fullBackupData(){
-        let indicator = UIActivityIndicatorView(frame: CGRect(x: self.view.center.x - 30, y: self.view.center.y - 30, width: 60, height: 60))
-        view.addSubview(indicator)
         indicator.startAnimating()
         let zipFileName = Statics.backupOfName + Date().dateString().replacingOccurrences(of: ".", with: "-") + ".zip"
         let data = GlobalData.shared
@@ -163,6 +165,9 @@ class SettingsViewController: EditViewController, UIDocumentPickerDelegate, UIIm
             }
         }
         let zipURL = FileStore.getURL(dirURL: FileStore.backupDirURL,fileName: zipFileName)
+        if FileStore.fileExists(url: zipURL){
+            _ = FileStore.deleteFile(url: zipURL)
+        }
         FileStore.zipFiles(sourceFiles: urls, zipURL: zipURL)
         indicator.stopAnimating()
         if FileStore.fileExists(url: zipURL){

@@ -64,6 +64,7 @@
 "ownDocuments"="Dateien - Auf meinem iPhone/iPad";
 "partialBackupData"="Einträge einer Zeitspanne sichern";
 "photoLibraryNotAuthorized"="Die Nutzung der Fotobibliothek ist nicht erlaubt. Bitte ändere die entsprechenden Einstellungen.";
+"photoShared"="Foto wurde kopiert.";
 "privacyInfoHeader"="Deine Privatshäre";
 "privacyInfoText1"="Diese App ist für private Daten erstellt.";
 "privacyInfoText2"="Keine eingegebene Daten verlassen das iPhone oder iPad, solange sie nicht explizit exportiert werden.";
@@ -91,6 +92,7 @@
 "settingsResetInfo"="Mit 'Reset' löschst du alle Einträge und Medien. Wenn du diese Daten nicht verlieren willst, solltest du vorher eine Sicherung erstellen.";
 "settingsRestoreInfo"="Mit 'Wiederherstellen' kannst du vorher gesicherte Einträge und Medien wiederherstellen (alle oder aus einem bestimmten Zeitraum).";
 "settingsUseLocationInfo"="Wenn du keine Standortbestimmung benutzt, erhalten deine Einträge keine Position und du kannst keine Karten-Schnappschuss machen.";
+"shareImage"="Bild kopieren";
 "small"="klein";
 "south"="Süd";
 "speed"="Geschwindigkeit";
@@ -116,6 +118,7 @@
 "toDate" = "Bis Datum";
 "useLocation"="Standortbestimmung benutzen";
 "videoNotAuthorized"="Die Nutzung der Kamera oder des Mikrofons ist nicht erlaubt. Bitte ändere die entsprechenden Einstellungen.";
+"videoShared"="Video wurde kopiert.";
 "west"="West";
 "yes"="Ja";
 "yourPosition"="Deine Position";

@@ -32,7 +32,7 @@ public class DataStore{
         if let storedString = store.value(forKey: key.rawValue) as? String {
             return T.fromJSON(encoded: storedString)
         }
-        print("error loading json")
+        print("no saved data available for \(key.rawValue)")
         return nil
     }
     

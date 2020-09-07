@@ -24,11 +24,12 @@ class AudioItemView : EntryItemView, AVAudioPlayerDelegate{
     func setupView(data: AudioData){
         audioView.setRoundedBorders()
         addSubview(audioView)
-        
+        audioView.setupView()
         self.audioData = data
         audioView.url = data.fileURL
         audioView.enablePlayer()
         audioView.placeBelow(anchor: topAnchor)
+        audioView.layoutView()
         if !data.title.isEmpty{
             let titleView = MediaCommentLabel(text: data.title)
             addSubview(titleView)
@@ -67,6 +68,7 @@ class AudioItemEditView : EntryItemEditView, UITextViewDelegate, AVAudioRecorder
         addTopControl()
         audioView.setRoundedBorders()
         addSubview(audioView)
+        audioView.setupView()
         titleView.setDefaults(placeholder: "comment".localize())
         titleView.delegate = self
         addSubview(titleView)
@@ -85,6 +87,7 @@ class AudioItemEditView : EntryItemEditView, UITextViewDelegate, AVAudioRecorder
     
     override func setLayoutConstraints(){
         audioView.placeBelow(anchor: deleteButton.bottomAnchor, padding: deleteInsets)
+        audioView.layoutView()
         titleView.placeBelow(view: audioView)
         titleView.connectBottom(view: self)
     }

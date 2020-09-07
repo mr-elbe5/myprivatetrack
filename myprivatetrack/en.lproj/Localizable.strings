@@ -62,6 +62,7 @@
 "ownDocuments"="Files - On my iPhone/iPad";
 "partialBackupData"="Backup entries of time span";
 "photoLibraryNotAuthorized"="The use of the photo library is not authorized. Please change your settings.";
+"photoShared"="Photo has been copied.";
 "privacyInfoHeader"="Your privacy";
 "privacyInfoText1"="This app is designed for private data.";
 "privacyInfoText2"="None of your entered data leaves your iPhone or iPad, if you do not explicitly export it.";
@@ -87,6 +88,7 @@
 "settingsRestoreInfo"="With the restore button you restore a previous backup of your entries (all or for a certain time span).";
 "settings"="Settings";
 "settingsUseLocationInfo"="If you choose not to use location services, your entries will not have a position and you will not be able to take map screenshots.";
+"shareImage"="Share image";
 "south"="South";
 "speed"="Speed";
 "speed"="Speed";
@@ -111,6 +113,7 @@
 "toDate" = "To date";
 "useLocation"="Use location service";
 "videoNotAuthorized"="Camera or Microphone use is not authorized. Please change your settings.";
+"videoShared"="Video has been copied.";
 "west"="West";
 "yes"="Yes";
 "yourPosition"="Your position";
