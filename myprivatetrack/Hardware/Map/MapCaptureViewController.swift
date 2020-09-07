@@ -98,9 +98,7 @@ class MapCaptureViewController: UIViewController, LocationServiceDelegate, MapVi
     }
     
     @objc func save(){
-        let indicator = UIActivityIndicatorView(frame: CGRect(x: self.mapView.center.x - 30, y: self.mapView.center.y - 30, width: 60, height: 60))
-        view.addSubview(indicator)
-        indicator.startAnimating()
+        Indicator.shared.show()
         mapView.takeScreenshot(){ screenshot in
             if let screenshot = screenshot{
                 if self.data.saveMapSection(uiImage: screenshot){
@@ -109,7 +107,7 @@ class MapCaptureViewController: UIViewController, LocationServiceDelegate, MapVi
                         delegate.mapCaptured(data: self.data)
                     }
                 }
-                indicator.stopAnimating()
+                Indicator.shared.hide()
                 self.dismiss(animated: true)
             }
             else{

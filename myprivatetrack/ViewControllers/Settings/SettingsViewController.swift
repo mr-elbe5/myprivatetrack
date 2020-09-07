@@ -23,8 +23,6 @@ class SettingsViewController: EditViewController, UIDocumentPickerDelegate, UIIm
     var partialBackupButton = TextButton(text: "partialBackupData".localize())
     var restoreButton = TextButton(text: "restoreData".localize())
     
-    var indicator = UIActivityIndicatorView(style: .large)
-    
     var pickerType : SettingsPickerType? = nil
     
     override func loadView() {
@@ -49,8 +47,6 @@ class SettingsViewController: EditViewController, UIDocumentPickerDelegate, UIIm
         stackView.addArrangedSubview(fullBackupButton)
         stackView.addArrangedSubview(partialBackupButton)
         stackView.addArrangedSubview(restoreButton)
-        view.addSubview(indicator)
-        indicator.setCentral(view: view)
     }
     
     override func setupHeaderView(){
@@ -147,35 +143,39 @@ class SettingsViewController: EditViewController, UIDocumentPickerDelegate, UIIm
     }
     
     @objc func fullBackupData(){
-        indicator.startAnimating()
-        let zipFileName = Statics.backupOfName + Date().dateString().replacingOccurrences(of: ".", with: "-") + ".zip"
-        let data = GlobalData.shared
-        let fileNames = data.getActiveFileNames()
-        var urls = Array<URL>()
-        if let dataFileUrl = data.saveAsTemporaryFile(){
-            urls.append(dataFileUrl)
-        }
-        print(fileNames)
-        for name in fileNames{
-            if FileStore.fileExists(dirPath: FileStore.privatePath, fileName: name){
-                urls.append(FileStore.getURL(dirURL: FileStore.privateURL,fileName: name))
+        Indicator.shared.show()
+        DispatchQueue.global(qos: .background).async{
+            let zipFileName = Statics.backupOfName + Date().dateString().replacingOccurrences(of: ".", with: "-") + ".zip"
+            let data = GlobalData.shared
+            let fileNames = data.getActiveFileNames()
+            var urls = Array<URL>()
+            if let dataFileUrl = data.saveAsTemporaryFile(){
+                urls.append(dataFileUrl)
             }
-            else{
-                print("file missing: \(name)")
+            print(fileNames)
+            for name in fileNames{
+                if FileStore.fileExists(dirPath: FileStore.privatePath, fileName: name){
+                    urls.append(FileStore.getURL(dirURL: FileStore.privateURL,fileName: name))
+                }
+                else{
+                    print("file missing: \(name)")
+                }
             }
-        }
-        let zipURL = FileStore.getURL(dirURL: FileStore.backupDirURL,fileName: zipFileName)
-        if FileStore.fileExists(url: zipURL){
-            _ = FileStore.deleteFile(url: zipURL)
-        }
-        FileStore.zipFiles(sourceFiles: urls, zipURL: zipURL)
-        indicator.stopAnimating()
-        if FileStore.fileExists(url: zipURL){
-            showAlert(title: "success".localize(), text: "backupSuccessInfo".localize()){
-                self.dismiss(animated: true)
+            let zipURL = FileStore.getURL(dirURL: FileStore.backupDirURL,fileName: zipFileName)
+            if FileStore.fileExists(url: zipURL){
+                _ = FileStore.deleteFile(url: zipURL)
             }
-        }else{
-            print("could not create export file")
+            FileStore.zipFiles(sourceFiles: urls, zipURL: zipURL)
+            DispatchQueue.main.async{
+                Indicator.shared.hide()
+                if FileStore.fileExists(url: zipURL){
+                    self.showAlert(title: "success".localize(), text: "backupSuccessInfo".localize()){
+                        self.dismiss(animated: true)
+                    }
+                }else{
+                    print("could not create export file")
+                }
+            }
         }
     }
     
@@ -210,16 +210,23 @@ class SettingsViewController: EditViewController, UIDocumentPickerDelegate, UIIm
             if !FileStore.fileExists(url: zipURL){
                 print("no import file")
             }else{
-                FileStore.deleteAllFiles(dirURL: FileStore.temporaryURL)
-                FileStore.unzipDirectory(zipURL: zipURL, destinationURL: FileStore.temporaryURL)
-                let data = GlobalData.readFromTemporaryFile()
-                let fileNames = FileStore.listAllFiles(dirPath: FileStore.temporaryPath)
-                let importViewController = RestoreViewController()
-                importViewController.data = data
-                importViewController.fileNames = fileNames
-                importViewController.modalPresentationStyle = .fullScreen
-                self.present(importViewController, animated: true)
-                
+                DispatchQueue.main.async{
+                    Indicator.shared.show()
+                }
+                DispatchQueue.global(qos: .background).async{
+                    FileStore.deleteAllFiles(dirURL: FileStore.temporaryURL)
+                    FileStore.unzipDirectory(zipURL: zipURL, destinationURL: FileStore.temporaryURL)
+                    let data = GlobalData.readFromTemporaryFile()
+                    let fileNames = FileStore.listAllFiles(dirPath: FileStore.temporaryPath)
+                    DispatchQueue.main.async{
+                        Indicator.shared.hide()
+                        let importViewController = RestoreViewController()
+                        importViewController.data = data
+                        importViewController.fileNames = fileNames
+                        importViewController.modalPresentationStyle = .fullScreen
+                        self.present(importViewController, animated: true)
+                    }
+                }
             }
         }
     }
