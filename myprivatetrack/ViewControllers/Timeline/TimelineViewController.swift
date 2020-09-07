@@ -151,7 +151,10 @@ class TimelineViewController: TableViewController, SaveEntryDelegate, EntryCellA
             globalData.save()
             tableView.reloadData()
             if globalData.days.count > 0 , globalData.days[0].entries.count > 0{
-                tableView.scrollToRow(at: .init(row: globalData.days[globalData.days.count - 1].entries.count - 1, section: globalData.days.count-1), at: .bottom, animated: true)
+                let section = globalData.days.count-1
+                let row = globalData.days[globalData.days.count - 1].entries.count - 1
+                //print("pos \(section), \(row)")
+                tableView.scrollToRow(at: .init(row: row, section: section), at: .bottom, animated: true)
             }
         }
         if let mapController = MainTabController.getMapViewController(){
