@@ -21,10 +21,10 @@ class EditEntryViewController: EditViewController, PhotoCaptureDelegate, VideoCa
     var entry : EntryData!
     
     var saveLocationSwitch = SwitchView()
-    var addTextButton = IconButton(icon: "text.bubble")
-    var addPhotoButton = IconButton(icon: "camera")
-    var addAudioButton = IconButton(icon: "mic")
-    let addVideoButton = IconButton(icon: "video")
+    var addTextButton = IconButton(image: "text-entry")
+    var addPhotoButton = IconButton(image: "photo-entry")
+    var addAudioButton = IconButton(image: "audio-entry")
+    let addVideoButton = IconButton(image: "video-entry")
     
     let mapItemPos = 1
     var addMapSectionButton = TextButton(text: "addMapSection".localize())
@@ -92,11 +92,6 @@ class EditEntryViewController: EditViewController, PhotoCaptureDelegate, VideoCa
         rightStackView.setupHorizontal(spacing: 2*defaultInset)
         rightStackView.placeBefore(anchor: headerView.trailingAnchor, padding: defaultInsets)
         
-        let addLabel = UILabel()
-        addLabel.text = "+"
-        addLabel.textColor = UIColor.label
-        addLabel.scaleBy(1.25)
-        leftStackView.addArrangedSubview(addLabel)
         addTextButton.addTarget(self, action: #selector(addText), for: .touchDown)
         leftStackView.addArrangedSubview(addTextButton)
         addPhotoButton.addTarget(self, action: #selector(addImage), for: .touchDown)

@@ -15,11 +15,11 @@ class TimelineViewController: TableViewController, SaveEntryDelegate, EntryCellA
     
     var backgroundView = UIImageView(image: Settings.shared.backgroundImage)
     
-    var addEmptyButton = IconButton(icon: "rectangle")
-    var addTextButton = IconButton(icon: "text.bubble")
-    var addPhotoButton = IconButton(icon: "camera")
-    var addAudioButton = IconButton(icon: "mic")
-    let addVideoButton = IconButton(icon: "video")
+    var addEmptyButton = IconButton(image: "blank-entry")
+    var addTextButton = IconButton(image: "text-entry")
+    var addPhotoButton = IconButton(image: "photo-entry")
+    var addAudioButton = IconButton(image: "audio-entry")
+    let addVideoButton = IconButton(image: "video-entry")
     let editButton = IconButton(icon: "pencil.circle")
     
     override func loadView(){
@@ -47,11 +47,6 @@ class TimelineViewController: TableViewController, SaveEntryDelegate, EntryCellA
         rightStackView.setupHorizontal(spacing: 2*defaultInset)
         rightStackView.placeBefore(anchor: headerView.trailingAnchor, padding: defaultInsets)
         
-        let addLabel = UILabel()
-        addLabel.text = "+"
-        addLabel.textColor = UIColor.label
-        addLabel.scaleBy(1.25)
-        leftStackView.addArrangedSubview(addLabel)
         addEmptyButton.addTarget(self, action: #selector(addEmptyEntry), for: .touchDown)
         leftStackView.addArrangedSubview(addEmptyButton)
         addTextButton.addTarget(self, action: #selector(addTextEntry), for: .touchDown)

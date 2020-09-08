@@ -18,6 +18,17 @@ public class IconInfoText : UIView{
         iconView.image = UIImage(systemName: icon)
         iconView.tintColor = iconColor
         iconText.text = text
+        commonInit()
+    }
+    
+    public init(image: String, text: String){
+        super.init(frame: .zero)
+        iconView.image = UIImage(named: image)
+        iconText.text = text
+        commonInit()
+    }
+    
+    private func commonInit(){
         iconText.numberOfLines = 0
         iconText.textColor = .label
         addSubview(iconView)
