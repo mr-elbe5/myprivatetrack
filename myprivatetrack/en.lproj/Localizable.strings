@@ -50,7 +50,7 @@
 "mapInfoHeader"="Map view";
 "map"="Map";
 "mapStartSize"="Start size for capturing map images";
-"mapTopInfo"="The map view shows all entries containing a map item represented by a needle. By tapping one of these needles the complete entry is shown.";
+"mapTopInfo"="The map view shows all entries with a saved position represented by a needle. By tapping one of these needles the complete entry is shown.";
 "media"="Media";
 "newEntry"="New Entry";
 "noItems"="You need at least one item or a position.";

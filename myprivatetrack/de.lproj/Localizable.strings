@@ -51,7 +51,7 @@
 "mapInfoHeader"="Kartenansicht";
 "map"="Karte";
 "mapStartSize"="Anfangsgröße für Kartensnapshots";
-"mapTopInfo"="Die Kartenansicht zeigt alle Einträge, die ein Kartenelement enthalten. Die Einträge werden duch eine Nadel dargestellt. Durch Antippen der Nadel wird der gesamte Eintrag angezeigt.";
+"mapTopInfo"="Die Kartenansicht zeigt alle Einträge, deren Position gespeichert wurde. Die Einträge werden duch eine Nadel dargestellt. Durch Antippen der Nadel wird der gesamte Eintrag angezeigt.";
 "media"="Medien";
 "medium"="mittel";
 "newEntry"="Neuer Eintrag";

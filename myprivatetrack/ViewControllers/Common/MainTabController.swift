@@ -13,6 +13,12 @@ enum TabTags{
 
 class MainTabController: UITabBarController {
     
+    static var instance : MainTabController{
+        get{
+            return UIApplication.shared.windows.first!.rootViewController as! MainTabController
+        }
+    }
+    
     override func loadView() {
         super.loadView()
         let timelineViewController = TimelineViewController()
@@ -30,7 +36,7 @@ class MainTabController: UITabBarController {
     }
     
     static func getViewController(tag: TabTags) -> UIViewController?{
-        let viewController = UIApplication.shared.windows.first!.rootViewController as! MainTabController
+        let viewController = instance
         for viewController in viewController.viewControllers!{
             if viewController.tabBarItem!.tag == tag.hashValue{
                 return viewController

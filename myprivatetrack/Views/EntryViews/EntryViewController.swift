@@ -24,10 +24,9 @@ class EntryViewController: ModalScrollViewController, PhotoItemDelegate, VideoIt
         timeLabel.label.textAlignment = .center
         stackView.addArrangedSubview(timeLabel)
         if entry.saveLocation, let loc = entry.location{
-            let locationLabel = UILabel()
-            locationLabel.text = loc.asString
-            locationLabel.textAlignment = .center
-            stackView.addArrangedSubview(locationLabel)
+            let locationButton = TextButton(text: loc.asString)
+            locationButton.addTarget(self,action: #selector(showInMap), for: .touchDown)
+            stackView.addArrangedSubview(locationButton)
             if entry!.hasMapSection{
                 let mapView = MapItemView()
                 mapView.setupView(data: entry!)
@@ -53,6 +52,15 @@ class EntryViewController: ModalScrollViewController, PhotoItemDelegate, VideoIt
                 stackView.addArrangedSubview(itemView)
                 break
             }
+        }
+    }
+    
+    @objc func showInMap(){
+        if let location = entry?.location{
+            self.dismiss(animated: false)
+            let mapController = MainTabController.getMapViewController()
+            mapController?.mkMapView.centerToLocation(location)
+            MainTabController.instance.selectedViewController = mapController
         }
     }
     

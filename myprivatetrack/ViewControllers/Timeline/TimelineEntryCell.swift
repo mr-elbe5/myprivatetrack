@@ -54,12 +54,11 @@ class TimelineEntryCell: UITableViewCell, PhotoItemDelegate, VideoItemDelegate{
             timeLabel.placeBelow(anchor: cellBody.topAnchor, padding: defaultInsets)
             var lastView : UIView = timeLabel
             if entry!.saveLocation, let loc = entry!.location{
-                let locationLabel = UILabel()
-                locationLabel.text = loc.asString
-                locationLabel.textAlignment = .center
-                cellBody.addSubview(locationLabel)
-                locationLabel.placeBelow(anchor: lastView.bottomAnchor, padding: defaultInsets)
-                lastView = locationLabel
+                let locationButton = TextButton(text: loc.asString)
+                locationButton.addTarget(self,action: #selector(showInMap), for: .touchDown)
+                cellBody.addSubview(locationButton)
+                locationButton.placeBelow(anchor: lastView.bottomAnchor, padding: defaultInsets)
+                lastView = locationButton
                 let desc = entry!.locationDescription
                 if !desc.isEmpty{
                     let locationDescriptionLabel = UILabel()
@@ -131,6 +130,14 @@ class TimelineEntryCell: UITableViewCell, PhotoItemDelegate, VideoItemDelegate{
                 }
             }
             lastView.connectBottom(view: cellBody, padding: defaultInset)
+        }
+    }
+    
+    @objc func showInMap(){
+        if let location = entry?.location{
+            let mapController = MainTabController.getMapViewController()
+            mapController?.mkMapView.centerToLocation(location)
+            MainTabController.instance.selectedViewController = mapController
         }
     }
     
