@@ -101,6 +101,8 @@
 "timelineEditIconInfo"="With this icon you start editing the entry as during creation.";
 "timelineEditInfo"="With the right pencil icon you can toggle between view and edit mode. In edit mode two icons appear at each entry:";
 "timelineEmptyIconInfo"="With this icon you start creating an empty new entry.";
+"timelineEntryInfoHeader"="Entries";
+"timelineEntryMapLinkInfo"="If the entry has a saved location, you can tap on it to see the location on the map.";
 "timelineImageIconInfo"="With this icon you start creating a new entry by taking a photo.";
 "timelineInfoEditHeader"="Edit mode";
 "timelineInfoHeader"="Timeline view";

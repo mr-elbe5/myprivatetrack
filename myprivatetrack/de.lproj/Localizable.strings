@@ -105,6 +105,8 @@
 "timelineEditIconInfo"="Mit diesem Icon editierst du den Eintrag wie bei der Erstellung.";
 "timelineEditInfo"="Mit dem rechten Bleistiftsymbol kannst du zwischen Anzeige- und Editiermodus wechseln. Im Editiermodus erscheinen zwei Icons bei jedem Eintrag:";
 "timelineEmptyIconInfo"="Mit diesem Icon startest du einen leeren neuen Eintrag.";
+"timelineEntryInfoHeader"="Einträge";
+"timelineEntryMapLinkInfo"="Wenn die Position des Eintrags gespeichert wurde, kannst du durch Tippen auf die Position zur Karte wechseln.";
 "timelineImageIconInfo"="Mit diesem Icon startest du einen neuen Eintrag, der mit dem Aufnehmen eines Fotos beginnt.";
 "timelineInfoEditHeader"="Editiermodus";
 "timelineInfoHeader"="Tagesansicht";
