@@ -9,7 +9,7 @@ import Foundation
 import UIKit
 import Photos
 import Compression
-import ZIPFoundation
+import Zip
 
 public class FileStore {
     
@@ -277,31 +277,24 @@ public class FileStore {
     }
     
     static public func zipFiles(sourceFiles: [URL], zipURL: URL){
-        guard let archive = Archive(url: zipURL, accessMode: .create) else  {
-            return
-        }
-        for fileURL in sourceFiles{
-            do {
-                try archive.addEntry(with: fileURL.lastPathComponent, relativeTo: fileURL.deletingLastPathComponent())
-            } catch {
-                print("Adding entry to ZIP archive failed with error:\(error)")
-            }
-        }
-    }
-    
-    static public func zipDirectory(sourceURL: URL, zipURL: URL){
         do {
-            try FileManager.default.zipItem(at: sourceURL, to: zipURL)
-        } catch {
-            print("Creation of ZIP archive failed with error:\(error)")
+            try Zip.zipFiles(paths: sourceFiles, zipFilePath: zipURL, password: nil, progress: { (progress) -> () in
+                print(progress)
+            })
+        }
+        catch {
+          print("Could not zip files")
         }
     }
     
     static public func unzipDirectory(zipURL: URL, destinationURL: URL){
         do {
-            try FileManager.default.unzipItem(at: zipURL, to: destinationURL)
-        } catch {
-            print("Extraction of ZIP archive failed with error:\(error)")
+            try Zip.unzipFile(zipURL, destination: destinationURL, overwrite: true, password: nil, progress: { (progress) -> () in
+                print(progress)
+            })
+        }
+        catch {
+          print("Could not unzip files")
         }
     }
     

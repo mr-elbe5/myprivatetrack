@@ -7,10 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4E080D842508C2F0006DF6E9 /* Zip in Frameworks */ = {isa = PBXBuildFile; productRef = 4E080D832508C2F0006DF6E9 /* Zip */; };
 		4E14579F24E1C214008EC422 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4E1457A124E1C214008EC422 /* InfoPlist.strings */; };
 		4E24FC902501632700BCE81B /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 4E24FC8F2501632700BCE81B /* README.md */; };
 		4E24FC93250164DA00BCE81B /* AppInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E24FC92250164DA00BCE81B /* AppInfoViewController.swift */; };
-		4E29EE7224FE5D91000E3389 /* ZIPFoundation in Frameworks */ = {isa = PBXBuildFile; productRef = 4E29EE7124FE5D91000E3389 /* ZIPFoundation */; };
 		4E3C5ACE24FCF2F300E11A35 /* FileError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E3C5ACD24FCF2F300E11A35 /* FileError.swift */; };
 		4E3C5AD024FCFC3300E11A35 /* CLLocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E3C5ACF24FCFC3300E11A35 /* CLLocationManager.swift */; };
 		4E3C5AD224FD00E600E11A35 /* LocationError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E3C5AD124FD00E600E11A35 /* LocationError.swift */; };
@@ -218,7 +218,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4E29EE7224FE5D91000E3389 /* ZIPFoundation in Frameworks */,
+				4E080D842508C2F0006DF6E9 /* Zip in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -532,7 +532,7 @@
 			);
 			name = myprivatetrack;
 			packageProductDependencies = (
-				4E29EE7124FE5D91000E3389 /* ZIPFoundation */,
+				4E080D832508C2F0006DF6E9 /* Zip */,
 			);
 			productName = myprivatetrack;
 			productReference = 4EFDFF3424952F53001EB7C3 /* My private track.app */;
@@ -565,7 +565,7 @@
 			);
 			mainGroup = 4EFDFF2B24952F53001EB7C3;
 			packageReferences = (
-				4E29EE7024FE5D91000E3389 /* XCRemoteSwiftPackageReference "ZIPFoundation" */,
+				4E080D822508C2F0006DF6E9 /* XCRemoteSwiftPackageReference "Zip" */,
 			);
 			productRefGroup = 4EFDFF3524952F53001EB7C3 /* Products */;
 			projectDirPath = "";
@@ -917,21 +917,21 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		4E29EE7024FE5D91000E3389 /* XCRemoteSwiftPackageReference "ZIPFoundation" */ = {
+		4E080D822508C2F0006DF6E9 /* XCRemoteSwiftPackageReference "Zip" */ = {
 			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/weichsel/ZIPFoundation.git";
+			repositoryURL = "https://github.com/marmelroy/Zip.git";
 			requirement = {
-				kind = upToNextMinorVersion;
-				minimumVersion = 0.9.11;
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.0.0;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		4E29EE7124FE5D91000E3389 /* ZIPFoundation */ = {
+		4E080D832508C2F0006DF6E9 /* Zip */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 4E29EE7024FE5D91000E3389 /* XCRemoteSwiftPackageReference "ZIPFoundation" */;
-			productName = ZIPFoundation;
+			package = 4E080D822508C2F0006DF6E9 /* XCRemoteSwiftPackageReference "Zip" */;
+			productName = Zip;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
