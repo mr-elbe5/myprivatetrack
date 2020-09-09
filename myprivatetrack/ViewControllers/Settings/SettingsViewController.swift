@@ -144,7 +144,7 @@ class SettingsViewController: EditViewController, UIDocumentPickerDelegate, UIIm
     
     @objc func fullBackupData(){
         Indicator.shared.show()
-        DispatchQueue.global(qos: .background).async{
+        DispatchQueue.global(qos: .userInitiated).async{
             let zipFileName = Statics.backupOfName + Date().dateString().replacingOccurrences(of: ".", with: "-") + ".zip"
             let data = GlobalData.shared
             let fileNames = data.getActiveFileNames()
@@ -213,7 +213,7 @@ class SettingsViewController: EditViewController, UIDocumentPickerDelegate, UIIm
                 DispatchQueue.main.async{
                     Indicator.shared.show()
                 }
-                DispatchQueue.global(qos: .background).async{
+                DispatchQueue.global(qos: .userInitiated).async{
                     FileStore.deleteAllFiles(dirURL: FileStore.temporaryURL)
                     FileStore.unzipDirectory(zipURL: zipURL, destinationURL: FileStore.temporaryURL)
                     let data = GlobalData.readFromTemporaryFile()

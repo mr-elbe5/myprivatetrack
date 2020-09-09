@@ -48,7 +48,7 @@ public class AudioRecorderView : UIView, AVAudioRecorderDelegate{
         recordButton.setCenterXAnchor(centerXAnchor)
         recordButton.setWidthAnchor(50)
         recordButton.setHeightAnchor(50)
-        player.placeBelow(view: progress)
+        player.placeBelow(view: recordButton)
         player.layoutView()
         player.setBottomAnchor(bottomAnchor,padding: Statics.defaultInset)
         player.isHidden = true
@@ -95,7 +95,7 @@ public class AudioRecorderView : UIView, AVAudioRecorderDelegate{
                 audioRecorder!.record()
                 isRecording = true
                 self.recordButton.buttonState = .recording
-                DispatchQueue.global(qos: .background).async {
+                DispatchQueue.global(qos: .userInitiated).async {
                     repeat{
                         self.audioRecorder!.updateMeters()
                         DispatchQueue.main.async {
