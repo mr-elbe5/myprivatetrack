@@ -106,7 +106,8 @@
 		4ED95E1C25022D120084648A /* ImageEntryItemData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED95E1B25022D120084648A /* ImageEntryItemData.swift */; };
 		4EFDFF4624952F54001EB7C3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4EFDFF4524952F54001EB7C3 /* Assets.xcassets */; };
 		4EFDFF4924952F54001EB7C3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4EFDFF4724952F54001EB7C3 /* LaunchScreen.storyboard */; };
-		4EFE4F5B250A1505003B2D1E /* Then in Frameworks */ = {isa = PBXBuildFile; productRef = 4EFE4F5A250A1505003B2D1E /* Then */; };
+		4EFE4F60250A23CB003B2D1E /* AuthorizationError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EFE4F5F250A23CB003B2D1E /* AuthorizationError.swift */; };
+		4EFE4F62250A3ED2003B2D1E /* MapError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EFE4F61250A3ED2003B2D1E /* MapError.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -212,6 +213,8 @@
 		4EFDFF4524952F54001EB7C3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4EFDFF4824952F54001EB7C3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4EFDFF4A24952F54001EB7C3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4EFE4F5F250A23CB003B2D1E /* AuthorizationError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationError.swift; sourceTree = "<group>"; };
+		4EFE4F61250A3ED2003B2D1E /* MapError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapError.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -220,7 +223,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				4E080D842508C2F0006DF6E9 /* Zip in Frameworks */,
-				4EFE4F5B250A1505003B2D1E /* Then in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -287,6 +289,7 @@
 				4E3C5AD124FD00E600E11A35 /* LocationError.swift */,
 				4ED21C4424FAAC6E00A6FEA3 /* MapCaptureViewController.swift */,
 				4ED21C4524FAAC6E00A6FEA3 /* EntryAnnotation.swift */,
+				4EFE4F61250A3ED2003B2D1E /* MapError.swift */,
 			);
 			path = Map;
 			sourceTree = "<group>";
@@ -310,6 +313,7 @@
 				4ED21C3F24FAAC6E00A6FEA3 /* CameraViewController.swift */,
 				4ED21C3924FAAC6D00A6FEA3 /* CaptureButton.swift */,
 				4ED21C4024FAAC6E00A6FEA3 /* MediaCommentLabel.swift */,
+				4EFE4F5F250A23CB003B2D1E /* AuthorizationError.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -535,7 +539,6 @@
 			name = myprivatetrack;
 			packageProductDependencies = (
 				4E080D832508C2F0006DF6E9 /* Zip */,
-				4EFE4F5A250A1505003B2D1E /* Then */,
 			);
 			productName = myprivatetrack;
 			productReference = 4EFDFF3424952F53001EB7C3 /* My private track.app */;
@@ -569,7 +572,6 @@
 			mainGroup = 4EFDFF2B24952F53001EB7C3;
 			packageReferences = (
 				4E080D822508C2F0006DF6E9 /* XCRemoteSwiftPackageReference "Zip" */,
-				4EFE4F59250A1505003B2D1E /* XCRemoteSwiftPackageReference "Then" */,
 			);
 			productRefGroup = 4EFDFF3524952F53001EB7C3 /* Products */;
 			projectDirPath = "";
@@ -628,12 +630,14 @@
 				4ED21C2A24FAA47500A6FEA3 /* SettingsViewController.swift in Sources */,
 				4E3C5ACE24FCF2F300E11A35 /* FileError.swift in Sources */,
 				4ED21C2D24FAA47500A6FEA3 /* BackupViewController.swift in Sources */,
+				4EFE4F60250A23CB003B2D1E /* AuthorizationError.swift in Sources */,
 				4ED21BC124FAA36000A6FEA3 /* MKMapView.swift in Sources */,
 				4ED21C5224FAAC6E00A6FEA3 /* MapCaptureViewController.swift in Sources */,
 				4E24FC93250164DA00BCE81B /* AppInfoViewController.swift in Sources */,
 				4ED21BE724FAA39300A6FEA3 /* TextButton.swift in Sources */,
 				4ED21BB224FAA32500A6FEA3 /* TimeSpanData.swift in Sources */,
 				4E3C5AD224FD00E600E11A35 /* LocationError.swift in Sources */,
+				4EFE4F62250A3ED2003B2D1E /* MapError.swift in Sources */,
 				4ED21BEF24FAA39300A6FEA3 /* UIImageView.swift in Sources */,
 				4ED21C1024FAA3B900A6FEA3 /* EditEntryInfoViewController.swift in Sources */,
 				4ED21BAF24FAA32500A6FEA3 /* GlobalData.swift in Sources */,
@@ -929,14 +933,6 @@
 				minimumVersion = 2.0.0;
 			};
 		};
-		4EFE4F59250A1505003B2D1E /* XCRemoteSwiftPackageReference "Then" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/freshOS/Then";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 5.1.4;
-			};
-		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -944,11 +940,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 4E080D822508C2F0006DF6E9 /* XCRemoteSwiftPackageReference "Zip" */;
 			productName = Zip;
-		};
-		4EFE4F5A250A1505003B2D1E /* Then */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 4EFE4F59250A1505003B2D1E /* XCRemoteSwiftPackageReference "Then" */;
-			productName = Then;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

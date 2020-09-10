@@ -152,7 +152,8 @@ class EditEntryViewController: EditViewController, PhotoCaptureDelegate, VideoCa
     
     @objc func addImage(){
         AVCaptureDevice.askCameraAuthorization(){ result in
-            if result{
+            switch result{
+            case .success(()):
                 DispatchQueue.main.async {
                     let data = PhotoData()
                     let imageCaptureController = PhotoCaptureViewController()
@@ -161,9 +162,10 @@ class EditEntryViewController: EditViewController, PhotoCaptureDelegate, VideoCa
                     imageCaptureController.modalPresentationStyle = .fullScreen
                     self.present(imageCaptureController, animated: true)
                 }
-            }
-            else{
+                return
+            case .failure:
                 self.showError("cameraNotAuthorized")
+                return
             }
         }
         
@@ -171,23 +173,26 @@ class EditEntryViewController: EditViewController, PhotoCaptureDelegate, VideoCa
     
     @objc func addAudio(){
         AVCaptureDevice.askAudioAuthorization(){ result in
-            if result{
+            switch result{
+            case .success(()):
                 DispatchQueue.main.async {
                     let data = AudioData()
                     self.entry.addItem(item: data)
                     let editView = AudioItemEditView.fromData(data: data)
                     self.insertItemView(editView)
                 }
-            }
-            else{
+                return
+            case .failure:
                 self.showError("audioNotAuthorized")
+                return
             }
         }
     }
     
     @objc func addVideo(){
         AVCaptureDevice.askVideoAuthorization(){ result in
-            if result{
+            switch result{
+            case .success(()):
                 DispatchQueue.main.async {
                     let data = VideoData()
                     let videoCaptureController = VideoCaptureViewController()
@@ -196,9 +201,10 @@ class EditEntryViewController: EditViewController, PhotoCaptureDelegate, VideoCa
                     videoCaptureController.modalPresentationStyle = .fullScreen
                     self.present(videoCaptureController, animated: true)
                 }
-            }
-            else{
+                return
+            case .failure:
                 self.showError("videoNotAuthorized")
+                return
             }
         }
     }

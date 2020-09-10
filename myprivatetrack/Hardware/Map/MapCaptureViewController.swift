@@ -99,9 +99,10 @@ class MapCaptureViewController: UIViewController, LocationServiceDelegate, MapVi
     
     @objc func save(){
         Indicator.shared.show()
-        mapView.takeScreenshot(){ screenshot in
-            if let screenshot = screenshot{
-                if self.data.saveMapSection(uiImage: screenshot){
+        mapView.takeScreenshot(){ result in
+            switch result{
+            case .success(let image):
+                if self.data.saveMapSection(uiImage: image){
                     self.data.hasMapSection = true
                     if let delegate = self.delegate{
                         delegate.mapCaptured(data: self.data)
@@ -109,9 +110,10 @@ class MapCaptureViewController: UIViewController, LocationServiceDelegate, MapVi
                 }
                 Indicator.shared.hide()
                 self.dismiss(animated: true)
-            }
-            else{
+                return
+            case .failure:
                 print("error while taking screenshot")
+                return
             }
         }
     }

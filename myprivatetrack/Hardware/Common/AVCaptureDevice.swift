@@ -11,56 +11,59 @@ import Photos
 
 extension AVCaptureDevice {
     
-    public static func askCameraAuthorization(callback: @escaping (_ result: Bool) -> Void){
+    public static func askCameraAuthorization(callback: @escaping (Result<Void, Error>) -> Void){
         switch AVCaptureDevice.authorizationStatus(for: .video){
         case .authorized:
-            callback(true)
+            callback(.success(()))
             break
         case .notDetermined:
             AVCaptureDevice.requestAccess(for: .video){ granted in
                 if granted{
-                    callback(true)
+                    callback(.success(()))
                 }
                 else{
-                    callback(false)
+                    callback(.failure(AuthorizationError.rejected))
                 }
             }
             break
         default:
-            callback(false)
+            callback(.failure(AuthorizationError.rejected))
             break
         }
     }
     
-    public static func askAudioAuthorization(callback: @escaping (_ result: Bool) -> Void){
+    public static func askAudioAuthorization(callback: @escaping (Result<Void, Error>) -> Void){
         switch AVCaptureDevice.authorizationStatus(for: .audio){
         case .authorized:
-            callback(true)
+            callback(.success(()))
             break
         case .notDetermined:
             AVCaptureDevice.requestAccess(for: .audio){ granted in
                 if granted{
-                    callback(true)
+                    callback(.success(()))
                 }
                 else{
-                    callback(false)
+                    callback(.failure(AuthorizationError.rejected))
                 }
             }
             break
         default:
-            callback(false)
+            callback(.failure(AuthorizationError.rejected))
             break
         }
     }
     
-    public static func askVideoAuthorization(callback: @escaping (_ result: Bool) -> Void){
-        askCameraAuthorization(){ result in
-            if !result{
-                callback(false)
+    public static func askVideoAuthorization(callback: @escaping (Result<Void, Error>) -> Void){
+        askCameraAuthorization(){ result  in
+            switch result{
+            case .success(()):
+                askAudioAuthorization(){ _ in
+                    callback(.success(()))
+                }
                 return
-            }
-            askAudioAuthorization(){result in
-                callback(result)
+            case .failure:
+                callback(.failure(AuthorizationError.rejected))
+                return
             }
         }
     }

@@ -98,7 +98,7 @@ class MapView : UIView, MKMapViewDelegate{
         
     }
     
-    func takeScreenshot(callback: @escaping (_ result: UIImage?) -> Void){
+    func takeScreenshot(callback: @escaping (Result<UIImage, MapError>) -> Void){
         let options = MKMapSnapshotter.Options()
         options.camera = self.mapView.camera
         options.region = self.mapView.region
@@ -107,7 +107,7 @@ class MapView : UIView, MKMapViewDelegate{
         snapshotter.start { snapshot, error in
             if error != nil {
                 print("Unable to create a map snapshot.")
-                callback(nil)
+                callback(.failure(.snapshot))
             } else if let snapshot = snapshot, let coord = self.location?.coordinate {
                 let pos = snapshot.point(for: coord)
                 UIGraphicsBeginImageContextWithOptions(snapshot.image.size, true, snapshot.image.scale)
@@ -115,8 +115,12 @@ class MapView : UIView, MKMapViewDelegate{
                 if let pin = self.positionPin {
                     self.drawPin(point: pos, annotation: pin)
                 }
-                let compositeImage = UIGraphicsGetImageFromCurrentImageContext()
-                callback(compositeImage)
+                if let compositeImage = UIGraphicsGetImageFromCurrentImageContext(){
+                    callback(.success(compositeImage))
+                }
+                else{
+                    callback(.failure(.snapshot))
+                }
             }
         }
     }

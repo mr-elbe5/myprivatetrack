@@ -189,12 +189,12 @@ class TimelineViewController: TableViewController, SaveEntryDelegate, EntryCellA
     func sharePhotoItem(data: PhotoData) {
         let alertController = UIAlertController(title: title, message: "shareImage".localize(), preferredStyle: .actionSheet)
         alertController.addAction(UIAlertAction(title: "imageLibrary".localize(), style: .default) { action in
-            FileStore.copyImageToLibrary(name: data.fileName, fromDir: FileStore.privateURL){ result, error in
+            FileStore.copyImageToLibrary(name: data.fileName, fromDir: FileStore.privateURL){ result in
                 DispatchQueue.main.async {
-                    if result{
+                    switch result{
+                    case .success:
                         self.showAlert(title: "success".localize(), text: "photoShared".localize())
-                    }
-                    else if let err = error{
+                    case .failure(let err):
                         self.showAlert(title: "error".localize(), text: err.errorDescription!)
                     }
                 }
@@ -222,12 +222,13 @@ class TimelineViewController: TableViewController, SaveEntryDelegate, EntryCellA
     func shareVideoItem(data: VideoData) {
         let alertController = UIAlertController(title: title, message: "shareImage".localize(), preferredStyle: .actionSheet)
         alertController.addAction(UIAlertAction(title: "imageLibrary".localize(), style: .default) { action in
-            FileStore.copyVideoToLibrary(name: data.fileName, fromDir: FileStore.privateURL){ result, error in
+            FileStore.copyVideoToLibrary(name: data.fileName, fromDir: FileStore.privateURL){ result in
                 DispatchQueue.main.async {
-                    if result{
+                    switch result{
+                    case .success:
                         self.showAlert(title: "success".localize(), text: "videoShared".localize())
-                    }
-                    else if let err = error{
+                        return
+                    case .failure(let err):
                         self.showAlert(title: "error".localize(), text: err.errorDescription!)
                     }
                 }

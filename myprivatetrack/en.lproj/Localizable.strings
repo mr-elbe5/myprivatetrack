@@ -68,7 +68,7 @@
 "privacyInfoText2"="None of your entered data leaves your iPhone or iPad, if you do not explicitly export it.";
 "privacyInfoText3"="There are no ads.";
 "privacyInfoText4"="The only use of the network is for getting map tiles and the location service for showing the location of your entries on the map.";
-"privacyInfoText5"="Only Apple APIs and services are used, except for the open source project ZipFoundation, which is embedded for backup and restore.";
+"privacyInfoText5"="Only Apple APIs and services are used, except for the open source project Zip, which is embedded for backup and restore.";
 "privacyInfoText6"="The code of this app is published on GitHub under https://github.com/mr-elbe5/myprivatetrack.git.";
 "quality"="Quality";
 "quality"="Quality";

@@ -58,7 +58,8 @@ public class AudioRecorderView : UIView, AVAudioRecorderDelegate{
     public func enableRecording(){
         var success = true
         AVCaptureDevice.askAudioAuthorization(){ result in
-            if result{
+            switch result{
+            case .success(()):
                 self.recordingSession = AVAudioSession.sharedInstance()
                 do {
                     try self.recordingSession!.setCategory(.playAndRecord, mode: .default)
@@ -69,9 +70,10 @@ public class AudioRecorderView : UIView, AVAudioRecorderDelegate{
                 } catch {
                     success = false
                 }
-            }
-            else{
+                return
+            case .failure:
                 success = false
+                return
             }
         }
         DispatchQueue.main.async {

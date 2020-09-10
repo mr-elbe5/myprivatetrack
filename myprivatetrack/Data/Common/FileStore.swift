@@ -124,97 +124,100 @@ public class FileStore {
         }
     }
     
-    public static func askPhotoLibraryAuthorization(callback: @escaping (_ result: Bool) -> Void){
+    public static func askPhotoLibraryAuthorization(callback: @escaping (Result<Void, Error>) -> Void){
         switch PHPhotoLibrary.authorizationStatus(){
         case .authorized:
-            callback(true)
+            callback(.success(()))
             break
         case .notDetermined:
             PHPhotoLibrary.requestAuthorization(){ granted in
                 if granted == .authorized{
-                    callback(true)
+                    callback(.success(()))
                 }
                 else{
-                    callback(false)
+                    callback(.failure(AuthorizationError.rejected))
                 }
             }
             break
         default:
-            callback(false)
+            callback(.failure(AuthorizationError.rejected))
             break
         }
     }
     
-    static func copyImageToLibrary(name: String, fromDir: URL, callback: @escaping (_ result: Bool, _ error: FileError?) -> Void){
+    static func copyImageToLibrary(name: String, fromDir: URL, callback: @escaping (Result<Void, FileError>) -> Void){
         askPhotoLibraryAuthorization(){ result in
-            if result{
+            switch result{
+            case .success(()):
                 let url = getURL(dirURL: fromDir, fileName: name)
                 if let data = readFile(url: url){
                     if let image = UIImage(data: data){
                         UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil)
-                        callback(true, nil)
+                        callback(.success(()))
                         return
                     }
                     else{
-                        callback(false, .save)
+                        callback(.failure(.save))
                         return
                     }
                 }
                 else{
-                    callback(false, .read)
+                    callback(.failure(.read))
                 }
-            }
-            else{
-                callback(false, .unauthorized)
+                break
+            case .failure:
+                callback(.failure(.unauthorized))
             }
         }
     }
     
-    static func copyImageFromLibrary(name: String, fromDir: URL, callback: @escaping (_ result: Bool, _ error: FileError?) -> Void){
+    static func copyImageFromLibrary(name: String, fromDir: URL, callback: @escaping ( Result<Void, FileError>) -> Void){
         askPhotoLibraryAuthorization(){ result in
-            if result{
+            switch result{
+            case .success(()):
                 let url = getURL(dirURL: fromDir, fileName: name)
                 if let data = readFile(url: url){
                     if let image = UIImage(data: data){
                         UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil)
-                        callback(true, nil)
+                        callback(.success(()))
                         return
                     }
                     else{
-                        callback(false, .save)
+                        callback(.failure(.save))
                         return
                     }
                 }
                 else{
-                    callback(false, .read)
+                    callback(.failure(.read))
                 }
-            }
-            else{
-                callback(false, .unauthorized)
+                break
+            case .failure:
+                callback(.failure(.unauthorized))
             }
         }
     }
     
-    static func copyVideoToLibrary(name: String, fromDir: URL, callback: @escaping (_ result: Bool, _ error: FileError?) -> Void){
+    static func copyVideoToLibrary(name: String, fromDir: URL, callback: @escaping (Result<Void, FileError>) -> Void){
         askPhotoLibraryAuthorization(){ result in
-            if result{
+            switch result{
+            case .success(()):
                 let url = getURL(dirURL: fromDir, fileName: name)
                 PHPhotoLibrary.shared().performChanges({
                     PHAssetChangeRequest.creationRequestForAssetFromVideo(atFileURL: url)
                 }) { saved, error in
                     if saved {
                         print("video saved")
-                        callback(true, nil)
+                        callback(.success(()))
                         return
                     }
                     else{
-                        callback(false, .save)
+                        callback(.failure(.save))
                         return
                     }
                 }
-            }
-            else{
-                callback(false, .unauthorized)
+                return
+            case .failure:
+                callback(.failure(.unauthorized))
                 return
             }
         }

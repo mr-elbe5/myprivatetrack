@@ -132,7 +132,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, LocationServiceDel
         showAlert(title: "error".localize(), text: reason.localize())
     }
     
-    func takeScreenshot(callback: @escaping (_ result: UIImage?) -> Void){
+    func takeScreenshot(callback: @escaping (Result<UIImage, Error>) -> Void){
         let options = MKMapSnapshotter.Options()
         options.camera = self.mkMapView.camera
         options.region = self.mkMapView.region
@@ -141,13 +141,13 @@ class MapViewController: UIViewController, MKMapViewDelegate, LocationServiceDel
         snapshotter.start { snapshot, error in
             if error != nil {
                 print("Unable to create a map snapshot.")
-                callback(nil)
+                callback(.failure(error!))
             } else if let snapshot = snapshot {
                 UIGraphicsBeginImageContextWithOptions(snapshot.image.size, true, snapshot.image.scale)
                 snapshot.image.draw(at: CGPoint.zero)
                 self.drawPins()
                 let compositeImage = UIGraphicsGetImageFromCurrentImageContext()
-                callback(compositeImage!)
+                callback(.success(compositeImage!))
             }
         }
     }

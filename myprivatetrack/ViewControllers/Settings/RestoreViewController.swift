@@ -60,9 +60,7 @@ class RestoreViewController: ModalScrollViewController, DatePickerDelegate{
     }
     
     @objc func restoreData(){
-        let indicator = UIActivityIndicatorView(frame: CGRect(x: self.view.center.x - 30, y: self.view.center.y - 30, width: 60, height: 60))
-        view.addSubview(indicator)
-        indicator.startAnimating()
+        Indicator.shared.show()
         //print("start restore")
         for day in data.days{
             //print("check day")
@@ -77,7 +75,7 @@ class RestoreViewController: ModalScrollViewController, DatePickerDelegate{
         GlobalData.shared.save()
         MainTabController.getTimelineViewController()?.setNeedsUpdate()
         MainTabController.getMapViewController()?.setNeedsUpdate()
-        indicator.stopAnimating()
+        Indicator.shared.hide()
         showAlert(title: "success".localize(), text: "backupRestored".localize()){
             self.dismiss(animated: true)
         }
