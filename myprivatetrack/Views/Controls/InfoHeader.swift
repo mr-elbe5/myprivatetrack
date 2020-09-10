@@ -18,11 +18,11 @@ public class InfoHeader : UIView{
         label.textColor = .label
         label.font = .preferredFont(forTextStyle: .headline)
         addSubview(label)
-        label.enableAnchors()
-        label.setTopAnchor(topAnchor, padding: paddingTop)
-        label.setLeadingAnchor(leadingAnchor,padding: defaultInset)
-        label.setTrailingAnchor(trailingAnchor,padding: defaultInset)
-        label.setBottomAnchor(bottomAnchor, padding: defaultInset)
+        label.setAnchors()
+            .top(topAnchor, inset: paddingTop)
+            .leading(leadingAnchor,inset: defaultInset)
+            .trailing(trailingAnchor,inset: defaultInset)
+            .bottom(bottomAnchor, inset: defaultInset)
     }
     
     required init?(coder: NSCoder) {

@@ -35,14 +35,14 @@ class CameraViewController: UIViewController {
         super.loadView()
         self.modalPresentationStyle = .fullScreen
         view.addSubview(bodyView)
-        bodyView.fillSafeAreaOf(view: view, padding: .zero)
+        bodyView.fillSafeAreaOf(view: view, insets: .zero)
         bodyView.backgroundColor = .systemBackground
         bodyView.addSubview(preview)
         preview.backgroundColor = .black
         preview.fillSuperview()
         buttonView.backgroundColor = .black
         bodyView.addSubview(buttonView)
-        buttonView.placeAbove(anchor: bodyView.bottomAnchor, padding: .zero)
+        buttonView.placeAbove(anchor: bodyView.bottomAnchor, insets: .zero)
         addButtons()
         AVCaptureDevice.askCameraAuthorization(){ result in
             self.preview.session = self.session

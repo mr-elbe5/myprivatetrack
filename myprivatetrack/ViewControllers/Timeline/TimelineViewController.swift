@@ -43,9 +43,9 @@ class TimelineViewController: TableViewController, SaveEntryDelegate, EntryCellA
         headerView.addSubview(leftStackView)
         headerView.addSubview(rightStackView)
         leftStackView.setupHorizontal(spacing: 2*defaultInset)
-        leftStackView.placeAfter(anchor: headerView.leadingAnchor, padding: defaultInsets)
+        leftStackView.placeAfter(anchor: headerView.leadingAnchor, insets: defaultInsets)
         rightStackView.setupHorizontal(spacing: 2*defaultInset)
-        rightStackView.placeBefore(anchor: headerView.trailingAnchor, padding: defaultInsets)
+        rightStackView.placeBefore(anchor: headerView.trailingAnchor, insets: defaultInsets)
         
         addEmptyButton.addTarget(self, action: #selector(addEmptyEntry), for: .touchDown)
         leftStackView.addArrangedSubview(addEmptyButton)

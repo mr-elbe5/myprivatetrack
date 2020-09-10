@@ -21,18 +21,18 @@ open class ViewController: UIViewController {
         setupHeaderView()
         if let headerView = headerView{
             view.addSubview(headerView)
-            headerView.enableAnchors()
-            headerView.setLeadingAnchor(guide.leadingAnchor, padding: .zero)
-            headerView.setTopAnchor(guide.topAnchor,padding: .zero)
-            headerView.setTrailingAnchor(guide.trailingAnchor,padding: .zero)
+            headerView.setAnchors()
+                .leading(guide.leadingAnchor, inset: .zero)
+                .top(guide.topAnchor,inset: .zero)
+                .trailing(guide.trailingAnchor,inset: .zero)
         }
         self.view.addSubview(mainView)
         mainView.backgroundColor = .systemBackground
-        mainView.enableAnchors()
-        mainView.setLeadingAnchor(guide.leadingAnchor, padding: .zero)
-        mainView.setTopAnchor(headerView?.bottomAnchor ?? guide.topAnchor, padding: mainViewTopPadding)
-        mainView.setTrailingAnchor(guide.trailingAnchor,padding: .zero)
-        mainView.setBottomAnchor(guide.bottomAnchor, padding: .zero)
+        mainView.setAnchors()
+            .leading(guide.leadingAnchor, inset: .zero)
+            .top(headerView?.bottomAnchor ?? guide.topAnchor, inset: mainViewTopPadding)
+            .trailing(guide.trailingAnchor,inset: .zero)
+            .bottom(guide.bottomAnchor, inset: .zero)
     }
     
     open func setupHeaderView(){

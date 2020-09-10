@@ -22,7 +22,7 @@ class BackupViewController: ModalScrollViewController, DatePickerDelegate{
         super.loadView()
         scrollView.setupVertical()
         scrollView.addSubview(stackView)
-        stackView.fillSuperview(padding: UIEdgeInsets(top: defaultInset, left: .zero, bottom: defaultInset, right: .zero))
+        stackView.fillSuperview(insets: UIEdgeInsets(top: defaultInset, left: .zero, bottom: defaultInset, right: .zero))
         stackView.setupVertical()
         startDate = GlobalData.shared.firstDayDate
         endDate = GlobalData.shared.lastDayDate
@@ -40,7 +40,7 @@ class BackupViewController: ModalScrollViewController, DatePickerDelegate{
         headerView.backgroundColor = UIColor.systemBackground
         headerView.addSubview(rightStackView)
         rightStackView.setupHorizontal(spacing: 2*defaultInset)
-        rightStackView.placeBefore(anchor: headerView.trailingAnchor, padding: defaultInsets)
+        rightStackView.placeBefore(anchor: headerView.trailingAnchor, insets: defaultInsets)
         
         let infoButton = IconButton(icon: "info.circle")
         infoButton.addTarget(self, action: #selector(showInfo), for: .touchDown)

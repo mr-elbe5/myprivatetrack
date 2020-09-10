@@ -67,7 +67,7 @@ class TextItemEditView : EntryItemEditView, UITextViewDelegate{
     }
     
     override func setLayoutConstraints(){
-        textView.placeBelow(anchor: deleteButton.bottomAnchor, padding: deleteInsets)
+        textView.placeBelow(anchor: deleteButton.bottomAnchor, insets: deleteInsets)
         textView.connectBottom(view: self)
     }
     

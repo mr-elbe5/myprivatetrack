@@ -35,11 +35,11 @@ class PhotoCaptureViewController: CameraViewController, AVCapturePhotoCaptureDel
         buttonView.backgroundColor = .black
         captureButton.addTarget(self, action: #selector(capturePhoto), for: .touchDown)
         bodyView.addSubview(captureButton)
-        captureButton.enableAnchors()
-        captureButton.setBottomAnchor(buttonView.topAnchor,padding: Statics.defaultInset)
-        captureButton.setCenterXAnchor(bodyView.centerXAnchor)
-        captureButton.setWidthAnchor(50)
-        captureButton.setHeightAnchor(50)
+        captureButton.setAnchors()
+            .bottom(buttonView.topAnchor,inset: Statics.defaultInset)
+            .centerX(bodyView.centerXAnchor)
+            .width(50)
+            .height(50)
         photoQualityControl.backgroundColor = .clear
         photoQualityControl.setTitleTextAttributes([.foregroundColor: UIColor.white, NSAttributedString.Key.font: UIFont.systemFont(ofSize: 13, weight: .regular)], for: .normal)
         photoQualityControl.selectedSegmentIndex = 1
@@ -63,7 +63,7 @@ class PhotoCaptureViewController: CameraViewController, AVCapturePhotoCaptureDel
         flashButton.setImage(UIImage(systemName: "bolt.badge.a"), for: .normal)
         flashButton.addTarget(self, action: #selector(toggleFlash), for: .touchDown)
         bottomView.addSubview(flashButton)
-        flashButton.placeBefore(anchor: cameraButton.leadingAnchor,padding: UIEdgeInsets(top: defaultInset, left: defaultInset, bottom: defaultInset, right: 2*defaultInset))
+        flashButton.placeBefore(anchor: cameraButton.leadingAnchor,insets: UIEdgeInsets(top: defaultInset, left: defaultInset, bottom: defaultInset, right: 2*defaultInset))
     }
     
     override func enableButtons(flag: Bool){

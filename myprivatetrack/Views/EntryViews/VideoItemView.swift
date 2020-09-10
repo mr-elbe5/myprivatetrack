@@ -37,7 +37,7 @@ class VideoItemView : EntryItemView{
         if !data.title.isEmpty{
             let titleView = MediaCommentLabel(text: data.title)
             addSubview(titleView)
-            titleView.placeBelow(view: videoView, padding: flatInsets)
+            titleView.placeBelow(view: videoView, insets: flatInsets)
             titleView.connectBottom(view: self)
         }
         else{
@@ -47,7 +47,7 @@ class VideoItemView : EntryItemView{
             let sv = UIStackView()
             sv.setupHorizontal(distribution: .fillEqually, spacing: 2*defaultInset)
             addSubview(sv)
-            sv.placeTopRight(padding: doubleInsets)
+            sv.placeTopRight(insets: doubleInsets)
             let viewButton = IconButton(icon: "magnifyingglass", tintColor: .systemBlue, backgroundColor: .systemBackground)
             viewButton.addTarget(self, action: #selector(viewItem), for: .touchDown)
             sv.addArrangedSubview(viewButton)
@@ -108,7 +108,7 @@ class VideoItemEditView : EntryItemEditView, UITextViewDelegate{
     }
     
     override func setLayoutConstraints(){
-        videoView.placeBelow(anchor: deleteButton.bottomAnchor, padding: deleteInsets)
+        videoView.placeBelow(anchor: deleteButton.bottomAnchor, insets: deleteInsets)
         videoView.setAspectRatioConstraint()
         titleView.placeBelow(view: videoView)
         titleView.connectBottom(view: self)

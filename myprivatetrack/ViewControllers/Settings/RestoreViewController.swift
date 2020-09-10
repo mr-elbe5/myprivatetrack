@@ -25,7 +25,7 @@ class RestoreViewController: ModalScrollViewController, DatePickerDelegate{
         super.loadView()
         scrollView.setupVertical()
         scrollView.addSubview(stackView)
-        stackView.fillSuperview(padding: UIEdgeInsets(top: defaultInset, left: .zero, bottom: defaultInset, right: .zero))
+        stackView.fillSuperview(insets: UIEdgeInsets(top: defaultInset, left: .zero, bottom: defaultInset, right: .zero))
         stackView.setupVertical()
         startDate = data.firstDayDate
         endDate = data.lastDayDate
@@ -43,7 +43,7 @@ class RestoreViewController: ModalScrollViewController, DatePickerDelegate{
         headerView.backgroundColor = UIColor.systemBackground
         headerView.addSubview(rightStackView)
         rightStackView.setupHorizontal(spacing: 2*defaultInset)
-        rightStackView.placeBefore(anchor: headerView.trailingAnchor, padding: defaultInsets)
+        rightStackView.placeBefore(anchor: headerView.trailingAnchor, insets: defaultInsets)
         
         let infoButton = IconButton(icon: "info.circle")
         infoButton.addTarget(self, action: #selector(showInfo), for: .touchDown)

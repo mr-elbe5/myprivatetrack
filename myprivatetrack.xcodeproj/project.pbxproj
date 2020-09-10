@@ -106,6 +106,7 @@
 		4ED95E1C25022D120084648A /* ImageEntryItemData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED95E1B25022D120084648A /* ImageEntryItemData.swift */; };
 		4EFDFF4624952F54001EB7C3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4EFDFF4524952F54001EB7C3 /* Assets.xcassets */; };
 		4EFDFF4924952F54001EB7C3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4EFDFF4724952F54001EB7C3 /* LaunchScreen.storyboard */; };
+		4EFE4F5B250A1505003B2D1E /* Then in Frameworks */ = {isa = PBXBuildFile; productRef = 4EFE4F5A250A1505003B2D1E /* Then */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -219,6 +220,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4E080D842508C2F0006DF6E9 /* Zip in Frameworks */,
+				4EFE4F5B250A1505003B2D1E /* Then in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -533,6 +535,7 @@
 			name = myprivatetrack;
 			packageProductDependencies = (
 				4E080D832508C2F0006DF6E9 /* Zip */,
+				4EFE4F5A250A1505003B2D1E /* Then */,
 			);
 			productName = myprivatetrack;
 			productReference = 4EFDFF3424952F53001EB7C3 /* My private track.app */;
@@ -566,6 +569,7 @@
 			mainGroup = 4EFDFF2B24952F53001EB7C3;
 			packageReferences = (
 				4E080D822508C2F0006DF6E9 /* XCRemoteSwiftPackageReference "Zip" */,
+				4EFE4F59250A1505003B2D1E /* XCRemoteSwiftPackageReference "Then" */,
 			);
 			productRefGroup = 4EFDFF3524952F53001EB7C3 /* Products */;
 			projectDirPath = "";
@@ -925,6 +929,14 @@
 				minimumVersion = 2.0.0;
 			};
 		};
+		4EFE4F59250A1505003B2D1E /* XCRemoteSwiftPackageReference "Then" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/freshOS/Then";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.1.4;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -932,6 +944,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 4E080D822508C2F0006DF6E9 /* XCRemoteSwiftPackageReference "Zip" */;
 			productName = Zip;
+		};
+		4EFE4F5A250A1505003B2D1E /* Then */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 4EFE4F59250A1505003B2D1E /* XCRemoteSwiftPackageReference "Then" */;
+			productName = Then;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

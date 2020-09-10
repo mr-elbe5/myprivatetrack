@@ -48,11 +48,11 @@ class VideoCaptureViewController: CameraViewController, AVCaptureFileOutputRecor
         recordButton.buttonColor = UIColor.red
         recordButton.addTarget(self, action: #selector(toggleRecording), for: .touchDown)
         bodyView.addSubview(recordButton)
-        recordButton.enableAnchors()
-        recordButton.setBottomAnchor(buttonView.topAnchor)
-        recordButton.setCenterXAnchor(bodyView.centerXAnchor)
-        recordButton.setWidthAnchor(50)
-        recordButton.setHeightAnchor(50)
+        recordButton.setAnchors()
+            .bottom(buttonView.topAnchor)
+            .centerX(bodyView.centerXAnchor)
+            .width(50)
+            .height(50)
     }
     
     override func enableButtons(flag: Bool){

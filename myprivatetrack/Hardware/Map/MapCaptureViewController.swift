@@ -33,13 +33,13 @@ class MapCaptureViewController: UIViewController, LocationServiceDelegate, MapVi
         self.modalPresentationStyle = .fullScreen
         bodyView.backgroundColor = .black
         view.addSubview(bodyView)
-        bodyView.fillSafeAreaOf(view: view, padding: .zero)
+        bodyView.fillSafeAreaOf(view: view, insets: .zero)
         bodyView.addSubview(mapView)
         mapView.setupView()
         if let loc = LocationService.shared.getLocation(){
             mapView.setLocation(location: loc)
         }
-        mapView.placeBelow(anchor: bodyView.topAnchor, padding: .zero)
+        mapView.placeBelow(anchor: bodyView.topAnchor, insets: .zero)
         mapView.delegate = self
         buttonView.backgroundColor = .black
         bodyView.addSubview(buttonView)
@@ -53,16 +53,16 @@ class MapCaptureViewController: UIViewController, LocationServiceDelegate, MapVi
         cancelButton.setTitle("back".localize(), for: .normal)
         cancelButton.addTarget(self, action: #selector(cancel), for: .touchDown)
         buttonView.addSubview(cancelButton)
-        cancelButton.placeAfter(anchor: buttonView.leadingAnchor, padding: Statics.defaultInsets)
+        cancelButton.placeAfter(anchor: buttonView.leadingAnchor, insets: Statics.defaultInsets)
         
         captureButton.addTarget(self, action: #selector(save), for: .touchDown)
         mapView.addSubview(captureButton)
         captureButton.isEnabled = false
-        captureButton.enableAnchors()
-        captureButton.setBottomAnchor(buttonView.topAnchor,padding: Statics.defaultInset)
-        captureButton.setCenterXAnchor(mapView.centerXAnchor)
-        captureButton.setWidthAnchor(50)
-        captureButton.setHeightAnchor(50)
+        captureButton.setAnchors()
+            .bottom(buttonView.topAnchor,inset: Statics.defaultInset)
+            .centerX(mapView.centerXAnchor)
+            .width(50)
+            .height(50)
         
         mapTypeButton.addTarget(self, action: #selector(toggleMapType), for: .touchDown)
         buttonView.addSubview(mapTypeButton)

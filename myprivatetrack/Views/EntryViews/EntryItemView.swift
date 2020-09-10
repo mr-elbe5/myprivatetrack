@@ -37,9 +37,9 @@ class EntryItemEditView : UIView{
         deleteButton.tintColor = UIColor.systemRed
         deleteButton.addTarget(self, action: #selector(deleteItem), for: .touchDown)
         addSubview(deleteButton)
-        deleteButton.enableAnchors()
-        deleteButton.setTopAnchor(topAnchor, padding: defaultInset / 2)
-        deleteButton.setTrailingAnchor(trailingAnchor, padding: Statics.defaultInset)
+        deleteButton.setAnchors()
+            .top(topAnchor, inset: defaultInset / 2)
+            .trailing(trailingAnchor, inset: Statics.defaultInset)
     }
     
     func setupSubviews(){

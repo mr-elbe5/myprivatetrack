@@ -33,7 +33,7 @@ class AudioItemView : EntryItemView, AVAudioPlayerDelegate{
         if !data.title.isEmpty{
             let titleView = MediaCommentLabel(text: data.title)
             addSubview(titleView)
-            titleView.placeBelow(view: audioView, padding: flatInsets)
+            titleView.placeBelow(view: audioView, insets: flatInsets)
             titleView.connectBottom(view: self)
         }
         else{
@@ -86,7 +86,7 @@ class AudioItemEditView : EntryItemEditView, UITextViewDelegate, AVAudioRecorder
     }
     
     override func setLayoutConstraints(){
-        audioView.placeBelow(anchor: deleteButton.bottomAnchor, padding: deleteInsets)
+        audioView.placeBelow(anchor: deleteButton.bottomAnchor, insets: deleteInsets)
         audioView.layoutView()
         titleView.placeBelow(view: audioView)
         titleView.connectBottom(view: self)

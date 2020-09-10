@@ -36,7 +36,7 @@ class TimelineEntryCell: UITableViewCell, PhotoItemDelegate, VideoItemDelegate{
         cellBody.backgroundColor = .systemGray6
         cellBody.layer.cornerRadius = 5
         addSubview(cellBody)
-        cellBody.fillSuperview(padding: defaultInsets)
+        cellBody.fillSuperview(insets: defaultInsets)
         accessoryType = .none
     }
     
@@ -51,13 +51,13 @@ class TimelineEntryCell: UITableViewCell, PhotoItemDelegate, VideoItemDelegate{
             timeLabel.text = entry!.creationDate.timeString()
             timeLabel.textAlignment = .center
             cellBody.addSubview(timeLabel)
-            timeLabel.placeBelow(anchor: cellBody.topAnchor, padding: defaultInsets)
+            timeLabel.placeBelow(anchor: cellBody.topAnchor, insets: defaultInsets)
             var lastView : UIView = timeLabel
             if entry!.saveLocation, let loc = entry!.location{
                 let locationButton = TextButton(text: loc.asString)
                 locationButton.addTarget(self,action: #selector(showInMap), for: .touchDown)
                 cellBody.addSubview(locationButton)
-                locationButton.placeBelow(anchor: lastView.bottomAnchor, padding: defaultInsets)
+                locationButton.placeBelow(anchor: lastView.bottomAnchor, insets: defaultInsets)
                 lastView = locationButton
                 let desc = entry!.locationDescription
                 if !desc.isEmpty{
@@ -65,7 +65,7 @@ class TimelineEntryCell: UITableViewCell, PhotoItemDelegate, VideoItemDelegate{
                     locationDescriptionLabel.text = desc
                     locationDescriptionLabel.textAlignment = .center
                     cellBody.addSubview(locationDescriptionLabel)
-                    locationDescriptionLabel.placeBelow(anchor: lastView.bottomAnchor, padding: defaultInsets)
+                    locationDescriptionLabel.placeBelow(anchor: lastView.bottomAnchor, insets: defaultInsets)
                     lastView = locationDescriptionLabel
                 }
                 if entry!.hasMapSection{
@@ -81,24 +81,23 @@ class TimelineEntryCell: UITableViewCell, PhotoItemDelegate, VideoItemDelegate{
                 editButton.tintColor = UIColor.systemBlue
                 editButton.addTarget(self, action: #selector(editEntry), for: .touchDown)
                 cellBody.addSubview(editButton)
-                editButton.enableAnchors()
-                editButton.setTopAnchor(cellBody.topAnchor, padding: defaultInset)
+                editButton.setAnchors()
+                editButton.top(cellBody.topAnchor, inset: defaultInset)
                 
                 let deleteButton = IconButton(icon: "xmark.circle")
                 deleteButton.tintColor = UIColor.systemRed
                 deleteButton.addTarget(self, action: #selector(deleteEntry), for: .touchDown)
                 cellBody.addSubview(deleteButton)
-                deleteButton.enableAnchors()
-                deleteButton.setTopAnchor(cellBody.topAnchor, padding: defaultInset)
-                
-                deleteButton.setTrailingAnchor(cellBody.trailingAnchor, padding: defaultInset)
-                editButton.setTrailingAnchor(deleteButton.leadingAnchor, padding: defaultInset)
+                deleteButton.setAnchors()
+                    .top(cellBody.topAnchor, inset: defaultInset)
+                    .trailing(cellBody.trailingAnchor, inset: defaultInset)
+                editButton.trailing(deleteButton.leadingAnchor, inset: defaultInset)
             }
             else{
                 let viewButton = IconButton(icon: "magnifyingglass", tintColor: .systemBlue)
                 viewButton.addTarget(self, action: #selector(viewEntry), for: .touchDown)
                 cellBody.addSubview(viewButton)
-                viewButton.placeTopRight(padding: doubleInsets)
+                viewButton.placeTopRight(insets: doubleInsets)
             }
             
             for item in entry!.items{
@@ -106,30 +105,30 @@ class TimelineEntryCell: UITableViewCell, PhotoItemDelegate, VideoItemDelegate{
                 case .text:
                     let itemView = TextItemView.fromData(data: item.data as! TextData)
                     cellBody.addSubview(itemView)
-                    itemView.placeBelow(view: lastView, padding: defaultInsets)
+                    itemView.placeBelow(view: lastView, insets: defaultInsets)
                     lastView = itemView
                     break
                 case .audio:
                     let itemView = AudioItemView.fromData(data: item.data as! AudioData)
                     cellBody.addSubview(itemView)
-                    itemView.placeBelow(view: lastView, padding: defaultInsets)
+                    itemView.placeBelow(view: lastView, insets: defaultInsets)
                     lastView = itemView
                     break
                 case .photo:
                     let itemView = PhotoItemView.fromData(data: item.data as! PhotoData, delegate: self)
                     cellBody.addSubview(itemView)
-                    itemView.placeBelow(view: lastView, padding: defaultInsets)
+                    itemView.placeBelow(view: lastView, insets: defaultInsets)
                     lastView = itemView
                     break
                 case .video:
                     let itemView = VideoItemView.fromData(data: item.data as! VideoData, delegate: self)
                     cellBody.addSubview(itemView)
-                    itemView.placeBelow(view: lastView, padding: defaultInsets)
+                    itemView.placeBelow(view: lastView, insets: defaultInsets)
                     lastView = itemView
                     break
                 }
             }
-            lastView.connectBottom(view: cellBody, padding: defaultInset)
+            lastView.connectBottom(view: cellBody, insets: defaultInset)
         }
     }
     

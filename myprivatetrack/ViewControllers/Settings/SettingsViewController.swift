@@ -55,7 +55,7 @@ class SettingsViewController: EditViewController, UIDocumentPickerDelegate, UIIm
         headerView.backgroundColor = UIColor.systemBackground
         headerView.addSubview(rightStackView)
         rightStackView.setupHorizontal(spacing: 2*defaultInset)
-        rightStackView.placeBefore(anchor: headerView.trailingAnchor, padding: defaultInsets)
+        rightStackView.placeBefore(anchor: headerView.trailingAnchor, insets: defaultInsets)
         
         let infoButton = IconButton(icon: "info.circle")
         infoButton.addTarget(self, action: #selector(showInfo), for: .touchDown)

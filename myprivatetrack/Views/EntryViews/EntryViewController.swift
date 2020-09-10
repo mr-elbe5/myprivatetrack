@@ -18,7 +18,7 @@ class EntryViewController: ModalScrollViewController, PhotoItemDelegate, VideoIt
         super.loadView()
         scrollView.setupVertical()
         scrollView.addSubview(stackView)
-        stackView.fillSuperview(padding: UIEdgeInsets(top: defaultInset, left: .zero, bottom: defaultInset, right: .zero))
+        stackView.fillSuperview(insets: UIEdgeInsets(top: defaultInset, left: .zero, bottom: defaultInset, right: .zero))
         stackView.setupVertical()
         let timeLabel = InfoHeader(text: entry.creationDate.dateTimeString())
         timeLabel.label.textAlignment = .center

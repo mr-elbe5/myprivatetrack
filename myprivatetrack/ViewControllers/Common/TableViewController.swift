@@ -19,17 +19,17 @@ open class TableViewController : UIViewController, UITableViewDelegate, UITableV
         setupHeaderView()
         if let headerView = headerView{
             view.addSubview(headerView)
-            headerView.enableAnchors()
-            headerView.setLeadingAnchor(guide.leadingAnchor, padding: .zero)
-            headerView.setTopAnchor(guide.topAnchor,padding: .zero)
-            headerView.setTrailingAnchor(guide.trailingAnchor,padding: .zero)
+            headerView.setAnchors()
+                .leading(guide.leadingAnchor, inset: .zero)
+                .top(guide.topAnchor,inset: .zero)
+                .trailing(guide.trailingAnchor,inset: .zero)
         }
         view.addSubview(tableView)
-        tableView.enableAnchors()
-        tableView.setLeadingAnchor(guide.leadingAnchor, padding: .zero)
-        tableView.setTopAnchor(headerView?.bottomAnchor ?? guide.topAnchor, padding: 1)
-        tableView.setTrailingAnchor(guide.trailingAnchor,padding: .zero)
-        tableView.setBottomAnchor(guide.bottomAnchor, padding: .zero)
+        tableView.setAnchors()
+            .leading(guide.leadingAnchor, inset: .zero)
+            .top(headerView?.bottomAnchor ?? guide.topAnchor, inset: 1)
+            .trailing(guide.trailingAnchor,inset: .zero)
+            .bottom(guide.bottomAnchor, inset: .zero)
         tableView.delegate = self
         tableView.dataSource = self
     }

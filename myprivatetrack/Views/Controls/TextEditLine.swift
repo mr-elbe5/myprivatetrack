@@ -28,7 +28,7 @@ public class TextEditLine : UIView, UITextFieldDelegate{
         addSubview(textField)
         label.placeAfter(anchor: leadingAnchor)
         textField.placeBefore(anchor: trailingAnchor)
-        textField.setLeadingAnchor(centerXAnchor)
+        textField.leading(centerXAnchor)
     }
     
 }

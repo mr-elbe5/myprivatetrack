@@ -88,9 +88,9 @@ class EditEntryViewController: EditViewController, PhotoCaptureDelegate, VideoCa
         headerView.addSubview(leftStackView)
         headerView.addSubview(rightStackView)
         leftStackView.setupHorizontal(spacing: 2*defaultInset)
-        leftStackView.placeAfter(anchor: headerView.leadingAnchor, padding: defaultInsets)
+        leftStackView.placeAfter(anchor: headerView.leadingAnchor, insets: defaultInsets)
         rightStackView.setupHorizontal(spacing: 2*defaultInset)
-        rightStackView.placeBefore(anchor: headerView.trailingAnchor, padding: defaultInsets)
+        rightStackView.placeBefore(anchor: headerView.trailingAnchor, insets: defaultInsets)
         
         addTextButton.addTarget(self, action: #selector(addText), for: .touchDown)
         leftStackView.addArrangedSubview(addTextButton)

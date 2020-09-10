@@ -51,7 +51,7 @@ class PhotoItemView : EntryItemView{
             let sv = UIStackView()
             sv.setupHorizontal(distribution: .fillEqually, spacing: 2*defaultInset)
             addSubview(sv)
-            sv.placeTopRight(padding: doubleInsets)
+            sv.placeTopRight(insets: doubleInsets)
             let viewButton = IconButton(icon: "magnifyingglass", tintColor: .systemBlue, backgroundColor: .systemBackground)
             viewButton.addTarget(self, action: #selector(viewItem), for: .touchDown)
             sv.addArrangedSubview(viewButton)
@@ -138,9 +138,9 @@ class PhotoItemEditView : EntryItemEditView, UITextViewDelegate{
     }
     
     override func setLayoutConstraints(){
-        imageView.placeBelow(anchor: deleteButton.bottomAnchor, padding: deleteInsets)
+        imageView.placeBelow(anchor: deleteButton.bottomAnchor, insets: deleteInsets)
         imageView.setAspectRatioConstraint()
-        titleView.placeBelow(view: imageView, padding: flatInsets)
+        titleView.placeBelow(view: imageView, insets: flatInsets)
         titleView.connectBottom(view: self)
     }
     

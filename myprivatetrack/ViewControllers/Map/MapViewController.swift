@@ -22,19 +22,19 @@ class MapViewController: UIViewController, MKMapViewDelegate, LocationServiceDel
         LocationService.shared.checkRunning()
         let guide = view.safeAreaLayoutGuide
         view.addSubview(headerView)
-        headerView.enableAnchors()
-        headerView.setLeadingAnchor(guide.leadingAnchor, padding: .zero)
-        headerView.setTopAnchor(guide.topAnchor,padding: .zero)
-        headerView.setTrailingAnchor(guide.trailingAnchor,padding: .zero)
+        headerView.setAnchors()
+            .leading(guide.leadingAnchor, inset: .zero)
+            .top(guide.topAnchor,inset: .zero)
+            .trailing(guide.trailingAnchor,inset: .zero)
         let leftStackView = UIStackView()
         let rightStackView = UIStackView()
         headerView.backgroundColor = UIColor.systemBackground
         headerView.addSubview(leftStackView)
         headerView.addSubview(rightStackView)
         leftStackView.setupHorizontal(spacing: defaultInset)
-        leftStackView.placeAfter(anchor: headerView.leadingAnchor, padding: defaultInsets)
+        leftStackView.placeAfter(anchor: headerView.leadingAnchor, insets: defaultInsets)
         rightStackView.setupHorizontal(spacing: defaultInset)
-        rightStackView.placeBefore(anchor: headerView.trailingAnchor, padding: defaultInsets)
+        rightStackView.placeBefore(anchor: headerView.trailingAnchor, insets: defaultInsets)
         let toggleStyleButton = IconButton(icon: "map")
         toggleStyleButton.addTarget(self, action: #selector(toggleMapStyle), for: .touchDown)
         leftStackView.addArrangedSubview(toggleStyleButton)
@@ -45,11 +45,11 @@ class MapViewController: UIViewController, MKMapViewDelegate, LocationServiceDel
         mkMapView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         mkMapView.delegate = self
         view.addSubview(mkMapView)
-        mkMapView.enableAnchors()
-        mkMapView.setLeadingAnchor(guide.leadingAnchor, padding: .zero)
-        mkMapView.setTopAnchor(headerView.bottomAnchor, padding: 1)
-        mkMapView.setTrailingAnchor(guide.trailingAnchor,padding: .zero)
-        mkMapView.setBottomAnchor(guide.bottomAnchor, padding: .zero)
+        mkMapView.setAnchors()
+            .leading(guide.leadingAnchor, inset: .zero)
+            .top(headerView.bottomAnchor, inset: 1)
+            .trailing(guide.trailingAnchor,inset: .zero)
+            .bottom(guide.bottomAnchor, inset: .zero)
     }
     
     func locationDidChange(location: Location){
