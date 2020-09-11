@@ -244,7 +244,7 @@
 			path = Info;
 			sourceTree = "<group>";
 		};
-		4E2D3CBB24C5E87A00FA319C /* EntryViews */ = {
+		4E2D3CBB24C5E87A00FA319C /* EntryView */ = {
 			isa = PBXGroup;
 			children = (
 				4ED21BF924FAA39E00A6FEA3 /* AudioItemView.swift */,
@@ -257,7 +257,7 @@
 				4ED21BFC24FAA39E00A6FEA3 /* TextItemView.swift */,
 				4ED21BFA24FAA39E00A6FEA3 /* VideoItemView.swift */,
 			);
-			path = EntryViews;
+			path = EntryView;
 			sourceTree = "<group>";
 		};
 		4E2ECFD624DD9E42003FFFF1 /* Timeline */ = {
@@ -364,14 +364,14 @@
 			path = Common;
 			sourceTree = "<group>";
 		};
-		4E90CA2C249531350029E308 /* Views */ = {
+		4E90CA2C249531350029E308 /* View */ = {
 			isa = PBXGroup;
 			children = (
 				4E775B7525003475003BEC92 /* Common */,
-				4ED21BA224FAA2B800A6FEA3 /* Controls */,
-				4E2D3CBB24C5E87A00FA319C /* EntryViews */,
+				4ED21BA224FAA2B800A6FEA3 /* Control */,
+				4E2D3CBB24C5E87A00FA319C /* EntryView */,
 			);
-			path = Views;
+			path = View;
 			sourceTree = "<group>";
 		};
 		4E90CA2D249531420029E308 /* System */ = {
@@ -426,7 +426,7 @@
 			path = Device;
 			sourceTree = "<group>";
 		};
-		4ED21BA224FAA2B800A6FEA3 /* Controls */ = {
+		4ED21BA224FAA2B800A6FEA3 /* Control */ = {
 			isa = PBXGroup;
 			children = (
 				4ED21BD524FAA39300A6FEA3 /* ButtonStackView.swift */,
@@ -446,7 +446,7 @@
 				4ED21BD824FAA39300A6FEA3 /* UITextField.swift */,
 				4ED21BD624FAA39300A6FEA3 /* UITextView.swift */,
 			);
-			path = Controls;
+			path = Control;
 			sourceTree = "<group>";
 		};
 		4ED21C3624FAA8B600A6FEA3 /* Data */ = {
@@ -506,7 +506,7 @@
 				4ED21C3624FAA8B600A6FEA3 /* Data */,
 				4ED21B7B24FAA18700A6FEA3 /* Device */,
 				4E90CA2D249531420029E308 /* System */,
-				4E90CA2C249531350029E308 /* Views */,
+				4E90CA2C249531350029E308 /* View */,
 				4ED21B3424FA9A3500A6FEA3 /* ViewController */,
 				4EFDFF4A24952F54001EB7C3 /* Info.plist */,
 				4E1457A124E1C214008EC422 /* InfoPlist.strings */,
