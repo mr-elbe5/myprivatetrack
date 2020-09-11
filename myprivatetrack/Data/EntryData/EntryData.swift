@@ -39,7 +39,7 @@ class EntryData: Identifiable, Codable{
     
     public var mapSectionFileURL : URL{
         get{
-            return FileStore.getURL(dirURL: FileStore.privateURL,fileName: mapSectionFileName)
+            return FileController.getURL(dirURL: FileController.privateURL,fileName: mapSectionFileName)
         }
     }
     
@@ -53,12 +53,12 @@ class EntryData: Identifiable, Codable{
     }
     
     func hasMapSectionFile() -> Bool{
-        return hasMapSection && FileStore.fileExists(url: mapSectionFileURL)
+        return hasMapSection && FileController.fileExists(url: mapSectionFileURL)
     }
     
     func getMapSection() -> UIImage?{
         if hasMapSection{
-            if let data = FileStore.readFile(url: mapSectionFileURL){
+            if let data = FileController.readFile(url: mapSectionFileURL){
                 return UIImage(data: data)
             }
         }
@@ -67,12 +67,12 @@ class EntryData: Identifiable, Codable{
     
     func saveMapSection(uiImage: UIImage) -> Bool{
         hasMapSection = false
-        let url = FileStore.getURL(dirURL: FileStore.privateURL,fileName: mapSectionFileName)
-        if FileStore.fileExists(url: url){
-            _ = FileStore.deleteFile(url: url)
+        let url = FileController.getURL(dirURL: FileController.privateURL,fileName: mapSectionFileName)
+        if FileController.fileExists(url: url){
+            _ = FileController.deleteFile(url: url)
         }
         if let data = uiImage.jpegData(compressionQuality: 0.8){
-            if FileStore.saveFile(data: data, url: url){
+            if FileController.saveFile(data: data, url: url){
                 hasMapSection = true
                 return true
             }
@@ -81,7 +81,7 @@ class EntryData: Identifiable, Codable{
     }
     
     public func deleteMapSection(){
-        _ = FileStore.deleteFile(url: mapSectionFileURL)
+        _ = FileController.deleteFile(url: mapSectionFileURL)
     }
     
     required init(from decoder: Decoder) throws {

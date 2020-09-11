@@ -72,17 +72,17 @@ class BackupViewController: ModalScrollViewController, DatePickerDelegate{
             }
             print(fileNames)
             for name in fileNames{
-                if FileStore.fileExists(dirPath: FileStore.privatePath, fileName: name){
-                    urls.append(FileStore.getURL(dirURL: FileStore.privateURL,fileName: name))
+                if FileController.fileExists(dirPath: FileController.privatePath, fileName: name){
+                    urls.append(FileController.getURL(dirURL: FileController.privateURL,fileName: name))
                 }
                 else{
                     print("file missing: \(name)")
                 }
             }
-            let zipURL = FileStore.getURL(dirURL: FileStore.backupDirURL,fileName: zipFileName)
-            FileStore.zipFiles(sourceFiles: urls, zipURL: zipURL)
+            let zipURL = FileController.getURL(dirURL: FileController.backupDirURL,fileName: zipFileName)
+            FileController.zipFiles(sourceFiles: urls, zipURL: zipURL)
             indicator.stopAnimating()
-            if FileStore.fileExists(url: zipURL){
+            if FileController.fileExists(url: zipURL){
                 showAlert(title: "success".localize(), text: "backupSuccessInfo".localize()){
                     self.dismiss(animated: true)
                 }

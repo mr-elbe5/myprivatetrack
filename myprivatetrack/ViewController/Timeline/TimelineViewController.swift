@@ -189,7 +189,7 @@ class TimelineViewController: TableViewController, SaveEntryDelegate, EntryCellA
     func sharePhotoItem(data: PhotoData) {
         let alertController = UIAlertController(title: title, message: "shareImage".localize(), preferredStyle: .actionSheet)
         alertController.addAction(UIAlertAction(title: "imageLibrary".localize(), style: .default) { action in
-            FileStore.copyImageToLibrary(name: data.fileName, fromDir: FileStore.privateURL){ result in
+            FileController.copyImageToLibrary(name: data.fileName, fromDir: FileController.privateURL){ result in
                 DispatchQueue.main.async {
                     switch result{
                     case .success:
@@ -201,7 +201,7 @@ class TimelineViewController: TableViewController, SaveEntryDelegate, EntryCellA
             }
         })
         alertController.addAction(UIAlertAction(title: "ownDocuments".localize(), style: .default) { action in
-            if FileStore.copyFile(name: data.fileName, fromDir: FileStore.privateURL, toDir: FileStore.exportDirURL, replace: true){
+            if FileController.copyFile(name: data.fileName, fromDir: FileController.privateURL, toDir: FileController.exportDirURL, replace: true){
                 self.showAlert(title: "success".localize(), text: "photoShared".localize())
             }
             else{
@@ -222,7 +222,7 @@ class TimelineViewController: TableViewController, SaveEntryDelegate, EntryCellA
     func shareVideoItem(data: VideoData) {
         let alertController = UIAlertController(title: title, message: "shareImage".localize(), preferredStyle: .actionSheet)
         alertController.addAction(UIAlertAction(title: "imageLibrary".localize(), style: .default) { action in
-            FileStore.copyVideoToLibrary(name: data.fileName, fromDir: FileStore.privateURL){ result in
+            FileController.copyVideoToLibrary(name: data.fileName, fromDir: FileController.privateURL){ result in
                 DispatchQueue.main.async {
                     switch result{
                     case .success:
@@ -235,7 +235,7 @@ class TimelineViewController: TableViewController, SaveEntryDelegate, EntryCellA
             }
         })
         alertController.addAction(UIAlertAction(title: "ownDocuments".localize(), style: .default) { action in
-            if FileStore.copyFile(name: data.fileName, fromDir: FileStore.privateURL, toDir: FileStore.exportDirURL, replace: true){
+            if FileController.copyFile(name: data.fileName, fromDir: FileController.privateURL, toDir: FileController.exportDirURL, replace: true){
                 self.showAlert(title: "success".localize(), text: "videoShared".localize())
             }
             else{

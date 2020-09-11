@@ -14,12 +14,12 @@ class GlobalData: Identifiable, Codable{
     public static var shared = GlobalData()
     
     public static func load(){
-        shared = DataStore.shared.load(forKey: .data) ?? GlobalData()
+        shared = DataController.shared.load(forKey: .data) ?? GlobalData()
     }
     
     public static func readFromTemporaryFile() -> GlobalData{
-        let url = FileStore.getURL(dirURL: FileStore.temporaryURL,fileName: GlobalData.temporaryFileName)
-        let storeString = FileStore.readTextFile(url: url)
+        let url = FileController.getURL(dirURL: FileController.temporaryURL,fileName: GlobalData.temporaryFileName)
+        let storeString = FileController.readTextFile(url: url)
         return GlobalData.fromJSON(encoded: storeString!) ?? GlobalData()
     }
     
@@ -85,7 +85,7 @@ class GlobalData: Identifiable, Codable{
     }
     
     func save(){
-        DataStore.shared.save(forKey: .data, value: self)
+        DataController.shared.save(forKey: .data, value: self)
     }
     
     func getCopy(fromDate: Date, toDate: Date) -> GlobalData{
@@ -109,8 +109,8 @@ class GlobalData: Identifiable, Codable{
     
     func saveAsTemporaryFile() -> URL? {
         let storeString = self.toJSON()
-        let url = FileStore.getURL(dirURL: FileStore.temporaryURL,fileName: GlobalData.temporaryFileName)
-        return FileStore.saveFile(text: storeString, url: url) ? url : nil
+        let url = FileController.getURL(dirURL: FileController.temporaryURL,fileName: GlobalData.temporaryFileName)
+        return FileController.saveFile(text: storeString, url: url) ? url : nil
     }
     
     func deleteEntry(entry: EntryData){

@@ -18,35 +18,35 @@ class FileEntryItemData: EntryItemData{
     
     var filePath : String{
         get{
-            return FileStore.getPath(dirPath: FileStore.privatePath,fileName: fileName)
+            return FileController.getPath(dirPath: FileController.privatePath,fileName: fileName)
         }
     }
     
     var fileURL : URL{
         get{
-            return FileStore.getURL(dirURL: FileStore.privateURL,fileName: fileName)
+            return FileController.getURL(dirURL: FileController.privateURL,fileName: fileName)
         }
     }
     
     func getFile() -> Data?{
-        let url = FileStore.getURL(dirURL: FileStore.privateURL,fileName: fileName)
-        return FileStore.readFile(url: url)
+        let url = FileController.getURL(dirURL: FileController.privateURL,fileName: fileName)
+        return FileController.readFile(url: url)
     }
     
     func saveFile(data: Data){
-        if !FileStore.fileExists(dirPath: FileStore.privatePath, fileName: fileName){
-            let url = FileStore.getURL(dirURL: FileStore.privateURL,fileName: fileName)
-            _ = FileStore.saveFile(data: data, url: url)
+        if !FileController.fileExists(dirPath: FileController.privatePath, fileName: fileName){
+            let url = FileController.getURL(dirURL: FileController.privateURL,fileName: fileName)
+            _ = FileController.saveFile(data: data, url: url)
         }
     }
     
     func fileExists() -> Bool{
-        return FileStore.fileExists(dirPath: FileStore.privatePath, fileName: fileName)
+        return FileController.fileExists(dirPath: FileController.privatePath, fileName: fileName)
     }
     
     override func prepareDelete(){
-        if FileStore.fileExists(dirPath: FileStore.privatePath, fileName: fileName){
-            if !FileStore.deleteFile(dirURL: FileStore.privateURL, fileName: fileName){
+        if FileController.fileExists(dirPath: FileController.privatePath, fileName: fileName){
+            if !FileController.deleteFile(dirURL: FileController.privateURL, fileName: fileName){
                 print("error: could not delete file: \(fileName)")
             }
         }

@@ -11,9 +11,9 @@ import Photos
 import Compression
 import Zip
 
-public class FileStore {
+public class FileController {
     
-    public static var shared = FileStore()
+    public static var shared = FileController()
     
     static let tempDir = NSTemporaryDirectory()
     

@@ -184,8 +184,8 @@ class VideoCaptureViewController: CameraViewController, AVCaptureFileOutputRecor
         if success {
             let videoData = VideoData()
             if let fileData = FileManager.default.contents(atPath: tmpFilePath){
-                let url = FileStore.getURL(dirURL: FileStore.privateURL,fileName: videoData.fileName)
-                _ = FileStore.saveFile(data: fileData, url: url)
+                let url = FileController.getURL(dirURL: FileController.privateURL,fileName: videoData.fileName)
+                _ = FileController.saveFile(data: fileData, url: url)
                 cleanup()
                 delegate?.videoCaptured(data: videoData)
                 self.dismiss(animated: true)

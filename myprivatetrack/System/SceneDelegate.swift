@@ -12,7 +12,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     var window: UIWindow?
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
-        FileStore.initialize()
+        FileController.initialize()
         Settings.load()
         GlobalData.load()
         guard let windowScene = (scene as? UIWindowScene) else { return }

@@ -98,11 +98,11 @@ class SettingsViewController: EditViewController, UIDocumentPickerDelegate, UIIm
     public func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]) {
         guard let imageURL = info[.imageURL] as? URL else {return}
         let imageName = Statics.backgroundName + imageURL.pathExtension
-        let url = FileStore.getURL(dirURL: FileStore.privateURL, fileName: imageName)
-        if FileStore.fileExists(url: url){
-            _ = FileStore.deleteFile(url: url)
+        let url = FileController.getURL(dirURL: FileController.privateURL, fileName: imageName)
+        if FileController.fileExists(url: url){
+            _ = FileController.deleteFile(url: url)
         }
-        if FileStore.copyFile(fromURL: imageURL, toURL: url){
+        if FileController.copyFile(fromURL: imageURL, toURL: url){
             Settings.shared.backgroundName = imageName
             Settings.shared.save()
             MainTabController.getTimelineViewController()?.updateBackground()
@@ -131,7 +131,7 @@ class SettingsViewController: EditViewController, UIDocumentPickerDelegate, UIIm
     @objc func resetData(){
         showApprove(title: "reallyDelete".localize(), text: "deleteApproveInfo".localize()){
             GlobalData.shared.reset()
-            FileStore.deleteAllFiles(dirURL: FileStore.privateURL)
+            FileController.deleteAllFiles(dirURL: FileController.privateURL)
             if let timelineController = MainTabController.getTimelineViewController(){
                 timelineController.setNeedsUpdate()
             }
@@ -154,21 +154,21 @@ class SettingsViewController: EditViewController, UIDocumentPickerDelegate, UIIm
             }
             print(fileNames)
             for name in fileNames{
-                if FileStore.fileExists(dirPath: FileStore.privatePath, fileName: name){
-                    urls.append(FileStore.getURL(dirURL: FileStore.privateURL,fileName: name))
+                if FileController.fileExists(dirPath: FileController.privatePath, fileName: name){
+                    urls.append(FileController.getURL(dirURL: FileController.privateURL,fileName: name))
                 }
                 else{
                     print("file missing: \(name)")
                 }
             }
-            let zipURL = FileStore.getURL(dirURL: FileStore.backupDirURL,fileName: zipFileName)
-            if FileStore.fileExists(url: zipURL){
-                _ = FileStore.deleteFile(url: zipURL)
+            let zipURL = FileController.getURL(dirURL: FileController.backupDirURL,fileName: zipFileName)
+            if FileController.fileExists(url: zipURL){
+                _ = FileController.deleteFile(url: zipURL)
             }
-            FileStore.zipFiles(sourceFiles: urls, zipURL: zipURL)
+            FileController.zipFiles(sourceFiles: urls, zipURL: zipURL)
             DispatchQueue.main.async{
                 Indicator.shared.hide()
-                if FileStore.fileExists(url: zipURL){
+                if FileController.fileExists(url: zipURL){
                     self.showAlert(title: "success".localize(), text: "backupSuccessInfo".localize()){
                         self.dismiss(animated: true)
                     }
@@ -188,7 +188,7 @@ class SettingsViewController: EditViewController, UIDocumentPickerDelegate, UIIm
     @objc func restoreData(){
         let filePicker = UIDocumentPickerViewController(documentTypes: ["com.pkware.zip-archive"], in: .open)
         filePicker.allowsMultipleSelection = false
-        filePicker.directoryURL = FileStore.backupDirURL
+        filePicker.directoryURL = FileController.backupDirURL
         filePicker.delegate = self
         filePicker.modalPresentationStyle = .fullScreen
         self.pickerType = .backup
@@ -207,17 +207,17 @@ class SettingsViewController: EditViewController, UIDocumentPickerDelegate, UIIm
     
     func backupPicked(didPickDocumentsAt urls: [URL]) {
         if let zipURL = urls.first{
-            if !FileStore.fileExists(url: zipURL){
+            if !FileController.fileExists(url: zipURL){
                 print("no import file")
             }else{
                 DispatchQueue.main.async{
                     Indicator.shared.show()
                 }
                 DispatchQueue.global(qos: .userInitiated).async{
-                    FileStore.deleteAllFiles(dirURL: FileStore.temporaryURL)
-                    FileStore.unzipDirectory(zipURL: zipURL, destinationURL: FileStore.temporaryURL)
+                    FileController.deleteAllFiles(dirURL: FileController.temporaryURL)
+                    FileController.unzipDirectory(zipURL: zipURL, destinationURL: FileController.temporaryURL)
                     let data = GlobalData.readFromTemporaryFile()
-                    let fileNames = FileStore.listAllFiles(dirPath: FileStore.temporaryPath)
+                    let fileNames = FileController.listAllFiles(dirPath: FileController.temporaryPath)
                     DispatchQueue.main.async{
                         Indicator.shared.hide()
                         let importViewController = RestoreViewController()

@@ -7,7 +7,7 @@
 
 import Foundation
 
-public class DataStore{
+public class DataController{
     
     public enum StoreKey: String, CaseIterable {
         case settings
@@ -15,7 +15,7 @@ public class DataStore{
         case user
     }
     
-    public static var shared = DataStore()
+    public static var shared = DataController()
     
     let store: UserDefaults
     

@@ -14,7 +14,7 @@ class Settings: Identifiable, Codable{
     public static var shared = Settings()
     
     public static func load(){
-        Settings.shared = DataStore.shared.load(forKey: .settings) ?? Settings()
+        Settings.shared = DataController.shared.load(forKey: .settings) ?? Settings()
     }
     
     enum CodingKeys: String, CodingKey {
@@ -66,15 +66,15 @@ class Settings: Identifiable, Codable{
     }
     
     func save(){
-        DataStore.shared.save(forKey: .settings, value: self)
+        DataController.shared.save(forKey: .settings, value: self)
     }
     
     var backgroundImage : UIImage?{
         get{
             if let name = backgroundName{
-                let url = FileStore.getURL(dirURL: FileStore.privateURL, fileName: name)
-                if FileStore.fileExists(url: url){
-                    if let data = FileStore.readFile(url: url){
+                let url = FileController.getURL(dirURL: FileController.privateURL, fileName: name)
+                if FileController.fileExists(url: url){
+                    if let data = FileController.readFile(url: url){
                         return UIImage(data: data)
                     }
                 }
