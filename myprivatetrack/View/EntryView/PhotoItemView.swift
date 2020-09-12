@@ -101,9 +101,7 @@ class PhotoItemEditView : EntryItemEditView, UITextViewDelegate{
     
     static func fromData(data : PhotoData)  -> PhotoItemEditView{
         let editView = PhotoItemEditView()
-        editView.setupSubviews()
-        editView.setupData(data: data)
-        editView.setLayoutConstraints()
+        editView.setupView(data: data)
         return editView
     }
     
@@ -119,9 +117,12 @@ class PhotoItemEditView : EntryItemEditView, UITextViewDelegate{
     
     var imageView = UIImageView()
     var titleView = TextEditArea()
-
-    override func setupSubviews(){
-        addTopControl()
+    
+    private func setupView(data: PhotoData){
+        self.photoData = data
+        imageView.image = data.getImage()
+        titleView.setText(data.title)
+        let deleteButton = addDeleteButton()
         imageView.setDefaults()
         imageView.setRoundedBorders()
         addSubview(imageView)
@@ -129,15 +130,6 @@ class PhotoItemEditView : EntryItemEditView, UITextViewDelegate{
         titleView.delegate = self
         addSubview(titleView)
         titleView.setKeyboardToolbar()
-    }
-    
-    func setupData(data: PhotoData){
-        self.photoData = data
-        imageView.image = data.getImage()
-        titleView.text = data.title
-    }
-    
-    override func setLayoutConstraints(){
         imageView.placeBelow(anchor: deleteButton.bottomAnchor, insets: deleteInsets)
         imageView.setAspectRatioConstraint()
         titleView.placeBelow(view: imageView, insets: flatInsets)

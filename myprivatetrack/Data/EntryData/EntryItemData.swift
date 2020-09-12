@@ -16,6 +16,11 @@ enum EntryItemType: String, Codable{
 
 class EntryItemData: Identifiable, Codable{
     
+    private enum EntryItemCodingKeys: CodingKey{
+        case id
+        case creationDate
+    }
+    
     public var id: UUID
     public var creationDate: Date
     
@@ -33,6 +38,18 @@ class EntryItemData: Identifiable, Codable{
         creationDate = Date()
     }
     
+    required init(from decoder: Decoder) throws {
+        let values = try decoder.container(keyedBy: EntryItemCodingKeys.self)
+        id = try values.decode(UUID.self, forKey: .id)
+        creationDate = try values.decode(Date.self, forKey: .creationDate)
+    }
+    
+    func encode(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: EntryItemCodingKeys.self)
+        try container.encode(id, forKey: .id)
+        try container.encode(creationDate, forKey: .creationDate)
+    }
+    
     func prepareDelete(){
     }
     
@@ -48,28 +65,20 @@ class EntryItemData: Identifiable, Codable{
 class EntryItem : Identifiable, Codable{
     
     private enum CodingKeys: CodingKey{
-        case id
-        case creationDate
         case type
         case item
     }
     
-    var id: UUID
-    var creationDate: Date
     var type : EntryItemType
     var data : EntryItemData
     
     init(item: EntryItemData){
-        id = UUID()
-        creationDate = Date()
         self.type = item.type
         self.data = item
     }
     
     required init(from decoder: Decoder) throws {
         let values = try decoder.container(keyedBy: CodingKeys.self)
-        id = try values.decode(UUID.self, forKey: .id)
-        creationDate = try values.decode(Date.self, forKey: .creationDate)
         type = try values.decode(EntryItemType.self, forKey: .type)
         switch type{
         case .text:
@@ -89,8 +98,6 @@ class EntryItem : Identifiable, Codable{
     
     func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
-        try container.encode(id, forKey: .id)
-        try container.encode(creationDate, forKey: .creationDate)
         try container.encode(type, forKey: .type)
         try container.encode(data, forKey: .item)
     }

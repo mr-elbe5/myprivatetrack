@@ -282,7 +282,7 @@ public class FileController {
     static public func zipFiles(sourceFiles: [URL], zipURL: URL){
         do {
             try Zip.zipFiles(paths: sourceFiles, zipFilePath: zipURL, password: nil, progress: { (progress) -> () in
-                print(progress)
+                //print(progress)
             })
         }
         catch {
@@ -293,7 +293,7 @@ public class FileController {
     static public func unzipDirectory(zipURL: URL, destinationURL: URL){
         do {
             try Zip.unzipFile(zipURL, destination: destinationURL, overwrite: true, password: nil, progress: { (progress) -> () in
-                print(progress)
+                //print(progress)
             })
         }
         catch {

@@ -50,6 +50,7 @@
 "locationNotAuthorized"="Die App darf deinen Standort nicht feststellen. Bitte ändere die entsprechenden Einstellungen.";
 "mapInfoHeader"="Kartenansicht";
 "map"="Karte";
+"mapComment"="Kommentar zur Karte";
 "mapStartSize"="Anfangsgröße für Kartensnapshots";
 "mapTopInfo"="Die Kartenansicht zeigt alle Einträge, deren Position gespeichert wurde. Die Einträge werden duch eine Nadel dargestellt. Durch Antippen der Nadel wird der gesamte Eintrag angezeigt.";
 "media"="Medien";
@@ -74,13 +75,16 @@
 "privacyInfoText6"="Der Code dieser App ist bei Github unter https://github.com/mr-elbe5/myprivatetrack.git offengelegt.";
 "quality"="Qualität";
 "quality"="Qualität";
+"readError"="Die Datei konnte nicht gelesen werden.";
 "reallyDelete"="Wirklich alle Daten löschen?";
+"rejectedError"="Diese Aktion wurde nicht autorisiert.";
 "reset" = "Zurücksetzen";
 "restore"="Wiederherstellen";
 "restoreData"="Einträge wiederherstellen";
 "restoreInfo"="Du kannst den ersten und letzten Tag für die Wiederherstellung wählen. Nach der Auswahl der Tage werden sie zu den bestehenden Tagen hinzugefügt oder mit ihnen zusammengelegt.";
 "restore"="Wiederherstellen";
 "save" = "Speichern";
+"saveError"="Die Datei konnte nicht gespeichert werden.";
 "saveLocation"="Position speichern";
 "selectBackground"="Hintergrundbild wählen";
 "settingsBackupInfo"="Mit 'Sichern' kannst du deine Einträge und Medien als zip-Datei sichern (alle oder für einen bestimmten Zeitraum). Du kannst diese Dateien mit einem Passwort schützen.";
@@ -94,6 +98,7 @@
 "settingsUseLocationInfo"="Wenn du keine Standortbestimmung benutzt, erhalten deine Einträge keine Position und du kannst keine Karten-Schnappschuss machen.";
 "shareImage"="Bild kopieren";
 "small"="klein";
+"snapshotError"="Die Karte konnte nicht gespeichert werden.";
 "south"="Süd";
 "speed"="Geschwindigkeit";
 "speed"="Geschwindigkeit";
@@ -102,7 +107,7 @@
 "timelineAudioIconInfo"="Mit diesem Icon startest du einen neuen Eintrag, der mit dem Aufnehmen eines Audios beginnt.";
 "timelineDeleteIconInfo"="Mit diesem Icon löschst du den Eintrag. Vorsicht! Diese Aktion kann nicht rückgängig gemacht werden!";
 "timelineDetailIconInfo"="Mit diesem Icon bekommst du die Detailansicht des Eintrags oder eines seiner Elemente.";
-"timelineEditIconInfo"="Mit diesem Icon editierst du den Eintrag wie bei der Erstellung.";
+"timelineEditIconInfo"="Mit diesem Icon editierst du den Eintrag durch das Hinzufügen neuer Elemente wie nachträglicher Kommentare.";
 "timelineEditInfo"="Mit dem rechten Bleistiftsymbol kannst du zwischen Anzeige- und Editiermodus wechseln. Im Editiermodus erscheinen zwei Icons bei jedem Eintrag:";
 "timelineEmptyIconInfo"="Mit diesem Icon startest du einen leeren neuen Eintrag.";
 "timelineEntryInfoHeader"="Einträge";
@@ -116,8 +121,10 @@
 "timelineTextIconInfo"="Mit diesem Icon startest du einen neuen Eintrag, der mit dem Eingeben eines Textes beginnt.";
 "timelineTopInfo"="Die Tagesansicht zeigt alle Einträge nach Tag und Zeit sortiert. Durch Antippen der linken Icons kannst du einen neuen Eintrag erzeugen, der mit dem jeweiligen Typ startet : leer, Text, Bild, Audio oder Video. Mit dem rechten Bleistift-Icon kannst du zwischen Anzeige- und Editiermodus wechseln (siehe unten).";
 "timelineVideoIconInfo"="Mit diesem Icon startest du einen neuen Eintrag, der mit dem Aufnehmen eines Videos beginnt.";
+"timeoutError"="A time out has occurred.";
 "title"="Titel";
 "toDate" = "Bis Datum";
+"unexpectedError"="Ein unerwarteter Fehler ist aufgetreten.";
 "useLocation"="Standortbestimmung benutzen";
 "videoNotAuthorized"="Die Nutzung der Kamera oder des Mikrofons ist nicht erlaubt. Bitte ändere die entsprechenden Einstellungen.";
 "videoShared"="Video wurde kopiert.";

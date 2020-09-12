@@ -79,7 +79,7 @@ class GlobalData: Identifiable, Codable{
     }
     
     func addDay(day: DayData){
-        print("adding with date \(day.date.dateString())")
+        //print("adding with date \(day.date.dateString())")
         days.append(day)
         dayMap[day.date] = day
     }

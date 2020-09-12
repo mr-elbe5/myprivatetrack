@@ -25,10 +25,61 @@ class MapItemView : EntryItemView{
         imageView.image = data.getMapSection()
         imageView.placeBelow(anchor: topAnchor)
         imageView.setAspectRatioConstraint()
-        imageView.connectBottom(view: self)
+        if !data.mapComment.isEmpty{
+            let titleView = MediaCommentLabel(text: data.mapComment)
+            addSubview(titleView)
+            titleView.placeBelow(view: imageView)
+            titleView.connectBottom(view: self)
+        }
+        else{
+            imageView.connectBottom(view: self)
+        }
     }
     
 }
+
+class MapItemEditView : EntryItemEditView, UITextViewDelegate{
+    
+    static func fromData(data : EntryData)  -> MapItemEditView{
+        let editView = MapItemEditView()
+        editView.setupView(data: data)
+        return editView
+    }
+    
+    var entry : EntryData? = nil
+    
+    var imageView = UIImageView()
+    var titleView = TextEditArea()
+    
+    private func setupView(data: EntryData){
+        self.entry = data
+        imageView.image = data.getMapSection()
+        titleView.setText(data.mapComment)
+        imageView.setDefaults()
+        imageView.setRoundedBorders()
+        addSubview(imageView)
+        titleView.setDefaults(placeholder: "mapComment".localize())
+        titleView.delegate = self
+        addSubview(titleView)
+        titleView.setKeyboardToolbar()
+        imageView.placeBelow(anchor: topAnchor, insets: defaultInsets)
+        imageView.setAspectRatioConstraint()
+        titleView.placeBelow(view: imageView, insets: flatInsets)
+        titleView.connectBottom(view: self)
+    }
+    
+    // UITextViewDelegate
+    
+    func textViewDidChange(_ textView: UITextView) {
+        if entry != nil{
+            entry!.mapComment = textView.text!.trim()
+        }
+        titleView.textDidChange()
+    }
+    
+}
+
+
 
 
 

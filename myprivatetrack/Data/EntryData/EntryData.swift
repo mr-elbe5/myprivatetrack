@@ -18,6 +18,7 @@ class EntryData: Identifiable, Codable{
         case locationDescription
         case saveLocation
         case hasMapSection
+        case mapComment
         case items
     }
     
@@ -27,6 +28,7 @@ class EntryData: Identifiable, Codable{
     public var locationDescription: String = ""
     public var saveLocation: Bool
     public var hasMapSection: Bool = false
+    public var mapComment:String = ""
     public var items = Array<EntryItem>()
     
     public var isNew = false
@@ -93,6 +95,9 @@ class EntryData: Identifiable, Codable{
             location = try values.decode(Location.self, forKey: .location)
             locationDescription = try values.decode(String.self, forKey: .locationDescription)
             hasMapSection = try values.decode(Bool.self, forKey: .hasMapSection)
+            if hasMapSection{
+                do{ mapComment = try values.decode(String.self, forKey: .mapComment)} catch{}
+            }
         }else{
             location = nil
             locationDescription = ""
@@ -110,6 +115,9 @@ class EntryData: Identifiable, Codable{
             try container.encode(location, forKey: .location)
             try container.encode(locationDescription, forKey: .locationDescription)
             try container.encode(hasMapSection, forKey: .hasMapSection)
+            if hasMapSection{
+                try container.encode(mapComment, forKey: .mapComment)
+            }
         }
         try container.encode(items, forKey: .items)
     }

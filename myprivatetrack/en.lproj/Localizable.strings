@@ -47,6 +47,7 @@
 "imageLibrary"="Photos";
 "info"="Info";
 "locationNotAuthorized"="Finding your location is not authorized. Please change your settings.";
+"mapComment"="Map comment";
 "mapInfoHeader"="Map view";
 "map"="Map";
 "mapStartSize"="Start size for capturing map images";
@@ -72,12 +73,15 @@
 "privacyInfoText6"="The code of this app is published on GitHub under https://github.com/mr-elbe5/myprivatetrack.git.";
 "quality"="Quality";
 "quality"="Quality";
+"readError"="The file could not be read.";
 "reallyDelete"="Really delete all data?";
+"rejectedError"="This action has not been authorized.";
 "reset" = "Reset";
 "restoreData"="Restore entries";
 "restoreInfo"="You can select the first and the last of days to be restored. After selecting the days, the entries of these days will be added or merged to your current days.";
 "restore"="Restore";
 "save" = "Save";
+"saveError"="The file could not be saved.";
 "saveLocation"="Save location";
 "selectBackground"="Select background image";
 "settingsBackgroundInfo"="With this button you can set the background image. You can select an image of your photo libraray or return to the default image.";
@@ -89,6 +93,7 @@
 "settings"="Settings";
 "settingsUseLocationInfo"="If you choose not to use location services, your entries will not have a position and you will not be able to take map screenshots.";
 "shareImage"="Share image";
+"snapshotError"="The map could not be saved.";
 "south"="South";
 "speed"="Speed";
 "speed"="Speed";
@@ -98,7 +103,7 @@
 "timeline"="Days";
 "timelineDeleteIconInfo"="With this icon you delete this entry including all of its items. Take care! There is no way to undo this action!";
 "timelineDetailIconInfo"="With this icon you get a detailed view oh an entry or one of its items.";
-"timelineEditIconInfo"="With this icon you start editing the entry as during creation.";
+"timelineEditIconInfo"="With this icon you start editing the entry by appending new items like later comments.";
 "timelineEditInfo"="With the right pencil icon you can toggle between view and edit mode. In edit mode two icons appear at each entry:";
 "timelineEmptyIconInfo"="With this icon you start creating an empty new entry.";
 "timelineEntryInfoHeader"="Entries";
@@ -111,8 +116,10 @@
 "timelineTextIconInfo"="With this icon you start creating a new entry by writing a text.";
 "timelineTopInfo"="The time line view shows all entries sorted by the day and of their creation. By tapping one of the left icons you can create a new entry starting with the respective item type: empty, text, image, audio or video. With the right pencil icon you can toggle between view and edit mode (see below).";
 "timelineVideoIconInfo"="With this icon you start creating a new entry by recording a video.";
+"timeoutError"="Eine vorgegebene Zeit wurde überschritten.";
 "title"="Title";
 "toDate" = "To date";
+"unexpectedError"="There has been an unexpected error.";
 "useLocation"="Use location service";
 "videoNotAuthorized"="Camera or Microphone use is not authorized. Please change your settings.";
 "videoShared"="Video has been copied.";

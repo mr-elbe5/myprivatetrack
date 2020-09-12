@@ -75,9 +75,7 @@ class VideoItemEditView : EntryItemEditView, UITextViewDelegate{
     
     static func fromData(data : VideoData)  -> VideoItemEditView{
         let editView = VideoItemEditView()
-        editView.setupSubviews()
-        editView.setupData(data: data)
-        editView.setLayoutConstraints()
+        editView.setupView(data: data)
         return editView
     }
     
@@ -92,22 +90,16 @@ class VideoItemEditView : EntryItemEditView, UITextViewDelegate{
         }
     }
     
-    override func setupSubviews(){
-        addTopControl()
+    private func setupView(data: VideoData){
+        self.videoData = data
+        videoView.url = data.fileURL
+        titleView.text = data.title
+        let deleteButton = addDeleteButton()
         addSubview(videoView)
         titleView.setDefaults(placeholder: "comment".localize())
         titleView.delegate = self
         addSubview(titleView)
         titleView.setKeyboardToolbar()
-    }
-    
-    func setupData(data: VideoData){
-        self.videoData = data
-        videoView.url = data.fileURL
-        titleView.text = data.title
-    }
-    
-    override func setLayoutConstraints(){
         videoView.placeBelow(anchor: deleteButton.bottomAnchor, insets: deleteInsets)
         videoView.setAspectRatioConstraint()
         titleView.placeBelow(view: videoView)

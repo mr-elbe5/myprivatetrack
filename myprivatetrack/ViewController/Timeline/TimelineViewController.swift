@@ -78,7 +78,7 @@ class TimelineViewController: TableViewController, SaveEntryDelegate, EntryCellA
     
     override func viewDidAppear(_ animated: Bool) {
         if firstAppearance{
-            if globalData.days.count > 0 , globalData.days[0].entries.count > 0{
+            if globalData.days.count > 0 && globalData.days[0].entries.count > 0{
                 tableView.scrollToRow(at: .init(row: globalData.days[globalData.days.count - 1].entries.count - 1, section: globalData.days.count-1), at: .bottom, animated: true)
             }
             firstAppearance = false
@@ -142,15 +142,17 @@ class TimelineViewController: TableViewController, SaveEntryDelegate, EntryCellA
         if entry.isNew {
             let day = globalData.assertDay(date: entry.creationDate)
             day.addEntry(entry: entry)
-            entry.isNew = false
-            globalData.save()
-            tableView.reloadData()
-            if globalData.days.count > 0 , globalData.days[0].entries.count > 0{
+        }
+        globalData.save()
+        tableView.reloadData()
+        if entry.isNew {
+            if globalData.days.count > 0 && globalData.days[0].entries.count > 0{
                 let section = globalData.days.count-1
                 let row = globalData.days[globalData.days.count - 1].entries.count - 1
                 //print("pos \(section), \(row)")
                 tableView.scrollToRow(at: .init(row: row, section: section), at: .bottom, animated: true)
             }
+            entry.isNew = false
         }
         if let mapController = MainTabController.getMapViewController(){
             mapController.setNeedsUpdate()

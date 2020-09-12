@@ -35,9 +35,7 @@ class TextItemEditView : EntryItemEditView, UITextViewDelegate{
     
     static func fromData(data : TextData)  -> TextItemEditView{
         let editView = TextItemEditView()
-        editView.setupSubviews()
-        editView.setupData(data: data, placeholder: "yourText".localize())
-        editView.setLayoutConstraints()
+        editView.setupView(data: data, placeholder: "yourText".localize())
         return editView
     }
     
@@ -51,22 +49,16 @@ class TextItemEditView : EntryItemEditView, UITextViewDelegate{
     
     var textView = TextEditArea()
     
-    override func setupSubviews(){
-        addTopControl()
+    private func setupView(data: TextData, placeholder: String){
+        self.textData = data
+        textView.setText(data.text)
+        textView.placeholder = placeholder
+        let deleteButton = addDeleteButton()
         textView.setDefaults()
         textView.isScrollEnabled = false
         textView.delegate = self
         addSubview(textView)
         textView.setKeyboardToolbar()
-    }
-    
-    func setupData(data: TextData, placeholder: String? = nil){
-        self.textData = data
-        textView.setText(data.text)
-        textView.placeholder = placeholder
-    }
-    
-    override func setLayoutConstraints(){
         textView.placeBelow(anchor: deleteButton.bottomAnchor, insets: deleteInsets)
         textView.connectBottom(view: self)
     }

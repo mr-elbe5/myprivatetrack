@@ -417,11 +417,11 @@
 		4ED21B7B24FAA18700A6FEA3 /* Device */ = {
 			isa = PBXGroup;
 			children = (
-				4E775B7225003403003BEC92 /* Photo */,
 				4E775B71250033CD003BEC92 /* Common */,
 				4E775B6E25003362003BEC92 /* Audio */,
-				4E775B6F2500338F003BEC92 /* Map */,
+				4E775B7225003403003BEC92 /* Photo */,
 				4E775B70250033B1003BEC92 /* Video */,
+				4E775B6F2500338F003BEC92 /* Map */,
 			);
 			path = Device;
 			sourceTree = "<group>";

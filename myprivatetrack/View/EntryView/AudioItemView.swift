@@ -21,7 +21,7 @@ class AudioItemView : EntryItemView, AVAudioPlayerDelegate{
     
     var audioView = AudioPlayerView()
     
-    func setupView(data: AudioData){
+    private func setupView(data: AudioData){
         audioView.setRoundedBorders()
         addSubview(audioView)
         audioView.setupView()
@@ -47,9 +47,7 @@ class AudioItemEditView : EntryItemEditView, UITextViewDelegate, AVAudioRecorder
     
     static func fromData(data : AudioData)  -> AudioItemEditView{
         let editView = AudioItemEditView()
-        editView.setupSubviews()
-        editView.setupData(data: data)
-        editView.setLayoutConstraints()
+        editView.setupView(data: data)
         return editView
     }
     
@@ -64,8 +62,15 @@ class AudioItemEditView : EntryItemEditView, UITextViewDelegate, AVAudioRecorder
         }
     }
     
-    override func setupSubviews(){
-        addTopControl()
+    func setupView(data: AudioData){
+        self.audioData = data
+        audioView.url = data.fileURL
+        audioView.enableRecording()
+        if audioData.fileExists(){
+            audioView.player.enablePlayer()
+        }
+        titleView.setText(data.title)
+        let deleteButton = addDeleteButton()
         audioView.setRoundedBorders()
         addSubview(audioView)
         audioView.setupView()
@@ -73,19 +78,6 @@ class AudioItemEditView : EntryItemEditView, UITextViewDelegate, AVAudioRecorder
         titleView.delegate = self
         addSubview(titleView)
         titleView.setKeyboardToolbar()
-    }
-    
-    func setupData(data: AudioData){
-        self.audioData = data
-        audioView.url = data.fileURL
-        audioView.enableRecording()
-        if audioData.fileExists(){
-            audioView.player.enablePlayer()
-        }
-        titleView.text = data.title
-    }
-    
-    override func setLayoutConstraints(){
         audioView.placeBelow(anchor: deleteButton.bottomAnchor, insets: deleteInsets)
         audioView.layoutView()
         titleView.placeBelow(view: audioView)

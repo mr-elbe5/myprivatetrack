@@ -24,7 +24,6 @@ class EntryItemEditView : UIView{
     
     var deleteInsets = UIEdgeInsets(top: 0, left: Statics.defaultInset, bottom: Statics.defaultInset/2, right: Statics.defaultInset)
     
-    var deleteButton = IconButton(icon: "xmark.circle")
     var delegate : DeleteEntryActionDelegate? = nil
     
     var data: EntryItemData{
@@ -33,21 +32,15 @@ class EntryItemEditView : UIView{
         }
     }
     
-    func addTopControl(){
+    func addDeleteButton() -> IconButton{
+        let deleteButton = IconButton(icon: "xmark.circle")
         deleteButton.tintColor = UIColor.systemRed
         deleteButton.addTarget(self, action: #selector(deleteItem), for: .touchDown)
         addSubview(deleteButton)
         deleteButton.setAnchors()
             .top(topAnchor, inset: defaultInset / 2)
             .trailing(trailingAnchor, inset: Statics.defaultInset)
-    }
-    
-    func setupSubviews(){
-        fatalError("not implemented")
-    }
-    
-    func setLayoutConstraints(){
-        fatalError("not implemented")
+        return deleteButton
     }
     
     func setFocus(){

@@ -61,14 +61,10 @@ class RestoreViewController: ModalScrollViewController, DatePickerDelegate{
     
     @objc func restoreData(){
         Indicator.shared.show()
-        //print("start restore")
         for day in data.days{
-            //print("check day")
             if day.date < startDate || day.date > endDate{
-                //print("discard day")
                 continue
             }
-            //print("import day")
             restoreDay(day: day)
         }
         GlobalData.shared.sortDays()
@@ -84,36 +80,28 @@ class RestoreViewController: ModalScrollViewController, DatePickerDelegate{
     private func restoreDay(day: DayData){
         var found = false
         for globalDay in GlobalData.shared.days{
-            //print("check global day")
             if day.date == globalDay.date{
-                //print("day found")
                 mergeDay(day: day,globalDay: globalDay)
                 found = true
                 break
             }
         }
         if !found{
-            //print("add day")
             GlobalData.shared.addDay(day: day)
             addFiles(day: day)
         }
     }
     
     private func mergeDay(day: DayData, globalDay: DayData){
-        //print("merge day")
         for entry in day.entries{
-            //print("check entry")
             var found = false
             for globalEntry in globalDay.entries{
-                //print("check global entry")
                 if entry.id == globalEntry.id{
-                    //print("entry found")
                     found = true
                     break
                 }
             }
             if !found{
-                //print("add entry")
                 globalDay.addEntry(entry: entry)
                 addFiles(entry: entry)
                 globalDay.sortEntries()
