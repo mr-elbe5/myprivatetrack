@@ -115,7 +115,7 @@
 "timelineAudioIconInfo"="Mit diesem Icon startest du einen neuen Eintrag, der mit dem Aufnehmen eines Audios beginnt.";
 "timelineDeleteIconInfo"="Mit diesem Icon löschst du den Eintrag. Vorsicht! Diese Aktion kann nicht rückgängig gemacht werden!";
 "timelineDetailIconInfo"="Mit diesem Icon bekommst du die Detailansicht des Eintrags oder eines seiner Elemente.";
-"timelineEditIconInfo"="Mit diesem Icon editierst du den Eintrag durch das Hinzufügen neuer Elemente wie nachträglicher Kommentare.";
+"timelineEditIconInfo"="Mit diesem Icon editierst du den Eintrag wie bei der Erstellung.";
 "timelineEditInfo"="Mit dem rechten Bleistiftsymbol kannst du zwischen Anzeige- und Editiermodus wechseln. Im Editiermodus erscheinen zwei Icons bei jedem Eintrag:";
 "timelineEmptyIconInfo"="Mit diesem Icon startest du einen leeren neuen Eintrag.";
 "timelineEntryInfoHeader"="Einträge";

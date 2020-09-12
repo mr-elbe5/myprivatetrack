@@ -111,7 +111,7 @@
 "timeline"="Days";
 "timelineDeleteIconInfo"="With this icon you delete this entry including all of its items. Take care! There is no way to undo this action!";
 "timelineDetailIconInfo"="With this icon you get a detailed view oh an entry or one of its items.";
-"timelineEditIconInfo"="With this icon you start editing the entry by appending new items like later comments.";
+"timelineEditIconInfo"="With this icon you start editing the entry as during creation.";
 "timelineEditInfo"="With the right pencil icon you can toggle between view and edit mode. In edit mode two icons appear at each entry:";
 "timelineEmptyIconInfo"="With this icon you start creating an empty new entry.";
 "timelineEntryInfoHeader"="Entries";
