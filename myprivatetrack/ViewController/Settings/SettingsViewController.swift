@@ -22,6 +22,7 @@ class SettingsViewController: EditViewController, UIDocumentPickerDelegate, UIIm
     var fullBackupButton = TextButton(text: "fullBackupData".localize())
     var partialBackupButton = TextButton(text: "partialBackupData".localize())
     var restoreButton = TextButton(text: "restoreData".localize())
+    var removeDocumentsButton = TextButton(text: "deleteDocuments".localize())
     
     var pickerType : SettingsPickerType? = nil
     
@@ -38,6 +39,7 @@ class SettingsViewController: EditViewController, UIDocumentPickerDelegate, UIIm
         fullBackupButton.addTarget(self, action: #selector(fullBackupData), for: .touchDown)
         partialBackupButton.addTarget(self, action: #selector(partialBackupData), for: .touchDown)
         restoreButton.addTarget(self, action: #selector(restoreData), for: .touchDown)
+        removeDocumentsButton.addTarget(self, action: #selector(removeDocuments), for: .touchDown)
         stackView.addArrangedSubview(backgroundHeader)
         stackView.addArrangedSubview(backgroundButton)
         stackView.addArrangedSubview(mapSizeHeader)
@@ -47,6 +49,7 @@ class SettingsViewController: EditViewController, UIDocumentPickerDelegate, UIIm
         stackView.addArrangedSubview(fullBackupButton)
         stackView.addArrangedSubview(partialBackupButton)
         stackView.addArrangedSubview(restoreButton)
+        stackView.addArrangedSubview(removeDocumentsButton)
     }
     
     override func setupHeaderView(){
@@ -228,6 +231,15 @@ class SettingsViewController: EditViewController, UIDocumentPickerDelegate, UIIm
                     }
                 }
             }
+        }
+    }
+    
+    @objc func removeDocuments(){
+        showApprove(title: "reallyDeleteDocuments".localize(), text: "deleteDocumentsApproveInfo".localize()){
+            FileController.deleteAllFiles(dirURL: FileController.backupDirURL)
+            FileController.deleteAllFiles(dirURL: FileController.exportDirURL)
+            FileController.deleteAllFiles(dirURL: FileController.temporaryURL)
+            self.showAlert(title: "success".localize(), text: "documentsDeleted".localize())
         }
     }
     

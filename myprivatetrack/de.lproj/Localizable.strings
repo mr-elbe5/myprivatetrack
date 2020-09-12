@@ -25,7 +25,10 @@
 "deleteAllDataApproveInfo"="Wenn du zustimmst, werden alle Daten und Medien gelöscht. Diese Aktion kann nicht rückgängig gemacht werden.";
 "deleteEntryApproveInfo"="Wenn du zustimmst, wird der Eintrag mit allen Elementen gelöscht. Diese Aktion kann nicht rückgängig gemacht werden.";
 "deleteItemApproveInfo"="Wenn du zustimmst, wird dieses Element gelöscht. Diese Aktion kann nicht rückgängig gemacht werden.";
+"deleteDocumentsApproveInfo"="Wenn du zustimmst, werden alle öfftlichen Dateien (Sicherungen und Exporte) gelöscht. Diese Aktion kann nicht rückgängig gemacht werden.";
 "deleteData" = "Einträge löschen";
+"deleteDocuments" = "Alle öffentlichen Dateien löschen";
+"documentsDeleted"="Alle öffentlichen Dateien (Sicherungen und Exporte) wurden gelöscht.";
 "done"="Fertig";
 "east"="Ost";
 "editEntryAudioIconInfo"="Mit diesem Icon erstellst du ein neues Audio-Element durch eine Tonaufnahme.";
@@ -81,6 +84,7 @@
 "reallyDeleteAllData"="Wirklich alle Daten löschen?";
 "reallyDeleteEntry"="Wirklich diesen Eintrag löschen?";
 "reallyDeleteItem"="Wirklich dieses Element löschen?";
+"reallyDeleteDocuments"="Wirklich alle öffentlichen Dateien löschen?";
 "rejectedError"="Diese Aktion wurde nicht autorisiert.";
 "reset" = "Zurücksetzen";
 "restore"="Wiederherstellen";

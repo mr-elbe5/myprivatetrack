@@ -25,7 +25,10 @@
 "deleteAllDataApproveInfo"="If you approve, you lose all your entries and media. You cannot undo this action.";
 "deleteEntryApproveInfo"="If you approve, you delete this entry with all its items. You cannot undo this action.";
 "deleteItemApproveInfo"="If you approve, you delete this item. You cannot undo this action.";
+"deleteDocumentsApproveInfo"="If you approve, all public files (backups and exports) will be deleted. You cannot undo this action.";
 "deleteData" = "Delete entries";
+"deleteDocuments" = "Delete all public files";
+"documentsDeleted"="All public files (backups, exports) have been deleted.";
 "done"="Done";
 "east"="East";
 "editEntryAudioIconInfo"="With this icon you add a new audio item starting by recording an audio.";
@@ -79,6 +82,7 @@
 "reallyDeleteAllData"="Really delete all data?";
 "reallyDeleteEntry"="Really delete this entry?";
 "reallyDeleteItem"="Really delete this item?";
+"reallyDeleteDocuments"="Really delete all public files?";
 "rejectedError"="This action has not been authorized.";
 "reset" = "Reset";
 "restoreData"="Restore entries";
