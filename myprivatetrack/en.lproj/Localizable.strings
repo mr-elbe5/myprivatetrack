@@ -22,7 +22,9 @@
 "comment"="Comment";
 "copyError"="The file could not be copied.";
 "defaultBackground"="Default image";
-"deleteApproveInfo"="If you approve, you lose all your entries and media.";
+"deleteAllDataApproveInfo"="If you approve, you lose all your entries and media. You cannot undo this action.";
+"deleteEntryApproveInfo"="If you approve, you delete this entry with all its items. You cannot undo this action.";
+"deleteItemApproveInfo"="If you approve, you delete this item. You cannot undo this action.";
 "deleteData" = "Delete entries";
 "done"="Done";
 "east"="East";
@@ -74,7 +76,9 @@
 "quality"="Quality";
 "quality"="Quality";
 "readError"="The file could not be read.";
-"reallyDelete"="Really delete all data?";
+"reallyDeleteAllData"="Really delete all data?";
+"reallyDeleteEntry"="Really delete this entry?";
+"reallyDeleteItem"="Really delete this item?";
 "rejectedError"="This action has not been authorized.";
 "reset" = "Reset";
 "restoreData"="Restore entries";

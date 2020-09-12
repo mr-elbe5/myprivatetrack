@@ -149,7 +149,6 @@ class TimelineViewController: TableViewController, SaveEntryDelegate, EntryCellA
             if globalData.days.count > 0 && globalData.days[0].entries.count > 0{
                 let section = globalData.days.count-1
                 let row = globalData.days[globalData.days.count - 1].entries.count - 1
-                //print("pos \(section), \(row)")
                 tableView.scrollToRow(at: .init(row: row, section: section), at: .bottom, animated: true)
             }
             entry.isNew = false
@@ -170,8 +169,10 @@ class TimelineViewController: TableViewController, SaveEntryDelegate, EntryCellA
     }
     
     func deleteEntry(entry: EntryData) {
-        globalData.deleteEntry(entry: entry)
-        tableView.reloadData()
+        showApprove(title: "reallyDeleteEntry".localize(), text: "deleteEntryApproveInfo".localize()){
+            self.globalData.deleteEntry(entry: entry)
+            self.tableView.reloadData()
+        }
     }
     
     func viewEntry(entry: EntryData) {

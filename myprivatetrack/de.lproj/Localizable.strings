@@ -22,7 +22,9 @@
 "comment"="Kommentar";
 "copyError"="Die Datei konnte nicht kopiert werden.";
 "defaultBackground"="Standardbild";
-"deleteApproveInfo"="Wenn du zustimmst, werden allen Daten und Medien gelöscht.";
+"deleteAllDataApproveInfo"="Wenn du zustimmst, werden alle Daten und Medien gelöscht. Diese Aktion kann nicht rückgängig gemacht werden.";
+"deleteEntryApproveInfo"="Wenn du zustimmst, wird der Eintrag mit allen Elementen gelöscht. Diese Aktion kann nicht rückgängig gemacht werden.";
+"deleteItemApproveInfo"="Wenn du zustimmst, wird dieses Element gelöscht. Diese Aktion kann nicht rückgängig gemacht werden.";
 "deleteData" = "Einträge löschen";
 "done"="Fertig";
 "east"="Ost";
@@ -76,7 +78,9 @@
 "quality"="Qualität";
 "quality"="Qualität";
 "readError"="Die Datei konnte nicht gelesen werden.";
-"reallyDelete"="Wirklich alle Daten löschen?";
+"reallyDeleteAllData"="Wirklich alle Daten löschen?";
+"reallyDeleteEntry"="Wirklich diesen Eintrag löschen?";
+"reallyDeleteItem"="Wirklich dieses Element löschen?";
 "rejectedError"="Diese Aktion wurde nicht autorisiert.";
 "reset" = "Zurücksetzen";
 "restore"="Wiederherstellen";

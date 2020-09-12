@@ -14,12 +14,12 @@ protocol VideoCaptureDelegate{
     func videoCaptured(data: VideoData)
 }
 
-class VideoCaptureViewController: CameraViewController, AVCaptureFileOutputRecordingDelegate {
+class VideoCaptureViewController: CameraViewController, AVCaptureFileOutputRecordingDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     var data : VideoData!
     
     var delegate: VideoCaptureDelegate? = nil
     
-    var cancelButton = IconButton(icon: "chevron.left", tintColor: .white)
+    var libraryButton = IconButton(icon: "photo", tintColor: .white)
     var recordButton = CaptureButton()
     var cameraButton = IconButton(icon: "camera.rotate", tintColor: .white)
     
@@ -36,10 +36,9 @@ class VideoCaptureViewController: CameraViewController, AVCaptureFileOutputRecor
     }
     
     override func addButtons(){
-        cancelButton.setTitle("back".localize(), for: .normal)
-        cancelButton.addTarget(self, action: #selector(cancel), for: .touchDown)
-        buttonView.addSubview(cancelButton)
-        cancelButton.placeAfter(anchor: buttonView.leadingAnchor)
+        libraryButton.addTarget(self, action: #selector(selectVideo), for: .touchDown)
+        buttonView.addSubview(libraryButton)
+        libraryButton.placeAfter(anchor: buttonView.leadingAnchor)
         cameraButton.setImage(UIImage(systemName: "camera.rotate"), for: .normal)
         cameraButton.target(forAction: #selector(changeCamera), withSender: self)
         cameraButton.addTarget(self, action: #selector(changeCamera), for: .touchDown)
@@ -56,7 +55,7 @@ class VideoCaptureViewController: CameraViewController, AVCaptureFileOutputRecor
     }
     
     override func enableButtons(flag: Bool){
-        cancelButton.isEnabled = flag
+        libraryButton.isEnabled = flag
         recordButton.isEnabled = flag
         cameraButton.isEnabled = flag
     }
@@ -231,6 +230,29 @@ class VideoCaptureViewController: CameraViewController, AVCaptureFileOutputRecor
         selector: #selector(subjectAreaDidChange),
         name: .AVCaptureDeviceSubjectAreaDidChange,
         object: videoDeviceInput.device)
+    }
+    
+    @objc func selectVideo(){
+        let pickerController = UIImagePickerController()
+        pickerController.delegate = self
+        pickerController.allowsEditing = true
+        pickerController.mediaTypes = ["public.movie"]
+        pickerController.sourceType = .photoLibrary
+        pickerController.modalPresentationStyle = .fullScreen
+        self.present(pickerController, animated: true, completion: nil)
+    }
+        
+    public func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]) {
+        guard let videoURL = info[.mediaURL] as? URL else {return}
+        if FileController.copyFile(fromURL: videoURL, toURL: data.fileURL){
+            delegate?.videoCaptured(data: data)
+            picker.dismiss(animated: false){
+                self.dismiss(animated: true)
+            }
+        }
+        else{
+            picker.dismiss(animated: true, completion: nil)
+        }
     }
     
 }

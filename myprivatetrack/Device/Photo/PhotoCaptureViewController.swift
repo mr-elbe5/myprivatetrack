@@ -14,7 +14,7 @@ protocol PhotoCaptureDelegate{
     func photoCaptured(data: PhotoData)
 }
 
-class PhotoCaptureViewController: CameraViewController, AVCapturePhotoCaptureDelegate {
+class PhotoCaptureViewController: CameraViewController, AVCapturePhotoCaptureDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     static var qualityItems : Array<String> = ["speed".localize(),"balanced".localize(),"quality".localize()]
     
     var data : PhotoData!
@@ -23,7 +23,7 @@ class PhotoCaptureViewController: CameraViewController, AVCapturePhotoCaptureDel
     
     var captureButton = CaptureButton()
     var photoQualityControl = UISegmentedControl(items: qualityItems)
-    var cancelButton = IconButton(icon: "chevron.left", tintColor: .white)
+    var libraryButton = IconButton(icon: "photo", tintColor: .white)
     var flashButton = IconButton(icon: "bolt.badge.a", tintColor: .white)
     var cameraButton = IconButton(icon: "camera.rotate", tintColor: .white)
     
@@ -52,10 +52,9 @@ class PhotoCaptureViewController: CameraViewController, AVCapturePhotoCaptureDel
         buttonView.addSubview(bottomView)
         bottomView.placeBelow(view: photoQualityControl)
         bottomView.connectBottom(view: buttonView)
-        cancelButton.setTitle("back".localize(), for: .normal)
-        cancelButton.addTarget(self, action: #selector(cancel), for: .touchDown)
-        bottomView.addSubview(cancelButton)
-        cancelButton.placeAfter(anchor: bottomView.leadingAnchor)
+        libraryButton.addTarget(self, action: #selector(selectImage), for: .touchDown)
+        bottomView.addSubview(libraryButton)
+        libraryButton.placeAfter(anchor: bottomView.leadingAnchor)
         cameraButton.setImage(UIImage(systemName: "camera.rotate"), for: .normal)
         cameraButton.addTarget(self, action: #selector(changeCamera), for: .touchDown)
         bottomView.addSubview(cameraButton)
@@ -67,7 +66,7 @@ class PhotoCaptureViewController: CameraViewController, AVCapturePhotoCaptureDel
     }
     
     override func enableButtons(flag: Bool){
-        cancelButton.isEnabled = flag
+        libraryButton.isEnabled = flag
         enableCameraButtons(flag: flag)
     }
     
@@ -236,6 +235,29 @@ class PhotoCaptureViewController: CameraViewController, AVCapturePhotoCaptureDel
         }
         keyValueObservations.append(keyValueObservation)
         super.addObservers()
+    }
+    
+    @objc func selectImage(){
+        let pickerController = UIImagePickerController()
+        pickerController.delegate = self
+        pickerController.allowsEditing = true
+        pickerController.mediaTypes = ["public.image"]
+        pickerController.sourceType = .photoLibrary
+        pickerController.modalPresentationStyle = .fullScreen
+        self.present(pickerController, animated: true, completion: nil)
+    }
+    
+    public func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]) {
+        guard let imageURL = info[.imageURL] as? URL else {return}
+        if FileController.copyFile(fromURL: imageURL, toURL: data.fileURL){
+            delegate?.photoCaptured(data: data)
+            picker.dismiss(animated: false){
+                self.dismiss(animated: true)
+            }
+        }
+        else{
+            picker.dismiss(animated: true, completion: nil)
+        }
     }
     
 }

@@ -44,27 +44,31 @@ class EditEntryViewController: EditViewController, PhotoCaptureDelegate, VideoCa
                 mapView = MapItemEditView.fromData(data: entry)
                 stackView.insertArrangedSubview(mapView!, at:mapItemPos)
             }
-            else{
+            else if entry.isNew{
                 stackView.insertArrangedSubview(addMapSectionButton, at: mapItemPos)
             }
         }
         for item in entry.items{
-            var viewItem : EntryItemView? = nil
+            var editItem : EntryItemEditView? = nil
             switch item.type{
             case .text:
-                viewItem = TextItemView.fromData(data: item.data as! TextData)
+                editItem = TextItemEditView.fromData(data: item.data as! TextData)
+                editItem?.delegate = self
                 break
             case .audio:
-                viewItem = AudioItemView.fromData(data: item.data as! AudioData)
+                editItem = AudioItemEditView.fromData(data: item.data as! AudioData)
+                editItem?.delegate = self
                 break
             case .photo:
-                viewItem = PhotoItemView.fromData(data: item.data as! PhotoData)
+                editItem = PhotoItemEditView.fromData(data: item.data as! PhotoData)
+                editItem?.delegate = self
                 break
             case .video:
-                viewItem = VideoItemView.fromData(data: item.data as! VideoData)
+                editItem = VideoItemEditView.fromData(data: item.data as! VideoData)
+                editItem?.delegate = self
                 break
             }
-            if let editItem = viewItem{
+            if let editItem = editItem{
                 stackView.addArrangedSubview(editItem)
             }
         }
@@ -73,9 +77,11 @@ class EditEntryViewController: EditViewController, PhotoCaptureDelegate, VideoCa
         let saveButton = TextButton(text: "save".localize())
         saveButton.addTarget(self, action: #selector(save), for: .touchDown)
         buttonContainer.stackView.addArrangedSubview(saveButton)
-        let cancelButton = TextButton(text: "cancel".localize())
-        cancelButton.addTarget(self, action: #selector(cancel), for: .touchDown)
-        buttonContainer.stackView.addArrangedSubview(cancelButton)
+        if entry.isNew{
+            let cancelButton = TextButton(text: "cancel".localize())
+            cancelButton.addTarget(self, action: #selector(cancel), for: .touchDown)
+            buttonContainer.stackView.addArrangedSubview(cancelButton)
+        }
         stackView.addArrangedSubview(buttonContainer)
         
     }
@@ -257,15 +263,16 @@ class EditEntryViewController: EditViewController, PhotoCaptureDelegate, VideoCa
     // DeleteEntryActionDelegate
     
     func deleteItem(itemView: EntryItemEditView) {
-        for v in stackView.arrangedSubviews{
-            if v == itemView {
-                entry.removeItem(item: itemView.data)
-                stackView.removeArrangedSubview(itemView)
-                stackView.removeSubview(itemView)
-                break
+        showApprove(title: "reallyDeleteItem".localize(), text: "deleteItemApproveInfo".localize()){
+            for v in self.stackView.arrangedSubviews{
+                if v == itemView {
+                    self.entry.removeItem(item: itemView.data)
+                    self.stackView.removeArrangedSubview(itemView)
+                    self.stackView.removeSubview(itemView)
+                    break
+                }
             }
         }
-        
     }
     
     // SaveActionDelegate

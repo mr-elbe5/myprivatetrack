@@ -129,7 +129,7 @@ class SettingsViewController: EditViewController, UIDocumentPickerDelegate, UIIm
     }
     
     @objc func resetData(){
-        showApprove(title: "reallyDelete".localize(), text: "deleteApproveInfo".localize()){
+        showApprove(title: "reallyDeleteAllData".localize(), text: "deleteAllDataApproveInfo".localize()){
             GlobalData.shared.reset()
             FileController.deleteAllFiles(dirURL: FileController.privateURL)
             if let timelineController = MainTabController.getTimelineViewController(){

@@ -33,16 +33,22 @@ class CameraViewController: UIViewController {
     
     override func loadView() {
         super.loadView()
-        self.modalPresentationStyle = .fullScreen
         view.addSubview(bodyView)
         bodyView.fillSafeAreaOf(view: view, insets: .zero)
-        bodyView.backgroundColor = .systemBackground
+        bodyView.backgroundColor = .black
+        let closeButton = IconButton(icon: "xmark.circle", tintColor: .white)
+        bodyView.addSubview(closeButton)
+        closeButton.addTarget(self, action: #selector(close), for: .touchDown)
+        closeButton.setAnchors()
+            .top(bodyView.topAnchor,inset: defaultInset)
+            .trailing(bodyView.trailingAnchor,inset: defaultInset)
         bodyView.addSubview(preview)
         preview.backgroundColor = .black
-        preview.fillSuperview()
+        preview.placeBelow(anchor: closeButton.bottomAnchor, insets: defaultInsets)
         buttonView.backgroundColor = .black
         bodyView.addSubview(buttonView)
-        buttonView.placeAbove(anchor: bodyView.bottomAnchor, insets: .zero)
+        buttonView.placeBelow(view: preview, insets: .zero)
+        buttonView.bottom(bodyView.bottomAnchor)
         addButtons()
         AVCaptureDevice.askCameraAuthorization(){ result in
             self.preview.session = self.session
@@ -274,8 +280,9 @@ class CameraViewController: UIViewController {
         NotificationCenter.default.removeObserver(self)
     }
     
-    @objc func cancel(){
-        self.dismiss(animated: true)
+    @objc public func close(){
+        self.dismiss(animated: true, completion: {
+        })
     }
     
 }
