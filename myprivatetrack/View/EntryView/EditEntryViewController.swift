@@ -74,7 +74,7 @@ class EditEntryViewController: EditViewController, PhotoCaptureDelegate, VideoCa
         }
         let buttonContainer = ButtonStackView()
         buttonContainer.setupView()
-        let saveButton = TextButton(text: "save".localize())
+        let saveButton = TextButton(text: (entry.isNew ? "save" : "ok").localize())
         saveButton.addTarget(self, action: #selector(save), for: .touchDown)
         buttonContainer.stackView.addArrangedSubview(saveButton)
         if entry.isNew{

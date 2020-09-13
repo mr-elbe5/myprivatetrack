@@ -21,6 +21,8 @@ class MainTabController: UITabBarController {
     
     override func loadView() {
         super.loadView()
+        tabBar.barTintColor = UIColor.systemBackground
+        tabBar.isTranslucent = false
         let timelineViewController = TimelineViewController()
         timelineViewController.tabBarItem = UITabBarItem(title: NSLocalizedString("timeline", comment: ""), image: UIImage(systemName: "rectangle.stack"), tag: TabTags.timeline.hashValue)
         let mapViewController = MapViewController()

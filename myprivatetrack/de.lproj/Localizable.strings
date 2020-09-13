@@ -17,6 +17,8 @@
 "backup"="Sichern";
 "backupSuccessInfo"="Sicherung wurde erstellt.";
 "balanced"="Ausbalanciert";
+"camera"="Kamera";
+"cameraNotAvailable"="Die Kamera steht nicht zur Verfügung.";
 "cameraNotAuthorized"="Die Nutzung der Kamera ist nicht erlaubt. Bitte ändere die entsprechenden Einstellungen.";
 "cancel" = "Abbrechen";
 "comment"="Kommentar";

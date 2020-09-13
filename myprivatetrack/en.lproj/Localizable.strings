@@ -17,6 +17,8 @@
 "backupRestored"="The selected days have been restored.";
 "backupSuccessInfo"="Backup has been created.";
 "balanced"="Balanced";
+"camera"="Camera";
+"cameraNotAvailable"="Camera is not available.";
 "cameraNotAuthorized"="Camera use is not authorized. Please change your settings.";
 "cancel" = "Cancel";
 "comment"="Comment";

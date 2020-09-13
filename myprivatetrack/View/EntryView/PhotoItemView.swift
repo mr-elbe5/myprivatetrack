@@ -55,7 +55,7 @@ class PhotoItemView : EntryItemView{
             let viewButton = IconButton(icon: "magnifyingglass", tintColor: .systemBlue, backgroundColor: transparentColor)
             viewButton.addTarget(self, action: #selector(viewItem), for: .touchDown)
             sv.addArrangedSubview(viewButton)
-            let shareButton = IconButton(icon: "square.and.arrow.up", tintColor: .systemBlue, backgroundColor: .systemBackground)
+            let shareButton = IconButton(icon: "square.and.arrow.up", tintColor: .systemBlue, backgroundColor: transparentColor)
             shareButton.addTarget(self, action: #selector(shareItem), for: .touchDown)
             sv.addArrangedSubview(shareButton)
         }

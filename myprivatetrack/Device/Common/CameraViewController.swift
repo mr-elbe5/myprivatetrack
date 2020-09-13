@@ -20,6 +20,8 @@ class CameraViewController: UIViewController {
     var isSessionRunning = false
     let sessionQueue = DispatchQueue(label: "camera session queue")
     
+    var alertShown = false
+    
     var keyValueObservations = [NSKeyValueObservation]()
     
     @objc dynamic var videoDeviceInput: AVCaptureDeviceInput!
@@ -79,7 +81,10 @@ class CameraViewController: UIViewController {
         }
         else{
             enableCameraButtons(flag: false)
-            showCameraAlert()
+            if !alertShown{
+                showAlert(title: "camera".localize(), text: "cameraNotAvailable".localize())
+                alertShown = true
+            }
         }
     }
     
@@ -259,10 +264,6 @@ class CameraViewController: UIViewController {
                 print("Could not lock device for configuration: \(error)")
             }
         }
-    }
-    
-    func showCameraAlert(){
-        showAlert(title: "camera".localize(), text: "cameraNotAvailable".localize())
     }
     
     func addObservers(){

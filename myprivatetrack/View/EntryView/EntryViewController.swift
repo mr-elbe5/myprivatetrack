@@ -27,6 +27,13 @@ class EntryViewController: ModalScrollViewController, PhotoItemDelegate, VideoIt
             let locationButton = TextButton(text: loc.asString)
             locationButton.addTarget(self,action: #selector(showInMap), for: .touchDown)
             stackView.addArrangedSubview(locationButton)
+            let desc = entry!.locationDescription
+            if !desc.isEmpty{
+                let locationDescriptionLabel = UILabel()
+                locationDescriptionLabel.text = desc
+                locationDescriptionLabel.textAlignment = .center
+                stackView.addArrangedSubview(locationDescriptionLabel)
+            }
             if entry!.hasMapSection{
                 let mapView = MapItemView()
                 mapView.setupView(data: entry!)
