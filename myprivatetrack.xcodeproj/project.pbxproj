@@ -329,7 +329,6 @@
 				4ED21B9724FAA29F00A6FEA3 /* EditViewController.swift */,
 				4ED21B9524FAA29F00A6FEA3 /* PhotoViewController.swift */,
 				4ED21B9224FAA29F00A6FEA3 /* InfoViewController.swift */,
-				4ED21BC724FAA36C00A6FEA3 /* MainTabController.swift */,
 				4ED21B9424FAA29F00A6FEA3 /* ModalScrollViewController.swift */,
 				4ED21B9124FAA29F00A6FEA3 /* ModalViewController.swift */,
 				4ED21B9624FAA29F00A6FEA3 /* ScrollViewController.swift */,
@@ -405,6 +404,7 @@
 		4ED21B3424FA9A3500A6FEA3 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
+				4ED21BC724FAA36C00A6FEA3 /* MainTabController.swift */,
 				4E775B7325003421003BEC92 /* Common */,
 				4E24FC91250164A200BCE81B /* Info */,
 				4EF0A7F5249F986100A236EB /* Map */,

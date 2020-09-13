@@ -45,6 +45,10 @@ extension UIViewController{
         }
     }
     
+    public var isDarkMode: Bool {
+        return self.traitCollection.userInterfaceStyle == .dark
+    }
+    
     public func showAlert(title: String, text: String, onOk: (() -> Void)? = nil){
         let alertController = UIAlertController(title: title, message: text, preferredStyle: .alert)
         alertController.addAction(UIAlertAction(title: "ok".localize(),style: .default) { action in

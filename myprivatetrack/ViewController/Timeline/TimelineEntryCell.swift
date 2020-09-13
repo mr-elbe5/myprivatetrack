@@ -33,7 +33,7 @@ class TimelineEntryCell: UITableViewCell, PhotoItemDelegate, VideoItemDelegate{
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         isUserInteractionEnabled = true
         backgroundColor = .clear
-        cellBody.backgroundColor = .systemGray6
+        cellBody.backgroundColor = transparentColor
         cellBody.layer.cornerRadius = 5
         addSubview(cellBody)
         cellBody.fillSuperview(insets: defaultInsets)
@@ -45,6 +45,7 @@ class TimelineEntryCell: UITableViewCell, PhotoItemDelegate, VideoItemDelegate{
     }
     
     func updateCell(isEditing: Bool = false){
+        cellBody.backgroundColor = transparentColor
         cellBody.removeAllSubviews()
         if entry != nil{
             let timeLabel = UILabel()

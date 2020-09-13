@@ -64,6 +64,21 @@ extension UIView{
         }
     }
     
+    var transparentColor : UIColor{
+        get{
+            if isDarkMode{
+                return UIColor(displayP3Red: 0, green: 0, blue: 0, alpha: 0.8)
+            }
+            else{
+                return UIColor(displayP3Red: 255, green: 255, blue: 255, alpha: 0.85)
+            }
+        }
+    }
+    
+    public var isDarkMode: Bool {
+        return self.traitCollection.userInterfaceStyle == .dark
+    }
+    
     public func setRoundedBorders(){
         layer.borderWidth = 0.5
         layer.cornerRadius = 5
