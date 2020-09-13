@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-public class Indicator{
+class Indicator{
     
     var indicatorView = UIView()
     var activityIndicator = UIActivityIndicatorView()
@@ -21,7 +21,7 @@ public class Indicator{
         return Static.instance
     }
 
-    public func show() {
+    func show() {
             let window = UIApplication.shared.windows.first!
             indicatorView.frame = CGRect(x:0, y:0, width:80, height:80)
         indicatorView.center = CGPoint(x: window.frame.width / 2.0, y: window.frame.height / 2.0)
@@ -39,7 +39,7 @@ public class Indicator{
             activityIndicator.startAnimating()
     }
 
-    public func hide() {
+    func hide() {
         activityIndicator.stopAnimating()
         indicatorView.removeFromSuperview()
     }

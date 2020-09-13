@@ -43,8 +43,8 @@ class AudioItemView : EntryItemView, AVAudioPlayerDelegate{
     
 }
 
-class AudioItemEditView : EntryItemEditView, UITextViewDelegate, AVAudioRecorderDelegate, AVAudioPlayerDelegate{
-    
+class AudioItemEditView : EntryItemEditView, UITextViewDelegate{
+        
     static func fromData(data : AudioData)  -> AudioItemEditView{
         let editView = AudioItemEditView()
         editView.setupView(data: data)
@@ -64,7 +64,7 @@ class AudioItemEditView : EntryItemEditView, UITextViewDelegate, AVAudioRecorder
     
     func setupView(data: AudioData){
         self.audioData = data
-        audioView.url = data.fileURL
+        audioView.data = data
         audioView.enableRecording()
         if audioData.fileExists(){
             audioView.player.enablePlayer()

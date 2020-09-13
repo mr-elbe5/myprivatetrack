@@ -14,10 +14,10 @@ class AudioData : FileEntryItemData{
         case time
     }
     
-    public var title: String = ""
-    public var time: Double = 0.0
+    var title: String = ""
+    var time: Double = 0.0
     
-    override public var type : EntryItemType{
+    override var type : EntryItemType{
         get{
             return .audio
         }

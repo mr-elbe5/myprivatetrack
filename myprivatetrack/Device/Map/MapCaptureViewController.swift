@@ -23,7 +23,6 @@ class MapCaptureViewController: UIViewController, LocationServiceDelegate, MapVi
     var mapView = MapView()
     var bodyView = UIView()
     var buttonView = UIView()
-    var cancelButton = IconButton(icon: "chevron.left", tintColor: .white)
     var mapTypeButton = IconButton(icon: "map", tintColor: .white)
     var captureButton = CaptureButton()
     
@@ -34,12 +33,21 @@ class MapCaptureViewController: UIViewController, LocationServiceDelegate, MapVi
         bodyView.backgroundColor = .black
         view.addSubview(bodyView)
         bodyView.fillSafeAreaOf(view: view, insets: .zero)
+        let closeButton = IconButton(icon: "xmark.circle", tintColor: .white)
+        bodyView.addSubview(closeButton)
+        closeButton.addTarget(self, action: #selector(cancel), for: .touchDown)
+        closeButton.setAnchors()
+            .top(bodyView.topAnchor,inset: defaultInset)
+            .trailing(bodyView.trailingAnchor,inset: defaultInset)
         bodyView.addSubview(mapView)
         mapView.setupView()
         if let loc = LocationService.shared.getLocation(){
             mapView.setLocation(location: loc)
         }
-        mapView.placeBelow(anchor: bodyView.topAnchor, insets: .zero)
+        mapView.setAnchors()
+            .top(closeButton.bottomAnchor,inset: defaultInset)
+            .leading(bodyView.leadingAnchor)
+            .trailing(bodyView.trailingAnchor)
         mapView.delegate = self
         buttonView.backgroundColor = .black
         bodyView.addSubview(buttonView)
@@ -49,11 +57,6 @@ class MapCaptureViewController: UIViewController, LocationServiceDelegate, MapVi
     }
     
     func addButtons(){
-        
-        cancelButton.setTitle("back".localize(), for: .normal)
-        cancelButton.addTarget(self, action: #selector(cancel), for: .touchDown)
-        buttonView.addSubview(cancelButton)
-        cancelButton.placeAfter(anchor: buttonView.leadingAnchor, insets: Statics.defaultInsets)
         
         captureButton.addTarget(self, action: #selector(save), for: .touchDown)
         mapView.addSubview(captureButton)

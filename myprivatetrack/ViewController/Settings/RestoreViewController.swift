@@ -11,7 +11,7 @@ import Zip
 
 class RestoreViewController: ModalScrollViewController, DatePickerDelegate{
 
-    public var stackView = UIStackView()
+    var stackView = UIStackView()
     
     var data: GlobalData!
     var fileNames: Array<String>!

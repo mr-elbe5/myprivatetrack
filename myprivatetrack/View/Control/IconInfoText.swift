@@ -8,12 +8,12 @@
 import Foundation
 import UIKit
 
-public class IconInfoText : UIView{
+class IconInfoText : UIView{
     
     let iconView = UIImageView()
     let iconText = UILabel()
     
-    public init(icon: String, text: String, iconColor : UIColor = .systemBlue){
+    init(icon: String, text: String, iconColor : UIColor = .systemBlue){
         super.init(frame: .zero)
         iconView.image = UIImage(systemName: icon)
         iconView.tintColor = iconColor
@@ -21,7 +21,7 @@ public class IconInfoText : UIView{
         commonInit()
     }
     
-    public init(image: String, text: String){
+    init(image: String, text: String){
         super.init(frame: .zero)
         iconView.image = UIImage(named: image)
         iconText.text = text

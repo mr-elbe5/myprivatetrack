@@ -14,8 +14,8 @@ class DayData: Identifiable, Codable{
         case entries
     }
     
-    public var date: Date
-    public var entries: Array<EntryData>
+    var date: Date
+    var entries: Array<EntryData>
     
     init(){
         date = Date()
@@ -24,8 +24,11 @@ class DayData: Identifiable, Codable{
     
     required init(from decoder: Decoder) throws {
         let values = try decoder.container(keyedBy: CodingKeys.self)
+        print("decode day")
         date = try values.decode(Date.self, forKey: .date)
+        print("date= \(date.dateString())")
         entries = try values.decode(Array<EntryData>.self, forKey: .entries)
+        print("day decoded")
     }
     
     func encode(to encoder: Encoder) throws {

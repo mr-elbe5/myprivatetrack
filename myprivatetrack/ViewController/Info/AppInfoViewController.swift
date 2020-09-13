@@ -11,7 +11,7 @@ import UIKit
 
 class AppInfoViewController: ScrollViewController {
     
-    public var stackView = UIStackView()
+    var stackView = UIStackView()
     
     let privacyHeader = InfoHeader(text: "privacyInfoHeader".localize())
     let privacyInfoText1 = InfoText(text: "privacyInfoText1".localize())

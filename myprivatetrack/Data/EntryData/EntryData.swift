@@ -22,24 +22,24 @@ class EntryData: Identifiable, Codable{
         case items
     }
     
-    public var id: UUID
-    public var creationDate: Date
-    public var location: Location? = nil
-    public var locationDescription: String = ""
-    public var saveLocation: Bool
-    public var hasMapSection: Bool = false
-    public var mapComment:String = ""
-    public var items = Array<EntryItem>()
+    var id: UUID
+    var creationDate: Date
+    var location: Location? = nil
+    var locationDescription: String = ""
+    var saveLocation: Bool
+    var hasMapSection: Bool = false
+    var mapComment:String = ""
+    var items = Array<EntryItem>()
     
-    public var isNew = false
+    var isNew = false
     
-    public var mapSectionFileName : String{
+    var mapSectionFileName : String{
         get{
             return id.uuidString + "_map.jpg"
         }
     }
     
-    public var mapSectionFileURL : URL{
+    var mapSectionFileURL : URL{
         get{
             return FileController.getURL(dirURL: FileController.privateURL,fileName: mapSectionFileName)
         }
@@ -82,7 +82,7 @@ class EntryData: Identifiable, Codable{
         return false
     }
     
-    public func deleteMapSection(){
+    func deleteMapSection(){
         _ = FileController.deleteFile(url: mapSectionFileURL)
     }
     

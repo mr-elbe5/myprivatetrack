@@ -8,11 +8,11 @@
 import Foundation
 import UIKit
 
-public class InfoHeader : UIView{
+class InfoHeader : UIView{
     
     let label = UILabel()
     
-    public init(text: String, paddingTop: CGFloat = Statics.defaultInset){
+    init(text: String, paddingTop: CGFloat = Statics.defaultInset){
         super.init(frame: .zero)
         label.text = text
         label.textColor = .label

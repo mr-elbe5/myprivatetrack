@@ -11,7 +11,7 @@ import CoreLocation
 
 extension CLLocationManager{
     
-    public static var authorized : Bool{
+    static var authorized : Bool{
         get{
             switch authorizationStatus(){
             case .authorizedAlways:

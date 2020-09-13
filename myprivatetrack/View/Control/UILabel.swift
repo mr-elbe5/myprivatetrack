@@ -10,7 +10,7 @@ import UIKit
 
 extension UILabel{
     
-    public func setDefaults(text : String){
+    func setDefaults(text : String){
         self.text = text
     }
     

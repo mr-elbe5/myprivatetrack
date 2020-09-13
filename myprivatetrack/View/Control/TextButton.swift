@@ -8,9 +8,9 @@
 import Foundation
 import UIKit
 
-public class TextButton : UIButton{
+class TextButton : UIButton{
     
-    public init(text: String){
+    init(text: String){
         super.init(frame: .zero)
         setTitle(text, for: .normal)
         setTitleColor(UIColor.systemBlue, for: .normal)

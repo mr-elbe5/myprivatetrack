@@ -13,7 +13,7 @@ class TimeSpanData: Identifiable, Codable{
         case days
     }
     
-    public var days: Array<DayData>
+    var days: Array<DayData>
     private var dayMap = Dictionary<Date, DayData>()
     
     init(){

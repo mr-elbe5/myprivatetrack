@@ -8,9 +8,9 @@
 import Foundation
 import UIKit
 
-public class IconButton : UIButton{
+class IconButton : UIButton{
     
-    public init(icon: String, tintColor: UIColor = .systemBlue, backgroundColor: UIColor? = nil){
+    init(icon: String, tintColor: UIColor = .systemBlue, backgroundColor: UIColor? = nil){
         super.init(frame: .zero)
         setImage(UIImage(systemName: icon), for: .normal)
         self.tintColor = tintColor
@@ -23,7 +23,7 @@ public class IconButton : UIButton{
         }
     }
     
-    public init(image: String, tintColor: UIColor = .systemBlue, backgroundColor: UIColor? = nil){
+    init(image: String, tintColor: UIColor = .systemBlue, backgroundColor: UIColor? = nil){
         super.init(frame: .zero)
         setImage(UIImage(named: image), for: .normal)
         self.tintColor = tintColor

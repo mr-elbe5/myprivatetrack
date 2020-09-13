@@ -9,25 +9,25 @@ import UIKit
 
 extension UIViewController{
     
-    public var defaultInset : CGFloat{
+    var defaultInset : CGFloat{
         get{
             return Statics.defaultInset
         }
     }
     
-    public var defaultInsets : UIEdgeInsets{
+    var defaultInsets : UIEdgeInsets{
         get{
             return Statics.defaultInsets
         }
     }
     
-    public var flatInsets : UIEdgeInsets{
+    var flatInsets : UIEdgeInsets{
         get{
             return Statics.flatInsets
         }
     }
     
-    public var narrowInsets : UIEdgeInsets{
+    var narrowInsets : UIEdgeInsets{
         get{
             return Statics.narrowInsets
         }
@@ -45,11 +45,11 @@ extension UIViewController{
         }
     }
     
-    public var isDarkMode: Bool {
+    var isDarkMode: Bool {
         return self.traitCollection.userInterfaceStyle == .dark
     }
     
-    public func showAlert(title: String, text: String, onOk: (() -> Void)? = nil){
+    func showAlert(title: String, text: String, onOk: (() -> Void)? = nil){
         let alertController = UIAlertController(title: title, message: text, preferredStyle: .alert)
         alertController.addAction(UIAlertAction(title: "ok".localize(),style: .default) { action in
             onOk?()
@@ -57,7 +57,7 @@ extension UIViewController{
         self.present(alertController, animated: true)
     }
     
-    public func showApprove(title: String, text: String, onApprove: (() -> Void)? = nil){
+    func showApprove(title: String, text: String, onApprove: (() -> Void)? = nil){
         let alertController = UIAlertController(title: title, message: text, preferredStyle: .alert)
         alertController.addAction(UIAlertAction(title: "yes".localize(), style: .default) { action in
             onApprove?()

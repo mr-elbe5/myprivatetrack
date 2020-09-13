@@ -10,7 +10,7 @@ import UIKit
 
 open class ModalViewController: ViewController {
     
-    public var stackView = UIStackView()
+    var stackView = UIStackView()
     
     override open func loadView() {
         self.mainViewTopPadding = 0
@@ -30,7 +30,7 @@ open class ModalViewController: ViewController {
         headerView = buttonView
     }
     
-    @objc public func close(){
+    @objc func close(){
         self.dismiss(animated: true, completion: {
         })
     }

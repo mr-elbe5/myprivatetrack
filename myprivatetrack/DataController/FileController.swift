@@ -11,64 +11,64 @@ import Photos
 import Compression
 import Zip
 
-public class FileController {
+class FileController {
     
-    public static var shared = FileController()
+    static var shared = FileController()
     
     static let tempDir = NSTemporaryDirectory()
     
-    static public var privatePath: String = NSSearchPathForDirectoriesInDomains(.applicationSupportDirectory,.userDomainMask,true).first!
-    static public var privateURL : URL = FileManager.default.urls(for: .applicationSupportDirectory,in: FileManager.SearchPathDomainMask.userDomainMask).first!
-    static public var documentPath: String = NSSearchPathForDirectoriesInDomains(.documentDirectory,.userDomainMask,true).first!
-    static public var documentURL : URL = FileManager.default.urls(for: .documentDirectory,in: FileManager.SearchPathDomainMask.userDomainMask).first!
-    static public var backupDirURL = documentURL.appendingPathComponent(Statics.backupDir)
-    static public var exportDirURL = documentURL.appendingPathComponent(Statics.exportDir)
-    static public var imageLibraryPath: String = NSSearchPathForDirectoriesInDomains(.picturesDirectory,.userDomainMask,true).first!
-    static public var imageLibraryURL : URL = FileManager.default.urls(for: .picturesDirectory,in: FileManager.SearchPathDomainMask.userDomainMask).first!
-    static public var temporaryPath : String {
+    static var privatePath: String = NSSearchPathForDirectoriesInDomains(.applicationSupportDirectory,.userDomainMask,true).first!
+    static var privateURL : URL = FileManager.default.urls(for: .applicationSupportDirectory,in: FileManager.SearchPathDomainMask.userDomainMask).first!
+    static var documentPath: String = NSSearchPathForDirectoriesInDomains(.documentDirectory,.userDomainMask,true).first!
+    static var documentURL : URL = FileManager.default.urls(for: .documentDirectory,in: FileManager.SearchPathDomainMask.userDomainMask).first!
+    static var backupDirURL = documentURL.appendingPathComponent(Statics.backupDir)
+    static var exportDirURL = documentURL.appendingPathComponent(Statics.exportDir)
+    static var imageLibraryPath: String = NSSearchPathForDirectoriesInDomains(.picturesDirectory,.userDomainMask,true).first!
+    static var imageLibraryURL : URL = FileManager.default.urls(for: .picturesDirectory,in: FileManager.SearchPathDomainMask.userDomainMask).first!
+    static var temporaryPath : String {
         get{
             return tempDir
         }
     }
-    static public var temporaryURL : URL{
+    static var temporaryURL : URL{
         get{
             return URL(fileURLWithPath: temporaryPath, isDirectory: true)
         }
     }
     
-    static public func initialize() {
+    static func initialize() {
         try! FileManager.default.createDirectory(at: privateURL, withIntermediateDirectories: true, attributes: nil)
         try! FileManager.default.createDirectory(at: backupDirURL, withIntermediateDirectories: true, attributes: nil)
         try! FileManager.default.createDirectory(at: exportDirURL, withIntermediateDirectories: true, attributes: nil)
     }
     
-    static public func getPath(dirPath: String, fileName: String ) -> String
+    static func getPath(dirPath: String, fileName: String ) -> String
     {
         return dirPath+"/"+fileName
     }
     
-    static public func getURL(dirURL: URL, fileName: String ) -> URL
+    static func getURL(dirURL: URL, fileName: String ) -> URL
     {
         return dirURL.appendingPathComponent(fileName)
     }
     
-    static public func fileExists(dirPath: String, fileName: String) -> Bool{
+    static func fileExists(dirPath: String, fileName: String) -> Bool{
         let path = getPath(dirPath: dirPath,fileName: fileName)
         return FileManager.default.fileExists(atPath: path)
     }
     
-    static public func fileExists(url: URL) -> Bool{
+    static func fileExists(url: URL) -> Bool{
         return FileManager.default.fileExists(atPath: url.path)
     }
     
-    static public func readFile(url: URL) -> Data?{
+    static func readFile(url: URL) -> Data?{
         if let fileData = FileManager.default.contents(atPath: url.path){
             return fileData
         }
         return nil
     }
     
-    static public func readTextFile(url: URL) -> String?{
+    static func readTextFile(url: URL) -> String?{
         do{
             let string = try String(contentsOf: url, encoding: .utf8)
             return string
@@ -78,7 +78,7 @@ public class FileController {
         }
     }
     
-    static public func saveFile(data: Data, url: URL) -> Bool{
+    static func saveFile(data: Data, url: URL) -> Bool{
         do{
             try data.write(to: url, options: .atomic)
             return true
@@ -88,7 +88,7 @@ public class FileController {
         }
     }
     
-    static public func saveFile(text: String, url: URL) -> Bool{
+    static func saveFile(text: String, url: URL) -> Bool{
         do{
             try text.write(to: url, atomically: true, encoding: .utf8)
             return true
@@ -98,7 +98,7 @@ public class FileController {
         }
     }
     
-    static public func copyFile(name: String,fromDir: URL, toDir: URL, replace: Bool = false) -> Bool{
+    static func copyFile(name: String,fromDir: URL, toDir: URL, replace: Bool = false) -> Bool{
         do{
             if replace && fileExists(url: getURL(dirURL: toDir, fileName: name)){
                 _ = deleteFile(url: getURL(dirURL: toDir, fileName: name))
@@ -111,7 +111,7 @@ public class FileController {
         }
     }
     
-    static public func copyFile(fromURL: URL, toURL: URL, replace: Bool = false) -> Bool{
+    static func copyFile(fromURL: URL, toURL: URL, replace: Bool = false) -> Bool{
         do{
             if replace && fileExists(url: toURL){
                 _ = deleteFile(url: toURL)
@@ -124,7 +124,7 @@ public class FileController {
         }
     }
     
-    public static func askPhotoLibraryAuthorization(callback: @escaping (Result<Void, Error>) -> Void){
+    static func askPhotoLibraryAuthorization(callback: @escaping (Result<Void, Error>) -> Void){
         switch PHPhotoLibrary.authorizationStatus(){
         case .authorized:
             callback(.success(()))
@@ -223,7 +223,7 @@ public class FileController {
         }
     }
     
-    static public func renameFile(dirURL: URL, fromName: String, toName: String) -> Bool{
+    static func renameFile(dirURL: URL, fromName: String, toName: String) -> Bool{
         do{
             try FileManager.default.moveItem(at: getURL(dirURL: dirURL, fileName: fromName),to: getURL(dirURL: dirURL, fileName: toName))
             return true
@@ -233,7 +233,7 @@ public class FileController {
         }
     }
     
-    static public func deleteFile(dirURL: URL, fileName: String) -> Bool{
+    static func deleteFile(dirURL: URL, fileName: String) -> Bool{
         do{
             try FileManager.default.removeItem(at: getURL(dirURL: dirURL, fileName: fileName))
             print("file deleted: \(fileName)")
@@ -244,7 +244,7 @@ public class FileController {
         }
     }
     
-    static public func deleteFile(url: URL) -> Bool{
+    static func deleteFile(url: URL) -> Bool{
         do{
             try FileManager.default.removeItem(at: url)
             print("file deleted: \(url)")
@@ -255,11 +255,11 @@ public class FileController {
         }
     }
     
-    static public func listAllFiles(dirPath: String) -> Array<String>{
+    static func listAllFiles(dirPath: String) -> Array<String>{
         return try! FileManager.default.contentsOfDirectory(atPath: dirPath)
     }
     
-    static public func listAllURLs(dirURL: URL) -> Array<URL>{
+    static func listAllURLs(dirURL: URL) -> Array<URL>{
         let names = listAllFiles(dirPath: dirURL.path)
         var urls = Array<URL>()
         for name in names{
@@ -268,7 +268,7 @@ public class FileController {
         return urls
     }
     
-    static public func deleteAllFiles(dirURL: URL){
+    static func deleteAllFiles(dirURL: URL){
         let names = listAllFiles(dirPath: dirURL.path)
         var count = 0
         for name in names{
@@ -279,7 +279,7 @@ public class FileController {
         print("\(count) files deleted")
     }
     
-    static public func zipFiles(sourceFiles: [URL], zipURL: URL){
+    static func zipFiles(sourceFiles: [URL], zipURL: URL){
         do {
             try Zip.zipFiles(paths: sourceFiles, zipFilePath: zipURL, password: nil, progress: { (progress) -> () in
                 //print(progress)
@@ -290,7 +290,7 @@ public class FileController {
         }
     }
     
-    static public func unzipDirectory(zipURL: URL, destinationURL: URL){
+    static func unzipDirectory(zipURL: URL, destinationURL: URL){
         do {
             try Zip.unzipFile(zipURL, destination: destinationURL, overwrite: true, password: nil, progress: { (progress) -> () in
                 //print(progress)

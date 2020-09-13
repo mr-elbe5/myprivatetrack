@@ -15,6 +15,7 @@ protocol VideoCaptureDelegate{
 }
 
 class VideoCaptureViewController: CameraViewController, AVCaptureFileOutputRecordingDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    
     var data : VideoData!
     
     var delegate: VideoCaptureDelegate? = nil
@@ -242,7 +243,7 @@ class VideoCaptureViewController: CameraViewController, AVCaptureFileOutputRecor
         self.present(pickerController, animated: true, completion: nil)
     }
         
-    public func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]) {
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]) {
         guard let videoURL = info[.mediaURL] as? URL else {return}
         if FileController.copyFile(fromURL: videoURL, toURL: data.fileURL){
             delegate?.videoCaptured(data: data)

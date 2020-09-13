@@ -9,22 +9,22 @@ import Foundation
 import UIKit
 import AVFoundation
 
-public class AudioRecorderView : UIView, AVAudioRecorderDelegate{
+class AudioRecorderView : UIView, AVAudioRecorderDelegate{
     
-    public var recordingSession: AVAudioSession? = nil
-    public var audioRecorder: AVAudioRecorder? = nil
-    public var isRecording: Bool = false
-    public var currentTime: Double = 0.0
+    var recordingSession: AVAudioSession? = nil
+    var audioRecorder: AVAudioRecorder? = nil
+    var isRecording: Bool = false
+    var currentTime: Double = 0.0
     
-    public var url : URL? = nil
+    var data : AudioData!
     
-    public var player = AudioPlayerView()
-    public var recordButton = CaptureButton()
-    public var timeLabel = UILabel()
-    public var progress = AudioProgressView()
+    var player = AudioPlayerView()
+    var recordButton = CaptureButton()
+    var timeLabel = UILabel()
+    var progress = AudioProgressView()
     
     
-    public func setupView() {
+    func setupView() {
         backgroundColor = .black
         timeLabel.textAlignment = .center
         timeLabel.textColor = .white
@@ -39,7 +39,7 @@ public class AudioRecorderView : UIView, AVAudioRecorderDelegate{
         addSubview(player)
     }
 
-    public func layoutView(){
+    func layoutView(){
         timeLabel.placeBelow(anchor: topAnchor)
         progress.placeBelow(view: timeLabel)
         progress.layoutView()
@@ -55,7 +55,7 @@ public class AudioRecorderView : UIView, AVAudioRecorderDelegate{
         updateTime(time: 0.0)
     }
     
-    public func enableRecording(){
+    func enableRecording(){
         var success = true
         AVCaptureDevice.askAudioAuthorization(){ result in
             switch result{
@@ -81,7 +81,7 @@ public class AudioRecorderView : UIView, AVAudioRecorderDelegate{
         }
     }
     
-    public func startRecording() {
+    func startRecording() {
         player.disablePlayer()
         let settings = [
             AVFormatIDKey: Int(kAudioFormatMPEG4AAC),
@@ -89,41 +89,40 @@ public class AudioRecorderView : UIView, AVAudioRecorderDelegate{
             AVEncoderAudioQualityKey: AVAudioQuality.medium.rawValue,
             AVNumberOfChannelsKey: 1,
         ]
-        if let url = url{
-            do{
-                audioRecorder = try AVAudioRecorder(url: url, settings: settings)
-                audioRecorder!.isMeteringEnabled = true
-                audioRecorder!.delegate = self
-                audioRecorder!.record()
-                isRecording = true
-                self.recordButton.buttonState = .recording
-                DispatchQueue.global(qos: .userInitiated).async {
-                    repeat{
-                        self.audioRecorder!.updateMeters()
-                        DispatchQueue.main.async {
-                            self.currentTime = self.audioRecorder!.currentTime
-                            self.updateTime(time: self.currentTime)
-                            self.updateProgress(decibels: self.audioRecorder!.averagePower(forChannel: 0))
-                        }
-                        // 1/10s
-                        usleep(100000)
-                    } while self.isRecording
-                }
+        do{
+            audioRecorder = try AVAudioRecorder(url: data.fileURL, settings: settings)
+            audioRecorder!.isMeteringEnabled = true
+            audioRecorder!.delegate = self
+            audioRecorder!.record()
+            isRecording = true
+            self.recordButton.buttonState = .recording
+            DispatchQueue.global(qos: .userInitiated).async {
+                repeat{
+                    self.audioRecorder!.updateMeters()
+                    DispatchQueue.main.async {
+                        self.currentTime = self.audioRecorder!.currentTime
+                        self.updateTime(time: self.currentTime)
+                        self.updateProgress(decibels: self.audioRecorder!.averagePower(forChannel: 0))
+                    }
+                    // 1/10s
+                    usleep(100000)
+                } while self.isRecording
             }
-            catch{
-                recordButton.isEnabled = false
-            }
+        }
+        catch{
+            recordButton.isEnabled = false
         }
     }
     
-    public func finishRecording(success: Bool) {
+    func finishRecording(success: Bool) {
         isRecording = false
         audioRecorder?.stop()
         audioRecorder = nil
         if success {
             player.isHidden = false
-            player.url = url
+            player.url = data.fileURL
             player.enablePlayer()
+            data.time = (self.currentTime*100).rounded() / 100
         } else {
             player.disablePlayer()
             player.url = nil
@@ -131,15 +130,15 @@ public class AudioRecorderView : UIView, AVAudioRecorderDelegate{
         recordButton.buttonState = .normal
     }
     
-    public func updateTime(time: Double){
+    func updateTime(time: Double){
         timeLabel.text = String(format: "%.02f s", time)
     }
     
-    public func updateProgress(decibels: Float){
+    func updateProgress(decibels: Float){
         progress.setProgress((min(max(-60.0, decibels),0) + 60.0) / 60.0)
     }
     
-    @objc public func toggleRecording() {
+    @objc func toggleRecording() {
         if audioRecorder == nil {
             startRecording()
         } else {
@@ -147,7 +146,7 @@ public class AudioRecorderView : UIView, AVAudioRecorderDelegate{
         }
     }
     
-    public func audioRecorderDidFinishRecording(_ recorder: AVAudioRecorder, successfully flag: Bool) {
+    func audioRecorderDidFinishRecording(_ recorder: AVAudioRecorder, successfully flag: Bool) {
         if !flag {
             finishRecording(success: flag)
         }
@@ -155,13 +154,13 @@ public class AudioRecorderView : UIView, AVAudioRecorderDelegate{
     
 }
 
-public class AudioProgressView : UIView{
+class AudioProgressView : UIView{
     
-    public var lowLabel = UIImageView(image: UIImage(systemName: "speaker"))
-    public var progress = UIProgressView()
-    public var loudLabel = UIImageView(image: UIImage(systemName: "speaker.3"))
+    var lowLabel = UIImageView(image: UIImage(systemName: "speaker"))
+    var progress = UIProgressView()
+    var loudLabel = UIImageView(image: UIImage(systemName: "speaker.3"))
     
-    public func setupView() {
+    func setupView() {
         backgroundColor = .clear
         lowLabel.tintColor = .white
         addSubview(lowLabel)
@@ -173,7 +172,7 @@ public class AudioProgressView : UIView{
         
     }
     
-    public func layoutView(){
+    func layoutView(){
         lowLabel.placeAfter(anchor: leadingAnchor)
         loudLabel.placeBefore(anchor: trailingAnchor)
         progress.setAnchors()

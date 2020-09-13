@@ -10,7 +10,7 @@ import UIKit
 
 open class InfoViewController: ModalScrollViewController {
     
-    public var stackView = UIStackView()
+    var stackView = UIStackView()
     
     override open func loadView() {
         super.loadView()

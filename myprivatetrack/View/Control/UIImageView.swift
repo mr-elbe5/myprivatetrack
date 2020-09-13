@@ -10,12 +10,12 @@ import UIKit
 
 extension UIImageView{
     
-    @objc public func setDefaults(){
+    @objc func setDefaults(){
         self.contentMode = .scaleAspectFit
         self.clipsToBounds = true
     }
     
-    public func setAspectRatioConstraint() {
+    func setAspectRatioConstraint() {
         if let imageSize = image?.size, imageSize.height != 0
         {
             let aspectRatio = imageSize.width / imageSize.height

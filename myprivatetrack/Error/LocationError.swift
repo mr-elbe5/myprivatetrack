@@ -8,14 +8,14 @@
 
 import Foundation
 
-public enum LocationError: Swift.Error {
+enum LocationError: Swift.Error {
     case unauthorized
     case timeout
     case unexpected
 }
 
 extension LocationError: LocalizedError {
-    public var errorDescription: String? {
+    var errorDescription: String? {
         switch self {
         case .unauthorized: return "unauthorizedError".localize()
         case .timeout: return "timeoutError".localize()

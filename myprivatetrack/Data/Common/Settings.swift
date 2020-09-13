@@ -11,9 +11,9 @@ import AVFoundation
 
 class Settings: Identifiable, Codable{
     
-    public static var shared = Settings()
+    static var shared = Settings()
     
-    public static func load(){
+    static func load(){
         Settings.shared = DataController.shared.load(forKey: .settings) ?? Settings()
     }
     

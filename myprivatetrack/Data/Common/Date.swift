@@ -9,32 +9,32 @@ import Foundation
 
 extension Date{
     
-    public func startOfDay() -> Date{
+    func startOfDay() -> Date{
         var cal = Calendar.current
         cal.timeZone = TimeZone(abbreviation: "UTC")!
         return cal.startOfDay(for: self)
     }
     
-    public func startOfMonth() -> Date{
+    func startOfMonth() -> Date{
         var cal = Calendar.current
         cal.timeZone = TimeZone(abbreviation: "UTC")!
         let components = cal .dateComponents([.month, .year], from: self)
         return cal.date(from: components)!
     }
     
-    public func dateString() -> String{
+    func dateString() -> String{
         return DateFormats.dateOnlyFormatter.string(from: self)
     }
     
-    public func dateTimeString() -> String{
+    func dateTimeString() -> String{
         return DateFormats.dateTimeFormatter.string(from: self)
     }
     
-    public func fileDate() -> String{
+    func fileDate() -> String{
         return DateFormats.fileDateFormatter.string(from: self)
     }
     
-    public func timeString() -> String{
+    func timeString() -> String{
         return DateFormats.timeOnlyFormatter.string(from: self)
     }
     
@@ -42,18 +42,18 @@ extension Date{
 
 extension Date {
  
-    public var millisecondsSince1970:Int64 {
+    var millisecondsSince1970:Int64 {
         return Int64((self.timeIntervalSince1970 * 1000.0).rounded())
     }
 
-    public init(milliseconds:Int) {
+    init(milliseconds:Int) {
         self = Date(timeIntervalSince1970: TimeInterval(milliseconds / 1000))
     }
 }
 
 class DateFormats{
     
-    public static var dateOnlyFormatter : DateFormatter{
+    static var dateOnlyFormatter : DateFormatter{
         get{
             let dateFormatter = DateFormatter()
             dateFormatter.dateStyle = .medium
@@ -62,7 +62,7 @@ class DateFormats{
         }
     }
     
-    public static var timeOnlyFormatter : DateFormatter{
+    static var timeOnlyFormatter : DateFormatter{
         get{
             let dateFormatter = DateFormatter()
             dateFormatter.dateStyle = .none
@@ -71,7 +71,7 @@ class DateFormats{
         }
     }
     
-    public static var dateTimeFormatter : DateFormatter{
+    static var dateTimeFormatter : DateFormatter{
         get{
             let dateFormatter = DateFormatter()
             dateFormatter.dateStyle = .medium
@@ -80,7 +80,7 @@ class DateFormats{
         }
     }
     
-    public static var fileDateFormatter : DateFormatter{
+    static var fileDateFormatter : DateFormatter{
         get{
             let dateFormatter = DateFormatter()
             dateFormatter.timeZone = .none

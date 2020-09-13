@@ -10,7 +10,7 @@ import UIKit
 
 extension UIImage{
     
-    public func resize(maxWidth: CGFloat, maxHeight: CGFloat) -> UIImage{
+    func resize(maxWidth: CGFloat, maxHeight: CGFloat) -> UIImage{
         if (size.width<=maxWidth || maxWidth==0) && (size.height<=maxHeight || maxHeight==0) {
             return self
         }
@@ -21,14 +21,14 @@ extension UIImage{
         return resize(size: newSize)
     }
     
-    public func resize(size: CGSize) -> UIImage{
+    func resize(size: CGSize) -> UIImage{
         let renderer = UIGraphicsImageRenderer(size: size)
         return renderer.image{ (context) in
             self.draw(in: CGRect(origin: .zero, size: size))
         }
     }
     
-    public func toSquare() -> UIImage{
+    func toSquare() -> UIImage{
         let cgimg = self.cgImage!
         let side = min(cgimg.width, cgimg.height)
         var cropRect : CGRect!

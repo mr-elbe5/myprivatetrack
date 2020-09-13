@@ -9,19 +9,19 @@ import Foundation
 import UIKit
 import AVFoundation
 
-public class AudioPlayerView : UIView, AVAudioPlayerDelegate{
+class AudioPlayerView : UIView, AVAudioPlayerDelegate{
     
-    public var player : AVPlayer
-    public var playerItem : AVPlayerItem? = nil
+    var player : AVPlayer
+    var playerItem : AVPlayerItem? = nil
     
-    public var playProgress = UIProgressView()
-    public var rewindButton = IconButton(icon: "repeat")
-    public var playButton = IconButton(icon: "play.fill")
+    var playProgress = UIProgressView()
+    var rewindButton = IconButton(icon: "repeat")
+    var playButton = IconButton(icon: "play.fill")
     
-    public var timeObserverToken : Any? = nil
+    var timeObserverToken : Any? = nil
     
     private var _url : URL? = nil
-    public var url : URL?{
+    var url : URL?{
         get{
             return _url
         }
@@ -37,7 +37,7 @@ public class AudioPlayerView : UIView, AVAudioPlayerDelegate{
         }
     }
     
-    override public init(frame: CGRect) {
+    override init(frame: CGRect) {
         self.player = AVPlayer()
         super.init(frame: frame)
         setRoundedBorders()
@@ -51,7 +51,7 @@ public class AudioPlayerView : UIView, AVAudioPlayerDelegate{
         fatalError("init(coder:) has not been implemented")
     }
     
-    public func setupView(){
+    func setupView(){
         addSubview(playProgress)
         rewindButton.addTarget(self, action: #selector(rewind), for: .touchDown)
         addSubview(rewindButton)
@@ -61,7 +61,7 @@ public class AudioPlayerView : UIView, AVAudioPlayerDelegate{
         playButton.isEnabled = false
     }
     
-    public func layoutView(){
+    func layoutView(){
         playProgress.setAnchors()
             .leading(leadingAnchor,inset: Statics.defaultInset)
             .centerY(centerYAnchor)
@@ -70,7 +70,7 @@ public class AudioPlayerView : UIView, AVAudioPlayerDelegate{
         playProgress.trailing(rewindButton.leadingAnchor, inset: Statics.defaultInset)
     }
     
-    public func enablePlayer(){
+    func enablePlayer(){
         if url != nil{
             removePeriodicTimeObserver()
             let asset = AVURLAsset(url: url!)
@@ -82,7 +82,7 @@ public class AudioPlayerView : UIView, AVAudioPlayerDelegate{
         }
     }
     
-    public func disablePlayer(){
+    func disablePlayer(){
         player.rate = 0
         removePeriodicTimeObserver()
         playerItem = nil
@@ -91,7 +91,7 @@ public class AudioPlayerView : UIView, AVAudioPlayerDelegate{
         playButton.isEnabled = false
     }
     
-    public func addPeriodicTimeObserver(duration: CMTime) {
+    func addPeriodicTimeObserver(duration: CMTime) {
         let seconds = Float(CMTimeGetSeconds(duration))
         let timeScale = CMTimeScale(NSEC_PER_SEC)
         let time = CMTime(seconds: 0.5, preferredTimescale: timeScale)
@@ -104,14 +104,14 @@ public class AudioPlayerView : UIView, AVAudioPlayerDelegate{
         }
     }
 
-    public func removePeriodicTimeObserver() {
+    func removePeriodicTimeObserver() {
         if let timeObserverToken = timeObserverToken {
             player.removeTimeObserver(timeObserverToken)
             self.timeObserverToken = nil
         }
     }
     
-    @objc public func rewind(){
+    @objc func rewind(){
         player.rate = 0
         if let item = playerItem{
             item.seek(to: CMTime.zero, completionHandler: nil)
@@ -122,7 +122,7 @@ public class AudioPlayerView : UIView, AVAudioPlayerDelegate{
         playButton.isEnabled = true
     }
     
-    @objc public func togglePlay(){
+    @objc func togglePlay(){
         if player.rate == 0{
             print("play")
             player.rate = 1
@@ -136,7 +136,7 @@ public class AudioPlayerView : UIView, AVAudioPlayerDelegate{
         }
     }
     
-    @objc public func playerItemDidReachEnd(notification: Notification) {
+    @objc func playerItemDidReachEnd(notification: Notification) {
         if let playerItem = notification.object as? AVPlayerItem {
             playerItem.seek(to: CMTime.zero, completionHandler: nil)
             player.rate = 0

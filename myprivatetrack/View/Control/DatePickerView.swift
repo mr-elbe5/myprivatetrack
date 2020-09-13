@@ -8,18 +8,18 @@
 import Foundation
 import UIKit
 
-public protocol DatePickerDelegate{
+protocol DatePickerDelegate{
     func dateValueDidChange(sender: DatePickerView,date: Date?)
 }
 
-public class DatePickerView : UIView{
+class DatePickerView : UIView{
     
     private var label = UILabel()
     private var datePicker = UIDatePicker()
     
-    public var delegate : DatePickerDelegate? = nil
+    var delegate : DatePickerDelegate? = nil
     
-    public func setupView(labelText: String, date : Date?, minimumDate : Date? = nil){
+    func setupView(labelText: String, date : Date?, minimumDate : Date? = nil){
         label.text = labelText
         addSubview(label)
         datePicker.timeZone = .none
@@ -37,7 +37,7 @@ public class DatePickerView : UIView{
         datePicker.placeBefore(anchor: trailingAnchor)
     }
     
-    @objc public func valueDidChange(sender:UIDatePicker){
+    @objc func valueDidChange(sender:UIDatePicker){
         delegate?.dateValueDidChange(sender: self,date: sender.date)
     }
     

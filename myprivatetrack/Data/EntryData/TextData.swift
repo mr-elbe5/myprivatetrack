@@ -13,13 +13,13 @@ class TextData: EntryItemData{
         case text
     }
     
-    override public var type : EntryItemType{
+    override var type : EntryItemType{
         get{
             return .text
         }
     }
     
-    public var text: String
+    var text: String
     
     init(){
         text = ""

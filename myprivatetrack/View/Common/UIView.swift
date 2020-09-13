@@ -10,55 +10,55 @@ import UIKit
 
 extension UIView{
     
-    public var defaultInset : CGFloat{
+    var defaultInset : CGFloat{
         get{
             return Statics.defaultInset
         }
     }
     
-    public var defaultInsets : UIEdgeInsets{
+    var defaultInsets : UIEdgeInsets{
         get{
             return Statics.defaultInsets
         }
     }
     
-    public var doubleInsets : UIEdgeInsets{
+    var doubleInsets : UIEdgeInsets{
         get{
             return Statics.doubleInsets
         }
     }
     
-    public var flatInsets : UIEdgeInsets{
+    var flatInsets : UIEdgeInsets{
         get{
             return Statics.flatInsets
         }
     }
     
-    public var narrowInsets : UIEdgeInsets{
+    var narrowInsets : UIEdgeInsets{
         get{
             return Statics.narrowInsets
         }
     }
     
-    public var highPriority : Float{
+    var highPriority : Float{
         get{
             return 900
         }
     }
     
-    public var midPriority : Float{
+    var midPriority : Float{
         get{
             return 500
         }
     }
     
-    public var lowPriority : Float{
+    var lowPriority : Float{
         get{
             return 300
         }
     }
     
-    public static var defaultPriority : Float{
+    static var defaultPriority : Float{
         get{
             return 900
         }
@@ -75,22 +75,22 @@ extension UIView{
         }
     }
     
-    public var isDarkMode: Bool {
+    var isDarkMode: Bool {
         return self.traitCollection.userInterfaceStyle == .dark
     }
     
-    public func setRoundedBorders(){
+    func setRoundedBorders(){
         layer.borderWidth = 0.5
         layer.cornerRadius = 5
     }
     
-    public func setGrayRoundedBorders(){
+    func setGrayRoundedBorders(){
         layer.borderColor = UIColor.lightGray.cgColor
         layer.borderWidth = 0.5
         layer.cornerRadius = 5
     }
     
-    public func scaleBy(_ factor: CGFloat){
+    func scaleBy(_ factor: CGFloat){
         self.transform = CGAffineTransform(scaleX: factor, y:factor)
     }
     
@@ -106,19 +106,19 @@ extension UIView{
         return nil
     }
     
-    public func resetConstraints(){
+    func resetConstraints(){
         for constraint in constraints{
             constraint.isActive = false
         }
     }
     
-    public func fillSuperview(insets: UIEdgeInsets = .zero){
+    func fillSuperview(insets: UIEdgeInsets = .zero){
         if let sv = superview{
             fillView(view: sv, insets: insets)
         }
     }
     
-    public func fillView(view: UIView, insets: UIEdgeInsets = .zero){
+    func fillView(view: UIView, insets: UIEdgeInsets = .zero){
         setAnchors()
             .leading(view.leadingAnchor,inset: insets.left)
             .top(view.topAnchor,inset: insets.top)
@@ -126,7 +126,7 @@ extension UIView{
             .bottom(view.bottomAnchor,inset: insets.bottom)
     }
     
-    public func fillSafeAreaOf(view: UIView, insets: UIEdgeInsets = .zero){
+    func fillSafeAreaOf(view: UIView, insets: UIEdgeInsets = .zero){
         setAnchors()
             .leading(view.safeAreaLayoutGuide.leadingAnchor,inset: insets.left)
             .top(view.safeAreaLayoutGuide.topAnchor,inset: insets.top)
@@ -134,81 +134,81 @@ extension UIView{
             .bottom(view.safeAreaLayoutGuide.bottomAnchor,inset: insets.bottom)
     }
     
-    public func setCentral(view: UIView){
+    func setCentral(view: UIView){
         setAnchors()
             .centerX(view.centerXAnchor)
             .centerY(view.centerYAnchor)
     }
     
-    public func placeBelow(anchor: NSLayoutYAxisAnchor, insets: UIEdgeInsets = Statics.defaultInsets,priority: Float = defaultPriority){
+    func placeBelow(anchor: NSLayoutYAxisAnchor, insets: UIEdgeInsets = Statics.defaultInsets,priority: Float = defaultPriority){
         setAnchors()
             .top(anchor,inset: insets.top, priority : priority)
             .leading(superview?.leadingAnchor,inset: insets.left, priority : priority)
             .trailing(superview?.trailingAnchor, inset: insets.right, priority : priority)
     }
     
-    public func placeBelow(view: UIView, insets: UIEdgeInsets = Statics.defaultInsets,priority: Float = defaultPriority){
+    func placeBelow(view: UIView, insets: UIEdgeInsets = Statics.defaultInsets,priority: Float = defaultPriority){
         placeBelow(anchor: view.bottomAnchor, insets: insets, priority : priority)
     }
     
-    public func placeAbove(anchor: NSLayoutYAxisAnchor, insets: UIEdgeInsets = Statics.defaultInsets,priority: Float = defaultPriority){
+    func placeAbove(anchor: NSLayoutYAxisAnchor, insets: UIEdgeInsets = Statics.defaultInsets,priority: Float = defaultPriority){
         setAnchors()
             .bottom(anchor,inset: insets.top, priority : priority)
             .leading(superview?.leadingAnchor,inset: insets.left, priority : priority)
             .trailing(superview?.trailingAnchor, inset: insets.right, priority : priority)
     }
     
-    public func placeAbove(view: UIView, insets: UIEdgeInsets = Statics.defaultInsets,priority: Float = defaultPriority){
+    func placeAbove(view: UIView, insets: UIEdgeInsets = Statics.defaultInsets,priority: Float = defaultPriority){
         placeAbove(anchor: view.topAnchor, insets: insets, priority : priority)
     }
     
-    public func connectBottom(view: UIView, insets: CGFloat = Statics.defaultInset,priority: Float = defaultPriority){
+    func connectBottom(view: UIView, insets: CGFloat = Statics.defaultInset,priority: Float = defaultPriority){
         bottom(view.bottomAnchor, inset: insets, priority : priority)
     }
     
-    public func placeBefore(anchor: NSLayoutXAxisAnchor, insets: UIEdgeInsets = Statics.defaultInsets, priority: Float = defaultPriority){
+    func placeBefore(anchor: NSLayoutXAxisAnchor, insets: UIEdgeInsets = Statics.defaultInsets, priority: Float = defaultPriority){
         setAnchors()
             .trailing(anchor, inset: insets.right, priority : priority)
             .top(superview?.topAnchor, inset: insets.top, priority : priority)
             .bottom(superview?.bottomAnchor, inset: insets.bottom, priority: priority)
     }
     
-    public func placeBefore(view: UIView, insets: UIEdgeInsets = Statics.defaultInsets,priority: Float = defaultPriority){
+    func placeBefore(view: UIView, insets: UIEdgeInsets = Statics.defaultInsets,priority: Float = defaultPriority){
         placeBefore(anchor: view.leadingAnchor, insets: insets, priority: priority)
     }
     
-    public func placeAfter(anchor: NSLayoutXAxisAnchor, insets: UIEdgeInsets = Statics.defaultInsets,priority: Float = defaultPriority){
+    func placeAfter(anchor: NSLayoutXAxisAnchor, insets: UIEdgeInsets = Statics.defaultInsets,priority: Float = defaultPriority){
         setAnchors()
             .leading(anchor,inset: insets.left, priority: priority)
             .top(superview?.topAnchor,inset: insets.top, priority: priority)
             .bottom(superview?.bottomAnchor, inset: insets.bottom, priority: priority)
     }
     
-    public func placeAfter(view: UIView, insets: UIEdgeInsets = Statics.defaultInsets,priority: Float = defaultPriority){
+    func placeAfter(view: UIView, insets: UIEdgeInsets = Statics.defaultInsets,priority: Float = defaultPriority){
         placeAfter(anchor: view.trailingAnchor, insets: insets, priority : priority)
     }
     
-    public func placeXCentered(insets: UIEdgeInsets = Statics.defaultInsets,priority: Float = defaultPriority){
+    func placeXCentered(insets: UIEdgeInsets = Statics.defaultInsets,priority: Float = defaultPriority){
         setAnchors()
             .centerX(superview?.centerXAnchor,priority: priority)
             .top(superview?.topAnchor,inset: insets.top, priority: priority)
             .bottom(superview?.bottomAnchor, inset: insets.bottom, priority: priority)
     }
     
-    public func placeTopRight(insets: UIEdgeInsets = Statics.defaultInsets,priority: Float = defaultPriority){
+    func placeTopRight(insets: UIEdgeInsets = Statics.defaultInsets,priority: Float = defaultPriority){
         setAnchors()
             .top(superview?.topAnchor, inset: insets.top, priority: priority)
             .trailing(superview?.trailingAnchor, inset: insets.right, priority: priority)
     }
     
     @discardableResult
-    public func setAnchors() -> UIView{
+    func setAnchors() -> UIView{
         translatesAutoresizingMaskIntoConstraints = false
         return self
     }
     
     @discardableResult
-    public func leading(_ anchor: NSLayoutXAxisAnchor?, inset: CGFloat = 0,priority: Float = defaultPriority) -> UIView{
+    func leading(_ anchor: NSLayoutXAxisAnchor?, inset: CGFloat = 0,priority: Float = defaultPriority) -> UIView{
         if let anchor = anchor{
             let constraint = leadingAnchor.constraint(equalTo: anchor, constant: inset)
             if priority != 0{
@@ -220,7 +220,7 @@ extension UIView{
     }
     
     @discardableResult
-    public func trailing(_ anchor: NSLayoutXAxisAnchor?, inset: CGFloat = 0,priority: Float = defaultPriority) -> UIView{
+    func trailing(_ anchor: NSLayoutXAxisAnchor?, inset: CGFloat = 0,priority: Float = defaultPriority) -> UIView{
         if let anchor = anchor{
             let constraint = trailingAnchor.constraint(equalTo: anchor, constant: -inset)
             if priority != 0{
@@ -232,7 +232,7 @@ extension UIView{
     }
     
     @discardableResult
-    public func top(_ anchor: NSLayoutYAxisAnchor?, inset: CGFloat = 0,priority: Float = defaultPriority) -> UIView{
+    func top(_ anchor: NSLayoutYAxisAnchor?, inset: CGFloat = 0,priority: Float = defaultPriority) -> UIView{
         if let anchor = anchor{
             let constraint = topAnchor.constraint(equalTo: anchor, constant: inset)
             if priority != 0{
@@ -244,7 +244,7 @@ extension UIView{
     }
     
     @discardableResult
-    public func bottom(_ anchor: NSLayoutYAxisAnchor?, inset: CGFloat = 0,priority: Float = defaultPriority) -> UIView{
+    func bottom(_ anchor: NSLayoutYAxisAnchor?, inset: CGFloat = 0,priority: Float = defaultPriority) -> UIView{
         if let anchor = anchor{
             let constraint = bottomAnchor.constraint(equalTo: anchor, constant: -inset)
             if priority != 0{
@@ -256,7 +256,7 @@ extension UIView{
     }
     
     @discardableResult
-    public func centerX(_ anchor: NSLayoutXAxisAnchor?,priority: Float = defaultPriority) -> UIView{
+    func centerX(_ anchor: NSLayoutXAxisAnchor?,priority: Float = defaultPriority) -> UIView{
         if anchor != nil{
             let constraint = centerXAnchor.constraint(equalTo: anchor!)
             if priority != 0{
@@ -268,7 +268,7 @@ extension UIView{
     }
     
     @discardableResult
-    public func centerY(_ anchor: NSLayoutYAxisAnchor?,priority: Float = defaultPriority) -> UIView{
+    func centerY(_ anchor: NSLayoutYAxisAnchor?,priority: Float = defaultPriority) -> UIView{
         if anchor != nil{
             let constraint = centerYAnchor.constraint(equalTo: anchor!)
             if priority != 0{
@@ -280,31 +280,31 @@ extension UIView{
     }
     
     @discardableResult
-    public func width(_ width: CGFloat, inset: CGFloat = 0,priority: Float = defaultPriority) -> UIView{
+    func width(_ width: CGFloat, inset: CGFloat = 0,priority: Float = defaultPriority) -> UIView{
         widthAnchor.constraint(equalToConstant: width).isActive = true
         return self
     }
     
     @discardableResult
-    public func width(_ anchor: NSLayoutDimension, inset: CGFloat = 0,priority: Float = defaultPriority) -> UIView{
+    func width(_ anchor: NSLayoutDimension, inset: CGFloat = 0,priority: Float = defaultPriority) -> UIView{
         widthAnchor.constraint(equalTo: anchor, constant: inset) .isActive = true
         return self
     }
     
     @discardableResult
-    public func height(_ height: CGFloat,priority: Float = defaultPriority) -> UIView{
+    func height(_ height: CGFloat,priority: Float = defaultPriority) -> UIView{
         heightAnchor.constraint(equalToConstant: height).isActive = true
         return self
     }
     
     @discardableResult
-    public func height(_ anchor: NSLayoutDimension, inset: CGFloat = 0,priority: Float = defaultPriority) -> UIView{
+    func height(_ anchor: NSLayoutDimension, inset: CGFloat = 0,priority: Float = defaultPriority) -> UIView{
         heightAnchor.constraint(equalTo: anchor, constant: inset) .isActive = true
         return self
     }
     
     @discardableResult
-    public func setSquareByWidth(priority: Float = defaultPriority) -> UIView{
+    func setSquareByWidth(priority: Float = defaultPriority) -> UIView{
         let c = NSLayoutConstraint(item: self, attribute: .width,
                                    relatedBy: .equal,
                                    toItem: self, attribute: .height,
@@ -315,7 +315,7 @@ extension UIView{
     }
     
     @discardableResult
-    public func setSquareByHeight(priority: Float = defaultPriority) -> UIView{
+    func setSquareByHeight(priority: Float = defaultPriority) -> UIView{
         let c = NSLayoutConstraint(item: self, attribute: .height,
                                    relatedBy: .equal,
                                    toItem: self, attribute: .width,
@@ -326,20 +326,20 @@ extension UIView{
     }
     
     @discardableResult
-    public func removeAllConstraints() -> UIView{
+    func removeAllConstraints() -> UIView{
         for constraint in self.constraints{
             removeConstraint(constraint)
         }
         return self
     }
     
-    public func removeAllSubviews() {
+    func removeAllSubviews() {
         for subview in subviews {
             subview.removeFromSuperview()
         }
     }
     
-    public func removeSubview(_ view : UIView) {
+    func removeSubview(_ view : UIView) {
         for subview in subviews {
             if subview == view{
                 subview.removeFromSuperview()

@@ -11,7 +11,7 @@ import Photos
 
 extension AVCaptureVideoOrientation {
     
-    public init?(deviceOrientation: UIDeviceOrientation) {
+    init?(deviceOrientation: UIDeviceOrientation) {
         switch deviceOrientation {
         case .portrait: self = .portrait
         case .portraitUpsideDown: self = .portraitUpsideDown
@@ -21,7 +21,7 @@ extension AVCaptureVideoOrientation {
         }
     }
     
-    public init?(interfaceOrientation: UIInterfaceOrientation) {
+    init?(interfaceOrientation: UIInterfaceOrientation) {
         switch interfaceOrientation {
         case .portrait: self = .portrait
         case .portraitUpsideDown: self = .portraitUpsideDown

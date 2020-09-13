@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-public class TextEditArea : UITextView{
+class TextEditArea : UITextView{
     
     private let placeholderTextView: UITextView = {
         let tv = UITextView()
@@ -21,7 +21,7 @@ public class TextEditArea : UITextView{
         return tv
     }()
     
-    public var placeholder: String? {
+    var placeholder: String? {
         get {
             return placeholderTextView.text
         }
@@ -30,7 +30,7 @@ public class TextEditArea : UITextView{
         }
     }
     
-    override public init(frame: CGRect, textContainer: NSTextContainer?) {
+    override init(frame: CGRect, textContainer: NSTextContainer?) {
         super.init(frame: frame, textContainer: textContainer)
         placeholderTextView.font = UIFont.preferredFont(forTextStyle: .body)
         addSubview(placeholderTextView)
@@ -41,28 +41,28 @@ public class TextEditArea : UITextView{
         fatalError("init(coder:) has not been implemented")
     }
     
-    public func setDefaults(placeholder : String = ""){
+    func setDefaults(placeholder : String = ""){
         super.setDefaults()
         self.placeholder = placeholder
     }
     
-    override public var contentInset: UIEdgeInsets {
+    override var contentInset: UIEdgeInsets {
         didSet {
             placeholderTextView.contentInset = contentInset
         }
     }
     
-    public func setText(_ text: String){
+    func setText(_ text: String){
         self.text = text
         placeholderTextView.isHidden = !text.isEmpty
     }
     
-    public func textDidChange() {
+    func textDidChange() {
         invalidateIntrinsicContentSize()
         placeholderTextView.isHidden = !text.isEmpty
     }
     
-    override public var intrinsicContentSize: CGSize {
+    override var intrinsicContentSize: CGSize {
         var size = super.intrinsicContentSize
         if size.height == UIView.noIntrinsicMetric {
             // force layout

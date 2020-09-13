@@ -8,11 +8,11 @@
 import Foundation
 import UIKit
 
-public class InfoText : UIView{
+class InfoText : UIView{
     
     let label = UILabel()
     
-    public init(text: String){
+    init(text: String){
         super.init(frame: .zero)
         label.text = text
         label.numberOfLines = 0

@@ -10,7 +10,7 @@ import UIKit
 
 class BackupViewController: ModalScrollViewController, DatePickerDelegate{
 
-    public var stackView = UIStackView()
+    var stackView = UIStackView()
     
     var startDate : Date? = nil
     var endDate : Date? = nil

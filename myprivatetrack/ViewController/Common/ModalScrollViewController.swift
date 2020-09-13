@@ -28,7 +28,7 @@ open class ModalScrollViewController: ScrollViewController {
         headerView = buttonView
     }
     
-    @objc public func close(){
+    @objc func close(){
         self.dismiss(animated: true, completion: {
         })
     }

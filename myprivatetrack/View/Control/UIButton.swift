@@ -10,11 +10,11 @@ import UIKit
 
 extension UIButton{
     
-    public func setPrimaryDefaults(placeholder : String = ""){
+    func setPrimaryDefaults(placeholder : String = ""){
         setTitleColor(UIColor.systemTeal, for: .disabled)
     }
     
-    public func setSecondaryDefaults(placeholder : String = ""){
+    func setSecondaryDefaults(placeholder : String = ""){
         setTitleColor(UIColor.systemGray, for: .normal)
         setTitleColor(UIColor.systemGray3, for: .disabled)
     }

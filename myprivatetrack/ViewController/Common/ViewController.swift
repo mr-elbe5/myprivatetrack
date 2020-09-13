@@ -10,9 +10,9 @@ import UIKit
 
 open class ViewController: UIViewController {
     
-    public var mainViewTopPadding : CGFloat = 1
-    public var headerView : UIView? = nil
-    public var mainView = UIView()
+    var mainViewTopPadding : CGFloat = 1
+    var headerView : UIView? = nil
+    var mainView = UIView()
     
     override open func loadView() {
         super.loadView()

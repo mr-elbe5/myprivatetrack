@@ -10,7 +10,7 @@ import UIKit
 
 extension UITextView{
     
-    @objc public func setDefaults(){
+    @objc func setDefaults(){
         autocapitalizationType = .none
         autocorrectionType = .no
         font = UIFont.preferredFont(forTextStyle: .body)

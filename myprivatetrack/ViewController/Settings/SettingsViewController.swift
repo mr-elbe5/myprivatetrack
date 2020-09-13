@@ -98,7 +98,7 @@ class SettingsViewController: EditViewController, UIDocumentPickerDelegate, UIIm
         self.present(alertController, animated: true)
     }
     
-    public func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]) {
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]) {
         guard let imageURL = info[.imageURL] as? URL else {return}
         let imageName = Statics.backgroundName + imageURL.pathExtension
         let url = FileController.getURL(dirURL: FileController.privateURL, fileName: imageName)
@@ -219,7 +219,9 @@ class SettingsViewController: EditViewController, UIDocumentPickerDelegate, UIIm
                 DispatchQueue.global(qos: .userInitiated).async{
                     FileController.deleteAllFiles(dirURL: FileController.temporaryURL)
                     FileController.unzipDirectory(zipURL: zipURL, destinationURL: FileController.temporaryURL)
+                    print("unzipped")
                     let data = GlobalData.readFromTemporaryFile()
+                    print("data=\(data)")
                     let fileNames = FileController.listAllFiles(dirPath: FileController.temporaryPath)
                     DispatchQueue.main.async{
                         Indicator.shared.hide()

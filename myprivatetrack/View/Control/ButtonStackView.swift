@@ -10,9 +10,9 @@ import UIKit
 
 open class ButtonStackView: UIView{
     
-    public var stackView = UIStackView()
+    var stackView = UIStackView()
     
-    public func setupView(){
+    func setupView(){
         addSubview(stackView)
         stackView.setupHorizontal(spacing: defaultInset)
         stackView.placeBefore(anchor: trailingAnchor, insets: defaultInsets)

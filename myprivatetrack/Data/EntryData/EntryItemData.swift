@@ -21,18 +21,18 @@ class EntryItemData: Identifiable, Codable{
         case creationDate
     }
     
-    public var id: UUID
-    public var creationDate: Date
+    var id: UUID
+    var creationDate: Date
     
-    public var isNew = false
+    var isNew = false
     
-    public var type : EntryItemType{
+    var type : EntryItemType{
         get{
             return .text
         }
     }
     
-    public init(isNew: Bool = false){
+    init(isNew: Bool = false){
         self.isNew = isNew
         id = UUID()
         creationDate = Date()

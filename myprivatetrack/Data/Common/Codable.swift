@@ -8,7 +8,7 @@
 import Foundation
 
 extension Decodable{
-    public static func deserialize<T: Decodable>(encoded : String) -> T?{
+    static func deserialize<T: Decodable>(encoded : String) -> T?{
         if let data = Data(base64Encoded: encoded){
             let decoder = JSONDecoder()
             decoder.dateDecodingStrategy = .iso8601
@@ -17,7 +17,7 @@ extension Decodable{
         return nil
     }
     
-    public static func fromJSON<T: Decodable>(encoded : String) -> T?{
+    static func fromJSON<T: Decodable>(encoded : String) -> T?{
         if let data =  encoded.data(using: .utf8){
             let decoder = JSONDecoder()
             decoder.dateDecodingStrategy = .iso8601
@@ -29,7 +29,7 @@ extension Decodable{
 }
 
 extension Encodable{
-    public func serialize() -> String{
+    func serialize() -> String{
         let encoder = JSONEncoder()
         encoder.outputFormatting = .prettyPrinted
         encoder.dateEncodingStrategy = .iso8601
@@ -39,7 +39,7 @@ extension Encodable{
         return ""
     }
     
-    public func toJSON() -> String{
+    func toJSON() -> String{
         let encoder = JSONEncoder()
         encoder.outputFormatting = .prettyPrinted
         encoder.dateEncodingStrategy = .iso8601

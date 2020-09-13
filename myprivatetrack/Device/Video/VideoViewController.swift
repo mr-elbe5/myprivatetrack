@@ -8,13 +8,13 @@
 import Foundation
 import UIKit
 
-public class VideoViewController: ModalViewController {
+class VideoViewController: ModalViewController {
     
-    public var videoURL : URL? = nil
+    var videoURL : URL? = nil
     
-    public var videoView = VideoPlayerView()
+    var videoView = VideoPlayerView()
     
-    override public func loadView() {
+    override func loadView() {
         super.loadView()
         if let url = videoURL{
             mainView.addSubview(videoView)

@@ -10,7 +10,7 @@ import UIKit
 
 extension UIScrollView{
     
-    public func setupVertical(){
+    func setupVertical(){
         self.isScrollEnabled = true
         let scflg = self.contentLayoutGuide
         let svflg = self.frameLayoutGuide

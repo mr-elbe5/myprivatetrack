@@ -9,15 +9,15 @@ import Foundation
 import UIKit
 import AVFoundation
 
-public class VideoPlayerView: UIView {
+class VideoPlayerView: UIView {
     
-    public var player : AVPlayer
-    public var playerLayer : AVPlayerLayer
-    public var aspectRatio : CGFloat = 1
+    var player : AVPlayer
+    var playerLayer : AVPlayerLayer
+    var aspectRatio : CGFloat = 1
     
-    public var playButton = UIButton()
+    var playButton = UIButton()
     
-    public var url : URL? = nil{
+    var url : URL? = nil{
         didSet{
             if url != nil{
                 let asset = AVURLAsset(url: url!)
@@ -32,7 +32,7 @@ public class VideoPlayerView: UIView {
         }
     }
     
-    override public init(frame: CGRect) {
+    override init(frame: CGRect) {
         self.player = AVPlayer()
         self.playerLayer = AVPlayerLayer(player: player)
         super.init(frame: frame)
@@ -57,12 +57,12 @@ public class VideoPlayerView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    override public func layoutSubviews() {
+    override func layoutSubviews() {
         super.layoutSubviews()
         self.playerLayer.frame = self.bounds
     }
     
-    @objc public func togglePlay(){
+    @objc func togglePlay(){
         if player.rate == 0{
             player.rate = 1
             playButton.setImage(UIImage(systemName: "pause.fill"), for: .normal)
@@ -73,7 +73,7 @@ public class VideoPlayerView: UIView {
         }
     }
     
-    @objc public func playerItemDidReachEnd(notification: Notification) {
+    @objc func playerItemDidReachEnd(notification: Notification) {
         if let playerItem = notification.object as? AVPlayerItem {
             playerItem.seek(to: CMTime.zero, completionHandler: nil)
             player.rate = 0
@@ -81,7 +81,7 @@ public class VideoPlayerView: UIView {
         }
     }
     
-    override public var intrinsicContentSize: CGSize {
+    override var intrinsicContentSize: CGSize {
         var size = super.intrinsicContentSize
         if size.height == UIView.noIntrinsicMetric {
             size.height = size.width / aspectRatio
@@ -89,7 +89,7 @@ public class VideoPlayerView: UIView {
         return size
     }
     
-    public func setAspectRatioConstraint() {
+    func setAspectRatioConstraint() {
         let c = NSLayoutConstraint(item: self, attribute: .width,
                                    relatedBy: .equal,
                                    toItem: self, attribute: .height,

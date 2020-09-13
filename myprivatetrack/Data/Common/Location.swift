@@ -8,7 +8,7 @@
 import Foundation
 import CoreLocation
 
-public class Location: Identifiable, Codable{
+class Location: Identifiable, Codable{
     
     enum CodingKeys: String, CodingKey {
         case latitude
@@ -16,15 +16,15 @@ public class Location: Identifiable, Codable{
         case altitude
     }
     
-    public var coordinate: CLLocationCoordinate2D
-    public var altitude: Double
+    var coordinate: CLLocationCoordinate2D
+    var altitude: Double
     
-    public init(){
+    init(){
         coordinate = CLLocationCoordinate2D()
         altitude = 0.0
     }
     
-    public init(_ location: CLLocation){
+    init(_ location: CLLocation){
         self.coordinate = location.coordinate
         self.altitude = location.altitude
     }
@@ -37,7 +37,7 @@ public class Location: Identifiable, Codable{
         }
     }
     
-    required public init(from decoder: Decoder) throws {
+    required init(from decoder: Decoder) throws {
         let values = try decoder.container(keyedBy: CodingKeys.self)
         let latitude = try values.decode(Double.self, forKey: .latitude)
         let longitude = try values.decode(Double.self, forKey: .longitude)
@@ -45,7 +45,7 @@ public class Location: Identifiable, Codable{
         altitude = try values.decode(Double.self, forKey: .altitude)
     }
     
-    public func encode(to encoder: Encoder) throws {
+    func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encode(coordinate.latitude, forKey: .latitude)
         try container.encode(coordinate.longitude, forKey: .longitude)

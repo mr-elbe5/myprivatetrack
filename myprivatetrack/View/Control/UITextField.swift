@@ -10,7 +10,7 @@ import UIKit
 
 extension UITextField{
     
-    public func setDefaults(placeholder : String = ""){
+    func setDefaults(placeholder : String = ""){
         autocapitalizationType = .none
         autocorrectionType = .no
         self.placeholder = placeholder

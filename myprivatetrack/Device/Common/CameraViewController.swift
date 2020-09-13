@@ -281,7 +281,7 @@ class CameraViewController: UIViewController {
         NotificationCenter.default.removeObserver(self)
     }
     
-    @objc public func close(){
+    @objc func close(){
         self.dismiss(animated: true, completion: {
         })
     }

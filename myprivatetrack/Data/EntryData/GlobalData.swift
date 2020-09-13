@@ -9,17 +9,18 @@ import Foundation
 
 class GlobalData: Identifiable, Codable{
     
-    public static var temporaryFileName = "globalData.json"
+    static var temporaryFileName = "globalData.json"
     
-    public static var shared = GlobalData()
+    static var shared = GlobalData()
     
-    public static func load(){
+    static func load(){
         shared = DataController.shared.load(forKey: .data) ?? GlobalData()
     }
     
-    public static func readFromTemporaryFile() -> GlobalData{
+    static func readFromTemporaryFile() -> GlobalData{
         let url = FileController.getURL(dirURL: FileController.temporaryURL,fileName: GlobalData.temporaryFileName)
         let storeString = FileController.readTextFile(url: url)
+        print(storeString ?? "nil")
         return GlobalData.fromJSON(encoded: storeString!) ?? GlobalData()
     }
     
@@ -27,10 +28,10 @@ class GlobalData: Identifiable, Codable{
         case days
     }
     
-    public var days: Array<DayData>
+    var days: Array<DayData>
     private var dayMap = Dictionary<Date, DayData>()
     
-    public var firstDayDate : Date?{
+    var firstDayDate : Date?{
         get{
             if days.isEmpty{
                 return nil
@@ -39,7 +40,7 @@ class GlobalData: Identifiable, Codable{
         }
     }
     
-    public var lastDayDate : Date?{
+    var lastDayDate : Date?{
         get{
             if days.isEmpty{
                 return nil

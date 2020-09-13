@@ -14,11 +14,11 @@ class PhotoData : FileEntryItemData{
         case title
     }
     
-    public var title: String = ""
+    var title: String = ""
     
     private var image : UIImage? = nil
     
-    override public var type : EntryItemType{
+    override var type : EntryItemType{
         get{
             return .photo
         }

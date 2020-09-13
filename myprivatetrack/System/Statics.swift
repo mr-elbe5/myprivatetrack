@@ -14,28 +14,28 @@ enum MapStartSize: Double{
     case large = 5000.0
 }
 
-public struct Statics{
+struct Statics{
     
-    public static var defaultInset : CGFloat = 10
+    static var defaultInset : CGFloat = 10
     
-    public static var defaultInsets : UIEdgeInsets = .init(top: defaultInset, left: defaultInset, bottom: defaultInset, right: defaultInset)
+    static var defaultInsets : UIEdgeInsets = .init(top: defaultInset, left: defaultInset, bottom: defaultInset, right: defaultInset)
     
-    public static var flatInsets : UIEdgeInsets = .init(top: 0, left: defaultInset, bottom: 0, right: defaultInset)
+    static var flatInsets : UIEdgeInsets = .init(top: 0, left: defaultInset, bottom: 0, right: defaultInset)
     
-    public static var narrowInsets : UIEdgeInsets = .init(top: defaultInset, left: 0, bottom: defaultInset, right: 0)
+    static var narrowInsets : UIEdgeInsets = .init(top: defaultInset, left: 0, bottom: defaultInset, right: 0)
     
-    public static var reverseInsets : UIEdgeInsets = .init(top: -defaultInset, left: -defaultInset, bottom: -defaultInset, right: -defaultInset)
+    static var reverseInsets : UIEdgeInsets = .init(top: -defaultInset, left: -defaultInset, bottom: -defaultInset, right: -defaultInset)
     
-    public static var doubleInsets : UIEdgeInsets = .init(top: 2 * defaultInset, left: 2 * defaultInset, bottom: 2 * defaultInset, right: 2 * defaultInset)
+    static var doubleInsets : UIEdgeInsets = .init(top: 2 * defaultInset, left: 2 * defaultInset, bottom: 2 * defaultInset, right: 2 * defaultInset)
     
-    public static var backupDir : String = "backups"
+    static var backupDir : String = "backups"
     
-    public static var exportDir : String = "export"
+    static var exportDir : String = "export"
     
-    public static var backupOfName : String = "backup_of_"
+    static var backupOfName : String = "backup_of_"
     
-    public static var backupName : String = "backup_"
+    static var backupName : String = "backup_"
     
-    public static var backgroundName : String = "background."
+    static var backgroundName : String = "background."
     
 }

@@ -11,7 +11,7 @@ import Photos
 
 extension AVCaptureDevice {
     
-    public static func askCameraAuthorization(callback: @escaping (Result<Void, Error>) -> Void){
+    static func askCameraAuthorization(callback: @escaping (Result<Void, Error>) -> Void){
         switch AVCaptureDevice.authorizationStatus(for: .video){
         case .authorized:
             callback(.success(()))
@@ -32,7 +32,7 @@ extension AVCaptureDevice {
         }
     }
     
-    public static func askAudioAuthorization(callback: @escaping (Result<Void, Error>) -> Void){
+    static func askAudioAuthorization(callback: @escaping (Result<Void, Error>) -> Void){
         switch AVCaptureDevice.authorizationStatus(for: .audio){
         case .authorized:
             callback(.success(()))
@@ -53,7 +53,7 @@ extension AVCaptureDevice {
         }
     }
     
-    public static func askVideoAuthorization(callback: @escaping (Result<Void, Error>) -> Void){
+    static func askVideoAuthorization(callback: @escaping (Result<Void, Error>) -> Void){
         askCameraAuthorization(){ result  in
             switch result{
             case .success(()):
@@ -73,7 +73,7 @@ extension AVCaptureDevice {
 
 extension AVCaptureDevice.DiscoverySession {
     
-    public var uniqueDevicePositionsCount: Int {
+    var uniqueDevicePositionsCount: Int {
         
         var uniqueDevicePositions = [AVCaptureDevice.Position]()
         

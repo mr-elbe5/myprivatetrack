@@ -8,18 +8,18 @@
 import Foundation
 import UIKit
 
-public class TextEditLine : UIView, UITextFieldDelegate{
+class TextEditLine : UIView, UITextFieldDelegate{
     
     private var label = UILabel()
     private var textField = UITextField()
     
-    public var text: String?{
+    var text: String?{
         get{
             return textField.text
         }
     }
     
-    public func setupView(labelText: String, text: String = "", secure : Bool = false){
+    func setupView(labelText: String, text: String = "", secure : Bool = false){
         label.text = labelText
         addSubview(label)
         textField.setDefaults()

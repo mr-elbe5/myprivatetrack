@@ -7,15 +7,15 @@
 
 import Foundation
 
-public class DataController{
+class DataController{
     
-    public enum StoreKey: String, CaseIterable {
+    enum StoreKey: String, CaseIterable {
         case settings
         case data
         case user
     }
     
-    public static var shared = DataController()
+    static var shared = DataController()
     
     let store: UserDefaults
     
@@ -23,12 +23,12 @@ public class DataController{
         self.store = UserDefaults.standard
     }
     
-    public func save(forKey key: StoreKey, value: Codable) {
+    func save(forKey key: StoreKey, value: Codable) {
         let storeString = value.toJSON()
         store.set(storeString, forKey: key.rawValue)
     }
     
-    public func load<T : Codable>(forKey key: StoreKey) -> T? {
+    func load<T : Codable>(forKey key: StoreKey) -> T? {
         if let storedString = store.value(forKey: key.rawValue) as? String {
             return T.fromJSON(encoded: storedString)
         }

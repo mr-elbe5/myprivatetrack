@@ -9,7 +9,7 @@ import Foundation
 
 extension URL {
     
-    public var typeIdentifier: String? {
+    var typeIdentifier: String? {
         return (try? resourceValues(forKeys: [.typeIdentifierKey]))?.typeIdentifier
     }
 

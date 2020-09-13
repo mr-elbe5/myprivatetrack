@@ -10,7 +10,7 @@ import UIKit
 
 open class EditViewController: ScrollViewController {
     
-    public var stackView = UIStackView()
+    var stackView = UIStackView()
     
     override open func loadView() {
         super.loadView()
@@ -23,7 +23,7 @@ open class EditViewController: ScrollViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name:UIResponder.keyboardWillHideNotification, object: nil)
     }
     
-    @objc public func keyboardWillShow(notification:NSNotification){
+    @objc func keyboardWillShow(notification:NSNotification){
 
         let userInfo = notification.userInfo!
         var keyboardFrame:CGRect = (userInfo[UIResponder.keyboardFrameBeginUserInfoKey] as! NSValue).cgRectValue
@@ -34,7 +34,7 @@ open class EditViewController: ScrollViewController {
         scrollView.contentInset = contentInset
     }
     
-    @objc public func keyboardDidShow(notification:NSNotification){
+    @objc func keyboardDidShow(notification:NSNotification){
         if let firstResponder = stackView.firstResponder{
             let rect : CGRect = firstResponder.frame
             var parentView = firstResponder.superview
@@ -47,7 +47,7 @@ open class EditViewController: ScrollViewController {
         }
     }
     
-    @objc public func keyboardWillHide(notification:NSNotification){
+    @objc func keyboardWillHide(notification:NSNotification){
         let contentInset:UIEdgeInsets = UIEdgeInsets.zero
         scrollView.contentInset = contentInset
     }

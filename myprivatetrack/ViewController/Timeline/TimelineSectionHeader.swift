@@ -22,7 +22,7 @@ class TimelineSectionHeaderLabel: UILabel {
 
 class TimelineSectionHeader : UIView{
     
-    public func setupView(day: DayData){
+    func setupView(day: DayData){
         let label = TimelineSectionHeaderLabel()
         label.text = day.date.dateString()
         label.textAlignment = .center

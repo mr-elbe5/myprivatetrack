@@ -10,9 +10,9 @@ import UIKit
 
 open class ScrollViewController: UIViewController {
     
-    public var scrollViewTopPadding : CGFloat = 1
-    public var headerView : UIView? = nil
-    public var scrollView = UIScrollView()
+    var scrollViewTopPadding : CGFloat = 1
+    var headerView : UIView? = nil
+    var scrollView = UIScrollView()
     
     override open func loadView() {
         super.loadView()

@@ -8,20 +8,20 @@
 import Foundation
 import CoreLocation
 
-public protocol LocationServiceDelegate{
+protocol LocationServiceDelegate{
     func locationDidChange(location: Location)
 }
 
-public class LocationService : NSObject, CLLocationManagerDelegate{
+class LocationService : NSObject, CLLocationManagerDelegate{
     
-    public static var shared = LocationService()
+    static var shared = LocationService()
     // min location difference in meters
-    public static var deviation : CLLocationDistance = 5
+    static var deviation : CLLocationDistance = 5
     
-    public var clLocation : CLLocation? = nil
-    public var placemark : CLPlacemark? = nil
-    public var running = false
-    public var delegate : LocationServiceDelegate? = nil
+    var clLocation : CLLocation? = nil
+    var placemark : CLPlacemark? = nil
+    var running = false
+    var delegate : LocationServiceDelegate? = nil
     
     private let locationManager = CLLocationManager()
     private let geocoder = CLGeocoder()
@@ -32,17 +32,17 @@ public class LocationService : NSObject, CLLocationManagerDelegate{
         self.locationManager.desiredAccuracy = kCLLocationAccuracyBest
     }
     
-    public var authorized : Bool{
+    var authorized : Bool{
         get{
             return CLLocationManager.authorized
         }
     }
     
-    public func getLocation() -> Location? {
+    func getLocation() -> Location? {
         return clLocation == nil ? nil : Location(clLocation!)
     }
     
-    public func getLocationDescription() -> String {
+    func getLocationDescription() -> String {
         var s = ""
         if let place = placemark{
             if let name = place.name{
@@ -68,14 +68,14 @@ public class LocationService : NSObject, CLLocationManagerDelegate{
         }
     }
     
-    public func start(){
+    func start(){
         if authorized{
             locationManager.startUpdatingLocation()
             running = true
         }
     }
     
-    public func checkRunning(){
+    func checkRunning(){
         if authorized && !running{
             //print("run after check")
             locationManager.startUpdatingLocation()
@@ -83,17 +83,17 @@ public class LocationService : NSObject, CLLocationManagerDelegate{
         }
     }
     
-    public func stop(){
+    func stop(){
         if running{
             locationManager.stopUpdatingLocation()
         }
     }
     
-    public func requestWhenInUseAuthorization(){
+    func requestWhenInUseAuthorization(){
         self.locationManager.requestWhenInUseAuthorization()
     }
     
-    public func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         guard let newLocation = locations.last else { return }
         if clLocation == nil || newLocation.distance(from: clLocation!) > LocationService.deviation{
             clLocation = newLocation
