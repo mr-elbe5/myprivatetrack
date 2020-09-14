@@ -20,7 +20,7 @@ class GlobalData: Identifiable, Codable{
     static func readFromTemporaryFile() -> GlobalData{
         let url = FileController.getURL(dirURL: FileController.temporaryURL,fileName: GlobalData.temporaryFileName)
         let storeString = FileController.readTextFile(url: url)
-        print(storeString ?? "nil")
+        //print(storeString ?? "nil")
         return GlobalData.fromJSON(encoded: storeString!) ?? GlobalData()
     }
     

@@ -49,6 +49,8 @@ class SettingsViewController: EditViewController, UIDocumentPickerDelegate, UIIm
         stackView.addArrangedSubview(fullBackupButton)
         stackView.addArrangedSubview(partialBackupButton)
         stackView.addArrangedSubview(restoreButton)
+        let filesHeader = InfoHeader(text: "files".localize())
+        stackView.addArrangedSubview(filesHeader)
         stackView.addArrangedSubview(removeDocumentsButton)
     }
     
@@ -135,6 +137,7 @@ class SettingsViewController: EditViewController, UIDocumentPickerDelegate, UIIm
         showApprove(title: "reallyDeleteAllData".localize(), text: "deleteAllDataApproveInfo".localize()){
             GlobalData.shared.reset()
             FileController.deleteAllFiles(dirURL: FileController.privateURL)
+            //FileController.printFileInfo()
             if let timelineController = MainTabController.getTimelineViewController(){
                 timelineController.setNeedsUpdate()
             }
@@ -219,9 +222,8 @@ class SettingsViewController: EditViewController, UIDocumentPickerDelegate, UIIm
                 DispatchQueue.global(qos: .userInitiated).async{
                     FileController.deleteAllFiles(dirURL: FileController.temporaryURL)
                     FileController.unzipDirectory(zipURL: zipURL, destinationURL: FileController.temporaryURL)
-                    print("unzipped")
                     let data = GlobalData.readFromTemporaryFile()
-                    print("data=\(data)")
+                    //print("data=\(data)")
                     let fileNames = FileController.listAllFiles(dirPath: FileController.temporaryPath)
                     DispatchQueue.main.async{
                         Indicator.shared.hide()
@@ -241,6 +243,7 @@ class SettingsViewController: EditViewController, UIDocumentPickerDelegate, UIIm
             FileController.deleteAllFiles(dirURL: FileController.backupDirURL)
             FileController.deleteAllFiles(dirURL: FileController.exportDirURL)
             FileController.deleteAllFiles(dirURL: FileController.temporaryURL)
+            //FileController.printFileInfo()
             self.showAlert(title: "success".localize(), text: "documentsDeleted".localize())
         }
     }

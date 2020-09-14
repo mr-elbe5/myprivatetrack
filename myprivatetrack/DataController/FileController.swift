@@ -301,4 +301,17 @@ class FileController {
         }
     }
     
+    static func printFileInfo(){
+        print("temporary files:")
+        var names = listAllFiles(dirPath: temporaryPath)
+        for name in names{
+            print(name)
+        }
+        print("private files:")
+        names = listAllFiles(dirPath: privatePath)
+        for name in names{
+            print(name)
+        }
+    }
+    
 }

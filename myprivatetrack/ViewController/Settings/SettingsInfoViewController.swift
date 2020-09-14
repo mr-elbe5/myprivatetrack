@@ -17,6 +17,8 @@ class SettingsInfoViewController: InfoViewController {
     let fullBackupText = InfoText(text: "settingsFullBackupInfo".localize())
     let partialBackupText = InfoText(text: "settingsPartialBackupInfo".localize())
     let restoreText = InfoText(text: "settingsRestoreInfo".localize())
+    let filesHeader = InfoHeader(text: "files".localize())
+    let filesText = InfoText(text: "settingsFilesInfo".localize())
     
     override func loadView() {
         super.loadView()
@@ -28,6 +30,8 @@ class SettingsInfoViewController: InfoViewController {
         stackView.addArrangedSubview(fullBackupText)
         stackView.addArrangedSubview(partialBackupText)
         stackView.addArrangedSubview(restoreText)
+        stackView.addArrangedSubview(filesHeader)
+        stackView.addArrangedSubview(filesText)
     }
     
     
