@@ -93,7 +93,7 @@ class VideoItemEditView : EntryItemEditView, UITextViewDelegate{
     private func setupView(data: VideoData){
         self.videoData = data
         videoView.url = data.fileURL
-        titleView.text = data.title
+        titleView.setText(data.title)
         let deleteButton = addDeleteButton()
         addSubview(videoView)
         titleView.setDefaults(placeholder: "comment".localize())

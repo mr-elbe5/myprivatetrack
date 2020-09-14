@@ -29,8 +29,8 @@
 "deleteItemApproveInfo"="If you approve, you delete this item. You cannot undo this action.";
 "deleteDocumentsApproveInfo"="If you approve, all public files (backups and exports) will be deleted. You cannot undo this action.";
 "deleteData" = "Delete entries";
-"deleteDocuments" = "Delete all public files";
-"documentsDeleted"="All public files (backups, exports) have been deleted.";
+"deleteDocuments" = "Delete all exported files";
+"documentsDeleted"="All exported files (backups, exports) have been deleted.";
 "done"="Done";
 "east"="East";
 "editEntryAudioIconInfo"="With this icon you add a new audio item starting by recording an audio.";
@@ -79,6 +79,8 @@
 "privacyInfoText4"="The only use of the network is for getting map tiles and the location service for showing the location of your entries on the map.";
 "privacyInfoText5"="Only Apple APIs and services are used, except for the open source project Zip, which is embedded for backup and restore.";
 "privacyInfoText6"="The code of this app is published on GitHub under https://github.com/mr-elbe5/myprivatetrack.git.";
+"privacyExportHeader"="Exported Files";
+"privacyExportText"="With this app it is possible to create backups and copy files to the 'Files' folder of this app. You should be aware that these files are visible to other running apps on the iPhone/iPad. Depending on your privacy policy they should be deleted after use.";
 "quality"="Quality";
 "quality"="Quality";
 "readError"="The file could not be read.";
@@ -95,11 +97,11 @@
 "saveError"="The file could not be saved.";
 "saveLocation"="Save location";
 "selectBackground"="Select background image";
-"settingsBackgroundInfo"="With this button you can set the background image. You can select an image of your photo libraray or return to the default image.";
-"settingsFilesInfo"="Deleting published files means to delete all backups and all files, which have been copied to the app's documents folder.";
-"settingsFullBackupInfo"="With the full backup button you create a backup file of all your entries. It can be found in Files > On my IPhone/iPad > My Private Track > Backups with the current date in its name.";
-"settingsPartialBackupInfo"="With the backup button you create a backup file of a time span. It can be found in Files > On my IPhone/iPad > My Private Track > Backups with the selected time span in its name.";
-"settingsMapSizeInfo"="With this button you can select the start size of the map, when you are creating a map snapshot. You will still be able to scroll and resize the map.";
+"settingsBackgroundInfo"="With 'Select background image' you can select an image of your photo library or return to the default image as background.";
+"settingsFilesInfo"="Deleting exported files means to delete all backups and all files, which have been copied to the app's documents folder.";
+"settingsFullBackupInfo"="With 'Backup all entries' you create a backup file of all your entries. It can be found in Files > On my IPhone/iPad > My Private Track > Backups with the current date in its name.";
+"settingsPartialBackupInfo"="With 'Backup entries of time span' you create a partial backup of a selectable time span. It can be found in Files > On my IPhone/iPad > My Private Track > Backups with the selected time span in its name.";
+"settingsMapSizeInfo"="With 'Start size for capturing map images' you have three possible start sizes of the map, when you are creating a map snapshot. You will still be able to scroll and resize the map.";
 "settingsResetInfo"="With the reset button you delete all entries and their media. If you don't want to lose these data, make sure to create a backup.";
 "settingsRestoreInfo"="With the restore button you restore a previous backup of your entries (all or for a certain time span).";
 "settings"="Settings";
@@ -126,7 +128,7 @@
 "timelineLocationInfo"="If the switch 'Save position' is on, you can add a map section.";
 "timelineShareIconInfo"="With this icon you can share/export an item to the image library or to the documents folder ('Files') of this app.";
 "timelineTextIconInfo"="With this icon you start creating a new entry by writing a text.";
-"timelineTopInfo"="The time line view shows all entries sorted by the day and of their creation. By tapping one of the left icons you can create a new entry starting with the respective item type: empty, text, image, audio or video. With the right pencil icon you can toggle between view and edit mode (see below).";
+"timelineTopInfo"="The timeline view shows all entries sorted by the day and of their creation. By tapping one of the left icons you can create a new entry starting with the respective item type: empty, text, image, audio or video. With the right pencil icon you can toggle between view and edit mode (see below).";
 "timelineVideoIconInfo"="With this icon you start creating a new entry by recording a video.";
 "timeoutError"="Eine vorgegebene Zeit wurde überschritten.";
 "title"="Title";

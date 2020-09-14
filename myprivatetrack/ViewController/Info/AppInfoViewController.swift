@@ -20,6 +20,8 @@ class AppInfoViewController: ScrollViewController {
     let privacyInfoText4 = InfoText(text: "privacyInfoText4".localize())
     let privacyInfoText5 = InfoText(text: "privacyInfoText5".localize())
     let privacyInfoText6 = InfoText(text: "privacyInfoText6".localize())
+    let filesHeader = InfoHeader(text: "privacyExportHeader".localize())
+    let filesInfoText = InfoText(text: "privacyExportText".localize())
     
     override func loadView() {
         super.loadView()
@@ -34,6 +36,8 @@ class AppInfoViewController: ScrollViewController {
         stackView.addArrangedSubview(privacyInfoText4)
         stackView.addArrangedSubview(privacyInfoText5)
         stackView.addArrangedSubview(privacyInfoText6)
+        stackView.addArrangedSubview(filesHeader)
+        stackView.addArrangedSubview(filesInfoText)
     }
     
     
