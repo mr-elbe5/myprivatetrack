@@ -80,14 +80,12 @@ class SettingsViewController: EditViewController, UIDocumentPickerDelegate, UIIm
     }
     
     @objc func selectBackground(){
-        let alertController = UIAlertController(title: "selectBackground".localize(), message: "backgroundImageInfo".localize(), preferredStyle: .actionSheet)
+        let alertController = UIAlertController(title: "selectBackground".localize(), message: "backgroundImageInfo".localize(), preferredStyle: .alert)
         alertController.addAction(UIAlertAction(title: "ownBackground".localize(), style: .default) { action in
             let pickerController = UIImagePickerController()
             pickerController.delegate = self
-            pickerController.allowsEditing = true
             pickerController.mediaTypes = ["public.image"]
             pickerController.sourceType = .photoLibrary
-            pickerController.modalPresentationStyle = .fullScreen
             self.present(pickerController, animated: true, completion: nil)
         })
         alertController.addAction(UIAlertAction(title: "defaultBackground".localize(), style: .default) { action in

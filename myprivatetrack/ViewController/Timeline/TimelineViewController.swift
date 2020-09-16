@@ -190,7 +190,7 @@ class TimelineViewController: TableViewController, SaveEntryDelegate, EntryCellA
     }
     
     func sharePhotoItem(data: PhotoData) {
-        let alertController = UIAlertController(title: title, message: "shareImage".localize(), preferredStyle: .actionSheet)
+        let alertController = UIAlertController(title: title, message: "shareImage".localize(), preferredStyle: .alert)
         alertController.addAction(UIAlertAction(title: "imageLibrary".localize(), style: .default) { action in
             FileController.copyImageToLibrary(name: data.fileName, fromDir: FileController.privateURL){ result in
                 DispatchQueue.main.async {
@@ -223,7 +223,7 @@ class TimelineViewController: TableViewController, SaveEntryDelegate, EntryCellA
     }
     
     func shareVideoItem(data: VideoData) {
-        let alertController = UIAlertController(title: title, message: "shareImage".localize(), preferredStyle: .actionSheet)
+        let alertController = UIAlertController(title: title, message: "shareImage".localize(), preferredStyle: .alert)
         alertController.addAction(UIAlertAction(title: "imageLibrary".localize(), style: .default) { action in
             FileController.copyVideoToLibrary(name: data.fileName, fromDir: FileController.privateURL){ result in
                 DispatchQueue.main.async {

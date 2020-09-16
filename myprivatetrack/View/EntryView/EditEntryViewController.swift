@@ -173,7 +173,9 @@ class EditEntryViewController: EditViewController, PhotoCaptureDelegate, VideoCa
                 }
                 return
             case .failure:
-                self.showError("cameraNotAuthorized")
+                DispatchQueue.main.async {
+                    self.showError("cameraNotAuthorized")
+                }
                 return
             }
         }
@@ -192,7 +194,9 @@ class EditEntryViewController: EditViewController, PhotoCaptureDelegate, VideoCa
                 }
                 return
             case .failure:
-                self.showError("audioNotAuthorized")
+                DispatchQueue.main.async {
+                    self.showError("audioNotAuthorized")
+                }
                 return
             }
         }
@@ -212,7 +216,9 @@ class EditEntryViewController: EditViewController, PhotoCaptureDelegate, VideoCa
                 }
                 return
             case .failure:
-                self.showError("videoNotAuthorized")
+                DispatchQueue.main.async {
+                    self.showError("videoNotAuthorized")
+                }
                 return
             }
         }
