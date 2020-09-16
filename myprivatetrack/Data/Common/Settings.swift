@@ -21,13 +21,13 @@ class Settings: Identifiable, Codable{
         case saveLocation
         case flashMode
         case mapStartSize
-        case backgroundURL
+        case backgroundName
     }
     
     var saveLocation = true
     var flashMode : AVCaptureDevice.FlashMode = .off
     var mapStartSize : MapStartSize = .mid
-    var backgroundURL : String? = nil
+    var backgroundName : String? = nil
     
     var mapStartSizeIndex : Int{
         get{
@@ -51,9 +51,9 @@ class Settings: Identifiable, Codable{
         flashMode = AVCaptureDevice.FlashMode(rawValue: try values.decode(Int.self, forKey: .flashMode)) ?? .off
         mapStartSize = MapStartSize(rawValue: try values.decode(Double.self, forKey: .mapStartSize)) ?? MapStartSize.mid
         do{
-            backgroundURL = try values.decode(String.self, forKey: .backgroundURL)
+            backgroundName = try values.decode(String.self, forKey: .backgroundName)
         } catch{
-            backgroundURL = nil
+            backgroundName = nil
         }
     }
     
@@ -62,11 +62,24 @@ class Settings: Identifiable, Codable{
         try container.encode(saveLocation, forKey: .saveLocation)
         try container.encode(flashMode.rawValue, forKey: .flashMode)
         try container.encode(Double(mapStartSize.rawValue), forKey: .mapStartSize)
-        try container.encode(backgroundURL, forKey: .backgroundURL)
+        try container.encode(backgroundName, forKey: .backgroundName)
     }
     
     func save(){
         DataController.shared.save(forKey: .settings, value: self)
     }
     
+    var backgroundImage : UIImage?{
+        get{
+            if let name = backgroundName{
+                let url = FileController.getURL(dirURL: FileController.privateURL, fileName: name)
+                if FileController.fileExists(url: url){
+                    if let data = FileController.readFile(url: url){
+                        return UIImage(data: data)
+                    }
+                }
+            }
+            return UIImage(named: "meersonne")
+        }
+    }
 }

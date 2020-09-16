@@ -13,23 +13,7 @@ class TimelineViewController: TableViewController, SaveEntryDelegate, EntryCellA
     
     var firstAppearance = true
     
-    var backgroundImage : UIImage{
-        get{
-            if let name = Settings.shared.backgroundURL{
-                let url = URL(fileURLWithPath: name)
-                if FileController.fileExists(url: url){
-                    if let data = FileController.readFile(url: url){
-                        if let image = UIImage(data: data){
-                            return image
-                        }
-                    }
-                }
-            }
-            return UIImage(named: "meersonne")!
-        }
-    }
-    
-    var backgroundView = UIImageView()
+    var backgroundView = UIImageView(image: Settings.shared.backgroundImage)
     
     var addEmptyButton = IconButton(image: "blank-entry")
     var addTextButton = IconButton(image: "text-entry")
@@ -41,7 +25,7 @@ class TimelineViewController: TableViewController, SaveEntryDelegate, EntryCellA
     override func loadView(){
         super.loadView()
         tableView.backgroundColor = UIColor.clear
-        backgroundView.image = backgroundImage
+        let backgroundView = UIImageView(image: Settings.shared.backgroundImage)
         backgroundView.contentMode = UIView.ContentMode.scaleAspectFill;
         tableView.backgroundView = backgroundView
         tableView.register(TimelineEntryCell.self, forCellReuseIdentifier: TimelineViewController.CELL_IDENT)
@@ -86,7 +70,9 @@ class TimelineViewController: TableViewController, SaveEntryDelegate, EntryCellA
     }
     
     func updateBackground(){
-        backgroundView.image = backgroundImage
+        let backgroundView = UIImageView(image: Settings.shared.backgroundImage)
+        backgroundView.contentMode = UIView.ContentMode.scaleAspectFill;
+        tableView.backgroundView = backgroundView
         tableView.setNeedsLayout()
     }
     

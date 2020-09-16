@@ -89,7 +89,7 @@ class SettingsViewController: EditViewController, UIDocumentPickerDelegate, UIIm
             self.present(pickerController, animated: true, completion: nil)
         })
         alertController.addAction(UIAlertAction(title: "defaultBackground".localize(), style: .default) { action in
-            Settings.shared.backgroundURL = nil
+            Settings.shared.backgroundName = nil
             Settings.shared.save()
             MainTabController.getTimelineViewController()?.updateBackground()
         })
@@ -99,13 +99,16 @@ class SettingsViewController: EditViewController, UIDocumentPickerDelegate, UIIm
     }
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]) {
-        if let imageURL = info[.imageURL] as? URL{
-            let path = imageURL.path
-            if FileController.fileExists(url: URL(fileURLWithPath: path)){
-                Settings.shared.backgroundURL = path
-                Settings.shared.save()
-                MainTabController.getTimelineViewController()?.updateBackground()
-            }
+        guard let imageURL = info[.imageURL] as? URL else {return}
+        let imageName = Statics.backgroundName + imageURL.pathExtension
+        let url = FileController.getURL(dirURL: FileController.privateURL, fileName: imageName)
+        if FileController.fileExists(url: url){
+            _ = FileController.deleteFile(url: url)
+        }
+        if FileController.copyFile(fromURL: imageURL, toURL: url){
+            Settings.shared.backgroundName = imageName
+            Settings.shared.save()
+            MainTabController.getTimelineViewController()?.updateBackground()
         }
         picker.dismiss(animated: true, completion: nil)
     }

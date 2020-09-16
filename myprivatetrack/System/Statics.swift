@@ -36,4 +36,6 @@ struct Statics{
     
     static var backupName : String = "backup_"
     
+    static var backgroundName : String = "background."
+    
 }
