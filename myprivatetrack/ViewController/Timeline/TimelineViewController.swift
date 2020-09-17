@@ -25,7 +25,6 @@ class TimelineViewController: TableViewController, SaveEntryDelegate, EntryCellA
     override func loadView(){
         super.loadView()
         tableView.backgroundColor = UIColor.clear
-        let backgroundView = UIImageView(image: Settings.shared.backgroundImage)
         backgroundView.contentMode = UIView.ContentMode.scaleAspectFill;
         tableView.backgroundView = backgroundView
         tableView.register(TimelineEntryCell.self, forCellReuseIdentifier: TimelineViewController.CELL_IDENT)
@@ -70,9 +69,7 @@ class TimelineViewController: TableViewController, SaveEntryDelegate, EntryCellA
     }
     
     func updateBackground(){
-        let backgroundView = UIImageView(image: Settings.shared.backgroundImage)
-        backgroundView.contentMode = UIView.ContentMode.scaleAspectFill;
-        tableView.backgroundView = backgroundView
+        backgroundView.image = Settings.shared.backgroundImage
         tableView.setNeedsLayout()
     }
     
