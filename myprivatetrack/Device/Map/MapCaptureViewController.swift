@@ -9,6 +9,7 @@ import Foundation
 import UIKit
 import CoreLocation
 import MapKit
+import SwiftyIOSViewExtensions
 
 protocol MapCaptureDelegate{
     func mapCaptured(data: EntryData)

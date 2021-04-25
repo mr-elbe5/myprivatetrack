@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SwiftyIOSViewExtensions
 
 protocol EntryCellActionDelegate{
     func editEntry(entry: EntryData)

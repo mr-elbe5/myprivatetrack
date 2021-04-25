@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SwiftyIOSViewExtensions
 
 class TimelineViewController: TableViewController, SaveEntryDelegate, EntryCellActionDelegate{
 

@@ -9,6 +9,7 @@ import Foundation
 import UIKit
 import AVFoundation
 import CoreLocation
+import SwiftyIOSViewExtensions
 
 protocol SaveEntryDelegate{
     func saveEntry(entry: EntryData)

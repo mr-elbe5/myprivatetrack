@@ -8,6 +8,7 @@
 import Foundation
 import UIKit
 import AVFoundation
+import SwiftyIOSViewExtensions
 
 class CameraViewController: UIViewController {
     var bodyView = UIView()

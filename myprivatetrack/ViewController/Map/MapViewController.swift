@@ -8,6 +8,7 @@
 import Foundation
 import UIKit
 import MapKit
+import SwiftyIOSViewExtensions
 
 class MapViewController: UIViewController, MKMapViewDelegate, LocationServiceDelegate {
     

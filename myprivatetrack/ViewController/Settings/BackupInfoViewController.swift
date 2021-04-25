@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import SwiftyIOSViewExtensions
 
 class BackupInfoViewController: InfoViewController {
     

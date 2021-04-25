@@ -9,6 +9,7 @@ import Foundation
 import UIKit
 import AVFoundation
 import Photos
+import SwiftyIOSViewExtensions
 
 protocol VideoCaptureDelegate{
     func videoCaptured(data: VideoData)

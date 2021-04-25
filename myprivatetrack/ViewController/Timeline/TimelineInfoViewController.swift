@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import SwiftyIOSViewExtensions
 import UIKit
 
 class TimelineInfoViewController: InfoViewController {

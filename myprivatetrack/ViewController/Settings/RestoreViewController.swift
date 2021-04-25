@@ -8,6 +8,7 @@
 import Foundation
 import UIKit
 import Zip
+import SwiftyIOSViewExtensions
 
 class RestoreViewController: ModalScrollViewController, DatePickerDelegate{
 

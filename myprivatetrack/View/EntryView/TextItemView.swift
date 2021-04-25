@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import SwiftyIOSViewExtensions
 import UIKit
 
 class TextItemView : EntryItemView{
@@ -58,7 +59,7 @@ class TextItemEditView : EntryItemEditView, UITextViewDelegate{
         textView.isScrollEnabled = false
         textView.delegate = self
         addSubview(textView)
-        textView.setKeyboardToolbar()
+        textView.setKeyboardToolbar(doneTitle: "done".localize())
         textView.placeBelow(anchor: deleteButton.bottomAnchor, insets: deleteInsets)
         textView.connectBottom(view: self)
     }

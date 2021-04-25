@@ -7,6 +7,7 @@
 
 import Foundation
 import UIKit
+import SwiftyIOSViewExtensions
 
 class EditEntryInfoViewController: InfoViewController {
     

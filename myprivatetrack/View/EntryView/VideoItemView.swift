@@ -7,6 +7,7 @@
 
 import Foundation
 import UIKit
+import SwiftyIOSViewExtensions
 
 protocol VideoItemDelegate{
     func viewVideoItem(data: VideoData)
@@ -99,7 +100,7 @@ class VideoItemEditView : EntryItemEditView, UITextViewDelegate{
         titleView.setDefaults(placeholder: "comment".localize())
         titleView.delegate = self
         addSubview(titleView)
-        titleView.setKeyboardToolbar()
+        titleView.setKeyboardToolbar(doneTitle: "done".localize())
         videoView.placeBelow(anchor: deleteButton.bottomAnchor, insets: deleteInsets)
         videoView.setAspectRatioConstraint()
         titleView.placeBelow(view: videoView)

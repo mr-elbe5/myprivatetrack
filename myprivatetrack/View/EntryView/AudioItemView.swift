@@ -8,6 +8,7 @@
 import Foundation
 import UIKit
 import AVFoundation
+import SwiftyIOSViewExtensions
 
 class AudioItemView : EntryItemView, AVAudioPlayerDelegate{
     
@@ -77,7 +78,7 @@ class AudioItemEditView : EntryItemEditView, UITextViewDelegate{
         titleView.setDefaults(placeholder: "comment".localize())
         titleView.delegate = self
         addSubview(titleView)
-        titleView.setKeyboardToolbar()
+        titleView.setKeyboardToolbar(doneTitle: "done".localize())
         audioView.placeBelow(anchor: deleteButton.bottomAnchor, insets: deleteInsets)
         audioView.layoutView()
         titleView.placeBelow(view: audioView)

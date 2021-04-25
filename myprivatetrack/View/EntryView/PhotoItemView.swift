@@ -7,6 +7,7 @@
 
 import Foundation
 import UIKit
+import SwiftyIOSViewExtensions
 
 protocol PhotoItemDelegate{
     func viewPhotoItem(data: PhotoData)
@@ -129,7 +130,7 @@ class PhotoItemEditView : EntryItemEditView, UITextViewDelegate{
         titleView.setDefaults(placeholder: "comment".localize())
         titleView.delegate = self
         addSubview(titleView)
-        titleView.setKeyboardToolbar()
+        titleView.setKeyboardToolbar(doneTitle: "done".localize())
         imageView.placeBelow(anchor: deleteButton.bottomAnchor, insets: deleteInsets)
         imageView.setAspectRatioConstraint()
         titleView.placeBelow(view: imageView, insets: flatInsets)

@@ -14,7 +14,7 @@
 		4E3C5ACE24FCF2F300E11A35 /* FileError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E3C5ACD24FCF2F300E11A35 /* FileError.swift */; };
 		4E3C5AD024FCFC3300E11A35 /* CLLocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E3C5ACF24FCFC3300E11A35 /* CLLocationManager.swift */; };
 		4E3C5AD224FD00E600E11A35 /* LocationError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E3C5AD124FD00E600E11A35 /* LocationError.swift */; };
-		4E497EB825066FC300E94CBD /* Indicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E497EB725066FC300E94CBD /* Indicator.swift */; };
+		4E654BA82635EDD500B36B76 /* SwiftyIOSViewExtensions in Frameworks */ = {isa = PBXBuildFile; productRef = 4E654BA72635EDD500B36B76 /* SwiftyIOSViewExtensions */; };
 		4E90CA70249532EB0029E308 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4E90CA72249532EB0029E308 /* Localizable.strings */; };
 		4ED21B7924FAA17200A6FEA3 /* DataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED21B7724FAA17200A6FEA3 /* DataController.swift */; };
 		4ED21B7A24FAA17200A6FEA3 /* FileController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED21B7824FAA17200A6FEA3 /* FileController.swift */; };
@@ -47,25 +47,6 @@
 		4ED21BCC24FAA36C00A6FEA3 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED21BC824FAA36C00A6FEA3 /* SceneDelegate.swift */; };
 		4ED21BCD24FAA36C00A6FEA3 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED21BC924FAA36C00A6FEA3 /* Settings.swift */; };
 		4ED21BCE24FAA36C00A6FEA3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED21BCA24FAA36C00A6FEA3 /* AppDelegate.swift */; };
-		4ED21BE324FAA39300A6FEA3 /* DatePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED21BCF24FAA39300A6FEA3 /* DatePickerView.swift */; };
-		4ED21BE424FAA39300A6FEA3 /* IconButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED21BD024FAA39300A6FEA3 /* IconButton.swift */; };
-		4ED21BE524FAA39300A6FEA3 /* UIScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED21BD124FAA39300A6FEA3 /* UIScrollView.swift */; };
-		4ED21BE624FAA39300A6FEA3 /* InfoHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED21BD224FAA39300A6FEA3 /* InfoHeader.swift */; };
-		4ED21BE724FAA39300A6FEA3 /* TextButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED21BD324FAA39300A6FEA3 /* TextButton.swift */; };
-		4ED21BE824FAA39300A6FEA3 /* UILabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED21BD424FAA39300A6FEA3 /* UILabel.swift */; };
-		4ED21BE924FAA39300A6FEA3 /* ButtonStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED21BD524FAA39300A6FEA3 /* ButtonStackView.swift */; };
-		4ED21BEA24FAA39300A6FEA3 /* UITextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED21BD624FAA39300A6FEA3 /* UITextView.swift */; };
-		4ED21BEB24FAA39300A6FEA3 /* UIImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED21BD724FAA39300A6FEA3 /* UIImage.swift */; };
-		4ED21BEC24FAA39300A6FEA3 /* UITextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED21BD824FAA39300A6FEA3 /* UITextField.swift */; };
-		4ED21BED24FAA39300A6FEA3 /* UIStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED21BD924FAA39300A6FEA3 /* UIStackView.swift */; };
-		4ED21BEF24FAA39300A6FEA3 /* UIImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED21BDB24FAA39300A6FEA3 /* UIImageView.swift */; };
-		4ED21BF024FAA39300A6FEA3 /* TextEditArea.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED21BDC24FAA39300A6FEA3 /* TextEditArea.swift */; };
-		4ED21BF124FAA39300A6FEA3 /* UIButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED21BDD24FAA39300A6FEA3 /* UIButton.swift */; };
-		4ED21BF224FAA39300A6FEA3 /* InfoText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED21BDE24FAA39300A6FEA3 /* InfoText.swift */; };
-		4ED21BF324FAA39300A6FEA3 /* SwitchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED21BDF24FAA39300A6FEA3 /* SwitchView.swift */; };
-		4ED21BF424FAA39300A6FEA3 /* IconInfoText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED21BE024FAA39300A6FEA3 /* IconInfoText.swift */; };
-		4ED21BF524FAA39300A6FEA3 /* TextEditLine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED21BE124FAA39300A6FEA3 /* TextEditLine.swift */; };
-		4ED21BF624FAA39300A6FEA3 /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED21BE224FAA39300A6FEA3 /* UIView.swift */; };
 		4ED21BFE24FAA39E00A6FEA3 /* EntryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED21BF724FAA39E00A6FEA3 /* EntryViewController.swift */; };
 		4ED21BFF24FAA39E00A6FEA3 /* MapItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED21BF824FAA39E00A6FEA3 /* MapItemView.swift */; };
 		4ED21C0024FAA39E00A6FEA3 /* AudioItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED21BF924FAA39E00A6FEA3 /* AudioItemView.swift */; };
@@ -118,7 +99,6 @@
 		4E3C5ACD24FCF2F300E11A35 /* FileError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileError.swift; sourceTree = "<group>"; };
 		4E3C5ACF24FCFC3300E11A35 /* CLLocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CLLocationManager.swift; sourceTree = "<group>"; };
 		4E3C5AD124FD00E600E11A35 /* LocationError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationError.swift; sourceTree = "<group>"; };
-		4E497EB725066FC300E94CBD /* Indicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Indicator.swift; sourceTree = "<group>"; };
 		4E90CA71249532EB0029E308 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		4E90CA73249533080029E308 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
 		4ED21B7724FAA17200A6FEA3 /* DataController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataController.swift; sourceTree = "<group>"; };
@@ -152,25 +132,6 @@
 		4ED21BC824FAA36C00A6FEA3 /* SceneDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		4ED21BC924FAA36C00A6FEA3 /* Settings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 		4ED21BCA24FAA36C00A6FEA3 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		4ED21BCF24FAA39300A6FEA3 /* DatePickerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatePickerView.swift; sourceTree = "<group>"; };
-		4ED21BD024FAA39300A6FEA3 /* IconButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IconButton.swift; sourceTree = "<group>"; };
-		4ED21BD124FAA39300A6FEA3 /* UIScrollView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIScrollView.swift; sourceTree = "<group>"; };
-		4ED21BD224FAA39300A6FEA3 /* InfoHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InfoHeader.swift; sourceTree = "<group>"; };
-		4ED21BD324FAA39300A6FEA3 /* TextButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextButton.swift; sourceTree = "<group>"; };
-		4ED21BD424FAA39300A6FEA3 /* UILabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UILabel.swift; sourceTree = "<group>"; };
-		4ED21BD524FAA39300A6FEA3 /* ButtonStackView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ButtonStackView.swift; sourceTree = "<group>"; };
-		4ED21BD624FAA39300A6FEA3 /* UITextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITextView.swift; sourceTree = "<group>"; };
-		4ED21BD724FAA39300A6FEA3 /* UIImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIImage.swift; sourceTree = "<group>"; };
-		4ED21BD824FAA39300A6FEA3 /* UITextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITextField.swift; sourceTree = "<group>"; };
-		4ED21BD924FAA39300A6FEA3 /* UIStackView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIStackView.swift; sourceTree = "<group>"; };
-		4ED21BDB24FAA39300A6FEA3 /* UIImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIImageView.swift; sourceTree = "<group>"; };
-		4ED21BDC24FAA39300A6FEA3 /* TextEditArea.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextEditArea.swift; sourceTree = "<group>"; };
-		4ED21BDD24FAA39300A6FEA3 /* UIButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIButton.swift; sourceTree = "<group>"; };
-		4ED21BDE24FAA39300A6FEA3 /* InfoText.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InfoText.swift; sourceTree = "<group>"; };
-		4ED21BDF24FAA39300A6FEA3 /* SwitchView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwitchView.swift; sourceTree = "<group>"; };
-		4ED21BE024FAA39300A6FEA3 /* IconInfoText.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IconInfoText.swift; sourceTree = "<group>"; };
-		4ED21BE124FAA39300A6FEA3 /* TextEditLine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextEditLine.swift; sourceTree = "<group>"; };
-		4ED21BE224FAA39300A6FEA3 /* UIView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
 		4ED21BF724FAA39E00A6FEA3 /* EntryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EntryViewController.swift; sourceTree = "<group>"; };
 		4ED21BF824FAA39E00A6FEA3 /* MapItemView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapItemView.swift; sourceTree = "<group>"; };
 		4ED21BF924FAA39E00A6FEA3 /* AudioItemView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudioItemView.swift; sourceTree = "<group>"; };
@@ -223,6 +184,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4E080D842508C2F0006DF6E9 /* Zip in Frameworks */,
+				4E654BA82635EDD500B36B76 /* SwiftyIOSViewExtensions in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -355,10 +317,6 @@
 		4E775B7525003475003BEC92 /* Common */ = {
 			isa = PBXGroup;
 			children = (
-				4E497EB725066FC300E94CBD /* Indicator.swift */,
-				4ED21BD124FAA39300A6FEA3 /* UIScrollView.swift */,
-				4ED21BD924FAA39300A6FEA3 /* UIStackView.swift */,
-				4ED21BE224FAA39300A6FEA3 /* UIView.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -429,22 +387,6 @@
 		4ED21BA224FAA2B800A6FEA3 /* Control */ = {
 			isa = PBXGroup;
 			children = (
-				4ED21BD524FAA39300A6FEA3 /* ButtonStackView.swift */,
-				4ED21BCF24FAA39300A6FEA3 /* DatePickerView.swift */,
-				4ED21BD024FAA39300A6FEA3 /* IconButton.swift */,
-				4ED21BE024FAA39300A6FEA3 /* IconInfoText.swift */,
-				4ED21BD224FAA39300A6FEA3 /* InfoHeader.swift */,
-				4ED21BDE24FAA39300A6FEA3 /* InfoText.swift */,
-				4ED21BDF24FAA39300A6FEA3 /* SwitchView.swift */,
-				4ED21BD324FAA39300A6FEA3 /* TextButton.swift */,
-				4ED21BDC24FAA39300A6FEA3 /* TextEditArea.swift */,
-				4ED21BE124FAA39300A6FEA3 /* TextEditLine.swift */,
-				4ED21BDD24FAA39300A6FEA3 /* UIButton.swift */,
-				4ED21BD724FAA39300A6FEA3 /* UIImage.swift */,
-				4ED21BDB24FAA39300A6FEA3 /* UIImageView.swift */,
-				4ED21BD424FAA39300A6FEA3 /* UILabel.swift */,
-				4ED21BD824FAA39300A6FEA3 /* UITextField.swift */,
-				4ED21BD624FAA39300A6FEA3 /* UITextView.swift */,
 			);
 			path = Control;
 			sourceTree = "<group>";
@@ -555,6 +497,7 @@
 			name = myprivatetrack;
 			packageProductDependencies = (
 				4E080D832508C2F0006DF6E9 /* Zip */,
+				4E654BA72635EDD500B36B76 /* SwiftyIOSViewExtensions */,
 			);
 			productName = myprivatetrack;
 			productReference = 4EFDFF3424952F53001EB7C3 /* My private track.app */;
@@ -567,7 +510,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 1150;
-				LastUpgradeCheck = 1150;
+				LastUpgradeCheck = 1240;
 				ORGANIZATIONNAME = "Michael Rönnau";
 				TargetAttributes = {
 					4EFDFF3324952F53001EB7C3 = {
@@ -588,6 +531,7 @@
 			mainGroup = 4EFDFF2B24952F53001EB7C3;
 			packageReferences = (
 				4E080D822508C2F0006DF6E9 /* XCRemoteSwiftPackageReference "Zip" */,
+				4E654BA62635EDD500B36B76 /* XCRemoteSwiftPackageReference "SwiftyIOSViewExtensions" */,
 			);
 			productRefGroup = 4EFDFF3524952F53001EB7C3 /* Products */;
 			projectDirPath = "";
@@ -623,21 +567,14 @@
 				4ED21BBA24FAA32500A6FEA3 /* EntryItemData.swift in Sources */,
 				4ED21C5324FAAC6E00A6FEA3 /* EntryAnnotation.swift in Sources */,
 				4ED21BCB24FAA36C00A6FEA3 /* MainTabController.swift in Sources */,
-				4ED21BE624FAA39300A6FEA3 /* InfoHeader.swift in Sources */,
-				4ED21BEA24FAA39300A6FEA3 /* UITextView.swift in Sources */,
 				4ED21C0124FAA39E00A6FEA3 /* VideoItemView.swift in Sources */,
 				4ED21C3524FAA83E00A6FEA3 /* UIViewController.swift in Sources */,
 				4ED21C4A24FAAC6E00A6FEA3 /* AudioRecorderView.swift in Sources */,
 				4ED21BFE24FAA39E00A6FEA3 /* EntryViewController.swift in Sources */,
 				4ED21C0D24FAA3B900A6FEA3 /* TimelineViewController.swift in Sources */,
 				4ED21C4924FAAC6E00A6FEA3 /* VideoCaptureViewController.swift in Sources */,
-				4ED21BE924FAA39300A6FEA3 /* ButtonStackView.swift in Sources */,
 				4ED21BA024FAA29F00A6FEA3 /* EditViewController.swift in Sources */,
-				4ED21BF324FAA39300A6FEA3 /* SwitchView.swift in Sources */,
 				4ED21BA124FAA29F00A6FEA3 /* TableViewController.swift in Sources */,
-				4ED21BF124FAA39300A6FEA3 /* UIButton.swift in Sources */,
-				4E497EB825066FC300E94CBD /* Indicator.swift in Sources */,
-				4ED21BF524FAA39300A6FEA3 /* TextEditLine.swift in Sources */,
 				4ED21C5124FAAC6E00A6FEA3 /* PhotoCaptureViewController.swift in Sources */,
 				4ED21C5024FAAC6E00A6FEA3 /* AVCaptureVideoOrientation.swift in Sources */,
 				4ED21BB924FAA32500A6FEA3 /* Location.swift in Sources */,
@@ -650,26 +587,20 @@
 				4ED21BC124FAA36000A6FEA3 /* MKMapView.swift in Sources */,
 				4ED21C5224FAAC6E00A6FEA3 /* MapCaptureViewController.swift in Sources */,
 				4E24FC93250164DA00BCE81B /* AppInfoViewController.swift in Sources */,
-				4ED21BE724FAA39300A6FEA3 /* TextButton.swift in Sources */,
 				4ED21BB224FAA32500A6FEA3 /* TimeSpanData.swift in Sources */,
 				4E3C5AD224FD00E600E11A35 /* LocationError.swift in Sources */,
 				4EFE4F62250A3ED2003B2D1E /* MapError.swift in Sources */,
-				4ED21BEF24FAA39300A6FEA3 /* UIImageView.swift in Sources */,
 				4ED21C1024FAA3B900A6FEA3 /* EditEntryInfoViewController.swift in Sources */,
 				4ED21BAF24FAA32500A6FEA3 /* GlobalData.swift in Sources */,
 				4ED21C4F24FAAC6E00A6FEA3 /* VideoPlayerView.swift in Sources */,
 				4ED21BC224FAA36000A6FEA3 /* URL.swift in Sources */,
-				4ED21BE324FAA39300A6FEA3 /* DatePickerView.swift in Sources */,
 				4ED21C4C24FAAC6E00A6FEA3 /* VideoViewController.swift in Sources */,
 				4ED95E1C25022D120084648A /* ImageEntryItemData.swift in Sources */,
-				4ED21BF424FAA39300A6FEA3 /* IconInfoText.swift in Sources */,
 				4ED21C0F24FAA3B900A6FEA3 /* TimelineEntryCell.swift in Sources */,
 				4ED21C4724FAAC6E00A6FEA3 /* CaptureButton.swift in Sources */,
 				4ED21C0E24FAA3B900A6FEA3 /* TimelineSectionHeader.swift in Sources */,
 				4ED21BB624FAA32500A6FEA3 /* FileEntryItemData.swift in Sources */,
 				4ED21C0C24FAA3B900A6FEA3 /* EditEntryViewController.swift in Sources */,
-				4ED21BEC24FAA39300A6FEA3 /* UITextField.swift in Sources */,
-				4ED21BE424FAA39300A6FEA3 /* IconButton.swift in Sources */,
 				4ED21B9D24FAA29F00A6FEA3 /* ModalScrollViewController.swift in Sources */,
 				4ED21BCD24FAA36C00A6FEA3 /* Settings.swift in Sources */,
 				4ED21C2C24FAA47500A6FEA3 /* RestoreInfoViewController.swift in Sources */,
@@ -686,29 +617,22 @@
 				4ED21B7924FAA17200A6FEA3 /* DataController.swift in Sources */,
 				4ED21B9A24FAA29F00A6FEA3 /* ModalViewController.swift in Sources */,
 				4ED21BB524FAA32500A6FEA3 /* AudioData.swift in Sources */,
-				4ED21BE524FAA39300A6FEA3 /* UIScrollView.swift in Sources */,
 				4ED21BFF24FAA39E00A6FEA3 /* MapItemView.swift in Sources */,
 				4ED21C4824FAAC6E00A6FEA3 /* AudioPlayerView.swift in Sources */,
 				4ED21C2924FAA47500A6FEA3 /* SettingsInfoViewController.swift in Sources */,
 				4ED21B7F24FAA20F00A6FEA3 /* LocationService.swift in Sources */,
 				4ED21C0324FAA39E00A6FEA3 /* TextItemView.swift in Sources */,
 				4ED21B9E24FAA29F00A6FEA3 /* PhotoViewController.swift in Sources */,
-				4ED21BED24FAA39300A6FEA3 /* UIStackView.swift in Sources */,
 				4ED21C0B24FAA3B900A6FEA3 /* TimelineInfoViewController.swift in Sources */,
-				4ED21BEB24FAA39300A6FEA3 /* UIImage.swift in Sources */,
 				4ED21B9924FAA29F00A6FEA3 /* ViewController.swift in Sources */,
 				4ED21BCE24FAA36C00A6FEA3 /* AppDelegate.swift in Sources */,
 				4ED21B7A24FAA17200A6FEA3 /* FileController.swift in Sources */,
 				4ED21C2B24FAA47500A6FEA3 /* BackupInfoViewController.swift in Sources */,
-				4ED21BF024FAA39300A6FEA3 /* TextEditArea.swift in Sources */,
-				4ED21BF624FAA39300A6FEA3 /* UIView.swift in Sources */,
-				4ED21BF224FAA39300A6FEA3 /* InfoText.swift in Sources */,
 				4ED21C4E24FAAC6E00A6FEA3 /* MediaCommentLabel.swift in Sources */,
 				4ED21BB424FAA32500A6FEA3 /* DayData.swift in Sources */,
 				4ED21B9F24FAA29F00A6FEA3 /* ScrollViewController.swift in Sources */,
 				4E3C5AD024FCFC3300E11A35 /* CLLocationManager.swift in Sources */,
 				4ED21BCC24FAA36C00A6FEA3 /* SceneDelegate.swift in Sources */,
-				4ED21BE824FAA39300A6FEA3 /* UILabel.swift in Sources */,
 				4ED21BB324FAA32500A6FEA3 /* VideoData.swift in Sources */,
 				4ED21C4B24FAAC6E00A6FEA3 /* AVCaptureDevice.swift in Sources */,
 				4ED21BC624FAA36000A6FEA3 /* Date.swift in Sources */,
@@ -775,6 +699,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -836,6 +761,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -949,6 +875,14 @@
 				minimumVersion = 2.0.0;
 			};
 		};
+		4E654BA62635EDD500B36B76 /* XCRemoteSwiftPackageReference "SwiftyIOSViewExtensions" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/mr-elbe5/SwiftyIOSViewExtensions";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.2;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -956,6 +890,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 4E080D822508C2F0006DF6E9 /* XCRemoteSwiftPackageReference "Zip" */;
 			productName = Zip;
+		};
+		4E654BA72635EDD500B36B76 /* SwiftyIOSViewExtensions */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 4E654BA62635EDD500B36B76 /* XCRemoteSwiftPackageReference "SwiftyIOSViewExtensions" */;
+			productName = SwiftyIOSViewExtensions;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

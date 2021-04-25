@@ -7,6 +7,7 @@
 
 import Foundation
 import UIKit
+import SwiftyIOSViewExtensions
 
 protocol DeleteEntryActionDelegate{
     func deleteItem(itemView: EntryItemEditView)

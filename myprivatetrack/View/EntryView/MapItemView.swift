@@ -7,6 +7,7 @@
 
 import Foundation
 import UIKit
+import SwiftyIOSViewExtensions
 
 class MapItemView : EntryItemView{
     
@@ -61,7 +62,7 @@ class MapItemEditView : EntryItemEditView, UITextViewDelegate{
         titleView.setDefaults(placeholder: "mapComment".localize())
         titleView.delegate = self
         addSubview(titleView)
-        titleView.setKeyboardToolbar()
+        titleView.setKeyboardToolbar(doneTitle: "done".localize())
         imageView.placeBelow(anchor: topAnchor, insets: defaultInsets)
         imageView.setAspectRatioConstraint()
         titleView.placeBelow(view: imageView, insets: flatInsets)

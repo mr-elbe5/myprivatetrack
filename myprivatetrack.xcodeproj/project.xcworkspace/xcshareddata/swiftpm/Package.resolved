@@ -2,6 +2,15 @@
   "object": {
     "pins": [
       {
+        "package": "SwiftyIOSViewExtensions",
+        "repositoryURL": "https://github.com/mr-elbe5/SwiftyIOSViewExtensions",
+        "state": {
+          "branch": null,
+          "revision": "21c93cebdca0b2444eff6216fa56f7f79cc7cfbb",
+          "version": "1.0.2"
+        }
+      },
+      {
         "package": "Zip",
         "repositoryURL": "https://github.com/marmelroy/Zip.git",
         "state": {
