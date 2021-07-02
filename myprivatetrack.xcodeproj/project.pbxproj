@@ -10,6 +10,7 @@
 		4E080D842508C2F0006DF6E9 /* Zip in Frameworks */ = {isa = PBXBuildFile; productRef = 4E080D832508C2F0006DF6E9 /* Zip */; };
 		4E14579F24E1C214008EC422 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4E1457A124E1C214008EC422 /* InfoPlist.strings */; };
 		4E187933268CF0760025E5FA /* MapboxMaps in Frameworks */ = {isa = PBXBuildFile; productRef = 4E187932268CF0760025E5FA /* MapboxMaps */; };
+		4E189776268F9758002620FD /* .mapbox in Resources */ = {isa = PBXBuildFile; fileRef = 4E189775268F9758002620FD /* .mapbox */; };
 		4E24FC902501632700BCE81B /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 4E24FC8F2501632700BCE81B /* README.md */; };
 		4E24FC93250164DA00BCE81B /* AppInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E24FC92250164DA00BCE81B /* AppInfoViewController.swift */; };
 		4E3C5ACE24FCF2F300E11A35 /* FileError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E3C5ACD24FCF2F300E11A35 /* FileError.swift */; };
@@ -96,6 +97,7 @@
 /* Begin PBXFileReference section */
 		4E1457A024E1C214008EC422 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		4E1457A224E1C217008EC422 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		4E189775268F9758002620FD /* .mapbox */ = {isa = PBXFileReference; lastKnownFileType = text; path = .mapbox; sourceTree = "<group>"; };
 		4E24FC8F2501632700BCE81B /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		4E24FC92250164DA00BCE81B /* AppInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppInfoViewController.swift; sourceTree = "<group>"; };
 		4E3C5ACD24FCF2F300E11A35 /* FileError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileError.swift; sourceTree = "<group>"; };
@@ -423,6 +425,7 @@
 		4EFDFF2B24952F53001EB7C3 = {
 			isa = PBXGroup;
 			children = (
+				4E189775268F9758002620FD /* .mapbox */,
 				4E24FC8F2501632700BCE81B /* README.md */,
 				4EFDFF3624952F53001EB7C3 /* myprivatetrack */,
 				4EFDFF3524952F53001EB7C3 /* Products */,
@@ -486,6 +489,7 @@
 				4EFDFF3024952F53001EB7C3 /* Sources */,
 				4EFDFF3124952F53001EB7C3 /* Frameworks */,
 				4EFDFF3224952F53001EB7C3 /* Resources */,
+				4E189774268F96E6002620FD /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -546,6 +550,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4E189776268F9758002620FD /* .mapbox in Resources */,
 				4EFDFF4924952F54001EB7C3 /* LaunchScreen.storyboard in Resources */,
 				4E14579F24E1C214008EC422 /* InfoPlist.strings in Resources */,
 				4E24FC902501632700BCE81B /* README.md in Resources */,
@@ -555,6 +560,28 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		4E189774268F96E6002620FD /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				$TARGET_BUILD_DIR/$INFOPLIST_PATH,
+				"$(SOURCE_ROOT)/.mapbox",
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Look for a global file named 'mapbox' or '.mapbox' within the home directory\ntoken_file=$SOURCE_ROOT/.mapbox\ntoken=\"$(cat $token_file 2>/dev/null)\"\nif [ \"$token\" ]; then\n  plutil -replace MBXAccessToken -string $token \"$TARGET_BUILD_DIR/$INFOPLIST_PATH\"\nelse\n  echo 'warning: Missing Mapbox access token'\n  open 'https://account.mapbox.com/access-tokens/'\n  echo \"warning: Get an access token from <https://account.mapbox.com/access-tokens/>, then create a new file at $token_file that contains the access token.\"\nfi\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		4EFDFF3024952F53001EB7C3 /* Sources */ = {
