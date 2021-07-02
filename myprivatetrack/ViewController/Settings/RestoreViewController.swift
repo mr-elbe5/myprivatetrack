@@ -71,7 +71,7 @@ class RestoreViewController: ModalScrollViewController, DatePickerDelegate{
         GlobalData.shared.sortDays()
         GlobalData.shared.save()
         MainTabController.getTimelineViewController()?.setNeedsUpdate()
-        MainTabController.getMapViewController()?.setNeedsUpdate()
+        //MainTabController.getMapViewController()?.setNeedsUpdate()
         Indicator.shared.hide()
         showAlert(title: "success".localize(), text: "backupRestored".localize()){
             self.dismiss(animated: true)

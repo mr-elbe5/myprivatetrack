@@ -14,7 +14,7 @@ protocol MapViewDelegate{
     func didFinishLoading()
 }
 
-class MapView : UIView, MKMapViewDelegate{
+class MapkitMapView : UIView, MKMapViewDelegate{
     
     private var mapView : MKMapView!
     

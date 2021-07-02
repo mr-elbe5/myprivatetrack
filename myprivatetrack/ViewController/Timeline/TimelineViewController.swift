@@ -152,7 +152,7 @@ class TimelineViewController: TableViewController, SaveEntryDelegate, EntryCellA
             entry.isNew = false
         }
         if let mapController = MainTabController.getMapViewController(){
-            mapController.setNeedsUpdate()
+            //mapController.setNeedsUpdate()
         }
     }
     

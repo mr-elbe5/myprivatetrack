@@ -67,7 +67,7 @@ class EntryViewController: ModalScrollViewController, PhotoItemDelegate, VideoIt
         if let location = entry?.location{
             self.dismiss(animated: false)
             let mapController = MainTabController.getMapViewController()
-            mapController?.mkMapView.centerToLocation(location)
+            //mapController?.mkMapView.centerToLocation(location)
             MainTabController.instance.selectedViewController = mapController
         }
     }

@@ -21,7 +21,7 @@ class MapCaptureViewController: UIViewController, LocationServiceDelegate, MapVi
     
     var delegate: MapCaptureDelegate? = nil
     
-    var mapView = MapView()
+    var mapView = MapkitMapView()
     var bodyView = UIView()
     var buttonView = UIView()
     var mapTypeButton = IconButton(icon: "map", tintColor: .white)

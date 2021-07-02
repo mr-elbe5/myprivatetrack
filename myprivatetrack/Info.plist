@@ -2,6 +2,8 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>MBXAccessToken</key>
+	<string>pk.eyJ1IjoibXItZWxiZTUiLCJhIjoiY2tjejgwZnV2MGgzZjJ6cDR6czRodWdydSJ9.K2C9d4ZFCFx4r77sMoq8GQ</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleDisplayName</key>
