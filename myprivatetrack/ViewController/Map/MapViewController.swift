@@ -10,7 +10,7 @@ import UIKit
 import MapKit
 import SwiftyIOSViewExtensions
 
-class MapkitViewController: UIViewController, MKMapViewDelegate, LocationServiceDelegate {
+class MapViewController: UIViewController, MKMapViewDelegate, LocationServiceDelegate {
     
     var headerView = UIView()
     var mkMapView = MKMapView()
