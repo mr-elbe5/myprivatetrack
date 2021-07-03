@@ -3,5 +3,4 @@
 build/
 *.pbxuser
 xcuserdata/
-myprivatetrack/.mapbox
 .mapbox
