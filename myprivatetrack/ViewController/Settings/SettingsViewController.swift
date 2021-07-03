@@ -141,7 +141,7 @@ class SettingsViewController: EditViewController, UIDocumentPickerDelegate, UIIm
                 timelineController.setNeedsUpdate()
             }
             if let mapController = MainTabController.getMapViewController(){
-                //mapController.setNeedsUpdate()
+                mapController.setNeedsUpdate()
             }
         }
         

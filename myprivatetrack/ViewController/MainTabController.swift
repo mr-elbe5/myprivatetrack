@@ -25,8 +25,7 @@ class MainTabController: UITabBarController {
         tabBar.isTranslucent = false
         let timelineViewController = TimelineViewController()
         timelineViewController.tabBarItem = UITabBarItem(title: NSLocalizedString("timeline", comment: ""), image: UIImage(systemName: "rectangle.stack"), tag: TabTags.timeline.hashValue)
-        //let mapViewController = MapkitViewController()
-        let mapViewController = MapboxViewController()
+        let mapViewController = MapkitViewController()
         mapViewController.tabBarItem = UITabBarItem(title: "map".localize(), image: UIImage(systemName: "globe"), tag: TabTags.map.hashValue)
         let settingsViewController = SettingsViewController()
         settingsViewController.tabBarItem = UITabBarItem(title: "settings".localize(), image: UIImage(systemName: "slider.horizontal.3"), tag: TabTags.settings.hashValue)
@@ -52,12 +51,8 @@ class MainTabController: UITabBarController {
         return getViewController(tag: .timeline) as! TimelineViewController?
     }
     
-    /*static func getMapViewController() -> MapkitViewController?{
+    static func getMapViewController() -> MapkitViewController?{
         return getViewController(tag: .map) as! MapkitViewController?
-    }*/
-    
-    static func getMapViewController() -> MapboxViewController?{
-        return getViewController(tag: .map) as! MapboxViewController?
     }
     
     static func getSettingsViewController() -> SettingsViewController?{
