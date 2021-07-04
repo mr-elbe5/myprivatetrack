@@ -8,14 +8,14 @@
 import Foundation
 import UIKit
 import CoreLocation
-import MapKit
+import MapboxMaps
 import SwiftyIOSViewExtensions
 
 protocol MapCaptureDelegate{
     func mapCaptured(data: EntryData)
 }
 
-class MapCaptureViewController: UIViewController, LocationServiceDelegate, MapViewDelegate {
+class MapCaptureViewController: UIViewController, LocationServiceDelegate /*, MapViewDelegate*/ {
     
     var data : EntryData!
     
@@ -41,7 +41,8 @@ class MapCaptureViewController: UIViewController, LocationServiceDelegate, MapVi
             .top(bodyView.topAnchor,inset: defaultInset)
             .trailing(bodyView.trailingAnchor,inset: defaultInset)
         bodyView.addSubview(mapView)
-        mapView.setupView()
+        //todo
+        /*mapView.setupView()
         if let loc = LocationService.shared.getLocation(){
             mapView.setLocation(location: loc)
         }
@@ -55,6 +56,7 @@ class MapCaptureViewController: UIViewController, LocationServiceDelegate, MapVi
         buttonView.placeBelow(view: mapView)
         addButtons()
         buttonView.connectBottom(view: bodyView)
+         */
     }
     
     func addButtons(){
@@ -89,20 +91,25 @@ class MapCaptureViewController: UIViewController, LocationServiceDelegate, MapVi
     }
     
     func locationDidChange(location: Location){
-        mapView.setLocation(location: location)
+        //todo
+        //mapView.setLocation(location: location)
     }
-    
+
     @objc func toggleMapType(){
-        mapView.toggleMapType()
+        /*mapView.toggleMapType()
         if mapView.mapType == .satellite {
             mapTypeButton.setImage(UIImage(systemName: "map"), for: .normal)
         }else{
             mapTypeButton.setImage(UIImage(systemName: "map.fill"), for: .normal)
         }
+
+         */
     }
     
     @objc func save(){
         Indicator.shared.show()
+        //todo
+        /*
         mapView.takeScreenshot(){ result in
             switch result{
             case .success(let image):
@@ -120,6 +127,8 @@ class MapCaptureViewController: UIViewController, LocationServiceDelegate, MapVi
                 return
             }
         }
+
+         */
     }
     
     @objc func cancel(){

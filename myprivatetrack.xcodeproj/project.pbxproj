@@ -40,7 +40,7 @@
 		4ED21BB724FAA32500A6FEA3 /* EntryData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED21BAB24FAA32400A6FEA3 /* EntryData.swift */; };
 		4ED21BB924FAA32500A6FEA3 /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED21BAD24FAA32400A6FEA3 /* Location.swift */; };
 		4ED21BBA24FAA32500A6FEA3 /* EntryItemData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED21BAE24FAA32500A6FEA3 /* EntryItemData.swift */; };
-		4ED21BC124FAA36000A6FEA3 /* MKMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED21BBB24FAA36000A6FEA3 /* MKMapView.swift */; };
+		4ED21BC124FAA36000A6FEA3 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED21BBB24FAA36000A6FEA3 /* MapView.swift */; };
 		4ED21BC224FAA36000A6FEA3 /* URL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED21BBC24FAA36000A6FEA3 /* URL.swift */; };
 		4ED21BC424FAA36000A6FEA3 /* Codable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED21BBE24FAA36000A6FEA3 /* Codable.swift */; };
 		4ED21BC524FAA36000A6FEA3 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED21BBF24FAA36000A6FEA3 /* String.swift */; };
@@ -126,7 +126,7 @@
 		4ED21BAB24FAA32400A6FEA3 /* EntryData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EntryData.swift; sourceTree = "<group>"; };
 		4ED21BAD24FAA32400A6FEA3 /* Location.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
 		4ED21BAE24FAA32500A6FEA3 /* EntryItemData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EntryItemData.swift; sourceTree = "<group>"; };
-		4ED21BBB24FAA36000A6FEA3 /* MKMapView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MKMapView.swift; sourceTree = "<group>"; };
+		4ED21BBB24FAA36000A6FEA3 /* MapView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
 		4ED21BBC24FAA36000A6FEA3 /* URL.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URL.swift; sourceTree = "<group>"; };
 		4ED21BBE24FAA36000A6FEA3 /* Codable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Codable.swift; sourceTree = "<group>"; };
 		4ED21BBF24FAA36000A6FEA3 /* String.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
@@ -243,7 +243,7 @@
 			isa = PBXGroup;
 			children = (
 				4ED21C4624FAAC6E00A6FEA3 /* MapkitMapView.swift */,
-				4ED21BBB24FAA36000A6FEA3 /* MKMapView.swift */,
+				4ED21BBB24FAA36000A6FEA3 /* MapView.swift */,
 				4E3C5ACF24FCFC3300E11A35 /* CLLocationManager.swift */,
 				4ED21C4424FAAC6E00A6FEA3 /* MapCaptureViewController.swift */,
 				4ED21C4524FAAC6E00A6FEA3 /* EntryAnnotation.swift */,
@@ -529,9 +529,9 @@
 			);
 			mainGroup = 4EFDFF2B24952F53001EB7C3;
 			packageReferences = (
-				4E080D822508C2F0006DF6E9 /* XCRemoteSwiftPackageReference "Zip" */,
+				4E080D822508C2F0006DF6E9 /* XCRemoteSwiftPackageReference "Zip.git" */,
 				4E654BA62635EDD500B36B76 /* XCRemoteSwiftPackageReference "SwiftyIOSViewExtensions" */,
-				4E187931268CF0760025E5FA /* XCRemoteSwiftPackageReference "mapbox-maps-ios" */,
+				4E187931268CF0760025E5FA /* XCRemoteSwiftPackageReference "mapbox-maps-ios.git" */,
 			);
 			productRefGroup = 4EFDFF3524952F53001EB7C3 /* Products */;
 			projectDirPath = "";
@@ -607,7 +607,7 @@
 				4E3C5ACE24FCF2F300E11A35 /* FileError.swift in Sources */,
 				4ED21C2D24FAA47500A6FEA3 /* BackupViewController.swift in Sources */,
 				4EFE4F60250A23CB003B2D1E /* AuthorizationError.swift in Sources */,
-				4ED21BC124FAA36000A6FEA3 /* MKMapView.swift in Sources */,
+				4ED21BC124FAA36000A6FEA3 /* MapView.swift in Sources */,
 				4ED21C5224FAAC6E00A6FEA3 /* MapCaptureViewController.swift in Sources */,
 				4E24FC93250164DA00BCE81B /* AppInfoViewController.swift in Sources */,
 				4ED21BB224FAA32500A6FEA3 /* TimeSpanData.swift in Sources */,
@@ -890,7 +890,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		4E080D822508C2F0006DF6E9 /* XCRemoteSwiftPackageReference "Zip" */ = {
+		4E080D822508C2F0006DF6E9 /* XCRemoteSwiftPackageReference "Zip.git" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/marmelroy/Zip.git";
 			requirement = {
@@ -898,7 +898,7 @@
 				minimumVersion = 2.0.0;
 			};
 		};
-		4E187931268CF0760025E5FA /* XCRemoteSwiftPackageReference "mapbox-maps-ios" */ = {
+		4E187931268CF0760025E5FA /* XCRemoteSwiftPackageReference "mapbox-maps-ios.git" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/mapbox/mapbox-maps-ios.git";
 			requirement = {
@@ -919,12 +919,12 @@
 /* Begin XCSwiftPackageProductDependency section */
 		4E080D832508C2F0006DF6E9 /* Zip */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 4E080D822508C2F0006DF6E9 /* XCRemoteSwiftPackageReference "Zip" */;
+			package = 4E080D822508C2F0006DF6E9 /* XCRemoteSwiftPackageReference "Zip.git" */;
 			productName = Zip;
 		};
 		4E187932268CF0760025E5FA /* MapboxMaps */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 4E187931268CF0760025E5FA /* XCRemoteSwiftPackageReference "mapbox-maps-ios" */;
+			package = 4E187931268CF0760025E5FA /* XCRemoteSwiftPackageReference "mapbox-maps-ios.git" */;
 			productName = MapboxMaps;
 		};
 		4E654BA72635EDD500B36B76 /* SwiftyIOSViewExtensions */ = {

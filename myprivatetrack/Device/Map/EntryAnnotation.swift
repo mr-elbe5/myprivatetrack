@@ -7,9 +7,9 @@
 
 import Foundation
 import UIKit
-import MapKit
+import MapboxMaps
 
-class EntryAnnotation : MKPointAnnotation{
+class EntryAnnotation /*: PointAnnotation*/{
     
     var entry : EntryData
     

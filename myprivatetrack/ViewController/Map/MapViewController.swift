@@ -7,13 +7,13 @@
 
 import Foundation
 import UIKit
-import MapKit
+import MapboxMaps
 import SwiftyIOSViewExtensions
 
-class MapViewController: UIViewController, MKMapViewDelegate, LocationServiceDelegate {
+class MapViewController: UIViewController, LocationServiceDelegate {
     
     var headerView = UIView()
-    var mkMapView = MKMapView()
+    var mapView : MapView!
     var mapLoaded = false
     var location: Location? = nil
     var radius : CLLocationDistance = 10000
@@ -37,16 +37,20 @@ class MapViewController: UIViewController, MKMapViewDelegate, LocationServiceDel
         rightStackView.setupHorizontal(spacing: defaultInset)
         rightStackView.placeBefore(anchor: headerView.trailingAnchor, insets: defaultInsets)
         let toggleStyleButton = IconButton(icon: "map")
-        toggleStyleButton.addTarget(self, action: #selector(toggleMapStyle), for: .touchDown)
+        //toggleStyleButton.addTarget(self, action: #selector(toggleMapStyle), for: .touchDown)
         leftStackView.addArrangedSubview(toggleStyleButton)
         let infoButton = IconButton(icon: "info.circle")
         infoButton.addTarget(self, action: #selector(showInfo), for: .touchDown)
         rightStackView.addArrangedSubview(infoButton)
-        mkMapView.mapType = .satellite
-        mkMapView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-        mkMapView.delegate = self
-        view.addSubview(mkMapView)
-        mkMapView.setAnchors()
+        mapView = MapView(frame: view.bounds)
+        /*
+        mapView.mapType = .satellite
+        mapView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        mapView.delegate = self
+
+         */
+        view.addSubview(mapView)
+        mapView.setAnchors()
             .leading(guide.leadingAnchor, inset: .zero)
             .top(headerView.bottomAnchor, inset: 1)
             .trailing(guide.trailingAnchor,inset: .zero)
@@ -57,7 +61,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, LocationServiceDel
         //print("map loc = \(location.coordinate)")
         if self.location == nil{
             self.location = location
-            mkMapView.centerToLocation(location, regionRadius: self.radius)
+            mapView.centerToLocation(location, regionRadius: self.radius)
         }
     }
     
@@ -66,7 +70,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, LocationServiceDel
             if location == nil{
                 location = LocationService.shared.getLocation()
                 if let loc = location{
-                    self.mkMapView.centerToLocation(loc, regionRadius: self.radius)
+                    self.mapView.centerToLocation(loc, regionRadius: self.radius)
                 }
             }
             LocationService.shared.delegate = self
@@ -82,30 +86,40 @@ class MapViewController: UIViewController, MKMapViewDelegate, LocationServiceDel
     
     func setNeedsUpdate(){
         if mapLoaded{
-            mkMapView.removeAnnotations(mkMapView.annotations)
+            /*
+            mapView.removeAnnotations(mapView.annotations)
             assertMapPins()
+
+             */
         }
     }
     
-    func mapViewDidFinishLoadingMap(_ mapView: MKMapView) {
+    /*
+     func mapViewDidFinishLoadingMap(_ mapView: MKMapView) {
         mapLoaded = true
         assertMapPins()
     }
+
+     */
     
     func assertMapPins(){
         for day in globalData.days{
             for entry in day.entries{
+                /*
                 if entry.saveLocation, let loc = entry.location{
                     let positionPin = EntryAnnotation(entry: entry)
                     positionPin.title = entry.creationDate.dateTimeString()
                     positionPin.coordinate = loc.coordinate
-                    mkMapView.addAnnotation(positionPin)
+                    mapView.addAnnotation(positionPin)
                 }
+
+                 */
             }
         }
     }
-    
-    func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView){
+
+    /*
+    func mapView(_ mapView: MapView, didSelect view: MKAnnotationView){
         if let annotation = view.annotation as? EntryAnnotation{
             //print("entry = \(annotation.entry)")
             let entryController = EntryViewController()
@@ -114,15 +128,20 @@ class MapViewController: UIViewController, MKMapViewDelegate, LocationServiceDel
             self.present(entryController, animated: true)
         }
     }
-    
+
+     */
+
+    /*
     @objc func toggleMapStyle() {
-        if mkMapView.mapType == .satellite{
-            mkMapView.mapType = .standard
+        if mapView.mapType == .satellite{
+            mapView.mapType = .standard
         }
         else{
-            mkMapView.mapType = .satellite
+            mapView.mapType = .satellite
         }
     }
+
+     */
     
     @objc func showInfo(){
         let infoController = MapInfoViewController()
@@ -134,10 +153,10 @@ class MapViewController: UIViewController, MKMapViewDelegate, LocationServiceDel
     }
     
     func takeScreenshot(callback: @escaping (Result<UIImage, Error>) -> Void){
-        let options = MKMapSnapshotter.Options()
-        options.camera = self.mkMapView.camera
-        options.region = self.mkMapView.region
-        options.mapType = self.mkMapView.mapType
+        /*let options = MKMapSnapshotter.Options()
+        options.camera = self.mapView.camera
+        options.region = self.mapView.region
+        options.mapType = self.mapView.mapType
         let snapshotter = MKMapSnapshotter(options: options)
         snapshotter.start { snapshot, error in
             if error != nil {
@@ -151,12 +170,15 @@ class MapViewController: UIViewController, MKMapViewDelegate, LocationServiceDel
                 callback(.success(compositeImage!))
             }
         }
+
+         */
     }
     
     private func drawPins(){
         
     }
     
+    /*
     private func drawPin(point: CGPoint, annotation: MKAnnotation) {
         let annotationView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: "snapshotUserPosition")
         annotationView.contentMode = .scaleAspectFit
@@ -167,5 +189,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, LocationServiceDel
             width: annotationView.bounds.width,
             height: annotationView.bounds.height), afterScreenUpdates: true)
     }
+
+     */
     
 }

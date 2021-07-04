@@ -8,30 +8,27 @@
 import Foundation
 import UIKit
 import CoreLocation
-import MapKit
+import MapboxMaps
 
-protocol MapViewDelegate{
-    func didFinishLoading()
-}
+class MapkitMapView : UIView{
 
-class MapkitMapView : UIView, MKMapViewDelegate{
-    
-    private var mapView : MKMapView!
+    //todo
+    /*private var mapView : MapView!
     
     var location : Location? = nil
     var radius : CLLocationDistance = Settings.shared.mapStartSize.rawValue
     
-    var positionPin : MKPointAnnotation? = nil
+    var positionPin : PointAnnotation? = nil
     var delegate : MapViewDelegate? = nil
     
-    var mapType : MKMapType{
+    var mapType : MapType{
         get{
             return mapView.mapType
         }
     }
     
     func setupView(){
-        mapView = MKMapView()
+        mapView = MapView()
         mapView.mapType = .satellite
         mapView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         mapView.delegate = self
@@ -59,20 +56,20 @@ class MapkitMapView : UIView, MKMapViewDelegate{
         }
     }
     
-    func mapViewDidFinishLoadingMap(_ mapView: MKMapView) {
+    func mapViewDidFinishLoadingMap(_ mapView: MapView) {
         assertMapPin()
         delegate?.didFinishLoading()
     }
     
-    func mapView(_ mapView: MKMapView,viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+    func mapView(_ mapView: MapView,viewFor annotation: Annotation) -> AnnotationView? {
       let identifier = "userPosition"
-      var view: MKPinAnnotationView
+      var view: PinAnnotationView
       if let dequeuedView = mapView.dequeueReusableAnnotationView(
-        withIdentifier: identifier) as? MKPinAnnotationView {
+        withIdentifier: identifier) as? PinAnnotationView {
         dequeuedView.annotation = annotation
         view = dequeuedView
       } else {
-        view = MKPinAnnotationView(annotation: annotation, reuseIdentifier: identifier)
+        view = PinAnnotationView(annotation: annotation, reuseIdentifier: identifier)
         view.canShowCallout = true
         view.calloutOffset = CGPoint(x: -5, y: 5)
         view.rightCalloutAccessoryView = UIButton(type: .detailDisclosure)
@@ -80,11 +77,11 @@ class MapkitMapView : UIView, MKMapViewDelegate{
       return view
     }
     
-    func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView){
+    func mapView(_ mapView: MapView, didSelect view: AnnotationView){
         
     }
     
-    func mapView(_ mapView: MKMapView, didDeselect view: MKAnnotationView){
+    func mapView(_ mapView: MapView, didDeselect view: MKAnnotationView){
         
     }
     
@@ -135,5 +132,6 @@ class MapkitMapView : UIView, MKMapViewDelegate{
             width: annotationView.bounds.width,
             height: annotationView.bounds.height), afterScreenUpdates: true)
     }
+     */
     
 }
