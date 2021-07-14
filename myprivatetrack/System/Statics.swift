@@ -8,10 +8,10 @@
 import Foundation
 import UIKit
 
-enum MapStartSize: Double{
-    case small = 100.0
-    case mid = 1000.0
-    case large = 5000.0
+enum MapStartZoom: CGFloat{
+    case small = 15
+    case mid = 12
+    case large = 8
 }
 
 struct Statics{

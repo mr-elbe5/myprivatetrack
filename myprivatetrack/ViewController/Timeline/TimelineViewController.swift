@@ -7,6 +7,7 @@
 
 import UIKit
 import SwiftyIOSViewExtensions
+import CoreLocation
 
 class TimelineViewController: TableViewController, SaveEntryDelegate, EntryCellActionDelegate{
 
@@ -88,7 +89,10 @@ class TimelineViewController: TableViewController, SaveEntryDelegate, EntryCellA
     func openEntryController() -> EditEntryViewController{
         let createEventViewController = EditEntryViewController()
         let entry = EntryData(isNew: true)
-        entry.location = LocationService.shared.getLocation()
+        if let location = LocationService.shared.lastLocation{
+            entry.location = LocationData(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude, altitude: location.altitude)
+        }
+        LocationService.shared.lookUpCurrentLocation()
         entry.locationDescription = LocationService.shared.getLocationDescription()
         createEventViewController.entry = entry
         createEventViewController.delegate = self

@@ -15,13 +15,13 @@ protocol MapCaptureDelegate{
     func mapCaptured(data: EntryData)
 }
 
-class MapCaptureViewController: UIViewController, LocationServiceDelegate /*, MapViewDelegate*/ {
+class MapCaptureViewController: UIViewController{
     
     var data : EntryData!
     
     var delegate: MapCaptureDelegate? = nil
     
-    var mapView = MapkitMapView()
+    var mapView = MapCaptureView()
     var bodyView = UIView()
     var buttonView = UIView()
     var mapTypeButton = IconButton(icon: "map", tintColor: .white)
@@ -29,7 +29,6 @@ class MapCaptureViewController: UIViewController, LocationServiceDelegate /*, Ma
     
     override func loadView() {
         super.loadView()
-        LocationService.shared.checkRunning()
         self.modalPresentationStyle = .fullScreen
         bodyView.backgroundColor = .black
         view.addSubview(bodyView)
@@ -83,11 +82,11 @@ class MapCaptureViewController: UIViewController, LocationServiceDelegate /*, Ma
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        LocationService.shared.delegate = self
+        
     }
     
     override func viewWillDisappear(_ animated: Bool) {
-        LocationService.shared.delegate = nil
+        
     }
     
     func locationDidChange(location: Location){

@@ -10,17 +10,18 @@ import UIKit
 import MapboxMaps
 import SwiftyIOSViewExtensions
 
-class MapViewController: UIViewController, LocationServiceDelegate {
+class MapViewController: UIViewController {
     
     var headerView = UIView()
     var mapView : MapView!
     var mapLoaded = false
     var location: Location? = nil
-    var radius : CLLocationDistance = 10000
+    var zoom : MapStartZoom = MapStartZoom.large
+    
+    internal var cameraLocationConsumer: CameraLocationConsumer!
     
     override func loadView() {
         super.loadView()
-        LocationService.shared.checkRunning()
         let guide = view.safeAreaLayoutGuide
         view.addSubview(headerView)
         headerView.setAnchors()
@@ -37,70 +38,44 @@ class MapViewController: UIViewController, LocationServiceDelegate {
         rightStackView.setupHorizontal(spacing: defaultInset)
         rightStackView.placeBefore(anchor: headerView.trailingAnchor, insets: defaultInsets)
         let toggleStyleButton = IconButton(icon: "map")
-        //toggleStyleButton.addTarget(self, action: #selector(toggleMapStyle), for: .touchDown)
+        toggleStyleButton.addTarget(self, action: #selector(toggleMapStyle), for: .touchDown)
         leftStackView.addArrangedSubview(toggleStyleButton)
         let infoButton = IconButton(icon: "info.circle")
         infoButton.addTarget(self, action: #selector(showInfo), for: .touchDown)
         rightStackView.addArrangedSubview(infoButton)
         mapView = MapView(frame: view.bounds)
-        /*
-        mapView.mapType = .satellite
         mapView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-        mapView.delegate = self
-
-         */
+        mapView.location.overrideLocationProvider(with: MapLocationProvider())
         view.addSubview(mapView)
         mapView.setAnchors()
             .leading(guide.leadingAnchor, inset: .zero)
             .top(headerView.bottomAnchor, inset: 1)
             .trailing(guide.trailingAnchor,inset: .zero)
             .bottom(guide.bottomAnchor, inset: .zero)
+        cameraLocationConsumer = CameraLocationConsumer(mapView: mapView)
+        mapView.location.options.puckType = .puck2D()
+        mapView.mapboxMap.onNext(.mapLoaded) { _ in
+            self.mapView.location.addLocationConsumer(newConsumer: self.cameraLocationConsumer)
+        }
     }
     
     func locationDidChange(location: Location){
-        //print("map loc = \(location.coordinate)")
+        print("map loc = \(location.coordinate)")
         if self.location == nil{
             self.location = location
-            mapView.centerToLocation(location, regionRadius: self.radius)
+            mapView.centerToLocation(location.coordinate, zoom: self.zoom.rawValue)
         }
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        if CLLocationManager.authorized{
-            if location == nil{
-                location = LocationService.shared.getLocation()
-                if let loc = location{
-                    self.mapView.centerToLocation(loc, regionRadius: self.radius)
-                }
-            }
-            LocationService.shared.delegate = self
-        }
-        else{
-            showError("locationNotAuthorized")
-        }
-    }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        LocationService.shared.delegate = nil
     }
     
     func setNeedsUpdate(){
         if mapLoaded{
-            /*
-            mapView.removeAnnotations(mapView.annotations)
+            //mapView.removeAnnotations(mapView.annotations)
             assertMapPins()
-
-             */
+            if let location = location{
+                mapView.centerToLocation(location.coordinate, zoom: self.zoom.rawValue)
+            }
         }
     }
-    
-    /*
-     func mapViewDidFinishLoadingMap(_ mapView: MKMapView) {
-        mapLoaded = true
-        assertMapPins()
-    }
-
-     */
     
     func assertMapPins(){
         for day in globalData.days{
@@ -131,17 +106,15 @@ class MapViewController: UIViewController, LocationServiceDelegate {
 
      */
 
-    /*
+    
     @objc func toggleMapStyle() {
-        if mapView.mapType == .satellite{
-            mapView.mapType = .standard
+        if mapView.mapboxMap.style.uri == .satellite{
+            mapView.mapboxMap.style.uri = .streets
         }
         else{
-            mapView.mapType = .satellite
+            mapView.mapboxMap.style.uri = .satellite
         }
     }
-
-     */
     
     @objc func showInfo(){
         let infoController = MapInfoViewController()

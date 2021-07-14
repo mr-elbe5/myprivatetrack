@@ -7,39 +7,82 @@
 
 import Foundation
 import CoreLocation
+import MapboxMaps
 
 protocol LocationServiceDelegate{
-    func locationDidChange(location: Location)
+    func locationsDidChange(locations: [CLLocation])
+    func headingDidChange(heading: CLHeading)
+    func failedWithError(error: Error)
+    func authorizationDidChange(manager: CLLocationManager)
 }
 
-class LocationService : NSObject, CLLocationManagerDelegate{
+class LocationService: NSObject, CLLocationManagerDelegate {
     
     static var shared = LocationService()
-    // min location difference in meters
-    static var deviation : CLLocationDistance = 5
     
-    var clLocation : CLLocation? = nil
+    let locationManager = CLLocationManager()
+    var locationOptions: LocationOptions {
+        didSet {
+            locationManager.distanceFilter = locationOptions.distanceFilter
+            locationManager.desiredAccuracy = locationOptions.desiredAccuracy
+            locationManager.activityType = locationOptions.activityType
+        }
+    }
+    let geocoder = CLGeocoder()
+    var lastLocation: CLLocation? = nil
     var placemark : CLPlacemark? = nil
-    var running = false
-    var delegate : LocationServiceDelegate? = nil
     
-    private let locationManager = CLLocationManager()
-    private let geocoder = CLGeocoder()
+    private var delegates = Dictionary<String, LocationServiceDelegate>()
     
     override init() {
+        locationOptions = LocationOptions()
         super.init()
         self.locationManager.delegate = self
         self.locationManager.desiredAccuracy = kCLLocationAccuracyBest
     }
     
-    var authorized : Bool{
-        get{
-            return CLLocationManager.authorized
+    func setDelegate(name: String, delegate: LocationServiceDelegate){
+        delegates[name] = delegate
+    }
+    
+    func removeDelegate(name: String){
+        delegates.removeValue(forKey: name)
+    }
+    
+    public var authorizationStatus: CLAuthorizationStatus {
+        if #available(iOS 14.0, *) {
+            return locationManager.authorizationStatus
+        } else {
+            return CLLocationManager.authorizationStatus()
         }
     }
     
-    func getLocation() -> Location? {
-        return clLocation == nil ? nil : Location(clLocation!)
+    func startUpdatingLocation(){
+        if authorizationStatus == .authorizedWhenInUse{
+            locationManager.startUpdatingLocation()
+        }
+    }
+    
+    func stopUpdatingLocation(){
+        locationManager.stopUpdatingLocation()
+    }
+    
+    func startUpdatingHeading() {
+        locationManager.startUpdatingHeading()
+    }
+
+    func stopUpdatingHeading() {
+        locationManager.stopUpdatingHeading()
+    }
+    
+    func lookUpCurrentLocation() {
+        if let location = lastLocation{
+            geocoder.reverseGeocodeLocation(CLLocation(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude), completionHandler: { (placemarks, error) in
+                if error == nil {
+                    self.placemark = placemarks?[0]
+                }
+            })
+        }
     }
     
     func getLocationDescription() -> String {
@@ -58,50 +101,32 @@ class LocationService : NSObject, CLLocationManagerDelegate{
         return s
     }
     
-    func lookUpCurrentLocation() {
-        if let lastLocation = clLocation {
-            geocoder.reverseGeocodeLocation(lastLocation, completionHandler: { (placemarks, error) in
-                if error == nil {
-                    self.placemark = placemarks?[0]
-                }
-            })
-        }
-    }
-    
-    func start(){
-        if authorized{
-            locationManager.startUpdatingLocation()
-            running = true
-        }
-    }
-    
-    func checkRunning(){
-        if authorized && !running{
-            //print("run after check")
-            locationManager.startUpdatingLocation()
-            running = true
-        }
-    }
-    
-    func stop(){
-        if running{
-            locationManager.stopUpdatingLocation()
-        }
-    }
-    
-    func requestWhenInUseAuthorization(){
-        self.locationManager.requestWhenInUseAuthorization()
-    }
-    
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        guard let newLocation = locations.last else { return }
-        if clLocation == nil || newLocation.distance(from: clLocation!) > LocationService.deviation{
-            clLocation = newLocation
-            lookUpCurrentLocation()
-            if let delegate = delegate{
-                delegate.locationDidChange(location: Location(clLocation!))
-                
-            }
+        if !locations.isEmpty{
+            lastLocation = locations.last
+        }
+        for delegate in delegates.values{
+            delegate.locationsDidChange(locations: locations)
+        }
+    }
+    
+    public func locationManager(_ manager: CLLocationManager, didUpdateHeading heading: CLHeading) {
+        for delegate in delegates.values{
+            delegate.headingDidChange(heading: heading)
+        }
+        
+    }
+
+    public func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
+        for delegate in delegates.values{
+            delegate.failedWithError(error: error)
+        }
+    }
+
+    @available(iOS 14.0, *)
+    public func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
+        for delegate in delegates.values{
+            delegate.authorizationDidChange(manager: locationManager)
         }
     }
     

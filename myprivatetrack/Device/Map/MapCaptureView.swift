@@ -10,7 +10,7 @@ import UIKit
 import CoreLocation
 import MapboxMaps
 
-class MapkitMapView : UIView{
+class MapCaptureView: UIView{
 
     //todo
     /*private var mapView : MapView!

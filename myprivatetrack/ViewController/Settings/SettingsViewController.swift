@@ -33,7 +33,7 @@ class SettingsViewController: EditViewController, UIDocumentPickerDelegate, UIIm
         backgroundButton.addTarget(self, action: #selector(selectBackground), for: .touchDown)
         let mapSizeHeader = InfoHeader(text: "mapStartSize".localize())
         mapStartSizeControl.setTitleTextAttributes([.foregroundColor: UIColor.label, NSAttributedString.Key.font: UIFont.systemFont(ofSize: 13, weight: .regular)], for: .normal)
-        mapStartSizeControl.selectedSegmentIndex = Settings.shared.mapStartSizeIndex
+        mapStartSizeControl.selectedSegmentIndex = Settings.shared.mapStartZoomIndex
         mapStartSizeControl.addTarget(self, action: #selector(toggleMapStartSize), for: .valueChanged)
         let entriesHeader = InfoHeader(text: "entries".localize())
         resetButton.addTarget(self, action: #selector(resetData), for: .touchDown)
@@ -118,13 +118,13 @@ class SettingsViewController: EditViewController, UIDocumentPickerDelegate, UIIm
         let selectedSize = mapStartSizeControl.selectedSegmentIndex
         switch selectedSize {
         case 0 :
-            Settings.shared.mapStartSize = .small
+            Settings.shared.mapStartZoom = .small
             break
         case 1 :
-            Settings.shared.mapStartSize = .mid
+            Settings.shared.mapStartZoom = .mid
             break
         case 2 :
-            Settings.shared.mapStartSize = .large
+            Settings.shared.mapStartZoom = .large
             break
         default:
             break

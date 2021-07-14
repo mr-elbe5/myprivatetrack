@@ -141,7 +141,7 @@ class EditEntryViewController: EditViewController, PhotoCaptureDelegate, VideoCa
     }
     
     @objc func addMapSection(){
-        if entry.saveLocation && CLLocationManager.authorized{
+        if entry.saveLocation{
             let mapCaptureController = MapCaptureViewController()
             mapCaptureController.data = entry
             mapCaptureController.delegate = self

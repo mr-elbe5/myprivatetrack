@@ -10,12 +10,17 @@ import UIKit
 import MapboxMaps
 
 extension MapView {
-    func centerToLocation(_ location: Location,regionRadius: CLLocationDistance = Settings.shared.mapStartSize.rawValue) {
-        //todo
-        /*let coordinateRegion = MKCoordinateRegion(
-            center: location.coordinate,
-            latitudinalMeters: regionRadius,
-            longitudinalMeters: regionRadius)
-        setRegion(coordinateRegion, animated: true)*/
+    
+    func centerToLocation(_ coordinate: CLLocationCoordinate2D, zoom: CGFloat = Settings.shared.mapStartZoom.rawValue) {
+        camera.ease(
+        to: CameraOptions(center: coordinate, zoom: zoom),
+        duration: 1.3)
     }
+    
+    func centerToLocation(latitude: Double, longitude: Double, zoom: CGFloat = Settings.shared.mapStartZoom.rawValue) {
+        camera.ease(
+        to: CameraOptions(center: CLLocationCoordinate2D(latitude: latitude, longitude: longitude), zoom: zoom),
+        duration: 1.3)
+    }
+    
 }

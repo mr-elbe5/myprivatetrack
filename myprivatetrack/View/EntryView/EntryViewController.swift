@@ -8,6 +8,7 @@
 import Foundation
 import UIKit
 import SwiftyIOSViewExtensions
+import CoreLocation
 
 class EntryViewController: ModalScrollViewController, PhotoItemDelegate, VideoItemDelegate {
     
@@ -67,7 +68,7 @@ class EntryViewController: ModalScrollViewController, PhotoItemDelegate, VideoIt
         if let location = entry?.location{
             self.dismiss(animated: false)
             let mapController = MainTabController.getMapViewController()
-            mapController?.mapView.centerToLocation(location)
+            mapController?.mapView.centerToLocation(location.coordinate)
             MainTabController.instance.selectedViewController = mapController
         }
     }

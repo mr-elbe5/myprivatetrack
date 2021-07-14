@@ -20,7 +20,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window?.windowScene = windowScene
         window?.rootViewController = MainTabController()
         window?.makeKeyAndVisible()
-        LocationService.shared.requestWhenInUseAuthorization()
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {
@@ -36,11 +35,10 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     }
 
     func sceneWillEnterForeground(_ scene: UIScene) {
-        LocationService.shared.start()
+        
     }
 
     func sceneDidEnterBackground(_ scene: UIScene) {
-        LocationService.shared.stop()
         Settings.shared.save()
         GlobalData.shared.save()
     }

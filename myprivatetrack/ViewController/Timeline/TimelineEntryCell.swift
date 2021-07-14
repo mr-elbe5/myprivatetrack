@@ -137,7 +137,7 @@ class TimelineEntryCell: UITableViewCell, PhotoItemDelegate, VideoItemDelegate{
     @objc func showInMap(){
         if let location = entry?.location{
             let mapController = MainTabController.getMapViewController()
-            mapController?.mapView.centerToLocation(location)
+            mapController?.mapView.centerToLocation(location.coordinate)
             MainTabController.instance.selectedViewController = mapController
         }
     }

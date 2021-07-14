@@ -8,6 +8,7 @@
 import Foundation
 import CoreLocation
 import UIKit
+import MapboxMaps
 
 class EntryData: Identifiable, Codable{
     
@@ -24,7 +25,7 @@ class EntryData: Identifiable, Codable{
     
     var id: UUID
     var creationDate: Date
-    var location: Location? = nil
+    var location: LocationData? = nil
     var locationDescription: String = ""
     var saveLocation: Bool
     var hasMapSection: Bool = false
@@ -92,7 +93,7 @@ class EntryData: Identifiable, Codable{
         creationDate = try values.decode(Date.self, forKey: .creationDate)
         saveLocation = try values.decode(Bool.self, forKey: .saveLocation)
         if saveLocation{
-            location = try values.decode(Location.self, forKey: .location)
+            location = try values.decodeIfPresent(LocationData.self, forKey: .location)
             locationDescription = try values.decode(String.self, forKey: .locationDescription)
             hasMapSection = try values.decode(Bool.self, forKey: .hasMapSection)
             if hasMapSection{

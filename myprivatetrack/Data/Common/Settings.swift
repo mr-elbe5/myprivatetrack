@@ -20,18 +20,18 @@ class Settings: Identifiable, Codable{
     enum CodingKeys: String, CodingKey {
         case saveLocation
         case flashMode
-        case mapStartSize
+        case mapStartZoom
         case backgroundName
     }
     
     var saveLocation = true
     var flashMode : AVCaptureDevice.FlashMode = .off
-    var mapStartSize : MapStartSize = .mid
+    var mapStartZoom : MapStartZoom = MapStartZoom.mid
     var backgroundName : String? = nil
     
-    var mapStartSizeIndex : Int{
+    var mapStartZoomIndex : Int{
         get{
-            switch mapStartSize{
+            switch mapStartZoom{
             case .small:
                 return 0
             case .mid:
@@ -49,7 +49,7 @@ class Settings: Identifiable, Codable{
         let values = try decoder.container(keyedBy: CodingKeys.self)
         saveLocation = try values.decode(Bool.self, forKey: .saveLocation)
         flashMode = AVCaptureDevice.FlashMode(rawValue: try values.decode(Int.self, forKey: .flashMode)) ?? .off
-        mapStartSize = MapStartSize(rawValue: try values.decode(Double.self, forKey: .mapStartSize)) ?? MapStartSize.mid
+        mapStartZoom = MapStartZoom(rawValue: try values.decode(CGFloat.self, forKey: .mapStartZoom)) ?? MapStartZoom.mid
         do{
             backgroundName = try values.decode(String.self, forKey: .backgroundName)
         } catch{
@@ -61,7 +61,7 @@ class Settings: Identifiable, Codable{
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encode(saveLocation, forKey: .saveLocation)
         try container.encode(flashMode.rawValue, forKey: .flashMode)
-        try container.encode(Double(mapStartSize.rawValue), forKey: .mapStartSize)
+        try container.encode(Double(mapStartZoom.rawValue), forKey: .mapStartZoom)
         try container.encode(backgroundName, forKey: .backgroundName)
     }
     
