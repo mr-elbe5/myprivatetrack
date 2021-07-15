@@ -32,6 +32,22 @@ class LocationService: NSObject, CLLocationManagerDelegate {
     var lastLocation: CLLocation? = nil
     var placemark : CLPlacemark? = nil
     
+    public var authorizationStatus: CLAuthorizationStatus {
+        if #available(iOS 14.0, *) {
+            return locationManager.authorizationStatus
+        } else {
+            return CLLocationManager.authorizationStatus()
+        }
+    }
+    
+    var accuracyAuthorization: CLAccuracyAuthorization {
+        if #available(iOS 14.0, *) {
+            return locationManager.accuracyAuthorization
+        } else {
+            return .fullAccuracy
+        }
+    }
+    
     private var delegates = Dictionary<String, LocationServiceDelegate>()
     
     override init() {
@@ -49,12 +65,12 @@ class LocationService: NSObject, CLLocationManagerDelegate {
         delegates.removeValue(forKey: name)
     }
     
-    public var authorizationStatus: CLAuthorizationStatus {
-        if #available(iOS 14.0, *) {
-            return locationManager.authorizationStatus
-        } else {
-            return CLLocationManager.authorizationStatus()
-        }
+    public func requestAlwaysAuthorization() {
+        locationManager.requestAlwaysAuthorization()
+    }
+
+    public func requestWhenInUseAuthorization() {
+        locationManager.requestWhenInUseAuthorization()
     }
     
     func startUpdatingLocation(){
@@ -104,6 +120,7 @@ class LocationService: NSObject, CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         if !locations.isEmpty{
             lastLocation = locations.last
+            //print("lastLocation = \(lastLocation?.coordinate)")
         }
         for delegate in delegates.values{
             delegate.locationsDidChange(locations: locations)

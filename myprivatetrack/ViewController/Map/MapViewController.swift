@@ -10,15 +10,15 @@ import UIKit
 import MapboxMaps
 import SwiftyIOSViewExtensions
 
-class MapViewController: UIViewController {
+class MapViewController: UIViewController, LocationConsumer {
     
     var headerView = UIView()
     var mapView : MapView!
     var mapLoaded = false
     var location: Location? = nil
-    var zoom : MapStartZoom = MapStartZoom.large
+    var zoom : MapStartZoom = MapStartZoom.small
     
-    internal var cameraLocationConsumer: CameraLocationConsumer!
+    var follow = true
     
     override func loadView() {
         super.loadView()
@@ -45,25 +45,37 @@ class MapViewController: UIViewController {
         rightStackView.addArrangedSubview(infoButton)
         mapView = MapView(frame: view.bounds)
         mapView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-        mapView.location.overrideLocationProvider(with: MapLocationProvider())
+        mapView.location.overrideLocationProvider(with: MapLocationProvider(name: "mapview"))
+        mapView.location.options.puckType = .puck2D()
+        mapView.location.addLocationConsumer(newConsumer: self)
+        mapView.mapboxMap.onNext(.mapLoaded) { _ in
+            self.mapLoaded = true
+            self.mapView.location.addLocationConsumer(newConsumer: self)
+        }
         view.addSubview(mapView)
         mapView.setAnchors()
             .leading(guide.leadingAnchor, inset: .zero)
             .top(headerView.bottomAnchor, inset: 1)
             .trailing(guide.trailingAnchor,inset: .zero)
             .bottom(guide.bottomAnchor, inset: .zero)
-        cameraLocationConsumer = CameraLocationConsumer(mapView: mapView)
-        mapView.location.options.puckType = .puck2D()
-        mapView.mapboxMap.onNext(.mapLoaded) { _ in
-            self.mapView.location.addLocationConsumer(newConsumer: self.cameraLocationConsumer)
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        if let coordinate = LocationService.shared.lastLocation?.coordinate{
+            mapView.camera.ease(
+                to: CameraOptions(center: coordinate, zoom: zoom.rawValue),
+                duration: 0.0)
         }
     }
     
-    func locationDidChange(location: Location){
-        print("map loc = \(location.coordinate)")
-        if self.location == nil{
-            self.location = location
-            mapView.centerToLocation(location.coordinate, zoom: self.zoom.rawValue)
+    func locationUpdate(newLocation: Location) {
+        if follow{
+            //print(mapView.cameraState.zoom)
+            let zoom = (location == nil) ? zoom.rawValue : mapView.cameraState.zoom
+            mapView.camera.ease(to: CameraOptions(center: newLocation.coordinate, zoom: zoom), duration: 0.5)
+            location = newLocation
+            //print(location?.coordinate ?? "")
         }
     }
     

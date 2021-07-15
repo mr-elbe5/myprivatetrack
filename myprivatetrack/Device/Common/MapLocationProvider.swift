@@ -12,10 +12,17 @@ import MapboxMaps
 
 public class MapLocationProvider: NSObject {
     
+    private var name : String
     private weak var delegate: LocationProviderDelegate?
 
-    public override init() {
+    public init(name: String) {
+        self.name = name
         super.init()
+        LocationService.shared.setDelegate(name: name, delegate: self)
+    }
+    
+    deinit{
+        LocationService.shared.removeDelegate(name: name)
     }
 }
 
@@ -31,19 +38,11 @@ extension MapLocationProvider: LocationProvider {
     }
 
     public var authorizationStatus: CLAuthorizationStatus {
-        if #available(iOS 14.0, *) {
-            return LocationService.shared.locationManager.authorizationStatus
-        } else {
-            return CLLocationManager.authorizationStatus()
-        }
+        LocationService.shared.authorizationStatus
     }
 
     public var accuracyAuthorization: CLAccuracyAuthorization {
-        if #available(iOS 14.0, *) {
-            return LocationService.shared.locationManager.accuracyAuthorization
-        } else {
-            return .fullAccuracy
-        }
+        return LocationService.shared.accuracyAuthorization
     }
 
     public var heading: CLHeading? {
@@ -55,11 +54,11 @@ extension MapLocationProvider: LocationProvider {
     }
 
     public func requestAlwaysAuthorization() {
-        LocationService.shared.locationManager.requestAlwaysAuthorization()
+        LocationService.shared.requestAlwaysAuthorization()
     }
 
     public func requestWhenInUseAuthorization() {
-        LocationService.shared.locationManager.requestWhenInUseAuthorization()
+        LocationService.shared.requestWhenInUseAuthorization()
     }
 
     @available(iOS 14.0, *)

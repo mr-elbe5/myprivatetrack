@@ -20,6 +20,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window?.windowScene = windowScene
         window?.rootViewController = MainTabController()
         window?.makeKeyAndVisible()
+        LocationService.shared.requestWhenInUseAuthorization()
+        LocationService.shared.startUpdatingLocation()
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {
