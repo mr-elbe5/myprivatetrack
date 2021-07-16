@@ -38,6 +38,15 @@ class DayData: Identifiable, Codable{
         entries.append(entry)
     }
     
+    func getEntry(id: UUID) -> EntryData?{
+        for entry in entries{
+            if entry.id == id{
+                return entry
+            }
+        }
+        return nil
+    }
+    
     func sortEntries(){
         entries.sort {
             $0.creationDate < $1.creationDate

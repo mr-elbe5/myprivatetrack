@@ -85,6 +85,15 @@ class GlobalData: Identifiable, Codable{
         dayMap[day.date] = day
     }
     
+    func getEntry(id: UUID) -> EntryData?{
+        for day in days{
+            if let entry = day.getEntry(id: id){
+                return entry
+            }
+        }
+        return nil
+    }
+    
     func save(){
         DataController.shared.save(forKey: .data, value: self)
     }

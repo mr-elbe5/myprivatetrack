@@ -10,10 +10,11 @@ import UIKit
 import MapboxMaps
 import SwiftyIOSViewExtensions
 
-class MapViewController: UIViewController, LocationConsumer {
+class MapViewController: UIViewController, LocationConsumer, AnnotationInteractionDelegate {
     
     var headerView = UIView()
     var mapView : MapView!
+    var annotationsManager : PointAnnotationManager!
     var mapLoaded = false
     var location: Location? = nil
     var zoom : MapStartZoom = MapStartZoom.small
@@ -48,6 +49,8 @@ class MapViewController: UIViewController, LocationConsumer {
         mapView.location.overrideLocationProvider(with: MapLocationProvider(name: "mapview"))
         mapView.location.options.puckType = .puck2D()
         mapView.location.addLocationConsumer(newConsumer: self)
+        annotationsManager = mapView.annotations.makePointAnnotationManager()
+        annotationsManager.delegate = self
         mapView.mapboxMap.onNext(.mapLoaded) { _ in
             self.mapLoaded = true
             self.mapView.location.addLocationConsumer(newConsumer: self)
@@ -67,6 +70,7 @@ class MapViewController: UIViewController, LocationConsumer {
                 to: CameraOptions(center: coordinate, zoom: zoom.rawValue),
                 duration: 0.0)
         }
+        assertMapPins()
     }
     
     func locationUpdate(newLocation: Location) {
@@ -90,17 +94,29 @@ class MapViewController: UIViewController, LocationConsumer {
     }
     
     func assertMapPins(){
+        var annotations = [PointAnnotation]()
         for day in globalData.days{
             for entry in day.entries{
-                /*
                 if entry.saveLocation, let loc = entry.location{
-                    let positionPin = EntryAnnotation(entry: entry)
-                    positionPin.title = entry.creationDate.dateTimeString()
-                    positionPin.coordinate = loc.coordinate
-                    mapView.addAnnotation(positionPin)
+                    var positionPin = PointAnnotation(id: entry.id.uuidString, coordinate: loc.coordinate)
+                    positionPin.image = .default
+                    //positionPin.textField = entry.creationDate.dateTimeString()
+                    annotations.append(positionPin)
                 }
+            }
+        }
+        if !annotations.isEmpty{
+            annotationsManager.syncAnnotations(annotations)
+        }
+    }
 
-                 */
+    func annotationManager(_ manager: AnnotationManager, didDetectTappedAnnotations annotations: [Annotation]) {
+        if let annotation = annotations.first{
+            if let id = UUID(uuidString: annotation.id), let entry = globalData.getEntry(id: id){
+                let entryController = EntryViewController()
+                entryController.entry = entry
+                entryController.modalPresentationStyle = .fullScreen
+                self.present(entryController, animated: true)
             }
         }
     }
