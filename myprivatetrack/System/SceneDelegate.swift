@@ -15,13 +15,13 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         FileController.initialize()
         Settings.load()
         GlobalData.load()
+        LocationService.shared.requestWhenInUseAuthorization()
+        LocationService.shared.startUpdatingLocation()
         guard let windowScene = (scene as? UIWindowScene) else { return }
         window = UIWindow(frame: windowScene.coordinateSpace.bounds)
         window?.windowScene = windowScene
         window?.rootViewController = MainTabController()
         window?.makeKeyAndVisible()
-        LocationService.shared.requestWhenInUseAuthorization()
-        LocationService.shared.startUpdatingLocation()
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {

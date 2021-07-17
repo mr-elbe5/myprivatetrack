@@ -10,12 +10,12 @@ import Foundation
 import CoreLocation
 import MapboxMaps
 
-public class MapLocationProvider: NSObject {
+class MapLocationProvider: NSObject {
     
     private var name : String
     private weak var delegate: LocationProviderDelegate?
 
-    public init(name: String) {
+    init(name: String) {
         self.name = name
         super.init()
         LocationService.shared.setDelegate(name: name, delegate: self)
@@ -28,7 +28,7 @@ public class MapLocationProvider: NSObject {
 
 extension MapLocationProvider: LocationProvider {
 
-    public var locationProviderOptions: LocationOptions {
+    var locationProviderOptions: LocationOptions {
         get {
             return LocationService.shared.locationOptions
         }
@@ -37,44 +37,44 @@ extension MapLocationProvider: LocationProvider {
         }
     }
 
-    public var authorizationStatus: CLAuthorizationStatus {
+    var authorizationStatus: CLAuthorizationStatus {
         LocationService.shared.authorizationStatus
     }
 
-    public var accuracyAuthorization: CLAccuracyAuthorization {
+    var accuracyAuthorization: CLAccuracyAuthorization {
         return LocationService.shared.accuracyAuthorization
     }
 
-    public var heading: CLHeading? {
+    var heading: CLHeading? {
         return LocationService.shared.locationManager.heading
     }
 
-    public func setDelegate(_ delegate: LocationProviderDelegate) {
+    func setDelegate(_ delegate: LocationProviderDelegate) {
         self.delegate = delegate
     }
 
-    public func requestAlwaysAuthorization() {
+    func requestAlwaysAuthorization() {
         LocationService.shared.requestAlwaysAuthorization()
     }
 
-    public func requestWhenInUseAuthorization() {
+    func requestWhenInUseAuthorization() {
         LocationService.shared.requestWhenInUseAuthorization()
     }
 
     @available(iOS 14.0, *)
-    public func requestTemporaryFullAccuracyAuthorization(withPurposeKey purposeKey: String) {
+    func requestTemporaryFullAccuracyAuthorization(withPurposeKey purposeKey: String) {
         LocationService.shared.locationManager.requestTemporaryFullAccuracyAuthorization(withPurposeKey: purposeKey)
     }
 
-    public func startUpdatingLocation() {
+    func startUpdatingLocation() {
         LocationService.shared.startUpdatingLocation()
     }
 
-    public func stopUpdatingLocation() {
+    func stopUpdatingLocation() {
         LocationService.shared.stopUpdatingLocation()
     }
 
-    public var headingOrientation: CLDeviceOrientation {
+    var headingOrientation: CLDeviceOrientation {
         set {
             LocationService.shared.locationManager.headingOrientation = newValue
         } get {
@@ -82,15 +82,15 @@ extension MapLocationProvider: LocationProvider {
         }
     }
 
-    public func startUpdatingHeading() {
+    func startUpdatingHeading() {
         LocationService.shared.startUpdatingHeading()
     }
 
-    public func stopUpdatingHeading() {
+    func stopUpdatingHeading() {
         LocationService.shared.stopUpdatingHeading()
     }
 
-    public func dismissHeadingCalibrationDisplay() {
+    func dismissHeadingCalibrationDisplay() {
         LocationService.shared.locationManager.dismissHeadingCalibrationDisplay()
     }
 }

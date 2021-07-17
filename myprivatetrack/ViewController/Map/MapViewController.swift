@@ -19,8 +19,6 @@ class MapViewController: UIViewController, LocationConsumer, AnnotationInteracti
     var location: Location? = nil
     var zoom : MapStartZoom = MapStartZoom.small
     
-    var follow = true
-    
     override func loadView() {
         super.loadView()
         let guide = view.safeAreaLayoutGuide
@@ -66,34 +64,38 @@ class MapViewController: UIViewController, LocationConsumer, AnnotationInteracti
     override func viewDidLoad() {
         super.viewDidLoad()
         if let coordinate = LocationService.shared.lastLocation?.coordinate{
+            print("location at didload")
             mapView.camera.ease(
                 to: CameraOptions(center: coordinate, zoom: zoom.rawValue),
                 duration: 0.0)
+            location = Location(with: LocationService.shared.lastLocation!)
         }
-        assertMapPins()
+        setEntryPins()
     }
     
     func locationUpdate(newLocation: Location) {
-        if follow{
-            //print(mapView.cameraState.zoom)
-            let zoom = (location == nil) ? zoom.rawValue : mapView.cameraState.zoom
-            mapView.camera.ease(to: CameraOptions(center: newLocation.coordinate, zoom: zoom), duration: 0.5)
+        if location == nil{
+            print("location at update")
+            mapView.camera.ease(to: CameraOptions(center: newLocation.coordinate, zoom: zoom.rawValue), duration: 0.5)
             location = newLocation
-            //print(location?.coordinate ?? "")
         }
     }
     
     func setNeedsUpdate(){
         if mapLoaded{
-            //mapView.removeAnnotations(mapView.annotations)
-            assertMapPins()
+            removeEntryPins()
+            setEntryPins()
             if let location = location{
                 mapView.centerToLocation(location.coordinate, zoom: self.zoom.rawValue)
             }
         }
     }
     
-    func assertMapPins(){
+    func removeEntryPins(){
+        annotationsManager.syncAnnotations([])
+    }
+    
+    func setEntryPins(){
         var annotations = [PointAnnotation]()
         for day in globalData.days{
             for entry in day.entries{

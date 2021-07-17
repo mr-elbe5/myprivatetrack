@@ -120,7 +120,6 @@ class LocationService: NSObject, CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         if !locations.isEmpty{
             lastLocation = locations.last
-            //print("lastLocation = \(lastLocation?.coordinate)")
         }
         for delegate in delegates.values{
             delegate.locationsDidChange(locations: locations)
