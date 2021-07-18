@@ -314,18 +314,9 @@
 			path = Common;
 			sourceTree = "<group>";
 		};
-		4E775B7525003475003BEC92 /* Common */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Common;
-			sourceTree = "<group>";
-		};
 		4E90CA2C249531350029E308 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				4E775B7525003475003BEC92 /* Common */,
-				4ED21BA224FAA2B800A6FEA3 /* Control */,
 				4E2D3CBB24C5E87A00FA319C /* EntryView */,
 			);
 			path = View;
@@ -382,13 +373,6 @@
 				4E775B6F2500338F003BEC92 /* Map */,
 			);
 			path = Device;
-			sourceTree = "<group>";
-		};
-		4ED21BA224FAA2B800A6FEA3 /* Control */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Control;
 			sourceTree = "<group>";
 		};
 		4ED21C3624FAA8B600A6FEA3 /* Data */ = {
