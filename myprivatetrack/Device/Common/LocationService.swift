@@ -62,6 +62,7 @@ class LocationService: NSObject, CLLocationManagerDelegate {
     }
     
     func removeDelegate(name: String){
+        //todo threadsafe
         delegates.removeValue(forKey: name)
     }
     

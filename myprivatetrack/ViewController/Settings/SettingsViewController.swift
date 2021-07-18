@@ -15,10 +15,8 @@ enum SettingsPickerType{
 
 class SettingsViewController: EditViewController, UIDocumentPickerDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate{
     
-    static var sizeItems : Array<String> = ["small".localize(),"medium".localize(),"large".localize()]
-
     var backgroundButton = TextButton(text: "selectBackground".localize())
-    var mapStartSizeControl = UISegmentedControl(items: sizeItems)
+    var mapStartSizeControl : UISegmentedControl!
     var resetButton = TextButton(text: "deleteData".localize())
     var fullBackupButton = TextButton(text: "fullBackupData".localize())
     var partialBackupButton = TextButton(text: "partialBackupData".localize())
@@ -32,8 +30,13 @@ class SettingsViewController: EditViewController, UIDocumentPickerDelegate, UIIm
         let backgroundHeader = InfoHeader(text: "backgroundImage".localize())
         backgroundButton.addTarget(self, action: #selector(selectBackground), for: .touchDown)
         let mapSizeHeader = InfoHeader(text: "mapStartSize".localize())
+        var sizeItems = [String]()
+        for i in 0...15{
+            sizeItems.append(String(i))
+        }
+        mapStartSizeControl = UISegmentedControl(items: sizeItems)
         mapStartSizeControl.setTitleTextAttributes([.foregroundColor: UIColor.label, NSAttributedString.Key.font: UIFont.systemFont(ofSize: 13, weight: .regular)], for: .normal)
-        mapStartSizeControl.selectedSegmentIndex = Settings.shared.mapStartZoomIndex
+        mapStartSizeControl.selectedSegmentIndex = Int(Settings.shared.mapStartZoom)
         mapStartSizeControl.addTarget(self, action: #selector(toggleMapStartSize), for: .valueChanged)
         let entriesHeader = InfoHeader(text: "entries".localize())
         resetButton.addTarget(self, action: #selector(resetData), for: .touchDown)
@@ -116,19 +119,7 @@ class SettingsViewController: EditViewController, UIDocumentPickerDelegate, UIIm
     
     @objc func toggleMapStartSize() {
         let selectedSize = mapStartSizeControl.selectedSegmentIndex
-        switch selectedSize {
-        case 0 :
-            Settings.shared.mapStartZoom = .small
-            break
-        case 1 :
-            Settings.shared.mapStartZoom = .mid
-            break
-        case 2 :
-            Settings.shared.mapStartZoom = .large
-            break
-        default:
-            break
-        }
+        Settings.shared.mapStartZoom = CGFloat(selectedSize)
         Settings.shared.save()
     }
     

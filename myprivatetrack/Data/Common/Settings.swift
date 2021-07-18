@@ -26,30 +26,17 @@ class Settings: Identifiable, Codable{
     
     var saveLocation = true
     var flashMode : AVCaptureDevice.FlashMode = .off
-    var mapStartZoom : MapStartZoom = MapStartZoom.mid
+    var mapStartZoom : CGFloat = Statics.zoomDefault
     var backgroundName : String? = nil
-    
-    var mapStartZoomIndex : Int{
-        get{
-            switch mapStartZoom{
-            case .small:
-                return 0
-            case .mid:
-                return 1
-            case .large:
-                return 2
-            }
-        }
-    }
     
     init(){
     }
     
     required init(from decoder: Decoder) throws {
         let values = try decoder.container(keyedBy: CodingKeys.self)
-        saveLocation = try values.decode(Bool.self, forKey: .saveLocation)
+        saveLocation = try values.decodeIfPresent(Bool.self, forKey: .saveLocation) ?? true
         flashMode = AVCaptureDevice.FlashMode(rawValue: try values.decode(Int.self, forKey: .flashMode)) ?? .off
-        mapStartZoom = MapStartZoom(rawValue: try values.decode(CGFloat.self, forKey: .mapStartZoom)) ?? MapStartZoom.mid
+        mapStartZoom = try values.decodeIfPresent(CGFloat.self, forKey: .mapStartZoom) ?? Statics.zoomDefault
         do{
             backgroundName = try values.decode(String.self, forKey: .backgroundName)
         } catch{
@@ -61,7 +48,7 @@ class Settings: Identifiable, Codable{
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encode(saveLocation, forKey: .saveLocation)
         try container.encode(flashMode.rawValue, forKey: .flashMode)
-        try container.encode(Double(mapStartZoom.rawValue), forKey: .mapStartZoom)
+        try container.encode(mapStartZoom, forKey: .mapStartZoom)
         try container.encode(backgroundName, forKey: .backgroundName)
     }
     

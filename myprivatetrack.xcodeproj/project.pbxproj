@@ -12,6 +12,7 @@
 		4E189776268F9758002620FD /* .mapbox in Resources */ = {isa = PBXBuildFile; fileRef = 4E189775268F9758002620FD /* .mapbox */; };
 		4E24FC902501632700BCE81B /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 4E24FC8F2501632700BCE81B /* README.md */; };
 		4E24FC93250164DA00BCE81B /* AppInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E24FC92250164DA00BCE81B /* AppInfoViewController.swift */; };
+		4E2758DD26A4048700D6992F /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E2758DC26A4048700D6992F /* MapViewController.swift */; };
 		4E3C5ACE24FCF2F300E11A35 /* FileError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E3C5ACD24FCF2F300E11A35 /* FileError.swift */; };
 		4E3C5AD224FD00E600E11A35 /* LocationError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E3C5AD124FD00E600E11A35 /* LocationError.swift */; };
 		4E428BFB269F6FD9002B221B /* LocationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E428BFA269F6FD9002B221B /* LocationService.swift */; };
@@ -62,8 +63,8 @@
 		4ED21C0E24FAA3B900A6FEA3 /* TimelineSectionHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED21C0824FAA3B900A6FEA3 /* TimelineSectionHeader.swift */; };
 		4ED21C0F24FAA3B900A6FEA3 /* TimelineEntryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED21C0924FAA3B900A6FEA3 /* TimelineEntryCell.swift */; };
 		4ED21C1024FAA3B900A6FEA3 /* EditEntryInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED21C0A24FAA3B900A6FEA3 /* EditEntryInfoViewController.swift */; };
-		4ED21C1324FAA3D000A6FEA3 /* MapInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED21C1124FAA3D000A6FEA3 /* MapInfoViewController.swift */; };
-		4ED21C1424FAA3D000A6FEA3 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED21C1224FAA3D000A6FEA3 /* MapViewController.swift */; };
+		4ED21C1324FAA3D000A6FEA3 /* EntriesMapInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED21C1124FAA3D000A6FEA3 /* EntriesMapInfoViewController.swift */; };
+		4ED21C1424FAA3D000A6FEA3 /* EntriesMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED21C1224FAA3D000A6FEA3 /* EntriesMapViewController.swift */; };
 		4ED21C2924FAA47500A6FEA3 /* SettingsInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED21C2324FAA47400A6FEA3 /* SettingsInfoViewController.swift */; };
 		4ED21C2A24FAA47500A6FEA3 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED21C2424FAA47400A6FEA3 /* SettingsViewController.swift */; };
 		4ED21C2B24FAA47500A6FEA3 /* BackupInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED21C2524FAA47400A6FEA3 /* BackupInfoViewController.swift */; };
@@ -84,7 +85,6 @@
 		4ED21C5024FAAC6E00A6FEA3 /* AVCaptureVideoOrientation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED21C4224FAAC6E00A6FEA3 /* AVCaptureVideoOrientation.swift */; };
 		4ED21C5124FAAC6E00A6FEA3 /* PhotoCaptureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED21C4324FAAC6E00A6FEA3 /* PhotoCaptureViewController.swift */; };
 		4ED21C5224FAAC6E00A6FEA3 /* MapCaptureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED21C4424FAAC6E00A6FEA3 /* MapCaptureViewController.swift */; };
-		4ED21C5424FAAC6E00A6FEA3 /* MapCaptureView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED21C4624FAAC6E00A6FEA3 /* MapCaptureView.swift */; };
 		4ED95E1C25022D120084648A /* ImageEntryItemData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED95E1B25022D120084648A /* ImageEntryItemData.swift */; };
 		4EFDFF4624952F54001EB7C3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4EFDFF4524952F54001EB7C3 /* Assets.xcassets */; };
 		4EFDFF4924952F54001EB7C3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4EFDFF4724952F54001EB7C3 /* LaunchScreen.storyboard */; };
@@ -98,6 +98,7 @@
 		4E189775268F9758002620FD /* .mapbox */ = {isa = PBXFileReference; lastKnownFileType = text; path = .mapbox; sourceTree = "<group>"; };
 		4E24FC8F2501632700BCE81B /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		4E24FC92250164DA00BCE81B /* AppInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppInfoViewController.swift; sourceTree = "<group>"; };
+		4E2758DC26A4048700D6992F /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		4E3C5ACD24FCF2F300E11A35 /* FileError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileError.swift; sourceTree = "<group>"; };
 		4E3C5AD124FD00E600E11A35 /* LocationError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationError.swift; sourceTree = "<group>"; };
 		4E428BFA269F6FD9002B221B /* LocationService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LocationService.swift; path = myprivatetrack/Device/Common/LocationService.swift; sourceTree = SOURCE_ROOT; };
@@ -147,8 +148,8 @@
 		4ED21C0824FAA3B900A6FEA3 /* TimelineSectionHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimelineSectionHeader.swift; sourceTree = "<group>"; };
 		4ED21C0924FAA3B900A6FEA3 /* TimelineEntryCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimelineEntryCell.swift; sourceTree = "<group>"; };
 		4ED21C0A24FAA3B900A6FEA3 /* EditEntryInfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditEntryInfoViewController.swift; sourceTree = "<group>"; };
-		4ED21C1124FAA3D000A6FEA3 /* MapInfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapInfoViewController.swift; sourceTree = "<group>"; };
-		4ED21C1224FAA3D000A6FEA3 /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
+		4ED21C1124FAA3D000A6FEA3 /* EntriesMapInfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EntriesMapInfoViewController.swift; sourceTree = "<group>"; };
+		4ED21C1224FAA3D000A6FEA3 /* EntriesMapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EntriesMapViewController.swift; sourceTree = "<group>"; };
 		4ED21C2324FAA47400A6FEA3 /* SettingsInfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsInfoViewController.swift; sourceTree = "<group>"; };
 		4ED21C2424FAA47400A6FEA3 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		4ED21C2524FAA47400A6FEA3 /* BackupInfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BackupInfoViewController.swift; sourceTree = "<group>"; };
@@ -169,7 +170,6 @@
 		4ED21C4224FAAC6E00A6FEA3 /* AVCaptureVideoOrientation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AVCaptureVideoOrientation.swift; sourceTree = "<group>"; };
 		4ED21C4324FAAC6E00A6FEA3 /* PhotoCaptureViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoCaptureViewController.swift; sourceTree = "<group>"; };
 		4ED21C4424FAAC6E00A6FEA3 /* MapCaptureViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapCaptureViewController.swift; sourceTree = "<group>"; };
-		4ED21C4624FAAC6E00A6FEA3 /* MapCaptureView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapCaptureView.swift; sourceTree = "<group>"; };
 		4ED95E1B25022D120084648A /* ImageEntryItemData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageEntryItemData.swift; sourceTree = "<group>"; };
 		4EFDFF3424952F53001EB7C3 /* My private track.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "My private track.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4EFDFF4524952F54001EB7C3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -240,8 +240,6 @@
 		4E775B6F2500338F003BEC92 /* Map */ = {
 			isa = PBXGroup;
 			children = (
-				4ED21C4624FAAC6E00A6FEA3 /* MapCaptureView.swift */,
-				4ED21BBB24FAA36000A6FEA3 /* MapView.swift */,
 				4ED21C4424FAAC6E00A6FEA3 /* MapCaptureViewController.swift */,
 			);
 			path = Map;
@@ -267,6 +265,8 @@
 				4ED21C3924FAAC6D00A6FEA3 /* CaptureButton.swift */,
 				4ED21C4024FAAC6E00A6FEA3 /* MediaCommentLabel.swift */,
 				4E428BFC269F70C3002B221B /* MapLocationProvider.swift */,
+				4ED21BBB24FAA36000A6FEA3 /* MapView.swift */,
+				4E2758DC26A4048700D6992F /* MapViewController.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -357,7 +357,7 @@
 				4ED21BC724FAA36C00A6FEA3 /* MainTabController.swift */,
 				4E775B7325003421003BEC92 /* Common */,
 				4E24FC91250164A200BCE81B /* Info */,
-				4EF0A7F5249F986100A236EB /* Map */,
+				4EF0A7F5249F986100A236EB /* EntriesMap */,
 				4EF0A7F7249F987500A236EB /* Settings */,
 				4E2ECFD624DD9E42003FFFF1 /* Timeline */,
 			);
@@ -385,13 +385,13 @@
 			path = Data;
 			sourceTree = "<group>";
 		};
-		4EF0A7F5249F986100A236EB /* Map */ = {
+		4EF0A7F5249F986100A236EB /* EntriesMap */ = {
 			isa = PBXGroup;
 			children = (
-				4ED21C1124FAA3D000A6FEA3 /* MapInfoViewController.swift */,
-				4ED21C1224FAA3D000A6FEA3 /* MapViewController.swift */,
+				4ED21C1124FAA3D000A6FEA3 /* EntriesMapInfoViewController.swift */,
+				4ED21C1224FAA3D000A6FEA3 /* EntriesMapViewController.swift */,
 			);
-			path = Map;
+			path = EntriesMap;
 			sourceTree = "<group>";
 		};
 		4EF0A7F7249F987500A236EB /* Settings */ = {
@@ -590,7 +590,7 @@
 				4ED21C5024FAAC6E00A6FEA3 /* AVCaptureVideoOrientation.swift in Sources */,
 				4ED21BB924FAA32500A6FEA3 /* LocationData.swift in Sources */,
 				4ED21C0024FAA39E00A6FEA3 /* AudioItemView.swift in Sources */,
-				4ED21C1424FAA3D000A6FEA3 /* MapViewController.swift in Sources */,
+				4ED21C1424FAA3D000A6FEA3 /* EntriesMapViewController.swift in Sources */,
 				4ED21C2A24FAA47500A6FEA3 /* SettingsViewController.swift in Sources */,
 				4E3C5ACE24FCF2F300E11A35 /* FileError.swift in Sources */,
 				4ED21C2D24FAA47500A6FEA3 /* BackupViewController.swift in Sources */,
@@ -601,6 +601,7 @@
 				4ED21BB224FAA32500A6FEA3 /* TimeSpanData.swift in Sources */,
 				4E3C5AD224FD00E600E11A35 /* LocationError.swift in Sources */,
 				4EFE4F62250A3ED2003B2D1E /* MapError.swift in Sources */,
+				4E2758DD26A4048700D6992F /* MapViewController.swift in Sources */,
 				4ED21C1024FAA3B900A6FEA3 /* EditEntryInfoViewController.swift in Sources */,
 				4ED21BAF24FAA32500A6FEA3 /* GlobalData.swift in Sources */,
 				4ED21C4F24FAAC6E00A6FEA3 /* VideoPlayerView.swift in Sources */,
@@ -620,8 +621,7 @@
 				4ED21C2E24FAA47500A6FEA3 /* RestoreViewController.swift in Sources */,
 				4ED21BB124FAA32500A6FEA3 /* TextData.swift in Sources */,
 				4ED21B9B24FAA29F00A6FEA3 /* InfoViewController.swift in Sources */,
-				4ED21C5424FAAC6E00A6FEA3 /* MapCaptureView.swift in Sources */,
-				4ED21C1324FAA3D000A6FEA3 /* MapInfoViewController.swift in Sources */,
+				4ED21C1324FAA3D000A6FEA3 /* EntriesMapInfoViewController.swift in Sources */,
 				4ED21BC424FAA36000A6FEA3 /* Codable.swift in Sources */,
 				4ED21C4D24FAAC6E00A6FEA3 /* CameraViewController.swift in Sources */,
 				4ED21C0224FAA39E00A6FEA3 /* PhotoItemView.swift in Sources */,

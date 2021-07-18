@@ -11,13 +11,13 @@ import MapboxMaps
 
 extension MapView {
     
-    func centerToLocation(_ coordinate: CLLocationCoordinate2D, zoom: CGFloat = Settings.shared.mapStartZoom.rawValue) {
+    func centerToLocation(_ coordinate: CLLocationCoordinate2D, zoom: CGFloat = Settings.shared.mapStartZoom) {
         camera.ease(
         to: CameraOptions(center: coordinate, zoom: zoom),
         duration: 1.3)
     }
     
-    func centerToLocation(latitude: Double, longitude: Double, zoom: CGFloat = Settings.shared.mapStartZoom.rawValue) {
+    func centerToLocation(latitude: Double, longitude: Double, zoom: CGFloat = Settings.shared.mapStartZoom) {
         camera.ease(
         to: CameraOptions(center: CLLocationCoordinate2D(latitude: latitude, longitude: longitude), zoom: zoom),
         duration: 1.3)

@@ -15,94 +15,52 @@ protocol MapCaptureDelegate{
     func mapCaptured(data: EntryData)
 }
 
-class MapCaptureViewController: UIViewController{
+class MapCaptureViewController: MapViewController{
     
     var data : EntryData!
     
     var delegate: MapCaptureDelegate? = nil
     
-    var mapView = MapCaptureView()
-    var bodyView = UIView()
     var buttonView = UIView()
-    var mapTypeButton = IconButton(icon: "map", tintColor: .white)
     var captureButton = CaptureButton()
     
-    override func loadView() {
-        super.loadView()
-        self.modalPresentationStyle = .fullScreen
-        bodyView.backgroundColor = .black
-        view.addSubview(bodyView)
-        bodyView.fillSafeAreaOf(view: view, insets: .zero)
-        let closeButton = IconButton(icon: "xmark.circle", tintColor: .white)
-        bodyView.addSubview(closeButton)
-        closeButton.addTarget(self, action: #selector(cancel), for: .touchDown)
-        closeButton.setAnchors()
-            .top(bodyView.topAnchor,inset: defaultInset)
-            .trailing(bodyView.trailingAnchor,inset: defaultInset)
-        bodyView.addSubview(mapView)
-        //todo
-        /*mapView.setupView()
-        if let loc = LocationService.shared.getLocation(){
-            mapView.setLocation(location: loc)
+    override func configureMapView(){
+        mapView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        mapView.location.overrideLocationProvider(with: MapLocationProvider(name: "mapcaptureview"))
+        mapView.location.options.puckType = .puck2D()
+        mapView.location.addLocationConsumer(newConsumer: self)
+        mapView.mapboxMap.style.uri = .satellite
+        mapView.mapboxMap.onNext(.mapLoaded) { _ in
+            self.mapLoaded = true
+            self.mapView.location.addLocationConsumer(newConsumer: self)
         }
-        mapView.setAnchors()
-            .top(closeButton.bottomAnchor,inset: defaultInset)
-            .leading(bodyView.leadingAnchor)
-            .trailing(bodyView.trailingAnchor)
-        mapView.delegate = self
-        buttonView.backgroundColor = .black
-        bodyView.addSubview(buttonView)
-        buttonView.placeBelow(view: mapView)
-        addButtons()
-        buttonView.connectBottom(view: bodyView)
-         */
-    }
-    
-    func addButtons(){
-        
         captureButton.addTarget(self, action: #selector(save), for: .touchDown)
         mapView.addSubview(captureButton)
         captureButton.isEnabled = false
         captureButton.setAnchors()
-            .bottom(buttonView.topAnchor,inset: Statics.defaultInset)
+            .bottom(mapView.bottomAnchor,inset: Statics.defaultInset)
             .centerX(mapView.centerXAnchor)
             .width(50)
             .height(50)
-        
-        mapTypeButton.addTarget(self, action: #selector(toggleMapType), for: .touchDown)
-        buttonView.addSubview(mapTypeButton)
-        mapTypeButton.isEnabled = false
-        mapTypeButton.placeXCentered()
-        
+    }
+    
+    override func configureRightHeaderView(rightStackView: UIStackView){
+        super.configureRightHeaderView(rightStackView: rightStackView)
+        let closeButton = IconButton(icon: "xmark.circle")
+        closeButton.addTarget(self, action: #selector(cancel), for: .touchDown)
+        rightStackView.addArrangedSubview(closeButton)
+    }
+    
+    override func locationUpdate(newLocation: Location) {
+        if location == nil{
+            print("location at update")
+            mapView.camera.ease(to: CameraOptions(center: newLocation.coordinate, zoom: startZoom), duration: 0.5)
+            location = newLocation
+        }
     }
     
     func didFinishLoading() {
         captureButton.isEnabled = true
-        mapTypeButton.isEnabled = true
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        
-    }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        
-    }
-    
-    func locationDidChange(location: Location){
-        //todo
-        //mapView.setLocation(location: location)
-    }
-
-    @objc func toggleMapType(){
-        /*mapView.toggleMapType()
-        if mapView.mapType == .satellite {
-            mapTypeButton.setImage(UIImage(systemName: "map"), for: .normal)
-        }else{
-            mapTypeButton.setImage(UIImage(systemName: "map.fill"), for: .normal)
-        }
-
-         */
     }
     
     @objc func save(){

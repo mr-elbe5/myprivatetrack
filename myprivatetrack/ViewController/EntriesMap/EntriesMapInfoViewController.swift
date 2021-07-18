@@ -8,7 +8,7 @@
 import Foundation
 import SwiftyIOSViewExtensions
 
-class MapInfoViewController: InfoViewController {
+class EntriesMapInfoViewController: InfoViewController {
     
     let headerText = InfoHeader(text: "mapInfoHeader".localize())
     let topText = InfoText(text: "mapTopInfo".localize())

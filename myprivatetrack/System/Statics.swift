@@ -8,13 +8,13 @@
 import Foundation
 import UIKit
 
-enum MapStartZoom: CGFloat{
-    case small = 15
-    case mid = 12
-    case large = 8
-}
-
 struct Statics{
+    
+    static var zommMin : CGFloat = 0
+    
+    static var zoomMax : CGFloat = 15
+    
+    static var zoomDefault : CGFloat = 8
     
     static var defaultInset : CGFloat = 10
     
