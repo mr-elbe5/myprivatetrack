@@ -10,6 +10,8 @@ import UIKit
 
 struct Statics{
     
+    static var mapboxAccessToken = ""
+    
     static var zommMin : CGFloat = 0
     
     static var zoomMax : CGFloat = 15

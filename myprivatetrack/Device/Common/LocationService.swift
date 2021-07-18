@@ -48,22 +48,14 @@ class LocationService: NSObject, CLLocationManagerDelegate {
         }
     }
     
-    private var delegates = Dictionary<String, LocationServiceDelegate>()
+    var entriesDelegate : LocationServiceDelegate? = nil
+    var captureDelegate : LocationServiceDelegate? = nil
     
     override init() {
         locationOptions = LocationOptions()
         super.init()
         self.locationManager.delegate = self
         self.locationManager.desiredAccuracy = kCLLocationAccuracyBest
-    }
-    
-    func setDelegate(name: String, delegate: LocationServiceDelegate){
-        delegates[name] = delegate
-    }
-    
-    func removeDelegate(name: String){
-        //todo threadsafe
-        delegates.removeValue(forKey: name)
     }
     
     public func requestAlwaysAuthorization() {
@@ -122,29 +114,24 @@ class LocationService: NSObject, CLLocationManagerDelegate {
         if !locations.isEmpty{
             lastLocation = locations.last
         }
-        for delegate in delegates.values{
-            delegate.locationsDidChange(locations: locations)
-        }
+        entriesDelegate?.locationsDidChange(locations: locations)
+        captureDelegate?.locationsDidChange(locations: locations)
     }
     
     public func locationManager(_ manager: CLLocationManager, didUpdateHeading heading: CLHeading) {
-        for delegate in delegates.values{
-            delegate.headingDidChange(heading: heading)
-        }
-        
+        entriesDelegate?.headingDidChange(heading: heading)
+        captureDelegate?.headingDidChange(heading: heading)
     }
 
     public func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
-        for delegate in delegates.values{
-            delegate.failedWithError(error: error)
-        }
+        entriesDelegate?.failedWithError(error: error)
+        captureDelegate?.failedWithError(error: error)
     }
 
     @available(iOS 14.0, *)
     public func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
-        for delegate in delegates.values{
-            delegate.authorizationDidChange(manager: locationManager)
-        }
+        entriesDelegate?.authorizationDidChange(manager: locationManager)
+        captureDelegate?.authorizationDidChange(manager: locationManager)
     }
     
 }

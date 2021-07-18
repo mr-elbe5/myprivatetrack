@@ -6,11 +6,13 @@
 //
 
 import UIKit
+import MapboxMaps
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        ResourceOptionsManager.default.resourceOptions.accessToken = Bundle.main.object(forInfoDictionaryKey: "MBXAccessToken") as! String
         return true
     }
 

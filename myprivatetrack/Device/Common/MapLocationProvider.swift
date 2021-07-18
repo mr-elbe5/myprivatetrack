@@ -12,18 +12,8 @@ import MapboxMaps
 
 class MapLocationProvider: NSObject {
     
-    private var name : String
     private weak var delegate: LocationProviderDelegate?
-
-    init(name: String) {
-        self.name = name
-        super.init()
-        LocationService.shared.setDelegate(name: name, delegate: self)
-    }
     
-    deinit{
-        LocationService.shared.removeDelegate(name: name)
-    }
 }
 
 extension MapLocationProvider: LocationProvider {

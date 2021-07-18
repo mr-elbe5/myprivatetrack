@@ -15,9 +15,34 @@ class EntriesMapViewController: MapViewController, AnnotationInteractionDelegate
     var annotationsManager : PointAnnotationManager!
     var zoom : CGFloat = Settings.shared.mapStartZoom
     
-    override func configureMapView(){
+    override func loadView() {
+        super.loadView()
+        let guide = view.safeAreaLayoutGuide
+        view.addSubview(headerView)
+        headerView.setAnchors()
+            .leading(guide.leadingAnchor, inset: .zero)
+            .top(guide.topAnchor,inset: .zero)
+            .trailing(guide.trailingAnchor,inset: .zero)
+        let leftStackView = UIStackView()
+        let rightStackView = UIStackView()
+        headerView.backgroundColor = UIColor.systemBackground
+        headerView.addSubview(leftStackView)
+        headerView.addSubview(rightStackView)
+        leftStackView.setupHorizontal(spacing: defaultInset)
+        leftStackView.placeAfter(anchor: headerView.leadingAnchor, insets: defaultInsets)
+        rightStackView.setupHorizontal(spacing: defaultInset)
+        rightStackView.placeBefore(anchor: headerView.trailingAnchor, insets: defaultInsets)
+        let toggleStyleButton = IconButton(icon: "map")
+        toggleStyleButton.addTarget(self, action: #selector(toggleMapStyle), for: .touchDown)
+        leftStackView.addArrangedSubview(toggleStyleButton)
+        let infoButton = IconButton(icon: "info.circle")
+        infoButton.addTarget(self, action: #selector(showInfo), for: .touchDown)
+        rightStackView.addArrangedSubview(infoButton)
+        mapView = MapView(frame: view.bounds)
         mapView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-        mapView.location.overrideLocationProvider(with: MapLocationProvider(name: "mapview"))
+        let locationProvider = MapLocationProvider()
+        LocationService.shared.entriesDelegate = locationProvider
+        mapView.location.overrideLocationProvider(with: locationProvider)
         mapView.location.options.puckType = .puck2D()
         mapView.location.addLocationConsumer(newConsumer: self)
         annotationsManager = mapView.annotations.makePointAnnotationManager()
@@ -26,6 +51,12 @@ class EntriesMapViewController: MapViewController, AnnotationInteractionDelegate
             self.mapLoaded = true
             self.mapView.location.addLocationConsumer(newConsumer: self)
         }
+        view.addSubview(mapView)
+        mapView.setAnchors()
+            .leading(guide.leadingAnchor, inset: .zero)
+            .top(headerView.bottomAnchor, inset: 1)
+            .trailing(guide.trailingAnchor,inset: .zero)
+            .bottom(guide.bottomAnchor, inset: .zero)
     }
     
     override func viewDidLoad() {
@@ -86,28 +117,6 @@ class EntriesMapViewController: MapViewController, AnnotationInteractionDelegate
     @objc override func showInfo(){
         let infoController = EntriesMapInfoViewController()
         self.present(infoController, animated: true)
-    }
-    
-    func takeScreenshot(callback: @escaping (Result<UIImage, Error>) -> Void){
-        /*let options = MKMapSnapshotter.Options()
-        options.camera = self.mapView.camera
-        options.region = self.mapView.region
-        options.mapType = self.mapView.mapType
-        let snapshotter = MKMapSnapshotter(options: options)
-        snapshotter.start { snapshot, error in
-            if error != nil {
-                print("Unable to create a map snapshot.")
-                callback(.failure(error!))
-            } else if let snapshot = snapshot {
-                UIGraphicsBeginImageContextWithOptions(snapshot.image.size, true, snapshot.image.scale)
-                snapshot.image.draw(at: CGPoint.zero)
-                self.drawPins()
-                let compositeImage = UIGraphicsGetImageFromCurrentImageContext()
-                callback(.success(compositeImage!))
-            }
-        }
-
-         */
     }
     
 }
