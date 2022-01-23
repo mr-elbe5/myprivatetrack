@@ -35,7 +35,7 @@ class TimelineEntryCell: UITableViewCell, PhotoItemDelegate, VideoItemDelegate{
         backgroundColor = .clear
         cellBody.backgroundColor = transparentColor
         cellBody.layer.cornerRadius = 5
-        addSubview(cellBody)
+        contentView.addSubview(cellBody)
         cellBody.fillSuperview(insets: defaultInsets)
         accessoryType = .none
     }
