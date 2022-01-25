@@ -48,9 +48,8 @@ class VideoPlayerView: UIView {
         playButton.tintColor = UIColor.white
         playButton.addTarget(self, action: #selector(togglePlay), for: .touchDown)
         addSubview(playButton)
-        playButton.setAnchors()
+        playButton.setAnchors(bottom: bottomAnchor, insets: defaultInsets)
             .centerX(centerXAnchor)
-            .bottom(bottomAnchor, inset: Statics.defaultInset)
     }
 
     required init?(coder aDecoder: NSCoder) {

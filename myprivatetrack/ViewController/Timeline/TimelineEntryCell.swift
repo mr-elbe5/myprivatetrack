@@ -36,7 +36,7 @@ class TimelineEntryCell: UITableViewCell, PhotoItemDelegate, VideoItemDelegate{
         cellBody.backgroundColor = transparentColor
         cellBody.layer.cornerRadius = 5
         contentView.addSubview(cellBody)
-        cellBody.fillSuperview(insets: defaultInsets)
+        cellBody.fillView(view: contentView, insets: defaultInsets)
         accessoryType = .none
     }
     
@@ -52,13 +52,13 @@ class TimelineEntryCell: UITableViewCell, PhotoItemDelegate, VideoItemDelegate{
             timeLabel.text = entry!.creationDate.timeString()
             timeLabel.textAlignment = .center
             cellBody.addSubview(timeLabel)
-            timeLabel.placeBelow(anchor: cellBody.topAnchor, insets: defaultInsets)
+            timeLabel.setAnchors(top: cellBody.topAnchor, leading: cellBody.leadingAnchor, trailing: cellBody.trailingAnchor, insets: defaultInsets)
             var lastView : UIView = timeLabel
             if entry!.saveLocation, let loc = entry!.location{
                 let locationButton = TextButton(text: loc.asString)
                 locationButton.addTarget(self,action: #selector(showInMap), for: .touchDown)
                 cellBody.addSubview(locationButton)
-                locationButton.placeBelow(anchor: lastView.bottomAnchor, insets: defaultInsets)
+                locationButton.setAnchors(top: lastView.bottomAnchor, leading: cellBody.leadingAnchor, trailing: cellBody.trailingAnchor, insets: defaultInsets)
                 lastView = locationButton
                 let desc = entry!.locationDescription
                 if !desc.isEmpty{
@@ -66,39 +66,35 @@ class TimelineEntryCell: UITableViewCell, PhotoItemDelegate, VideoItemDelegate{
                     locationDescriptionLabel.text = desc
                     locationDescriptionLabel.textAlignment = .center
                     cellBody.addSubview(locationDescriptionLabel)
-                    locationDescriptionLabel.placeBelow(anchor: lastView.bottomAnchor, insets: defaultInsets)
+                    locationDescriptionLabel.setAnchors(top: lastView.bottomAnchor, leading: cellBody.leadingAnchor, trailing: cellBody.trailingAnchor, insets: defaultInsets)
                     lastView = locationDescriptionLabel
                 }
                 if entry!.hasMapSection{
                     let mapView = MapItemView()
                     mapView.setupView(data: entry!)
                     cellBody.addSubview(mapView)
-                    mapView.placeBelow(view: lastView)
+                    mapView.setAnchors(top: lastView.bottomAnchor, leading: cellBody.leadingAnchor, trailing: cellBody.trailingAnchor, insets: defaultInsets)
                     lastView = mapView
                 }
             }
             if isEditing{
-                let editButton = IconButton(icon: "pencil.circle")
-                editButton.tintColor = UIColor.systemBlue
-                editButton.addTarget(self, action: #selector(editEntry), for: .touchDown)
-                cellBody.addSubview(editButton)
-                editButton.setAnchors()
-                editButton.top(cellBody.topAnchor, inset: defaultInset)
-                
                 let deleteButton = IconButton(icon: "xmark.circle")
                 deleteButton.tintColor = UIColor.systemRed
                 deleteButton.addTarget(self, action: #selector(deleteEntry), for: .touchDown)
                 cellBody.addSubview(deleteButton)
-                deleteButton.setAnchors()
-                    .top(cellBody.topAnchor, inset: defaultInset)
-                    .trailing(cellBody.trailingAnchor, inset: defaultInset)
-                editButton.trailing(deleteButton.leadingAnchor, inset: defaultInset)
+                deleteButton.setAnchors(top: cellBody.topAnchor, trailing: cellBody.trailingAnchor, insets: defaultInsets)
+                
+                let editButton = IconButton(icon: "pencil.circle")
+                editButton.tintColor = UIColor.systemBlue
+                editButton.addTarget(self, action: #selector(editEntry), for: .touchDown)
+                cellBody.addSubview(editButton)
+                editButton.setAnchors(top: cellBody.topAnchor, trailing: deleteButton.leadingAnchor, insets: defaultInsets)
             }
             else{
                 let viewButton = IconButton(icon: "magnifyingglass", tintColor: .systemBlue)
                 viewButton.addTarget(self, action: #selector(viewEntry), for: .touchDown)
                 cellBody.addSubview(viewButton)
-                viewButton.placeTopRight(insets: doubleInsets)
+                viewButton.setAnchors(top: cellBody.topAnchor, trailing: cellBody.trailingAnchor, insets: doubleInsets)
             }
             
             for item in entry!.items{
@@ -106,30 +102,30 @@ class TimelineEntryCell: UITableViewCell, PhotoItemDelegate, VideoItemDelegate{
                 case .text:
                     let itemView = TextItemView.fromData(data: item.data as! TextData)
                     cellBody.addSubview(itemView)
-                    itemView.placeBelow(view: lastView, insets: defaultInsets)
+                    itemView.setAnchors(top: lastView.bottomAnchor, leading: cellBody.leadingAnchor, trailing: cellBody.trailingAnchor, insets: defaultInsets)
                     lastView = itemView
                     break
                 case .audio:
                     let itemView = AudioItemView.fromData(data: item.data as! AudioData)
                     cellBody.addSubview(itemView)
-                    itemView.placeBelow(view: lastView, insets: defaultInsets)
+                    itemView.setAnchors(top: lastView.bottomAnchor, leading: cellBody.leadingAnchor, trailing: cellBody.trailingAnchor, insets: defaultInsets)
                     lastView = itemView
                     break
                 case .photo:
                     let itemView = PhotoItemView.fromData(data: item.data as! PhotoData, delegate: self)
                     cellBody.addSubview(itemView)
-                    itemView.placeBelow(view: lastView, insets: defaultInsets)
+                    itemView.setAnchors(top: lastView.bottomAnchor, leading: cellBody.leadingAnchor, trailing: cellBody.trailingAnchor, insets: defaultInsets)
                     lastView = itemView
                     break
                 case .video:
                     let itemView = VideoItemView.fromData(data: item.data as! VideoData, delegate: self)
                     cellBody.addSubview(itemView)
-                    itemView.placeBelow(view: lastView, insets: defaultInsets)
+                    itemView.setAnchors(top: lastView.bottomAnchor, leading: cellBody.leadingAnchor, trailing: cellBody.trailingAnchor, insets: defaultInsets)
                     lastView = itemView
                     break
                 }
             }
-            lastView.connectBottom(view: cellBody, insets: defaultInset)
+            lastView.bottom(cellBody.bottomAnchor, inset: -defaultInset)
         }
     }
     

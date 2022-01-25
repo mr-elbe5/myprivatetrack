@@ -23,16 +23,15 @@ class MapItemView : EntryItemView{
         imageView.setRoundedBorders()
         addSubview(imageView)
         imageView.image = data.getMapSection()
-        imageView.placeBelow(anchor: topAnchor)
+        imageView.setAnchors(top: topAnchor, leading: leadingAnchor, trailing: trailingAnchor, insets: defaultInsets)
         imageView.setAspectRatioConstraint()
         if !data.mapComment.isEmpty{
             let titleView = MediaCommentLabel(text: data.mapComment)
             addSubview(titleView)
-            titleView.placeBelow(view: imageView)
-            titleView.connectBottom(view: self)
+            titleView.setAnchors(top: imageView.bottomAnchor, leading: leadingAnchor, trailing: trailingAnchor, bottom: bottomAnchor, insets: defaultInsets)
         }
         else{
-            imageView.connectBottom(view: self)
+            imageView.bottom(bottomAnchor)
         }
     }
     
@@ -62,10 +61,9 @@ class MapItemEditView : EntryItemEditView, UITextViewDelegate{
         titleView.delegate = self
         addSubview(titleView)
         titleView.setKeyboardToolbar()
-        imageView.placeBelow(anchor: topAnchor, insets: defaultInsets)
+        imageView.setAnchors(top: topAnchor, leading: leadingAnchor, trailing: trailingAnchor, insets: defaultInsets)
         imageView.setAspectRatioConstraint()
-        titleView.placeBelow(view: imageView, insets: flatInsets)
-        titleView.connectBottom(view: self)
+        titleView.setAnchors(top: imageView.bottomAnchor, leading: leadingAnchor, trailing: trailingAnchor, bottom: bottomAnchor, insets: flatInsets)
     }
     
     // UITextViewDelegate

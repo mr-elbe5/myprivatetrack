@@ -22,19 +22,16 @@ class MapViewController: UIViewController, MKMapViewDelegate, LocationServiceDel
         LocationService.shared.checkRunning()
         let guide = view.safeAreaLayoutGuide
         view.addSubview(headerView)
-        headerView.setAnchors()
-            .leading(guide.leadingAnchor, inset: .zero)
-            .top(guide.topAnchor,inset: .zero)
-            .trailing(guide.trailingAnchor,inset: .zero)
+        headerView.setAnchors(top: guide.topAnchor, leading: guide.leadingAnchor, trailing: guide.trailingAnchor, insets: .zero)
         let leftStackView = UIStackView()
         let rightStackView = UIStackView()
         headerView.backgroundColor = UIColor.systemBackground
         headerView.addSubview(leftStackView)
         headerView.addSubview(rightStackView)
         leftStackView.setupHorizontal(spacing: defaultInset)
-        leftStackView.placeAfter(anchor: headerView.leadingAnchor, insets: defaultInsets)
+        leftStackView.setAnchors(top: headerView.topAnchor, leading: headerView.leadingAnchor, bottom: headerView.bottomAnchor, insets: defaultInsets)
         rightStackView.setupHorizontal(spacing: defaultInset)
-        rightStackView.placeBefore(anchor: headerView.trailingAnchor, insets: defaultInsets)
+        rightStackView.setAnchors(top: headerView.topAnchor, trailing: headerView.trailingAnchor, bottom: headerView.bottomAnchor, insets: defaultInsets)
         let toggleStyleButton = IconButton(icon: "map")
         toggleStyleButton.addTarget(self, action: #selector(toggleMapStyle), for: .touchDown)
         leftStackView.addArrangedSubview(toggleStyleButton)
@@ -45,11 +42,8 @@ class MapViewController: UIViewController, MKMapViewDelegate, LocationServiceDel
         mkMapView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         mkMapView.delegate = self
         view.addSubview(mkMapView)
-        mkMapView.setAnchors()
-            .leading(guide.leadingAnchor, inset: .zero)
+        mkMapView.setAnchors(leading: guide.leadingAnchor, trailing: guide.trailingAnchor, bottom: guide.bottomAnchor, insets: .zero)
             .top(headerView.bottomAnchor, inset: 1)
-            .trailing(guide.trailingAnchor,inset: .zero)
-            .bottom(guide.bottomAnchor, inset: .zero)
     }
     
     func locationDidChange(location: Location){
@@ -92,7 +86,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, LocationServiceDel
     }
     
     func assertMapPins(){
-        for day in globalData.days{
+        for day in GlobalData.shared.days{
             for entry in day.entries{
                 if entry.saveLocation, let loc = entry.location{
                     let positionPin = EntryAnnotation(entry: entry)

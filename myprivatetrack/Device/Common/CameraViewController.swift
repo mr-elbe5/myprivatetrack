@@ -41,16 +41,13 @@ class CameraViewController: UIViewController {
         let closeButton = IconButton(icon: "xmark.circle", tintColor: .white)
         bodyView.addSubview(closeButton)
         closeButton.addTarget(self, action: #selector(close), for: .touchDown)
-        closeButton.setAnchors()
-            .top(bodyView.topAnchor,inset: defaultInset)
-            .trailing(bodyView.trailingAnchor,inset: defaultInset)
+        closeButton.setAnchors(top: bodyView.topAnchor, trailing: bodyView.trailingAnchor, insets: defaultInsets)
         bodyView.addSubview(preview)
         preview.backgroundColor = .black
-        preview.placeBelow(anchor: closeButton.bottomAnchor, insets: defaultInsets)
+        preview.setAnchors(top: closeButton.bottomAnchor, leading: bodyView.leadingAnchor, trailing: bodyView.trailingAnchor, insets: defaultInsets)
         buttonView.backgroundColor = .black
         bodyView.addSubview(buttonView)
-        buttonView.placeBelow(view: preview, insets: .zero)
-        buttonView.bottom(bodyView.bottomAnchor)
+        buttonView.setAnchors(top: preview.bottomAnchor, leading: bodyView.leadingAnchor, trailing: bodyView.trailingAnchor, bottom: bodyView.bottomAnchor, insets: .zero)
         addButtons()
         AVCaptureDevice.askCameraAuthorization(){ result in
             self.preview.session = self.session

@@ -36,24 +36,18 @@ class MapCaptureViewController: UIViewController, LocationServiceDelegate, MapVi
         let closeButton = IconButton(icon: "xmark.circle", tintColor: .white)
         bodyView.addSubview(closeButton)
         closeButton.addTarget(self, action: #selector(cancel), for: .touchDown)
-        closeButton.setAnchors()
-            .top(bodyView.topAnchor,inset: defaultInset)
-            .trailing(bodyView.trailingAnchor,inset: defaultInset)
+        closeButton.setAnchors(top: bodyView.topAnchor, trailing: bodyView.trailingAnchor, insets: defaultInsets)
         bodyView.addSubview(mapView)
         mapView.setupView()
         if let loc = LocationService.shared.getLocation(){
             mapView.setLocation(location: loc)
         }
-        mapView.setAnchors()
-            .top(closeButton.bottomAnchor,inset: defaultInset)
-            .leading(bodyView.leadingAnchor)
-            .trailing(bodyView.trailingAnchor)
+        mapView.setAnchors(top: closeButton.bottomAnchor, leading: bodyView.leadingAnchor, trailing: bodyView.trailingAnchor, insets: defaultInsets)
         mapView.delegate = self
         buttonView.backgroundColor = .black
         bodyView.addSubview(buttonView)
-        buttonView.placeBelow(view: mapView)
+        buttonView.setAnchors(top: mapView.bottomAnchor, leading: bodyView.leadingAnchor, trailing: bodyView.trailingAnchor, bottom: bodyView.bottomAnchor, insets: defaultInsets)
         addButtons()
-        buttonView.connectBottom(view: bodyView)
     }
     
     func addButtons(){
@@ -61,8 +55,7 @@ class MapCaptureViewController: UIViewController, LocationServiceDelegate, MapVi
         captureButton.addTarget(self, action: #selector(save), for: .touchDown)
         mapView.addSubview(captureButton)
         captureButton.isEnabled = false
-        captureButton.setAnchors()
-            .bottom(buttonView.topAnchor,inset: Statics.defaultInset)
+        captureButton.setAnchors(bottom: buttonView.topAnchor, insets: defaultInsets)
             .centerX(mapView.centerXAnchor)
             .width(50)
             .height(50)
@@ -70,7 +63,8 @@ class MapCaptureViewController: UIViewController, LocationServiceDelegate, MapVi
         mapTypeButton.addTarget(self, action: #selector(toggleMapType), for: .touchDown)
         buttonView.addSubview(mapTypeButton)
         mapTypeButton.isEnabled = false
-        mapTypeButton.placeXCentered()
+        mapTypeButton.setAnchors(top: buttonView.topAnchor, bottom: buttonView.bottomAnchor, insets: defaultInsets)
+            .centerX(buttonView.centerXAnchor)
         
     }
     

@@ -15,7 +15,7 @@ open class ButtonStackView: UIView{
     func setupView(){
         addSubview(stackView)
         stackView.setupHorizontal(spacing: defaultInset)
-        stackView.placeBefore(anchor: trailingAnchor, insets: defaultInsets)
+        stackView.setAnchors(top: topAnchor, trailing: trailingAnchor, bottom: bottomAnchor, insets: defaultInsets)
     }
     
 }

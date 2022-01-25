@@ -23,10 +23,7 @@ open class ModalViewController: ViewController {
         let closeButton = IconButton(icon: "xmark.circle")
         buttonView.addSubview(closeButton)
         closeButton.addTarget(self, action: #selector(close), for: .touchDown)
-        closeButton.setAnchors()
-            .top(buttonView.topAnchor,inset: defaultInset)
-            .trailing(buttonView.trailingAnchor,inset: defaultInset)
-            .bottom(buttonView.bottomAnchor,inset: defaultInset)
+        closeButton.setAnchors(top: buttonView.topAnchor, trailing: buttonView.trailingAnchor, bottom: buttonView.bottomAnchor, insets: defaultInsets)
         headerView = buttonView
     }
     

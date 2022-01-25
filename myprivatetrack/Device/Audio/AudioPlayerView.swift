@@ -62,12 +62,11 @@ class AudioPlayerView : UIView, AVAudioPlayerDelegate{
     }
     
     func layoutView(){
-        playProgress.setAnchors()
-            .leading(leadingAnchor,inset: Statics.defaultInset)
+        playProgress.setAnchors(leading: leadingAnchor, insets: defaultInsets)
             .centerY(centerYAnchor)
-        playButton.placeBefore(anchor: trailingAnchor)
-        rewindButton.placeBefore(view: playButton)
-        playProgress.trailing(rewindButton.leadingAnchor, inset: Statics.defaultInset)
+        playButton.setAnchors(top: topAnchor, trailing: trailingAnchor, bottom: bottomAnchor, insets: defaultInsets)
+        rewindButton.setAnchors(top: topAnchor, trailing: playButton.leadingAnchor, bottom: bottomAnchor, insets: defaultInsets)
+        playProgress.trailing(rewindButton.leadingAnchor, inset: defaultInset)
     }
     
     func enablePlayer(){

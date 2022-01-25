@@ -60,7 +60,7 @@ class SettingsViewController: EditViewController, UIDocumentPickerDelegate, UIIm
         headerView.backgroundColor = UIColor.systemBackground
         headerView.addSubview(rightStackView)
         rightStackView.setupHorizontal(spacing: 2*defaultInset)
-        rightStackView.placeBefore(anchor: headerView.trailingAnchor, insets: defaultInsets)
+        rightStackView.setAnchors(top: headerView.topAnchor, trailing: headerView.trailingAnchor, bottom: headerView.bottomAnchor, insets: defaultInsets)
         
         let infoButton = IconButton(icon: "info.circle")
         infoButton.addTarget(self, action: #selector(showInfo), for: .touchDown)
@@ -70,8 +70,8 @@ class SettingsViewController: EditViewController, UIDocumentPickerDelegate, UIIm
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        fullBackupButton.isEnabled = globalData.days.count > 0
-        partialBackupButton.isEnabled = globalData.days.count > 0
+        fullBackupButton.isEnabled = GlobalData.shared.days.count > 0
+        partialBackupButton.isEnabled = GlobalData.shared.days.count > 0
     }
     
     @objc func showInfo(){

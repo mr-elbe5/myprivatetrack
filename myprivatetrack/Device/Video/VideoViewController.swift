@@ -19,7 +19,7 @@ class VideoViewController: ModalViewController {
         if let url = videoURL{
             mainView.addSubview(videoView)
             videoView.url = url
-            videoView.fillSuperview()
+            videoView.fillView(view: mainView)
             videoView.setAspectRatioConstraint()
         }
     }

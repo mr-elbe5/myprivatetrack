@@ -22,7 +22,7 @@ class PhotoViewController: ModalScrollViewController, UIScrollViewDelegate {
             imageView!.contentMode = .scaleAspectFit
             imageView!.isUserInteractionEnabled = true
             scrollView.addSubview(imageView!)
-            imageView!.fillSuperview()
+            imageView!.fillView(view: scrollView)
         }
     }
     

@@ -1,11 +1,11 @@
-//
-//  UIStackView.swift
-//
-//  Created by Michael Rönnau on 11.07.20.
-//  Copyright © 2020 Michael Rönnau. All rights reserved.
-//
+/*
+ SwiftyMaps
+ App for display and use of OSM maps without MapKit
+ Copyright: Michael Rönnau mr@elbe5.de
+ */
 
 import Foundation
+
 import UIKit
 
 extension UIStackView{
@@ -30,5 +30,10 @@ extension UIStackView{
         }
         removeAllSubviews()
     }
+    
+    func addSpacer(){
+        addArrangedSubview(UILabel(text: " "))
+    }
 
 }
+

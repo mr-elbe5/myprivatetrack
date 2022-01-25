@@ -36,22 +36,21 @@ class PhotoItemView : EntryItemView{
         addSubview(imageView)
         self.photoData = data
         imageView.image = data.getImage()
-        imageView.placeBelow(anchor: topAnchor)
+        imageView.setAnchors(top: topAnchor, leading: leadingAnchor, trailing: trailingAnchor, insets: defaultInsets)
         imageView.setAspectRatioConstraint()
         if !data.title.isEmpty{
             let titleView = MediaCommentLabel(text: data.title)
             addSubview(titleView)
-            titleView.placeBelow(view: imageView)
-            titleView.connectBottom(view: self)
+            titleView.setAnchors(top: imageView.bottomAnchor, leading: leadingAnchor, trailing: trailingAnchor, bottom: bottomAnchor, insets: defaultInsets)
         }
         else{
-            imageView.connectBottom(view: self)
+            imageView.bottom(bottomAnchor)
         }
         if delegate != nil{
             let sv = UIStackView()
             sv.setupHorizontal(distribution: .fillEqually, spacing: 2*defaultInset)
             addSubview(sv)
-            sv.placeTopRight(insets: doubleInsets)
+            sv.setAnchors(top: topAnchor, trailing: trailingAnchor, insets: doubleInsets)
             let viewButton = IconButton(icon: "magnifyingglass", tintColor: .systemBlue, backgroundColor: transparentColor)
             viewButton.addTarget(self, action: #selector(viewItem), for: .touchDown)
             sv.addArrangedSubview(viewButton)
@@ -92,7 +91,7 @@ class PhotoItemDetailView : EntryItemDetailView{
         addSubview(imageView)
         self.photoData = data
         imageView.image = data.getImage()
-        imageView.fillSuperview()
+        imageView.fillView(view: self)
     }
     
 }
@@ -130,10 +129,9 @@ class PhotoItemEditView : EntryItemEditView, UITextViewDelegate{
         titleView.delegate = self
         addSubview(titleView)
         titleView.setKeyboardToolbar()
-        imageView.placeBelow(anchor: deleteButton.bottomAnchor, insets: deleteInsets)
+        imageView.setAnchors(top: deleteButton.bottomAnchor, leading: leadingAnchor, trailing: trailingAnchor, insets: deleteInsets)
         imageView.setAspectRatioConstraint()
-        titleView.placeBelow(view: imageView, insets: flatInsets)
-        titleView.connectBottom(view: self)
+        titleView.setAnchors(top: imageView.bottomAnchor, leading: leadingAnchor, trailing: trailingAnchor, bottom: bottomAnchor, insets: flatInsets)
     }
     
     override func setFocus(){

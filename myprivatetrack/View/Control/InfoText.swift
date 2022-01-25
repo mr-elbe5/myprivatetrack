@@ -18,7 +18,7 @@ class InfoText : UIView{
         label.numberOfLines = 0
         label.textColor = .label
         addSubview(label)
-        label.fillSuperview(insets: defaultInsets)
+        label.fillView(view: self, insets: defaultInsets)
     }
     
     required init?(coder: NSCoder) {

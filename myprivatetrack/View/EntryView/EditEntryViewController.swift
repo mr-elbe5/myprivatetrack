@@ -94,9 +94,9 @@ class EditEntryViewController: EditViewController, PhotoCaptureDelegate, VideoCa
         headerView.addSubview(leftStackView)
         headerView.addSubview(rightStackView)
         leftStackView.setupHorizontal(spacing: 2*defaultInset)
-        leftStackView.placeAfter(anchor: headerView.leadingAnchor, insets: defaultInsets)
+        leftStackView.setAnchors(top: headerView.topAnchor, leading: headerView.leadingAnchor, bottom: headerView.bottomAnchor, insets: defaultInsets)
         rightStackView.setupHorizontal(spacing: 2*defaultInset)
-        rightStackView.placeBefore(anchor: headerView.trailingAnchor, insets: defaultInsets)
+        rightStackView.setAnchors(top: headerView.topAnchor, trailing: headerView.trailingAnchor, bottom: headerView.bottomAnchor, insets: defaultInsets)
         
         addTextButton.addTarget(self, action: #selector(addText), for: .touchDown)
         leftStackView.addArrangedSubview(addTextButton)
@@ -242,9 +242,9 @@ class EditEntryViewController: EditViewController, PhotoCaptureDelegate, VideoCa
     
     // ImageCaptureDelegate
     
-    func photoCaptured(data: PhotoData){
-        entry.addItem(item: data)
-        let editView = PhotoItemEditView.fromData(data: data)
+    func photoCaptured(photo: PhotoData){
+        entry.addItem(item: photo)
+        let editView = PhotoItemEditView.fromData(data: photo)
         insertItemView(editView)
     }
     

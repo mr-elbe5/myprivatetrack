@@ -43,9 +43,9 @@ class TimelineViewController: TableViewController, SaveEntryDelegate, EntryCellA
         headerView.addSubview(leftStackView)
         headerView.addSubview(rightStackView)
         leftStackView.setupHorizontal(spacing: 2*defaultInset)
-        leftStackView.placeAfter(anchor: headerView.leadingAnchor, insets: defaultInsets)
+        leftStackView.setAnchors(top: headerView.topAnchor, leading: headerView.leadingAnchor, bottom: headerView.bottomAnchor, insets: defaultInsets)
         rightStackView.setupHorizontal(spacing: 2*defaultInset)
-        rightStackView.placeBefore(anchor: headerView.trailingAnchor, insets: defaultInsets)
+        rightStackView.setAnchors(top: headerView.topAnchor, trailing: headerView.trailingAnchor, bottom: headerView.bottomAnchor, insets: defaultInsets)
         
         addEmptyButton.addTarget(self, action: #selector(addEmptyEntry), for: .touchDown)
         leftStackView.addArrangedSubview(addEmptyButton)
@@ -78,8 +78,8 @@ class TimelineViewController: TableViewController, SaveEntryDelegate, EntryCellA
     
     override func viewDidAppear(_ animated: Bool) {
         if firstAppearance{
-            if globalData.days.count > 0 && globalData.days[0].entries.count > 0{
-                tableView.scrollToRow(at: .init(row: globalData.days[globalData.days.count - 1].entries.count - 1, section: globalData.days.count-1), at: .bottom, animated: true)
+            if GlobalData.shared.days.count > 0 && GlobalData.shared.days[0].entries.count > 0{
+                tableView.scrollToRow(at: .init(row: GlobalData.shared.days[GlobalData.shared.days.count - 1].entries.count - 1, section: GlobalData.shared.days.count-1), at: .bottom, animated: true)
             }
             firstAppearance = false
         }
@@ -140,15 +140,15 @@ class TimelineViewController: TableViewController, SaveEntryDelegate, EntryCellA
     
     func saveEntry(entry: EntryData) {
         if entry.isNew {
-            let day = globalData.assertDay(date: entry.creationDate)
+            let day = GlobalData.shared.assertDay(date: entry.creationDate)
             day.addEntry(entry: entry)
         }
-        globalData.save()
+        GlobalData.shared.save()
         tableView.reloadData()
         if entry.isNew {
-            if globalData.days.count > 0 && globalData.days[0].entries.count > 0{
-                let section = globalData.days.count-1
-                let row = globalData.days[globalData.days.count - 1].entries.count - 1
+            if GlobalData.shared.days.count > 0 && GlobalData.shared.days[0].entries.count > 0{
+                let section = GlobalData.shared.days.count-1
+                let row = GlobalData.shared.days[GlobalData.shared.days.count - 1].entries.count - 1
                 tableView.scrollToRow(at: .init(row: row, section: section), at: .bottom, animated: true)
             }
             entry.isNew = false
@@ -170,7 +170,7 @@ class TimelineViewController: TableViewController, SaveEntryDelegate, EntryCellA
     
     func deleteEntry(entry: EntryData) {
         showApprove(title: "reallyDeleteEntry".localize(), text: "deleteEntryApproveInfo".localize()){
-            self.globalData.deleteEntry(entry: entry)
+            GlobalData.shared.deleteEntry(entry: entry)
             self.tableView.reloadData()
         }
     }
@@ -252,12 +252,12 @@ class TimelineViewController: TableViewController, SaveEntryDelegate, EntryCellA
     // table view callbacks
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return globalData.days.count
+        return GlobalData.shared.days.count
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let headerView = TimelineSectionHeader()
-        headerView.setupView(day: globalData.days[section])
+        headerView.setupView(day: GlobalData.shared.days[section])
         return headerView
     }
     
@@ -266,13 +266,13 @@ class TimelineViewController: TableViewController, SaveEntryDelegate, EntryCellA
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        let day = globalData.days[section]
+        let day = GlobalData.shared.days[section]
         return day.entries.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: TimelineViewController.CELL_IDENT, for: indexPath) as! TimelineEntryCell
-        let day = globalData.days[indexPath.section]
+        let day = GlobalData.shared.days[indexPath.section]
         let event = day.entries[indexPath.row]
         cell.entry = event
         cell.delegate = self

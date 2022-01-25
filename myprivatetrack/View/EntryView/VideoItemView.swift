@@ -32,22 +32,21 @@ class VideoItemView : EntryItemView{
         addSubview(videoView)
         self.videoData = data
         videoView.url = data.fileURL
-        videoView.placeBelow(anchor: topAnchor)
+        videoView.setAnchors(top: topAnchor, leading: leadingAnchor, trailing: trailingAnchor, insets: defaultInsets)
         videoView.setAspectRatioConstraint()
         if !data.title.isEmpty{
             let titleView = MediaCommentLabel(text: data.title)
             addSubview(titleView)
-            titleView.placeBelow(view: videoView, insets: flatInsets)
-            titleView.connectBottom(view: self)
+            titleView.setAnchors(top: videoView.bottomAnchor, leading: leadingAnchor, trailing: trailingAnchor, bottom: bottomAnchor, insets: defaultInsets)
         }
         else{
-            videoView.connectBottom(view: self)
+            videoView.bottom(bottomAnchor)
         }
         if delegate != nil{
             let sv = UIStackView()
             sv.setupHorizontal(distribution: .fillEqually, spacing: 2*defaultInset)
             addSubview(sv)
-            sv.placeTopRight(insets: doubleInsets)
+            sv.setAnchors(top: topAnchor, trailing: trailingAnchor, insets: doubleInsets)
             let viewButton = IconButton(icon: "magnifyingglass", tintColor: .systemBlue, backgroundColor: transparentColor)
             viewButton.addTarget(self, action: #selector(viewItem), for: .touchDown)
             sv.addArrangedSubview(viewButton)
@@ -100,10 +99,9 @@ class VideoItemEditView : EntryItemEditView, UITextViewDelegate{
         titleView.delegate = self
         addSubview(titleView)
         titleView.setKeyboardToolbar()
-        videoView.placeBelow(anchor: deleteButton.bottomAnchor, insets: deleteInsets)
+        videoView.setAnchors(top: deleteButton.bottomAnchor, leading: leadingAnchor, trailing: trailingAnchor, insets: deleteInsets)
         videoView.setAspectRatioConstraint()
-        titleView.placeBelow(view: videoView)
-        titleView.connectBottom(view: self)
+        titleView.setAnchors(top: videoView.bottomAnchor, leading: leadingAnchor, trailing: trailingAnchor, bottom: bottomAnchor, insets: defaultInsets)
     }
     
     override func setFocus(){

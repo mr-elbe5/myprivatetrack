@@ -28,16 +28,15 @@ class AudioItemView : EntryItemView, AVAudioPlayerDelegate{
         self.audioData = data
         audioView.url = data.fileURL
         audioView.enablePlayer()
-        audioView.placeBelow(anchor: topAnchor)
+        audioView.setAnchors(top: topAnchor, leading: leadingAnchor, trailing: trailingAnchor, insets: defaultInsets)
         audioView.layoutView()
         if !data.title.isEmpty{
             let titleView = MediaCommentLabel(text: data.title)
             addSubview(titleView)
-            titleView.placeBelow(view: audioView, insets: flatInsets)
-            titleView.connectBottom(view: self)
+            titleView.setAnchors(top: audioView.bottomAnchor, leading: leadingAnchor, trailing: trailingAnchor, bottom: bottomAnchor, insets: flatInsets)
         }
         else{
-            audioView.connectBottom(view: self)
+            audioView.bottom(bottomAnchor)
         }
     }
     
@@ -78,10 +77,9 @@ class AudioItemEditView : EntryItemEditView, UITextViewDelegate{
         titleView.delegate = self
         addSubview(titleView)
         titleView.setKeyboardToolbar()
-        audioView.placeBelow(anchor: deleteButton.bottomAnchor, insets: deleteInsets)
+        audioView.setAnchors(top: deleteButton.bottomAnchor, leading: leadingAnchor, trailing: trailingAnchor, insets: deleteInsets)
         audioView.layoutView()
-        titleView.placeBelow(view: audioView)
-        titleView.connectBottom(view: self)
+        titleView.setAnchors(top: audioView.bottomAnchor, leading: leadingAnchor, trailing: trailingAnchor, bottom: bottomAnchor, insets: defaultInsets)
     }
     
     override func setFocus(){

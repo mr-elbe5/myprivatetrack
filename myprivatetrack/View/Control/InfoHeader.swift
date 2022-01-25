@@ -12,17 +12,14 @@ class InfoHeader : UIView{
     
     let label = UILabel()
     
-    init(text: String, paddingTop: CGFloat = Statics.defaultInset){
+    init(text: String, paddingTop: CGFloat = Insets.defaultInset){
         super.init(frame: .zero)
         label.text = text
         label.textColor = .label
         label.font = .preferredFont(forTextStyle: .headline)
         addSubview(label)
-        label.setAnchors()
+        label.setAnchors(leading: leadingAnchor, trailing: trailingAnchor, bottom: bottomAnchor, insets: defaultInsets)
             .top(topAnchor, inset: paddingTop)
-            .leading(leadingAnchor,inset: defaultInset)
-            .trailing(trailingAnchor,inset: defaultInset)
-            .bottom(bottomAnchor, inset: defaultInset)
     }
     
     required init?(coder: NSCoder) {

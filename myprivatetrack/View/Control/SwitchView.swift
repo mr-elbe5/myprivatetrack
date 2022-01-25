@@ -26,8 +26,8 @@ class SwitchView : UIView{
         switcher.isOn = isOn
         switcher.addTarget(self, action: #selector(valueDidChange), for: .valueChanged)
         addSubview(switcher)
-        label.placeAfter(anchor: leadingAnchor)
-        switcher.placeBefore(anchor: trailingAnchor)
+        label.setAnchors(top: topAnchor, leading: leadingAnchor, bottom: bottomAnchor, insets: defaultInsets)
+        switcher.setAnchors(top: topAnchor, trailing: trailingAnchor, bottom: bottomAnchor, insets: defaultInsets)
     }
     
     func setEnabled(_ flag: Bool){

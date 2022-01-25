@@ -40,17 +40,15 @@ class AudioRecorderView : UIView, AVAudioRecorderDelegate{
     }
 
     func layoutView(){
-        timeLabel.placeBelow(anchor: topAnchor)
-        progress.placeBelow(view: timeLabel)
+        timeLabel.setAnchors(top: topAnchor, leading: leadingAnchor, trailing: trailingAnchor, insets: defaultInsets)
+        progress.setAnchors(top: timeLabel.bottomAnchor, leading: leadingAnchor, trailing: trailingAnchor, insets: defaultInsets)
         progress.layoutView()
-        recordButton.setAnchors()
-            .top(progress.bottomAnchor)
+        recordButton.setAnchors(top: progress.bottomAnchor, insets: defaultInsets)
             .centerX(centerXAnchor)
             .width(50)
             .height(50)
-        player.placeBelow(view: recordButton)
+        player.setAnchors(top: recordButton.bottomAnchor, leading: leadingAnchor, trailing: trailingAnchor, bottom: bottomAnchor, insets: defaultInsets)
         player.layoutView()
-        player.bottom(bottomAnchor,inset: Statics.defaultInset)
         player.isHidden = true
         updateTime(time: 0.0)
     }
@@ -173,12 +171,9 @@ class AudioProgressView : UIView{
     }
     
     func layoutView(){
-        lowLabel.placeAfter(anchor: leadingAnchor)
-        loudLabel.placeBefore(anchor: trailingAnchor)
-        progress.setAnchors()
-            .leading(lowLabel.trailingAnchor,inset: defaultInset,priority: highPriority)
-            .trailing(loudLabel.leadingAnchor, inset: defaultInset,priority: highPriority)
-            .centerY(centerYAnchor,priority: highPriority)
+        lowLabel.setAnchors(top: topAnchor, leading: leadingAnchor, bottom: bottomAnchor, insets: defaultInsets)
+        loudLabel.setAnchors(top: topAnchor, trailing: trailingAnchor, bottom: bottomAnchor, insets: defaultInsets)
+        progress.setAnchors(top: topAnchor, leading: lowLabel.trailingAnchor, trailing: loudLabel.leadingAnchor, bottom: bottomAnchor, insets: defaultInsets)
     }
     
     func setProgress(_ value: Float){

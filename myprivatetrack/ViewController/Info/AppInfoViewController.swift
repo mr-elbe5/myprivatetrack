@@ -27,7 +27,7 @@ class AppInfoViewController: ScrollViewController {
         super.loadView()
         scrollView.setupVertical()
         scrollView.addSubview(stackView)
-        stackView.fillSuperview(insets: UIEdgeInsets(top: defaultInset, left: .zero, bottom: defaultInset, right: .zero))
+        stackView.fillView(view: scrollView, insets: UIEdgeInsets(top: defaultInset, left: .zero, bottom: defaultInset, right: .zero))
         stackView.setupVertical()
         stackView.addArrangedSubview(privacyHeader)
         stackView.addArrangedSubview(privacyInfoText1)

@@ -21,18 +21,12 @@ open class ScrollViewController: UIViewController {
         setupHeaderView()
         if let headerView = headerView{
             view.addSubview(headerView)
-            headerView.setAnchors()
-                .leading(guide.leadingAnchor, inset: .zero)
-                .top(guide.topAnchor,inset: .zero)
-                .trailing(guide.trailingAnchor,inset: .zero)
+            headerView.setAnchors(top: guide.topAnchor, leading: guide.leadingAnchor, trailing: guide.trailingAnchor, insets: .zero)
         }
         self.view.addSubview(scrollView)
         scrollView.backgroundColor = .systemBackground
-        scrollView.setAnchors()
-            .leading(guide.leadingAnchor, inset: .zero)
+        scrollView.setAnchors(leading: guide.leadingAnchor, trailing: guide.trailingAnchor, bottom: guide.bottomAnchor, insets: .zero)
             .top(headerView?.bottomAnchor ?? guide.topAnchor, inset: scrollViewTopPadding)
-            .trailing(guide.trailingAnchor,inset: .zero)
-            .bottom(guide.bottomAnchor, inset: .zero)
     }
     
     open func setupHeaderView(){

@@ -34,7 +34,7 @@ class TextEditArea : UITextView{
         super.init(frame: frame, textContainer: textContainer)
         placeholderTextView.font = UIFont.preferredFont(forTextStyle: .body)
         addSubview(placeholderTextView)
-        placeholderTextView.fillSuperview()
+        placeholderTextView.fillView(view: self)
     }
     
     required init?(coder aDecoder: NSCoder) {

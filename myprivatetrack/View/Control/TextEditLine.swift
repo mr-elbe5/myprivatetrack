@@ -26,8 +26,8 @@ class TextEditLine : UIView, UITextFieldDelegate{
         textField.isSecureTextEntry = secure
         textField.text = text
         addSubview(textField)
-        label.placeAfter(anchor: leadingAnchor)
-        textField.placeBefore(anchor: trailingAnchor)
+        label.setAnchors(top: topAnchor, leading: leadingAnchor, bottom: bottomAnchor, insets: defaultInsets)
+        textField.setAnchors(top: topAnchor, trailing: trailingAnchor, bottom: bottomAnchor, insets: defaultInsets)
         textField.leading(centerXAnchor)
     }
     

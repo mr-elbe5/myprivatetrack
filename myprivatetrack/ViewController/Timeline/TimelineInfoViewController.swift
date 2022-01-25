@@ -10,7 +10,7 @@ import UIKit
 
 class TimelineInfoViewController: InfoViewController {
     
-    let headerText = InfoHeader(text: "timelineInfoHeader".localize(), paddingTop: 2 * Statics.defaultInset)
+    let headerText = InfoHeader(text: "timelineInfoHeader".localize(), paddingTop: 2 * Insets.defaultInset)
     let topText = InfoText(text: "timelineTopInfo".localize())
     let locationText = InfoText(text: "timelineLocationInfo".localize())
     let iconEmptyInfo = IconInfoText(image: "blank-entry", text: "timelineEmptyIconInfo".localize())
@@ -18,11 +18,11 @@ class TimelineInfoViewController: InfoViewController {
     let iconImageInfo = IconInfoText(image: "photo-entry", text: "timelineImageIconInfo".localize())
     let iconAudioInfo = IconInfoText(image: "audio-entry", text: "timelineAudioIconInfo".localize())
     let iconVideoInfo = IconInfoText(image: "video-entry", text: "timelineVideoIconInfo".localize())
-    let entryHeaderText = InfoHeader(text: "timelineEntryInfoHeader".localize(), paddingTop: 2 * Statics.defaultInset)
+    let entryHeaderText = InfoHeader(text: "timelineEntryInfoHeader".localize(), paddingTop: 2 * Insets.defaultInset)
     let mapLinkText = InfoText(text: "timelineEntryMapLinkInfo".localize())
     let detailInfo = IconInfoText(icon: "magnifyingglass", text: "timelineDetailIconInfo".localize())
     let shareInfo = IconInfoText(icon: "square.and.arrow.up", text: "timelineShareIconInfo".localize())
-    let editHeaderText = InfoHeader(text: "timelineInfoEditHeader".localize(), paddingTop: 2 * Statics.defaultInset)
+    let editHeaderText = InfoHeader(text: "timelineInfoEditHeader".localize(), paddingTop: 2 * Insets.defaultInset)
     let editText = InfoText(text: "timelineEditInfo".localize())
     let iconEditInfo = IconInfoText(icon: "pencil.circle", text: "timelineEditIconInfo".localize())
     let iconDeleteInfo = IconInfoText(icon: "xmark.circle", text: "timelineDeleteIconInfo".localize())

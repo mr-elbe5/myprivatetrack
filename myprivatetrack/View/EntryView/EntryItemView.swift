@@ -22,7 +22,7 @@ class EntryItemDetailView : UIView{
 
 class EntryItemEditView : UIView{
     
-    var deleteInsets = UIEdgeInsets(top: 0, left: Statics.defaultInset, bottom: Statics.defaultInset/2, right: Statics.defaultInset)
+    var deleteInsets = UIEdgeInsets(top: Insets.defaultInset/2, left: Insets.defaultInset, bottom: Insets.defaultInset, right: Insets.defaultInset)
     
     var delegate : DeleteEntryActionDelegate? = nil
     
@@ -37,9 +37,7 @@ class EntryItemEditView : UIView{
         deleteButton.tintColor = UIColor.systemRed
         deleteButton.addTarget(self, action: #selector(deleteItem), for: .touchDown)
         addSubview(deleteButton)
-        deleteButton.setAnchors()
-            .top(topAnchor, inset: defaultInset / 2)
-            .trailing(trailingAnchor, inset: Statics.defaultInset)
+        deleteButton.setAnchors(top: topAnchor, trailing: trailingAnchor, insets: flatInsets)
         return deleteButton
     }
     

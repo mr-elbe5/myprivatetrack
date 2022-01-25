@@ -25,8 +25,7 @@ class TextItemView : EntryItemView{
         addSubview(textView)
         self.textData = data
         textView.text = data.text
-        textView.placeBelow(anchor: topAnchor)
-        textView.connectBottom(view: self)
+        textView.setAnchors(top: topAnchor, leading: leadingAnchor, trailing: trailingAnchor, bottom: bottomAnchor, insets: defaultInsets)
     }
     
 }
@@ -59,8 +58,7 @@ class TextItemEditView : EntryItemEditView, UITextViewDelegate{
         textView.delegate = self
         addSubview(textView)
         textView.setKeyboardToolbar()
-        textView.placeBelow(anchor: deleteButton.bottomAnchor, insets: deleteInsets)
-        textView.connectBottom(view: self)
+        textView.setAnchors(top: deleteButton.bottomAnchor, leading: leadingAnchor, trailing: trailingAnchor, bottom: bottomAnchor, insets: deleteInsets)
     }
     
     override func setFocus(){
