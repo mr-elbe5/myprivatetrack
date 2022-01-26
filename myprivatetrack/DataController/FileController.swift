@@ -244,6 +244,7 @@ class FileController {
         }
     }
     
+    @discardableResult
     static func deleteFile(url: URL) -> Bool{
         do{
             try FileManager.default.removeItem(at: url)

@@ -21,13 +21,13 @@ class EditEntryViewController: EditViewController, PhotoCaptureDelegate, VideoCa
     var entry : EntryData!
     
     var saveLocationSwitch = SwitchView()
-    var addTextButton = IconButton(image: "text-entry")
-    var addPhotoButton = IconButton(image: "photo-entry")
-    var addAudioButton = IconButton(image: "audio-entry")
-    let addVideoButton = IconButton(image: "video-entry")
+    var addTextButton = IconButton(icon: "text.alignleft")
+    var addPhotoButton = IconButton(icon: "camera")
+    var addAudioButton = IconButton(icon: "mic")
+    let addVideoButton = IconButton(icon: "video")
+    let addMapButton = IconButton(icon: "map")
     
     let mapItemPos = 1
-    var addMapSectionButton = TextButton(text: "addMapSection".localize())
     var mapView : MapItemEditView? = nil
     
     override func loadView() {
@@ -38,17 +38,6 @@ class EditEntryViewController: EditViewController, PhotoCaptureDelegate, VideoCa
         saveLocationSwitch.delegate = self
         
         stackView.addArrangedSubview(saveLocationSwitch)
-        addMapSectionButton.addTarget(self, action: #selector(addMapSection), for: .touchDown)
-        if entry.saveLocation{
-            /*if entry.hasMapSection{
-                mapView = MapItemEditView.fromData(data: entry)
-                stackView.insertArrangedSubview(mapView!, at:mapItemPos)
-            }
-            else if entry.isNew{
-                stackView.insertArrangedSubview(addMapSectionButton, at: mapItemPos)
-            }
-             */
-        }
         for item in entry.items{
             var editItem : EntryItemEditView? = nil
             switch item.type{
@@ -111,6 +100,8 @@ class EditEntryViewController: EditViewController, PhotoCaptureDelegate, VideoCa
         leftStackView.addArrangedSubview(addAudioButton)
         addVideoButton.addTarget(self, action: #selector(addVideo), for: .touchDown)
         leftStackView.addArrangedSubview(addVideoButton)
+        addMapButton.addTarget(self, action: #selector(addMap), for: .touchDown)
+        leftStackView.addArrangedSubview(addMapButton)
         let infoButton = IconButton(icon: "info.circle")
         infoButton.addTarget(self, action: #selector(showInfo), for: .touchDown)
         rightStackView.addArrangedSubview(infoButton)
@@ -122,39 +113,6 @@ class EditEntryViewController: EditViewController, PhotoCaptureDelegate, VideoCa
         entry.saveLocation = isOn
         Settings.shared.saveLocation = isOn
         Settings.shared.save()
-        if isOn{
-            /*if entry.hasMapSection{
-                mapView = MapItemEditView.fromData(data: entry)
-                stackView.insertArrangedSubview(mapView!, at:mapItemPos)
-            }
-            else{
-                stackView.insertArrangedSubview(addMapSectionButton, at: mapItemPos)
-            }*/
-        }
-        else{
-            stackView.removeArrangedSubview(addMapSectionButton)
-            stackView.removeSubview(addMapSectionButton)
-            if mapView != nil{
-                stackView.removeArrangedSubview(mapView!)
-                stackView.removeSubview(mapView!)
-                mapView = nil
-            }
-            entry.deleteMapSection()
-            entry.hasMapSection = false
-        }
-    }
-    
-    @objc func addMapSection(){
-        if entry.saveLocation && CLLocationManager.authorized{
-            let mapCaptureController = MapCaptureViewController()
-            mapCaptureController.data = entry
-            mapCaptureController.delegate = self
-            mapCaptureController.modalPresentationStyle = .fullScreen
-            self.present(mapCaptureController, animated: true)
-        }
-        else{
-            showError("locationNotAuthorized")
-        }
     }
     
     @objc func addText(){
@@ -230,7 +188,16 @@ class EditEntryViewController: EditViewController, PhotoCaptureDelegate, VideoCa
     }
     
     @objc func addMap(){
-        //todo
+        if entry.saveLocation && CLLocationManager.authorized{
+            let mapCaptureController = MapCaptureViewController()
+            mapCaptureController.data = entry
+            mapCaptureController.delegate = self
+            mapCaptureController.modalPresentationStyle = .fullScreen
+            self.present(mapCaptureController, animated: true)
+        }
+        else{
+            showError("locationNotAuthorized")
+        }
     }
     
     @objc func showInfo(){

@@ -27,7 +27,7 @@ class MapPhotoItemData: FileEntryItemData{
     
     override var fileName : String {
         get{
-            return "img_\(creationDate.fileDate()).jpg"
+            return "map_\(creationDate.fileDate()).jpg"
         }
     }
     

@@ -22,10 +22,9 @@ class CreateEntryView: UIView{
     var addPhotoButton = IconButton(icon: "camera")
     var addAudioButton = IconButton(icon: "mic")
     let addVideoButton = IconButton(icon: "video")
-    var addMapButton = IconButton(icon: "globe")
+    var addMapButton = IconButton(icon: "map")
     
     var rightStackView = UIStackView()
-    var saveLocationSwitch = SwitchIcon(offImage: UIImage(systemName: "mappin.slash")!, onImage: UIImage(systemName: "mappin")!, isOn: false)
     let saveButton = TextButton(text: "save".localize(),tintColor: .white, backgroundColor: .systemGray)
     
     
@@ -60,10 +59,6 @@ class CreateEntryView: UIView{
         addSubview(saveButton)
         saveButton.setAnchors(top: textView.bottomAnchor, trailing: textView.trailingAnchor, bottom: bottomAnchor, insets: flatInsets)
         enableSave(enable: false)
-        saveLocationSwitch.setOn(Settings.shared.saveLocation)
-        saveLocationSwitch.delegate = self
-        addSubview(saveLocationSwitch)
-        saveLocationSwitch.setAnchors(top: textView.bottomAnchor, trailing: saveButton.leadingAnchor, bottom: bottomAnchor, insets: flatInsets)
     }
     
     @objc func addPhotoEntry(){
@@ -96,10 +91,8 @@ class CreateEntryView: UIView{
     
     private func createEntry() -> EntryData{
         let entry = EntryData(isNew: true)
-        if saveLocationSwitch.isOn{
-            entry.location = LocationService.shared.getLocation()
-            entry.locationDescription = LocationService.shared.getLocationDescription()
-        }
+        entry.location = LocationService.shared.getLocation()
+        entry.locationDescription = LocationService.shared.getLocationDescription()
         if !textView.text.isEmpty{
             let entryItem = TextItemData()
             entryItem.text = textView.text
@@ -111,7 +104,6 @@ class CreateEntryView: UIView{
     func reset(){
         textView.setText("")
         textView.resignFirstResponder()
-        saveLocationSwitch.setOn(Settings.shared.saveLocation)
         enableSave(enable: false)
     }
     

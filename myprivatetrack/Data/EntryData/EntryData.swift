@@ -17,8 +17,8 @@ class EntryData: Identifiable, Codable{
         case location
         case locationDescription
         case saveLocation
-        case hasMapSection
-        case mapComment
+        case hasMapSection //deprecated
+        case mapComment //deprecated
         case items
     }
     
@@ -27,8 +27,6 @@ class EntryData: Identifiable, Codable{
     var location: Location? = nil
     var locationDescription: String = ""
     var saveLocation: Bool
-    var hasMapSection: Bool = false
-    var mapComment:String = ""
     var items = Array<EntryItem>()
     
     var isNew = false
@@ -54,38 +52,6 @@ class EntryData: Identifiable, Codable{
         items = []
     }
     
-    func hasMapSectionFile() -> Bool{
-        return hasMapSection && FileController.fileExists(url: mapSectionFileURL)
-    }
-    
-    func getMapSection() -> UIImage?{
-        if hasMapSection{
-            if let data = FileController.readFile(url: mapSectionFileURL){
-                return UIImage(data: data)
-            }
-        }
-        return nil
-    }
-    
-    func saveMapSection(uiImage: UIImage) -> Bool{
-        hasMapSection = false
-        let url = FileController.getURL(dirURL: FileController.privateURL,fileName: mapSectionFileName)
-        if FileController.fileExists(url: url){
-            _ = FileController.deleteFile(url: url)
-        }
-        if let data = uiImage.jpegData(compressionQuality: 0.8){
-            if FileController.saveFile(data: data, url: url){
-                hasMapSection = true
-                return true
-            }
-        }
-        return false
-    }
-    
-    func deleteMapSection(){
-        _ = FileController.deleteFile(url: mapSectionFileURL)
-    }
-    
     required init(from decoder: Decoder) throws {
         let values = try decoder.container(keyedBy: CodingKeys.self)
         id = try values.decode(UUID.self, forKey: .id)
@@ -94,16 +60,33 @@ class EntryData: Identifiable, Codable{
         if saveLocation{
             location = try values.decode(Location.self, forKey: .location)
             locationDescription = try values.decode(String.self, forKey: .locationDescription)
-            hasMapSection = try values.decode(Bool.self, forKey: .hasMapSection)
-            if hasMapSection{
-                do{ mapComment = try values.decode(String.self, forKey: .mapComment)} catch{}
-            }
         }else{
             location = nil
             locationDescription = ""
-            hasMapSection = false
         }
         items = try values.decode(Array<EntryItem>.self, forKey: .items)
+        let hasMapSection = try values.decodeIfPresent(Bool.self, forKey: .hasMapSection) ?? false
+        if hasMapSection{
+            let mapComment = try values.decodeIfPresent(String.self, forKey: .mapComment)
+            if createMapEntryFromSection(comment: mapComment){
+                
+            }
+        }
+    }
+    
+    private func createMapEntryFromSection(comment: String? = nil) -> Bool{
+        let oldFileUrl = FileController.getURL(dirURL: FileController.privateURL,fileName: id.uuidString + "_map.jpg")
+        if let data = FileController.readFile(url: oldFileUrl), let image = UIImage(data: data){
+            print("creating map item")
+            let mapItem = MapPhotoItemData()
+            mapItem.creationDate = creationDate
+            mapItem.saveImage(uiImage: image)
+            mapItem.title = comment ?? ""
+            FileController.deleteFile(url: oldFileUrl)
+            addItem(item: mapItem)
+            return true
+        }
+        return false
     }
     
     func encode(to encoder: Encoder) throws {
@@ -114,10 +97,6 @@ class EntryData: Identifiable, Codable{
         if saveLocation{
             try container.encode(location, forKey: .location)
             try container.encode(locationDescription, forKey: .locationDescription)
-            try container.encode(hasMapSection, forKey: .hasMapSection)
-            if hasMapSection{
-                try container.encode(mapComment, forKey: .mapComment)
-            }
         }
         try container.encode(items, forKey: .items)
     }
@@ -157,9 +136,6 @@ class EntryData: Identifiable, Codable{
     }
     
     func addActiveFileNames( to fileNames: inout Array<String>){
-        if hasMapSectionFile(){
-            fileNames.append(mapSectionFileName)
-        }
         for item in items{
             item.addActiveFileNames(to: &fileNames)
         }

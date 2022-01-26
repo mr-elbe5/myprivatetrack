@@ -99,12 +99,12 @@ class MapCaptureViewController: UIViewController, LocationServiceDelegate, MapVi
         mapView.takeScreenshot(){ result in
             switch result{
             case .success(let image):
-                if self.data.saveMapSection(uiImage: image){
-                    self.data.hasMapSection = true
-                    if let delegate = self.delegate{
-                        delegate.mapCaptured(data: self.data)
-                    }
-                }
+                let mapItem = MapPhotoItemData()
+                mapItem.creationDate = Date()
+                mapItem.saveImage(uiImage: image)
+                mapItem.title = ""
+                self.data.addItem(item: mapItem)
+                self.delegate?.mapCaptured(data: self.data)
                 Indicator.shared.hide()
                 self.dismiss(animated: true)
                 return
