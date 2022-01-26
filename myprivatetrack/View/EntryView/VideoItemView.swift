@@ -9,26 +9,26 @@ import Foundation
 import UIKit
 
 protocol VideoItemDelegate{
-    func viewVideoItem(data: VideoData)
-    func shareVideoItem(data: VideoData)
+    func viewVideoItem(data: VideoItemData)
+    func shareVideoItem(data: VideoItemData)
 }
 
 class VideoItemView : EntryItemView{
     
-    static func fromData(data : VideoData,delegate: VideoItemDelegate? = nil)  -> VideoItemView{
+    static func fromData(data : VideoItemData,delegate: VideoItemDelegate? = nil)  -> VideoItemView{
         let itemView = VideoItemView()
         itemView.delegate = delegate
         itemView.setupView(data: data)
         return itemView
     }
     
-    var videoData : VideoData? = nil
+    var videoData : VideoItemData? = nil
     
     var delegate : VideoItemDelegate? = nil
     
     var videoView = VideoPlayerView()
     
-    func setupView(data: VideoData){
+    func setupView(data: VideoItemData){
         addSubview(videoView)
         self.videoData = data
         videoView.url = data.fileURL
@@ -72,13 +72,13 @@ class VideoItemView : EntryItemView{
 
 class VideoItemEditView : EntryItemEditView, UITextViewDelegate{
     
-    static func fromData(data : VideoData)  -> VideoItemEditView{
+    static func fromData(data : VideoItemData)  -> VideoItemEditView{
         let editView = VideoItemEditView()
         editView.setupView(data: data)
         return editView
     }
     
-    var videoData : VideoData!
+    var videoData : VideoItemData!
     
     var videoView = VideoPlayerView()
     var titleView = TextEditArea()
@@ -89,7 +89,7 @@ class VideoItemEditView : EntryItemEditView, UITextViewDelegate{
         }
     }
     
-    private func setupView(data: VideoData){
+    private func setupView(data: VideoItemData){
         self.videoData = data
         videoView.url = data.fileURL
         titleView.setText(data.title)
@@ -98,7 +98,7 @@ class VideoItemEditView : EntryItemEditView, UITextViewDelegate{
         titleView.setDefaults(placeholder: "comment".localize())
         titleView.delegate = self
         addSubview(titleView)
-        titleView.setKeyboardToolbar()
+        titleView.setKeyboardToolbar(doneTitle: "done".localize())
         videoView.setAnchors(top: deleteButton.bottomAnchor, leading: leadingAnchor, trailing: trailingAnchor, insets: deleteInsets)
         videoView.setAspectRatioConstraint()
         titleView.setAnchors(top: videoView.bottomAnchor, leading: leadingAnchor, trailing: trailingAnchor, bottom: bottomAnchor, insets: defaultInsets)

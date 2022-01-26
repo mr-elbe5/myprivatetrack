@@ -11,13 +11,13 @@ protocol EntryCellActionDelegate{
     func editEntry(entry: EntryData)
     func deleteEntry(entry: EntryData)
     func viewEntry(entry: EntryData)
-    func viewPhotoItem(data: PhotoData)
-    func sharePhotoItem(data: PhotoData)
-    func viewVideoItem(data: VideoData)
-    func shareVideoItem(data: VideoData)
+    func viewPhotoItem(data: PhotoItemData)
+    func sharePhotoItem(data: PhotoItemData)
+    func viewVideoItem(data: VideoItemData)
+    func shareVideoItem(data: VideoItemData)
 }
 
-class TimelineEntryCell: UITableViewCell, PhotoItemDelegate, VideoItemDelegate{
+class TimelineEntryCell: UITableViewCell, PhotoItemDelegate, VideoItemDelegate, MapItemDelegate{
     
     var entry : EntryData? = nil {
         didSet {
@@ -69,13 +69,13 @@ class TimelineEntryCell: UITableViewCell, PhotoItemDelegate, VideoItemDelegate{
                     locationDescriptionLabel.setAnchors(top: lastView.bottomAnchor, leading: cellBody.leadingAnchor, trailing: cellBody.trailingAnchor, insets: defaultInsets)
                     lastView = locationDescriptionLabel
                 }
-                if entry!.hasMapSection{
+                /*if entry!.hasMapSection{
                     let mapView = MapItemView()
                     mapView.setupView(data: entry!)
                     cellBody.addSubview(mapView)
                     mapView.setAnchors(top: lastView.bottomAnchor, leading: cellBody.leadingAnchor, trailing: cellBody.trailingAnchor, insets: defaultInsets)
                     lastView = mapView
-                }
+                }*/
             }
             if isEditing{
                 let deleteButton = IconButton(icon: "xmark.circle")
@@ -100,7 +100,7 @@ class TimelineEntryCell: UITableViewCell, PhotoItemDelegate, VideoItemDelegate{
             for item in entry!.items{
                 switch item.type{
                 case .text:
-                    let itemView = TextItemView.fromData(data: item.data as! TextData)
+                    let itemView = TextItemView.fromData(data: item.data as! TextItemData)
                     cellBody.addSubview(itemView)
                     itemView.setAnchors(top: lastView.bottomAnchor, leading: cellBody.leadingAnchor, trailing: cellBody.trailingAnchor, insets: defaultInsets)
                     lastView = itemView
@@ -112,13 +112,19 @@ class TimelineEntryCell: UITableViewCell, PhotoItemDelegate, VideoItemDelegate{
                     lastView = itemView
                     break
                 case .photo:
-                    let itemView = PhotoItemView.fromData(data: item.data as! PhotoData, delegate: self)
+                    let itemView = PhotoItemView.fromData(data: item.data as! PhotoItemData, delegate: self)
                     cellBody.addSubview(itemView)
                     itemView.setAnchors(top: lastView.bottomAnchor, leading: cellBody.leadingAnchor, trailing: cellBody.trailingAnchor, insets: defaultInsets)
                     lastView = itemView
                     break
                 case .video:
-                    let itemView = VideoItemView.fromData(data: item.data as! VideoData, delegate: self)
+                    let itemView = VideoItemView.fromData(data: item.data as! VideoItemData, delegate: self)
+                    cellBody.addSubview(itemView)
+                    itemView.setAnchors(top: lastView.bottomAnchor, leading: cellBody.leadingAnchor, trailing: cellBody.trailingAnchor, insets: defaultInsets)
+                    lastView = itemView
+                    break
+                case .mapphoto:
+                    let itemView = MapItemView.fromData(data: item.data as! MapPhotoItemData, delegate: self)
                     cellBody.addSubview(itemView)
                     itemView.setAnchors(top: lastView.bottomAnchor, leading: cellBody.leadingAnchor, trailing: cellBody.trailingAnchor, insets: defaultInsets)
                     lastView = itemView
@@ -155,20 +161,28 @@ class TimelineEntryCell: UITableViewCell, PhotoItemDelegate, VideoItemDelegate{
         }
     }
     
-    func viewPhotoItem(data: PhotoData){
+    func viewPhotoItem(data: PhotoItemData){
         delegate?.viewPhotoItem(data: data)
     }
     
-    func sharePhotoItem(data: PhotoData){
+    func sharePhotoItem(data: PhotoItemData){
         delegate?.sharePhotoItem(data: data)
     }
     
-    func viewVideoItem(data: VideoData){
+    func viewVideoItem(data: VideoItemData){
         delegate?.viewVideoItem(data: data)
     }
     
-    func shareVideoItem(data: VideoData){
+    func shareVideoItem(data: VideoItemData){
         delegate?.shareVideoItem(data: data)
+    }
+    
+    func viewMapItem(data: MapPhotoItemData) {
+        //todo
+    }
+    
+    func shareMapItem(data: MapPhotoItemData) {
+        //todo
     }
     
 }

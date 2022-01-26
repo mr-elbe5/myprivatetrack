@@ -40,19 +40,20 @@ class EditEntryViewController: EditViewController, PhotoCaptureDelegate, VideoCa
         stackView.addArrangedSubview(saveLocationSwitch)
         addMapSectionButton.addTarget(self, action: #selector(addMapSection), for: .touchDown)
         if entry.saveLocation{
-            if entry.hasMapSection{
+            /*if entry.hasMapSection{
                 mapView = MapItemEditView.fromData(data: entry)
                 stackView.insertArrangedSubview(mapView!, at:mapItemPos)
             }
             else if entry.isNew{
                 stackView.insertArrangedSubview(addMapSectionButton, at: mapItemPos)
             }
+             */
         }
         for item in entry.items{
             var editItem : EntryItemEditView? = nil
             switch item.type{
             case .text:
-                editItem = TextItemEditView.fromData(data: item.data as! TextData)
+                editItem = TextItemEditView.fromData(data: item.data as! TextItemData)
                 editItem?.delegate = self
                 break
             case .audio:
@@ -60,11 +61,15 @@ class EditEntryViewController: EditViewController, PhotoCaptureDelegate, VideoCa
                 editItem?.delegate = self
                 break
             case .photo:
-                editItem = PhotoItemEditView.fromData(data: item.data as! PhotoData)
+                editItem = PhotoItemEditView.fromData(data: item.data as! PhotoItemData)
                 editItem?.delegate = self
                 break
             case .video:
-                editItem = VideoItemEditView.fromData(data: item.data as! VideoData)
+                editItem = VideoItemEditView.fromData(data: item.data as! VideoItemData)
+                editItem?.delegate = self
+                break
+            case .mapphoto:
+                editItem = MapItemEditView.fromData(data: item.data as! MapPhotoItemData)
                 editItem?.delegate = self
                 break
             }
@@ -118,13 +123,13 @@ class EditEntryViewController: EditViewController, PhotoCaptureDelegate, VideoCa
         Settings.shared.saveLocation = isOn
         Settings.shared.save()
         if isOn{
-            if entry.hasMapSection{
+            /*if entry.hasMapSection{
                 mapView = MapItemEditView.fromData(data: entry)
                 stackView.insertArrangedSubview(mapView!, at:mapItemPos)
             }
             else{
                 stackView.insertArrangedSubview(addMapSectionButton, at: mapItemPos)
-            }
+            }*/
         }
         else{
             stackView.removeArrangedSubview(addMapSectionButton)
@@ -153,7 +158,7 @@ class EditEntryViewController: EditViewController, PhotoCaptureDelegate, VideoCa
     }
     
     @objc func addText(){
-        let data = TextData()
+        let data = TextItemData()
         entry.addItem(item: data)
         let editView = TextItemEditView.fromData(data: data)
         insertItemView(editView)
@@ -164,7 +169,7 @@ class EditEntryViewController: EditViewController, PhotoCaptureDelegate, VideoCa
             switch result{
             case .success(()):
                 DispatchQueue.main.async {
-                    let data = PhotoData()
+                    let data = PhotoItemData()
                     let imageCaptureController = PhotoCaptureViewController()
                     imageCaptureController.data = data
                     imageCaptureController.delegate = self
@@ -207,7 +212,7 @@ class EditEntryViewController: EditViewController, PhotoCaptureDelegate, VideoCa
             switch result{
             case .success(()):
                 DispatchQueue.main.async {
-                    let data = VideoData()
+                    let data = VideoItemData()
                     let videoCaptureController = VideoCaptureViewController()
                     videoCaptureController.data = data
                     videoCaptureController.delegate = self
@@ -222,6 +227,10 @@ class EditEntryViewController: EditViewController, PhotoCaptureDelegate, VideoCa
                 return
             }
         }
+    }
+    
+    @objc func addMap(){
+        //todo
     }
     
     @objc func showInfo(){
@@ -242,7 +251,7 @@ class EditEntryViewController: EditViewController, PhotoCaptureDelegate, VideoCa
     
     // ImageCaptureDelegate
     
-    func photoCaptured(photo: PhotoData){
+    func photoCaptured(photo: PhotoItemData){
         entry.addItem(item: photo)
         let editView = PhotoItemEditView.fromData(data: photo)
         insertItemView(editView)
@@ -250,7 +259,7 @@ class EditEntryViewController: EditViewController, PhotoCaptureDelegate, VideoCa
     
     // VideoCaptureDelegate
     
-    func videoCaptured(data: VideoData){
+    func videoCaptured(data: VideoItemData){
         entry.addItem(item: data)
         let editView = VideoItemEditView.fromData(data: data)
         insertItemView(editView)
@@ -259,11 +268,14 @@ class EditEntryViewController: EditViewController, PhotoCaptureDelegate, VideoCa
     // MapCaptureDelegate
     
     func mapCaptured(data: EntryData){
+        //todo
+        /*
         stackView.removeArrangedSubview(addMapSectionButton)
         stackView.removeSubview(addMapSectionButton)
         mapView = MapItemEditView.fromData(data: entry)
         stackView.insertArrangedSubview(mapView!, at: mapItemPos)
         scrollView.setNeedsLayout()
+         */
     }
     
     // DeleteEntryActionDelegate

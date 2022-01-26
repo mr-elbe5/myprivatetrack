@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-class PhotoData : FileEntryItemData{
+class PhotoItemData : FileEntryItemData{
     
     enum PhotoEntryCodingKeys: String, CodingKey {
         case title

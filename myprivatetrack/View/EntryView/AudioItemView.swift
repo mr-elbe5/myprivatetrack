@@ -76,7 +76,7 @@ class AudioItemEditView : EntryItemEditView, UITextViewDelegate{
         titleView.setDefaults(placeholder: "comment".localize())
         titleView.delegate = self
         addSubview(titleView)
-        titleView.setKeyboardToolbar()
+        titleView.setKeyboardToolbar(doneTitle: "done".localize())
         audioView.setAnchors(top: deleteButton.bottomAnchor, leading: leadingAnchor, trailing: trailingAnchor, insets: deleteInsets)
         audioView.layoutView()
         titleView.setAnchors(top: audioView.bottomAnchor, leading: leadingAnchor, trailing: trailingAnchor, bottom: bottomAnchor, insets: defaultInsets)

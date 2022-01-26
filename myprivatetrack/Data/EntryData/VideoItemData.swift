@@ -7,7 +7,7 @@
 
 import Foundation
 
-class VideoData : FileEntryItemData{
+class VideoItemData : FileEntryItemData{
     
     enum VideoCodingKeys: String, CodingKey {
         case title

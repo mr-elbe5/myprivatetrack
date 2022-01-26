@@ -7,25 +7,37 @@
 
 import UIKit
 
-class TimelineViewController: TableViewController, SaveEntryDelegate, EntryCellActionDelegate{
 
+class TimelineViewController: UIViewController{
+    
     private static let CELL_IDENT = "entryCell"
     
     var firstAppearance = true
     
+    var headerView = EntriesHeaderView()
+    var tableView = UITableView()
+    var createEntryView = CreateEntryView()
+    var createEntryBottomConstraint : NSLayoutConstraint!
     var backgroundView = UIImageView(image: Settings.shared.backgroundImage)
     
-    var addEmptyButton = IconButton(image: "blank-entry")
-    var addTextButton = IconButton(image: "text-entry")
-    var addPhotoButton = IconButton(image: "photo-entry")
-    var addAudioButton = IconButton(image: "audio-entry")
-    let addVideoButton = IconButton(image: "video-entry")
-    let editButton = IconButton(icon: "pencil.circle")
-    
-    override func loadView(){
+    override open func loadView() {
         super.loadView()
+        view.backgroundColor = .systemGray5
+        let guide = view.safeAreaLayoutGuide
+        let spacer = UIView()
+        spacer.backgroundColor = Statics.tabColor
+        view.addSubview(spacer)
+        spacer.setAnchors(top: view.topAnchor, leading: view.leadingAnchor, trailing: view.trailingAnchor, insets: .zero)
+        spacer.bottom(guide.topAnchor)
+        headerView.setupView()
+        headerView.delegate = self
+        view.addSubview(headerView)
+        headerView.setAnchors(top: guide.topAnchor, leading: guide.leadingAnchor, trailing: guide.trailingAnchor, insets: defaultInsets)
+        view.addSubview(tableView)
+        tableView.setAnchors(top: headerView.bottomAnchor, leading: guide.leadingAnchor, trailing: guide.trailingAnchor, insets: defaultInsets)
+        tableView.delegate = self
+        tableView.dataSource = self
         tableView.backgroundColor = UIColor.clear
-        let backgroundView = UIImageView(image: Settings.shared.backgroundImage)
         backgroundView.contentMode = UIView.ContentMode.scaleAspectFill;
         tableView.backgroundView = backgroundView
         tableView.register(TimelineEntryCell.self, forCellReuseIdentifier: TimelineViewController.CELL_IDENT)
@@ -33,36 +45,14 @@ class TimelineViewController: TableViewController, SaveEntryDelegate, EntryCellA
         tableView.allowsSelectionDuringEditing = false
         tableView.separatorStyle = .none
         tableView.backgroundColor = .systemBackground
-    }
-    
-    override open func setupHeaderView(){
-        let headerView = UIView()
-        let leftStackView = UIStackView()
-        let rightStackView = UIStackView()
-        headerView.backgroundColor = UIColor.systemBackground
-        headerView.addSubview(leftStackView)
-        headerView.addSubview(rightStackView)
-        leftStackView.setupHorizontal(spacing: 2*defaultInset)
-        leftStackView.setAnchors(top: headerView.topAnchor, leading: headerView.leadingAnchor, bottom: headerView.bottomAnchor, insets: defaultInsets)
-        rightStackView.setupHorizontal(spacing: 2*defaultInset)
-        rightStackView.setAnchors(top: headerView.topAnchor, trailing: headerView.trailingAnchor, bottom: headerView.bottomAnchor, insets: defaultInsets)
-        
-        addEmptyButton.addTarget(self, action: #selector(addEmptyEntry), for: .touchDown)
-        leftStackView.addArrangedSubview(addEmptyButton)
-        addTextButton.addTarget(self, action: #selector(addTextEntry), for: .touchDown)
-        leftStackView.addArrangedSubview(addTextButton)
-        addPhotoButton.addTarget(self, action: #selector(addPhotoEntry), for: .touchDown)
-        leftStackView.addArrangedSubview(addPhotoButton)
-        addAudioButton.addTarget(self, action: #selector(addAudioEntry), for: .touchDown)
-        leftStackView.addArrangedSubview(addAudioButton)
-        addVideoButton.addTarget(self, action: #selector(addVideoEntry), for: .touchDown)
-        leftStackView.addArrangedSubview(addVideoButton)
-        editButton.addTarget(self, action: #selector(toggleEditMode), for: .touchDown)
-        rightStackView.addArrangedSubview(editButton)
-        let infoButton = IconButton(icon: "info.circle")
-        infoButton.addTarget(self, action: #selector(showInfo), for: .touchDown)
-        rightStackView.addArrangedSubview(infoButton)
-        self.headerView = headerView
+        createEntryView.setupView()
+        createEntryView.delegate = self
+        view.addSubview(createEntryView)
+        createEntryView.setAnchors(top: tableView.bottomAnchor, leading: guide.leadingAnchor, trailing: guide.trailingAnchor, insets: defaultInsets)
+        createEntryBottomConstraint = createEntryView.bottomAnchor.constraint(equalTo: guide.bottomAnchor, constant: -defaultInset)
+        createEntryBottomConstraint.isActive = true
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardDidShow), name:UIResponder.keyboardDidShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name:UIResponder.keyboardWillHideNotification, object: nil)
     }
     
     func setNeedsUpdate(){
@@ -70,9 +60,7 @@ class TimelineViewController: TableViewController, SaveEntryDelegate, EntryCellA
     }
     
     func updateBackground(){
-        let backgroundView = UIImageView(image: Settings.shared.backgroundImage)
-        backgroundView.contentMode = UIView.ContentMode.scaleAspectFill;
-        tableView.backgroundView = backgroundView
+        backgroundView.image = Settings.shared.backgroundImage
         tableView.setNeedsLayout()
     }
     
@@ -85,58 +73,117 @@ class TimelineViewController: TableViewController, SaveEntryDelegate, EntryCellA
         }
     }
     
-    // MainHeaderActionDelegate
-    
-    func openEntryController() -> EditEntryViewController{
-        let createEventViewController = EditEntryViewController()
-        let entry = EntryData(isNew: true)
-        entry.location = LocationService.shared.getLocation()
-        entry.locationDescription = LocationService.shared.getLocationDescription()
-        createEventViewController.entry = entry
-        createEventViewController.delegate = self
-        createEventViewController.modalPresentationStyle = .fullScreen
-        self.present(createEventViewController, animated: true)
-        return createEventViewController
+    @objc func keyboardDidShow(notification:NSNotification){
+        let tabHeight = MainTabController.instance.tabBar.bounds.height
+        let userInfo = notification.userInfo!
+        var keyboardFrame:CGRect = (userInfo[UIResponder.keyboardFrameEndUserInfoKey] as! NSValue).cgRectValue
+        keyboardFrame = self.view.convert(keyboardFrame, from: nil)
+        createEntryBottomConstraint.constant = -keyboardFrame.height + tabHeight - defaultInset
+        updateViewConstraints()
     }
     
-    @objc func addEmptyEntry(){
-        _ = openEntryController()
+    @objc func keyboardWillHide(notification:NSNotification){
+        createEntryBottomConstraint.constant = -defaultInset
+        updateViewConstraints()
     }
     
-    @objc func addTextEntry(){
-        openEntryController().addText()
+}
+
+extension TimelineViewController: UITableViewDelegate, UITableViewDataSource{
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return GlobalData.shared.days.count
     }
     
-    @objc func addPhotoEntry(){
-        openEntryController().addImage()
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let headerView = TimelineSectionHeader()
+        headerView.setupView(day: GlobalData.shared.days[section])
+        return headerView
     }
     
-    @objc func addAudioEntry(){
-        openEntryController().addAudio()
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 40
     }
     
-    @objc func addVideoEntry(){
-        openEntryController().addVideo()
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        let day = GlobalData.shared.days[section]
+        return day.entries.count
     }
     
-    @objc func toggleEditMode(){
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: TimelineViewController.CELL_IDENT, for: indexPath) as! TimelineEntryCell
+        let day = GlobalData.shared.days[indexPath.section]
+        let event = day.entries[indexPath.row]
+        cell.entry = event
+        cell.delegate = self
+        cell.updateCell(isEditing: tableView.isEditing)
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+    }
+    
+    func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
+        return .none
+    }
+    
+}
+
+extension TimelineViewController : EntriesHeaderDelegate{
+    
+    func toggleEditMode(){
         if !tableView.isEditing{
-            editButton.tintColor = .systemRed
+            headerView.editButton.tintColor = .systemRed
             tableView.setEditing(true, animated: true)
         }
         else{
-            editButton.tintColor = .systemBlue
+            headerView.editButton.tintColor = .systemBlue
             tableView.setEditing(false, animated: true)
         }
         tableView.reloadData()
     }
     
-    @objc func showInfo(){
+    func showInfo(){
         let infoController = TimelineInfoViewController()
         self.present(infoController, animated: true)
     }
+    
+}
 
-    // SaveEntryDelegate
+extension TimelineViewController : CreateEntryDelegate{
+    
+    func createEntry(entry: EntryData) {
+        saveEntry(entry: entry)
+    }
+    
+    func openCreateEntry(entry: EntryData, withItem: EntryItemType) {
+        switch withItem{
+        case .text:
+            openEntryController(entry: entry).addText()
+        case .photo:
+            openEntryController(entry: entry).addImage()
+        case .audio:
+            openEntryController(entry: entry).addAudio()
+        case .video:
+            openEntryController(entry: entry).addVideo()
+        case .mapphoto:
+            openEntryController(entry: entry).addMap()
+        }
+    }
+    
+    func openEntryController(entry: EntryData) -> EditEntryViewController{
+        let editEntryViewController = EditEntryViewController()
+        editEntryViewController.entry = entry
+        editEntryViewController.delegate = self
+        editEntryViewController.modalPresentationStyle = .fullScreen
+        self.present(editEntryViewController, animated: true)
+        return editEntryViewController
+    }
+    
+}
+
+extension TimelineViewController : SaveEntryDelegate{
     
     func saveEntry(entry: EntryData) {
         if entry.isNew {
@@ -157,6 +204,9 @@ class TimelineViewController: TableViewController, SaveEntryDelegate, EntryCellA
             mapController.setNeedsUpdate()
         }
     }
+}
+
+extension TimelineViewController : EntryCellActionDelegate{
     
     // EntryActionDelegate
     
@@ -182,14 +232,14 @@ class TimelineViewController: TableViewController, SaveEntryDelegate, EntryCellA
         self.present(entryController, animated: true)
     }
     
-    func viewPhotoItem(data: PhotoData) {
+    func viewPhotoItem(data: PhotoItemData) {
         let photoViewController = PhotoViewController()
         photoViewController.uiImage = data.getImage()
         photoViewController.modalPresentationStyle = .fullScreen
         self.present(photoViewController, animated: true)
     }
     
-    func sharePhotoItem(data: PhotoData) {
+    func sharePhotoItem(data: PhotoItemData) {
         let alertController = UIAlertController(title: title, message: "shareImage".localize(), preferredStyle: .alert)
         alertController.addAction(UIAlertAction(title: "imageLibrary".localize(), style: .default) { action in
             FileController.copyImageToLibrary(name: data.fileName, fromDir: FileController.privateURL){ result in
@@ -215,14 +265,14 @@ class TimelineViewController: TableViewController, SaveEntryDelegate, EntryCellA
         self.present(alertController, animated: true)
     }
     
-    func viewVideoItem(data: VideoData) {
+    func viewVideoItem(data: VideoItemData) {
         let videoViewController = VideoViewController()
         videoViewController.videoURL = data.fileURL
         videoViewController.modalPresentationStyle = .fullScreen
         self.present(videoViewController, animated: true)
     }
     
-    func shareVideoItem(data: VideoData) {
+    func shareVideoItem(data: VideoItemData) {
         let alertController = UIAlertController(title: title, message: "shareImage".localize(), preferredStyle: .alert)
         alertController.addAction(UIAlertAction(title: "imageLibrary".localize(), style: .default) { action in
             FileController.copyVideoToLibrary(name: data.fileName, fromDir: FileController.privateURL){ result in
@@ -249,45 +299,6 @@ class TimelineViewController: TableViewController, SaveEntryDelegate, EntryCellA
         self.present(alertController, animated: true)
     }
     
-    // table view callbacks
-    
-    func numberOfSections(in tableView: UITableView) -> Int {
-        return GlobalData.shared.days.count
-    }
-    
-    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let headerView = TimelineSectionHeader()
-        headerView.setupView(day: GlobalData.shared.days[section])
-        return headerView
-    }
-    
-    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 40
-    }
-    
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        let day = GlobalData.shared.days[section]
-        return day.entries.count
-    }
-    
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: TimelineViewController.CELL_IDENT, for: indexPath) as! TimelineEntryCell
-        let day = GlobalData.shared.days[indexPath.section]
-        let event = day.entries[indexPath.row]
-        cell.entry = event
-        cell.delegate = self
-        cell.updateCell(isEditing: tableView.isEditing)
-        return cell
-    }
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
-    }
-    
-    func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
-        return .none
-    }
-
 }
 
 

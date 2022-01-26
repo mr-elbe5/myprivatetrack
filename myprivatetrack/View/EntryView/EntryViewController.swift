@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-class EntryViewController: ModalScrollViewController, PhotoItemDelegate, VideoItemDelegate {
+class EntryViewController: ModalScrollViewController, PhotoItemDelegate, VideoItemDelegate, MapItemDelegate {
     
     var entry : EntryData!
     
@@ -34,16 +34,16 @@ class EntryViewController: ModalScrollViewController, PhotoItemDelegate, VideoIt
                 locationDescriptionLabel.textAlignment = .center
                 stackView.addArrangedSubview(locationDescriptionLabel)
             }
-            if entry!.hasMapSection{
+            /*if entry!.hasMapSection{
                 let mapView = MapItemView()
                 mapView.setupView(data: entry!)
                 stackView.addArrangedSubview(mapView)
-            }
+            }*/
         }
         for item in entry.items{
             switch item.type{
             case .text:
-                let itemView = TextItemView.fromData(data: item.data as! TextData)
+                let itemView = TextItemView.fromData(data: item.data as! TextItemData)
                 stackView.addArrangedSubview(itemView)
                 break
             case .audio:
@@ -51,11 +51,15 @@ class EntryViewController: ModalScrollViewController, PhotoItemDelegate, VideoIt
                 stackView.addArrangedSubview(itemView)
                 break
             case .photo:
-                let itemView = PhotoItemView.fromData(data: item.data as! PhotoData,delegate: self)
+                let itemView = PhotoItemView.fromData(data: item.data as! PhotoItemData,delegate: self)
                 stackView.addArrangedSubview(itemView)
                 break
             case .video:
-                let itemView = VideoItemView.fromData(data: item.data as! VideoData,delegate: self)
+                let itemView = VideoItemView.fromData(data: item.data as! VideoItemData,delegate: self)
+                stackView.addArrangedSubview(itemView)
+                break
+            case .mapphoto:
+                let itemView = MapItemView.fromData(data: item.data as! MapPhotoItemData,delegate: self)
                 stackView.addArrangedSubview(itemView)
                 break
             }
@@ -71,26 +75,34 @@ class EntryViewController: ModalScrollViewController, PhotoItemDelegate, VideoIt
         }
     }
     
-    func viewPhotoItem(data: PhotoData) {
+    func viewPhotoItem(data: PhotoItemData) {
         let imageViewController = PhotoViewController()
         imageViewController.uiImage = data.getImage()
         imageViewController.modalPresentationStyle = .fullScreen
         self.present(imageViewController, animated: true)
     }
     
-    func sharePhotoItem(data: PhotoData) {
+    func sharePhotoItem(data: PhotoItemData) {
         print("share")
     }
     
-    func viewVideoItem(data: VideoData) {
+    func viewVideoItem(data: VideoItemData) {
         let videoViewController = VideoViewController()
         videoViewController.videoURL = data.fileURL
         videoViewController.modalPresentationStyle = .fullScreen
         self.present(videoViewController, animated: true)
     }
     
-    func shareVideoItem(data: VideoData) {
+    func shareVideoItem(data: VideoItemData) {
         print("share")
+    }
+    
+    func viewMapItem(data: MapPhotoItemData) {
+        //todo
+    }
+    
+    func shareMapItem(data: MapPhotoItemData) {
+        //todo
     }
     
 }

@@ -16,6 +16,8 @@ enum MapStartSize: Double{
 
 struct Statics{
     
+    static var tabColor : UIColor = .systemGray6
+    
     static var backupDir : String = "backups"
     
     static var exportDir : String = "export"

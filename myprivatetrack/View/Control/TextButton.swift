@@ -10,11 +10,16 @@ import UIKit
 
 class TextButton : UIButton{
     
-    init(text: String){
+    init(text: String, tintColor: UIColor = .systemBlue, backgroundColor: UIColor? = nil){
         super.init(frame: .zero)
         setTitle(text, for: .normal)
-        setTitleColor(UIColor.systemBlue, for: .normal)
-        tintColor = UIColor.systemBlue
+        setTitleColor(tintColor, for: .normal)
+        self.tintColor = tintColor
+        if let bgcol = backgroundColor{
+            self.backgroundColor = bgcol
+            layer.cornerRadius = 5
+            layer.masksToBounds = true
+        }
     }
     
     required init?(coder: NSCoder) {

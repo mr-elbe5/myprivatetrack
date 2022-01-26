@@ -9,13 +9,13 @@ import Foundation
 import UIKit
 
 protocol PhotoItemDelegate{
-    func viewPhotoItem(data: PhotoData)
-    func sharePhotoItem(data: PhotoData)
+    func viewPhotoItem(data: PhotoItemData)
+    func sharePhotoItem(data: PhotoItemData)
 }
 
 class PhotoItemView : EntryItemView{
     
-    static func fromData(data : PhotoData,delegate : PhotoItemDelegate? = nil)  -> PhotoItemView{
+    static func fromData(data : PhotoItemData,delegate : PhotoItemDelegate? = nil)  -> PhotoItemView{
         let itemView = PhotoItemView()
         itemView.delegate = delegate
         itemView.setupView(data: data)
@@ -24,13 +24,13 @@ class PhotoItemView : EntryItemView{
     
     fileprivate var aspectRatioConstraint:NSLayoutConstraint? = nil
     
-    var photoData : PhotoData? = nil
+    var photoData : PhotoItemData? = nil
     
     var delegate : PhotoItemDelegate? = nil
     
     var imageView = UIImageView()
     
-    func setupView(data: PhotoData){
+    func setupView(data: PhotoItemData){
         imageView.setDefaults()
         imageView.setRoundedBorders()
         addSubview(imageView)
@@ -76,17 +76,17 @@ class PhotoItemView : EntryItemView{
 
 class PhotoItemDetailView : EntryItemDetailView{
     
-    var photoData : PhotoData? = nil
+    var photoData : PhotoItemData? = nil
     
     var imageView = UIImageView()
     
-    static func fromData(data : PhotoData)  -> PhotoItemDetailView{
+    static func fromData(data : PhotoItemData)  -> PhotoItemDetailView{
         let itemView = PhotoItemDetailView()
         itemView.setupView(data: data)
         return itemView
     }
     
-    func setupView(data: PhotoData){
+    func setupView(data: PhotoItemData){
         imageView.setDefaults()
         addSubview(imageView)
         self.photoData = data
@@ -98,7 +98,7 @@ class PhotoItemDetailView : EntryItemDetailView{
 
 class PhotoItemEditView : EntryItemEditView, UITextViewDelegate{
     
-    static func fromData(data : PhotoData)  -> PhotoItemEditView{
+    static func fromData(data : PhotoItemData)  -> PhotoItemEditView{
         let editView = PhotoItemEditView()
         editView.setupView(data: data)
         return editView
@@ -106,7 +106,7 @@ class PhotoItemEditView : EntryItemEditView, UITextViewDelegate{
     
     fileprivate var aspectRatioConstraint:NSLayoutConstraint? = nil
     
-    var photoData : PhotoData!
+    var photoData : PhotoItemData!
     
     override var data: EntryItemData{
         get{
@@ -117,7 +117,7 @@ class PhotoItemEditView : EntryItemEditView, UITextViewDelegate{
     var imageView = UIImageView()
     var titleView = TextEditArea()
     
-    private func setupView(data: PhotoData){
+    private func setupView(data: PhotoItemData){
         self.photoData = data
         imageView.image = data.getImage()
         titleView.setText(data.title)
@@ -128,7 +128,7 @@ class PhotoItemEditView : EntryItemEditView, UITextViewDelegate{
         titleView.setDefaults(placeholder: "comment".localize())
         titleView.delegate = self
         addSubview(titleView)
-        titleView.setKeyboardToolbar()
+        titleView.setKeyboardToolbar(doneTitle: "done".localize())
         imageView.setAnchors(top: deleteButton.bottomAnchor, leading: leadingAnchor, trailing: trailingAnchor, insets: deleteInsets)
         imageView.setAspectRatioConstraint()
         titleView.setAnchors(top: imageView.bottomAnchor, leading: leadingAnchor, trailing: trailingAnchor, bottom: bottomAnchor, insets: flatInsets)

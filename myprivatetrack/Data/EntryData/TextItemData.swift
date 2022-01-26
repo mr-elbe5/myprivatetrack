@@ -7,7 +7,7 @@
 
 import Foundation
 
-class TextData: EntryItemData{
+class TextItemData: EntryItemData{
     
     enum TextCodingKeys: String, CodingKey {
         case text

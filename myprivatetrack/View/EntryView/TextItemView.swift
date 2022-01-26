@@ -10,17 +10,17 @@ import UIKit
 
 class TextItemView : EntryItemView{
     
-    static func fromData(data : TextData)  -> TextItemView{
+    static func fromData(data : TextItemData)  -> TextItemView{
         let itemView = TextItemView()
         itemView.setupView(data: data)
         return itemView
     }
     
-    var textData : TextData? = nil
+    var textData : TextItemData? = nil
     var textView = UILabel()
     
     
-    func setupView(data: TextData){
+    func setupView(data: TextItemData){
         textView.numberOfLines = 0
         addSubview(textView)
         self.textData = data
@@ -32,13 +32,13 @@ class TextItemView : EntryItemView{
 
 class TextItemEditView : EntryItemEditView, UITextViewDelegate{
     
-    static func fromData(data : TextData)  -> TextItemEditView{
+    static func fromData(data : TextItemData)  -> TextItemEditView{
         let editView = TextItemEditView()
         editView.setupView(data: data, placeholder: "yourText".localize())
         return editView
     }
     
-    var textData : TextData!
+    var textData : TextItemData!
     
     override var data: EntryItemData{
         get{
@@ -48,7 +48,7 @@ class TextItemEditView : EntryItemEditView, UITextViewDelegate{
     
     var textView = TextEditArea()
     
-    private func setupView(data: TextData, placeholder: String){
+    private func setupView(data: TextItemData, placeholder: String){
         self.textData = data
         textView.setText(data.text)
         textView.placeholder = placeholder
@@ -57,7 +57,7 @@ class TextItemEditView : EntryItemEditView, UITextViewDelegate{
         textView.isScrollEnabled = false
         textView.delegate = self
         addSubview(textView)
-        textView.setKeyboardToolbar()
+        textView.setKeyboardToolbar(doneTitle: "done".localize())
         textView.setAnchors(top: deleteButton.bottomAnchor, leading: leadingAnchor, trailing: trailingAnchor, bottom: bottomAnchor, insets: deleteInsets)
     }
     
