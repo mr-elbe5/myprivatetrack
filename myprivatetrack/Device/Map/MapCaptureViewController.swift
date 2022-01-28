@@ -11,70 +11,45 @@ import CoreLocation
 import MapKit
 
 protocol MapCaptureDelegate{
-    func mapCaptured(data: EntryData)
+    func mapCaptured(data: MapPhotoItemData)
 }
 
-class MapCaptureViewController: UIViewController, LocationServiceDelegate, MapViewDelegate {
+class MapCaptureViewController: MapViewController, LocationServiceDelegate {
     
-    var data : EntryData!
+    var location : Location? = nil
+    var radius : CLLocationDistance = Settings.shared.mapStartSize.rawValue
+    var positionPin : MKPointAnnotation? = nil
     
-    var delegate: MapCaptureDelegate? = nil
+    var captureDelegate: MapCaptureDelegate? = nil
     
-    var mapView = MapView()
-    var bodyView = UIView()
-    var buttonView = UIView()
-    var mapTypeButton = IconButton(icon: "map", tintColor: .white)
     var captureButton = CaptureButton()
     
     override func loadView() {
+        self.modalPresentationStyle = .fullScreen
         super.loadView()
         LocationService.shared.checkRunning()
-        self.modalPresentationStyle = .fullScreen
-        bodyView.backgroundColor = .black
-        view.addSubview(bodyView)
-        bodyView.fillSafeAreaOf(view: view, insets: .zero)
-        let closeButton = IconButton(icon: "xmark.circle", tintColor: .white)
-        bodyView.addSubview(closeButton)
-        closeButton.addTarget(self, action: #selector(cancel), for: .touchDown)
-        closeButton.setAnchors(top: bodyView.topAnchor, trailing: bodyView.trailingAnchor, insets: defaultInsets)
-        bodyView.addSubview(mapView)
-        mapView.setupView()
         if let loc = LocationService.shared.getLocation(){
-            mapView.setLocation(location: loc)
+            setLocation(location: loc)
         }
-        mapView.setAnchors(top: closeButton.bottomAnchor, leading: bodyView.leadingAnchor, trailing: bodyView.trailingAnchor, insets: defaultInsets)
-        mapView.delegate = self
-        buttonView.backgroundColor = .black
-        bodyView.addSubview(buttonView)
-        buttonView.setAnchors(top: mapView.bottomAnchor, leading: bodyView.leadingAnchor, trailing: bodyView.trailingAnchor, bottom: bodyView.bottomAnchor, insets: defaultInsets)
-        addButtons()
-    }
-    
-    func addButtons(){
-        
         captureButton.addTarget(self, action: #selector(save), for: .touchDown)
-        mapView.addSubview(captureButton)
+        mkMapView.addSubview(captureButton)
         captureButton.isEnabled = false
-        captureButton.setAnchors(bottom: buttonView.topAnchor, insets: defaultInsets)
-            .centerX(mapView.centerXAnchor)
+        captureButton.setAnchors(bottom: mkMapView.bottomAnchor, insets: defaultInsets)
+            .centerX(mkMapView.centerXAnchor)
             .width(50)
             .height(50)
-        
-        mapTypeButton.addTarget(self, action: #selector(toggleMapType), for: .touchDown)
-        buttonView.addSubview(mapTypeButton)
-        mapTypeButton.isEnabled = false
-        mapTypeButton.setAnchors(top: buttonView.topAnchor, bottom: buttonView.bottomAnchor, insets: defaultInsets)
-            .centerX(buttonView.centerXAnchor)
-        
     }
     
-    func didFinishLoading() {
-        captureButton.isEnabled = true
-        mapTypeButton.isEnabled = true
+    override func fillHeaderView(){
+        super.fillHeaderView()
+        let closeButton = IconButton(icon: "xmark.circle", tintColor: .white)
+        closeButton.addTarget(self, action: #selector(cancel), for: .touchDown)
+        rightStackView.addArrangedSubview(closeButton)
     }
     
     override func viewDidAppear(_ animated: Bool) {
         LocationService.shared.delegate = self
+        captureButton.isEnabled = true
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -82,29 +57,19 @@ class MapCaptureViewController: UIViewController, LocationServiceDelegate, MapVi
     }
     
     func locationDidChange(location: Location){
-        mapView.setLocation(location: location)
-    }
-    
-    @objc func toggleMapType(){
-        mapView.toggleMapType()
-        if mapView.mapType == .satellite {
-            mapTypeButton.setImage(UIImage(systemName: "map"), for: .normal)
-        }else{
-            mapTypeButton.setImage(UIImage(systemName: "map.fill"), for: .normal)
-        }
+        setLocation(location: location)
     }
     
     @objc func save(){
         Indicator.shared.show()
-        mapView.takeScreenshot(){ result in
+        takeScreenshot(){ result in
             switch result{
             case .success(let image):
                 let mapItem = MapPhotoItemData()
                 mapItem.creationDate = Date()
                 mapItem.saveImage(uiImage: image)
                 mapItem.title = ""
-                self.data.addItem(item: mapItem)
-                self.delegate?.mapCaptured(data: self.data)
+                self.captureDelegate?.mapCaptured(data: mapItem)
                 Indicator.shared.hide()
                 self.dismiss(animated: true)
                 return
@@ -117,6 +82,100 @@ class MapCaptureViewController: UIViewController, LocationServiceDelegate, MapVi
     
     @objc func cancel(){
         self.dismiss(animated: true)
+    }
+    
+    func setLocation(location : Location){
+        if self.location == nil{
+            self.location = location
+            mkMapView.centerToLocation(location, regionRadius: radius)
+        }
+        self.location = location
+        if let pin = positionPin{
+            pin.coordinate = location.coordinate
+        }
+            
+    }
+    
+    func mapView(_ mapView: MKMapView,viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+      let identifier = "userPosition"
+      var view: MKPinAnnotationView
+      if let dequeuedView = mapView.dequeueReusableAnnotationView(
+        withIdentifier: identifier) as? MKPinAnnotationView {
+        dequeuedView.annotation = annotation
+        view = dequeuedView
+      } else {
+        view = MKPinAnnotationView(annotation: annotation, reuseIdentifier: identifier)
+        view.canShowCallout = true
+        view.calloutOffset = CGPoint(x: -5, y: 5)
+        view.rightCalloutAccessoryView = UIButton(type: .detailDisclosure)
+      }
+      return view
+    }
+    
+    func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView){
+        
+    }
+    
+    func mapView(_ mapView: MKMapView, didDeselect view: MKAnnotationView){
+        
+    }
+    
+    @objc override func toggleMapStyle() {
+        switch mapType{
+        case .apple:
+            mapType = .satellite
+        default:
+            mapType = .apple
+        }
+        setupMapStyle()
+    }
+    
+    override func assertMapPins() {
+        if positionPin == nil{
+            positionPin = MKPointAnnotation()
+            positionPin!.title = "yourPosition".localize()
+            positionPin!.coordinate = mkMapView.centerCoordinate
+            mkMapView.addAnnotation(positionPin!)
+        }
+        
+    }
+    
+    func takeScreenshot(callback: @escaping (Result<UIImage, MapError>) -> Void){
+        let options = MKMapSnapshotter.Options()
+        options.camera = self.mkMapView.camera
+        options.region = self.mkMapView.region
+        options.mapType = self.mkMapView.mapType
+        let snapshotter = MKMapSnapshotter(options: options)
+        snapshotter.start { snapshot, error in
+            if error != nil {
+                print("Unable to create a map snapshot.")
+                callback(.failure(.snapshot))
+            } else if let snapshot = snapshot, let coord = self.location?.coordinate {
+                let pos = snapshot.point(for: coord)
+                UIGraphicsBeginImageContextWithOptions(snapshot.image.size, true, snapshot.image.scale)
+                snapshot.image.draw(at: CGPoint.zero)
+                if let pin = self.positionPin {
+                    self.drawPin(point: pos, annotation: pin)
+                }
+                if let compositeImage = UIGraphicsGetImageFromCurrentImageContext(){
+                    callback(.success(compositeImage))
+                }
+                else{
+                    callback(.failure(.snapshot))
+                }
+            }
+        }
+    }
+    
+    private func drawPin(point: CGPoint, annotation: MKAnnotation) {
+        let annotationView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: "snapshotUserPosition")
+        annotationView.contentMode = .scaleAspectFit
+        annotationView.bounds = CGRect(x: 0, y: 0, width: 20, height: 20)
+        annotationView.drawHierarchy(in: CGRect(
+            x: point.x - annotationView.bounds.size.width / 2.0,
+            y: point.y - annotationView.bounds.size.height,
+            width: annotationView.bounds.width,
+            height: annotationView.bounds.height), afterScreenUpdates: true)
     }
     
 }

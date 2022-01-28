@@ -190,8 +190,7 @@ class EditEntryViewController: EditViewController, PhotoCaptureDelegate, VideoCa
     @objc func addMap(){
         if entry.saveLocation && CLLocationManager.authorized{
             let mapCaptureController = MapCaptureViewController()
-            mapCaptureController.data = entry
-            mapCaptureController.delegate = self
+            mapCaptureController.captureDelegate = self
             mapCaptureController.modalPresentationStyle = .fullScreen
             self.present(mapCaptureController, animated: true)
         }
@@ -234,15 +233,10 @@ class EditEntryViewController: EditViewController, PhotoCaptureDelegate, VideoCa
     
     // MapCaptureDelegate
     
-    func mapCaptured(data: EntryData){
-        //todo
-        /*
-        stackView.removeArrangedSubview(addMapSectionButton)
-        stackView.removeSubview(addMapSectionButton)
-        mapView = MapItemEditView.fromData(data: entry)
-        stackView.insertArrangedSubview(mapView!, at: mapItemPos)
-        scrollView.setNeedsLayout()
-         */
+    func mapCaptured(data: MapPhotoItemData){
+        entry.addItem(item: data)
+        let editView = MapItemEditView.fromData(data: data)
+        insertItemView(editView)
     }
     
     // DeleteEntryActionDelegate
