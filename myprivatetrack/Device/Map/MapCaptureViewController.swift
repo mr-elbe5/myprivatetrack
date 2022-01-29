@@ -62,21 +62,17 @@ class MapCaptureViewController: MapViewController, LocationServiceDelegate {
     
     @objc func save(){
         Indicator.shared.show()
-        takeScreenshot(){ result in
-            switch result{
-            case .success(let image):
-                let mapItem = MapPhotoItemData()
-                mapItem.creationDate = Date()
-                mapItem.saveImage(uiImage: image)
-                mapItem.title = ""
-                self.captureDelegate?.mapCaptured(data: mapItem)
-                Indicator.shared.hide()
-                self.dismiss(animated: true)
-                return
-            case .failure:
-                print("error while taking screenshot")
-                return
-            }
+        if let image = takeScreenshot(){
+            let mapItem = MapPhotoItemData()
+            mapItem.creationDate = Date()
+            mapItem.saveImage(uiImage: image)
+            mapItem.title = ""
+            self.captureDelegate?.mapCaptured(data: mapItem)
+            Indicator.shared.hide()
+            self.dismiss(animated: true)
+        }
+        else{
+            print("error while taking screenshot")
         }
     }
     
@@ -120,16 +116,6 @@ class MapCaptureViewController: MapViewController, LocationServiceDelegate {
         
     }
     
-    @objc override func toggleMapStyle() {
-        switch mapType{
-        case .apple:
-            mapType = .satellite
-        default:
-            mapType = .apple
-        }
-        setupMapStyle()
-    }
-    
     override func assertMapPins() {
         if positionPin == nil{
             positionPin = MKPointAnnotation()
@@ -140,31 +126,17 @@ class MapCaptureViewController: MapViewController, LocationServiceDelegate {
         
     }
     
-    func takeScreenshot(callback: @escaping (Result<UIImage, MapError>) -> Void){
-        let options = MKMapSnapshotter.Options()
-        options.camera = self.mkMapView.camera
-        options.region = self.mkMapView.region
-        options.mapType = self.mkMapView.mapType
-        let snapshotter = MKMapSnapshotter(options: options)
-        snapshotter.start { snapshot, error in
-            if error != nil {
-                print("Unable to create a map snapshot.")
-                callback(.failure(.snapshot))
-            } else if let snapshot = snapshot, let coord = self.location?.coordinate {
-                let pos = snapshot.point(for: coord)
-                UIGraphicsBeginImageContextWithOptions(snapshot.image.size, true, snapshot.image.scale)
-                snapshot.image.draw(at: CGPoint.zero)
-                if let pin = self.positionPin {
-                    self.drawPin(point: pos, annotation: pin)
-                }
-                if let compositeImage = UIGraphicsGetImageFromCurrentImageContext(){
-                    callback(.success(compositeImage))
-                }
-                else{
-                    callback(.failure(.snapshot))
-                }
-            }
+    func takeScreenshot() -> UIImage?{
+        var image : UIImage? = nil
+        captureButton.isHidden = true
+        UIGraphicsBeginImageContext(mkMapView.bounds.size)
+        if let ctx = UIGraphicsGetCurrentContext(){
+            mkMapView.layer.render(in: ctx)
+            image = UIGraphicsGetImageFromCurrentImageContext()
         }
+        UIGraphicsEndImageContext()
+        captureButton.isHidden = false
+        return image
     }
     
     private func drawPin(point: CGPoint, annotation: MKAnnotation) {
