@@ -1,13 +1,13 @@
-//
-//  Codable.swift
-//
-//  Created by Michael Rönnau on 01.04.20.
-//  Copyright © 2020 Michael Rönnau. All rights reserved.
-//
+/*
+ SwiftyMaps
+ App for display and use of OSM maps without MapKit
+ Copyright: Michael Rönnau mr@elbe5.de
+ */
 
 import Foundation
 
 extension Decodable{
+    
     static func deserialize<T: Decodable>(encoded : String) -> T?{
         if let data = Data(base64Encoded: encoded){
             let decoder = JSONDecoder()

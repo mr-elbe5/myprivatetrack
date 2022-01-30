@@ -188,7 +188,7 @@ class EditEntryViewController: EditViewController, PhotoCaptureDelegate, VideoCa
     }
     
     @objc func addMap(){
-        if entry.saveLocation && CLLocationManager.authorized{
+        if entry.saveLocation && LocationService.shared.authorized{
             let mapCaptureController = MapCaptureViewController()
             mapCaptureController.captureDelegate = self
             mapCaptureController.modalPresentationStyle = .fullScreen

@@ -1,24 +1,20 @@
-//
-//  UITextView.swift
-//
-//  Created by Michael Rönnau on 23.06.20.
-//  Copyright © 2020 Michael Rönnau. All rights reserved.
-//
+/*
+ SwiftyMaps
+ App for display and use of OSM maps without MapKit
+ Copyright: Michael Rönnau mr@elbe5.de
+ */
 
 import Foundation
+
 import UIKit
 
-extension UITextView{
+extension UITextField{
     
-    @objc func setDefaults(){
+    func setDefaults(placeholder : String = ""){
         autocapitalizationType = .none
         autocorrectionType = .no
-        font = UIFont.preferredFont(forTextStyle: .body)
-        adjustsFontForContentSizeCategory = true
-        layer.borderColor = UIColor.lightGray.cgColor
-        layer.borderWidth = 0.5
-        layer.cornerRadius = 5
-        layer.masksToBounds = true
+        self.placeholder = placeholder
+        borderStyle = .roundedRect
     }
     
     func setKeyboardToolbar(doneTitle: String){
@@ -36,3 +32,4 @@ extension UITextView{
     }
     
 }
+

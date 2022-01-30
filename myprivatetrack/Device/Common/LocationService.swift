@@ -34,8 +34,19 @@ class LocationService : NSObject, CLLocationManagerDelegate{
     
     var authorized : Bool{
         get{
-            return CLLocationManager.authorized
+            switch CLLocationManager.authorizationStatus(){
+            case .authorizedAlways:
+                return true
+            case.authorizedWhenInUse:
+                return true
+            default:
+                return false
+            }
         }
+    }
+    
+    static var authorizedForTracking : Bool{
+        CLLocationManager.authorizationStatus() == .authorizedAlways
     }
     
     func getLocation() -> Location? {

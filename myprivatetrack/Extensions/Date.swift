@@ -1,9 +1,8 @@
-//
-//  Date.swift
-//
-//  Created by Michael Rönnau on 06.06.20.
-//  Copyright © 2020 Michael Rönnau. All rights reserved.
-//
+/*
+ SwiftyMaps
+ App for display and use of OSM maps without MapKit
+ Copyright: Michael Rönnau mr@elbe5.de
+ */
 
 import Foundation
 
@@ -30,12 +29,24 @@ extension Date{
         return DateFormats.dateTimeFormatter.string(from: self)
     }
     
+    func timestampString() -> String{
+        return DateFormats.timestampFormatter.string(from: self)
+    }
+    
     func fileDate() -> String{
         return DateFormats.fileDateFormatter.string(from: self)
     }
     
+    func shortFileDate() -> String{
+        return DateFormats.shortFileDateFormatter.string(from: self)
+    }
+    
     func timeString() -> String{
         return DateFormats.timeOnlyFormatter.string(from: self)
+    }
+    
+    func isoString() -> String{
+        return DateFormats.isoFormatter.string(from: self)
     }
     
 }
@@ -54,30 +65,31 @@ extension Date {
 class DateFormats{
     
     static var dateOnlyFormatter : DateFormatter{
-        get{
-            let dateFormatter = DateFormatter()
-            dateFormatter.dateStyle = .medium
-            dateFormatter.timeStyle = .none
-            return dateFormatter
-        }
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateStyle = .medium
+        dateFormatter.timeStyle = .none
+        return dateFormatter
     }
     
     static var timeOnlyFormatter : DateFormatter{
-        get{
-            let dateFormatter = DateFormatter()
-            dateFormatter.dateStyle = .none
-            dateFormatter.timeStyle = .short
-            return dateFormatter
-        }
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateStyle = .none
+        dateFormatter.timeStyle = .short
+        return dateFormatter
     }
     
     static var dateTimeFormatter : DateFormatter{
-        get{
-            let dateFormatter = DateFormatter()
-            dateFormatter.dateStyle = .medium
-            dateFormatter.timeStyle = .short
-            return dateFormatter
-        }
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateStyle = .medium
+        dateFormatter.timeStyle = .short
+        return dateFormatter
+    }
+    
+    static var timestampFormatter : DateFormatter{
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateStyle = .medium
+        dateFormatter.timeStyle = .medium
+        return dateFormatter
     }
     
     static var fileDateFormatter : DateFormatter{
@@ -87,6 +99,19 @@ class DateFormats{
             dateFormatter.dateFormat = "yyyyMMddHHmmss"
             return dateFormatter
         }
+    }
+    
+    static var shortFileDateFormatter : DateFormatter{
+        let dateFormatter = DateFormatter()
+        dateFormatter.timeZone = .none
+        dateFormatter.dateFormat = "yyyy-MM-dd_HH-mm"
+        return dateFormatter
+    }
+    
+    static var isoFormatter : ISO8601DateFormatter{
+        let dateFormatter = ISO8601DateFormatter()
+        dateFormatter.formatOptions = [.withFullDate, .withFullTime, .withDashSeparatorInDate, .withColonSeparatorInTime]
+        return dateFormatter
     }
     
 }

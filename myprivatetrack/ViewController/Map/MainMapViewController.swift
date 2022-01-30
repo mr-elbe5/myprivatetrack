@@ -34,7 +34,7 @@ class MainMapViewController: MapViewController, LocationServiceDelegate {
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        if CLLocationManager.authorized{
+        if LocationService.shared.authorized{
             if location == nil{
                 location = LocationService.shared.getLocation()
                 if let loc = location{

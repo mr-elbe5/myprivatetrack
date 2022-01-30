@@ -132,7 +132,9 @@ class MapCaptureViewController: MapViewController, LocationServiceDelegate {
         UIGraphicsBeginImageContext(mkMapView.bounds.size)
         if let ctx = UIGraphicsGetCurrentContext(){
             mkMapView.layer.render(in: ctx)
-            image = UIGraphicsGetImageFromCurrentImageContext()
+            if let cgimage = UIGraphicsGetImageFromCurrentImageContext()?.cgImage, let crimage = cgimage.cropping(to: mkMapView.bounds.centerSquare){
+                image = UIImage(cgImage: crimage)
+            }
         }
         UIGraphicsEndImageContext()
         captureButton.isHidden = false
