@@ -20,13 +20,17 @@ class MapCaptureViewController: MapViewController, LocationServiceDelegate {
     var radius : CLLocationDistance = 1000.0
     var positionPin : MKPointAnnotation? = nil
     
-    var captureDelegate: MapCaptureDelegate? = nil
+    var overlayView = OverlayView()
     
+    var captureDelegate: MapCaptureDelegate? = nil
     var captureButton = CaptureButton()
     
     override func loadView() {
         self.modalPresentationStyle = .fullScreen
         super.loadView()
+        overlayView.backgroundColor = .clear
+        view.addSubview(overlayView)
+        overlayView.fillView(view: view)
         LocationService.shared.checkRunning()
         if let loc = LocationService.shared.getLocation(){
             setLocation(location: loc)
@@ -58,6 +62,11 @@ class MapCaptureViewController: MapViewController, LocationServiceDelegate {
     
     func locationDidChange(location: Location){
         setLocation(location: location)
+    }
+    
+    override func viewWillTransition(to size: CGSize,with coordinator: UIViewControllerTransitionCoordinator){
+        super.viewWillTransition(to: size, with: coordinator)
+        overlayView.setNeedsDisplay()
     }
     
     @objc func save(){
@@ -150,6 +159,30 @@ class MapCaptureViewController: MapViewController, LocationServiceDelegate {
             y: point.y - annotationView.bounds.size.height,
             width: annotationView.bounds.width,
             height: annotationView.bounds.height), afterScreenUpdates: true)
+    }
+    
+}
+
+class OverlayView : UIView{
+    
+    override func point(inside point: CGPoint, with event: UIEvent?) -> Bool {
+        return false
+    }
+    
+    override func draw(_ rect: CGRect) {
+        let ctx = UIGraphicsGetCurrentContext()!
+        if bounds.width >= bounds.height{
+            let diff = bounds.width - bounds.height
+            ctx.addRect(CGRect(x: 0, y: 0, width: diff/2, height: bounds.height))
+            ctx.addRect(CGRect(x: bounds.width - diff/2, y: 0, width: diff/2, height: bounds.height))
+        }
+        else{
+            let diff = bounds.height - bounds.width
+            ctx.addRect(CGRect(x: 0, y: 0, width: bounds.width, height: diff/2))
+            ctx.addRect(CGRect(x: 0, y: bounds.height - diff/2, width: bounds.width, height: diff/2))
+        }
+        ctx.setFillColor(CGColor(red: 0, green: 0, blue: 0, alpha: 0.5))
+        ctx.fillPath()
     }
     
 }
