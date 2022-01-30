@@ -141,3 +141,9 @@
 "yes"="Yes";
 "yourPosition"="Your position";
 "yourText"="Your text...";
+
+"osmTemplate"="URL Template for OpenStreetMap Tiles:";
+"elbe5TileURL"="Use template for Elbe5.de";
+"osmTileURL"="Use template for OpenStreetMap.org";
+"elbe5LegalInfo"="Legal Info for tiles from Elbe5.de";
+"osmLegalInfo"="Legal Info for tiles from OpenStreetMap.org";

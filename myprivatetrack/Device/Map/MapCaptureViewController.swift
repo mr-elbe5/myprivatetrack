@@ -17,7 +17,7 @@ protocol MapCaptureDelegate{
 class MapCaptureViewController: MapViewController, LocationServiceDelegate {
     
     var location : Location? = nil
-    var radius : CLLocationDistance = Settings.shared.mapStartSize.rawValue
+    var radius : CLLocationDistance = 1000.0
     var positionPin : MKPointAnnotation? = nil
     
     var captureDelegate: MapCaptureDelegate? = nil

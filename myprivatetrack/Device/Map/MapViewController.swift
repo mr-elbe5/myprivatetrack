@@ -86,8 +86,7 @@ class MapViewController: UIViewController, MKMapViewDelegate {
             mkMapView.mapType = .standard
         case .osm:
             mkMapView.mapType = .standard
-            let template = "https://maps.elbe5.de/carto/{z}/{x}/{y}.png"
-            overlay = MKTileOverlay(urlTemplate: template)
+            overlay = MKTileOverlay(urlTemplate: Settings.osmUrl)
             overlay!.canReplaceMapContent = true
             mkMapView.addOverlay(overlay!)
         case .satellite:

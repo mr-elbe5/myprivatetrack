@@ -146,3 +146,9 @@
 "yes"="Ja";
 "yourPosition"="Deine Position";
 "yourText"="Dein Text...";
+
+"osmTemplate"="URL-Template für OpenStreetMap-Kacheln:";
+"elbe5TileURL"="Template für Elbe5.de benutzen";
+"osmTileURL"="Template für OpenStreetMap.org benutzen";
+"elbe5LegalInfo"="Regeln für das Laden von Elbe5.de";
+"osmLegalInfo"="Regeln für das Laden von OpenStreetMap.org";

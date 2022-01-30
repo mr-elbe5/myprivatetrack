@@ -123,7 +123,7 @@ class CreateEntryView: UIView{
 extension CreateEntryView : SwitchIconDelegate{
     
     func switchValueDidChange(icon: SwitchIcon) {
-        Settings.shared.saveLocation = icon.isOn
+        Settings.shared.showLocation = icon.isOn
         Settings.shared.save()
     }
     

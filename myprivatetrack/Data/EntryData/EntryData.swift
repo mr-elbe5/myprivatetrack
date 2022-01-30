@@ -48,7 +48,7 @@ class EntryData: Identifiable, Codable{
         id = UUID()
         creationDate = Date()
         location = nil
-        saveLocation = Settings.shared.saveLocation
+        saveLocation = Settings.shared.showLocation
         items = []
     }
     

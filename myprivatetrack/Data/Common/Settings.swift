@@ -11,6 +11,9 @@ import AVFoundation
 
 class Settings: Identifiable, Codable{
     
+    static var elbe5Url = "https://maps.elbe5.de/carto/{z}/{x}/{y}.png"
+    static var osmUrl = "https://tile.openstreetmap.org/{z}/{x}/{y}.png"
+    
     static var shared = Settings()
     
     static func load(){
@@ -18,40 +21,34 @@ class Settings: Identifiable, Codable{
     }
     
     enum CodingKeys: String, CodingKey {
-        case saveLocation
+        case osmTemplate
+        case mapType
+        case showLocation
         case flashMode
-        case mapStartSize
         case backgroundName
     }
     
-    var saveLocation = true
+    var osmTemplate : String = elbe5Url
+    var mapType : MapType = .apple
+    var showLocation = true
     var flashMode : AVCaptureDevice.FlashMode = .off
-    var mapStartSize : MapStartSize = .mid
     var backgroundName : String? = nil
-    
-    var mapStartSizeIndex : Int{
-        get{
-            switch mapStartSize{
-            case .small:
-                return 0
-            case .mid:
-                return 1
-            case .large:
-                return 2
-            }
-        }
-    }
     
     init(){
     }
     
     required init(from decoder: Decoder) throws {
         let values = try decoder.container(keyedBy: CodingKeys.self)
-        saveLocation = try values.decode(Bool.self, forKey: .saveLocation)
-        flashMode = AVCaptureDevice.FlashMode(rawValue: try values.decode(Int.self, forKey: .flashMode)) ?? .off
-        mapStartSize = MapStartSize(rawValue: try values.decode(Double.self, forKey: .mapStartSize)) ?? MapStartSize.mid
+        osmTemplate = try values.decodeIfPresent(String.self, forKey: .osmTemplate) ?? Settings.elbe5Url
+        if let mapTypeName = try values.decodeIfPresent(String.self, forKey: .mapType){
+            mapType = MapType(rawValue: mapTypeName) ?? .apple
+        }
+        showLocation = try values.decodeIfPresent(Bool.self, forKey: .showLocation) ?? true
+        if let flashModeIdx = try values.decodeIfPresent(Int.self, forKey: .flashMode){
+            flashMode = AVCaptureDevice.FlashMode(rawValue: flashModeIdx) ?? .off
+        }
         do{
-            backgroundName = try values.decode(String.self, forKey: .backgroundName)
+            backgroundName = try values.decodeIfPresent(String.self, forKey: .backgroundName)
         } catch{
             backgroundName = nil
         }
@@ -59,9 +56,10 @@ class Settings: Identifiable, Codable{
     
     func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
-        try container.encode(saveLocation, forKey: .saveLocation)
+        try container.encode(osmTemplate, forKey: .osmTemplate)
+        try container.encode(mapType.rawValue, forKey: .mapType)
+        try container.encode(showLocation, forKey: .showLocation)
         try container.encode(flashMode.rawValue, forKey: .flashMode)
-        try container.encode(Double(mapStartSize.rawValue), forKey: .mapStartSize)
         try container.encode(backgroundName, forKey: .backgroundName)
     }
     

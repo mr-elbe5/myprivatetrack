@@ -116,6 +116,7 @@
 		4ED21C5224FAAC6E00A6FEA3 /* MapCaptureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED21C4424FAAC6E00A6FEA3 /* MapCaptureViewController.swift */; };
 		4ED21C5324FAAC6E00A6FEA3 /* EntryAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED21C4524FAAC6E00A6FEA3 /* EntryAnnotation.swift */; };
 		4ED95E1C25022D120084648A /* ImageEntryItemData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED95E1B25022D120084648A /* ImageEntryItemData.swift */; };
+		4EDA9EE527A6A9ED003F06F3 /* LabeledText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EDA9EE427A6A9ED003F06F3 /* LabeledText.swift */; };
 		4EDB3BD5279FFE7700C3F361 /* Insets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EDB3BD4279FFE7700C3F361 /* Insets.swift */; };
 		4EFDFF4624952F54001EB7C3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4EFDFF4524952F54001EB7C3 /* Assets.xcassets */; };
 		4EFDFF4924952F54001EB7C3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4EFDFF4724952F54001EB7C3 /* LaunchScreen.storyboard */; };
@@ -234,6 +235,7 @@
 		4ED21C4424FAAC6E00A6FEA3 /* MapCaptureViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapCaptureViewController.swift; sourceTree = "<group>"; };
 		4ED21C4524FAAC6E00A6FEA3 /* EntryAnnotation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EntryAnnotation.swift; sourceTree = "<group>"; };
 		4ED95E1B25022D120084648A /* ImageEntryItemData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageEntryItemData.swift; sourceTree = "<group>"; };
+		4EDA9EE427A6A9ED003F06F3 /* LabeledText.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LabeledText.swift; sourceTree = "<group>"; };
 		4EDB3BD4279FFE7700C3F361 /* Insets.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Insets.swift; sourceTree = "<group>"; };
 		4EFDFF3424952F53001EB7C3 /* My private track.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "My private track.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4EFDFF4524952F54001EB7C3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -471,6 +473,7 @@
 		4ED21BA224FAA2B800A6FEA3 /* Control */ = {
 			isa = PBXGroup;
 			children = (
+				4EDA9EE427A6A9ED003F06F3 /* LabeledText.swift */,
 				4E497EB725066FC300E94CBD /* Indicator.swift */,
 				4EC869AD27A14E74000F0583 /* SwitchIcon.swift */,
 				4ED21BD524FAA39300A6FEA3 /* ButtonStackView.swift */,
@@ -689,6 +692,7 @@
 				4E3AA22127A695CF00ED14A2 /* CLLocation.swift in Sources */,
 				4ED21C2A24FAA47500A6FEA3 /* SettingsViewController.swift in Sources */,
 				4E3C5ACE24FCF2F300E11A35 /* FileError.swift in Sources */,
+				4EDA9EE527A6A9ED003F06F3 /* LabeledText.swift in Sources */,
 				4EC869AB27A14D7F000F0583 /* CreateEntryView.swift in Sources */,
 				4ED21C2D24FAA47500A6FEA3 /* BackupViewController.swift in Sources */,
 				4EFE4F60250A23CB003B2D1E /* AuthorizationError.swift in Sources */,
