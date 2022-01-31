@@ -28,7 +28,7 @@ class TextItemData: EntryItemData{
     
     required init(from decoder: Decoder) throws {
         let values = try decoder.container(keyedBy: TextCodingKeys.self)
-        text = try values.decode(String.self, forKey: .text)
+        text = try values.decodeIfPresent(String.self, forKey: .text) ?? ""
         try super.init(from: decoder)
     }
     

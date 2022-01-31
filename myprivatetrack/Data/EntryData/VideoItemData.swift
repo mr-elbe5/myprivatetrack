@@ -36,8 +36,8 @@ class VideoItemData : FileEntryItemData{
     
     required init(from decoder: Decoder) throws {
         let values = try decoder.container(keyedBy: VideoCodingKeys.self)
-        title = try values.decode(String.self, forKey: .title)
-        time = try values.decode(Double.self, forKey: .time)
+        title = try values.decodeIfPresent(String.self, forKey: .title) ?? ""
+        time = try values.decodeIfPresent(Double.self, forKey: .time) ?? 0.0
         try super.init(from: decoder)
     }
     

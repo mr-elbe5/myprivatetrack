@@ -16,7 +16,7 @@ class EntryData: Identifiable, Codable{
         case creationDate
         case location
         case locationDescription
-        case saveLocation
+        case showLocation
         case hasMapSection //deprecated
         case mapComment //deprecated
         case items
@@ -26,8 +26,8 @@ class EntryData: Identifiable, Codable{
     var creationDate: Date
     var location: Location? = nil
     var locationDescription: String = ""
-    var saveLocation: Bool
-    var items = Array<EntryItem>()
+    var showLocation: Bool
+    var items : Array<EntryItem>
     
     var isNew = false
     
@@ -48,53 +48,45 @@ class EntryData: Identifiable, Codable{
         id = UUID()
         creationDate = Date()
         location = nil
-        saveLocation = Settings.shared.showLocation
-        items = []
+        showLocation = Settings.shared.showLocation
+        items = Array<EntryItem>()
     }
     
     required init(from decoder: Decoder) throws {
         let values = try decoder.container(keyedBy: CodingKeys.self)
-        id = try values.decode(UUID.self, forKey: .id)
-        creationDate = try values.decode(Date.self, forKey: .creationDate)
-        saveLocation = try values.decode(Bool.self, forKey: .saveLocation)
-        if saveLocation{
-            location = try values.decode(Location.self, forKey: .location)
-            locationDescription = try values.decode(String.self, forKey: .locationDescription)
-        }else{
-            location = nil
-            locationDescription = ""
-        }
-        items = try values.decode(Array<EntryItem>.self, forKey: .items)
-        let hasMapSection = try values.decodeIfPresent(Bool.self, forKey: .hasMapSection) ?? false
-        if hasMapSection{
+        id = try values.decodeIfPresent(UUID.self, forKey: .id) ?? UUID()
+        creationDate = try values.decodeIfPresent(Date.self, forKey: .creationDate) ?? Date()
+        location = try values.decodeIfPresent(Location.self, forKey: .location)
+        locationDescription = try values.decodeIfPresent(String.self, forKey: .locationDescription) ?? ""
+        showLocation = try values.decodeIfPresent(Bool.self, forKey: .showLocation) ?? true
+        items = try values.decodeIfPresent(Array<EntryItem>.self, forKey: .items) ?? Array<EntryItem>()
+        //backward compatibility
+        if let hasMapSection = try values.decodeIfPresent(Bool.self, forKey: .hasMapSection), hasMapSection{
+            showLocation = true
             let mapComment = try values.decodeIfPresent(String.self, forKey: .mapComment)
-            if createMapEntryFromSection(comment: mapComment){
-                
-            }
+            createMapEntryFromSection(comment: mapComment)
         }
     }
     
-    private func createMapEntryFromSection(comment: String? = nil) -> Bool{
+    private func createMapEntryFromSection(comment: String? = nil){
         let oldFileUrl = FileController.getURL(dirURL: FileController.privateURL,fileName: id.uuidString + "_map.jpg")
         if let data = FileController.readFile(url: oldFileUrl), let image = UIImage(data: data){
-            print("creating map item")
-            let mapItem = MapPhotoItemData()
+            print("creating photo item from map")
+            let mapItem = PhotoItemData()
             mapItem.creationDate = creationDate
             mapItem.saveImage(uiImage: image)
             mapItem.title = comment ?? ""
             FileController.deleteFile(url: oldFileUrl)
             addItem(item: mapItem)
-            return true
         }
-        return false
     }
     
     func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encode(id, forKey: .id)
         try container.encode(creationDate, forKey: .creationDate)
-        try container.encode(saveLocation, forKey: .saveLocation)
-        if saveLocation{
+        try container.encode(showLocation, forKey: .showLocation)
+        if showLocation{
             try container.encode(location, forKey: .location)
             try container.encode(locationDescription, forKey: .locationDescription)
         }

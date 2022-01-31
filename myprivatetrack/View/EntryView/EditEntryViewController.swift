@@ -28,13 +28,13 @@ class EditEntryViewController: EditViewController, PhotoCaptureDelegate, VideoCa
     let addMapButton = IconButton(icon: "map")
     
     let mapItemPos = 1
-    var mapView : MapItemEditView? = nil
+    var mapView : PhotoItemEditView? = nil
     
     override func loadView() {
         super.loadView()
         
         saveLocationSwitch.setEnabled(entry.isNew)
-        saveLocationSwitch.setupView(labelText: "saveLocation".localize(), isOn: entry.saveLocation)
+        saveLocationSwitch.setupView(labelText: "saveLocation".localize(), isOn: entry.showLocation)
         saveLocationSwitch.delegate = self
         
         stackView.addArrangedSubview(saveLocationSwitch)
@@ -55,10 +55,6 @@ class EditEntryViewController: EditViewController, PhotoCaptureDelegate, VideoCa
                 break
             case .video:
                 editItem = VideoItemEditView.fromData(data: item.data as! VideoItemData)
-                editItem?.delegate = self
-                break
-            case .mapphoto:
-                editItem = MapItemEditView.fromData(data: item.data as! MapPhotoItemData)
                 editItem?.delegate = self
                 break
             }
@@ -110,7 +106,7 @@ class EditEntryViewController: EditViewController, PhotoCaptureDelegate, VideoCa
     }
     
     func switchValueDidChange(sender: SwitchView, isOn: Bool) {
-        entry.saveLocation = isOn
+        entry.showLocation = isOn
         Settings.shared.showLocation = isOn
         Settings.shared.save()
     }
@@ -188,7 +184,7 @@ class EditEntryViewController: EditViewController, PhotoCaptureDelegate, VideoCa
     }
     
     @objc func addMap(){
-        if entry.saveLocation && LocationService.shared.authorized{
+        if entry.showLocation && LocationService.shared.authorized{
             let mapCaptureController = MapCaptureViewController()
             mapCaptureController.captureDelegate = self
             mapCaptureController.modalPresentationStyle = .fullScreen
@@ -233,9 +229,9 @@ class EditEntryViewController: EditViewController, PhotoCaptureDelegate, VideoCa
     
     // MapCaptureDelegate
     
-    func mapCaptured(data: MapPhotoItemData){
+    func mapCaptured(data: PhotoItemData){
         entry.addItem(item: data)
-        let editView = MapItemEditView.fromData(data: data)
+        let editView = PhotoItemEditView.fromData(data: data)
         insertItemView(editView)
     }
     
@@ -257,7 +253,7 @@ class EditEntryViewController: EditViewController, PhotoCaptureDelegate, VideoCa
     // SaveActionDelegate
     
     @objc func save(){
-        if !entry.saveLocation && entry.items.count == 0{
+        if !entry.showLocation && entry.items.count == 0{
             showAlert(title: "error".localize(), text: "noItems".localize())
             return
         }

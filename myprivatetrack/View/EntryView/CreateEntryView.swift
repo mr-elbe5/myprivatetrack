@@ -19,6 +19,7 @@ class CreateEntryView: UIView{
     var textView = TextEditArea()
     
     var leftStackView = UIStackView()
+    var addTextButton = IconButton(icon: "text.alignleft")
     var addPhotoButton = IconButton(icon: "camera")
     var addAudioButton = IconButton(icon: "mic")
     let addVideoButton = IconButton(icon: "video")
@@ -41,24 +42,29 @@ class CreateEntryView: UIView{
         textView.setKeyboardToolbar(doneTitle: "done".localize())
         textView.setAnchors(top: topAnchor, leading: leadingAnchor, trailing: trailingAnchor, insets: defaultInsets)
         
+        addTextButton.addTarget(self, action: #selector(addTextEntry), for: .touchDown)
+        leftStackView.addArrangedSubview(addTextButton)
+        addSubview(addTextButton)
+        addTextButton.setAnchors(top: textView.bottomAnchor, leading: textView.leadingAnchor, bottom: bottomAnchor, insets: flatInsets)
         addPhotoButton.addTarget(self, action: #selector(addPhotoEntry), for: .touchDown)
         addSubview(addPhotoButton)
-        addPhotoButton.setAnchors(top: textView.bottomAnchor, leading: textView.leadingAnchor, bottom: bottomAnchor, insets: flatInsets)
+        addPhotoButton.setAnchors(top: textView.bottomAnchor, leading: addTextButton.trailingAnchor, bottom: bottomAnchor, insets: flatInsets)
         addAudioButton.addTarget(self, action: #selector(addAudioEntry), for: .touchDown)
         addSubview(addAudioButton)
         addAudioButton.setAnchors(top: textView.bottomAnchor, leading: addPhotoButton.trailingAnchor, bottom: bottomAnchor, insets: flatInsets)
         addVideoButton.addTarget(self, action: #selector(addVideoEntry), for: .touchDown)
         addSubview(addVideoButton)
         addVideoButton.setAnchors(top: textView.bottomAnchor, leading: addAudioButton.trailingAnchor, bottom: bottomAnchor, insets: flatInsets)
-        addMapButton.addTarget(self, action: #selector(addMapEntry), for: .touchDown)
-        addSubview(addMapButton)
-        addMapButton.setAnchors(top: textView.bottomAnchor, leading: addVideoButton.trailingAnchor, bottom: bottomAnchor, insets: flatInsets)
         saveButton.layer.cornerRadius = 15
         saveButton.contentEdgeInsets = UIEdgeInsets(top: 5.0, left: 5.0, bottom: 5.0, right: 5.0)
         saveButton.addTarget(self, action: #selector(saveEntry), for: .touchDown)
         addSubview(saveButton)
         saveButton.setAnchors(top: textView.bottomAnchor, trailing: textView.trailingAnchor, bottom: bottomAnchor, insets: flatInsets)
         enableSave(enable: false)
+    }
+    
+    @objc func addTextEntry(){
+        openCreateEntry(withItem: .text)
     }
     
     @objc func addPhotoEntry(){
@@ -71,10 +77,6 @@ class CreateEntryView: UIView{
     
     @objc func addVideoEntry(){
         openCreateEntry(withItem: .video)
-    }
-    
-    @objc func addMapEntry(){
-        openCreateEntry(withItem: .mapphoto)
     }
     
     func openCreateEntry(withItem item: EntryItemType){

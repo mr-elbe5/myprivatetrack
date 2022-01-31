@@ -12,7 +12,6 @@ enum EntryItemType: String, Codable{
     case audio
     case photo
     case video
-    case mapphoto
 }
 
 class EntryItemData: Identifiable, Codable{
@@ -41,8 +40,8 @@ class EntryItemData: Identifiable, Codable{
     
     required init(from decoder: Decoder) throws {
         let values = try decoder.container(keyedBy: EntryItemCodingKeys.self)
-        id = try values.decode(UUID.self, forKey: .id)
-        creationDate = try values.decode(Date.self, forKey: .creationDate)
+        id = try values.decodeIfPresent(UUID.self, forKey: .id) ?? UUID()
+        creationDate = try values.decodeIfPresent(Date.self, forKey: .creationDate) ?? Date()
     }
     
     func encode(to encoder: Encoder) throws {
@@ -93,9 +92,6 @@ class EntryItem : Identifiable, Codable{
             break
         case .video:
             data = try values.decode(VideoItemData.self, forKey: .item)
-            break
-        case .mapphoto:
-            data = try values.decode(MapPhotoItemData.self, forKey: .item)
             break
         }
     }

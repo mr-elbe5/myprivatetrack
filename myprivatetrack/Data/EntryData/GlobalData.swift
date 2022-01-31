@@ -13,6 +13,8 @@ class GlobalData: Identifiable, Codable{
     
     static var shared = GlobalData()
     
+    static var currentVersion : Int = 2
+    
     static func load(){
         shared = DataController.shared.load(forKey: .data) ?? GlobalData()
     }
@@ -25,9 +27,11 @@ class GlobalData: Identifiable, Codable{
     }
     
     enum CodingKeys: String, CodingKey {
+        case version
         case days
     }
     
+    var version : Int
     var days: Array<DayData>
     private var dayMap = Dictionary<Date, DayData>()
     
@@ -50,12 +54,14 @@ class GlobalData: Identifiable, Codable{
     }
     
     init(){
-        days = []
+        version = GlobalData.currentVersion
+        days = Array<DayData>()
     }
     
     required init(from decoder: Decoder) throws {
         let values = try decoder.container(keyedBy: CodingKeys.self)
-        days = try values.decode(Array<DayData>.self, forKey: .days)
+        version = try values.decodeIfPresent(Int.self, forKey: .version) ?? 1
+        days = try values.decodeIfPresent(Array<DayData>.self, forKey: .days) ?? Array<DayData>()
         dayMap.removeAll()
         for day in days{
             dayMap[day.date] = day
@@ -64,6 +70,7 @@ class GlobalData: Identifiable, Codable{
     
     func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
+        try container.encode(version, forKey: .version)
         try container.encode(days, forKey: .days)
     }
     

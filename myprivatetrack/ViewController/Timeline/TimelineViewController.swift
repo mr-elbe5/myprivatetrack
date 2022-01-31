@@ -167,8 +167,6 @@ extension TimelineViewController : CreateEntryDelegate{
             openEntryController(entry: entry).addAudio()
         case .video:
             openEntryController(entry: entry).addVideo()
-        case .mapphoto:
-            openEntryController(entry: entry).addMap()
         }
     }
     

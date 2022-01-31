@@ -36,7 +36,7 @@ class PhotoItemData : FileEntryItemData{
     
     required init(from decoder: Decoder) throws {
         let values = try decoder.container(keyedBy: PhotoEntryCodingKeys.self)
-        title = try values.decode(String.self, forKey: .title)
+        title = try values.decodeIfPresent(String.self, forKey: .title) ?? ""
         try super.init(from: decoder)
     }
     

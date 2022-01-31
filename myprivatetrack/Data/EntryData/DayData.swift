@@ -19,13 +19,13 @@ class DayData: Identifiable, Codable{
     
     init(){
         date = Date()
-        entries = []
+        entries = Array<EntryData>()
     }
     
     required init(from decoder: Decoder) throws {
         let values = try decoder.container(keyedBy: CodingKeys.self)
-        date = try values.decode(Date.self, forKey: .date)
-        entries = try values.decode(Array<EntryData>.self, forKey: .entries)
+        date = try values.decodeIfPresent(Date.self, forKey: .date) ?? Date()
+        entries = try values.decodeIfPresent(Array<EntryData>.self, forKey: .entries) ?? Array<EntryData>()
     }
     
     func encode(to encoder: Encoder) throws {

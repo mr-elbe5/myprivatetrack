@@ -17,12 +17,12 @@ class TimeSpanData: Identifiable, Codable{
     private var dayMap = Dictionary<Date, DayData>()
     
     init(){
-        days = []
+        days = Array<DayData>()
     }
     
     required init(from decoder: Decoder) throws {
         let values = try decoder.container(keyedBy: CodingKeys.self)
-        days = try values.decode(Array<DayData>.self, forKey: .days)
+        days = try values.decodeIfPresent(Array<DayData>.self, forKey: .days) ?? Array<DayData>()
         dayMap.removeAll()
         for day in days{
             dayMap[day.date] = day

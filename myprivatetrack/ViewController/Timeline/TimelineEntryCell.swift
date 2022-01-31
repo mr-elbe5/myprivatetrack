@@ -17,7 +17,7 @@ protocol EntryCellActionDelegate{
     func shareVideoItem(data: VideoItemData)
 }
 
-class TimelineEntryCell: UITableViewCell, PhotoItemDelegate, VideoItemDelegate, MapItemDelegate{
+class TimelineEntryCell: UITableViewCell, PhotoItemDelegate, VideoItemDelegate{
     
     var entry : EntryData? = nil {
         didSet {
@@ -54,7 +54,7 @@ class TimelineEntryCell: UITableViewCell, PhotoItemDelegate, VideoItemDelegate, 
             cellBody.addSubview(timeLabel)
             timeLabel.setAnchors(top: cellBody.topAnchor, leading: cellBody.leadingAnchor, trailing: cellBody.trailingAnchor, insets: defaultInsets)
             var lastView : UIView = timeLabel
-            if entry!.saveLocation, let loc = entry!.location{
+            if entry!.showLocation, let loc = entry!.location{
                 let locationButton = TextButton(text: loc.asString)
                 locationButton.addTarget(self,action: #selector(showInMap), for: .touchDown)
                 cellBody.addSubview(locationButton)
@@ -123,12 +123,6 @@ class TimelineEntryCell: UITableViewCell, PhotoItemDelegate, VideoItemDelegate, 
                     itemView.setAnchors(top: lastView.bottomAnchor, leading: cellBody.leadingAnchor, trailing: cellBody.trailingAnchor, insets: defaultInsets)
                     lastView = itemView
                     break
-                case .mapphoto:
-                    let itemView = MapItemView.fromData(data: item.data as! MapPhotoItemData, delegate: self)
-                    cellBody.addSubview(itemView)
-                    itemView.setAnchors(top: lastView.bottomAnchor, leading: cellBody.leadingAnchor, trailing: cellBody.trailingAnchor, insets: defaultInsets)
-                    lastView = itemView
-                    break
                 }
             }
             lastView.bottom(cellBody.bottomAnchor, inset: -defaultInset)
@@ -175,14 +169,6 @@ class TimelineEntryCell: UITableViewCell, PhotoItemDelegate, VideoItemDelegate, 
     
     func shareVideoItem(data: VideoItemData){
         delegate?.shareVideoItem(data: data)
-    }
-    
-    func viewMapItem(data: MapPhotoItemData) {
-        //todo
-    }
-    
-    func shareMapItem(data: MapPhotoItemData) {
-        //todo
     }
     
 }

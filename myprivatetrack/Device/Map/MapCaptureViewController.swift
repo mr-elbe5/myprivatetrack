@@ -11,7 +11,7 @@ import CoreLocation
 import MapKit
 
 protocol MapCaptureDelegate{
-    func mapCaptured(data: MapPhotoItemData)
+    func mapCaptured(data: PhotoItemData)
 }
 
 class MapCaptureViewController: MapViewController, LocationServiceDelegate {
@@ -72,7 +72,7 @@ class MapCaptureViewController: MapViewController, LocationServiceDelegate {
     @objc func save(){
         Indicator.shared.show()
         if let image = takeScreenshot(){
-            let mapItem = MapPhotoItemData()
+            let mapItem = PhotoItemData()
             mapItem.creationDate = Date()
             mapItem.saveImage(uiImage: image)
             mapItem.title = ""

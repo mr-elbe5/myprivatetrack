@@ -62,7 +62,7 @@ class MainMapViewController: MapViewController, LocationServiceDelegate {
     override func assertMapPins(){
         for day in GlobalData.shared.days{
             for entry in day.entries{
-                if entry.saveLocation, let loc = entry.location{
+                if entry.showLocation, let loc = entry.location{
                     let positionPin = EntryAnnotation(entry: entry)
                     positionPin.title = entry.creationDate.dateTimeString()
                     positionPin.coordinate = loc.coordinate

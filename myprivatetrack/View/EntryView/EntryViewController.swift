@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-class EntryViewController: ModalScrollViewController, PhotoItemDelegate, VideoItemDelegate, MapItemDelegate {
+class EntryViewController: ModalScrollViewController, PhotoItemDelegate, VideoItemDelegate {
     
     var entry : EntryData!
     
@@ -23,7 +23,7 @@ class EntryViewController: ModalScrollViewController, PhotoItemDelegate, VideoIt
         let timeLabel = InfoHeader(text: entry.creationDate.dateTimeString())
         timeLabel.label.textAlignment = .center
         stackView.addArrangedSubview(timeLabel)
-        if entry.saveLocation, let loc = entry.location{
+        if entry.showLocation, let loc = entry.location{
             let locationButton = TextButton(text: loc.asString)
             locationButton.addTarget(self,action: #selector(showInMap), for: .touchDown)
             stackView.addArrangedSubview(locationButton)
@@ -56,10 +56,6 @@ class EntryViewController: ModalScrollViewController, PhotoItemDelegate, VideoIt
                 break
             case .video:
                 let itemView = VideoItemView.fromData(data: item.data as! VideoItemData,delegate: self)
-                stackView.addArrangedSubview(itemView)
-                break
-            case .mapphoto:
-                let itemView = MapItemView.fromData(data: item.data as! MapPhotoItemData,delegate: self)
                 stackView.addArrangedSubview(itemView)
                 break
             }
@@ -95,14 +91,6 @@ class EntryViewController: ModalScrollViewController, PhotoItemDelegate, VideoIt
     
     func shareVideoItem(data: VideoItemData) {
         print("share")
-    }
-    
-    func viewMapItem(data: MapPhotoItemData) {
-        //todo
-    }
-    
-    func shareMapItem(data: MapPhotoItemData) {
-        //todo
     }
     
 }
