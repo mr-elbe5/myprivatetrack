@@ -98,7 +98,7 @@
 "restore"="Wiederherstellen";
 "save" = "Speichern";
 "saveError"="Die Datei konnte nicht gespeichert werden.";
-"saveLocation"="Position speichern";
+"showLocation"="Ort anzeigen";
 "selectBackground"="Hintergrundbild wählen";
 "settingsBackupInfo"="Mit 'Sichern' kannst du deine Einträge und Medien als zip-Datei sichern (alle oder für einen bestimmten Zeitraum). Du kannst diese Dateien mit einem Passwort schützen.";
 "settings"="Einstellungen";

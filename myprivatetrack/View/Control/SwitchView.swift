@@ -19,6 +19,10 @@ class SwitchView : UIView{
     
     var delegate : SwitchDelegate? = nil
     
+    var isOn : Bool{
+        switcher.isOn
+    }
+    
     func setupView(labelText: String, isOn : Bool){
         label.text = labelText
         addSubview(label)

@@ -47,35 +47,20 @@ class TimelineEntryCell: UITableViewCell, PhotoItemDelegate, VideoItemDelegate{
     func updateCell(isEditing: Bool = false){
         cellBody.backgroundColor = transparentColor
         cellBody.removeAllSubviews()
-        if entry != nil{
+        if let entry = entry{
             let timeLabel = UILabel()
-            timeLabel.text = entry!.creationDate.timeString()
+            timeLabel.text = entry.creationDate.timeString()
             timeLabel.textAlignment = .center
             cellBody.addSubview(timeLabel)
             timeLabel.setAnchors(top: cellBody.topAnchor, leading: cellBody.leadingAnchor, trailing: cellBody.trailingAnchor, insets: defaultInsets)
             var lastView : UIView = timeLabel
-            if entry!.showLocation, let loc = entry!.location{
-                let locationButton = TextButton(text: loc.asString)
+            if entry.showLocation, let loc = entry.location{
+                let txt = entry.locationDescription.isEmpty ? loc.asString : entry.locationDescription
+                let locationButton = TextButton(text: txt)
                 locationButton.addTarget(self,action: #selector(showInMap), for: .touchDown)
                 cellBody.addSubview(locationButton)
                 locationButton.setAnchors(top: lastView.bottomAnchor, leading: cellBody.leadingAnchor, trailing: cellBody.trailingAnchor, insets: defaultInsets)
                 lastView = locationButton
-                let desc = entry!.locationDescription
-                if !desc.isEmpty{
-                    let locationDescriptionLabel = UILabel()
-                    locationDescriptionLabel.text = desc
-                    locationDescriptionLabel.textAlignment = .center
-                    cellBody.addSubview(locationDescriptionLabel)
-                    locationDescriptionLabel.setAnchors(top: lastView.bottomAnchor, leading: cellBody.leadingAnchor, trailing: cellBody.trailingAnchor, insets: defaultInsets)
-                    lastView = locationDescriptionLabel
-                }
-                /*if entry!.hasMapSection{
-                    let mapView = MapItemView()
-                    mapView.setupView(data: entry!)
-                    cellBody.addSubview(mapView)
-                    mapView.setAnchors(top: lastView.bottomAnchor, leading: cellBody.leadingAnchor, trailing: cellBody.trailingAnchor, insets: defaultInsets)
-                    lastView = mapView
-                }*/
             }
             if isEditing{
                 let deleteButton = IconButton(icon: "xmark.circle")
@@ -94,10 +79,10 @@ class TimelineEntryCell: UITableViewCell, PhotoItemDelegate, VideoItemDelegate{
                 let viewButton = IconButton(icon: "magnifyingglass", tintColor: .systemBlue)
                 viewButton.addTarget(self, action: #selector(viewEntry), for: .touchDown)
                 cellBody.addSubview(viewButton)
-                viewButton.setAnchors(top: cellBody.topAnchor, trailing: cellBody.trailingAnchor, insets: doubleInsets)
+                viewButton.setAnchors(top: cellBody.topAnchor, trailing: cellBody.trailingAnchor, insets: defaultInsets)
             }
             
-            for item in entry!.items{
+            for item in entry.items{
                 switch item.type{
                 case .text:
                     let itemView = TextItemView.fromData(data: item.data as! TextItemData)

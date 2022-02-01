@@ -16,7 +16,7 @@ class TimelineViewController: UIViewController{
     
     var headerView = EntriesHeaderView()
     var tableView = UITableView()
-    var createEntryView = CreateEntryView()
+    var createEntryView = CreateQuickEntryView()
     var createEntryBottomConstraint : NSLayoutConstraint!
     var backgroundView = UIImageView(image: Settings.shared.backgroundImage)
     
@@ -149,34 +149,50 @@ extension TimelineViewController : EntriesHeaderDelegate{
         self.present(infoController, animated: true)
     }
     
-}
-
-extension TimelineViewController : CreateEntryDelegate{
-    
-    func createEntry(entry: EntryData) {
-        saveEntry(entry: entry)
+    func createTextEntry() {
+        openCreateEntryController().addText()
     }
     
-    func openCreateEntry(entry: EntryData, withItem: EntryItemType) {
-        switch withItem{
-        case .text:
-            openEntryController(entry: entry).addText()
-        case .photo:
-            openEntryController(entry: entry).addImage()
-        case .audio:
-            openEntryController(entry: entry).addAudio()
-        case .video:
-            openEntryController(entry: entry).addVideo()
-        }
+    func createPhotoEntry() {
+        openCreateEntryController().addImage()
     }
     
-    func openEntryController(entry: EntryData) -> EditEntryViewController{
+    func createAudioEntry() {
+        openCreateEntryController().addAudio()
+    }
+    
+    func createVideoEntry() {
+        openCreateEntryController().addVideo()
+    }
+    
+    func createMapEntry() {
+        openCreateEntryController().addMap()
+    }
+    
+    func openCreateEntryController() -> EditEntryViewController{
+        let entry = EntryData(isNew: true)
+        entry.location = LocationService.shared.getLocation()
+        entry.locationDescription = LocationService.shared.getLocationDescription()
         let editEntryViewController = EditEntryViewController()
         editEntryViewController.entry = entry
         editEntryViewController.delegate = self
         editEntryViewController.modalPresentationStyle = .fullScreen
         self.present(editEntryViewController, animated: true)
         return editEntryViewController
+    }
+    
+}
+
+extension TimelineViewController : CreateQuickEntryDelegate{
+    
+    func createQuickEntry(text: String) {
+        let entry = EntryData(isNew: true)
+        entry.location = LocationService.shared.getLocation()
+        entry.locationDescription = LocationService.shared.getLocationDescription()
+        let entryItem = TextItemData()
+        entryItem.text = text
+        entry.addItem(item: entryItem)
+        saveEntry(entry: entry)
     }
     
 }

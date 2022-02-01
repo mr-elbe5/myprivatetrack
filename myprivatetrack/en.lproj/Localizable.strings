@@ -95,7 +95,7 @@
 "restore"="Restore";
 "save" = "Save";
 "saveError"="The file could not be saved.";
-"saveLocation"="Save location";
+"showLocation"="Show location";
 "selectBackground"="Select background image";
 "settingsBackgroundInfo"="With 'Select background image' you can select an image of your photo library or return to the default image as background.";
 "settingsFilesInfo"="Deleting exported files means to delete all backups and all files, which have been copied to the app's documents folder.";

@@ -12,12 +12,13 @@ enum SettingsPickerType{
     case backup
 }
 
-class SettingsViewController: EditViewController, UIDocumentPickerDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate{
+class SettingsViewController: EditViewController, UIDocumentPickerDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, SwitchDelegate{
     
     static var sizeItems : Array<String> = ["small".localize(),"medium".localize(),"large".localize()]
 
     var backgroundButton = TextButton(text: "selectBackground".localize())
     var urlTemplateField = LabeledText()
+    var showLocationSwitch = SwitchView()
     var resetButton = TextButton(text: "deleteData".localize())
     var fullBackupButton = TextButton(text: "fullBackupData".localize())
     var partialBackupButton = TextButton(text: "partialBackupData".localize())
@@ -54,6 +55,10 @@ class SettingsViewController: EditViewController, UIDocumentPickerDelegate, UIIm
         osmInfoLink.setTitle("osmLegalInfo".localize(), for: .normal)
         osmInfoLink.addTarget(self, action: #selector(openOSMInfo), for: .touchDown)
         
+        let locationHeader = InfoHeader(text: "location".localize())
+        showLocationSwitch.setupView(labelText: "showLocation".localize(), isOn: Settings.shared.showLocation)
+        showLocationSwitch.delegate = self
+        
         let entriesHeader = InfoHeader(text: "entries".localize())
         resetButton.addTarget(self, action: #selector(resetData), for: .touchDown)
         fullBackupButton.addTarget(self, action: #selector(fullBackupData), for: .touchDown)
@@ -68,6 +73,8 @@ class SettingsViewController: EditViewController, UIDocumentPickerDelegate, UIIm
         stackView.addArrangedSubview(elbe5InfoLink)
         stackView.addArrangedSubview(osmButton)
         stackView.addArrangedSubview(osmInfoLink)
+        stackView.addArrangedSubview(locationHeader)
+        stackView.addArrangedSubview(showLocationSwitch)
         stackView.addArrangedSubview(entriesHeader)
         stackView.addArrangedSubview(resetButton)
         stackView.addArrangedSubview(fullBackupButton)
@@ -153,6 +160,11 @@ class SettingsViewController: EditViewController, UIDocumentPickerDelegate, UIIm
     
     @objc func openOSMInfo() {
         UIApplication.shared.open(URL(string: "https://operations.osmfoundation.org/policies/tiles/")!)
+    }
+    
+    func switchValueDidChange(sender: SwitchView, isOn: Bool) {
+        Settings.shared.showLocation = isOn
+        Settings.shared.save()
     }
     
     @objc func resetData(){

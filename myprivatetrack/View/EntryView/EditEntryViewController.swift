@@ -14,13 +14,13 @@ protocol SaveEntryDelegate{
     func saveEntry(entry: EntryData)
 }
 
-class EditEntryViewController: EditViewController, PhotoCaptureDelegate, VideoCaptureDelegate, MapCaptureDelegate, DeleteEntryActionDelegate, SwitchDelegate{
+class EditEntryViewController: EditViewController, PhotoCaptureDelegate, VideoCaptureDelegate, MapCaptureDelegate, DeleteEntryActionDelegate{
     
     var delegate : SaveEntryDelegate? = nil
     
     var entry : EntryData!
     
-    var saveLocationSwitch = SwitchView()
+    var showLocationSwitch = SwitchView()
     var addTextButton = IconButton(icon: "text.alignleft")
     var addPhotoButton = IconButton(icon: "camera")
     var addAudioButton = IconButton(icon: "mic")
@@ -33,11 +33,10 @@ class EditEntryViewController: EditViewController, PhotoCaptureDelegate, VideoCa
     override func loadView() {
         super.loadView()
         
-        saveLocationSwitch.setEnabled(entry.isNew)
-        saveLocationSwitch.setupView(labelText: "saveLocation".localize(), isOn: entry.showLocation)
-        saveLocationSwitch.delegate = self
+        showLocationSwitch.setEnabled(entry.location != nil)
+        showLocationSwitch.setupView(labelText: "showLocation".localize(), isOn: entry.showLocation)
         
-        stackView.addArrangedSubview(saveLocationSwitch)
+        stackView.addArrangedSubview(showLocationSwitch)
         for item in entry.items{
             var editItem : EntryItemEditView? = nil
             switch item.type{
@@ -73,7 +72,6 @@ class EditEntryViewController: EditViewController, PhotoCaptureDelegate, VideoCa
             buttonContainer.stackView.addArrangedSubview(cancelButton)
         }
         stackView.addArrangedSubview(buttonContainer)
-        
     }
     
     override func setupHeaderView(){
@@ -103,12 +101,6 @@ class EditEntryViewController: EditViewController, PhotoCaptureDelegate, VideoCa
         rightStackView.addArrangedSubview(infoButton)
         
         self.headerView = headerView
-    }
-    
-    func switchValueDidChange(sender: SwitchView, isOn: Bool) {
-        entry.showLocation = isOn
-        Settings.shared.showLocation = isOn
-        Settings.shared.save()
     }
     
     @objc func addText(){
@@ -253,7 +245,7 @@ class EditEntryViewController: EditViewController, PhotoCaptureDelegate, VideoCa
     // SaveActionDelegate
     
     @objc func save(){
-        if !entry.showLocation && entry.items.count == 0{
+        if entry.items.count == 0{
             showAlert(title: "error".localize(), text: "noItems".localize())
             return
         }
@@ -261,9 +253,8 @@ class EditEntryViewController: EditViewController, PhotoCaptureDelegate, VideoCa
             showAlert(title: "error".localize(), text: "notComplete".localize())
             return
         }
-        if let delegate = delegate{
-            delegate.saveEntry(entry: entry)
-        }
+        entry.showLocation = showLocationSwitch.isOn
+        delegate?.saveEntry(entry: entry)
         self.dismiss(animated: true)
     }
     
