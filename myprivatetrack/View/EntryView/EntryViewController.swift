@@ -14,12 +14,19 @@ class EntryViewController: ModalScrollViewController, PhotoItemDelegate, VideoIt
     
     var stackView = UIStackView()
     
+    var delegate : SaveEntryDelegate? = nil
+    
     override func loadView() {
         super.loadView()
         scrollView.setupVertical()
         scrollView.addSubview(stackView)
         stackView.fillView(view: scrollView, insets: UIEdgeInsets(top: defaultInset, left: .zero, bottom: defaultInset, right: .zero))
         stackView.setupVertical()
+        updateView()
+    }
+    
+    func updateView(){
+        stackView.removeAllArrangedSubviews()
         let timeLabel = InfoHeader(text: entry.creationDate.dateTimeString())
         timeLabel.label.textAlignment = .center
         stackView.addArrangedSubview(timeLabel)
@@ -34,11 +41,6 @@ class EntryViewController: ModalScrollViewController, PhotoItemDelegate, VideoIt
                 locationDescriptionLabel.textAlignment = .center
                 stackView.addArrangedSubview(locationDescriptionLabel)
             }
-            /*if entry!.hasMapSection{
-                let mapView = MapItemView()
-                mapView.setupView(data: entry!)
-                stackView.addArrangedSubview(mapView)
-            }*/
         }
         for item in entry.items{
             switch item.type{
@@ -60,6 +62,15 @@ class EntryViewController: ModalScrollViewController, PhotoItemDelegate, VideoIt
                 break
             }
         }
+    }
+    
+    override open func setupHeaderView(){
+        super.setupHeaderView()
+        let editButton = IconButton(icon: "pencil.circle")
+        editButton.tintColor = UIColor.systemBlue
+        editButton.addTarget(self, action: #selector(editEntry), for: .touchDown)
+        buttonView.addSubview(editButton)
+        editButton.setAnchors(top: buttonView.topAnchor, trailing: closeButton.leadingAnchor, bottom: buttonView.bottomAnchor, insets: defaultInsets)
     }
     
     @objc func showInMap(){
@@ -93,4 +104,20 @@ class EntryViewController: ModalScrollViewController, PhotoItemDelegate, VideoIt
         print("share")
     }
     
+    @objc func editEntry(){
+        let editEntryViewController = EditEntryViewController()
+        editEntryViewController.entry = entry
+        editEntryViewController.delegate = self
+        editEntryViewController.modalPresentationStyle = .fullScreen
+        self.present(editEntryViewController, animated: true)
+    }
+    
+}
+
+extension EntryViewController : SaveEntryDelegate{
+    
+    func saveEntry(entry: EntryData) {
+        updateView()
+        delegate?.saveEntry(entry: entry)
+    }
 }

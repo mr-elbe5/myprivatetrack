@@ -165,10 +165,6 @@ extension TimelineViewController : EntriesHeaderDelegate{
         openCreateEntryController().addVideo()
     }
     
-    func createMapEntry() {
-        openCreateEntryController().addMap()
-    }
-    
     func openCreateEntryController() -> EditEntryViewController{
         let entry = EntryData(isNew: true)
         entry.location = LocationService.shared.getLocation()
@@ -222,16 +218,6 @@ extension TimelineViewController : SaveEntryDelegate{
 
 extension TimelineViewController : EntryCellActionDelegate{
     
-    // EntryActionDelegate
-    
-    func editEntry(entry: EntryData) {
-        let editEntryViewController = EditEntryViewController()
-        editEntryViewController.entry = entry
-        editEntryViewController.delegate = self
-        editEntryViewController.modalPresentationStyle = .fullScreen
-        self.present(editEntryViewController, animated: true)
-    }
-    
     func deleteEntry(entry: EntryData) {
         showApprove(title: "reallyDeleteEntry".localize(), text: "deleteEntryApproveInfo".localize()){
             GlobalData.shared.deleteEntry(entry: entry)
@@ -242,6 +228,7 @@ extension TimelineViewController : EntryCellActionDelegate{
     func viewEntry(entry: EntryData) {
         let entryController = EntryViewController()
         entryController.entry = entry
+        entryController.delegate = self
         entryController.modalPresentationStyle = .fullScreen
         self.present(entryController, animated: true)
     }

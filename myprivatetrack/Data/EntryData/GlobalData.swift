@@ -66,6 +66,9 @@ class GlobalData: Identifiable, Codable{
         for day in days{
             dayMap[day.date] = day
         }
+        if version < GlobalData.currentVersion{
+            save()
+        }
     }
     
     func encode(to encoder: Encoder) throws {

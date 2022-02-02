@@ -16,7 +16,6 @@ protocol EntriesHeaderDelegate{
     func createPhotoEntry()
     func createAudioEntry()
     func createVideoEntry()
-    func createMapEntry()
 }
 
 class EntriesHeaderView: UIView{
@@ -25,7 +24,6 @@ class EntriesHeaderView: UIView{
     var addPhotoButton = IconButton(icon: "camera")
     var addAudioButton = IconButton(icon: "mic")
     let addVideoButton = IconButton(icon: "video")
-    var addMapButton = IconButton(icon: "map")
     let editButton = IconButton(icon: "pencil.circle")
     let infoButton = IconButton(icon: "info.circle")
     
@@ -45,8 +43,6 @@ class EntriesHeaderView: UIView{
         leftStackView.addArrangedSubview(addAudioButton)
         addVideoButton.addTarget(self, action: #selector(addVideoEntry), for: .touchDown)
         leftStackView.addArrangedSubview(addVideoButton)
-        addMapButton.addTarget(self, action: #selector(addMapEntry), for: .touchDown)
-        leftStackView.addArrangedSubview(addMapButton)
         let rightStackView = UIStackView()
         addSubview(rightStackView)
         rightStackView.setupHorizontal(spacing: defaultInset)
@@ -72,10 +68,6 @@ class EntriesHeaderView: UIView{
     
     @objc func addVideoEntry(){
         delegate?.createVideoEntry()
-    }
-    
-    @objc func addMapEntry(){
-        delegate?.createMapEntry()
     }
 
     @objc func toggleEditMode(){

@@ -10,15 +10,16 @@ import UIKit
 
 open class ModalScrollViewController: ScrollViewController {
     
+    var buttonView = UIView()
+    var closeButton = IconButton(icon: "xmark.circle")
+    
     override open func loadView() {
         self.scrollViewTopPadding = 0
         super.loadView()
     }
     
     override open func setupHeaderView(){
-        let buttonView = UIView()
         buttonView.backgroundColor = UIColor.systemBackground
-        let closeButton = IconButton(icon: "xmark.circle")
         buttonView.addSubview(closeButton)
         closeButton.addTarget(self, action: #selector(close), for: .touchDown)
         closeButton.setAnchors(top: buttonView.topAnchor, trailing: buttonView.trailingAnchor, bottom: buttonView.bottomAnchor, insets: defaultInsets)

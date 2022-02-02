@@ -33,7 +33,7 @@ class EntryItemEditView : UIView{
     }
     
     func addDeleteButton() -> IconButton{
-        let deleteButton = IconButton(icon: "xmark.circle")
+        let deleteButton = IconButton(icon: "trash")
         deleteButton.tintColor = UIColor.systemRed
         deleteButton.addTarget(self, action: #selector(deleteItem), for: .touchDown)
         addSubview(deleteButton)

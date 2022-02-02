@@ -14,7 +14,7 @@ protocol SaveEntryDelegate{
     func saveEntry(entry: EntryData)
 }
 
-class EditEntryViewController: EditViewController, PhotoCaptureDelegate, VideoCaptureDelegate, MapCaptureDelegate, DeleteEntryActionDelegate{
+class EditEntryViewController: EditViewController, PhotoCaptureDelegate, VideoCaptureDelegate, DeleteEntryActionDelegate{
     
     var delegate : SaveEntryDelegate? = nil
     
@@ -25,10 +25,6 @@ class EditEntryViewController: EditViewController, PhotoCaptureDelegate, VideoCa
     var addPhotoButton = IconButton(icon: "camera")
     var addAudioButton = IconButton(icon: "mic")
     let addVideoButton = IconButton(icon: "video")
-    let addMapButton = IconButton(icon: "map")
-    
-    let mapItemPos = 1
-    var mapView : PhotoItemEditView? = nil
     
     override func loadView() {
         super.loadView()
@@ -94,8 +90,6 @@ class EditEntryViewController: EditViewController, PhotoCaptureDelegate, VideoCa
         leftStackView.addArrangedSubview(addAudioButton)
         addVideoButton.addTarget(self, action: #selector(addVideo), for: .touchDown)
         leftStackView.addArrangedSubview(addVideoButton)
-        addMapButton.addTarget(self, action: #selector(addMap), for: .touchDown)
-        leftStackView.addArrangedSubview(addMapButton)
         let infoButton = IconButton(icon: "info.circle")
         infoButton.addTarget(self, action: #selector(showInfo), for: .touchDown)
         rightStackView.addArrangedSubview(infoButton)
@@ -175,18 +169,6 @@ class EditEntryViewController: EditViewController, PhotoCaptureDelegate, VideoCa
         }
     }
     
-    @objc func addMap(){
-        if entry.showLocation && LocationService.shared.authorized{
-            let mapCaptureController = MapCaptureViewController()
-            mapCaptureController.captureDelegate = self
-            mapCaptureController.modalPresentationStyle = .fullScreen
-            self.present(mapCaptureController, animated: true)
-        }
-        else{
-            showError("locationNotAuthorized")
-        }
-    }
-    
     @objc func showInfo(){
         let infoController = EditEntryInfoViewController()
         self.present(infoController, animated: true)
@@ -216,14 +198,6 @@ class EditEntryViewController: EditViewController, PhotoCaptureDelegate, VideoCa
     func videoCaptured(data: VideoItemData){
         entry.addItem(item: data)
         let editView = VideoItemEditView.fromData(data: data)
-        insertItemView(editView)
-    }
-    
-    // MapCaptureDelegate
-    
-    func mapCaptured(data: PhotoItemData){
-        entry.addItem(item: data)
-        let editView = PhotoItemEditView.fromData(data: data)
         insertItemView(editView)
     }
     

@@ -8,7 +8,6 @@
 import UIKit
 
 protocol EntryCellActionDelegate{
-    func editEntry(entry: EntryData)
     func deleteEntry(entry: EntryData)
     func viewEntry(entry: EntryData)
     func viewPhotoItem(data: PhotoItemData)
@@ -63,17 +62,11 @@ class TimelineEntryCell: UITableViewCell, PhotoItemDelegate, VideoItemDelegate{
                 lastView = locationButton
             }
             if isEditing{
-                let deleteButton = IconButton(icon: "xmark.circle")
+                let deleteButton = IconButton(icon: "trash")
                 deleteButton.tintColor = UIColor.systemRed
                 deleteButton.addTarget(self, action: #selector(deleteEntry), for: .touchDown)
                 cellBody.addSubview(deleteButton)
                 deleteButton.setAnchors(top: cellBody.topAnchor, trailing: cellBody.trailingAnchor, insets: defaultInsets)
-                
-                let editButton = IconButton(icon: "pencil.circle")
-                editButton.tintColor = UIColor.systemBlue
-                editButton.addTarget(self, action: #selector(editEntry), for: .touchDown)
-                cellBody.addSubview(editButton)
-                editButton.setAnchors(top: cellBody.topAnchor, trailing: deleteButton.leadingAnchor, insets: defaultInsets)
             }
             else{
                 let viewButton = IconButton(icon: "magnifyingglass", tintColor: .systemBlue)
@@ -119,12 +112,6 @@ class TimelineEntryCell: UITableViewCell, PhotoItemDelegate, VideoItemDelegate{
             let mapController = MainTabController.getMapViewController()
             mapController?.mkMapView.centerToLocation(location, regionRadius: 1000)
             MainTabController.instance.selectedViewController = mapController
-        }
-    }
-    
-    @objc func editEntry() {
-        if entry != nil{
-            delegate?.editEntry(entry: entry!)
         }
     }
     
