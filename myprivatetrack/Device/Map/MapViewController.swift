@@ -19,6 +19,8 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     var mapLoaded = false
     
     var mapType : MapType = .apple
+    var appleAttribution : UIView? = nil
+    var osmAttribution = UIView()
     var overlay : MKTileOverlay? = nil
     
     override func loadView() {
@@ -40,12 +42,39 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         mkMapView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         view.addSubview(mkMapView)
         mkMapView.setAnchors(top: headerView.bottomAnchor, leading: guide.leadingAnchor, trailing: guide.trailingAnchor, bottom: guide.bottomAnchor, insets: .zero)
+        appleAttribution = mkMapView.findAttributionLabel()
+        addOsmAttribution(layoutGuide: guide)
+        setAttributionForMapType()
     }
     
     func fillHeaderView(){
         let toggleStyleButton = IconButton(icon: "map", tintColor: .white)
         toggleStyleButton.addTarget(self, action: #selector(toggleMapStyle), for: .touchDown)
         leftStackView.addArrangedSubview(toggleStyleButton)
+    }
+    
+    func addOsmAttribution(layoutGuide: UILayoutGuide){
+        view.addSubview(osmAttribution)
+        osmAttribution.setAnchors(trailing: layoutGuide.trailingAnchor, bottom: layoutGuide.bottomAnchor, insets: .zero)
+        var label = UILabel()
+        label.textColor = .darkGray
+        label.font = .preferredFont(forTextStyle: .footnote)
+        osmAttribution.addSubview(label)
+        label.setAnchors(top: osmAttribution.topAnchor, leading: osmAttribution.leadingAnchor, bottom: osmAttribution.bottomAnchor)
+        label.text = "© "
+        let link = UIButton()
+        link.setTitleColor(.systemBlue, for: .normal)
+        link.titleLabel?.font = .preferredFont(forTextStyle: .footnote)
+        osmAttribution.addSubview(link)
+        link.setAnchors(top: osmAttribution.topAnchor, leading: label.trailingAnchor, bottom: osmAttribution.bottomAnchor)
+        link.setTitle("OpenStreetMap", for: .normal)
+        link.addTarget(self, action: #selector(openOSMUrl), for: .touchDown)
+        label = UILabel()
+        label.textColor = .darkGray
+        label.font = .preferredFont(forTextStyle: .footnote)
+        osmAttribution.addSubview(label)
+        label.setAnchors(top: osmAttribution.topAnchor, leading: link.trailingAnchor, trailing: osmAttribution.trailingAnchor, bottom: osmAttribution.bottomAnchor, insets: UIEdgeInsets(top: 0, left: 0, bottom: 0, right: defaultInset))
+        label.text = " contributors"
     }
     
     func mapViewDidFinishLoadingMap(_ mapView: MKMapView) {
@@ -62,6 +91,10 @@ class MapViewController: UIViewController, MKMapViewDelegate {
             return MKTileOverlayRenderer(tileOverlay: overlay)
         }
         return MKTileOverlayRenderer()
+    }
+    
+    @objc func openOSMUrl() {
+        UIApplication.shared.open(URL(string: "https://www.openstreetmap.org/copyright")!)
     }
     
     @objc func toggleMapStyle() {
@@ -92,7 +125,19 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         case .satellite:
             mkMapView.mapType = .satellite
         }
+        setAttributionForMapType()
         mkMapView.setNeedsDisplay()
+    }
+    
+    func setAttributionForMapType(){
+        switch mapType{
+        case .apple, .satellite:
+            appleAttribution?.isHidden = false
+            osmAttribution.isHidden = true
+        case .osm:
+            appleAttribution?.isHidden = true
+            osmAttribution.isHidden = false
+        }
     }
     
     func showError(_ reason: String){

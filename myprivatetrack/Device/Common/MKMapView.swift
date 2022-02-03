@@ -17,4 +17,13 @@ extension MKMapView {
             longitudinalMeters: regionRadius)
         setRegion(coordinateRegion, animated: true)
     }
+    
+    func findAttributionLabel() -> UIView?{
+        for vw in subviews{
+            if "\(vw.classForCoder)" == "MKAttributionLabel" {
+                return vw
+            }
+        }
+        return nil
+    }
 }
