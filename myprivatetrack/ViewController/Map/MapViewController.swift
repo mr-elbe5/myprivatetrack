@@ -1,16 +1,15 @@
 //
-//  BaseMapViewController.swift
-//  myprivatetrack
+//  MapViewController.swift
 //
-//  Created by Michael Rönnau on 28.01.22.
-//  Copyright © 2022 Michael Rönnau. All rights reserved.
+//  Created by Michael Rönnau on 13.06.20.
+//  Copyright © 2020 Michael Rönnau. All rights reserved.
 //
 
 import Foundation
 import UIKit
 import MapKit
 
-class MapViewController: UIViewController, MKMapViewDelegate {
+class MapViewController: UIViewController, MKMapViewDelegate, LocationServiceDelegate {
     
     var headerView = UIView()
     var leftStackView = UIStackView()
@@ -21,7 +20,9 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     var mapType : MapType = .apple
     var appleAttribution : UIView? = nil
     var osmAttribution = UIView()
-    var overlay : MKTileOverlay? = nil
+    var tileOverlay : MKTileOverlay? = nil
+    var location: Location? = nil
+    var radius : CLLocationDistance = 10000
     
     override func loadView() {
         super.loadView()
@@ -40,6 +41,7 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         mkMapView.delegate = self
         mkMapView.mapType = .standard
         mkMapView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        mkMapView.showsUserLocation = true
         view.addSubview(mkMapView)
         mkMapView.setAnchors(top: headerView.bottomAnchor, leading: guide.leadingAnchor, trailing: guide.trailingAnchor, bottom: guide.bottomAnchor, insets: .zero)
         appleAttribution = mkMapView.findAttributionLabel()
@@ -51,6 +53,9 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         let toggleStyleButton = IconButton(icon: "map", tintColor: .white)
         toggleStyleButton.addTarget(self, action: #selector(toggleMapStyle), for: .touchDown)
         leftStackView.addArrangedSubview(toggleStyleButton)
+        let infoButton = IconButton(icon: "info.circle", tintColor: .white)
+        infoButton.addTarget(self, action: #selector(showInfo), for: .touchDown)
+        rightStackView.addArrangedSubview(infoButton)
     }
     
     func addOsmAttribution(layoutGuide: UILayoutGuide){
@@ -77,20 +82,76 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         label.text = " contributors"
     }
     
+    func locationDidChange(location: Location){
+        if self.location == nil{
+            self.location = location
+            mkMapView.centerToLocation(location, regionRadius: self.radius)
+        }
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        if LocationService.shared.authorized{
+            if location == nil{
+                location = LocationService.shared.getLocation()
+                if let loc = location{
+                    self.mkMapView.centerToLocation(loc, regionRadius: self.radius)
+                }
+            }
+            LocationService.shared.delegate = self
+        }
+        else{
+            showError("locationNotAuthorized")
+        }
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        LocationService.shared.delegate = nil
+    }
+    
+    func setNeedsUpdate(){
+        if mapLoaded{
+            mkMapView.removeAnnotations(mkMapView.annotations)
+            assertMapPins()
+        }
+    }
+    
+    func assertMapPins(){
+        for day in GlobalData.shared.days{
+            for entry in day.entries{
+                if entry.showLocation, let loc = entry.location{
+                    let positionPin = EntryAnnotation(entry: entry)
+                    positionPin.title = entry.creationDate.dateTimeString()
+                    positionPin.coordinate = loc.coordinate
+                    mkMapView.addAnnotation(positionPin)
+                }
+            }
+        }
+    }
+    
+    func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView){
+        if let annotation = view.annotation as? EntryAnnotation{
+            let entryController = EntryViewController()
+            entryController.entry = annotation.entry
+            entryController.modalPresentationStyle = .fullScreen
+            self.present(entryController, animated: true)
+        }
+    }
+    
+    func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
+        if let overlay = self.tileOverlay{
+            return MKTileOverlayRenderer(tileOverlay: overlay)
+        }
+        return MKTileOverlayRenderer()
+    }
+    
     func mapViewDidFinishLoadingMap(_ mapView: MKMapView) {
         mapLoaded = true
         assertMapPins()
     }
     
-    func assertMapPins(){
-        
-    }
-    
-    func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
-        if let overlay = self.overlay{
-            return MKTileOverlayRenderer(tileOverlay: overlay)
-        }
-        return MKTileOverlayRenderer()
+    @objc func showInfo(){
+        let infoController = MapInfoViewController()
+        self.present(infoController, animated: true)
     }
     
     @objc func openOSMUrl() {
@@ -110,18 +171,18 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     }
     
     func setupMapStyle(){
-        if let overlay = overlay {
+        if let overlay = tileOverlay {
             mkMapView.removeOverlay(overlay)
-            self.overlay = nil
+            self.tileOverlay = nil
         }
         switch mapType{
         case .apple:
             mkMapView.mapType = .standard
         case .osm:
             mkMapView.mapType = .standard
-            overlay = MKTileOverlay(urlTemplate: Settings.osmUrl)
-            overlay!.canReplaceMapContent = true
-            mkMapView.addOverlay(overlay!)
+            tileOverlay = MKTileOverlay(urlTemplate: Settings.osmUrl)
+            tileOverlay!.canReplaceMapContent = true
+            mkMapView.addOverlay(tileOverlay!)
         case .satellite:
             mkMapView.mapType = .satellite
         }
@@ -145,4 +206,3 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     }
     
 }
-
