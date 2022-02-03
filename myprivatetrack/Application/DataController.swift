@@ -12,7 +12,6 @@ class DataController{
     enum StoreKey: String, CaseIterable {
         case settings
         case data
-        case user
     }
     
     static var shared = DataController()

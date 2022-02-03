@@ -31,18 +31,6 @@ class EntryData: Identifiable, Codable{
     
     var isNew = false
     
-    var mapSectionFileName : String{
-        get{
-            return id.uuidString + "_map.jpg"
-        }
-    }
-    
-    var mapSectionFileURL : URL{
-        get{
-            return FileController.getURL(dirURL: FileController.privateURL,fileName: mapSectionFileName)
-        }
-    }
-    
     init(isNew: Bool = false){
         self.isNew = isNew
         id = UUID()
@@ -86,8 +74,8 @@ class EntryData: Identifiable, Codable{
         try container.encode(id, forKey: .id)
         try container.encode(creationDate, forKey: .creationDate)
         try container.encode(showLocation, forKey: .showLocation)
-        if showLocation{
-            try container.encode(location, forKey: .location)
+        if let loc = location{
+            try container.encode(loc, forKey: .location)
             try container.encode(locationDescription, forKey: .locationDescription)
         }
         try container.encode(items, forKey: .items)
