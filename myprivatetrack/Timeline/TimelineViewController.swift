@@ -25,10 +25,9 @@ class TimelineViewController: UIViewController{
         view.backgroundColor = .systemGray5
         let guide = view.safeAreaLayoutGuide
         let spacer = UIView()
-        spacer.backgroundColor = Statics.tabColor
+        spacer.backgroundColor = .systemGray3
         view.addSubview(spacer)
-        spacer.setAnchors(top: view.topAnchor, leading: view.leadingAnchor, trailing: view.trailingAnchor, insets: .zero)
-        spacer.bottom(guide.topAnchor)
+        spacer.setAnchors(top: view.topAnchor, leading: view.leadingAnchor, trailing: view.trailingAnchor, bottom: guide.topAnchor, insets: .zero)
         headerView.setupView()
         headerView.delegate = self
         view.addSubview(headerView)

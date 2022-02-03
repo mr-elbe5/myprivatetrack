@@ -26,7 +26,7 @@ class CreateQuickEntryView: UIView{
     var delegate : CreateQuickEntryDelegate? = nil
     
     func setupView(){
-        backgroundColor = .white
+        backgroundColor = .clear
         layer.cornerRadius = 5
         textView.setDefaults()
         textView.isScrollEnabled = false
@@ -34,13 +34,13 @@ class CreateQuickEntryView: UIView{
         textView.delegate = self
         addSubview(textView)
         textView.setKeyboardToolbar(doneTitle: "done".localize())
-        textView.setAnchors(top: topAnchor, leading: leadingAnchor, bottom: bottomAnchor, insets: defaultInsets)
+        textView.setAnchors(top: topAnchor, leading: leadingAnchor, bottom: bottomAnchor, insets: .zero)
         
         saveButton.layer.cornerRadius = 15
         saveButton.contentEdgeInsets = UIEdgeInsets(top: 5.0, left: 5.0, bottom: 5.0, right: 5.0)
         saveButton.addTarget(self, action: #selector(saveEntry), for: .touchDown)
         addSubview(saveButton)
-        saveButton.setAnchors(top: topAnchor, leading: textView.trailingAnchor, trailing: trailingAnchor, bottom: bottomAnchor, insets: defaultInsets)
+        saveButton.setAnchors(top: topAnchor, leading: textView.trailingAnchor, trailing: trailingAnchor, bottom: bottomAnchor, insets: .zero)
         enableSave(enable: false)
     }
     
