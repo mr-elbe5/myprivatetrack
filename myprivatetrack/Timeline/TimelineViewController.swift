@@ -14,7 +14,7 @@ class TimelineViewController: UIViewController{
     
     var firstAppearance = true
     
-    var headerView = EntriesHeaderView()
+    var headerView = TimelineHeaderView()
     var tableView = UITableView()
     var createEntryView = CreateQuickEntryView()
     var createEntryBottomConstraint : NSLayoutConstraint!
@@ -130,7 +130,7 @@ extension TimelineViewController: UITableViewDelegate, UITableViewDataSource{
     
 }
 
-extension TimelineViewController : EntriesHeaderDelegate{
+extension TimelineViewController : TimelineHeaderDelegate{
     
     func toggleEditMode(){
         if !tableView.isEditing{

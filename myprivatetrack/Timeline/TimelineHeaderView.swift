@@ -9,7 +9,7 @@
 import UIKit
 
 
-protocol EntriesHeaderDelegate{
+protocol TimelineHeaderDelegate{
     func toggleEditMode()
     func showInfo()
     func createTextEntry()
@@ -18,7 +18,7 @@ protocol EntriesHeaderDelegate{
     func createVideoEntry()
 }
 
-class EntriesHeaderView: UIView{
+class TimelineHeaderView: UIView{
 
     var addTextButton = IconButton(icon: "text.alignleft")
     var addPhotoButton = IconButton(icon: "camera")
@@ -27,7 +27,7 @@ class EntriesHeaderView: UIView{
     let editButton = IconButton(icon: "pencil.circle")
     let infoButton = IconButton(icon: "info.circle")
     
-    var delegate : EntriesHeaderDelegate? = nil
+    var delegate : TimelineHeaderDelegate? = nil
     
     func setupView() {
         let leftStackView = UIStackView()
