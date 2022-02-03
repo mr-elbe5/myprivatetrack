@@ -51,7 +51,7 @@ extension UIView{
             return UIColor(displayP3Red: 0, green: 0, blue: 0, alpha: 0.8)
         }
         else{
-            return UIColor(displayP3Red: 255, green: 255, blue: 255, alpha: 0.85)
+            return UIColor(displayP3Red: 1.0, green: 1.0, blue: 1.0, alpha: 0.85)
         }
     }
     
