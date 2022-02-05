@@ -172,7 +172,13 @@ extension UIView{
     
     @discardableResult
     func width(_ anchor: NSLayoutDimension, inset: CGFloat = 0) -> UIView{
-        widthAnchor.constraint(equalTo: anchor, constant: inset) .isActive = true
+        widthAnchor.constraint(equalTo: anchor, constant: inset).isActive = true
+        return self
+    }
+    
+    @discardableResult
+    func width(_ anchor: NSLayoutDimension, percentage: CGFloat, inset: CGFloat = 0) -> UIView{
+        widthAnchor.constraint(equalTo: anchor, multiplier: percentage, constant: inset).isActive = true
         return self
     }
     
@@ -184,7 +190,13 @@ extension UIView{
     
     @discardableResult
     func height(_ anchor: NSLayoutDimension, inset: CGFloat = 0) -> UIView{
-        heightAnchor.constraint(equalTo: anchor, constant: inset) .isActive = true
+        heightAnchor.constraint(equalTo: anchor, constant: inset).isActive = true
+        return self
+    }
+    
+    @discardableResult
+    func height(_ anchor: NSLayoutDimension, percentage: CGFloat, inset: CGFloat = 0) -> UIView{
+        heightAnchor.constraint(equalTo: anchor, multiplier: percentage, constant: inset).isActive = true
         return self
     }
     

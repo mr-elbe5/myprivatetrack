@@ -74,7 +74,7 @@ class TimelineEntryCell: UITableViewCell, PhotoItemDelegate, VideoItemDelegate{
                 cellBody.addSubview(viewButton)
                 viewButton.setAnchors(top: cellBody.topAnchor, trailing: cellBody.trailingAnchor, insets: defaultInsets)
             }
-            
+            var items = Array<EntryItem>()
             for item in entry.items{
                 switch item.type{
                 case .text:
@@ -82,25 +82,55 @@ class TimelineEntryCell: UITableViewCell, PhotoItemDelegate, VideoItemDelegate{
                     cellBody.addSubview(itemView)
                     itemView.setAnchors(top: lastView.bottomAnchor, leading: cellBody.leadingAnchor, trailing: cellBody.trailingAnchor, insets: defaultInsets)
                     lastView = itemView
-                    break
                 case .audio:
                     let itemView = AudioItemView.fromData(data: item.data as! AudioData)
                     cellBody.addSubview(itemView)
                     itemView.setAnchors(top: lastView.bottomAnchor, leading: cellBody.leadingAnchor, trailing: cellBody.trailingAnchor, insets: defaultInsets)
                     lastView = itemView
-                    break
-                case .photo:
-                    let itemView = PhotoItemView.fromData(data: item.data as! PhotoItemData, delegate: self)
-                    cellBody.addSubview(itemView)
-                    itemView.setAnchors(top: lastView.bottomAnchor, leading: cellBody.leadingAnchor, trailing: cellBody.trailingAnchor, insets: defaultInsets)
-                    lastView = itemView
-                    break
-                case .video:
-                    let itemView = VideoItemView.fromData(data: item.data as! VideoItemData, delegate: self)
-                    cellBody.addSubview(itemView)
-                    itemView.setAnchors(top: lastView.bottomAnchor, leading: cellBody.leadingAnchor, trailing: cellBody.trailingAnchor, insets: defaultInsets)
-                    lastView = itemView
-                    break
+                case .photo, .video:
+                    items.append(item)
+                }
+            }
+            let nItems = items.count
+            if nItems > 0{
+                let mediaView = UIView()
+                cellBody.addSubview(mediaView)
+                mediaView.setAnchors(top: lastView.bottomAnchor, leading: cellBody.leadingAnchor, trailing: cellBody.trailingAnchor, insets: defaultInsets)
+                lastView = mediaView
+                
+                let cols = Int(floor(sqrt(Double(nItems - 1)))) + 1
+                let rows = nItems/cols
+                let percentage = 1.0 / Double(cols)
+                var itemTopAnchor = mediaView.topAnchor
+                var itemLeadingAnchor = cellBody.leadingAnchor
+                var itemView : UIView? = nil
+                for idx in 0..<items.count{
+                    let item = items[idx]
+                    switch item.type{
+                    case .photo:
+                        itemView = PhotoItemView.fromData(data: item.data as! PhotoItemData, delegate: self)
+                    case .video:
+                        itemView = VideoItemView.fromData(data: item.data as! VideoItemData, delegate: self)
+                    default:
+                        continue
+                    }
+                    mediaView.addSubview(itemView!)
+                    itemView!.setAnchors()
+                        .top(itemTopAnchor)
+                        .leading(itemLeadingAnchor)
+                        .width(mediaView.widthAnchor, percentage: percentage, inset: 0)
+                        .height(mediaView.widthAnchor, percentage: percentage, inset: 0)
+                    if idx % cols == cols - 1{
+                        itemView?.trailing(mediaView.trailingAnchor, inset: 0)
+                        itemTopAnchor = itemView?.bottomAnchor ?? mediaView.topAnchor
+                        itemLeadingAnchor = mediaView.leadingAnchor
+                    }
+                    else{
+                        itemLeadingAnchor = itemView?.trailingAnchor ?? mediaView.leadingAnchor
+                    }
+                    if idx/cols == rows{
+                        itemView?.bottom(mediaView.bottomAnchor)
+                    }
                 }
             }
             lastView.bottom(cellBody.bottomAnchor, inset: -defaultInset)
