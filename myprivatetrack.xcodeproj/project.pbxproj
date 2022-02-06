@@ -36,6 +36,7 @@
 		4E3C5AD224FD00E600E11A35 /* LocationError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E3C5AD124FD00E600E11A35 /* LocationError.swift */; };
 		4E3C84B027A3F28600658718 /* MapType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E3C84AF27A3F28600658718 /* MapType.swift */; };
 		4E497EB825066FC300E94CBD /* Indicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E497EB725066FC300E94CBD /* Indicator.swift */; };
+		4E4F41E127AFD5320068D241 /* PreviewContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E4F41E027AFD5320068D241 /* PreviewContainer.swift */; };
 		4E8BD84C27AC074E005C072A /* CreateQuickEntryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E8BD84A27AC074E005C072A /* CreateQuickEntryView.swift */; };
 		4E8BD84D27AC074E005C072A /* TimelineHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E8BD84B27AC074E005C072A /* TimelineHeaderView.swift */; };
 		4E90CA70249532EB0029E308 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4E90CA72249532EB0029E308 /* Localizable.strings */; };
@@ -149,6 +150,7 @@
 		4E3C5AD124FD00E600E11A35 /* LocationError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationError.swift; sourceTree = "<group>"; };
 		4E3C84AF27A3F28600658718 /* MapType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapType.swift; sourceTree = "<group>"; };
 		4E497EB725066FC300E94CBD /* Indicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Indicator.swift; sourceTree = "<group>"; };
+		4E4F41E027AFD5320068D241 /* PreviewContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewContainer.swift; sourceTree = "<group>"; };
 		4E8BD84A27AC074E005C072A /* CreateQuickEntryView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateQuickEntryView.swift; sourceTree = "<group>"; };
 		4E8BD84B27AC074E005C072A /* TimelineHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimelineHeaderView.swift; sourceTree = "<group>"; };
 		4E90CA71249532EB0029E308 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -405,6 +407,7 @@
 				4ED21BDC24FAA39300A6FEA3 /* TextEditArea.swift */,
 				4ED21BE124FAA39300A6FEA3 /* TextEditLine.swift */,
 				4ED21B9024FAA29F00A6FEA3 /* ViewController.swift */,
+				4E4F41E027AFD5320068D241 /* PreviewContainer.swift */,
 			);
 			path = Base;
 			sourceTree = "<group>";
@@ -595,6 +598,7 @@
 				4ED21C4724FAAC6E00A6FEA3 /* CaptureButton.swift in Sources */,
 				4ED21C0E24FAA3B900A6FEA3 /* TimelineSectionHeader.swift in Sources */,
 				4ED21BB624FAA32500A6FEA3 /* FileEntryItemData.swift in Sources */,
+				4E4F41E127AFD5320068D241 /* PreviewContainer.swift in Sources */,
 				4ED21C0C24FAA3B900A6FEA3 /* EditEntryViewController.swift in Sources */,
 				4E8BD84C27AC074E005C072A /* CreateQuickEntryView.swift in Sources */,
 				4E3AA22F27A695CF00ED14A2 /* UIStackView.swift in Sources */,

@@ -31,6 +31,7 @@ class VideoItemView : EntryItemView{
     func setupView(data: VideoItemData){
         addSubview(videoView)
         self.videoData = data
+        videoView.backgroundColor = UIColor(red: 0.2, green: 0.2, blue: 0.2, alpha: 1.0)
         videoView.url = data.fileURL
         videoView.setAnchors(top: topAnchor, leading: leadingAnchor, trailing: trailingAnchor, insets: defaultInsets)
         videoView.setAspectRatioConstraint()

@@ -15,7 +15,7 @@ protocol PhotoItemDelegate{
 
 class PhotoItemView : EntryItemView{
     
-    static func fromData(data : PhotoItemData,delegate : PhotoItemDelegate? = nil)  -> PhotoItemView{
+    static func fromData(data : PhotoItemData, backgroundColor: UIColor? = nil, delegate : PhotoItemDelegate? = nil)  -> PhotoItemView{
         let itemView = PhotoItemView()
         itemView.delegate = delegate
         itemView.setupView(data: data)
@@ -32,7 +32,8 @@ class PhotoItemView : EntryItemView{
     
     func setupView(data: PhotoItemData){
         imageView.setDefaults()
-        imageView.setRoundedBorders()
+        imageView.setRoundedBorders(radius: 10)
+        imageView.backgroundColor = UIColor(red: 0.2, green: 0.2, blue: 0.2, alpha: 1.0)
         addSubview(imageView)
         self.photoData = data
         imageView.image = data.getImage()
@@ -41,10 +42,11 @@ class PhotoItemView : EntryItemView{
         if !data.title.isEmpty{
             let titleView = MediaCommentLabel(text: data.title)
             addSubview(titleView)
-            titleView.setAnchors(top: imageView.bottomAnchor, leading: leadingAnchor, trailing: trailingAnchor, bottom: bottomAnchor, insets: defaultInsets)
+            titleView.setAnchors(leading: leadingAnchor, trailing: trailingAnchor, bottom: bottomAnchor, insets: defaultInsets)
+                .top(imageView.bottomAnchor, inset: 0)
         }
         else{
-            imageView.bottom(bottomAnchor)
+            imageView.bottom(bottomAnchor, inset: -defaultInset)
         }
         if delegate != nil{
             let sv = UIStackView()

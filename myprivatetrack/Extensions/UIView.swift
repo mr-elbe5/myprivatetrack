@@ -59,15 +59,17 @@ extension UIView{
         self.traitCollection.userInterfaceStyle == .dark
     }
     
-    func setRoundedBorders(){
+    func setRoundedBorders(radius: CGFloat = 5){
         layer.borderWidth = 0.5
-        layer.cornerRadius = 5
+        layer.cornerRadius = radius
+        layer.masksToBounds = true
     }
     
-    func setGrayRoundedBorders(){
+    func setGrayRoundedBorders(radius: CGFloat = 5){
         layer.borderColor = UIColor.lightGray.cgColor
         layer.borderWidth = 0.5
-        layer.cornerRadius = 5
+        layer.cornerRadius = radius
+        layer.masksToBounds = true
     }
     
     func scaleBy(_ factor: CGFloat){
