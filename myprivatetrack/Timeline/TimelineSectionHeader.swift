@@ -11,11 +11,7 @@ import UIKit
 class TimelineSectionHeaderLabel: UILabel {
     
     override var intrinsicContentSize: CGSize{
-        let originalSize = super.intrinsicContentSize
-        let height = originalSize.height + 12
-        layer.cornerRadius = height/2
-        layer.masksToBounds = true
-        return CGSize(width: originalSize.width + 16, height: height)
+        return getExtendedIntrinsicContentSize(originalSize: super.intrinsicContentSize)
     }
     
 }

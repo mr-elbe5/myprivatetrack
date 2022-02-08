@@ -59,11 +59,11 @@ class EditEntryViewController: EditViewController, PhotoCaptureDelegate, VideoCa
         }
         let buttonContainer = ButtonStackView()
         buttonContainer.setupView()
-        let saveButton = TextButton(text: (entry.isNew ? "save" : "ok").localize())
+        let saveButton = TextButton(text: (entry.isNew ? "save" : "ok").localize(), backgroundColor: .systemGray6)
         saveButton.addTarget(self, action: #selector(save), for: .touchDown)
         buttonContainer.stackView.addArrangedSubview(saveButton)
         if entry.isNew{
-            let cancelButton = TextButton(text: "cancel".localize())
+            let cancelButton = TextButton(text: "cancel".localize(), tintColor: .darkGray, backgroundColor: .systemGray6)
             cancelButton.addTarget(self, action: #selector(cancel), for: .touchDown)
             buttonContainer.stackView.addArrangedSubview(cancelButton)
         }

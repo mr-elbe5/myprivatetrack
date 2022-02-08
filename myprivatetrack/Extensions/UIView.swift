@@ -80,6 +80,13 @@ extension UIView{
         layer.masksToBounds = true
     }
     
+    func getExtendedIntrinsicContentSize(originalSize: CGSize) -> CGSize{
+        let height = originalSize.height + 6
+        layer.cornerRadius = height/2
+        layer.masksToBounds = true
+        return CGSize(width: originalSize.width + 16, height: height)
+    }
+    
     func scaleBy(_ factor: CGFloat){
         self.transform = CGAffineTransform(scaleX: factor, y:factor)
     }
