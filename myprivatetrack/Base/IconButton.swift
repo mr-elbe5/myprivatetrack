@@ -10,7 +10,7 @@ import UIKit
 
 class IconButton : UIButton{
     
-    init(icon: String, tintColor: UIColor = .black, backgroundColor: UIColor? = nil){
+    init(icon: String, tintColor: UIColor = .systemBlue, backgroundColor: UIColor? = nil){
         super.init(frame: .zero)
         setImage(UIImage(systemName: icon), for: .normal)
         self.tintColor = tintColor

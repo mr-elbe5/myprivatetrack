@@ -57,10 +57,10 @@ class PhotoItemView : EntryItemView{
             sv.setupHorizontal(distribution: .fillEqually, spacing: 2*defaultInset)
             addSubview(sv)
             sv.setAnchors(top: topAnchor, trailing: trailingAnchor, insets: doubleInsets)
-            let viewButton = IconButton(icon: "magnifyingglass", tintColor: .black, backgroundColor: transparentColor)
+            let viewButton = IconButton(icon: "magnifyingglass", backgroundColor: transparentColor)
             viewButton.addTarget(self, action: #selector(viewItem), for: .touchDown)
             sv.addArrangedSubview(viewButton)
-            let shareButton = IconButton(icon: "square.and.arrow.up", tintColor: .black, backgroundColor: transparentColor)
+            let shareButton = IconButton(icon: "square.and.arrow.up", backgroundColor: transparentColor)
             shareButton.addTarget(self, action: #selector(shareItem), for: .touchDown)
             sv.addArrangedSubview(shareButton)
         }
@@ -91,7 +91,7 @@ class PhotoItemPreview: PhotoItemView{
     
     override func setupLinks(){
         if delegate != nil{
-            let viewButton = IconButton(icon: "magnifyingglass", tintColor: .black, backgroundColor: transparentColor)
+            let viewButton = IconButton(icon: "magnifyingglass", backgroundColor: transparentColor)
             viewButton.addTarget(self, action: #selector(viewItem), for: .touchDown)
             addSubview(viewButton)
             viewButton.setAnchors(top: imageView.topAnchor, trailing: imageView.trailingAnchor, insets: smallInsets)

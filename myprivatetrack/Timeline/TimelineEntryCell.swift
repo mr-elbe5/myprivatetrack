@@ -103,9 +103,9 @@ class TimelineEntryCell: UITableViewCell, PhotoItemDelegate, VideoItemDelegate{
                 for item in items{
                     switch item.type{
                     case .photo:
-                        mediaView.previews.append(PhotoItemPreview.previewFromData(data: item.data as! PhotoItemData, delegate: self))
+                        mediaView.previews.append(PhotoItemPreview.previewFromData(data: item.data as! PhotoItemData, delegate: isEditing ? nil : self))
                     case .video:
-                        mediaView.previews.append(VideoItemPreview.previewFromData(data: item.data as! VideoItemData, delegate: self))
+                        mediaView.previews.append(VideoItemPreview.previewFromData(data: item.data as! VideoItemData, delegate: isEditing ? nil : self))
                     default:
                         continue
                     }
