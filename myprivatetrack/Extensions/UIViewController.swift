@@ -16,6 +16,14 @@ extension UIViewController{
         Insets.defaultInsets
     }
     
+    var smallInset : CGFloat{
+        Insets.smallInset
+    }
+    
+    var smallInsets : UIEdgeInsets{
+        Insets.smallInsets
+    }
+    
     var doubleInsets : UIEdgeInsets{
         Insets.doubleInsets
     }

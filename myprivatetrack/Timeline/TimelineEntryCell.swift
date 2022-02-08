@@ -54,25 +54,30 @@ class TimelineEntryCell: UITableViewCell, PhotoItemDelegate, VideoItemDelegate{
             timeLabel.setAnchors(top: cellBody.topAnchor, leading: cellBody.leadingAnchor, trailing: cellBody.trailingAnchor, insets: defaultInsets)
             var lastView : UIView = timeLabel
             if entry.showLocation, let loc = entry.location{
-                let txt = entry.locationDescription.isEmpty ? loc.asString : entry.locationDescription
-                let locationButton = TextButton(text: txt)
-                locationButton.addTarget(self,action: #selector(showInMap), for: .touchDown)
-                cellBody.addSubview(locationButton)
-                locationButton.setAnchors(top: lastView.bottomAnchor, leading: cellBody.leadingAnchor, trailing: cellBody.trailingAnchor, insets: defaultInsets)
-                lastView = locationButton
+                let locationLabel = UILabel()
+                locationLabel.text = entry.locationDescription.isEmpty ? loc.asString : entry.locationDescription
+                locationLabel.textAlignment = .center
+                cellBody.addSubview(locationLabel)
+                locationLabel.setAnchors(top: lastView.bottomAnchor, leading: cellBody.leadingAnchor, trailing: cellBody.trailingAnchor, insets: flatInsets)
+                lastView = locationLabel
             }
             if isEditing{
-                let deleteButton = IconButton(icon: "trash")
-                deleteButton.tintColor = UIColor.systemRed
+                let deleteButton = IconButton(icon: "trash", tintColor: .systemRed)
                 deleteButton.addTarget(self, action: #selector(deleteEntry), for: .touchDown)
                 cellBody.addSubview(deleteButton)
-                deleteButton.setAnchors(top: cellBody.topAnchor, trailing: cellBody.trailingAnchor, insets: defaultInsets)
+                deleteButton.setAnchors(top: cellBody.topAnchor, trailing: cellBody.trailingAnchor, insets: smallInsets)
             }
             else{
-                let viewButton = IconButton(icon: "magnifyingglass", tintColor: .systemBlue)
+                let viewButton = IconButton(icon: "magnifyingglass")
                 viewButton.addTarget(self, action: #selector(viewEntry), for: .touchDown)
                 cellBody.addSubview(viewButton)
-                viewButton.setAnchors(top: cellBody.topAnchor, trailing: cellBody.trailingAnchor, insets: defaultInsets)
+                viewButton.setAnchors(top: cellBody.topAnchor, trailing: cellBody.trailingAnchor, insets: smallInsets)
+                if entry.location != nil{
+                    let mapButton = IconButton(icon: "map")
+                    mapButton.addTarget(self, action: #selector(showInMap), for: .touchDown)
+                    cellBody.addSubview(mapButton)
+                    mapButton.setAnchors(top: cellBody.topAnchor, trailing: viewButton.leadingAnchor, insets: smallInsets)
+                }
             }
             var items = Array<EntryItem>()
             for item in entry.items{
@@ -98,9 +103,9 @@ class TimelineEntryCell: UITableViewCell, PhotoItemDelegate, VideoItemDelegate{
                 for item in items{
                     switch item.type{
                     case .photo:
-                        mediaView.previews.append(PhotoItemView.fromData(data: item.data as! PhotoItemData, delegate: nil))
+                        mediaView.previews.append(PhotoItemPreview.previewFromData(data: item.data as! PhotoItemData, delegate: self))
                     case .video:
-                        mediaView.previews.append(VideoItemView.fromData(data: item.data as! VideoItemData, delegate: nil))
+                        mediaView.previews.append(VideoItemPreview.previewFromData(data: item.data as! VideoItemData, delegate: self))
                     default:
                         continue
                     }

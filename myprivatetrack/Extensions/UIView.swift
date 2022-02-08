@@ -18,6 +18,14 @@ extension UIView{
         Insets.defaultInsets
     }
     
+    var smallInset : CGFloat{
+        Insets.smallInset
+    }
+    
+    var smallInsets : UIEdgeInsets{
+        Insets.smallInsets
+    }
+    
     var doubleInsets : UIEdgeInsets{
         Insets.doubleInsets
     }
@@ -48,10 +56,10 @@ extension UIView{
     
     var transparentColor : UIColor{
         if isDarkMode{
-            return UIColor(displayP3Red: 0, green: 0, blue: 0, alpha: 0.8)
+            return UIColor(displayP3Red: 0, green: 0, blue: 0, alpha: 0.6)
         }
         else{
-            return UIColor(displayP3Red: 1.0, green: 1.0, blue: 1.0, alpha: 0.85)
+            return UIColor(displayP3Red: 1.0, green: 1.0, blue: 1.0, alpha: 0.6)
         }
     }
     

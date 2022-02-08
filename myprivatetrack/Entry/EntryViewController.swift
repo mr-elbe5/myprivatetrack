@@ -67,7 +67,6 @@ class EntryViewController: ModalScrollViewController, PhotoItemDelegate, VideoIt
     override open func setupHeaderView(){
         super.setupHeaderView()
         let editButton = IconButton(icon: "pencil.circle")
-        editButton.tintColor = UIColor.systemBlue
         editButton.addTarget(self, action: #selector(editEntry), for: .touchDown)
         buttonView.addSubview(editButton)
         editButton.setAnchors(top: buttonView.topAnchor, trailing: closeButton.leadingAnchor, bottom: buttonView.bottomAnchor, insets: defaultInsets)

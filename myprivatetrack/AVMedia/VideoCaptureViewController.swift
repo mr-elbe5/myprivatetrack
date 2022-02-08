@@ -49,7 +49,6 @@ class VideoCaptureViewController: CameraViewController, AVCaptureFileOutputRecor
         recordButton.addTarget(self, action: #selector(toggleRecording), for: .touchDown)
         bodyView.addSubview(recordButton)
         recordButton.setAnchors(bottom: buttonView.topAnchor, insets: defaultInsets)
-            .bottom(buttonView.topAnchor)
             .centerX(bodyView.centerXAnchor)
             .width(50)
             .height(50)
