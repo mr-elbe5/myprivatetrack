@@ -37,6 +37,7 @@
 		4E3C84B027A3F28600658718 /* MapType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E3C84AF27A3F28600658718 /* MapType.swift */; };
 		4E497EB825066FC300E94CBD /* Indicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E497EB725066FC300E94CBD /* Indicator.swift */; };
 		4E4F41E127AFD5320068D241 /* PreviewContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E4F41E027AFD5320068D241 /* PreviewContainer.swift */; };
+		4E4F41E327B3EADF0068D241 /* UIViewController+MediaDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E4F41E227B3EADF0068D241 /* UIViewController+MediaDelegate.swift */; };
 		4E8BD84C27AC074E005C072A /* CreateQuickEntryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E8BD84A27AC074E005C072A /* CreateQuickEntryView.swift */; };
 		4E8BD84D27AC074E005C072A /* TimelineHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E8BD84B27AC074E005C072A /* TimelineHeaderView.swift */; };
 		4E90CA70249532EB0029E308 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4E90CA72249532EB0029E308 /* Localizable.strings */; };
@@ -151,6 +152,7 @@
 		4E3C84AF27A3F28600658718 /* MapType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapType.swift; sourceTree = "<group>"; };
 		4E497EB725066FC300E94CBD /* Indicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Indicator.swift; sourceTree = "<group>"; };
 		4E4F41E027AFD5320068D241 /* PreviewContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewContainer.swift; sourceTree = "<group>"; };
+		4E4F41E227B3EADF0068D241 /* UIViewController+MediaDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+MediaDelegate.swift"; sourceTree = "<group>"; };
 		4E8BD84A27AC074E005C072A /* CreateQuickEntryView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateQuickEntryView.swift; sourceTree = "<group>"; };
 		4E8BD84B27AC074E005C072A /* TimelineHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimelineHeaderView.swift; sourceTree = "<group>"; };
 		4E90CA71249532EB0029E308 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -408,6 +410,7 @@
 				4ED21BE124FAA39300A6FEA3 /* TextEditLine.swift */,
 				4ED21B9024FAA29F00A6FEA3 /* ViewController.swift */,
 				4E4F41E027AFD5320068D241 /* PreviewContainer.swift */,
+				4E4F41E227B3EADF0068D241 /* UIViewController+MediaDelegate.swift */,
 			);
 			path = Base;
 			sourceTree = "<group>";
@@ -612,6 +615,7 @@
 				4E3AA23227A695CF00ED14A2 /* Codable.swift in Sources */,
 				4ED21BB724FAA32500A6FEA3 /* EntryData.swift in Sources */,
 				4ED21C3824FAA96600A6FEA3 /* Statics.swift in Sources */,
+				4E4F41E327B3EADF0068D241 /* UIViewController+MediaDelegate.swift in Sources */,
 				4ED21C2E24FAA47500A6FEA3 /* RestoreViewController.swift in Sources */,
 				4ED21BB124FAA32500A6FEA3 /* TextItemData.swift in Sources */,
 				4ED21B9B24FAA29F00A6FEA3 /* InfoViewController.swift in Sources */,

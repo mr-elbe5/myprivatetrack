@@ -1,9 +1,8 @@
-//
-//  NSLock.swift
-//  SwiftyMaps
-//
-//  Created by Michael Rönnau on 13.11.21.
-//
+/*
+ My Private Track
+ App for creating a diary with entry based on time and map location using text, photos, audios and videos
+ Copyright: Michael Rönnau mr@elbe5.de
+ */
 
 import Foundation
 

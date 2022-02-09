@@ -1,19 +1,14 @@
-//
-//  EntryCell.swift
-//
-//  Created by Michael Rönnau on 15.06.20.
-//  Copyright © 2020 Michael Rönnau. All rights reserved.
-//
+/*
+ My Private Track
+ App for creating a diary with entry based on time and map location using text, photos, audios and videos
+ Copyright: Michael Rönnau mr@elbe5.de
+ */
 
 import UIKit
 
-protocol EntryCellActionDelegate{
+protocol TimelineEntryCellDelegate: PhotoItemDelegate, VideoItemDelegate{
     func deleteEntry(entry: EntryData)
     func viewEntry(entry: EntryData)
-    func viewPhotoItem(data: PhotoItemData)
-    func sharePhotoItem(data: PhotoItemData)
-    func viewVideoItem(data: VideoItemData)
-    func shareVideoItem(data: VideoItemData)
 }
 
 class TimelineEntryCell: UITableViewCell, PhotoItemDelegate, VideoItemDelegate{
@@ -24,7 +19,7 @@ class TimelineEntryCell: UITableViewCell, PhotoItemDelegate, VideoItemDelegate{
         }
     }
     
-    var delegate: EntryCellActionDelegate? = nil
+    var delegate: TimelineEntryCellDelegate? = nil
     
     var cellBody = UIView()
     

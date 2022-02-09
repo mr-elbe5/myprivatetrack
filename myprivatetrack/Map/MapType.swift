@@ -1,10 +1,8 @@
-//
-//  MapType.swift
-//  myprivatetrack
-//
-//  Created by Michael Rönnau on 28.01.22.
-//  Copyright © 2022 Michael Rönnau. All rights reserved.
-//
+/*
+ My Private Track
+ App for creating a diary with entry based on time and map location using text, photos, audios and videos
+ Copyright: Michael Rönnau mr@elbe5.de
+ */
 
 import Foundation
 import UIKit

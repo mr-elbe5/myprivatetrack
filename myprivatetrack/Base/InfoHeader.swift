@@ -1,9 +1,8 @@
-//
-//  InfoHeader.swift
-//
-//  Created by Michael Rönnau on 12.08.20.
-//  Copyright © 2020 Michael Rönnau. All rights reserved.
-//
+/*
+ My Private Track
+ App for creating a diary with entry based on time and map location using text, photos, audios and videos
+ Copyright: Michael Rönnau mr@elbe5.de
+ */
 
 import Foundation
 import UIKit

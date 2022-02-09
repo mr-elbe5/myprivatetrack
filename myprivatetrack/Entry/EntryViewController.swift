@@ -1,14 +1,13 @@
-//
-//  EntryViewController.swift
-//
-//  Created by Michael Rönnau on 16.08.20.
-//  Copyright © 2020 Michael Rönnau. All rights reserved.
-//
+/*
+ My Private Track
+ App for creating a diary with entry based on time and map location using text, photos, audios and videos
+ Copyright: Michael Rönnau mr@elbe5.de
+ */
 
 import Foundation
 import UIKit
 
-class EntryViewController: ModalScrollViewController, PhotoItemDelegate, VideoItemDelegate {
+class EntryViewController: ModalScrollViewController {
     
     var entry : EntryData!
     
@@ -79,28 +78,6 @@ class EntryViewController: ModalScrollViewController, PhotoItemDelegate, VideoIt
             mapController?.mkMapView.centerToLocation(location, regionRadius: 1000)
             MainTabController.instance.selectedViewController = mapController
         }
-    }
-    
-    func viewPhotoItem(data: PhotoItemData) {
-        let imageViewController = PhotoViewController()
-        imageViewController.uiImage = data.getImage()
-        imageViewController.modalPresentationStyle = .fullScreen
-        self.present(imageViewController, animated: true)
-    }
-    
-    func sharePhotoItem(data: PhotoItemData) {
-        print("share")
-    }
-    
-    func viewVideoItem(data: VideoItemData) {
-        let videoViewController = VideoViewController()
-        videoViewController.videoURL = data.fileURL
-        videoViewController.modalPresentationStyle = .fullScreen
-        self.present(videoViewController, animated: true)
-    }
-    
-    func shareVideoItem(data: VideoItemData) {
-        print("share")
     }
     
     @objc func editEntry(){
