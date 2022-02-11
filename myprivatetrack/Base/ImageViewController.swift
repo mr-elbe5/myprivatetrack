@@ -7,7 +7,7 @@
 import Foundation
 import UIKit
 
-class PhotoViewController: ModalScrollViewController, UIScrollViewDelegate {
+class ImageViewController: ModalScrollViewController, UIScrollViewDelegate {
     
     var uiImage : UIImage? = nil
     var imageView : UIImageView? = nil

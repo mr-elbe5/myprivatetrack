@@ -7,5 +7,5 @@
 "NSLocationUsageDescription"="Deine Position wird benötigt, um positionsabhängige Einträge (z.B. auf der Karte) zu erstellen. Die Aktivierung kann einige Sekunden dauern.";
 "NSMicrophoneUsageDescription"="Das Mikrofon wird für Audio- und Videoaufnahmen benötigt.";
 "NSCameraUsageDescription"="Die Kamera wird für Foto- und Videoaufnahmen benötigt.";
-"NSPhotoLibraryUsageDescription"="Die Fotobibliothek wird benötigt, um bei Bedarf Fotos zu exportieren";
+"NSPhotoLibraryUsageDescription"="Die Fotobibliothek wird benötigt, um bei Bedarf Fotos zu importieren oder exportieren";
 "NSDocumentsFolderUsageDescription"="Das Dokumentenverzeichnis wird für Export und Import benutzt.";

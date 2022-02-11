@@ -20,7 +20,18 @@ class AppInfoViewController: ScrollViewController {
     let privacyInfoText6 = InfoText(text: "privacyInfoText6".localize())
     let filesHeader = InfoHeader(text: "privacyExportHeader".localize())
     let filesInfoText = InfoText(text: "privacyExportText".localize())
+    let iconsHeaderText = InfoHeader(text: "iconsInfoHeader".localize())
+    let iconTextInfo = IconInfoText(icon: "text.alignleft", text: "editEntryTextIconInfo".localize())
+    let iconPhotoInfo = IconInfoText(icon: "camera", text: "editEntryPhotoIconInfo".localize())
+    let iconImageInfo = IconInfoText(icon: "photo", text: "editEntryImageIconInfo".localize())
+    let iconAudioInfo = IconInfoText(icon: "mic", text: "editEntryAudioIconInfo".localize())
+    let iconVideoInfo = IconInfoText(icon: "video", text: "editEntryVideoIconInfo".localize())
+    let shareInfo = IconInfoText(icon: "square.and.arrow.up", text: "timelineShareIconInfo".localize())
+    let iconDeleteInfo = IconInfoText(icon: "trash", text: "editEntryDeleteIconInfo".localize(),iconColor: .systemRed)
+    let iconToggleCameraInfo = IconInfoText(icon: "camera.rotate", text: "editEntryToggleCameraIconInfo".localize())
+    let iconFlashCameraInfo = IconInfoText(icon: "flash", text: "editEntryFlashIconInfo".localize())
     
+
     override func loadView() {
         super.loadView()
         scrollView.setupVertical()
@@ -36,6 +47,15 @@ class AppInfoViewController: ScrollViewController {
         stackView.addArrangedSubview(privacyInfoText6)
         stackView.addArrangedSubview(filesHeader)
         stackView.addArrangedSubview(filesInfoText)
+        stackView.addArrangedSubview(iconsHeaderText)
+        stackView.addArrangedSubview(iconTextInfo)
+        stackView.addArrangedSubview(iconPhotoInfo)
+        stackView.addArrangedSubview(iconImageInfo)
+        stackView.addArrangedSubview(iconAudioInfo)
+        stackView.addArrangedSubview(iconVideoInfo)
+        stackView.addArrangedSubview(iconDeleteInfo)
+        stackView.addArrangedSubview(iconToggleCameraInfo)
+        stackView.addArrangedSubview(iconFlashCameraInfo)
     }
     
     

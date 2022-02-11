@@ -51,7 +51,7 @@
 		4ED21B9A24FAA29F00A6FEA3 /* ModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED21B9124FAA29F00A6FEA3 /* ModalViewController.swift */; };
 		4ED21B9B24FAA29F00A6FEA3 /* InfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED21B9224FAA29F00A6FEA3 /* InfoViewController.swift */; };
 		4ED21B9D24FAA29F00A6FEA3 /* ModalScrollViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED21B9424FAA29F00A6FEA3 /* ModalScrollViewController.swift */; };
-		4ED21B9E24FAA29F00A6FEA3 /* PhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED21B9524FAA29F00A6FEA3 /* PhotoViewController.swift */; };
+		4ED21B9E24FAA29F00A6FEA3 /* ImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED21B9524FAA29F00A6FEA3 /* ImageViewController.swift */; };
 		4ED21B9F24FAA29F00A6FEA3 /* ScrollViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED21B9624FAA29F00A6FEA3 /* ScrollViewController.swift */; };
 		4ED21BA024FAA29F00A6FEA3 /* EditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED21B9724FAA29F00A6FEA3 /* EditViewController.swift */; };
 		4ED21BA124FAA29F00A6FEA3 /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED21B9824FAA29F00A6FEA3 /* TableViewController.swift */; };
@@ -168,7 +168,7 @@
 		4ED21B9124FAA29F00A6FEA3 /* ModalViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModalViewController.swift; sourceTree = "<group>"; };
 		4ED21B9224FAA29F00A6FEA3 /* InfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InfoViewController.swift; sourceTree = "<group>"; };
 		4ED21B9424FAA29F00A6FEA3 /* ModalScrollViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModalScrollViewController.swift; sourceTree = "<group>"; };
-		4ED21B9524FAA29F00A6FEA3 /* PhotoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoViewController.swift; sourceTree = "<group>"; };
+		4ED21B9524FAA29F00A6FEA3 /* ImageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageViewController.swift; sourceTree = "<group>"; };
 		4ED21B9624FAA29F00A6FEA3 /* ScrollViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScrollViewController.swift; sourceTree = "<group>"; };
 		4ED21B9724FAA29F00A6FEA3 /* EditViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditViewController.swift; sourceTree = "<group>"; };
 		4ED21B9824FAA29F00A6FEA3 /* TableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
@@ -381,7 +381,6 @@
 				4ED21C3924FAAC6D00A6FEA3 /* CaptureButton.swift */,
 				4ED21C4024FAAC6E00A6FEA3 /* MediaCommentLabel.swift */,
 				4ED21C4324FAAC6E00A6FEA3 /* PhotoCaptureViewController.swift */,
-				4ED21B9524FAA29F00A6FEA3 /* PhotoViewController.swift */,
 				4ED21C3B24FAAC6D00A6FEA3 /* VideoCaptureViewController.swift */,
 				4ED21C4124FAAC6E00A6FEA3 /* VideoPlayerView.swift */,
 				4ED21C3E24FAAC6E00A6FEA3 /* VideoViewController.swift */,
@@ -397,6 +396,7 @@
 				4ED21B9724FAA29F00A6FEA3 /* EditViewController.swift */,
 				4ED21BD024FAA39300A6FEA3 /* IconButton.swift */,
 				4ED21BE024FAA39300A6FEA3 /* IconInfoText.swift */,
+				4ED21B9524FAA29F00A6FEA3 /* ImageViewController.swift */,
 				4E497EB725066FC300E94CBD /* Indicator.swift */,
 				4ED21BD224FAA39300A6FEA3 /* InfoHeader.swift */,
 				4ED21BDE24FAA39300A6FEA3 /* InfoText.swift */,
@@ -634,7 +634,7 @@
 				4E3AA23627A69D5600ED14A2 /* Dictionary.swift in Sources */,
 				4E3AA22427A695CF00ED14A2 /* TimeInterval.swift in Sources */,
 				4ED21C0324FAA39E00A6FEA3 /* TextItemView.swift in Sources */,
-				4ED21B9E24FAA29F00A6FEA3 /* PhotoViewController.swift in Sources */,
+				4ED21B9E24FAA29F00A6FEA3 /* ImageViewController.swift in Sources */,
 				4E3AA22527A695CF00ED14A2 /* UITextField.swift in Sources */,
 				4E3AA22327A695CF00ED14A2 /* UILabel.swift in Sources */,
 				4E3C84B027A3F28600658718 /* MapType.swift in Sources */,

@@ -88,22 +88,24 @@ class AudioRecorderView : UIView, AVAudioRecorderDelegate{
         ]
         do{
             audioRecorder = try AVAudioRecorder(url: data.fileURL, settings: settings)
-            audioRecorder!.isMeteringEnabled = true
-            audioRecorder!.delegate = self
-            audioRecorder!.record()
-            isRecording = true
-            self.recordButton.buttonState = .recording
-            DispatchQueue.global(qos: .userInitiated).async {
-                repeat{
-                    self.audioRecorder!.updateMeters()
-                    DispatchQueue.main.async {
-                        self.currentTime = self.audioRecorder!.currentTime
-                        self.updateTime(time: self.currentTime)
-                        self.updateProgress(decibels: self.audioRecorder!.averagePower(forChannel: 0))
-                    }
-                    // 1/10s
-                    usleep(100000)
-                } while self.isRecording
+            if let recorder = audioRecorder{
+                recorder.isMeteringEnabled = true
+                recorder.delegate = self
+                recorder.record()
+                isRecording = true
+                self.recordButton.buttonState = .recording
+                DispatchQueue.global(qos: .userInitiated).async {
+                    repeat{
+                        recorder.updateMeters()
+                        DispatchQueue.main.async {
+                            self.currentTime = recorder.currentTime
+                            self.updateTime(time: self.currentTime)
+                            self.updateProgress(decibels: recorder.averagePower(forChannel: 0))
+                        }
+                        // 1/10s
+                        usleep(100000)
+                    } while self.isRecording
+                }
             }
         }
         catch{

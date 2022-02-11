@@ -10,7 +10,7 @@ import UIKit
 extension UIViewController: ImageItemDelegate, VideoItemDelegate{
     
     func viewImageItem(data: ImageItemData) {
-        let photoViewController = PhotoViewController()
+        let photoViewController = ImageViewController()
         photoViewController.uiImage = data.getImage()
         photoViewController.modalPresentationStyle = .fullScreen
         self.present(photoViewController, animated: true)

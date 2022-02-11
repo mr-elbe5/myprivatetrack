@@ -35,7 +35,7 @@
 	<key>NSMicrophoneUsageDescription</key>
 	<string>The microphone is needed for recording audio and video.</string>
 	<key>NSPhotoLibraryUsageDescription</key>
-	<string>The photo library is used for exporting pictures on demand.</string>
+	<string>The photo library is used for importing and exporting pictures on demand.</string>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
 		<key>UIApplicationSupportsMultipleScenes</key>
