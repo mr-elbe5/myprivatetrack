@@ -152,6 +152,10 @@ extension TimelineViewController : TimelineHeaderDelegate{
     }
     
     func createPhotoEntry() {
+        openCreateEntryController().addPhoto()
+    }
+    
+    func createImageEntry() {
         openCreateEntryController().addImage()
     }
     

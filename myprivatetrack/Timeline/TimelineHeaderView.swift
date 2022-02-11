@@ -12,6 +12,7 @@ protocol TimelineHeaderDelegate{
     func showInfo()
     func createTextEntry()
     func createPhotoEntry()
+    func createImageEntry()
     func createAudioEntry()
     func createVideoEntry()
 }
@@ -20,6 +21,7 @@ class TimelineHeaderView: UIView{
 
     var addTextButton = IconButton(icon: "text.alignleft")
     var addPhotoButton = IconButton(icon: "camera")
+    var addImageButton = IconButton(icon: "photo")
     var addAudioButton = IconButton(icon: "mic")
     let addVideoButton = IconButton(icon: "video")
     let editButton = IconButton(icon: "pencil.circle")
@@ -37,6 +39,8 @@ class TimelineHeaderView: UIView{
         leftStackView.addArrangedSubview(addTextButton)
         addPhotoButton.addTarget(self, action: #selector(addPhotoEntry), for: .touchDown)
         leftStackView.addArrangedSubview(addPhotoButton)
+        addImageButton.addTarget(self, action: #selector(addImageEntry), for: .touchDown)
+        leftStackView.addArrangedSubview(addImageButton)
         addAudioButton.addTarget(self, action: #selector(addAudioEntry), for: .touchDown)
         leftStackView.addArrangedSubview(addAudioButton)
         addVideoButton.addTarget(self, action: #selector(addVideoEntry), for: .touchDown)
@@ -58,6 +62,10 @@ class TimelineHeaderView: UIView{
     
     @objc func addPhotoEntry(){
         delegate?.createPhotoEntry()
+    }
+    
+    @objc func addImageEntry(){
+        delegate?.createImageEntry()
     }
     
     @objc func addAudioEntry(){

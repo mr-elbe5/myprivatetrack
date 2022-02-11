@@ -26,6 +26,9 @@ class AudioData : FileEntryItemData{
         get{
             return "audio_\(creationDate.fileDate()).m4a"
         }
+        set{
+            print("error: setting file name not implemented for AudioItemData")
+        }
     }
     
     init(){

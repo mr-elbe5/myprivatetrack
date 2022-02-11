@@ -56,15 +56,15 @@ class EntryData: Identifiable, Codable{
     }
     
     private func createMapEntryFromSection(comment: String? = nil){
-        let oldFileUrl = FileController.getURL(dirURL: FileController.privateURL,fileName: id.uuidString + "_map.jpg")
-        if let data = FileController.readFile(url: oldFileUrl), let image = UIImage(data: data){
-            print("creating photo item from map")
-            let mapItem = PhotoItemData()
-            mapItem.creationDate = creationDate
-            mapItem.saveImage(uiImage: image)
-            mapItem.title = comment ?? ""
-            FileController.deleteFile(url: oldFileUrl)
-            addItem(item: mapItem)
+        let fileName = id.uuidString + "_map.jpg"
+        let fileUrl = FileController.getURL(dirURL: FileController.privateURL,fileName: fileName)
+        if FileController.fileExists(url: fileUrl){
+            print("creating image item from map")
+            let imageItem = ImageItemData()
+            imageItem.creationDate = creationDate
+            imageItem.fileName = fileName
+            imageItem.title = comment ?? ""
+            addItem(item: imageItem)
         }
     }
     

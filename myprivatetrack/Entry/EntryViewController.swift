@@ -52,7 +52,11 @@ class EntryViewController: ModalScrollViewController {
                 stackView.addArrangedSubview(itemView)
                 break
             case .photo:
-                let itemView = PhotoItemView.fromData(data: item.data as! PhotoItemData,delegate: self)
+                let itemView = ImageItemView.fromData(data: item.data as! PhotoItemData,delegate: self)
+                stackView.addArrangedSubview(itemView)
+                break
+            case .image:
+                let itemView = ImageItemView.fromData(data: item.data as! ImageItemData,delegate: self)
                 stackView.addArrangedSubview(itemView)
                 break
             case .video:
@@ -96,4 +100,5 @@ extension EntryViewController : SaveEntryDelegate{
         updateView()
         delegate?.saveEntry(entry: entry)
     }
+    
 }

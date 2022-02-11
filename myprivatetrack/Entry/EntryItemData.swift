@@ -10,6 +10,7 @@ enum EntryItemType: String, Codable{
     case text
     case audio
     case photo
+    case image
     case video
 }
 
@@ -88,6 +89,9 @@ class EntryItem : Identifiable, Codable{
             break
         case .photo:
             data = try values.decode(PhotoItemData.self, forKey: .item)
+            break
+        case .image:
+            data = try values.decode(ImageItemData.self, forKey: .item)
             break
         case .video:
             data = try values.decode(VideoItemData.self, forKey: .item)

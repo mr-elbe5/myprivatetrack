@@ -5,57 +5,62 @@
  */
 
 import Foundation
+import UIKit
 
-class VideoItemData : FileEntryItemData{
+class ImageItemData : FileEntryItemData{
     
-    enum VideoCodingKeys: String, CodingKey {
+    enum ImageEntryCodingKeys: String, CodingKey {
         case title
-        case time
     }
     
     var title: String = ""
-    var time: Double = 0.0
+    
+    private var image : UIImage? = nil
+    private var _fileName : String = ""
     
     override var type : EntryItemType{
         get{
-            return .video
+            return .image
         }
     }
-
+    
     override var fileName : String {
         get{
-            return "video\(creationDate.fileDate()).mp4"
+            return _fileName
         }
         set{
-            print("error: setting file name not implemented for VideoItemData")
+            _fileName = newValue
         }
     }
     
     init(){
-        time = 0.0
         super.init()
     }
     
     required init(from decoder: Decoder) throws {
-        let values = try decoder.container(keyedBy: VideoCodingKeys.self)
+        let values = try decoder.container(keyedBy: ImageEntryCodingKeys.self)
         title = try values.decodeIfPresent(String.self, forKey: .title) ?? ""
-        time = try values.decodeIfPresent(Double.self, forKey: .time) ?? 0.0
         try super.init(from: decoder)
     }
     
     override func encode(to encoder: Encoder) throws {
         try super.encode(to: encoder)
-        var container = encoder.container(keyedBy: VideoCodingKeys.self)
+        var container = encoder.container(keyedBy: ImageEntryCodingKeys.self)
         try container.encode(title, forKey: .title)
-        try container.encode(time, forKey: .time)
     }
     
-    override func isComplete() -> Bool{
-        return fileExists()
+    func getImage() -> UIImage?{
+        if let data = getFile(){
+            return UIImage(data: data)
+        } else{
+            return nil
+        }
     }
     
-    override func addActiveFileNames( to fileNames: inout Array<String>){
-        fileNames.append(fileName)
+    func saveImage(uiImage: UIImage){
+        if let data = uiImage.jpegData(compressionQuality: 0.8){
+            saveFile(data: data)
+        }
     }
     
 }

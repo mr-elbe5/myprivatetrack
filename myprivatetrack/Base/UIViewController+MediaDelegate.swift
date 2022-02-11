@@ -7,16 +7,16 @@
 import Foundation
 import UIKit
 
-extension UIViewController: PhotoItemDelegate, VideoItemDelegate{
+extension UIViewController: ImageItemDelegate, VideoItemDelegate{
     
-    func viewPhotoItem(data: PhotoItemData) {
+    func viewImageItem(data: ImageItemData) {
         let photoViewController = PhotoViewController()
         photoViewController.uiImage = data.getImage()
         photoViewController.modalPresentationStyle = .fullScreen
         self.present(photoViewController, animated: true)
     }
     
-    func sharePhotoItem(data: PhotoItemData) {
+    func shareImageItem(data: ImageItemData) {
         let alertController = UIAlertController(title: title, message: "shareImage".localize(), preferredStyle: .alert)
         alertController.addAction(UIAlertAction(title: "imageLibrary".localize(), style: .default) { action in
             FileController.copyImageToLibrary(name: data.fileName, fromDir: FileController.privateURL){ result in

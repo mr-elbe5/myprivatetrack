@@ -6,12 +6,12 @@
 
 import UIKit
 
-protocol TimelineEntryCellDelegate: PhotoItemDelegate, VideoItemDelegate{
+protocol TimelineEntryCellDelegate: ImageItemDelegate, VideoItemDelegate{
     func deleteEntry(entry: EntryData)
     func viewEntry(entry: EntryData)
 }
 
-class TimelineEntryCell: UITableViewCell, PhotoItemDelegate, VideoItemDelegate{
+class TimelineEntryCell: UITableViewCell{
     
     var entry : EntryData? = nil {
         didSet {
@@ -87,7 +87,7 @@ class TimelineEntryCell: UITableViewCell, PhotoItemDelegate, VideoItemDelegate{
                     cellBody.addSubview(itemView)
                     itemView.setAnchors(top: lastView.bottomAnchor, leading: cellBody.leadingAnchor, trailing: cellBody.trailingAnchor, insets: defaultInsets)
                     lastView = itemView
-                case .photo, .video:
+                case .photo, .image, .video:
                     items.append(item)
                 }
             }
@@ -97,8 +97,8 @@ class TimelineEntryCell: UITableViewCell, PhotoItemDelegate, VideoItemDelegate{
                 mediaView.setAnchors(top: lastView.bottomAnchor, leading: cellBody.leadingAnchor, trailing: cellBody.trailingAnchor, insets: defaultInsets)
                 for item in items{
                     switch item.type{
-                    case .photo:
-                        mediaView.previews.append(PhotoItemPreview.previewFromData(data: item.data as! PhotoItemData, delegate: isEditing ? nil : self))
+                    case .photo, .image:
+                        mediaView.previews.append(ImageItemPreview.previewFromData(data: item.data as! ImageItemData, delegate: isEditing ? nil : self))
                     case .video:
                         mediaView.previews.append(VideoItemPreview.previewFromData(data: item.data as! VideoItemData, delegate: isEditing ? nil : self))
                     default:
@@ -132,12 +132,16 @@ class TimelineEntryCell: UITableViewCell, PhotoItemDelegate, VideoItemDelegate{
         }
     }
     
-    func viewPhotoItem(data: PhotoItemData){
-        delegate?.viewPhotoItem(data: data)
+}
+
+extension TimelineEntryCell: ImageItemDelegate, VideoItemDelegate{
+    
+    func viewImageItem(data: ImageItemData){
+        delegate?.viewImageItem(data: data)
     }
     
-    func sharePhotoItem(data: PhotoItemData){
-        delegate?.sharePhotoItem(data: data)
+    func shareImageItem(data: ImageItemData){
+        delegate?.shareImageItem(data: data)
     }
     
     func viewVideoItem(data: VideoItemData){

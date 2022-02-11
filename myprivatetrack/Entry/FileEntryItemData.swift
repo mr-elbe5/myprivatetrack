@@ -13,6 +13,9 @@ class FileEntryItemData: EntryItemData{
         get{
             return id.uuidString
         }
+        set{
+            print("error: setting file name not implemented for FileItemData")
+        }
     }
     
     var filePath : String{

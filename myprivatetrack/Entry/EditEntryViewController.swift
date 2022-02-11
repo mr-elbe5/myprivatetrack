@@ -13,7 +13,7 @@ protocol SaveEntryDelegate{
     func saveEntry(entry: EntryData)
 }
 
-class EditEntryViewController: EditViewController, PhotoCaptureDelegate, VideoCaptureDelegate, DeleteEntryActionDelegate{
+class EditEntryViewController: EditViewController{
     
     var delegate : SaveEntryDelegate? = nil
     
@@ -22,6 +22,7 @@ class EditEntryViewController: EditViewController, PhotoCaptureDelegate, VideoCa
     var showLocationSwitch = SwitchView()
     var addTextButton = IconButton(icon: "text.alignleft")
     var addPhotoButton = IconButton(icon: "camera")
+    var addImageButton = IconButton(icon: "photo")
     var addAudioButton = IconButton(icon: "mic")
     let addVideoButton = IconButton(icon: "video")
     
@@ -44,7 +45,11 @@ class EditEntryViewController: EditViewController, PhotoCaptureDelegate, VideoCa
                 editItem?.delegate = self
                 break
             case .photo:
-                editItem = PhotoItemEditView.fromData(data: item.data as! PhotoItemData)
+                editItem = ImageItemEditView.fromData(data: item.data as! PhotoItemData)
+                editItem?.delegate = self
+                break
+            case .image:
+                editItem = ImageItemEditView.fromData(data: item.data as! ImageItemData)
                 editItem?.delegate = self
                 break
             case .video:
@@ -83,8 +88,10 @@ class EditEntryViewController: EditViewController, PhotoCaptureDelegate, VideoCa
         
         addTextButton.addTarget(self, action: #selector(addText), for: .touchDown)
         leftStackView.addArrangedSubview(addTextButton)
-        addPhotoButton.addTarget(self, action: #selector(addImage), for: .touchDown)
+        addPhotoButton.addTarget(self, action: #selector(addPhoto), for: .touchDown)
         leftStackView.addArrangedSubview(addPhotoButton)
+        addImageButton.addTarget(self, action: #selector(addImage), for: .touchDown)
+        leftStackView.addArrangedSubview(addImageButton)
         addAudioButton.addTarget(self, action: #selector(addAudio), for: .touchDown)
         leftStackView.addArrangedSubview(addAudioButton)
         addVideoButton.addTarget(self, action: #selector(addVideo), for: .touchDown)
@@ -103,7 +110,7 @@ class EditEntryViewController: EditViewController, PhotoCaptureDelegate, VideoCa
         insertItemView(editView)
     }
     
-    @objc func addImage(){
+    @objc func addPhoto(){
         AVCaptureDevice.askCameraAuthorization(){ result in
             switch result{
             case .success(()):
@@ -124,6 +131,16 @@ class EditEntryViewController: EditViewController, PhotoCaptureDelegate, VideoCa
             }
         }
         
+    }
+    
+    @objc func addImage(){
+        let pickerController = UIImagePickerController()
+        pickerController.delegate = self
+        pickerController.allowsEditing = true
+        pickerController.mediaTypes = ["public.image"]
+        pickerController.sourceType = .photoLibrary
+        pickerController.modalPresentationStyle = .fullScreen
+        self.present(pickerController, animated: true, completion: nil)
     }
     
     @objc func addAudio(){
@@ -168,55 +185,6 @@ class EditEntryViewController: EditViewController, PhotoCaptureDelegate, VideoCa
         }
     }
     
-    @objc func showInfo(){
-        let infoController = EditEntryInfoViewController()
-        self.present(infoController, animated: true)
-    }
-    
-    func insertItemView(_ editView: EntryItemEditView){
-        editView.delegate = self
-        stackView.insertArrangedSubview(editView, at: stackView.arrangedSubviews.count-1)
-        scrollView.setNeedsLayout()
-        editView.setFocus()
-    }
-    
-    func showError(_ reason: String){
-        showAlert(title: "error".localize(), text: reason.localize())
-    }
-    
-    // ImageCaptureDelegate
-    
-    func photoCaptured(photo: PhotoItemData){
-        entry.addItem(item: photo)
-        let editView = PhotoItemEditView.fromData(data: photo)
-        insertItemView(editView)
-    }
-    
-    // VideoCaptureDelegate
-    
-    func videoCaptured(data: VideoItemData){
-        entry.addItem(item: data)
-        let editView = VideoItemEditView.fromData(data: data)
-        insertItemView(editView)
-    }
-    
-    // DeleteEntryActionDelegate
-    
-    func deleteItem(itemView: EntryItemEditView) {
-        showApprove(title: "reallyDeleteItem".localize(), text: "deleteItemApproveInfo".localize()){
-            for v in self.stackView.arrangedSubviews{
-                if v == itemView {
-                    self.entry.removeItem(item: itemView.data)
-                    self.stackView.removeArrangedSubview(itemView)
-                    self.stackView.removeSubview(itemView)
-                    break
-                }
-            }
-        }
-    }
-    
-    // SaveActionDelegate
-    
     @objc func save(){
         if entry.items.count == 0{
             showAlert(title: "error".localize(), text: "noItems".localize())
@@ -238,6 +206,75 @@ class EditEntryViewController: EditViewController, PhotoCaptureDelegate, VideoCa
         self.dismiss(animated: true)
     }
     
+    @objc func showInfo(){
+        let infoController = EditEntryInfoViewController()
+        self.present(infoController, animated: true)
+    }
+    
+    func insertItemView(_ editView: EntryItemEditView){
+        editView.delegate = self
+        stackView.insertArrangedSubview(editView, at: stackView.arrangedSubviews.count-1)
+        scrollView.setNeedsLayout()
+        editView.setFocus()
+    }
+    
+    func showError(_ reason: String){
+        showAlert(title: "error".localize(), text: reason.localize())
+    }
     
 }
+
+extension EditEntryViewController: PhotoCaptureDelegate{
+    
+    func photoCaptured(photo: PhotoItemData){
+        entry.addItem(item: photo)
+        let editView = ImageItemEditView.fromData(data: photo)
+        insertItemView(editView)
+    }
+    
+}
+
+extension EditEntryViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate{
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]) {
+        guard let imageURL = info[.imageURL] as? URL else {return}
+        let data = ImageItemData()
+        data.fileName = imageURL.lastPathComponent
+        if FileController.copyFile(fromURL: imageURL, toURL: data.fileURL){
+            self.entry.addItem(item: data)
+            let editView = ImageItemEditView.fromData(data: data)
+            self.insertItemView(editView)
+        }
+        picker.dismiss(animated: false)
+    }
+    
+}
+
+extension EditEntryViewController: VideoCaptureDelegate{
+    
+    func videoCaptured(data: VideoItemData){
+        entry.addItem(item: data)
+        let editView = VideoItemEditView.fromData(data: data)
+        insertItemView(editView)
+    }
+    
+}
+    
+extension EditEntryViewController: DeleteEntryActionDelegate{
+    
+    func deleteItem(itemView: EntryItemEditView) {
+        showApprove(title: "reallyDeleteItem".localize(), text: "deleteItemApproveInfo".localize()){
+            for v in self.stackView.arrangedSubviews{
+                if v == itemView {
+                    self.entry.removeItem(item: itemView.data)
+                    self.stackView.removeArrangedSubview(itemView)
+                    self.stackView.removeSubview(itemView)
+                    break
+                }
+            }
+        }
+    }
+    
+}
+    
 
