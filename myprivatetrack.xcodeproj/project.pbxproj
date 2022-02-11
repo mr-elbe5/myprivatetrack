@@ -828,7 +828,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.1;
+				MARKETING_VERSION = 2.0;
 				PRODUCT_BUNDLE_IDENTIFIER = de.elbe5.myprivatetrack;
 				PRODUCT_NAME = "My private track";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -855,7 +855,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.1;
+				MARKETING_VERSION = 2.0;
 				PRODUCT_BUNDLE_IDENTIFIER = de.elbe5.myprivatetrack;
 				PRODUCT_NAME = "My private track";
 				SWIFT_VERSION = 5.0;
