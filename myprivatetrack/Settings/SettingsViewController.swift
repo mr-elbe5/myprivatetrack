@@ -13,8 +13,6 @@ enum SettingsPickerType{
 
 class SettingsViewController: EditViewController, UIDocumentPickerDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, SwitchDelegate{
     
-    static var sizeItems : Array<String> = ["small".localize(),"medium".localize(),"large".localize()]
-
     var backgroundButton = TextButton(text: "selectBackground".localize())
     var urlTemplateField = LabeledText()
     var showLocationSwitch = SwitchView()

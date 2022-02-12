@@ -28,7 +28,7 @@ class CreateQuickEntryView: UIView{
         layer.cornerRadius = 5
         textView.setDefaults()
         textView.isScrollEnabled = false
-        textView.placeholder = "title/text".localize()
+        textView.placeholder = "yourText".localize()
         textView.delegate = self
         addSubview(textView)
         textView.setKeyboardToolbar(doneTitle: "done".localize())

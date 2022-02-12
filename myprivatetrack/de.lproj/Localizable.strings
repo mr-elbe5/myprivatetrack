@@ -3,34 +3,105 @@
  App for creating a diary with entry based on time and map location using text, photos, audios and videos
  Copyright: Michael Rönnau mr@elbe5.de
  */
-"addItem"="Hinzufügen:";
-"addMapSection"="Kartenausschnitt hinzufügen";
+
+//common
+"cancel" = "Abbrechen";
+"comment"="Kommentar";
+"done"="Fertig";
+"east"="Ost";
+"endDate"="Letzter Tag";
+"no"="Nein";
+"north"="Nord";
+"ok"="Ok";
+"files"="Dateien";
+"fromDate" = "Ab Datum";
+"save" = "Speichern";
+"south"="Süd";
+"startDate"="Erster Tag";
+"success"="Erfolg";
+"title"="Titel";
+"toDate" = "Bis Datum";
+"west"="West";
+"yes"="Ja";
+"yourText"="Dein Text...";
+
+//errors
 "audioNotAuthorized"="Die Nutzung des Mikrofons ist nicht erlaubt. Bitte ändere die entsprechenden Einstellungen.";
-"back"="Zurück";
-"backgroundImage"="Hintergrundbild";
-"backgroundImageInfo"="Du kannst ein Bild aus der Fotobibliothek oder das Standardbild wählen.";
-"backupInfo"="Du kannst den ersten und letzten Tag der zu sichernden Einträge wählen. Mit Drücken auf auf 'Sichern' wird im Dokumentenverzeichnis der App eine Datei mit dem Namen 'backup_...' erzeugt (man kann sie z.B. auch in der 'Dateien' - App sehen). Alle Sicherungsdateien können für eine spätere Wiederherstellung benutzt werden. Denke bitte daran, dass diese Dateien auch von anderen Apps gesehen und (wenn nicht durch ein Passwort geschützt) geöffnet werden können. Wiilst du die Sicherungsdatei ausserhalb der App öffnen, solltest du kein Passwort verwenden.";
-"backupPassword"="Sicherungspasswort";
-"backupRestored"="Die ausgewählten Tage wurden wiederhergestellt.";
-"backup"="Sichern";
-"backupSuccessInfo"="Sicherung wurde erstellt.";
-"balanced"="Ausbalanciert";
 "camera"="Kamera";
 "cameraNotAvailable"="Die Kamera steht nicht zur Verfügung.";
 "cameraNotAuthorized"="Die Nutzung der Kamera ist nicht erlaubt. Bitte ändere die entsprechenden Einstellungen.";
-"cancel" = "Abbrechen";
-"comment"="Kommentar";
 "copyError"="Die Datei konnte nicht kopiert werden.";
-"defaultBackground"="Standardbild";
-"deleteAllDataApproveInfo"="Wenn du zustimmst, werden alle Daten und Medien gelöscht. Diese Aktion kann nicht rückgängig gemacht werden.";
+"locationNotAuthorized"="Die App darf deinen Standort nicht feststellen. Bitte ändere die entsprechenden Einstellungen.";
+"error"="Fehler";
+"fileOpenError"="Die Datei konnte nicht geöffnet werden.";
+"notComplete"="Einige Eingaben sind nicht vollständig.";
+"noItems"="Es ist mindestens ein Eintrag nötig.";
+"photoLibraryNotAuthorized"="Die Nutzung der Fotobibliothek ist nicht erlaubt. Bitte ändere die entsprechenden Einstellungen.";
+"readError"="Die Datei konnte nicht gelesen werden.";
+"rejectedError"="Diese Aktion wurde nicht autorisiert.";
+"saveError"="Die Datei konnte nicht gespeichert werden.";
+"timeoutError"="A time out has occurred.";
+"unexpectedError"="Ein unerwarteter Fehler ist aufgetreten.";
+"videoNotAuthorized"="Die Nutzung der Kamera oder des Mikrofons ist nicht erlaubt. Bitte ändere die entsprechenden Einstellungen.";
+
+//timeline
+"timeline"="Tage";
+
+//entry
 "deleteEntryApproveInfo"="Wenn du zustimmst, wird der Eintrag mit allen Elementen gelöscht. Diese Aktion kann nicht rückgängig gemacht werden.";
+"entries"="Einträge";
+"newEntry"="Neuer Eintrag";
+"reallyDeleteEntry"="Wirklich diesen Eintrag löschen?";
+"showLocation"="Ort anzeigen";
+
+//entry item
 "deleteItemApproveInfo"="Wenn du zustimmst, wird dieses Element gelöscht. Diese Aktion kann nicht rückgängig gemacht werden.";
+"reallyDeleteItem"="Wirklich dieses Element löschen?";
+
+//map
+"map"="Karte";
+"mapTopInfo"="Die Kartenansicht zeigt alle Einträge, deren Position gespeichert wurde. Die Einträge werden duch eine Nadel dargestellt. Durch Antippen der Nadel wird der gesamte Eintrag angezeigt.";
+
+//media
+"imageLibrary"="Fotos";
+"media"="Medien";
+"ownDocuments"="Dateien - Auf meinem iPhone/iPad";
+"photoShared"="Foto wurde kopiert.";
+"shareImage"="Bild kopieren";
+"videoShared"="Video wurde kopiert.";
+
+//settings
+"backgroundImage"="Hintergrundbild";
+"backgroundImageInfo"="Du kannst ein Bild aus der Fotobibliothek oder das Standardbild wählen.";
+"defaultBackground"="Standardbild";
+"osmTemplate"="URL-Template für OpenStreetMap-Kacheln:";
+"elbe5TileURL"="Template für Elbe5.de benutzen";
+"osmTileURL"="Template für OpenStreetMap.org benutzen";
+"elbe5LegalInfo"="Regeln für das Laden von Elbe5.de";
+"osmLegalInfo"="Regeln für das Laden von OpenStreetMap.org";
+"backup"="Sichern";
+"backupInfo"="Du kannst den ersten und letzten Tag der zu sichernden Einträge wählen. Mit Drücken auf auf 'Sichern' wird im Dokumentenverzeichnis der App eine Datei mit dem Namen 'backup_...' erzeugt (man kann sie z.B. auch in der 'Dateien' - App sehen). Alle Sicherungsdateien können für eine spätere Wiederherstellung benutzt werden. Denke bitte daran, dass diese Dateien auch von anderen Apps gesehen und (wenn nicht durch ein Passwort geschützt) geöffnet werden können. Wiilst du die Sicherungsdatei ausserhalb der App öffnen, solltest du kein Passwort verwenden.";
+"backupRestored"="Die ausgewählten Tage wurden wiederhergestellt.";
+"backupSuccessInfo"="Sicherung wurde erstellt.";
+"deleteAllDataApproveInfo"="Wenn du zustimmst, werden alle Daten und Medien gelöscht. Diese Aktion kann nicht rückgängig gemacht werden.";
 "deleteDocumentsApproveInfo"="Wenn du zustimmst, werden alle öfftlichen Dateien (Sicherungen und Exporte) gelöscht. Diese Aktion kann nicht rückgängig gemacht werden.";
 "deleteData" = "Einträge löschen";
 "deleteDocuments" = "Alle exportierten Dateien löschen";
 "documentsDeleted"="Alle exportierten Dateien (Sicherungen und Exporte) wurden gelöscht.";
-"done"="Fertig";
-"east"="Ost";
+"fullBackupData"="Alle Einträge sichern";
+"ownBackground"="Fotobibliothek";
+"partialBackupData"="Einträge einer Zeitspanne sichern";
+"reallyDeleteAllData"="Wirklich alle Daten löschen?";
+"restore"="Wiederherstellen";
+"restoreData"="Einträge wiederherstellen";
+"restoreInfo"="Du kannst den ersten und letzten Tag für die Wiederherstellung wählen. Nach der Auswahl der Tage werden sie zu den bestehenden Tagen hinzugefügt oder mit ihnen zusammengelegt.";
+"reallyDeleteDocuments"="Wirklich alle exportierten Dateien löschen?";
+"selectBackground"="Hintergrundbild wählen";
+"settings"="Einstellungen";
+
+// info
+
+"info"="Info";
 "editEntryAudioIconInfo"="Mit diesem Icon erstellst du ein neues Audio-Element durch eine Tonaufnahme.";
 "editEntryDeleteIconInfo"="Mit diesem Icon löschst du das Element. Vorsicht! Diese Aktion kann nicht rückgängig gemacht werden!";
 "editEntryFlashIconInfo"="Mit diesem Icon setzt du den Blitzmodus (aus, an oder automatisch).";
@@ -45,36 +116,8 @@
 "editEntryTopInfo"="In dieser Ansicht kannst du Elemente in deinem Eintrag hinzufügen, ändern oder löschen. Durch Antippen der linken Icons kannst du ein neues Element erzeugen: Text, Bild, Audio, Video oder Karte. Die Anzahl der Elemente ist nicht begrenzt";
 "editEntryVideoIconInfo"="Mit diesem Icon erstellst du ein neues Video-Element duch eine Videoaufnahme.";
 "editEntryShareIconInfo"="Mit diesem Icon kannst du ein Element in 'Fotos' oder das Dokumentenverzeichnis dieser App ('Dateien') kopieren.";
-"endDate"="Letzter Tag";
-"entries"="Einträge";
-"error"="Fehler";
-"fileOpenError"="Die Datei konnte nicht geöffnet werden.";
-"files"="Dateien";
-"fromDate" = "Ab Datum";
-"fullBackupData"="Alle Einträge sichern";
-"iconsInfoHeader"="Icons";
-"imageLibrary"="Fotos";
-"info"="Info";
-"large"="gross";
-"locationNotAuthorized"="Die App darf deinen Standort nicht feststellen. Bitte ändere die entsprechenden Einstellungen.";
 "mapInfoHeader"="Kartenansicht";
-"map"="Karte";
-"mapComment"="Kommentar zur Karte";
-"mapStartSize"="Anfangsgröße für Kartensnapshots";
-"mapTopInfo"="Die Kartenansicht zeigt alle Einträge, deren Position gespeichert wurde. Die Einträge werden duch eine Nadel dargestellt. Durch Antippen der Nadel wird der gesamte Eintrag angezeigt.";
-"media"="Medien";
-"medium"="mittel";
-"newEntry"="Neuer Eintrag";
-"noItems"="Es ist minestens ein Eintrag oder die Position nötig.";
-"no"="Nein";
-"north"="Nord";
-"notComplete"="Einige Eingaben sind nicht vollständig.";
-"ok"="Ok";
-"ownBackground"="Fotobibliothek";
-"ownDocuments"="Dateien - Auf meinem iPhone/iPad";
-"partialBackupData"="Einträge einer Zeitspanne sichern";
-"photoLibraryNotAuthorized"="Die Nutzung der Fotobibliothek ist nicht erlaubt. Bitte ändere die entsprechenden Einstellungen.";
-"photoShared"="Foto wurde kopiert.";
+"iconsInfoHeader"="Icons";
 "privacyInfoHeader"="Deine Privatshäre";
 "privacyInfoText1"="Diese App ist für private Daten erstellt.";
 "privacyInfoText2"="Keine eingegebenen Daten verlassen das iPhone oder iPad, solange sie nicht explizit exportiert werden.";
@@ -84,23 +127,6 @@
 "privacyInfoText6"="Der Code dieser App ist bei Github unter https://github.com/mr-elbe5/myprivatetrack.git offengelegt.";
 "privacyExportHeader"="Exportierte Daten";
 "privacyExportText"="Diese App ermöglicht es, Sicherungen anzulegen und Dateien in das 'Dateien'-Verzeichnis dieser App zu kopieren. Dabei sollte beachtet werden, das diese exportierten Dateien auch für andere laufende Apps auf dem iPhone/iPad sichtbar sind. Je nach Bedarf sollten sie nach der Nutzung wieder gelöscht werden.";
-"quality"="Qualität";
-"quality"="Qualität";
-"readError"="Die Datei konnte nicht gelesen werden.";
-"reallyDeleteAllData"="Wirklich alle Daten löschen?";
-"reallyDeleteEntry"="Wirklich diesen Eintrag löschen?";
-"reallyDeleteItem"="Wirklich dieses Element löschen?";
-"reallyDeleteDocuments"="Wirklich alle exportierten Dateien löschen?";
-"rejectedError"="Diese Aktion wurde nicht autorisiert.";
-"reset" = "Zurücksetzen";
-"restore"="Wiederherstellen";
-"restoreData"="Einträge wiederherstellen";
-"restoreInfo"="Du kannst den ersten und letzten Tag für die Wiederherstellung wählen. Nach der Auswahl der Tage werden sie zu den bestehenden Tagen hinzugefügt oder mit ihnen zusammengelegt.";
-"restore"="Wiederherstellen";
-"save" = "Speichern";
-"saveError"="Die Datei konnte nicht gespeichert werden.";
-"showLocation"="Ort anzeigen";
-"selectBackground"="Hintergrundbild wählen";
 "settingsBackupInfo"="Mit 'Sichern' kannst du deine Einträge und Medien als zip-Datei sichern (alle oder für einen bestimmten Zeitraum). Du kannst diese Dateien mit einem Passwort schützen.";
 "settings"="Einstellungen";
 "settingsBackgroundInfo"="Mit 'Hintergrund' kannst du das Hintergrundbild verändern. Du kannst ein Bild aus der Fotobibliothek wählen oder zum Standardbild zurückkehren.";
@@ -111,14 +137,6 @@
 "settingsResetInfo"="Mit 'Einträge löschen' löschst du alle Einträge und dazgehörige Medien. Wenn du diese Daten nicht verlieren willst, solltest du vorher eine Sicherung erstellen.";
 "settingsRestoreInfo"="Mit 'Wiederherstellen' kannst du vorher gesicherte Einträge und Medien wiederherstellen (alle oder aus einem bestimmten Zeitraum).";
 "settingsUseLocationInfo"="Wenn du keine Standortbestimmung benutzt, erhalten deine Einträge keine Position und du kannst keine Karten-Schnappschuss machen.";
-"shareImage"="Bild kopieren";
-"small"="klein";
-"snapshotError"="Die Karte konnte nicht gespeichert werden.";
-"south"="Süd";
-"speed"="Geschwindigkeit";
-"speed"="Geschwindigkeit";
-"startDate"="Erster Tag";
-"success"="Erfolg";
 "timelineAudioIconInfo"="Mit diesem Icon startest du einen neuen Eintrag, der mit dem Aufnehmen eines Audios beginnt.";
 "timelineDeleteIconInfo"="Mit diesem Icon löschst du den Eintrag. Vorsicht! Diese Aktion kann nicht rückgängig gemacht werden!";
 "timelineDetailIconInfo"="Mit diesem Icon bekommst du die Detailansicht des Eintrags oder eines seiner Elemente. Dort kannst du auch Einträge editieren.";
@@ -130,26 +148,8 @@
 "timelineImageIconInfo"="Mit diesem Icon startest du einen neuen Eintrag, der mit dem Importieren eines Bildes aus der Bibliothek beginnt.";
 "timelineInfoEditHeader"="Editiermodus";
 "timelineInfoHeader"="Tagesansicht";
-"timeline"="Tage";
 "timelineLocationInfo"="Wenn der Schalter 'Position anzeigen' an ist, kannst du einen Kartenausschnitt hinzufügen.";
 "timelineMapIconInfo"="Mit diesem Icon kannst du ein Element auf der Karte anzeigen.";
 "timelineTextIconInfo"="Mit diesem Icon startest du einen neuen Eintrag, der mit dem Eingeben eines Textes beginnt.";
 "timelineTopInfo"="Die Tagesansicht zeigt alle Einträge nach Tag und Zeit sortiert. Durch Antippen der linken Icons kannst du einen neuen Eintrag erzeugen, der mit dem jeweiligen Typ startet : leer, Text, Foto, Bild, Audio oder Video. Mit dem rechten Bleistift-Icon kannst du zwischen Anzeige- und Editiermodus wechseln (siehe unten).";
 "timelineVideoIconInfo"="Mit diesem Icon startest du einen neuen Eintrag, der mit dem Aufnehmen eines Videos beginnt.";
-"timeoutError"="A time out has occurred.";
-"title"="Titel";
-"toDate" = "Bis Datum";
-"unexpectedError"="Ein unerwarteter Fehler ist aufgetreten.";
-"useLocation"="Standortbestimmung benutzen";
-"videoNotAuthorized"="Die Nutzung der Kamera oder des Mikrofons ist nicht erlaubt. Bitte ändere die entsprechenden Einstellungen.";
-"videoShared"="Video wurde kopiert.";
-"west"="West";
-"yes"="Ja";
-"yourPosition"="Deine Position";
-"yourText"="Dein Text...";
-
-"osmTemplate"="URL-Template für OpenStreetMap-Kacheln:";
-"elbe5TileURL"="Template für Elbe5.de benutzen";
-"osmTileURL"="Template für OpenStreetMap.org benutzen";
-"elbe5LegalInfo"="Regeln für das Laden von Elbe5.de";
-"osmLegalInfo"="Regeln für das Laden von OpenStreetMap.org";
