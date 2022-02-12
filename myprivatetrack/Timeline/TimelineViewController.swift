@@ -201,16 +201,14 @@ extension TimelineViewController : SaveEntryDelegate{
         if entry.isNew {
             let day = GlobalData.shared.assertDay(date: entry.creationDate)
             day.addEntry(entry: entry)
+            entry.isNew = false
         }
         GlobalData.shared.save()
         tableView.reloadData()
-        if entry.isNew {
-            if GlobalData.shared.days.count > 0 && GlobalData.shared.days[0].entries.count > 0{
-                let section = GlobalData.shared.days.count-1
-                let row = GlobalData.shared.days[GlobalData.shared.days.count - 1].entries.count - 1
-                tableView.scrollToRow(at: .init(row: row, section: section), at: .bottom, animated: true)
-            }
-            entry.isNew = false
+        if GlobalData.shared.days.count > 0 && GlobalData.shared.days[0].entries.count > 0{
+            let section = GlobalData.shared.days.count-1
+            let row = GlobalData.shared.days[GlobalData.shared.days.count - 1].entries.count - 1
+            tableView.scrollToRow(at: .init(row: row, section: section), at: .bottom, animated: true)
         }
         if let mapController = MainTabController.getMapViewController(){
             mapController.setNeedsUpdate()
