@@ -5,21 +5,26 @@
  */
 
 import UIKit
+import AVFoundation
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
-
-    var window: UIWindow?
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         FileController.initialize()
         Settings.load()
         GlobalData.load()
         guard let windowScene = (scene as? UIWindowScene) else { return }
-        window = UIWindow(frame: windowScene.coordinateSpace.bounds)
-        window?.windowScene = windowScene
-        window?.rootViewController = MainTabController()
-        window?.makeKeyAndVisible()
+        mainWindow = UIWindow(frame: windowScene.coordinateSpace.bounds)
+        mainWindow?.windowScene = windowScene
+        mainWindow?.rootViewController = MainTabController()
+        mainWindow?.makeKeyAndVisible()
         LocationService.shared.requestWhenInUseAuthorization()
+        AVCaptureDevice.askCameraAuthorization(){ result in
+            print("camera authorization is \(result)")
+        }
+        AVCaptureDevice.askAudioAuthorization(){ result in
+            print("audio authorization is \(result)")
+        }
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {
@@ -45,5 +50,11 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     }
 
 
+}
+
+var mainWindow : UIWindow? = nil
+
+var windowOrientation: UIInterfaceOrientation {
+    return mainWindow?.windowScene?.interfaceOrientation ?? .unknown
 }
 

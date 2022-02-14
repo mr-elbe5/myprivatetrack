@@ -25,10 +25,6 @@ class CameraViewController: UIViewController {
     
     @objc dynamic var videoDeviceInput: AVCaptureDeviceInput!
     
-    var windowOrientation: UIInterfaceOrientation {
-        return view.window?.windowScene?.interfaceOrientation ?? .unknown
-    }
-    
     let videoDeviceDiscoverySession = AVCaptureDevice.DiscoverySession(deviceTypes: [.builtInWideAngleCamera, .builtInDualCamera, .builtInTrueDepthCamera],
     mediaType: .video, position: .unspecified)
     
@@ -142,8 +138,8 @@ class CameraViewController: UIViewController {
                 
                 DispatchQueue.main.async {
                     var initialVideoOrientation: AVCaptureVideoOrientation = .portrait
-                    if self.windowOrientation != .unknown {
-                        if let videoOrientation = AVCaptureVideoOrientation(interfaceOrientation: self.windowOrientation) {
+                    if windowOrientation != .unknown {
+                        if let videoOrientation = AVCaptureVideoOrientation(interfaceOrientation: windowOrientation) {
                             initialVideoOrientation = videoOrientation
                         }
                     }
