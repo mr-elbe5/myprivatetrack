@@ -17,8 +17,15 @@ class AudioRecorder: NSObject, AVCaptureAudioDataOutputSampleBufferDelegate{
     private var session: AVCaptureSession!
     private let sessionQueue = DispatchQueue(label: "audio session queue")
     private var audioSettings: [String: Any]? = nil
+    private var fileUrl: URL!
     
     let audioBufferQueue = DispatchQueue(label: "audio buffer queue")
+    
+    init(url: URL){
+        super.init()
+        fileUrl = url
+        prepare()
+    }
     
     func prepare() {
         AVCaptureDevice.askAudioAuthorization(){ result in
@@ -28,10 +35,10 @@ class AudioRecorder: NSObject, AVCaptureAudioDataOutputSampleBufferDelegate{
                 audioDeviceInput = try AVCaptureDeviceInput(device: device)
             } catch {
                 audioDeviceInput = nil
+                return
             }
-            
             let audioDataOutput = AVCaptureAudioDataOutput()
-            audioDataOutput.setSampleBufferDelegate(self, queue: self.sessionQueue)
+            audioDataOutput.setSampleBufferDelegate(self, queue: self.audioBufferQueue)
             
             self.session = AVCaptureSession()
             self.session.sessionPreset = .medium
@@ -52,40 +59,59 @@ class AudioRecorder: NSObject, AVCaptureAudioDataOutputSampleBufferDelegate{
     
     func captureOutput(_ output: AVCaptureOutput, didOutput sampleBuffer: CMSampleBuffer, from connection: AVCaptureConnection) {
         if let input = audioInput {
+            print(".")
             audioBufferQueue.async {
                 if input.isReadyForMoreMediaData {
+                    print("-")
                     input.append(sampleBuffer)
                 }
             }
         }
     }
     
-    private func prepareFileWriter() -> Bool{
+    private func prepareAssetWriter() -> Bool{
         do{
             let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
             let fileUrl = paths[0].appendingPathComponent("output.m4a")
-            try FileManager.default.removeItem(at: fileUrl)
+            if FileController.fileExists(url: fileUrl){
+                FileController.deleteFile(url: fileUrl)
+            }
             self.assetWriter = try AVAssetWriter(outputURL: fileUrl, fileType: .m4a)
+            print("asset writer created")
         }
         catch{
             print("could not create asset writer")
+            assetWriter = nil
             return false
         }
         return true
     }
     
+    func finishFile(){
+        let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
+        let fileUrl = paths[0].appendingPathComponent("output.m4a")
+        if FileController.fileExists(url: fileUrl){
+            FileController.copyFile(fromURL: fileUrl, toURL: self.fileUrl, replace: true)
+        }
+    }
+    
     func start() -> Bool{
-        if let session = session, prepareFileWriter(), assetWriter.canAdd(audioInput) {
-            audioBufferQueue.async {
+        print("start")
+        if let session = session, prepareAssetWriter(), assetWriter.canAdd(audioInput) {
+            sessionQueue.async {
+                print("start running")
                 session.startRunning()
+                print("session is running: \(session.isRunning)")
             }
+            print("adding audio input")
             assetWriter.add(audioInput)
+            assetWriter.startWriting()
             return true
         }
         return false
     }
     
-    func end(writing finished: @escaping () -> Void) {
+    func stop(writing finished: @escaping () -> Void) {
         if let session = session {
             if session.isRunning {
                 session.stopRunning()
@@ -93,6 +119,7 @@ class AudioRecorder: NSObject, AVCaptureAudioDataOutputSampleBufferDelegate{
         }
         if assetWriter.status == .writing {
             assetWriter.finishWriting(completionHandler: finished)
+            finishFile()
         }
     }
     
