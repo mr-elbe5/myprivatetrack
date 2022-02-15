@@ -11,6 +11,7 @@ class ImageItemData : FileEntryItemData{
     
     enum ImageEntryCodingKeys: String, CodingKey {
         case title
+        case fileName
     }
     
     var title: String = ""
@@ -40,6 +41,7 @@ class ImageItemData : FileEntryItemData{
     required init(from decoder: Decoder) throws {
         let values = try decoder.container(keyedBy: ImageEntryCodingKeys.self)
         title = try values.decodeIfPresent(String.self, forKey: .title) ?? ""
+        _fileName = try values.decodeIfPresent(String.self, forKey: .fileName) ?? ""
         try super.init(from: decoder)
     }
     
@@ -47,6 +49,7 @@ class ImageItemData : FileEntryItemData{
         try super.encode(to: encoder)
         var container = encoder.container(keyedBy: ImageEntryCodingKeys.self)
         try container.encode(title, forKey: .title)
+        try container.encode(fileName, forKey: .fileName)
     }
     
     func getImage() -> UIImage?{

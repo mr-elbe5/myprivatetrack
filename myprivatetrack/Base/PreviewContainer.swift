@@ -33,7 +33,7 @@ class PreviewContainer: UIView{
                 itemLeadingAnchor = preview.trailingAnchor
             }
             if row == rows - 1{
-                preview.bottom(bottomAnchor)
+                preview.bottom(bottomAnchor, priority: lowPriority)
             }
         }
         

@@ -21,16 +21,12 @@ class TimelineEntryCell: UITableViewCell{
     
     var delegate: TimelineEntryCellDelegate? = nil
     
-    var cellBody = UIView()
+    var cellBody = CellBody()
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         isUserInteractionEnabled = true
         backgroundColor = .clear
-        cellBody.backgroundColor = transparentColor
-        cellBody.layer.cornerRadius = 5
-        contentView.addSubview(cellBody)
-        cellBody.fillView(view: contentView, insets: defaultInsets)
         accessoryType = .none
     }
     
@@ -39,8 +35,11 @@ class TimelineEntryCell: UITableViewCell{
     }
     
     func updateCell(isEditing: Bool = false){
-        cellBody.backgroundColor = transparentColor
-        cellBody.removeAllSubviews()
+        contentView.removeAllSubviews()
+        cellBody = CellBody()
+        cellBody.setup()
+        contentView.addSubview(cellBody)
+        cellBody.fillView(view: contentView, insets: defaultInsets)
         if let entry = entry{
             let timeLabel = UILabel()
             timeLabel.text = entry.creationDate.timeString()
@@ -150,6 +149,15 @@ extension TimelineEntryCell: ImageItemDelegate, VideoItemDelegate{
     
     func shareVideoItem(data: VideoItemData){
         delegate?.shareVideoItem(data: data)
+    }
+    
+}
+
+class CellBody : UIView{
+    
+    func setup(){
+        backgroundColor = transparentColor
+        layer.cornerRadius = 5
     }
     
 }

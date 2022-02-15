@@ -255,25 +255,27 @@ class FileController {
         }
     }
     
-    static func listAllFiles(dirPath: String) -> Array<String>{
-        return try! FileManager.default.contentsOfDirectory(atPath: dirPath)
+    static func listAllFiles(dirPath: String) -> Array<String>?{
+        return try? FileManager.default.contentsOfDirectory(atPath: dirPath)
     }
     
     static func listAllURLs(dirURL: URL) -> Array<URL>{
-        let names = listAllFiles(dirPath: dirURL.path)
         var urls = Array<URL>()
-        for name in names{
-            urls.append(getURL(dirURL: dirURL, fileName: name))
+        if let names = listAllFiles(dirPath: dirURL.path){
+            for name in names{
+                urls.append(getURL(dirURL: dirURL, fileName: name))
+            }
         }
         return urls
     }
     
     static func deleteAllFiles(dirURL: URL){
-        let names = listAllFiles(dirPath: dirURL.path)
         var count = 0
-        for name in names{
-            if deleteFile(dirURL: dirURL, fileName: name){
-                count += 1
+        if let names = listAllFiles(dirPath: dirURL.path){
+            for name in names{
+                if deleteFile(dirURL: dirURL, fileName: name){
+                    count += 1
+                }
             }
         }
         print("\(count) files deleted")
@@ -303,14 +305,16 @@ class FileController {
     
     static func printFileInfo(){
         print("temporary files:")
-        var names = listAllFiles(dirPath: temporaryPath)
-        for name in names{
-            print(name)
+        if let names = listAllFiles(dirPath: temporaryPath){
+            for name in names{
+                print(name)
+            }
         }
         print("private files:")
-        names = listAllFiles(dirPath: privatePath)
-        for name in names{
-            print(name)
+        if let names = listAllFiles(dirPath: privatePath){
+            for name in names{
+                print(name)
+            }
         }
     }
     
