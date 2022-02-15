@@ -83,6 +83,15 @@ class VideoItemPreview: VideoItemView{
         return itemView
     }
     
+    override func setupView(data: VideoItemData){
+        addSubview(videoView)
+        self.videoData = data
+        videoView.url = data.fileURL
+        videoView.fillView(view: self)
+        videoView.playerLayer.videoGravity = .resizeAspectFill
+        setupLinks()
+    }
+    
     override func setupLinks(){
         if delegate != nil{
             let viewButton = IconButton(icon: "magnifyingglass", backgroundColor: transparentColor)

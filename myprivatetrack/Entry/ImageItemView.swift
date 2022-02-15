@@ -88,6 +88,16 @@ class ImageItemPreview: ImageItemView{
         return itemView
     }
     
+    override func setupView(data: ImageItemData){
+        imageView.setDefaults()
+        addSubview(imageView)
+        self.imageData = data
+        imageView.image = data.getImage()
+        imageView.fillView(view: self)
+        imageView.contentMode = .scaleAspectFill
+        setupLinks()
+    }
+    
     override func setupLinks(){
         if delegate != nil{
             let viewButton = IconButton(icon: "magnifyingglass", backgroundColor: transparentColor)

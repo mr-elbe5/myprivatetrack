@@ -35,7 +35,6 @@ class VideoPlayerView: UIView {
         self.player = AVPlayer()
         self.playerLayer = AVPlayerLayer(player: player)
         super.init(frame: frame)
-        setRoundedBorders()
         NotificationCenter.default.addObserver(self,
                                                selector: #selector(playerItemDidReachEnd(notification:)),
                                                name: .AVPlayerItemDidPlayToEndTime,
