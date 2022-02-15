@@ -34,6 +34,22 @@ class GlobalData: Identifiable, Codable{
     var days: Array<DayData>
     private var dayMap = Dictionary<Date, DayData>()
     
+    var lastDayIdx : Int?{
+        days.isEmpty ? nil : days.count - 1
+    }
+    
+    var hasEntry : Bool{
+        !days.isEmpty && !days[0].entries.isEmpty
+    }
+    
+    var lastEntry : EntryData?{
+        days.last?.entries.last
+    }
+    
+    var lastEntryIdx : Int?{
+        days.last?.lastIdx
+    }
+    
     var firstDayDate : Date?{
         get{
             if days.isEmpty{

@@ -64,8 +64,8 @@ class TimelineViewController: UIViewController{
     
     override func viewDidAppear(_ animated: Bool) {
         if firstAppearance{
-            if GlobalData.shared.days.count > 0 && GlobalData.shared.days[0].entries.count > 0{
-                tableView.scrollToRow(at: .init(row: GlobalData.shared.days[GlobalData.shared.days.count - 1].entries.count - 1, section: GlobalData.shared.days.count-1), at: .bottom, animated: true)
+            if let section = GlobalData.shared.lastDayIdx, let row = GlobalData.shared.lastEntryIdx{
+                tableView.scrollToRow(at: .init(row: row, section: section), at: .bottom, animated: true)
             }
             firstAppearance = false
         }
@@ -205,9 +205,7 @@ extension TimelineViewController : SaveEntryDelegate{
         }
         GlobalData.shared.save()
         tableView.reloadData()
-        if GlobalData.shared.days.count > 0 && GlobalData.shared.days[0].entries.count > 0{
-            let section = GlobalData.shared.days.count-1
-            let row = GlobalData.shared.days[GlobalData.shared.days.count - 1].entries.count - 1
+        if let section = GlobalData.shared.lastDayIdx, let row = GlobalData.shared.lastEntryIdx{
             tableView.scrollToRow(at: .init(row: row, section: section), at: .bottom, animated: true)
         }
         if let mapController = MainTabController.getMapViewController(){

@@ -16,6 +16,10 @@ class DayData: Identifiable, Codable{
     var date: Date
     var entries: Array<EntryData>
     
+    var lastIdx : Int?{
+        entries.isEmpty ? nil : entries.count - 1
+    }
+    
     init(){
         date = Date()
         entries = Array<EntryData>()
