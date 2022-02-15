@@ -16,6 +16,7 @@ class AudioPlayerView : UIView, AVAudioPlayerDelegate{
     var playProgress = UIProgressView()
     var rewindButton = IconButton(icon: "repeat")
     var playButton = IconButton(icon: "play.fill")
+    var volumeView = UISlider()
     
     var timeObserverToken : Any? = nil
     
@@ -58,14 +59,22 @@ class AudioPlayerView : UIView, AVAudioPlayerDelegate{
         addSubview(playButton)
         rewindButton.isEnabled = false
         playButton.isEnabled = false
+        volumeView.minimumValue = 0.0
+        volumeView.maximumValue = 10.0
+        volumeView.value = 1.0
+        volumeView.minimumValueImage = UIImage(systemName: "speaker")
+        volumeView.maximumValueImage = UIImage(systemName: "speaker.3")
+        volumeView.addTarget(self, action: #selector(volumeChanged), for: .valueChanged)
+        addSubview(volumeView)
     }
     
     func layoutView(){
         playProgress.setAnchors(leading: leadingAnchor, insets: defaultInsets)
             .centerY(centerYAnchor)
-        playButton.setAnchors(top: topAnchor, trailing: trailingAnchor, bottom: bottomAnchor, insets: defaultInsets)
-        rewindButton.setAnchors(top: topAnchor, trailing: playButton.leadingAnchor, bottom: bottomAnchor, insets: defaultInsets)
+        playButton.setAnchors(top: topAnchor, trailing: trailingAnchor, insets: defaultInsets)
+        rewindButton.setAnchors(top: topAnchor, trailing: playButton.leadingAnchor, insets: defaultInsets)
         playProgress.trailing(rewindButton.leadingAnchor, inset: defaultInset)
+        volumeView.setAnchors(top: playProgress.bottomAnchor, leading: leadingAnchor, trailing: trailingAnchor, bottom: bottomAnchor, insets: defaultInsets)
     }
     
     func enablePlayer(){
@@ -75,8 +84,10 @@ class AudioPlayerView : UIView, AVAudioPlayerDelegate{
             playerItem = AVPlayerItem(asset: asset)
             player.replaceCurrentItem(with: playerItem!)
             player.rate = 0
+            player.volume = volumeView.value
             addPeriodicTimeObserver(duration: asset.duration)
             rewindButton.isEnabled = false
+            volumeView.isEnabled = true
         }
     }
     
@@ -87,6 +98,7 @@ class AudioPlayerView : UIView, AVAudioPlayerDelegate{
         playProgress.setProgress(0, animated: false)
         rewindButton.isEnabled = false
         playButton.isEnabled = false
+        volumeView.isEnabled = false
     }
     
     func addPeriodicTimeObserver(duration: CMTime) {
@@ -122,7 +134,6 @@ class AudioPlayerView : UIView, AVAudioPlayerDelegate{
     
     @objc func togglePlay(){
         if player.rate == 0{
-            print("play")
             player.rate = 1
             playButton.setImage(UIImage(systemName: "pause.fill"), for: .normal)
             rewindButton.isEnabled = false
@@ -132,6 +143,10 @@ class AudioPlayerView : UIView, AVAudioPlayerDelegate{
             playButton.setImage(UIImage(systemName: "play.fill"), for: .normal)
             rewindButton.isEnabled = true
         }
+    }
+    
+    @objc func volumeChanged(){
+        player.volume = volumeView.value
     }
     
     @objc func playerItemDidReachEnd(notification: Notification) {
