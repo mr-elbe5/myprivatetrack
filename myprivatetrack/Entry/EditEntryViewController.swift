@@ -215,6 +215,9 @@ class EditEntryViewController: EditViewController{
         editView.delegate = self
         stackView.insertArrangedSubview(editView, at: stackView.arrangedSubviews.count-1)
         scrollView.setNeedsLayout()
+        DispatchQueue.main.async{
+            self.scrollView.scrollToBottom()
+        }
         editView.setFocus()
     }
     

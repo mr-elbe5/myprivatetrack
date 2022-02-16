@@ -17,5 +17,10 @@ extension UIScrollView{
         scflg.widthAnchor.constraint(equalTo: svflg.widthAnchor).isActive = true
     }
     
+    func scrollToBottom(){
+        let bottomOffset = CGPoint(x: 0, y: contentSize.height - bounds.size.height)
+        setContentOffset(bottomOffset, animated: true)
+    }
+    
 }
 
