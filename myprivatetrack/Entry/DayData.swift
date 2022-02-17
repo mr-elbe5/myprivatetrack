@@ -47,6 +47,15 @@ class DayData: Identifiable, Codable{
         }
     }
     
+    func getEntryIdx(entry: EntryData) -> Int?{
+        for idx in 0..<entries.count{
+            if entry.id == entries[idx].id{
+                return idx
+            }
+        }
+        return nil
+    }
+    
     func addActiveFileNames( to fileNames: inout Array<String>){
         for entry in entries{
             entry.addActiveFileNames(to: &fileNames)

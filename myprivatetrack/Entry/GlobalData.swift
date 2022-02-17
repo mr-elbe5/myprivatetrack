@@ -163,6 +163,24 @@ class GlobalData: Identifiable, Codable{
         save()
     }
     
+    func getDayIdx(day: DayData) -> Int?{
+        for idx in 0..<days.count{
+            if day.id == days[idx].id{
+                return idx
+            }
+        }
+        return nil
+    }
+    
+    func getDayAndEntryIdx(entry: EntryData) -> (Int,Int)?{
+        for idx in 0..<days.count{
+            if let entryIdx = days[idx].getEntryIdx(entry: entry){
+                return (idx,entryIdx)
+            }
+        }
+        return nil
+    }
+    
     func reset(){
         days.removeAll()
         dayMap.removeAll()

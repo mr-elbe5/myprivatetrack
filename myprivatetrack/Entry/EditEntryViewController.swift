@@ -218,7 +218,7 @@ class EditEntryViewController: EditViewController{
         DispatchQueue.main.async{
             self.scrollView.scrollToBottom()
         }
-        editView.setFocus()
+        //editView.setFocus()
     }
     
     func showError(_ reason: String){

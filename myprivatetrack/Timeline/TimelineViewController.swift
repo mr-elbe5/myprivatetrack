@@ -205,9 +205,9 @@ extension TimelineViewController : SaveEntryDelegate{
         }
         GlobalData.shared.save()
         tableView.reloadData()
-        if let section = GlobalData.shared.lastDayIdx, let row = GlobalData.shared.lastEntryIdx{
+        if let dayAndEntryIdx = GlobalData.shared.getDayAndEntryIdx(entry: entry){
             DispatchQueue.main.async{
-                self.tableView.scrollToRow(at: .init(row: row, section: section), at: .bottom, animated: true)
+                self.tableView.scrollToRow(at: .init(row: dayAndEntryIdx.1, section: dayAndEntryIdx.0), at: .bottom, animated: true)
             }
         }
         if let mapController = MainTabController.getMapViewController(){
