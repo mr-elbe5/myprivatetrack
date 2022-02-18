@@ -19,7 +19,7 @@ protocol TimelineHeaderDelegate{
 
 class TimelineHeaderView: UIView{
 
-    var addTextButton = IconButton(icon: "text.alignleft")
+    var addTextButton = IconButton(icon: "text.bubble")
     var addPhotoButton = IconButton(icon: "camera")
     var addImageButton = IconButton(icon: "photo")
     var addAudioButton = IconButton(icon: "mic")

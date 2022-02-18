@@ -26,6 +26,7 @@ class VideoItemView : EntryItemView{
     var delegate : VideoItemDelegate? = nil
     
     var videoView = VideoPlayerView()
+    var volumeView = VolumeSlider()
     
     func setupView(data: VideoItemData){
         addSubview(videoView)
@@ -34,13 +35,16 @@ class VideoItemView : EntryItemView{
         videoView.url = data.fileURL
         videoView.setAnchors(top: topAnchor, leading: leadingAnchor, trailing: trailingAnchor, insets: defaultInsets)
         videoView.setAspectRatioConstraint()
+        volumeView.addTarget(self, action: #selector(volumeChanged), for: .valueChanged)
+        addSubview(volumeView)
+        volumeView.setAnchors(top: videoView.bottomAnchor, leading: leadingAnchor, trailing: trailingAnchor, insets: defaultInsets)
         if !data.title.isEmpty{
             let titleView = MediaCommentLabel(text: data.title)
             addSubview(titleView)
-            titleView.setAnchors(top: videoView.bottomAnchor, leading: leadingAnchor, trailing: trailingAnchor, bottom: bottomAnchor, insets: defaultInsets)
+            titleView.setAnchors(top: volumeView.bottomAnchor, leading: leadingAnchor, trailing: trailingAnchor, bottom: bottomAnchor, insets: defaultInsets)
         }
         else{
-            videoView.bottom(bottomAnchor)
+            volumeView.bottom(bottomAnchor)
         }
         setupLinks()
     }
@@ -58,6 +62,10 @@ class VideoItemView : EntryItemView{
             shareButton.addTarget(self, action: #selector(shareItem), for: .touchDown)
             sv.addArrangedSubview(shareButton)
         }
+    }
+    
+    @objc func volumeChanged(){
+        videoView.player.volume = volumeView.value
     }
     
     @objc func viewItem(){
@@ -114,6 +122,7 @@ class VideoItemEditView : EntryItemEditView, UITextViewDelegate{
     var videoData : VideoItemData!
     
     var videoView = VideoPlayerView()
+    var volumeView = VolumeSlider()
     var titleView = TextEditArea()
     
     override var data: EntryItemData{
@@ -128,13 +137,16 @@ class VideoItemEditView : EntryItemEditView, UITextViewDelegate{
         titleView.setText(data.title)
         let deleteButton = addDeleteButton()
         addSubview(videoView)
+        videoView.setAnchors(top: deleteButton.bottomAnchor, leading: leadingAnchor, trailing: trailingAnchor, insets: deleteInsets)
+        videoView.setAspectRatioConstraint()
+        volumeView.addTarget(self, action: #selector(volumeChanged), for: .valueChanged)
+        addSubview(volumeView)
+        volumeView.setAnchors(top: videoView.bottomAnchor, leading: leadingAnchor, trailing: trailingAnchor, insets: defaultInsets)
         titleView.setDefaults(placeholder: "comment".localize())
         titleView.delegate = self
         addSubview(titleView)
         titleView.setKeyboardToolbar(doneTitle: "done".localize())
-        videoView.setAnchors(top: deleteButton.bottomAnchor, leading: leadingAnchor, trailing: trailingAnchor, insets: deleteInsets)
-        videoView.setAspectRatioConstraint()
-        titleView.setAnchors(top: videoView.bottomAnchor, leading: leadingAnchor, trailing: trailingAnchor, bottom: bottomAnchor, insets: defaultInsets)
+        titleView.setAnchors(top: volumeView.bottomAnchor, leading: leadingAnchor, trailing: trailingAnchor, bottom: bottomAnchor, insets: defaultInsets)
     }
     
     override func setFocus(){
@@ -146,6 +158,10 @@ class VideoItemEditView : EntryItemEditView, UITextViewDelegate{
             videoData!.title = textView.text!.trim()
         }
         titleView.textDidChange()
+    }
+    
+    @objc func volumeChanged(){
+        videoView.player.volume = volumeView.value
     }
     
 }

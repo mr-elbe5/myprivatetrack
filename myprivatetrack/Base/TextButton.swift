@@ -9,7 +9,7 @@ import UIKit
 
 class TextButton : UIButton{
     
-    init(text: String, tintColor: UIColor = .systemBlue, backgroundColor: UIColor? = nil){
+    init(text: String, tintColor: UIColor = Statics.buttonColor, backgroundColor: UIColor? = nil){
         super.init(frame: .zero)
         setTitle(text, for: .normal)
         setTitleColor(tintColor, for: .normal)

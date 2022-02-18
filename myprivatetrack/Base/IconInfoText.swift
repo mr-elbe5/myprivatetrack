@@ -13,7 +13,7 @@ class IconInfoText : UIView{
     let iconView = UIImageView()
     let iconText = UILabel()
     
-    init(icon: String, text: String, iconColor : UIColor = .systemBlue){
+    init(icon: String, text: String, iconColor : UIColor = Statics.iconColor){
         super.init(frame: .zero)
         addSubview(iconContainer)
         iconContainer.setAnchors(top: topAnchor, leading: leadingAnchor, insets: defaultInsets)

@@ -59,7 +59,7 @@ class AudioRecorderView : UIView, AVAudioRecorderDelegate{
             case .success(()):
                 self.recordingSession = AVAudioSession.sharedInstance()
                 do {
-                    try self.recordingSession!.setCategory(.playAndRecord, mode: .spokenAudio)
+                    try self.recordingSession!.setCategory(.playAndRecord, mode: .default)
                     try self.recordingSession!.setActive(true)
                     self.recordingSession!.requestRecordPermission() { allowed in
                         success = allowed
@@ -82,9 +82,9 @@ class AudioRecorderView : UIView, AVAudioRecorderDelegate{
         player.disablePlayer()
         let settings = [
             AVFormatIDKey: Int(kAudioFormatMPEG4AAC),
-            AVSampleRateKey: 16000,
-            AVEncoderAudioQualityKey: AVAudioQuality.medium.rawValue,
-            AVNumberOfChannelsKey: 2,
+            AVSampleRateKey: 44100,
+            AVEncoderAudioQualityKey: AVAudioQuality.high.rawValue,
+            AVNumberOfChannelsKey: 1,
         ]
         do{
             audioRecorder = try AVAudioRecorder(url: data.fileURL, settings: settings)

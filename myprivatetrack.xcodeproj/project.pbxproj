@@ -115,6 +115,8 @@
 		4ED21C5324FAAC6E00A6FEA3 /* EntryAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED21C4524FAAC6E00A6FEA3 /* EntryAnnotation.swift */; };
 		4EDA9EE527A6A9ED003F06F3 /* LabeledText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EDA9EE427A6A9ED003F06F3 /* LabeledText.swift */; };
 		4EDB3BD5279FFE7700C3F361 /* Insets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EDB3BD4279FFE7700C3F361 /* Insets.swift */; };
+		4EF4DB5527BE9B0A00D78CDB /* IconView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EF4DB5427BE9B0A00D78CDB /* IconView.swift */; };
+		4EF4DB5727BEB84300D78CDB /* VolumeSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EF4DB5627BEB84300D78CDB /* VolumeSlider.swift */; };
 		4EFDFF4624952F54001EB7C3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4EFDFF4524952F54001EB7C3 /* Assets.xcassets */; };
 		4EFDFF4924952F54001EB7C3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4EFDFF4724952F54001EB7C3 /* LaunchScreen.storyboard */; };
 		4EFE4F60250A23CB003B2D1E /* AuthorizationError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EFE4F5F250A23CB003B2D1E /* AuthorizationError.swift */; };
@@ -231,6 +233,8 @@
 		4ED21C4524FAAC6E00A6FEA3 /* EntryAnnotation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EntryAnnotation.swift; sourceTree = "<group>"; };
 		4EDA9EE427A6A9ED003F06F3 /* LabeledText.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LabeledText.swift; sourceTree = "<group>"; };
 		4EDB3BD4279FFE7700C3F361 /* Insets.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Insets.swift; sourceTree = "<group>"; };
+		4EF4DB5427BE9B0A00D78CDB /* IconView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconView.swift; sourceTree = "<group>"; };
+		4EF4DB5627BEB84300D78CDB /* VolumeSlider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VolumeSlider.swift; sourceTree = "<group>"; };
 		4EFDFF3424952F53001EB7C3 /* My private track.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "My private track.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4EFDFF4524952F54001EB7C3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4EFDFF4824952F54001EB7C3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -393,6 +397,7 @@
 				4ED21B9724FAA29F00A6FEA3 /* EditViewController.swift */,
 				4ED21BD024FAA39300A6FEA3 /* IconButton.swift */,
 				4ED21BE024FAA39300A6FEA3 /* IconInfoText.swift */,
+				4EF4DB5427BE9B0A00D78CDB /* IconView.swift */,
 				4ED21B9524FAA29F00A6FEA3 /* ImageViewController.swift */,
 				4E497EB725066FC300E94CBD /* Indicator.swift */,
 				4ED21BD224FAA39300A6FEA3 /* InfoHeader.swift */,
@@ -411,6 +416,7 @@
 				4ED21B9024FAA29F00A6FEA3 /* ViewController.swift */,
 				4E4F41E027AFD5320068D241 /* PreviewContainer.swift */,
 				4E4F41E227B3EADF0068D241 /* UIViewController+MediaDelegate.swift */,
+				4EF4DB5627BEB84300D78CDB /* VolumeSlider.swift */,
 			);
 			path = Base;
 			sourceTree = "<group>";
@@ -567,9 +573,11 @@
 				4ED21C4924FAAC6E00A6FEA3 /* VideoCaptureViewController.swift in Sources */,
 				4ED21BE924FAA39300A6FEA3 /* ButtonStackView.swift in Sources */,
 				4ED21BA024FAA29F00A6FEA3 /* EditViewController.swift in Sources */,
+				4EF4DB5727BEB84300D78CDB /* VolumeSlider.swift in Sources */,
 				4ED21BF324FAA39300A6FEA3 /* SwitchView.swift in Sources */,
 				4ED21BA124FAA29F00A6FEA3 /* TableViewController.swift in Sources */,
 				4E497EB825066FC300E94CBD /* Indicator.swift in Sources */,
+				4EF4DB5527BE9B0A00D78CDB /* IconView.swift in Sources */,
 				4ED21BF524FAA39300A6FEA3 /* TextEditLine.swift in Sources */,
 				4ED21C5124FAAC6E00A6FEA3 /* PhotoCaptureViewController.swift in Sources */,
 				4ED21C5024FAAC6E00A6FEA3 /* AVCaptureVideoOrientation.swift in Sources */,
@@ -812,7 +820,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 22;
+				CURRENT_PROJECT_VERSION = 23;
 				DEVELOPMENT_TEAM = 5UG99476V8;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -839,7 +847,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 22;
+				CURRENT_PROJECT_VERSION = 23;
 				DEVELOPMENT_TEAM = 5UG99476V8;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",

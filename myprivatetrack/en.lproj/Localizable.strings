@@ -53,6 +53,7 @@
 "newEntry"="New Entry";
 "reallyDeleteEntry"="Really delete this entry?";
 "showLocation"="Show location";
+"locationDescription"="Location description";
 
 //entry item
 "deleteItemApproveInfo"="If you approve, you delete this item. You cannot undo this action.";

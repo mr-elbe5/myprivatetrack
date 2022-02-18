@@ -53,6 +53,7 @@
 "newEntry"="Neuer Eintrag";
 "reallyDeleteEntry"="Wirklich diesen Eintrag löschen?";
 "showLocation"="Ort anzeigen";
+"locationDescription"="Ortsbeschreibung";
 
 //entry item
 "deleteItemApproveInfo"="Wenn du zustimmst, wird dieses Element gelöscht. Diese Aktion kann nicht rückgängig gemacht werden.";

@@ -7,13 +7,12 @@
 import Foundation
 import UIKit
 
-class IconButton : UIButton{
+class IconView : UIImageView{
     
     init(icon: String, tintColor: UIColor = Statics.iconColor, backgroundColor: UIColor? = nil){
         super.init(frame: .zero)
-        setImage(UIImage(systemName: icon), for: .normal)
+        self.image = UIImage(systemName: icon)
         self.tintColor = tintColor
-        self.setTitleColor(tintColor, for: .normal)
         self.scaleBy(1.25)
         if let bgcol = backgroundColor{
             self.backgroundColor = bgcol
@@ -24,9 +23,8 @@ class IconButton : UIButton{
     
     init(image: String, tintColor: UIColor = Statics.iconColor, backgroundColor: UIColor? = nil){
         super.init(frame: .zero)
-        setImage(UIImage(named: image), for: .normal)
+        self.image = UIImage(named: image)
         self.tintColor = tintColor
-        self.setTitleColor(tintColor, for: .normal)
         if let bgcol = backgroundColor{
             self.backgroundColor = bgcol
             layer.cornerRadius = 5

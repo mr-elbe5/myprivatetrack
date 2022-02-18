@@ -19,8 +19,9 @@ class EditEntryViewController: EditViewController{
     
     var entry : EntryData!
     
+    var locationText = TextEditArea()
     var showLocationSwitch = SwitchView()
-    var addTextButton = IconButton(icon: "text.alignleft")
+    var addTextButton = IconButton(icon: "text.bubble")
     var addPhotoButton = IconButton(icon: "camera")
     var addImageButton = IconButton(icon: "photo")
     var addAudioButton = IconButton(icon: "mic")
@@ -29,9 +30,11 @@ class EditEntryViewController: EditViewController{
     override func loadView() {
         super.loadView()
         
+        locationText.setDefaults(placeholder: "locationDescription".localize())
+        locationText.setText(entry.locationDescription)
+        stackView.addArrangedSubview(locationText)
         showLocationSwitch.setEnabled(entry.location != nil)
         showLocationSwitch.setupView(labelText: "showLocation".localize(), isOn: entry.showLocation)
-        
         stackView.addArrangedSubview(showLocationSwitch)
         for item in entry.items{
             var editItem : EntryItemEditView? = nil
@@ -63,14 +66,12 @@ class EditEntryViewController: EditViewController{
         }
         let buttonContainer = ButtonStackView()
         buttonContainer.setupView()
-        let saveButton = TextButton(text: (entry.isNew ? "save" : "ok").localize(), backgroundColor: .systemGray6)
+        let saveButton = TextButton(text: "save".localize(), backgroundColor: .systemGray6)
         saveButton.addTarget(self, action: #selector(save), for: .touchDown)
         buttonContainer.stackView.addArrangedSubview(saveButton)
-        if entry.isNew{
-            let cancelButton = TextButton(text: "cancel".localize(), tintColor: .darkGray, backgroundColor: .systemGray6)
-            cancelButton.addTarget(self, action: #selector(cancel), for: .touchDown)
-            buttonContainer.stackView.addArrangedSubview(cancelButton)
-        }
+        let cancelButton = TextButton(text: "cancel".localize(), tintColor: .darkGray, backgroundColor: .systemGray6)
+        cancelButton.addTarget(self, action: #selector(cancel), for: .touchDown)
+        buttonContainer.stackView.addArrangedSubview(cancelButton)
         stackView.addArrangedSubview(buttonContainer)
     }
     
@@ -86,6 +87,8 @@ class EditEntryViewController: EditViewController{
         rightStackView.setupHorizontal(spacing: 2*defaultInset)
         rightStackView.setAnchors(top: headerView.topAnchor, trailing: headerView.trailingAnchor, bottom: headerView.bottomAnchor, insets: defaultInsets)
         
+        let plusIcon = IconView(icon: "plus", tintColor: .black)
+        leftStackView.addArrangedSubview(plusIcon)
         addTextButton.addTarget(self, action: #selector(addText), for: .touchDown)
         leftStackView.addArrangedSubview(addTextButton)
         addPhotoButton.addTarget(self, action: #selector(addPhoto), for: .touchDown)
@@ -186,14 +189,11 @@ class EditEntryViewController: EditViewController{
     }
     
     @objc func save(){
-        if entry.items.count == 0{
-            showAlert(title: "error".localize(), text: "noItems".localize())
-            return
-        }
         if (!entry.isComplete()){
             showAlert(title: "error".localize(), text: "notComplete".localize())
             return
         }
+        entry.locationDescription = locationText.text
         entry.showLocation = showLocationSwitch.isOn
         delegate?.saveEntry(entry: entry)
         self.dismiss(animated: true)

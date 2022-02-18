@@ -16,7 +16,7 @@ class AudioPlayerView : UIView, AVAudioPlayerDelegate{
     var playProgress = UIProgressView()
     var rewindButton = IconButton(icon: "repeat")
     var playButton = IconButton(icon: "play.fill")
-    var volumeView = UISlider()
+    var volumeView = VolumeSlider()
     
     var timeObserverToken : Any? = nil
     
@@ -59,11 +59,6 @@ class AudioPlayerView : UIView, AVAudioPlayerDelegate{
         addSubview(playButton)
         rewindButton.isEnabled = false
         playButton.isEnabled = false
-        volumeView.minimumValue = 0.0
-        volumeView.maximumValue = 10.0
-        volumeView.value = 1.0
-        volumeView.minimumValueImage = UIImage(systemName: "speaker")
-        volumeView.maximumValueImage = UIImage(systemName: "speaker.3")
         volumeView.addTarget(self, action: #selector(volumeChanged), for: .valueChanged)
         addSubview(volumeView)
     }
@@ -154,8 +149,8 @@ class AudioPlayerView : UIView, AVAudioPlayerDelegate{
             playerItem.seek(to: CMTime.zero, completionHandler: nil)
             player.rate = 0
             playButton.setImage(UIImage(systemName: "play.fill"), for: .normal)
-            playButton.isEnabled = false
-            rewindButton.isEnabled = true
+            playButton.isEnabled = true
+            rewindButton.isEnabled = false
         }
     }
     
