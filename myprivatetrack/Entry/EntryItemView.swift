@@ -40,9 +40,6 @@ class EntryItemEditView : UIView{
         return deleteButton
     }
     
-    func setFocus(){
-    }
-    
     @objc func deleteItem(){
         delegate?.deleteItem(itemView: self)
     }

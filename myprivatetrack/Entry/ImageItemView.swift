@@ -169,10 +169,6 @@ class ImageItemEditView : EntryItemEditView, UITextViewDelegate{
         titleView.setAnchors(top: imageView.bottomAnchor, leading: leadingAnchor, trailing: trailingAnchor, bottom: bottomAnchor, insets: flatInsets)
     }
     
-    override func setFocus(){
-        titleView.becomeFirstResponder()
-    }
-    
     func textViewDidChange(_ textView: UITextView) {
         if imageData != nil{
             imageData!.title = textView.text!.trim()

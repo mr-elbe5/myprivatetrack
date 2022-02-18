@@ -149,10 +149,6 @@ class VideoItemEditView : EntryItemEditView, UITextViewDelegate{
         titleView.setAnchors(top: volumeView.bottomAnchor, leading: leadingAnchor, trailing: trailingAnchor, bottom: bottomAnchor, insets: defaultInsets)
     }
     
-    override func setFocus(){
-        titleView.becomeFirstResponder()
-    }
-    
     func textViewDidChange(_ textView: UITextView) {
         if videoData != nil{
             videoData!.title = textView.text!.trim()

@@ -52,9 +52,6 @@ class MapViewController: UIViewController, MKMapViewDelegate, LocationServiceDel
         let toggleStyleButton = IconButton(icon: "map", tintColor: .white)
         toggleStyleButton.addTarget(self, action: #selector(toggleMapStyle), for: .touchDown)
         leftStackView.addArrangedSubview(toggleStyleButton)
-        let infoButton = IconButton(icon: "info.circle", tintColor: .white)
-        infoButton.addTarget(self, action: #selector(showInfo), for: .touchDown)
-        rightStackView.addArrangedSubview(infoButton)
     }
     
     func addOsmAttribution(layoutGuide: UILayoutGuide){
@@ -146,11 +143,6 @@ class MapViewController: UIViewController, MKMapViewDelegate, LocationServiceDel
     func mapViewDidFinishLoadingMap(_ mapView: MKMapView) {
         mapLoaded = true
         assertMapPins()
-    }
-    
-    @objc func showInfo(){
-        let infoController = MapInfoViewController()
-        self.present(infoController, animated: true)
     }
     
     @objc func openOSMUrl() {

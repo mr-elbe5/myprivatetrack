@@ -28,7 +28,7 @@ class MainTabController: UITabBarController {
         mapViewController.tabBarItem = UITabBarItem(title: "map".localize(), image: UIImage(systemName: "globe"), tag: TabTags.map.hashValue)
         let settingsViewController = SettingsViewController()
         settingsViewController.tabBarItem = UITabBarItem(title: "settings".localize(), image: UIImage(systemName: "slider.horizontal.3"), tag: TabTags.settings.hashValue)
-        let infoViewController = AppInfoViewController()
+        let infoViewController = InfoViewController()
         infoViewController.tabBarItem = UITabBarItem(title: "info".localize(), image: UIImage(systemName: "info"), tag: TabTags.info.hashValue)
         
         let tabBarList = [timelineViewController, mapViewController, settingsViewController, infoViewController]

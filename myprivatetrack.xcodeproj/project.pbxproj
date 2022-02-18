@@ -12,7 +12,7 @@
 		4E080D842508C2F0006DF6E9 /* Zip in Frameworks */ = {isa = PBXBuildFile; productRef = 4E080D832508C2F0006DF6E9 /* Zip */; };
 		4E14579F24E1C214008EC422 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4E1457A124E1C214008EC422 /* InfoPlist.strings */; };
 		4E24FC902501632700BCE81B /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 4E24FC8F2501632700BCE81B /* README.md */; };
-		4E24FC93250164DA00BCE81B /* AppInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E24FC92250164DA00BCE81B /* AppInfoViewController.swift */; };
+		4E24FC93250164DA00BCE81B /* InfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E24FC92250164DA00BCE81B /* InfoViewController.swift */; };
 		4E3AA21F27A695CF00ED14A2 /* UITextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E3AA20A27A695CE00ED14A2 /* UITextView.swift */; };
 		4E3AA22027A695CF00ED14A2 /* CGRect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E3AA20B27A695CE00ED14A2 /* CGRect.swift */; };
 		4E3AA22127A695CF00ED14A2 /* CLLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E3AA20C27A695CE00ED14A2 /* CLLocation.swift */; };
@@ -49,7 +49,6 @@
 		4ED21B7F24FAA20F00A6FEA3 /* LocationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED21B7D24FAA20F00A6FEA3 /* LocationService.swift */; };
 		4ED21B9924FAA29F00A6FEA3 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED21B9024FAA29F00A6FEA3 /* ViewController.swift */; };
 		4ED21B9A24FAA29F00A6FEA3 /* ModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED21B9124FAA29F00A6FEA3 /* ModalViewController.swift */; };
-		4ED21B9B24FAA29F00A6FEA3 /* InfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED21B9224FAA29F00A6FEA3 /* InfoViewController.swift */; };
 		4ED21B9D24FAA29F00A6FEA3 /* ModalScrollViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED21B9424FAA29F00A6FEA3 /* ModalScrollViewController.swift */; };
 		4ED21B9E24FAA29F00A6FEA3 /* ImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED21B9524FAA29F00A6FEA3 /* ImageViewController.swift */; };
 		4ED21B9F24FAA29F00A6FEA3 /* ScrollViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED21B9624FAA29F00A6FEA3 /* ScrollViewController.swift */; };
@@ -86,18 +85,12 @@
 		4ED21C0124FAA39E00A6FEA3 /* VideoItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED21BFA24FAA39E00A6FEA3 /* VideoItemView.swift */; };
 		4ED21C0324FAA39E00A6FEA3 /* TextItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED21BFC24FAA39E00A6FEA3 /* TextItemView.swift */; };
 		4ED21C0424FAA39E00A6FEA3 /* EntryItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED21BFD24FAA39E00A6FEA3 /* EntryItemView.swift */; };
-		4ED21C0B24FAA3B900A6FEA3 /* TimelineInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED21C0524FAA3B900A6FEA3 /* TimelineInfoViewController.swift */; };
 		4ED21C0C24FAA3B900A6FEA3 /* EditEntryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED21C0624FAA3B900A6FEA3 /* EditEntryViewController.swift */; };
 		4ED21C0D24FAA3B900A6FEA3 /* TimelineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED21C0724FAA3B900A6FEA3 /* TimelineViewController.swift */; };
 		4ED21C0E24FAA3B900A6FEA3 /* TimelineSectionHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED21C0824FAA3B900A6FEA3 /* TimelineSectionHeader.swift */; };
 		4ED21C0F24FAA3B900A6FEA3 /* TimelineEntryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED21C0924FAA3B900A6FEA3 /* TimelineEntryCell.swift */; };
-		4ED21C1024FAA3B900A6FEA3 /* EditEntryInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED21C0A24FAA3B900A6FEA3 /* EditEntryInfoViewController.swift */; };
-		4ED21C1324FAA3D000A6FEA3 /* MapInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED21C1124FAA3D000A6FEA3 /* MapInfoViewController.swift */; };
 		4ED21C1424FAA3D000A6FEA3 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED21C1224FAA3D000A6FEA3 /* MapViewController.swift */; };
-		4ED21C2924FAA47500A6FEA3 /* SettingsInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED21C2324FAA47400A6FEA3 /* SettingsInfoViewController.swift */; };
 		4ED21C2A24FAA47500A6FEA3 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED21C2424FAA47400A6FEA3 /* SettingsViewController.swift */; };
-		4ED21C2B24FAA47500A6FEA3 /* BackupInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED21C2524FAA47400A6FEA3 /* BackupInfoViewController.swift */; };
-		4ED21C2C24FAA47500A6FEA3 /* RestoreInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED21C2624FAA47400A6FEA3 /* RestoreInfoViewController.swift */; };
 		4ED21C2D24FAA47500A6FEA3 /* BackupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED21C2724FAA47400A6FEA3 /* BackupViewController.swift */; };
 		4ED21C2E24FAA47500A6FEA3 /* RestoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED21C2824FAA47400A6FEA3 /* RestoreViewController.swift */; };
 		4ED21C3824FAA96600A6FEA3 /* Statics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED21C3724FAA96600A6FEA3 /* Statics.swift */; };
@@ -129,7 +122,7 @@
 		4E1457A024E1C214008EC422 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		4E1457A224E1C217008EC422 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		4E24FC8F2501632700BCE81B /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
-		4E24FC92250164DA00BCE81B /* AppInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppInfoViewController.swift; sourceTree = "<group>"; };
+		4E24FC92250164DA00BCE81B /* InfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoViewController.swift; sourceTree = "<group>"; };
 		4E3AA20A27A695CE00ED14A2 /* UITextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITextView.swift; sourceTree = "<group>"; };
 		4E3AA20B27A695CE00ED14A2 /* CGRect.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CGRect.swift; sourceTree = "<group>"; };
 		4E3AA20C27A695CE00ED14A2 /* CLLocation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CLLocation.swift; sourceTree = "<group>"; };
@@ -167,7 +160,6 @@
 		4ED21B7D24FAA20F00A6FEA3 /* LocationService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationService.swift; sourceTree = "<group>"; };
 		4ED21B9024FAA29F00A6FEA3 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		4ED21B9124FAA29F00A6FEA3 /* ModalViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModalViewController.swift; sourceTree = "<group>"; };
-		4ED21B9224FAA29F00A6FEA3 /* InfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InfoViewController.swift; sourceTree = "<group>"; };
 		4ED21B9424FAA29F00A6FEA3 /* ModalScrollViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModalScrollViewController.swift; sourceTree = "<group>"; };
 		4ED21B9524FAA29F00A6FEA3 /* ImageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageViewController.swift; sourceTree = "<group>"; };
 		4ED21B9624FAA29F00A6FEA3 /* ScrollViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScrollViewController.swift; sourceTree = "<group>"; };
@@ -204,18 +196,12 @@
 		4ED21BFA24FAA39E00A6FEA3 /* VideoItemView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoItemView.swift; sourceTree = "<group>"; };
 		4ED21BFC24FAA39E00A6FEA3 /* TextItemView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextItemView.swift; sourceTree = "<group>"; };
 		4ED21BFD24FAA39E00A6FEA3 /* EntryItemView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EntryItemView.swift; sourceTree = "<group>"; };
-		4ED21C0524FAA3B900A6FEA3 /* TimelineInfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimelineInfoViewController.swift; sourceTree = "<group>"; };
 		4ED21C0624FAA3B900A6FEA3 /* EditEntryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditEntryViewController.swift; sourceTree = "<group>"; };
 		4ED21C0724FAA3B900A6FEA3 /* TimelineViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimelineViewController.swift; sourceTree = "<group>"; };
 		4ED21C0824FAA3B900A6FEA3 /* TimelineSectionHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimelineSectionHeader.swift; sourceTree = "<group>"; };
 		4ED21C0924FAA3B900A6FEA3 /* TimelineEntryCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimelineEntryCell.swift; sourceTree = "<group>"; };
-		4ED21C0A24FAA3B900A6FEA3 /* EditEntryInfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditEntryInfoViewController.swift; sourceTree = "<group>"; };
-		4ED21C1124FAA3D000A6FEA3 /* MapInfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapInfoViewController.swift; sourceTree = "<group>"; };
 		4ED21C1224FAA3D000A6FEA3 /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
-		4ED21C2324FAA47400A6FEA3 /* SettingsInfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsInfoViewController.swift; sourceTree = "<group>"; };
 		4ED21C2424FAA47400A6FEA3 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
-		4ED21C2524FAA47400A6FEA3 /* BackupInfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BackupInfoViewController.swift; sourceTree = "<group>"; };
-		4ED21C2624FAA47400A6FEA3 /* RestoreInfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RestoreInfoViewController.swift; sourceTree = "<group>"; };
 		4ED21C2724FAA47400A6FEA3 /* BackupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BackupViewController.swift; sourceTree = "<group>"; };
 		4ED21C2824FAA47400A6FEA3 /* RestoreViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RestoreViewController.swift; sourceTree = "<group>"; };
 		4ED21C3724FAA96600A6FEA3 /* Statics.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Statics.swift; sourceTree = "<group>"; };
@@ -268,7 +254,6 @@
 				4ED21BA924FAA32400A6FEA3 /* AudioData.swift */,
 				4ED21BF924FAA39E00A6FEA3 /* AudioItemView.swift */,
 				4ED21BA824FAA32400A6FEA3 /* DayData.swift */,
-				4ED21C0A24FAA3B900A6FEA3 /* EditEntryInfoViewController.swift */,
 				4ED21C0624FAA3B900A6FEA3 /* EditEntryViewController.swift */,
 				4ED21BAB24FAA32400A6FEA3 /* EntryData.swift */,
 				4ED21BAE24FAA32500A6FEA3 /* EntryItemData.swift */,
@@ -294,7 +279,6 @@
 				4E8BD84A27AC074E005C072A /* CreateQuickEntryView.swift */,
 				4ED21C0924FAA3B900A6FEA3 /* TimelineEntryCell.swift */,
 				4E8BD84B27AC074E005C072A /* TimelineHeaderView.swift */,
-				4ED21C0524FAA3B900A6FEA3 /* TimelineInfoViewController.swift */,
 				4ED21C0824FAA3B900A6FEA3 /* TimelineSectionHeader.swift */,
 				4ED21C0724FAA3B900A6FEA3 /* TimelineViewController.swift */,
 			);
@@ -336,12 +320,9 @@
 		4E8BD84827AC0379005C072A /* Settings */ = {
 			isa = PBXGroup;
 			children = (
-				4ED21C2524FAA47400A6FEA3 /* BackupInfoViewController.swift */,
 				4ED21C2724FAA47400A6FEA3 /* BackupViewController.swift */,
-				4ED21C2624FAA47400A6FEA3 /* RestoreInfoViewController.swift */,
 				4ED21C2824FAA47400A6FEA3 /* RestoreViewController.swift */,
 				4ED21BC924FAA36C00A6FEA3 /* Settings.swift */,
-				4ED21C2324FAA47400A6FEA3 /* SettingsInfoViewController.swift */,
 				4ED21C2424FAA47400A6FEA3 /* SettingsViewController.swift */,
 			);
 			path = Settings;
@@ -361,7 +342,7 @@
 			isa = PBXGroup;
 			children = (
 				4ED21BCA24FAA36C00A6FEA3 /* AppDelegate.swift */,
-				4E24FC92250164DA00BCE81B /* AppInfoViewController.swift */,
+				4E24FC92250164DA00BCE81B /* InfoViewController.swift */,
 				4EFE4F5F250A23CB003B2D1E /* AuthorizationError.swift */,
 				4ED21B7724FAA17200A6FEA3 /* DataController.swift */,
 				4ED21B7824FAA17200A6FEA3 /* FileController.swift */,
@@ -402,7 +383,6 @@
 				4E497EB725066FC300E94CBD /* Indicator.swift */,
 				4ED21BD224FAA39300A6FEA3 /* InfoHeader.swift */,
 				4ED21BDE24FAA39300A6FEA3 /* InfoText.swift */,
-				4ED21B9224FAA29F00A6FEA3 /* InfoViewController.swift */,
 				4EDA9EE427A6A9ED003F06F3 /* LabeledText.swift */,
 				4ED21B9424FAA29F00A6FEA3 /* ModalScrollViewController.swift */,
 				4ED21B9124FAA29F00A6FEA3 /* ModalViewController.swift */,
@@ -426,7 +406,6 @@
 			children = (
 				4ED21C4524FAAC6E00A6FEA3 /* EntryAnnotation.swift */,
 				4EFE4F61250A3ED2003B2D1E /* MapError.swift */,
-				4ED21C1124FAA3D000A6FEA3 /* MapInfoViewController.swift */,
 				4E3C84AF27A3F28600658718 /* MapType.swift */,
 				4ED21C1224FAA3D000A6FEA3 /* MapViewController.swift */,
 			);
@@ -590,12 +569,11 @@
 				4ED21C2D24FAA47500A6FEA3 /* BackupViewController.swift in Sources */,
 				4EFE4F60250A23CB003B2D1E /* AuthorizationError.swift in Sources */,
 				4ED21BC124FAA36000A6FEA3 /* MKMapView.swift in Sources */,
-				4E24FC93250164DA00BCE81B /* AppInfoViewController.swift in Sources */,
+				4E24FC93250164DA00BCE81B /* InfoViewController.swift in Sources */,
 				4ED21BE724FAA39300A6FEA3 /* TextButton.swift in Sources */,
 				4ED21BB224FAA32500A6FEA3 /* TimeSpanData.swift in Sources */,
 				4E3C5AD224FD00E600E11A35 /* LocationError.swift in Sources */,
 				4EFE4F62250A3ED2003B2D1E /* MapError.swift in Sources */,
-				4ED21C1024FAA3B900A6FEA3 /* EditEntryInfoViewController.swift in Sources */,
 				4E3AA22C27A695CF00ED14A2 /* Date.swift in Sources */,
 				4ED21BAF24FAA32500A6FEA3 /* GlobalData.swift in Sources */,
 				4ED21C4F24FAAC6E00A6FEA3 /* VideoPlayerView.swift in Sources */,
@@ -619,21 +597,17 @@
 				4ED21BCD24FAA36C00A6FEA3 /* Settings.swift in Sources */,
 				4E3AA22B27A695CF00ED14A2 /* CLLocationCoordinate2D.swift in Sources */,
 				4E3AA22D27A695CF00ED14A2 /* UIButton.swift in Sources */,
-				4ED21C2C24FAA47500A6FEA3 /* RestoreInfoViewController.swift in Sources */,
 				4E3AA23227A695CF00ED14A2 /* Codable.swift in Sources */,
 				4ED21BB724FAA32500A6FEA3 /* EntryData.swift in Sources */,
 				4ED21C3824FAA96600A6FEA3 /* Statics.swift in Sources */,
 				4E4F41E327B3EADF0068D241 /* UIViewController+MediaDelegate.swift in Sources */,
 				4ED21C2E24FAA47500A6FEA3 /* RestoreViewController.swift in Sources */,
 				4ED21BB124FAA32500A6FEA3 /* TextItemData.swift in Sources */,
-				4ED21B9B24FAA29F00A6FEA3 /* InfoViewController.swift in Sources */,
-				4ED21C1324FAA3D000A6FEA3 /* MapInfoViewController.swift in Sources */,
 				4ED21C4D24FAAC6E00A6FEA3 /* CameraViewController.swift in Sources */,
 				4ED21B7924FAA17200A6FEA3 /* DataController.swift in Sources */,
 				4ED21B9A24FAA29F00A6FEA3 /* ModalViewController.swift in Sources */,
 				4ED21BB524FAA32500A6FEA3 /* AudioData.swift in Sources */,
 				4ED21C4824FAAC6E00A6FEA3 /* AudioPlayerView.swift in Sources */,
-				4ED21C2924FAA47500A6FEA3 /* SettingsInfoViewController.swift in Sources */,
 				4ED21B7F24FAA20F00A6FEA3 /* LocationService.swift in Sources */,
 				4E3AA23627A69D5600ED14A2 /* Dictionary.swift in Sources */,
 				4E3AA22427A695CF00ED14A2 /* TimeInterval.swift in Sources */,
@@ -642,12 +616,10 @@
 				4E3AA22527A695CF00ED14A2 /* UITextField.swift in Sources */,
 				4E3AA22327A695CF00ED14A2 /* UILabel.swift in Sources */,
 				4E3C84B027A3F28600658718 /* MapType.swift in Sources */,
-				4ED21C0B24FAA3B900A6FEA3 /* TimelineInfoViewController.swift in Sources */,
 				4ED21B9924FAA29F00A6FEA3 /* ViewController.swift in Sources */,
 				4ED21BCE24FAA36C00A6FEA3 /* AppDelegate.swift in Sources */,
 				4EC869AE27A14E74000F0583 /* SwitchIcon.swift in Sources */,
 				4ED21B7A24FAA17200A6FEA3 /* FileController.swift in Sources */,
-				4ED21C2B24FAA47500A6FEA3 /* BackupInfoViewController.swift in Sources */,
 				4ED21BF024FAA39300A6FEA3 /* TextEditArea.swift in Sources */,
 				4ED21BF224FAA39300A6FEA3 /* InfoText.swift in Sources */,
 				4ED21C4E24FAAC6E00A6FEA3 /* MediaCommentLabel.swift in Sources */,
@@ -820,7 +792,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 23;
+				CURRENT_PROJECT_VERSION = 24;
 				DEVELOPMENT_TEAM = 5UG99476V8;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -847,7 +819,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 23;
+				CURRENT_PROJECT_VERSION = 24;
 				DEVELOPMENT_TEAM = 5UG99476V8;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",

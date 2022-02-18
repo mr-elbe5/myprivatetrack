@@ -60,11 +60,6 @@ class TextItemEditView : EntryItemEditView, UITextViewDelegate{
         textView.setAnchors(top: deleteButton.bottomAnchor, leading: leadingAnchor, trailing: trailingAnchor, bottom: bottomAnchor, insets: deleteInsets)
     }
     
-    override func setFocus(){
-        textView.becomeFirstResponder()
-        
-    }
-    
     @objc func textViewDidChange(_ textView: UITextView) {
         if textData != nil{
             textData!.text = textView.text!.trim()

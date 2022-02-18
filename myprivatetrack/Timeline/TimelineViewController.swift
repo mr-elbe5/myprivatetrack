@@ -142,11 +142,6 @@ extension TimelineViewController : TimelineHeaderDelegate{
         tableView.reloadData()
     }
     
-    func showInfo(){
-        let infoController = TimelineInfoViewController()
-        self.present(infoController, animated: true)
-    }
-    
     func createTextEntry() {
         openCreateEntryController().addText()
     }

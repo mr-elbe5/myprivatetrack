@@ -77,31 +77,24 @@ class EditEntryViewController: EditViewController{
     
     override func setupHeaderView(){
         let headerView = UIView()
-        let leftStackView = UIStackView()
-        let rightStackView = UIStackView()
+        let stackView = UIStackView()
         headerView.backgroundColor = UIColor.systemBackground
-        headerView.addSubview(leftStackView)
-        headerView.addSubview(rightStackView)
-        leftStackView.setupHorizontal(spacing: 2*defaultInset)
-        leftStackView.setAnchors(top: headerView.topAnchor, leading: headerView.leadingAnchor, bottom: headerView.bottomAnchor, insets: defaultInsets)
-        rightStackView.setupHorizontal(spacing: 2*defaultInset)
-        rightStackView.setAnchors(top: headerView.topAnchor, trailing: headerView.trailingAnchor, bottom: headerView.bottomAnchor, insets: defaultInsets)
+        headerView.addSubview(stackView)
+        stackView.setupHorizontal(spacing: 2*defaultInset)
+        stackView.setAnchors(top: headerView.topAnchor, leading: headerView.leadingAnchor, bottom: headerView.bottomAnchor, insets: defaultInsets)
         
         let plusIcon = IconView(icon: "plus", tintColor: .black)
-        leftStackView.addArrangedSubview(plusIcon)
+        stackView.addArrangedSubview(plusIcon)
         addTextButton.addTarget(self, action: #selector(addText), for: .touchDown)
-        leftStackView.addArrangedSubview(addTextButton)
+        stackView.addArrangedSubview(addTextButton)
         addPhotoButton.addTarget(self, action: #selector(addPhoto), for: .touchDown)
-        leftStackView.addArrangedSubview(addPhotoButton)
+        stackView.addArrangedSubview(addPhotoButton)
         addImageButton.addTarget(self, action: #selector(addImage), for: .touchDown)
-        leftStackView.addArrangedSubview(addImageButton)
+        stackView.addArrangedSubview(addImageButton)
         addAudioButton.addTarget(self, action: #selector(addAudio), for: .touchDown)
-        leftStackView.addArrangedSubview(addAudioButton)
+        stackView.addArrangedSubview(addAudioButton)
         addVideoButton.addTarget(self, action: #selector(addVideo), for: .touchDown)
-        leftStackView.addArrangedSubview(addVideoButton)
-        let infoButton = IconButton(icon: "info.circle")
-        infoButton.addTarget(self, action: #selector(showInfo), for: .touchDown)
-        rightStackView.addArrangedSubview(infoButton)
+        stackView.addArrangedSubview(addVideoButton)
         
         self.headerView = headerView
     }
@@ -206,11 +199,6 @@ class EditEntryViewController: EditViewController{
         self.dismiss(animated: true)
     }
     
-    @objc func showInfo(){
-        let infoController = EditEntryInfoViewController()
-        self.present(infoController, animated: true)
-    }
-    
     func insertItemView(_ editView: EntryItemEditView){
         editView.delegate = self
         stackView.insertArrangedSubview(editView, at: stackView.arrangedSubviews.count-1)
@@ -218,7 +206,6 @@ class EditEntryViewController: EditViewController{
         DispatchQueue.main.async{
             self.scrollView.scrollToBottom()
         }
-        //editView.setFocus()
     }
     
     func showError(_ reason: String){

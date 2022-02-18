@@ -9,7 +9,6 @@ import UIKit
 
 protocol TimelineHeaderDelegate{
     func toggleEditMode()
-    func showInfo()
     func createTextEntry()
     func createPhotoEntry()
     func createImageEntry()
@@ -25,7 +24,6 @@ class TimelineHeaderView: UIView{
     var addAudioButton = IconButton(icon: "mic")
     let addVideoButton = IconButton(icon: "video")
     let editButton = IconButton(icon: "pencil.circle")
-    let infoButton = IconButton(icon: "info.circle")
     
     var delegate : TimelineHeaderDelegate? = nil
     
@@ -52,8 +50,6 @@ class TimelineHeaderView: UIView{
         rightStackView.setAnchors(top: topAnchor, trailing: trailingAnchor, bottom: bottomAnchor, insets: flatInsets)
         editButton.addTarget(self, action: #selector(toggleEditMode), for: .touchDown)
         rightStackView.addArrangedSubview(editButton)
-        infoButton.addTarget(self, action: #selector(showInfo), for: .touchDown)
-        rightStackView.addArrangedSubview(infoButton)
     }
     
     @objc func addTextEntry(){
@@ -78,10 +74,6 @@ class TimelineHeaderView: UIView{
 
     @objc func toggleEditMode(){
         delegate?.toggleEditMode()
-    }
-    
-    @objc func showInfo(){
-        delegate?.showInfo()
     }
     
 }

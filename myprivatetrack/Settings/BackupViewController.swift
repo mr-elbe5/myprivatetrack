@@ -41,18 +41,10 @@ class BackupViewController: ModalScrollViewController, DatePickerDelegate{
         rightStackView.setupHorizontal(spacing: 2*defaultInset)
         rightStackView.setAnchors(top: headerView.topAnchor, trailing: headerView.trailingAnchor, bottom: headerView.bottomAnchor, insets: defaultInsets)
         
-        let infoButton = IconButton(icon: "info.circle")
-        infoButton.addTarget(self, action: #selector(showInfo), for: .touchDown)
-        rightStackView.addArrangedSubview(infoButton)
         let closeButton = IconButton(icon: "xmark.circle")
         closeButton.addTarget(self, action: #selector(close), for: .touchDown)
         rightStackView.addArrangedSubview(closeButton)
         self.headerView = headerView
-    }
-    
-    @objc func showInfo(){
-        let infoController = BackupInfoViewController()
-        self.present(infoController, animated: true)
     }
     
     @objc func backupData(){

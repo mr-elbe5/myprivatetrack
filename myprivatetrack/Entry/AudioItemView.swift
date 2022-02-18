@@ -81,10 +81,6 @@ class AudioItemEditView : EntryItemEditView, UITextViewDelegate{
         titleView.setAnchors(top: audioView.bottomAnchor, leading: leadingAnchor, trailing: trailingAnchor, bottom: bottomAnchor, insets: defaultInsets)
     }
     
-    override func setFocus(){
-        titleView.becomeFirstResponder()
-    }
-    
     func textViewDidChange(_ textView: UITextView) {
         if audioData != nil{
             audioData!.title = textView.text!.trim()
