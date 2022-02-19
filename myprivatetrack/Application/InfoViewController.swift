@@ -51,7 +51,7 @@ class InfoViewController: ScrollViewController {
     
     let headerText = InfoHeader(text: "editEntryInfoHeader".localize())
     let topText = InfoText(text: "editEntryTopInfo".localize())
-    let iconTextInfo = IconInfoText(icon: "text.alignleft", text: "timelineTextIconInfo".localize())
+    let iconTextInfo = IconInfoText(icon: "text.bubble", text: "timelineTextIconInfo".localize())
     let iconPhotoInfo = IconInfoText(icon: "camera", text: "timelinePhotoIconInfo".localize())
     let iconImageInfo = IconInfoText(icon: "photo", text: "timelineImageIconInfo".localize())
     let iconAudioInfo = IconInfoText(icon: "mic", text: "timelineAudioIconInfo".localize())

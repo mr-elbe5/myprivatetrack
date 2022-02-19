@@ -23,6 +23,7 @@ class VideoViewController: ModalViewController {
             volumeView.addTarget(self, action: #selector(volumeChanged), for: .valueChanged)
             mainView.addSubview(volumeView)
             volumeView.setAnchors(top: videoView.bottomAnchor, leading: mainView.leadingAnchor, trailing: mainView.trailingAnchor, bottom: mainView.bottomAnchor, insets: defaultInsets)
+                .sliderHeight()
             videoView.setAspectRatioConstraint()
         }
     }

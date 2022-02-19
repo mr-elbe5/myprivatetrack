@@ -17,7 +17,7 @@ class IconInfoText : UIView{
         super.init(frame: .zero)
         addSubview(iconContainer)
         iconContainer.setAnchors(top: topAnchor, leading: leadingAnchor, insets: defaultInsets)
-            .width(40)
+            .width(30)
         iconView.image = UIImage(systemName: icon)
         iconView.scaleBy(1.25)
         iconView.tintColor = iconColor
@@ -29,7 +29,7 @@ class IconInfoText : UIView{
         super.init(frame: .zero)
         addSubview(iconContainer)
         iconContainer.setAnchors(top: topAnchor, leading: leadingAnchor, insets: defaultInsets)
-            .width(40)
+            .width(30)
         iconView.image = UIImage(named: image)
         iconText.text = text
         commonInit()
@@ -40,7 +40,7 @@ class IconInfoText : UIView{
         iconText.textColor = .label
         iconContainer.addSubview(iconView)
         iconView.setAnchors(top: topAnchor, leading: leadingAnchor, insets: defaultInsets)
-        iconView.setAspectRatioConstraint()
+            .iconHeight()
         addSubview(iconText)
         iconText.setAnchors(top: topAnchor, leading: iconContainer.trailingAnchor, trailing: trailingAnchor, bottom: bottomAnchor, insets: defaultInsets)
     }

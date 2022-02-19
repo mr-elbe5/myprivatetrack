@@ -38,6 +38,7 @@ class VideoItemView : EntryItemView{
         volumeView.addTarget(self, action: #selector(volumeChanged), for: .valueChanged)
         addSubview(volumeView)
         volumeView.setAnchors(top: videoView.bottomAnchor, leading: leadingAnchor, trailing: trailingAnchor, insets: defaultInsets)
+            .sliderHeight()
         if !data.title.isEmpty{
             let titleView = MediaCommentLabel(text: data.title)
             addSubview(titleView)
@@ -142,6 +143,7 @@ class VideoItemEditView : EntryItemEditView, UITextViewDelegate{
         volumeView.addTarget(self, action: #selector(volumeChanged), for: .valueChanged)
         addSubview(volumeView)
         volumeView.setAnchors(top: videoView.bottomAnchor, leading: leadingAnchor, trailing: trailingAnchor, insets: defaultInsets)
+            .sliderHeight()
         titleView.setDefaults(placeholder: "comment".localize())
         titleView.delegate = self
         addSubview(titleView)

@@ -37,6 +37,7 @@ class CameraViewController: UIViewController {
         bodyView.addSubview(closeButton)
         closeButton.addTarget(self, action: #selector(close), for: .touchDown)
         closeButton.setAnchors(top: bodyView.topAnchor, trailing: bodyView.trailingAnchor, insets: defaultInsets)
+            .iconHeight()
         bodyView.addSubview(preview)
         preview.backgroundColor = .black
         preview.setAnchors(top: closeButton.bottomAnchor, leading: bodyView.leadingAnchor, trailing: bodyView.trailingAnchor, insets: defaultInsets)

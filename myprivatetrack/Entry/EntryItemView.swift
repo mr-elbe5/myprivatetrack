@@ -37,6 +37,7 @@ class EntryItemEditView : UIView{
         deleteButton.addTarget(self, action: #selector(deleteItem), for: .touchDown)
         addSubview(deleteButton)
         deleteButton.setAnchors(top: topAnchor, trailing: trailingAnchor, insets: flatInsets)
+            .iconHeight()
         return deleteButton
     }
     

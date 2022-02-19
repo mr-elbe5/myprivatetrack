@@ -206,7 +206,7 @@ extension UIView{
     }
     
     @discardableResult
-    func width(_ width: CGFloat, inset: CGFloat = 0, priority: Float = defaultPriority) -> UIView{
+    func width(_ width: CGFloat, priority: Float = defaultPriority) -> UIView{
         let constraint = widthAnchor.constraint(equalToConstant: width)
         if priority != UIView.defaultPriority{
             constraint.priority = UILayoutPriority(priority)
@@ -263,6 +263,14 @@ extension UIView{
         }
         constraint.isActive = true
         return self
+    }
+    
+    func iconHeight(){
+        height(20)
+    }
+    
+    func sliderHeight(){
+        height(25)
     }
     
     @discardableResult

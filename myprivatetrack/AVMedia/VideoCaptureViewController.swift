@@ -39,11 +39,13 @@ class VideoCaptureViewController: CameraViewController, AVCaptureFileOutputRecor
         libraryButton.addTarget(self, action: #selector(selectVideo), for: .touchDown)
         buttonView.addSubview(libraryButton)
         libraryButton.setAnchors(top: buttonView.topAnchor, leading: buttonView.leadingAnchor, bottom: buttonView.bottomAnchor, insets: defaultInsets)
+            .iconHeight()
         cameraButton.setImage(UIImage(systemName: "camera.rotate"), for: .normal)
         cameraButton.target(forAction: #selector(changeCamera), withSender: self)
         cameraButton.addTarget(self, action: #selector(changeCamera), for: .touchDown)
         buttonView.addSubview(cameraButton)
         cameraButton.setAnchors(top: buttonView.topAnchor, trailing: buttonView.trailingAnchor, bottom: buttonView.bottomAnchor, insets: defaultInsets)
+            .iconHeight()
         recordButton.buttonColor = UIColor.red
         recordButton.addTarget(self, action: #selector(toggleRecording), for: .touchDown)
         bodyView.addSubview(recordButton)

@@ -66,11 +66,13 @@ class TimelineEntryCell: UITableViewCell{
                 viewButton.addTarget(self, action: #selector(viewEntry), for: .touchDown)
                 cellBody.addSubview(viewButton)
                 viewButton.setAnchors(top: cellBody.topAnchor, trailing: cellBody.trailingAnchor, insets: smallInsets)
+                    .iconHeight()
                 if entry.location != nil{
                     let mapButton = IconButton(icon: "map")
                     mapButton.addTarget(self, action: #selector(showInMap), for: .touchDown)
                     cellBody.addSubview(mapButton)
                     mapButton.setAnchors(top: cellBody.topAnchor, trailing: viewButton.leadingAnchor, insets: smallInsets)
+                        .iconHeight()
                 }
             }
             var items = Array<EntryItem>()

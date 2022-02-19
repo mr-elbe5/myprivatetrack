@@ -10,7 +10,6 @@ import AVFoundation
 
 class AudioRecorderView : UIView, AVAudioRecorderDelegate{
     
-    var recordingSession: AVAudioSession? = nil
     var audioRecorder: AVAudioRecorder? = nil
     var isRecording: Bool = false
     var currentTime: Double = 0.0
@@ -53,28 +52,15 @@ class AudioRecorderView : UIView, AVAudioRecorderDelegate{
     }
     
     func enableRecording(){
-        var success = true
-        AVCaptureDevice.askAudioAuthorization(){ result in
+        AudioSession.enableRecording(){result in
             switch result{
-            case .success(()):
-                self.recordingSession = AVAudioSession.sharedInstance()
-                do {
-                    try self.recordingSession!.setCategory(.playAndRecord, mode: .default)
-                    try self.recordingSession!.setActive(true)
-                    self.recordingSession!.requestRecordPermission() { allowed in
-                        success = allowed
-                    }
-                } catch {
-                    success = false
+            case .success:
+                DispatchQueue.main.async {
+                    self.recordButton.isEnabled = true
                 }
-                return
-            case .failure:
-                success = false
-                return
+            default:
+                break
             }
-        }
-        DispatchQueue.main.async {
-            self.recordButton.isEnabled = success
         }
     }
     

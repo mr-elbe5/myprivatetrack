@@ -104,6 +104,7 @@ class ImageItemPreview: ImageItemView{
             viewButton.addTarget(self, action: #selector(viewItem), for: .touchDown)
             addSubview(viewButton)
             viewButton.setAnchors(top: imageView.topAnchor, trailing: imageView.trailingAnchor, insets: smallInsets)
+                .iconHeight()
         }
     }
     

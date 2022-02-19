@@ -19,8 +19,11 @@ class EditEntryViewController: EditViewController{
     
     var entry : EntryData!
     
+    var addingItem = false
+    
     var locationText = TextEditArea()
     var showLocationSwitch = SwitchView()
+    var startAddingItemButton = IconButton(icon: "plus")
     var addTextButton = IconButton(icon: "text.bubble")
     var addPhotoButton = IconButton(icon: "camera")
     var addImageButton = IconButton(icon: "photo")
@@ -83,8 +86,8 @@ class EditEntryViewController: EditViewController{
         stackView.setupHorizontal(spacing: 2*defaultInset)
         stackView.setAnchors(top: headerView.topAnchor, leading: headerView.leadingAnchor, bottom: headerView.bottomAnchor, insets: defaultInsets)
         
-        let plusIcon = IconView(icon: "plus", tintColor: .black)
-        stackView.addArrangedSubview(plusIcon)
+        startAddingItemButton.addTarget(self, action: #selector(toggleAddItem), for: .touchDown)
+        stackView.addArrangedSubview(startAddingItemButton)
         addTextButton.addTarget(self, action: #selector(addText), for: .touchDown)
         stackView.addArrangedSubview(addTextButton)
         addPhotoButton.addTarget(self, action: #selector(addPhoto), for: .touchDown)
@@ -95,8 +98,21 @@ class EditEntryViewController: EditViewController{
         stackView.addArrangedSubview(addAudioButton)
         addVideoButton.addTarget(self, action: #selector(addVideo), for: .touchDown)
         stackView.addArrangedSubview(addVideoButton)
-        
+        setAddItem(false)
         self.headerView = headerView
+    }
+    
+    @objc func toggleAddItem(){
+        setAddItem(!addingItem)
+    }
+    
+    private func setAddItem(_ flag: Bool){
+        addingItem = flag
+        addTextButton.isHidden = !addingItem
+        addPhotoButton.isHidden = !addingItem
+        addImageButton.isHidden = !addingItem
+        addAudioButton.isHidden = !addingItem
+        addVideoButton.isHidden = !addingItem
     }
     
     @objc func addText(){
@@ -104,6 +120,7 @@ class EditEntryViewController: EditViewController{
         entry.addItem(item: data)
         let editView = TextItemEditView.fromData(data: data)
         insertItemView(editView)
+        setAddItem(false)
     }
     
     @objc func addPhoto(){
@@ -126,7 +143,7 @@ class EditEntryViewController: EditViewController{
                 return
             }
         }
-        
+        setAddItem(false)
     }
     
     @objc func addImage(){
@@ -137,6 +154,7 @@ class EditEntryViewController: EditViewController{
         pickerController.sourceType = .photoLibrary
         pickerController.modalPresentationStyle = .fullScreen
         self.present(pickerController, animated: true, completion: nil)
+        setAddItem(false)
     }
     
     @objc func addAudio(){
@@ -157,6 +175,7 @@ class EditEntryViewController: EditViewController{
                 return
             }
         }
+        setAddItem(false)
     }
     
     @objc func addVideo(){
@@ -179,6 +198,7 @@ class EditEntryViewController: EditViewController{
                 return
             }
         }
+        setAddItem(false)
     }
     
     @objc func save(){

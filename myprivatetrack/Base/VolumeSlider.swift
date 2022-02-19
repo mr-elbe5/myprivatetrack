@@ -9,7 +9,7 @@ import UIKit
 
 class VolumeSlider : UISlider{
     
-    init(minValue: Float = 0.0, maxValue: Float = 10.0, value: Float = 2.0){
+    init(minValue: Float = 0.0, maxValue: Float = 10.0, value: Float = 1.0){
         super.init(frame: .zero)
         minimumValue = minValue
         maximumValue = maxValue
@@ -22,6 +22,10 @@ class VolumeSlider : UISlider{
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    func volumeHeight(){
+        height(25)
     }
     
 }

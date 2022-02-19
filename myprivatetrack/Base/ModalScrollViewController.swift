@@ -22,6 +22,7 @@ open class ModalScrollViewController: ScrollViewController {
         buttonView.addSubview(closeButton)
         closeButton.addTarget(self, action: #selector(close), for: .touchDown)
         closeButton.setAnchors(top: buttonView.topAnchor, trailing: buttonView.trailingAnchor, bottom: buttonView.bottomAnchor, insets: defaultInsets)
+            .iconHeight()
         headerView = buttonView
     }
     

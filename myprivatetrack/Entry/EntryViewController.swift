@@ -73,6 +73,7 @@ class EntryViewController: ModalScrollViewController {
         editButton.addTarget(self, action: #selector(editEntry), for: .touchDown)
         buttonView.addSubview(editButton)
         editButton.setAnchors(top: buttonView.topAnchor, trailing: closeButton.leadingAnchor, bottom: buttonView.bottomAnchor, insets: defaultInsets)
+            .iconHeight()
     }
     
     @objc func showInMap(){

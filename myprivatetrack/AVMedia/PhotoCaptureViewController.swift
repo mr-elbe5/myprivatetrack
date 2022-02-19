@@ -40,10 +40,12 @@ class PhotoCaptureViewController: CameraViewController, AVCapturePhotoCaptureDel
         cameraButton.addTarget(self, action: #selector(changeCamera), for: .touchDown)
         buttonView.addSubview(cameraButton)
         cameraButton.setAnchors(top: buttonView.topAnchor, leading: buttonView.leadingAnchor, bottom: buttonView.bottomAnchor, insets: defaultInsets)
+            .iconHeight()
         flashButton.setImage(UIImage(systemName: "bolt.badge.a"), for: .normal)
         flashButton.addTarget(self, action: #selector(toggleFlash), for: .touchDown)
         buttonView.addSubview(flashButton)
         flashButton.setAnchors(top: buttonView.topAnchor, leading: cameraButton.trailingAnchor, bottom: buttonView.bottomAnchor, insets: UIEdgeInsets(top: defaultInset, left: 2*defaultInset, bottom: defaultInset, right: defaultInset))
+            .iconHeight()
     }
     
     override func enableButtons(flag: Bool){
