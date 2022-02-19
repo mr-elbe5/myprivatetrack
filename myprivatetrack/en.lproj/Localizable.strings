@@ -101,6 +101,23 @@
 
 // info
 
+"generalInfoHeader"="About this App";
+"generalInfoText1"="This app is designed for private data.";
+"generalInfoText2"="None of your entered data leaves your iPhone or iPad, if you do not explicitly export it.";
+"generalInfoText3"="There are no ads.";
+"generalInfoText4"="The only use of the network is for getting map tiles and the location service for showing the location of your entries on the map.";
+"generalInfoText5"="Only Apple APIs and services are used, except for the open source project Zip, which is embedded for backup and restore.";
+"generalInfoText6"="The code of this app is published on GitHub under https://github.com/mr-elbe5/myprivatetrack.git.";
+
+"timelineInfoHeader"="Timeline view";
+
+"timelineInfoEditHeader"="Edit mode";
+"timelineLocationInfo"="If the switch 'Save position' is on, you can add a map section.";
+"timelineMapIconInfo"="With this icon you can show an entry on the map.";
+"timelineTextIconInfo"="With this icon you start creating a new entry by writing a text.";
+"timelineTopInfo"="The timeline view shows all entries sorted by the day and of their creation. By tapping one of the left icons you can create a new entry starting with the respective item type: empty, text, photo, image, audio or video. With the right pencil icon you can toggle between view and edit mode (see below).";
+"timelineVideoIconInfo"="With this icon you start creating a new entry by recording a video.";
+
 "info"="Info";
 "editEntryAudioIconInfo"="With this icon you add a new audio item starting by recording an audio.";
 "editEntryDeleteIconInfo"="With this icon you delete the item. Take care! There is no way to undo this action!";
@@ -118,15 +135,9 @@
 "timelineShareIconInfo"="With this icon you can share/export an item to the image library or to the documents folder ('Files') of this app.";
 "mapInfoHeader"="Map view";
 "iconsInfoHeader"="Icons";
-"privacyInfoHeader"="Your privacy";
-"privacyInfoText1"="This app is designed for private data.";
-"privacyInfoText2"="None of your entered data leaves your iPhone or iPad, if you do not explicitly export it.";
-"privacyInfoText3"="There are no ads.";
-"privacyInfoText4"="The only use of the network is for getting map tiles and the location service for showing the location of your entries on the map.";
-"privacyInfoText5"="Only Apple APIs and services are used, except for the open source project Zip, which is embedded for backup and restore.";
-"privacyInfoText6"="The code of this app is published on GitHub under https://github.com/mr-elbe5/myprivatetrack.git.";
+
 "privacyExportHeader"="Exported Files";
-"privacyExportText"="With this app it is possible to create backups and copy files to the 'Files' folder of this app. You should be aware that these files are visible to other running apps on the iPhone/iPad. Depending on your privacy policy they should be deleted after use.";
+"generalExportText"="With this app it is possible to create backups and copy files to the 'Files' folder of this app. You should be aware that these files are visible to other running apps on the iPhone/iPad. Depending on your privacy policy they should be deleted after use.";
 "settingsBackgroundInfo"="With 'Select background image' you can select an image of your photo library or return to the default image as background.";
 "settingsFilesInfo"="Deleting exported files means to delete all backups and all files, which have been copied to the app's documents folder.";
 "settingsFullBackupInfo"="With 'Backup all entries' you create a backup file of all your entries. It can be found in Files > On my IPhone/iPad > My Private Track > Backups with the current date in its name.";
@@ -145,10 +156,4 @@
 "timelineEntryMapLinkInfo"="If the entry has a saved location, you can tap on it to see the location on the map.";
 "timelinePhotoIconInfo"="With this icon you start creating a new entry by taking a photo.";
 "timelineImageIconInfo"="With this icon you start creating a new entry by importing an image from the library.";
-"timelineInfoEditHeader"="Edit mode";
-"timelineInfoHeader"="Timeline view";
-"timelineLocationInfo"="If the switch 'Save position' is on, you can add a map section.";
-"timelineMapIconInfo"="With this icon you can show an entry on the map.";
-"timelineTextIconInfo"="With this icon you start creating a new entry by writing a text.";
-"timelineTopInfo"="The timeline view shows all entries sorted by the day and of their creation. By tapping one of the left icons you can create a new entry starting with the respective item type: empty, text, photo, image, audio or video. With the right pencil icon you can toggle between view and edit mode (see below).";
-"timelineVideoIconInfo"="With this icon you start creating a new entry by recording a video.";
+
