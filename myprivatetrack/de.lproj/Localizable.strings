@@ -103,6 +103,32 @@
 // info
 
 "info"="Info";
+
+"generalInfoHeader"="Deine Privatshäre";
+"generalInfoText1"="Diese App ist für private Daten erstellt.";
+"generalInfoText2"="Keine eingegebenen Daten verlassen das iPhone oder iPad, solange sie nicht explizit exportiert werden.";
+"generalInfoText3"="Es gibt keine Werbung.";
+"generalInfoText4"="Das Netzwerk wird lediglich genutzt, um Kartenkacheln zu laden oder den Ort deiner Einträge auf Karten darzustellen.";
+"generalInfoText5"="Es werden nur Apple-APIs und -Services benutzt, mit Ausnahme des Open-Source-Projekts Zip, das für die Sicherung und Wiederherstellung eingebunden ist.";
+"generalInfoText6"="Der Code dieser App ist bei Github unter https://github.com/mr-elbe5/myprivatetrack.git offengelegt.";
+"generalExportText"="Diese App ermöglicht es, Sicherungen anzulegen und Dateien in das 'Dateien'-Verzeichnis dieser App zu kopieren. Dabei sollte beachtet werden, das diese exportierten Dateien auch für andere laufende Apps auf dem iPhone/iPad sichtbar sind. Je nach Bedarf sollten sie nach der Nutzung wieder gelöscht werden.";
+
+"timelineInfoHeader"="Tagesansicht";
+"timelineTopInfo"="Die Tagesansicht zeigt alle Einträge nach Tag und Zeit sortiert. Durch Antippen der linken Icons kannst du einen neuen Eintrag erzeugen, der mit dem jeweiligen Typ startet : Text, Foto, Bild, Audio oder Video. Mit dem rechten Bleistift-Icon kannst du zwischen Anzeige- und Editiermodus wechseln (siehe unten).";
+"timelineTextIconInfo"="Mit diesem Icon startest du einen neuen Eintrag, der mit dem Eingeben eines Textes beginnt.";
+"timelinePhotoIconInfo"="Mit diesem Icon startest du einen neuen Eintrag, der mit dem Aufnehmen eines Fotos beginnt.";
+"timelineImageIconInfo"="Mit diesem Icon startest du einen neuen Eintrag, der mit dem Importieren eines Bildes aus der Bibliothek beginnt.";
+"timelineAudioIconInfo"="Mit diesem Icon startest du einen neuen Eintrag, der mit dem Aufnehmen eines Audios beginnt.";
+"timelineVideoIconInfo"="Mit diesem Icon startest du einen neuen Eintrag, der mit dem Aufnehmen eines Videos beginnt.";
+"timelineEntryInfoHeader"="Einträge";
+"timelineDetailIconInfo"="Mit diesem Icon bekommst du die Detailansicht des Eintrags oder eines seiner Elemente. Dort kannst du auch Einträge editieren.";
+"timelineMapIconInfo"="Mit diesem Icon kannst du ein Element auf der Karte anzeigen.";
+"timelineInfoEditHeader"="Editiermodus";
+"timelineDeleteIconInfo"="Mit diesem Icon löschst du den Eintrag. Vorsicht! Diese Aktion kann nicht rückgängig gemacht werden!";
+"timelineQuicktextInfo"="Mit dem Eingabefeld am unteren Rand erstelltst du direkt einen neuen Eintrag mit dem eingegebenen Text.";
+//
+
+"entryEditInfo"="Mit dem rechten Bleistiftsymbol kannst du zwischen Anzeige- und Editiermodus wechseln. Im Editiermodus erscheinen zwei Icons bei jedem Eintrag:";
 "editEntryAudioIconInfo"="Mit diesem Icon erstellst du ein neues Audio-Element durch eine Tonaufnahme.";
 "editEntryDeleteIconInfo"="Mit diesem Icon löschst du das Element. Vorsicht! Diese Aktion kann nicht rückgängig gemacht werden!";
 "editEntryFlashIconInfo"="Mit diesem Icon setzt du den Blitzmodus (aus, an oder automatisch).";
@@ -119,14 +145,7 @@
 "timelineShareIconInfo"="Mit diesem Icon kannst du ein Element in 'Fotos' oder das Dokumentenverzeichnis dieser App ('Dateien') kopieren.";
 "mapInfoHeader"="Kartenansicht";
 "iconsInfoHeader"="Icons";
-"generalInfoHeader"="Deine Privatshäre";
-"generalInfoText1"="Diese App ist für private Daten erstellt.";
-"generalInfoText2"="Keine eingegebenen Daten verlassen das iPhone oder iPad, solange sie nicht explizit exportiert werden.";
-"generalInfoText3"="Es gibt keine Werbung.";
-"generalInfoText4"="Das Netzwerk wird lediglich genutzt, um Kartenkacheln zu laden oder den Ort deiner Einträge auf Karten darzustellen.";
-"generalInfoText5"="Es werden nur Apple-APIs und -Services benutzt, mit Ausnahme des Open-Source-Projekts Zip, das für die Sicherung und Wiederherstellung eingebunden ist.";
-"generalInfoText6"="Der Code dieser App ist bei Github unter https://github.com/mr-elbe5/myprivatetrack.git offengelegt.";
-"generalExportText"="Diese App ermöglicht es, Sicherungen anzulegen und Dateien in das 'Dateien'-Verzeichnis dieser App zu kopieren. Dabei sollte beachtet werden, das diese exportierten Dateien auch für andere laufende Apps auf dem iPhone/iPad sichtbar sind. Je nach Bedarf sollten sie nach der Nutzung wieder gelöscht werden.";
+
 "settingsBackupInfo"="Mit 'Sichern' kannst du deine Einträge und Medien als zip-Datei sichern (alle oder für einen bestimmten Zeitraum). Du kannst diese Dateien mit einem Passwort schützen.";
 "settings"="Einstellungen";
 "settingsBackgroundInfo"="Mit 'Hintergrund' kannst du das Hintergrundbild verändern. Du kannst ein Bild aus der Fotobibliothek wählen oder zum Standardbild zurückkehren.";
@@ -137,19 +156,6 @@
 "settingsResetInfo"="Mit 'Einträge löschen' löschst du alle Einträge und dazgehörige Medien. Wenn du diese Daten nicht verlieren willst, solltest du vorher eine Sicherung erstellen.";
 "settingsRestoreInfo"="Mit 'Wiederherstellen' kannst du vorher gesicherte Einträge und Medien wiederherstellen (alle oder aus einem bestimmten Zeitraum).";
 "settingsUseLocationInfo"="Wenn du keine Standortbestimmung benutzt, erhalten deine Einträge keine Position und du kannst keine Karten-Schnappschuss machen.";
-"timelineAudioIconInfo"="Mit diesem Icon startest du einen neuen Eintrag, der mit dem Aufnehmen eines Audios beginnt.";
-"timelineDeleteIconInfo"="Mit diesem Icon löschst du den Eintrag. Vorsicht! Diese Aktion kann nicht rückgängig gemacht werden!";
-"timelineDetailIconInfo"="Mit diesem Icon bekommst du die Detailansicht des Eintrags oder eines seiner Elemente. Dort kannst du auch Einträge editieren.";
-"timelineEditInfo"="Mit dem rechten Bleistiftsymbol kannst du zwischen Anzeige- und Editiermodus wechseln. Im Editiermodus erscheinen zwei Icons bei jedem Eintrag:";
-"timelineEmptyIconInfo"="Mit diesem Icon startest du einen leeren neuen Eintrag.";
-"timelineEntryInfoHeader"="Einträge";
-"timelineEntryMapLinkInfo"="Wenn die Position des Eintrags gespeichert wurde, kannst du durch Tippen auf die Position zur Karte wechseln.";
-"timelinePhotoIconInfo"="Mit diesem Icon startest du einen neuen Eintrag, der mit dem Aufnehmen eines Fotos beginnt.";
-"timelineImageIconInfo"="Mit diesem Icon startest du einen neuen Eintrag, der mit dem Importieren eines Bildes aus der Bibliothek beginnt.";
-"timelineInfoEditHeader"="Editiermodus";
-"timelineInfoHeader"="Tagesansicht";
-"timelineLocationInfo"="Wenn der Schalter 'Position anzeigen' an ist, kannst du einen Kartenausschnitt hinzufügen.";
-"timelineMapIconInfo"="Mit diesem Icon kannst du ein Element auf der Karte anzeigen.";
-"timelineTextIconInfo"="Mit diesem Icon startest du einen neuen Eintrag, der mit dem Eingeben eines Textes beginnt.";
-"timelineTopInfo"="Die Tagesansicht zeigt alle Einträge nach Tag und Zeit sortiert. Durch Antippen der linken Icons kannst du einen neuen Eintrag erzeugen, der mit dem jeweiligen Typ startet : leer, Text, Foto, Bild, Audio oder Video. Mit dem rechten Bleistift-Icon kannst du zwischen Anzeige- und Editiermodus wechseln (siehe unten).";
-"timelineVideoIconInfo"="Mit diesem Icon startest du einen neuen Eintrag, der mit dem Aufnehmen eines Videos beginnt.";
+
+
+
