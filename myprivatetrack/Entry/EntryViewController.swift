@@ -71,8 +71,8 @@ class EntryViewController: ModalScrollViewController {
         super.setupHeaderView()
         let editButton = IconButton(icon: "pencil.circle")
         editButton.addTarget(self, action: #selector(editEntry), for: .touchDown)
-        buttonView.addSubview(editButton)
-        editButton.setAnchors(top: buttonView.topAnchor, trailing: closeButton.leadingAnchor, bottom: buttonView.bottomAnchor, insets: defaultInsets)
+        headerView.addSubview(editButton)
+        editButton.setAnchors(top: headerView.topAnchor, trailing: closeButton.leadingAnchor, bottom: headerView.bottomAnchor, insets: defaultInsets)
             .iconHeight()
     }
     

@@ -53,7 +53,6 @@
 		4ED21B9D24FAA29F00A6FEA3 /* ModalScrollViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED21B9424FAA29F00A6FEA3 /* ModalScrollViewController.swift */; };
 		4ED21B9E24FAA29F00A6FEA3 /* ImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED21B9524FAA29F00A6FEA3 /* ImageViewController.swift */; };
 		4ED21B9F24FAA29F00A6FEA3 /* ScrollViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED21B9624FAA29F00A6FEA3 /* ScrollViewController.swift */; };
-		4ED21BA024FAA29F00A6FEA3 /* EditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED21B9724FAA29F00A6FEA3 /* EditViewController.swift */; };
 		4ED21BA124FAA29F00A6FEA3 /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED21B9824FAA29F00A6FEA3 /* TableViewController.swift */; };
 		4ED21BAF24FAA32500A6FEA3 /* GlobalData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED21BA324FAA32400A6FEA3 /* GlobalData.swift */; };
 		4ED21BB024FAA32500A6FEA3 /* PhotoItemData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED21BA424FAA32400A6FEA3 /* PhotoItemData.swift */; };
@@ -165,7 +164,6 @@
 		4ED21B9424FAA29F00A6FEA3 /* ModalScrollViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModalScrollViewController.swift; sourceTree = "<group>"; };
 		4ED21B9524FAA29F00A6FEA3 /* ImageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageViewController.swift; sourceTree = "<group>"; };
 		4ED21B9624FAA29F00A6FEA3 /* ScrollViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScrollViewController.swift; sourceTree = "<group>"; };
-		4ED21B9724FAA29F00A6FEA3 /* EditViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditViewController.swift; sourceTree = "<group>"; };
 		4ED21B9824FAA29F00A6FEA3 /* TableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
 		4ED21BA324FAA32400A6FEA3 /* GlobalData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GlobalData.swift; sourceTree = "<group>"; };
 		4ED21BA424FAA32400A6FEA3 /* PhotoItemData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoItemData.swift; sourceTree = "<group>"; };
@@ -378,7 +376,6 @@
 			children = (
 				4ED21BD524FAA39300A6FEA3 /* ButtonStackView.swift */,
 				4ED21BCF24FAA39300A6FEA3 /* DatePickerView.swift */,
-				4ED21B9724FAA29F00A6FEA3 /* EditViewController.swift */,
 				4ED21BD024FAA39300A6FEA3 /* IconButton.swift */,
 				4ED21BE024FAA39300A6FEA3 /* IconInfoText.swift */,
 				4EF4DB5427BE9B0A00D78CDB /* IconView.swift */,
@@ -554,7 +551,6 @@
 				4E0018AE27B67FB7005AA1A3 /* ImageItemData.swift in Sources */,
 				4ED21C4924FAAC6E00A6FEA3 /* VideoCaptureViewController.swift in Sources */,
 				4ED21BE924FAA39300A6FEA3 /* ButtonStackView.swift in Sources */,
-				4ED21BA024FAA29F00A6FEA3 /* EditViewController.swift in Sources */,
 				4EF4DB5727BEB84300D78CDB /* VolumeSlider.swift in Sources */,
 				4ED21BF324FAA39300A6FEA3 /* SwitchView.swift in Sources */,
 				4ED21BA124FAA29F00A6FEA3 /* TableViewController.swift in Sources */,

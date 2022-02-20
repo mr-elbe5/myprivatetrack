@@ -9,27 +9,45 @@ import UIKit
 
 open class ScrollViewController: UIViewController {
     
-    var scrollViewTopPadding : CGFloat = 1
-    var headerView : UIView? = nil
     var scrollView = UIScrollView()
     
-    override open func loadView() {
-        super.loadView()
-        view.backgroundColor = .systemGroupedBackground
-        let guide = view.safeAreaLayoutGuide
-        setupHeaderView()
-        if let headerView = headerView{
-            view.addSubview(headerView)
-            headerView.setAnchors(top: guide.topAnchor, leading: guide.leadingAnchor, trailing: guide.trailingAnchor, insets: .zero)
-        }
-        self.view.addSubview(scrollView)
+    func setupScrollView(){
         scrollView.backgroundColor = .systemBackground
-        scrollView.setAnchors(leading: guide.leadingAnchor, trailing: guide.trailingAnchor, bottom: guide.bottomAnchor, insets: .zero)
-            .top(headerView?.bottomAnchor ?? guide.topAnchor, inset: scrollViewTopPadding)
+        scrollView.setupVertical()
+        view.addSubview(scrollView)
     }
     
-    open func setupHeaderView(){
-        
+    func setupNotifications() {
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name:UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardDidShow), name:UIResponder.keyboardDidShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name:UIResponder.keyboardWillHideNotification, object: nil)
+    }
+    
+    @objc func keyboardWillShow(notification:NSNotification){
+        let userInfo = notification.userInfo!
+        var keyboardFrame:CGRect = (userInfo[UIResponder.keyboardFrameBeginUserInfoKey] as! NSValue).cgRectValue
+        keyboardFrame = self.view.convert(keyboardFrame, from: nil)
+        var contentInset:UIEdgeInsets = self.scrollView.contentInset
+        contentInset.bottom = keyboardFrame.size.height
+        scrollView.contentInset = contentInset
+    }
+    
+    @objc func keyboardDidShow(notification:NSNotification){
+        if let firstResponder = scrollView.firstResponder{
+            let rect : CGRect = firstResponder.frame
+            var parentView = firstResponder.superview
+            var offset : CGFloat = 0
+            while parentView != nil && parentView != scrollView {
+                offset += parentView!.frame.minY
+                parentView = parentView!.superview
+            }
+            scrollView.scrollRectToVisible(.init(x: rect.minX, y: rect.minY + offset, width: rect.width, height: rect.height), animated: true)
+        }
+    }
+    
+    @objc func keyboardWillHide(notification:NSNotification){
+        let contentInset:UIEdgeInsets = UIEdgeInsets.zero
+        scrollView.contentInset = contentInset
     }
     
 }

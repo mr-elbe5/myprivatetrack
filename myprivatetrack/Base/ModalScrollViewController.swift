@@ -9,21 +9,33 @@ import UIKit
 
 open class ModalScrollViewController: ScrollViewController {
     
-    var buttonView = UIView()
+    var headerView = UIView()
+    
     var closeButton = IconButton(icon: "xmark.circle")
     
     override open func loadView() {
-        self.scrollViewTopPadding = 0
         super.loadView()
+        view.backgroundColor = .systemGroupedBackground
+        let guide = view.safeAreaLayoutGuide
+        setupHeaderView()
+        view.addSubview(headerView)
+        headerView.setAnchors(top: guide.topAnchor, leading: guide.leadingAnchor, trailing: guide.trailingAnchor, insets: .zero)
+        setupScrollView()
+        scrollView.setAnchors(leading: guide.leadingAnchor, trailing: guide.trailingAnchor, bottom: guide.bottomAnchor, insets: .zero)
+            .top(headerView.bottomAnchor, inset: 0)
     }
     
-    override open func setupHeaderView(){
-        buttonView.backgroundColor = UIColor.systemBackground
-        buttonView.addSubview(closeButton)
+    func setupHeaderView(){
+        headerView.backgroundColor = UIColor.systemBackground
+        headerView.addSubview(closeButton)
         closeButton.addTarget(self, action: #selector(close), for: .touchDown)
-        closeButton.setAnchors(top: buttonView.topAnchor, trailing: buttonView.trailingAnchor, bottom: buttonView.bottomAnchor, insets: defaultInsets)
+        closeButton.setAnchors(top: headerView.topAnchor, trailing: headerView.trailingAnchor, bottom: headerView.bottomAnchor, insets: defaultInsets)
             .iconHeight()
-        headerView = buttonView
+    }
+    
+    override func setupScrollView(){
+        scrollView.backgroundColor = .systemBackground
+        view.addSubview(scrollView)
     }
     
     @objc func close(){

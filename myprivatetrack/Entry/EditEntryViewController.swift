@@ -13,13 +13,16 @@ protocol SaveEntryDelegate{
     func saveEntry(entry: EntryData)
 }
 
-class EditEntryViewController: EditViewController{
+class EditEntryViewController: ScrollViewController{
     
     var delegate : SaveEntryDelegate? = nil
     
     var entry : EntryData!
     
     var addingItem = false
+    
+    var headerView = UIView()
+    var stackView = UIStackView()
     
     var locationText = TextEditArea()
     var showLocationSwitch = SwitchView()
@@ -32,7 +35,17 @@ class EditEntryViewController: EditViewController{
     
     override func loadView() {
         super.loadView()
-        
+        view.backgroundColor = .systemGroupedBackground
+        let guide = view.safeAreaLayoutGuide
+        setupHeaderView()
+        view.addSubview(headerView)
+        headerView.setAnchors(top: guide.topAnchor, leading: guide.leadingAnchor, trailing: guide.trailingAnchor, insets: .zero)
+        setupScrollView()
+        scrollView.setAnchors(leading: guide.leadingAnchor, trailing: guide.trailingAnchor, bottom: guide.bottomAnchor, insets: .zero)
+            .top(headerView.bottomAnchor, inset: 1)
+        scrollView.addSubview(stackView)
+        stackView.fillView(view: scrollView, insets: UIEdgeInsets(top: defaultInset, left: .zero, bottom: defaultInset, right: .zero))
+        stackView.setupVertical()
         locationText.setDefaults(placeholder: "locationDescription".localize())
         locationText.setText(entry.locationDescription)
         stackView.addArrangedSubview(locationText)
@@ -76,10 +89,10 @@ class EditEntryViewController: EditViewController{
         cancelButton.addTarget(self, action: #selector(cancel), for: .touchDown)
         buttonContainer.stackView.addArrangedSubview(cancelButton)
         stackView.addArrangedSubview(buttonContainer)
+        setupNotifications()
     }
     
-    override func setupHeaderView(){
-        let headerView = UIView()
+    func setupHeaderView(){
         let stackView = UIStackView()
         headerView.backgroundColor = UIColor.systemBackground
         headerView.addSubview(stackView)
@@ -99,7 +112,6 @@ class EditEntryViewController: EditViewController{
         addVideoButton.addTarget(self, action: #selector(addVideo), for: .touchDown)
         stackView.addArrangedSubview(addVideoButton)
         setAddItem(false)
-        self.headerView = headerView
     }
     
     @objc func toggleAddItem(){

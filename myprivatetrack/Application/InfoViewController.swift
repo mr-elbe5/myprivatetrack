@@ -9,6 +9,8 @@ import UIKit
 
 class InfoViewController: ScrollViewController {
     
+    var headerView = UIView()
+    
     var generalStackView = UIStackView()
     var timelineStackView = UIStackView()
     var entryStackView = UIStackView()
@@ -18,7 +20,13 @@ class InfoViewController: ScrollViewController {
     
     override func loadView() {
         super.loadView()
-        scrollView.setupVertical()
+        view.backgroundColor = .systemGroupedBackground
+        let guide = view.safeAreaLayoutGuide
+        view.addSubview(headerView)
+        headerView.setAnchors(top: guide.topAnchor, leading: guide.leadingAnchor, trailing: guide.trailingAnchor, insets: .zero)
+        setupScrollView()
+        scrollView.setAnchors(leading: guide.leadingAnchor, trailing: guide.trailingAnchor, bottom: guide.bottomAnchor, insets: .zero)
+            .top(headerView.bottomAnchor, inset: 1)
         scrollView.addSubview(generalStackView)
         var header = InfoHeader(text: "generalInfoHeader".localize())
         scrollView.addSubview(header)

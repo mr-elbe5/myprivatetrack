@@ -11,7 +11,10 @@ enum SettingsPickerType{
     case backup
 }
 
-class SettingsViewController: EditViewController, UIDocumentPickerDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, SwitchDelegate{
+class SettingsViewController: ScrollViewController, UIDocumentPickerDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, SwitchDelegate{
+    
+        
+    var stackView = UIStackView()
     
     var backgroundButton = TextButton(text: "selectBackground".localize())
     var urlTemplateField = LabeledText()
@@ -26,6 +29,16 @@ class SettingsViewController: EditViewController, UIDocumentPickerDelegate, UIIm
     
     override func loadView() {
         super.loadView()
+        view.backgroundColor = .systemGroupedBackground
+        let guide = view.safeAreaLayoutGuide
+        view.addSubview(scrollView)
+        scrollView.backgroundColor = .systemBackground
+        scrollView.setAnchors(top: guide.topAnchor, leading: guide.leadingAnchor, trailing: guide.trailingAnchor, bottom: guide.bottomAnchor, insets: .zero)
+        scrollView.setupVertical()
+        scrollView.addSubview(stackView)
+        stackView.fillView(view: scrollView, insets: UIEdgeInsets(top: defaultInset, left: .zero, bottom: defaultInset, right: .zero))
+        stackView.setupVertical()
+        
         let backgroundHeader = InfoHeader(text: "backgroundImage".localize())
         backgroundButton.addTarget(self, action: #selector(selectBackground), for: .touchDown)
         urlTemplateField.setupView(labelText: "osmTemplate".localize(), text: Settings.shared.osmTemplate, isHorizontal: false)
@@ -80,16 +93,7 @@ class SettingsViewController: EditViewController, UIDocumentPickerDelegate, UIIm
         let filesHeader = InfoHeader(text: "files".localize())
         stackView.addArrangedSubview(filesHeader)
         stackView.addArrangedSubview(removeDocumentsButton)
-    }
-    
-    override func setupHeaderView(){
-        let headerView = UIView()
-        let rightStackView = UIStackView()
-        headerView.backgroundColor = UIColor.systemBackground
-        headerView.addSubview(rightStackView)
-        rightStackView.setupHorizontal(spacing: 2*defaultInset)
-        rightStackView.setAnchors(top: headerView.topAnchor, trailing: headerView.trailingAnchor, bottom: headerView.bottomAnchor, insets: defaultInsets)
-        self.headerView = headerView
+        setupNotifications()
     }
     
     override func viewDidAppear(_ animated: Bool) {
