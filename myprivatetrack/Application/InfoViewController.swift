@@ -48,12 +48,12 @@ class InfoViewController: ScrollViewController {
         timelineStackView.addArrangedSubview(IconInfoText(icon: "photo", text: "timelineImageIconInfo".localize()))
         timelineStackView.addArrangedSubview(IconInfoText(icon: "mic", text: "timelineAudioIconInfo".localize()))
         timelineStackView.addArrangedSubview(IconInfoText(icon: "video", text: "timelineVideoIconInfo".localize()))
+        timelineStackView.addArrangedSubview(InfoText(text: "timelineQuicktextInfo".localize()))
         timelineStackView.addArrangedSubview(InfoHeader(text: "timelineEntryInfoHeader".localize()))
         timelineStackView.addArrangedSubview(IconInfoText(icon: "magnifyingglass", text: "timelineDetailIconInfo".localize()))
         timelineStackView.addArrangedSubview(IconInfoText(icon: "map", text: "timelineMapIconInfo".localize()))
         timelineStackView.addArrangedSubview(InfoHeader(text: "timelineInfoEditHeader".localize()))
         timelineStackView.addArrangedSubview(IconInfoText(icon: "trash", text: "timelineDeleteIconInfo".localize(), iconColor: .systemRed))
-        timelineStackView.addArrangedSubview(InfoText(text: "timelineQuicktextInfo".localize()))
         
         //entries
         
@@ -63,19 +63,19 @@ class InfoViewController: ScrollViewController {
         scrollView.addSubview(entryStackView)
         entryStackView.setupVertical()
         entryStackView.setAnchors(top: header.bottomAnchor, leading: scrollView.leadingAnchor, trailing: scrollView.trailingAnchor, insets: defaultInsets)
+        entryStackView.addArrangedSubview(InfoText(text: "entryTopInfo".localize()))
+        entryStackView.addArrangedSubview(IconInfoText(icon: "magnifyingglass", text: "entryDetailIconInfo".localize()))
+        entryStackView.addArrangedSubview(IconInfoText(icon: "square.and.arrow.up", text: "entryShareIconInfo".localize()))
+        entryStackView.addArrangedSubview(IconInfoText(icon: "pencil.circle", text: "editEntryInfoHeader".localize()))
         entryStackView.addArrangedSubview(InfoHeader(text: "editEntryInfoHeader".localize()))
         entryStackView.addArrangedSubview(InfoText(text: "editEntryTopInfo".localize()))
-        entryStackView.addArrangedSubview(IconInfoText(icon: "text.bubble", text: "entryTextIconInfo".localize()))
-        entryStackView.addArrangedSubview(IconInfoText(icon: "camera", text: "entryPhotoIconInfo".localize()))
-        entryStackView.addArrangedSubview(IconInfoText(icon: "photo", text: "entryImageIconInfo".localize()))
-        entryStackView.addArrangedSubview(IconInfoText(icon: "mic", text: "entryAudioIconInfo".localize()))
-        entryStackView.addArrangedSubview(IconInfoText(icon: "video", text: "entryVideoIconInfo".localize()))
-        entryStackView.addArrangedSubview(InfoHeader(text: "editEntryItemInfoHeader".localize(), paddingTop: 2 * Insets.defaultInset))
+        entryStackView.addArrangedSubview(IconInfoText(icon: "plus", text: "editEntryPlusIconInfo".localize()))
+        entryStackView.addArrangedSubview(IconInfoText(icon: "text.bubble", text: "editEntryTextIconInfo".localize()))
+        entryStackView.addArrangedSubview(IconInfoText(icon: "camera", text: "editEntryPhotoIconInfo".localize()))
+        entryStackView.addArrangedSubview(IconInfoText(icon: "photo", text: "editEntryImageIconInfo".localize()))
+        entryStackView.addArrangedSubview(IconInfoText(icon: "mic", text: "editEntryAudioIconInfo".localize()))
+        entryStackView.addArrangedSubview(IconInfoText(icon: "video", text: "editEntryVideoIconInfo".localize()))
         entryStackView.addArrangedSubview(IconInfoText(icon: "trash", text: "editEntryDeleteIconInfo".localize(),iconColor: .systemRed))
-        entryStackView.addArrangedSubview(IconInfoText(icon: "square.and.arrow.up", text: "timelineShareIconInfo".localize()))
-        entryStackView.addArrangedSubview(InfoHeader(text: "timelineEntryInfoHeader".localize(), paddingTop: 2 * Insets.defaultInset))
-        entryStackView.addArrangedSubview(InfoHeader(text: "timelineInfoEditHeader".localize(), paddingTop: 2 * Insets.defaultInset))
-        entryStackView.addArrangedSubview(InfoText(text: "timelineEditInfo".localize()))
         
         header = InfoHeader(text: "cameraInfoHeader".localize())
         scrollView.addSubview(header)
@@ -83,8 +83,8 @@ class InfoViewController: ScrollViewController {
         scrollView.addSubview(cameraStackView)
         cameraStackView.setupVertical()
         cameraStackView.setAnchors(top: header.bottomAnchor, leading: scrollView.leadingAnchor, trailing: scrollView.trailingAnchor, insets: defaultInsets)
-        cameraStackView.addArrangedSubview(IconInfoText(icon: "camera.rotate", text: "editEntryToggleCameraIconInfo".localize()))
-        cameraStackView.addArrangedSubview(IconInfoText(icon: "flash", text: "editEntryFlashIconInfo".localize()))
+        cameraStackView.addArrangedSubview(IconInfoText(icon: "camera.rotate", text: "toggleCameraIconInfo".localize()))
+        cameraStackView.addArrangedSubview(IconInfoText(icon: "bolt", text: "flashIconInfo".localize()))
         
         
         //map
@@ -95,8 +95,8 @@ class InfoViewController: ScrollViewController {
         scrollView.addSubview(mapStackView)
         mapStackView.setupVertical()
         mapStackView.setAnchors(top: header.bottomAnchor, leading: scrollView.leadingAnchor, trailing: scrollView.trailingAnchor, insets: defaultInsets)
-        mapStackView.addArrangedSubview(InfoHeader(text: "mapInfoHeader".localize()))
         mapStackView.addArrangedSubview(InfoText(text: "mapTopInfo".localize()))
+        mapStackView.addArrangedSubview(IconInfoText(icon: "map", text: "mapIconInfo".localize()))
         
         // settings
         

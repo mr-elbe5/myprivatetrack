@@ -127,27 +127,33 @@
 "timelineDeleteIconInfo"="Mit diesem Icon löschst du den Eintrag. Vorsicht! Diese Aktion kann nicht rückgängig gemacht werden!";
 "timelineQuicktextInfo"="Mit dem Eingabefeld am unteren Rand erstelltst du direkt einen neuen Eintrag mit dem eingegebenen Text.";
 //
-
-"entryEditInfo"="Mit dem rechten Bleistiftsymbol kannst du zwischen Anzeige- und Editiermodus wechseln. Im Editiermodus erscheinen zwei Icons bei jedem Eintrag:";
-"editEntryAudioIconInfo"="Mit diesem Icon erstellst du ein neues Audio-Element durch eine Tonaufnahme.";
-"editEntryDeleteIconInfo"="Mit diesem Icon löschst du das Element. Vorsicht! Diese Aktion kann nicht rückgängig gemacht werden!";
-"editEntryFlashIconInfo"="Mit diesem Icon setzt du den Blitzmodus (aus, an oder automatisch).";
+"entryInfoHeader"="Eintrag - Detailanzeige";
+"entryEditInfo"="Mit dem rechten Bleistiftsymbol kannst du zwischen Anzeige- und Editiermodus wechseln.";
+"entryTopInfo"="Alle Einträge werden werden mit Datum Uhrzeit und Position dargestellt. Durch klicken auf die Position wechselst du in die Kartenansicht.";
+"entryDetailIconInfo"="Mit diesem Icon kannst du ein Bild oder Video in Vollansicht anzeigen.";
+"entryShareIconInfo"="Mit diesem Icon kannst du ein Element in 'Fotos' oder das Dokumentenverzeichnis dieser App ('Dateien') kopieren.";
+"editEntryInfoHeader"="Eintrag editieren";
+"editEntryTopInfo"="In dieser Ansicht kannst du Elemente in deinem Eintrag hinzufügen, ändern oder löschen. Durch Antippen der linken Icons kannst du ein neues Element erzeugen: Text, Bild, Audio, Video oder Karte. Die Anzahl der Elemente ist nicht begrenzt";
+"editEntryPlusIconInfo"="Mit diesem Icon öffnest du die Liste möglicher neuer Elemente. Die Anzahl der Elemente ist nicht begrenzt.";
+"editEntryTextIconInfo"="Mit diesem Icon erstellst du ein neues Text-Element.";
 "editEntryPhotoIconInfo"="Mit diesem Icon erstellst du ein neues Bild-Element mit der Kamera";
 "editEntryImageIconInfo"="Mit diesem Icon importierts du ein Bild aus der Bibliothek";
-"editEntryInfoHeader"="Eintrag editieren";
-"editEntryItemInfoHeader"="Element löschen";
-"editEntryOthersHeader"="Weitere Icons";
-"editEntryTextIconInfo"="Mit diesem Icon erstellst du ein neues Text-Element.";
-"editEntryToggleCameraIconInfo"="Mit diesem Icon wechselst du beim Aufnehmen eines Fotos oder eines Videos die Kamera.";
-"editEntryToggleMapIconInfo"="Mit diesem Icon veränderst du beim Aufnehmen eines Kartenausschnitts die Kartenansicht (Satellit oder Strasse).";
-"editEntryTopInfo"="In dieser Ansicht kannst du Elemente in deinem Eintrag hinzufügen, ändern oder löschen. Durch Antippen der linken Icons kannst du ein neues Element erzeugen: Text, Bild, Audio, Video oder Karte. Die Anzahl der Elemente ist nicht begrenzt";
+"editEntryAudioIconInfo"="Mit diesem Icon erstellst du ein neues Audio-Element durch eine Tonaufnahme.";
 "editEntryVideoIconInfo"="Mit diesem Icon erstellst du ein neues Video-Element duch eine Videoaufnahme.";
-"timelineShareIconInfo"="Mit diesem Icon kannst du ein Element in 'Fotos' oder das Dokumentenverzeichnis dieser App ('Dateien') kopieren.";
+"editEntryDeleteIconInfo"="Mit diesem Icon löschst du ein Element eines Eintrags. Vorsicht! Diese Aktion kann nicht rückgängig gemacht werden!";
+//
+"cameraInfoHeader"="Kamera";
+"toggleCameraIconInfo"="Mit diesem Icon wechselst du beim Aufnehmen eines Fotos oder eines Videos die Kamera.";
+"flashIconInfo"="Mit diesem Icon setzt du den Blitzmodus (aus, an oder automatisch).";
+//
 "mapInfoHeader"="Kartenansicht";
-"iconsInfoHeader"="Icons";
+"mapTopInfo"="In der Kartenansicht siehst du alle Orte deiner Einträge. Durch Anklicken öffnest du den Eintrag.";
+"mapIconInfo"="Mit diesem Icon wechselt du zwischen den verschiedenen Kartentypen: Apple-Map, OpenSteetMap und Satellit.";
+//
+"settingsInfoHeader"="Einstellungen";
 
 "settingsBackupInfo"="Mit 'Sichern' kannst du deine Einträge und Medien als zip-Datei sichern (alle oder für einen bestimmten Zeitraum). Du kannst diese Dateien mit einem Passwort schützen.";
-"settings"="Einstellungen";
+
 "settingsBackgroundInfo"="Mit 'Hintergrund' kannst du das Hintergrundbild verändern. Du kannst ein Bild aus der Fotobibliothek wählen oder zum Standardbild zurückkehren.";
 "settingsFilesInfo"="Löschen aller öffentlichen Datein bedeutet das Löschen aller Sicherungen und aller Dateien, die in das Exportverzeichnis der App kopiert wurden.";
 "settingsFullBackupInfo"="Mit 'Alles sichern' kannst du eine Sicherung aller Einträge herstellen. Es ist dann unter Dateien > Auf meinem IPhone/iPad > My Private Track > Backups mit dem aktuellen Datum in seinem Namen zu finden.";
