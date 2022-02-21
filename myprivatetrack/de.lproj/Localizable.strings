@@ -7,6 +7,7 @@
 //common
 "cancel" = "Abbrechen";
 "comment"="Kommentar";
+"delete"="Löschen";
 "done"="Fertig";
 "east"="Ost";
 "endDate"="Letzter Tag";
@@ -15,7 +16,7 @@
 "ok"="Ok";
 "files"="Dateien";
 "fromDate" = "Ab Datum";
-"location"="Location";
+"location"="Ort";
 "save" = "Speichern";
 "south"="Süd";
 "startDate"="Erster Tag";
@@ -129,13 +130,13 @@
 "timelineQuicktextInfo"="Mit dem Eingabefeld am unteren Rand erstelltst du direkt einen neuen Eintrag mit dem eingegebenen Text.";
 //
 "entryInfoHeader"="Eintrag - Detailanzeige";
-"entryEditInfo"="Mit dem rechten Bleistiftsymbol kannst du zwischen Anzeige- und Editiermodus wechseln.";
-"entryTopInfo"="Alle Einträge werden werden mit Datum Uhrzeit und Position dargestellt. Durch klicken auf die Position wechselst du in die Kartenansicht.";
+"entryEditIconInfo"="Mit diesem Icon kannst du zwischen Anzeige- und Editiermodus wechseln.";
+"entryTopInfo"="Alle Einträge werden werden mit Datum, Uhrzeit und Position dargestellt. Durch klicken auf die Position wechselst du in die Kartenansicht.";
 "entryDetailIconInfo"="Mit diesem Icon kannst du ein Bild oder Video in Vollansicht anzeigen.";
 "entryShareIconInfo"="Mit diesem Icon kannst du ein Element in 'Fotos' oder das Dokumentenverzeichnis dieser App ('Dateien') kopieren.";
 "editEntryInfoHeader"="Eintrag editieren";
-"editEntryTopInfo"="In dieser Ansicht kannst du Elemente in deinem Eintrag hinzufügen, ändern oder löschen. Durch Antippen der linken Icons kannst du ein neues Element erzeugen: Text, Bild, Audio, Video oder Karte. Die Anzahl der Elemente ist nicht begrenzt";
-"editEntryPlusIconInfo"="Mit diesem Icon öffnest du die Liste möglicher neuer Elemente. Die Anzahl der Elemente ist nicht begrenzt.";
+"editEntryTopInfo"="In der Editieransicht kannst du Elemente in deinem Eintrag hinzufügen, ändern oder löschen. Durch Antippen der linken Icons kannst du ein neues Element erzeugen: Text, Bild, Audio, Video oder Karte. Die Anzahl der Elemente ist nicht begrenzt";
+"editEntryPlusIconInfo"="Mit diesem Icon öffnest du die Liste möglicher neuer Elemente.";
 "editEntryTextIconInfo"="Mit diesem Icon erstellst du ein neues Text-Element.";
 "editEntryPhotoIconInfo"="Mit diesem Icon erstellst du ein neues Bild-Element mit der Kamera";
 "editEntryImageIconInfo"="Mit diesem Icon importierts du ein Bild aus der Bibliothek";
@@ -154,13 +155,12 @@
 "settingsInfoHeader"="Einstellungen";
 
 "settingsBackgroundInfo"="Mit 'Hintergrund' kannst du das Hintergrundbild verändern. Du kannst ein Bild aus der Fotobibliothek wählen oder zum Standardbild zurückkehren.";
-"settingsUrlInfoText"="The URL templates are server specific and have to return png files (tiles). You must be sure to have the rights for downloading the tiles and that you do not start inappropriate mass downloads.";
-"settingsLocationInfoText"="'Show location' sets the default if you create a new entry.";
-"settingsDeleteEntriesInfoText"="'Delete entries' deletes all entries permanently. This cannot be undone.";
-"settingsBackupInfo"="Mit 'Sichern' kannst du deine Einträge und Medien als zip-Datei sichern (alle oder für einen bestimmten Zeitraum). Du kannst diese Dateien mit einem Passwort schützen.";
+"settingsUrlInfoText"="Die URL Templates sind serverspezifisch und müssen png-Dateien (Kacheln) liefern. Es muss sichergestellt sein, dass die Rechte zum Download der Kacheln vorliegen und dass keine unangemessenen Massendownloads erfolgen.";
+"settingsLocationInfoText"="'Ort anzeigen' setzt den Standard für neue Einträge.";
 "settingsFullBackupInfo"="Mit 'Alles sichern' kannst du eine Sicherung aller Einträge herstellen. Es ist dann unter Dateien > Auf meinem IPhone/iPad > My Private Track > Backups mit dem aktuellen Datum in seinem Namen zu finden.";
 "settingsPartialBackupInfo"="Mit 'Einträge einer Zeitspanne sichern' kannst du eine Sicherung von Einträge einer gewählten Zeitspanne herstellen. Es ist dann unter Dateien > Auf meinem IPhone/iPad > My Private Track > Backups mit den Daten der Zeitspanne in seinem Namen zu finden.";
 "settingsRestoreInfo"="Mit 'Wiederherstellen' kannst du vorher gesicherte Einträge und Medien wiederherstellen (alle oder aus einem bestimmten Zeitraum).";
+"settingsDeleteEntriesInfoText"="'Einträge löschen' löscht alle Einträge endgültig. Diese Aktion kann nicht zurückgenommen werden.";
 "settingsFilesInfo"="Löschen aller öffentlichen Dateien bedeutet das Löschen aller Sicherungen und aller Dateien, die in das Exportverzeichnis der App kopiert wurden.";
 
 

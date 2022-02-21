@@ -19,11 +19,11 @@ class SettingsViewController: ScrollViewController, UIDocumentPickerDelegate, UI
     var backgroundButton = TextButton(text: "selectBackground".localize())
     var urlTemplateField = LabeledText()
     var showLocationSwitch = SwitchView()
-    var resetButton = TextButton(text: "deleteData".localize())
+    var deleteDataButton = TextButton(text: "deleteData".localize())
     var fullBackupButton = TextButton(text: "fullBackupData".localize())
     var partialBackupButton = TextButton(text: "partialBackupData".localize())
     var restoreButton = TextButton(text: "restoreData".localize())
-    var removeDocumentsButton = TextButton(text: "deleteDocuments".localize())
+    var deleteDocumentsButton = TextButton(text: "deleteDocuments".localize())
     
     var pickerType : SettingsPickerType? = nil
     
@@ -70,11 +70,11 @@ class SettingsViewController: ScrollViewController, UIDocumentPickerDelegate, UI
         showLocationSwitch.delegate = self
         
         let entriesHeader = InfoHeader(text: "entries".localize())
-        resetButton.addTarget(self, action: #selector(resetData), for: .touchDown)
         fullBackupButton.addTarget(self, action: #selector(fullBackupData), for: .touchDown)
         partialBackupButton.addTarget(self, action: #selector(partialBackupData), for: .touchDown)
         restoreButton.addTarget(self, action: #selector(restoreData), for: .touchDown)
-        removeDocumentsButton.addTarget(self, action: #selector(removeDocuments), for: .touchDown)
+        deleteDataButton.addTarget(self, action: #selector(resetData), for: .touchDown)
+        deleteDocumentsButton.addTarget(self, action: #selector(removeDocuments), for: .touchDown)
         
         stackView.addArrangedSubview(backgroundHeader)
         stackView.addArrangedSubview(backgroundButton)
@@ -86,13 +86,13 @@ class SettingsViewController: ScrollViewController, UIDocumentPickerDelegate, UI
         stackView.addArrangedSubview(locationHeader)
         stackView.addArrangedSubview(showLocationSwitch)
         stackView.addArrangedSubview(entriesHeader)
-        stackView.addArrangedSubview(resetButton)
         stackView.addArrangedSubview(fullBackupButton)
         stackView.addArrangedSubview(partialBackupButton)
         stackView.addArrangedSubview(restoreButton)
-        let filesHeader = InfoHeader(text: "files".localize())
-        stackView.addArrangedSubview(filesHeader)
-        stackView.addArrangedSubview(removeDocumentsButton)
+        let deleteHeader = InfoHeader(text: "delete".localize())
+        stackView.addArrangedSubview(deleteHeader)
+        stackView.addArrangedSubview(deleteDataButton)
+        stackView.addArrangedSubview(deleteDocumentsButton)
         setupNotifications()
     }
     

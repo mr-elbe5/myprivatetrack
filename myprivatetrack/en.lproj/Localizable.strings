@@ -7,6 +7,7 @@
 //common
 "cancel" = "Cancel";
 "comment"="Comment";
+"delete"="Delete";
 "done"="Done";
 "east"="East";
 "endDate"="End date";
@@ -34,6 +35,7 @@
 "locationNotAuthorized"="Finding your location is not authorized. Please change your settings.";
 "error"="Error";
 "fileOpenError"="The file could not be opened.";
+"location"="Location";
 "notComplete"="Some entries are not complete.";
 "noItems"="You need at least one item.";
 "photoLibraryNotAuthorized"="The use of the photo library is not authorized. Please change your settings.";
@@ -93,6 +95,7 @@
 "ownBackground"="Photo library";
 "partialBackupData"="Backup entries of time span";
 "reallyDeleteAllData"="Really delete all data?";
+"restore"="Restore";
 "restoreData"="Restore entries";
 "restoreInfo"="You can select the first and the last of days to be restored. After selecting the days, the entries of these days will be added or merged to your current days.";
 "reallyDeleteDocuments"="Really delete all public files?";
@@ -101,6 +104,8 @@
 
 // info
 
+"info"="Info";
+
 "generalInfoHeader"="About this App";
 "generalInfoText1"="This app is designed for private data.";
 "generalInfoText2"="None of your entered data leaves your iPhone or iPad, if you do not explicitly export it.";
@@ -108,52 +113,56 @@
 "generalInfoText4"="The only use of the network is for getting map tiles and the location service for showing the location of your entries on the map.";
 "generalInfoText5"="Only Apple APIs and services are used, except for the open source project Zip, which is embedded for backup and restore.";
 "generalInfoText6"="The code of this app is published on GitHub under https://github.com/mr-elbe5/myprivatetrack.git.";
-
-"timelineInfoHeader"="Timeline view";
-
-"timelineInfoEditHeader"="Edit mode";
-"timelineLocationInfo"="If the switch 'Save position' is on, you can add a map section.";
-"timelineMapIconInfo"="With this icon you can show an entry on the map.";
-"timelineTextIconInfo"="With this icon you start creating a new entry by writing a text.";
-"timelineTopInfo"="The timeline view shows all entries sorted by the day and of their creation. By tapping one of the left icons you can create a new entry starting with the respective item type: empty, text, photo, image, audio or video. With the right pencil icon you can toggle between view and edit mode (see below).";
-"timelineVideoIconInfo"="With this icon you start creating a new entry by recording a video.";
-
-"info"="Info";
-"editEntryAudioIconInfo"="With this icon you add a new audio item starting by recording an audio.";
-"editEntryDeleteIconInfo"="With this icon you delete the item. Take care! There is no way to undo this action!";
-"editEntryFlashIconInfo"="With this icon you set the flash mode (off, on or auto).";
-"editEntryPhotoIconInfo"="With this icon you add a new image item by taking a photo.";
-"editEntryImageIconInfo"="With this icon you import an image from the library.";
-"editEntryInfoHeader"="Edit entry";
-"editEntryItemInfoHeader"="Deleting an item";
-"editEntryOthersHeader"="Other icons";
-"editEntryTextIconInfo"="With this icon you add a new text item by writing a text.";
-"editEntryToggleCameraIconInfo"="With this icon you toggle the camera when you take a photo or video.";
-"editEntryToggleMapIconInfo"="With this icon you change the map type (satellite or street) when you capture a map snapshot.";
-"editEntryTopInfo"="The entry view lets you add, edit and remove items within your entry. By tapping one of the left icons you can add a new item: text, image, audio, video or map. The number of items is not limited.";
-"editEntryVideoIconInfo"="With this icon you add a new video item by recording a video.";
-"timelineShareIconInfo"="With this icon you can share/export an item to the image library or to the documents folder ('Files') of this app.";
-"mapInfoHeader"="Map view";
-"iconsInfoHeader"="Icons";
-
-"privacyExportHeader"="Exported Files";
 "generalExportText"="With this app it is possible to create backups and copy files to the 'Files' folder of this app. You should be aware that these files are visible to other running apps on the iPhone/iPad. Depending on your privacy policy they should be deleted after use.";
-"settingsBackgroundInfo"="With 'Select background image' you can select an image of your photo library or return to the default image as background.";
-"settingsFilesInfo"="Deleting exported files means to delete all backups and all files, which have been copied to the app's documents folder.";
-"settingsFullBackupInfo"="With 'Backup all entries' you create a backup file of all your entries. It can be found in Files > On my IPhone/iPad > My Private Track > Backups with the current date in its name.";
-"settingsPartialBackupInfo"="With 'Backup entries of time span' you create a partial backup of a selectable time span. It can be found in Files > On my IPhone/iPad > My Private Track > Backups with the selected time span in its name.";
-"settingsMapSizeInfo"="With 'Start size for capturing map images' you have three possible start sizes of the map, when you are creating a map snapshot. You will still be able to scroll and resize the map.";
-"settingsResetInfo"="With the reset button you delete all entries and their media. If you don't want to lose these data, make sure to create a backup.";
-"settingsRestoreInfo"="With the restore button you restore a previous backup of your entries (all or for a certain time span).";
-"settingsUseLocationInfo"="If you choose not to use location services, your entries will not have a position and you will not be able to take map screenshots.";
-"timelineAudioIconInfo"="With this icon you start creating a new entry starting by recording an audio.";
-"timelineDeleteIconInfo"="With this icon you delete this entry including all of its items. Take care! There is no way to undo this action!";
-"timelineDetailIconInfo"="With this icon you get a detailed view oh an entry or one of its items. There you are also able to edit the entry";
-"timelineEditIconInfo"="With this icon you toggle the edit mode if you want to delete entries.";
-"timelineEditInfo"="With the right pencil icon you can toggle between view and edit mode. In edit mode two icons appear at each entry:";
-"timelineEmptyIconInfo"="With this icon you start creating an empty new entry.";
-"timelineEntryInfoHeader"="Entries";
-"timelineEntryMapLinkInfo"="If the entry has a saved location, you can tap on it to see the location on the map.";
+
+"timelineInfoHeader"="Day View";
+"timelineTopInfo"="The timeline view shows all entries sorted by the day and of their creation. By tapping one of the left icons you can create a new entry starting with the respective item type: text, photo, image, audio or video. With the right pencil icon you can toggle between view and edit mode (see below).";
+"timelineTextIconInfo"="With this icon you start creating a new entry by writing a text.";
 "timelinePhotoIconInfo"="With this icon you start creating a new entry by taking a photo.";
 "timelineImageIconInfo"="With this icon you start creating a new entry by importing an image from the library.";
+"timelineAudioIconInfo"="With this icon you start creating a new entry starting by recording an audio.";
+"timelineVideoIconInfo"="With this icon you start creating a new entry by recording a video.";
+"timelineEntryInfoHeader"="Entries";
+"timelineDetailIconInfo"="With this icon you get a detailed view of an entry or one of its items. There you are also able to edit the entry";
+"timelineMapIconInfo"="With this icon you can show an entry on the map.";
+"timelineInfoEditHeader"="Edit Mode";
+"timelineDeleteIconInfo"="With this icon you delete this entry including all of its items. Take care! There is no way to undo this action!";
+"timelineQuicktextInfo"="With the text field at the bottom you directly create a new entry with the entered text.";
+//
+"entryInfoHeader"="Entry - Detail View";
+"entryEditIconInfo"="With this icon you can toggle between view and edit mode.";
+"entryTopInfo"="All entries are displayed with date, time and location. By clicking on the location you switch to the map view.";
+"entryDetailIconInfo"="With this icon you can view an image or video in full mode.";
+"entryShareIconInfo"="With this icon you can copy an image or video to 'Photos' or to the document folder of this app ('Files').";
+"editEntryInfoHeader"="Edit Entry";
+"editEntryTopInfo"="The entry edit view lets you add, edit and remove items within your entry. By tapping one of the left icons you can add a new item: text, photo, image, audio or video. The number of items is not limited.";
+"editEntryPlusIconInfo"="With this icon you open the list of new elements.";
+"editEntryTextIconInfo"="With this icon you add a new text item by writing a text.";
+"editEntryPhotoIconInfo"="With this icon you add a new image item by taking a photo.";
+"editEntryImageIconInfo"="With this icon you import an image from the library.";
+"editEntryAudioIconInfo"="With this icon you add a new audio item starting by recording an audio.";
+"editEntryVideoIconInfo"="With this icon you add a new video item by recording a video.";
+"editEntryDeleteIconInfo"="With this icon you delete the item. Take care! There is no way to undo this action!";
+//
+"cameraInfoHeader"="Camera";
+"toggleCameraIconInfo"="With this icon you toggle the camera when you take a photo or video.";
+"flashIconInfo"="With this icon you set the flash mode (off, on or auto).";
+//
+"mapInfoHeader"="Map View";
+"mapTopInfo"="In the map view you see all locations of your entries. By tapping you open the entry.";
+"mapIconInfo"="With this icon you change the map type : Apple-Map, OpenstreetMap and satellite.";
+//
+"settingsInfoHeader"="Settings";
+
+"settingsBackgroundInfo"="With 'Select background image' you can select an image of your photo library or return to the default image as background.";
+"settingsUrlInfoText"="The URL templates are server specific and have to return png files (tiles). You must be sure to have the rights for downloading the tiles and that you do not start inappropriate mass downloads.";
+"settingsLocationInfoText"="'Show location' sets the default if you create a new entry.";
+"settingsFullBackupInfo"="With 'Backup all entries' you create a backup file of all your entries. It can be found in Files > On my IPhone/iPad > My Private Track > Backups with the current date in its name.";
+"settingsPartialBackupInfo"="With 'Backup entries of time span' you create a partial backup of a selectable time span. It can be found in Files > On my IPhone/iPad > My Private Track > Backups with the selected time span in its name.";
+"settingsRestoreInfo"="With the restore button you restore a previous backup of your entries (all or for a certain time span).";
+"settingsDeleteEntriesInfoText"="'Delete entries' deletes all entries permanently. This cannot be undone.";
+"settingsFilesInfo"="Deleting exported files means to delete all backups and all files, which have been copied to the app's documents folder.";
+
+
+
 
