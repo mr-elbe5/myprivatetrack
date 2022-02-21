@@ -111,8 +111,6 @@
 "generalInfoText2"="None of your entered data leaves your iPhone or iPad, if you do not explicitly export it.";
 "generalInfoText3"="There are no ads.";
 "generalInfoText4"="The only use of the network is for getting map tiles and the location service for showing the location of your entries on the map.";
-"generalInfoText5"="Only Apple APIs and services are used, except for the open source project Zip, which is embedded for backup and restore.";
-"generalInfoText6"="The code of this app is published on GitHub under https://github.com/mr-elbe5/myprivatetrack.git.";
 "generalExportText"="With this app it is possible to create backups and copy files to the 'Files' folder of this app. You should be aware that these files are visible to other running apps on the iPhone/iPad. Depending on your privacy policy they should be deleted after use.";
 
 "timelineInfoHeader"="Day View";
@@ -163,6 +161,7 @@
 "settingsDeleteEntriesInfoText"="'Delete entries' deletes all entries permanently. This cannot be undone.";
 "settingsFilesInfo"="Deleting exported files means to delete all backups and all files, which have been copied to the app's documents folder.";
 
-
-
+"technicalInfoHeader"="APIs and Code";
+"technicalInfoText1"="Only Apple APIs and services are used, except for the open source project Zip, which is embedded for backup and restore.";
+"technicalInfoText2"="The code of this app is published on GitHub under https://github.com/mr-elbe5/myprivatetrack.git.";
 

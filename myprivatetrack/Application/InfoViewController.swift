@@ -17,9 +17,11 @@ class InfoViewController: ScrollViewController {
     var cameraStackView = UIStackView()
     var mapStackView = UIStackView()
     var settingsStackView = UIStackView()
+    var technicalStackView = UIStackView()
     
     override func loadView() {
         super.loadView()
+        let indentInsets = UIEdgeInsets(top: defaultInset, left: 2*defaultInset, bottom: defaultInset, right: defaultInset)
         view.backgroundColor = .systemGroupedBackground
         let guide = view.safeAreaLayoutGuide
         view.addSubview(headerView)
@@ -33,13 +35,11 @@ class InfoViewController: ScrollViewController {
         header.setAnchors(top: scrollView.topAnchor, leading: scrollView.leadingAnchor, trailing: scrollView.trailingAnchor, insets: defaultInsets)
         scrollView.addSubview(generalStackView)
         generalStackView.setupVertical()
-        generalStackView.setAnchors(top: header.bottomAnchor, leading: scrollView.leadingAnchor, trailing: scrollView.trailingAnchor, insets: defaultInsets)
+        generalStackView.setAnchors(top: header.bottomAnchor, leading: scrollView.leadingAnchor, trailing: scrollView.trailingAnchor, insets: indentInsets)
         generalStackView.addArrangedSubview(InfoText(text: "generalInfoText1".localize()))
         generalStackView.addArrangedSubview(InfoText(text: "generalInfoText2".localize()))
         generalStackView.addArrangedSubview(InfoText(text: "generalInfoText3".localize()))
         generalStackView.addArrangedSubview(InfoText(text: "generalInfoText4".localize()))
-        generalStackView.addArrangedSubview(InfoText(text: "generalInfoText5".localize()))
-        generalStackView.addArrangedSubview(InfoText(text: "generalInfoText6".localize()))
         generalStackView.addArrangedSubview(InfoText(text: "generalExportText".localize()))
         
         // timeline
@@ -113,7 +113,7 @@ class InfoViewController: ScrollViewController {
         header.setAnchors(top: mapStackView.bottomAnchor, leading: scrollView.leadingAnchor, trailing: scrollView.trailingAnchor, insets: defaultInsets)
         scrollView.addSubview(settingsStackView)
         settingsStackView.setupVertical()
-        settingsStackView.setAnchors(top: header.bottomAnchor, leading: scrollView.leadingAnchor, trailing: scrollView.trailingAnchor, bottom: scrollView.bottomAnchor, insets: defaultInsets)
+        settingsStackView.setAnchors(top: header.bottomAnchor, leading: scrollView.leadingAnchor, trailing: scrollView.trailingAnchor, insets: defaultInsets)
         settingsStackView.addArrangedSubview(InfoText(text: "settingsBackgroundInfo".localize()))
         settingsStackView.addArrangedSubview(InfoText(text: "settingsUrlInfoText".localize()))
         settingsStackView.addArrangedSubview(InfoText(text: "settingsLocationInfoText".localize()))
@@ -126,6 +126,16 @@ class InfoViewController: ScrollViewController {
         settingsStackView.addArrangedSubview(InfoText(text: "settingsDeleteEntriesInfoText".localize()))
         settingsStackView.addArrangedSubview(InfoText(text: "settingsFilesInfo".localize()))
         
+        // technical
+        
+        header = InfoHeader(text: "technicalInfoHeader".localize())
+        scrollView.addSubview(header)
+        header.setAnchors(top: settingsStackView.bottomAnchor, leading: scrollView.leadingAnchor, trailing: scrollView.trailingAnchor, insets: defaultInsets)
+        scrollView.addSubview(technicalStackView)
+        technicalStackView.setupVertical()
+        technicalStackView.setAnchors(top: header.bottomAnchor, leading: scrollView.leadingAnchor, trailing: scrollView.trailingAnchor, bottom: scrollView.bottomAnchor, insets: defaultInsets)
+        technicalStackView.addArrangedSubview(InfoText(text: "technicalInfoText1".localize()))
+        technicalStackView.addArrangedSubview(InfoText(text: "technicalInfoText2".localize()))
     }
     
     

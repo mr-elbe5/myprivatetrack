@@ -111,16 +111,13 @@
 "generalInfoText2"="Keine eingegebenen Daten verlassen das iPhone oder iPad, solange sie nicht explizit exportiert werden.";
 "generalInfoText3"="Es gibt keine Werbung.";
 "generalInfoText4"="Das Netzwerk wird lediglich genutzt, um Kartenkacheln zu laden oder den Ort deiner Einträge auf Karten darzustellen.";
-"generalInfoText5"="Es werden nur Apple-APIs und -Services benutzt, mit Ausnahme des Open-Source-Projekts Zip, das für die Sicherung und Wiederherstellung eingebunden ist.";
-"generalInfoText6"="Der Code dieser App ist bei Github unter https://github.com/mr-elbe5/myprivatetrack.git offengelegt.";
 "generalExportText"="Diese App ermöglicht es, Sicherungen anzulegen und Dateien in das 'Dateien'-Verzeichnis dieser App zu kopieren. Dabei sollte beachtet werden, das diese exportierten Dateien auch für andere laufende Apps auf dem iPhone/iPad sichtbar sind. Je nach Bedarf sollten sie nach der Nutzung wieder gelöscht werden.";
-
 "timelineInfoHeader"="Tagesansicht";
-"timelineTopInfo"="Die Tagesansicht zeigt alle Einträge nach Tag und Zeit sortiert. Durch Antippen der linken Icons kannst du einen neuen Eintrag erzeugen, der mit dem jeweiligen Typ startet : Text, Foto, Bild, Audio oder Video. Mit dem rechten Bleistift-Icon kannst du zwischen Anzeige- und Editiermodus wechseln (siehe unten).";
+"timelineTopInfo"="Die Tagesansicht zeigt alle Einträge nach Tag und Zeit sortiert. Durch Antippen eines der folgenden Icons kannst du einen neuen Eintrag erzeugen, der mit dem jeweiligen Typ startet : Text, Foto, Bild, Audio oder Video. Mit dem rechten Bleistift-Icon kannst du zwischen Anzeige- und Editiermodus wechseln (siehe unten).";
 "timelineTextIconInfo"="Mit diesem Icon startest du einen neuen Eintrag, der mit dem Eingeben eines Textes beginnt.";
 "timelinePhotoIconInfo"="Mit diesem Icon startest du einen neuen Eintrag, der mit dem Aufnehmen eines Fotos beginnt.";
 "timelineImageIconInfo"="Mit diesem Icon startest du einen neuen Eintrag, der mit dem Importieren eines Bildes aus der Bibliothek beginnt.";
-"timelineAudioIconInfo"="Mit diesem Icon startest du einen neuen Eintrag, der mit dem Aufnehmen eines Audios beginnt.";
+"timelineAudioIconInfo"="Mit diesem Icon startest du einen neuen Eintrag, der mit dem Aufnehmen einer Tonaufnahme beginnt.";
 "timelineVideoIconInfo"="Mit diesem Icon startest du einen neuen Eintrag, der mit dem Aufnehmen eines Videos beginnt.";
 "timelineEntryInfoHeader"="Einträge";
 "timelineDetailIconInfo"="Mit diesem Icon bekommst du die Detailansicht des Eintrags oder eines seiner Elemente. Dort kannst du auch Einträge editieren.";
@@ -163,4 +160,7 @@
 "settingsDeleteEntriesInfoText"="'Einträge löschen' löscht alle Einträge endgültig. Diese Aktion kann nicht zurückgenommen werden.";
 "settingsFilesInfo"="Löschen aller öffentlichen Dateien bedeutet das Löschen aller Sicherungen und aller Dateien, die in das Exportverzeichnis der App kopiert wurden.";
 
+"technicalInfoHeader"="APIs und Code";
+"technicalInfoText1"="Es werden nur Apple-APIs und -Services benutzt, mit Ausnahme des Open-Source-Projekts Zip, das für die Sicherung und Wiederherstellung eingebunden ist.";
+"technicalInfoText2"="Der Code dieser App ist bei Github unter https://github.com/mr-elbe5/myprivatetrack.git offengelegt.";
 
