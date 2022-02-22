@@ -21,7 +21,7 @@ class InfoViewController: ScrollViewController {
     
     override func loadView() {
         super.loadView()
-        let indentInsets = UIEdgeInsets(top: defaultInset, left: 2*defaultInset, bottom: defaultInset, right: defaultInset)
+        let indentInsets = UIEdgeInsets(top: defaultInset, left: 3*defaultInset, bottom: defaultInset, right: defaultInset)
         view.backgroundColor = .systemGroupedBackground
         let guide = view.safeAreaLayoutGuide
         view.addSubview(headerView)
@@ -49,7 +49,7 @@ class InfoViewController: ScrollViewController {
         header.setAnchors(top: generalStackView.bottomAnchor, leading: scrollView.leadingAnchor, trailing: scrollView.trailingAnchor, insets: defaultInsets)
         scrollView.addSubview(timelineStackView)
         timelineStackView.setupVertical()
-        timelineStackView.setAnchors(top: header.bottomAnchor, leading: scrollView.leadingAnchor, trailing: scrollView.trailingAnchor, insets: defaultInsets)
+        timelineStackView.setAnchors(top: header.bottomAnchor, leading: scrollView.leadingAnchor, trailing: scrollView.trailingAnchor, insets: indentInsets)
         timelineStackView.addArrangedSubview(InfoText(text: "timelineTopInfo".localize()))
         timelineStackView.addArrangedSubview(IconInfoText(icon: "text.bubble", text: "timelineTextIconInfo".localize()))
         timelineStackView.addArrangedSubview(IconInfoText(icon: "camera", text: "timelinePhotoIconInfo".localize()))
@@ -70,7 +70,7 @@ class InfoViewController: ScrollViewController {
         header.setAnchors(top: timelineStackView.bottomAnchor, leading: scrollView.leadingAnchor, trailing: scrollView.trailingAnchor, insets: defaultInsets)
         scrollView.addSubview(entryStackView)
         entryStackView.setupVertical()
-        entryStackView.setAnchors(top: header.bottomAnchor, leading: scrollView.leadingAnchor, trailing: scrollView.trailingAnchor, insets: defaultInsets)
+        entryStackView.setAnchors(top: header.bottomAnchor, leading: scrollView.leadingAnchor, trailing: scrollView.trailingAnchor, insets: indentInsets)
         entryStackView.addArrangedSubview(InfoText(text: "entryTopInfo".localize()))
         entryStackView.addArrangedSubview(IconInfoText(icon: "magnifyingglass", text: "entryDetailIconInfo".localize()))
         entryStackView.addArrangedSubview(IconInfoText(icon: "square.and.arrow.up", text: "entryShareIconInfo".localize()))
@@ -90,7 +90,7 @@ class InfoViewController: ScrollViewController {
         header.setAnchors(top: entryStackView.bottomAnchor, leading: scrollView.leadingAnchor, trailing: scrollView.trailingAnchor, insets: defaultInsets)
         scrollView.addSubview(cameraStackView)
         cameraStackView.setupVertical()
-        cameraStackView.setAnchors(top: header.bottomAnchor, leading: scrollView.leadingAnchor, trailing: scrollView.trailingAnchor, insets: defaultInsets)
+        cameraStackView.setAnchors(top: header.bottomAnchor, leading: scrollView.leadingAnchor, trailing: scrollView.trailingAnchor, insets: indentInsets)
         cameraStackView.addArrangedSubview(IconInfoText(icon: "camera.rotate", text: "toggleCameraIconInfo".localize()))
         cameraStackView.addArrangedSubview(IconInfoText(icon: "bolt", text: "flashIconInfo".localize()))
         
@@ -102,7 +102,7 @@ class InfoViewController: ScrollViewController {
         header.setAnchors(top: cameraStackView.bottomAnchor, leading: scrollView.leadingAnchor, trailing: scrollView.trailingAnchor, insets: defaultInsets)
         scrollView.addSubview(mapStackView)
         mapStackView.setupVertical()
-        mapStackView.setAnchors(top: header.bottomAnchor, leading: scrollView.leadingAnchor, trailing: scrollView.trailingAnchor, insets: defaultInsets)
+        mapStackView.setAnchors(top: header.bottomAnchor, leading: scrollView.leadingAnchor, trailing: scrollView.trailingAnchor, insets: indentInsets)
         mapStackView.addArrangedSubview(InfoText(text: "mapTopInfo".localize()))
         mapStackView.addArrangedSubview(IconInfoText(icon: "map", text: "mapIconInfo".localize()))
         
@@ -113,7 +113,7 @@ class InfoViewController: ScrollViewController {
         header.setAnchors(top: mapStackView.bottomAnchor, leading: scrollView.leadingAnchor, trailing: scrollView.trailingAnchor, insets: defaultInsets)
         scrollView.addSubview(settingsStackView)
         settingsStackView.setupVertical()
-        settingsStackView.setAnchors(top: header.bottomAnchor, leading: scrollView.leadingAnchor, trailing: scrollView.trailingAnchor, insets: defaultInsets)
+        settingsStackView.setAnchors(top: header.bottomAnchor, leading: scrollView.leadingAnchor, trailing: scrollView.trailingAnchor, insets: indentInsets)
         settingsStackView.addArrangedSubview(InfoText(text: "settingsBackgroundInfo".localize()))
         settingsStackView.addArrangedSubview(InfoText(text: "settingsUrlInfoText".localize()))
         settingsStackView.addArrangedSubview(InfoText(text: "settingsLocationInfoText".localize()))
@@ -133,7 +133,7 @@ class InfoViewController: ScrollViewController {
         header.setAnchors(top: settingsStackView.bottomAnchor, leading: scrollView.leadingAnchor, trailing: scrollView.trailingAnchor, insets: defaultInsets)
         scrollView.addSubview(technicalStackView)
         technicalStackView.setupVertical()
-        technicalStackView.setAnchors(top: header.bottomAnchor, leading: scrollView.leadingAnchor, trailing: scrollView.trailingAnchor, bottom: scrollView.bottomAnchor, insets: defaultInsets)
+        technicalStackView.setAnchors(top: header.bottomAnchor, leading: scrollView.leadingAnchor, trailing: scrollView.trailingAnchor, bottom: scrollView.bottomAnchor, insets: indentInsets)
         technicalStackView.addArrangedSubview(InfoText(text: "technicalInfoText1".localize()))
         technicalStackView.addArrangedSubview(InfoText(text: "technicalInfoText2".localize()))
     }
