@@ -1,3 +1,7 @@
+This project is discontinued on GitHub.
+
+You can find it on Gitea at https://git.elbe5cloud.de/miro/MyPrivateTrack
+
 # myprivatetrack
 IOS app for your private track - private diary using text, camera, audio, video and map
 
